@@ -90,7 +90,8 @@ The plugin shows an activation consent dialog and exposes a privacy policy link 
 - API docs: <https://api.astroway.info/docs>
 - Pricing: <https://astroway.info/shop/>
 - Sign up: <https://api.astroway.info/dashboard/sign-up>
-- Support: <https://astroway.info/support>
+- Bug reports: <https://github.com/astroway/astroway-wp-plugin/issues>
+- Contact: <astroway.info@gmail.com>
 - Source: <https://github.com/astroway/astroway-wp-plugin>
 
 ---
