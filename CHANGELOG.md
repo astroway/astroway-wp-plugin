@@ -2,6 +2,18 @@
 
 All notable changes to `astroway/wp-plugin` are documented here.
 
+## [0.2.0] — 2026-05-12
+
+Settings page + free key flow foundation.
+
+- Settings page under `Settings → AstroWay` with API key input, Verify Key button, Test Connection, Cache controls, shortcode reference, and Diagnostics panel
+- API key field accepts both sandbox (`aw_test_*`) and live (`aw_live_*`) keys — api routes them internally
+- All keyed requests now carry `X-Api-Key` + `X-AstroWay-Site-URL` headers (PRICING §4.6 lazy domain bind signal)
+- Plugin row links: Settings + Get API Key (with `?source=wp_plugin`)
+- Activation notice CTA URL includes `?source=wp_plugin` for `referrer_source` persistence
+- New transient cache layer (prefix `astroway_v1_`) with purge button + stats
+- Verify Key gracefully falls back to existing `/v1/keys/usage` endpoint until api ships `/v1/auth/keys/me` (Block A)
+
 ## [0.1.0] — 2026-05-12
 
 First functional release. Adds five astrology widgets to any WordPress page or post — no API key required, no signup, no server-side calculation on your site.

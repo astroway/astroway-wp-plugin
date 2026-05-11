@@ -16,6 +16,7 @@ class Plugin {
 
 		Shortcodes::register();
 		Blocks::register();
+		Admin::register();
 
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_activation_notice' ] );
@@ -51,7 +52,7 @@ class Plugin {
 				sprintf(
 					/* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */
 					__( 'AstroWay is active. Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, %1$sget a free API key%2$s.', 'astroway-wp-plugin' ),
-					'<a href="https://api.astroway.info/dashboard/sign-up" target="_blank" rel="noopener">',
+					'<a href="https://api.astroway.info/dashboard/sign-up?source=wp_plugin" target="_blank" rel="noopener">',
 					'</a>'
 				),
 				[

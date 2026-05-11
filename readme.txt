@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -20,7 +20,7 @@ Add astrological calculations to any WordPress page or post via shortcodes or Gu
 
 1. Upload the plugin via Plugins → Add New, or unzip into `/wp-content/plugins/`.
 2. Activate through the Plugins menu.
-3. (Optional) Settings → AstroWay → enter your API key (coming in v0.2.0).
+3. (Optional) Settings → AstroWay → paste your API key for higher rate limits and Pro features.
 4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]`.
 
 == Frequently Asked Questions ==
@@ -39,6 +39,15 @@ Yes for the free anonymous tier. Paid API keys are bound to a single domain by d
 
 == Changelog ==
 
+= 0.2.0 =
+* Settings page under Settings → AstroWay (API key input, Verify Key, Test Connection, Cache controls, shortcode reference, Diagnostics)
+* API key field accepts both sandbox (aw_test_*) and live (aw_live_*) keys
+* All keyed requests now carry X-Api-Key + X-AstroWay-Site-URL headers (lazy domain bind support)
+* Plugin row links: Settings + Get API Key (with ?source=wp_plugin)
+* Activation notice CTA URL includes ?source=wp_plugin for referrer-source tracking
+* New transient cache layer (prefix astroway_v1_) with purge button + stats
+* Verify Key gracefully falls back to /v1/keys/usage until api ships /v1/auth/keys/me (Block A)
+
 = 0.1.0 =
 * MVP — 5 iframe shortcodes via /v1/embed/* (works without API key, 30/hr per IP)
 * 5 Gutenberg blocks with ServerSideRender
@@ -50,6 +59,9 @@ Yes for the free anonymous tier. Paid API keys are bound to a single domain by d
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 0.2.0 =
+Adds Settings page for API key configuration. Drop-in upgrade from 0.1.0 — anonymous mode shortcodes continue to work.
 
 = 0.1.0 =
 First functional release. 5 shortcodes + 5 Gutenberg blocks work without an API key in anonymous mode (30 requests/hour per IP).
