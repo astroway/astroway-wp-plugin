@@ -1,0 +1,38 @@
+{
+  "name": "astroway/wp-plugin",
+  "description": "Official WordPress plugin for the AstroWay API — shortcodes + Gutenberg blocks for natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes.",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "homepage": "https://github.com/astroway/astroway-wp-plugin",
+  "authors": [
+    {
+      "name": "AstroWay Team",
+      "email": "astroway.info@gmail.com",
+      "homepage": "https://astroway.info"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "composer/installers": "^2.0"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpunit/phpunit": "^9.6 || ^10.0",
+    "yoast/phpunit-polyfills": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AstroWay\\WPPlugin\\": "includes/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "lint": "phpcs --standard=phpcs.xml .",
+    "test": "phpunit"
+  }
+}
