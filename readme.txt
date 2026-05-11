@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.1.0-alpha.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -39,10 +39,10 @@ Yes for the free anonymous tier. Paid API keys are bound to a single domain by d
 
 == Changelog ==
 
-= 0.1.0 =
-* Initial scaffold.
+= 0.1.0-alpha.1 =
+* Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
 
-= 0.1.0 =
-Initial release.
+= 0.1.0-alpha.1 =
+Pre-release scaffold. Not for production use.
