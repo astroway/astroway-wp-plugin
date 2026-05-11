@@ -1,0 +1,47 @@
+/* AstroWay widget styles. Theme-overridable via CSS custom properties on .astroway-embed. */
+
+.astroway-embed {
+	--astroway-bg: transparent;
+	--astroway-border: 0;
+	--astroway-border-radius: 8px;
+	--astroway-max-width: 100%;
+	--astroway-margin: 1em auto;
+	--astroway-min-height: 240px;
+
+	background: var(--astroway-bg);
+	border: var(--astroway-border);
+	border-radius: var(--astroway-border-radius);
+	max-width: var(--astroway-max-width);
+	margin: var(--astroway-margin);
+	overflow: hidden;
+	line-height: 0;
+	min-height: var(--astroway-min-height);
+}
+
+.astroway-embed__iframe {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	border: 0;
+	background: transparent;
+}
+
+/* Per-widget max-width matches the embed page's intrinsic content width */
+.astroway-embed--natal,
+.astroway-embed--bodygraph,
+.astroway-embed--daily-horoscope {
+	--astroway-max-width: 460px;
+}
+
+.astroway-embed--moon-phase,
+.astroway-embed--tarot-daily {
+	--astroway-max-width: 320px;
+}
+
+@media (max-width: 480px) {
+	.astroway-embed {
+		--astroway-max-width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}

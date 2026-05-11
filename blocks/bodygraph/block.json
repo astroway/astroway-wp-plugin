@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/bodygraph",
+	"title": "AstroWay: Human Design Bodygraph",
+	"category": "widgets",
+	"description": "Human Design bodygraph with type, profile, and gates.",
+	"textdomain": "astroway-wp-plugin",
+	"icon": "networking",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"time": { "type": "string", "default": "" },
+		"lat":  { "type": "string", "default": "" },
+		"lon":  { "type": "string", "default": "" },
+		"name": { "type": "string", "default": "" },
+		"tz":   { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

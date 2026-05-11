@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 0.1.0-alpha.1
+Stable tag: 0.1.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -20,8 +20,8 @@ Add astrological calculations to any WordPress page or post via shortcodes or Gu
 
 1. Upload the plugin via Plugins → Add New, or unzip into `/wp-content/plugins/`.
 2. Activate through the Plugins menu.
-3. (Optional) Settings → AstroWay → enter your API key.
-4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" city="Kyiv"]`.
+3. (Optional) Settings → AstroWay → enter your API key (coming in v0.2.0).
+4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]`.
 
 == Frequently Asked Questions ==
 
@@ -39,10 +39,20 @@ Yes for the free anonymous tier. Paid API keys are bound to a single domain by d
 
 == Changelog ==
 
+= 0.1.0 =
+* MVP — 5 iframe shortcodes via /v1/embed/* (works without API key, 30/hr per IP)
+* 5 Gutenberg blocks with ServerSideRender
+* Vanilla CSS theme-overridable via CSS vars (--astroway-*)
+* i18n .pot + EN/UK/DE/PL base translations
+* Graceful 429 handler with 'Get free API key' admin notice
+
 = 0.1.0-alpha.1 =
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 0.1.0 =
+First functional release. 5 shortcodes + 5 Gutenberg blocks work without an API key in anonymous mode (30 requests/hour per IP).
 
 = 0.1.0-alpha.1 =
 Pre-release scaffold. Not for production use.

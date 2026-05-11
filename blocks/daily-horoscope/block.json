@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/daily-horoscope",
+	"title": "AstroWay: Daily Horoscope",
+	"category": "widgets",
+	"description": "Daily horoscope text for a zodiac sign.",
+	"textdomain": "astroway-wp-plugin",
+	"icon": "calendar-alt",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"sign": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/moon-phase",
+	"title": "AstroWay: Moon Phase",
+	"category": "widgets",
+	"description": "Current moon phase with illumination percentage.",
+	"textdomain": "astroway-wp-plugin",
+	"icon": "marker",
+	"supports": {
+		"html": false,
+		"align": [ "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

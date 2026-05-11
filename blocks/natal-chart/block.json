@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/natal-chart",
+	"title": "AstroWay: Natal Chart",
+	"category": "widgets",
+	"description": "Natal chart wheel served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway-wp-plugin",
+	"icon": "star-filled",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"time": { "type": "string", "default": "" },
+		"lat":  { "type": "string", "default": "" },
+		"lon":  { "type": "string", "default": "" },
+		"name": { "type": "string", "default": "" },
+		"tz":   { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}
