@@ -47,11 +47,11 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 
 == Screenshots ==
 
-1. Settings screen — paste your API key, verify in one click, see plan/credits/rate-limit at a glance.
-2. Shortcode reference — copy any of the five widget shortcodes (Natal Chart, Daily Horoscope, Moon Phase, Bodygraph, Daily Tarot) into a page or post.
-3. Natal chart widget rendered on the frontend via `[astroway_natal …]` shortcode.
-4. Gutenberg block picker — five AstroWay blocks (Natal Chart, Daily Horoscope, Moon Phase, Tarot, Bodygraph) with live ServerSideRender preview in the editor.
-5. Moon Phase widget — anonymous-mode example, no API key required.
+1. Settings screen — paste your API key, verify in one click, see plan/credits/rate-limit at a glance. The page also lists the five shortcodes ready to copy into any post or page.
+2. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
+3. Moon phase widget on the frontend via `[astroway_moon_phase]` — anonymous-mode example, no API key required, 30 requests/hour/IP.
+4. Daily tarot widget via `[astroway_tarot_card deck="rider-waite"]` — fresh card pulled each day with name and meaning.
+5. Gutenberg block picker showing all five AstroWay blocks (Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot) with live ServerSideRender preview in the editor.
 
 == External services ==
 
