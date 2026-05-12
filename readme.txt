@@ -78,7 +78,7 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 This plugin stores the following on the WordPress site:
 
-* The site administrator's API key (if entered), stored in the `wp_options` table under `astroway_wp_plugin_settings`. Visible only to users with `manage_options` capability.
+* The site administrator's API key (if entered), stored in the `wp_options` table under `astroway_settings`. Visible only to users with `manage_options` capability.
 * WP transient cache of API responses (prefix `astroway_v1_`) to reduce repeat external calls. Cache contents are chart/horoscope/tarot output — no visitor PII beyond what was submitted via shortcode arguments. Purged via Settings → AstroWay → Purge Cache.
 
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**

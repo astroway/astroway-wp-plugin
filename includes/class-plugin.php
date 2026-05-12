@@ -8,11 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Plugin {
 
 	public static function boot(): void {
-		load_plugin_textdomain(
-			'astroway-wp-plugin',
-			false,
-			dirname( plugin_basename( ASTROWAY_WP_PLUGIN_FILE ) ) . '/languages'
-		);
+		// WP 4.6+ auto-loads textdomain from /languages when slug matches; no manual call needed for wp.org-hosted plugins.
 
 		Shortcodes::register();
 		Blocks::register();
@@ -36,7 +32,7 @@ class Plugin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		if ( get_user_meta( get_current_user_id(), 'astroway_wp_plugin_notice_dismissed', true ) ) {
+		if ( get_user_meta( get_current_user_id(), 'astroway_notice_dismissed', true ) ) {
 			return;
 		}
 
@@ -51,7 +47,7 @@ class Plugin {
 			wp_kses(
 				sprintf(
 					/* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */
-					__( 'AstroWay is active. Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, %1$sget a free API key%2$s.', 'astroway-wp-plugin' ),
+					__( 'AstroWay is active. Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, %1$sget a free API key%2$s.', 'astroway' ),
 					'<a href="https://api.astroway.info/dashboard/sign-up?source=wp_plugin" target="_blank" rel="noopener">',
 					'</a>'
 				),
@@ -71,13 +67,13 @@ class Plugin {
 			wp_send_json_error( null, 403 );
 		}
 		check_admin_referer( 'astroway_dismiss_activation_notice' );
-		update_user_meta( get_current_user_id(), 'astroway_wp_plugin_notice_dismissed', 1 );
+		update_user_meta( get_current_user_id(), 'astroway_notice_dismissed', 1 );
 		wp_send_json_success();
 	}
 
 	public static function activate(): void {
-		if ( false === get_option( 'astroway_wp_plugin_activated_at' ) ) {
-			update_option( 'astroway_wp_plugin_activated_at', time() );
+		if ( false === get_option( 'astroway_activated_at' ) ) {
+			update_option( 'astroway_activated_at', time() );
 		}
 	}
 

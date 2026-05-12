@@ -56,12 +56,12 @@ class PublicClient {
 
 	private static function iframe_title( string $widget ): string {
 		$titles = [
-			'natal'           => __( 'Natal chart wheel', 'astroway-wp-plugin' ),
-			'daily_horoscope' => __( 'Daily horoscope', 'astroway-wp-plugin' ),
-			'moon_phase'      => __( 'Moon phase', 'astroway-wp-plugin' ),
-			'bodygraph'       => __( 'Human Design bodygraph', 'astroway-wp-plugin' ),
-			'tarot_daily'     => __( 'Daily Tarot card', 'astroway-wp-plugin' ),
+			'natal'           => __( 'Natal chart wheel', 'astroway' ),
+			'daily_horoscope' => __( 'Daily horoscope', 'astroway' ),
+			'moon_phase'      => __( 'Moon phase', 'astroway' ),
+			'bodygraph'       => __( 'Human Design bodygraph', 'astroway' ),
+			'tarot_daily'     => __( 'Daily Tarot card', 'astroway' ),
 		];
-		return $titles[ $widget ] ?? __( 'AstroWay widget', 'astroway-wp-plugin' );
+		return $titles[ $widget ] ?? __( 'AstroWay widget', 'astroway' );
 	}
 }

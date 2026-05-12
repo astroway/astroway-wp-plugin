@@ -7,8 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Admin {
 
-	public const PAGE_SLUG  = 'astroway-wp-plugin';
-	public const OPTION_KEY = 'astroway_wp_plugin_settings';
+	public const PAGE_SLUG  = 'astroway';
+	public const OPTION_KEY = 'astroway_settings';
 
 	public static function register(): void {
 		add_action( 'admin_menu', [ __CLASS__, 'register_menu' ] );
@@ -24,8 +24,8 @@ class Admin {
 
 	public static function register_menu(): void {
 		add_options_page(
-			__( 'AstroWay', 'astroway-wp-plugin' ),
-			__( 'AstroWay', 'astroway-wp-plugin' ),
+			__( 'AstroWay', 'astroway' ),
+			__( 'AstroWay', 'astroway' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			[ __CLASS__, 'render_settings_page' ]
@@ -58,7 +58,7 @@ class Admin {
 			add_settings_error(
 				self::PAGE_SLUG,
 				'invalid_key',
-				__( 'API key must start with "aw_" and contain only letters, digits, and underscores.', 'astroway-wp-plugin' )
+				__( 'API key must start with "aw_" and contain only letters, digits, and underscores.', 'astroway' )
 			);
 		}
 		return $existing;
@@ -75,12 +75,12 @@ class Admin {
 			'settings' => sprintf(
 				'<a href="%s">%s</a>',
 				esc_url( $settings_url ),
-				esc_html__( 'Settings', 'astroway-wp-plugin' )
+				esc_html__( 'Settings', 'astroway' )
 			),
 			'getkey'   => sprintf(
 				'<a href="%s" target="_blank" rel="noopener">%s</a>',
 				esc_url( 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin' ),
-				esc_html__( 'Get API Key', 'astroway-wp-plugin' )
+				esc_html__( 'Get API Key', 'astroway' )
 			),
 		];
 		return array_merge( $new_links, $links );
@@ -103,19 +103,19 @@ class Admin {
 			[
 				'nonce' => wp_create_nonce( 'astroway_admin' ),
 				'i18n'  => [
-					'verifying'       => __( 'Verifying…', 'astroway-wp-plugin' ),
-					'fallback'        => __( 'limited info — full validation pending api update', 'astroway-wp-plugin' ),
-					'plan'            => __( 'Plan', 'astroway-wp-plugin' ),
-					'creditsUsed'     => __( 'Used', 'astroway-wp-plugin' ),
-					'rateLimit'       => __( 'Rate', 'astroway-wp-plugin' ),
-					'domain'          => __( 'Bound to', 'astroway-wp-plugin' ),
-					'pinging'         => __( 'Pinging…', 'astroway-wp-plugin' ),
-					'healthy'         => __( 'API is healthy', 'astroway-wp-plugin' ),
-					'unreachable'     => __( 'API unreachable', 'astroway-wp-plugin' ),
-					'confirmPurge'    => __( 'Purge all cached data?', 'astroway-wp-plugin' ),
-					'purged'          => __( 'Cache cleared:', 'astroway-wp-plugin' ),
-					'networkError'    => __( 'Network error', 'astroway-wp-plugin' ),
-					'invalidKey'      => __( 'Enter a valid API key first.', 'astroway-wp-plugin' ),
+					'verifying'       => __( 'Verifying…', 'astroway' ),
+					'fallback'        => __( 'limited info — full validation pending api update', 'astroway' ),
+					'plan'            => __( 'Plan', 'astroway' ),
+					'creditsUsed'     => __( 'Used', 'astroway' ),
+					'rateLimit'       => __( 'Rate', 'astroway' ),
+					'domain'          => __( 'Bound to', 'astroway' ),
+					'pinging'         => __( 'Pinging…', 'astroway' ),
+					'healthy'         => __( 'API is healthy', 'astroway' ),
+					'unreachable'     => __( 'API unreachable', 'astroway' ),
+					'confirmPurge'    => __( 'Purge all cached data?', 'astroway' ),
+					'purged'          => __( 'Cache cleared:', 'astroway' ),
+					'networkError'    => __( 'Network error', 'astroway' ),
+					'invalidKey'      => __( 'Enter a valid API key first.', 'astroway' ),
 				],
 			]
 		);
@@ -123,7 +123,7 @@ class Admin {
 
 	public static function render_settings_page(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'Unauthorized.', 'astroway-wp-plugin' ) );
+			wp_die( esc_html__( 'Unauthorized.', 'astroway' ) );
 		}
 		$api_key = (string) self::get( 'api_key', '' );
 		$stats   = Cache::stats();
@@ -137,7 +137,7 @@ class Admin {
 		}
 		$client = new ApiClient();
 		if ( ! $client->has_key() ) {
-			wp_send_json_error( [ 'message' => __( 'No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP).', 'astroway-wp-plugin' ) ] );
+			wp_send_json_error( [ 'message' => __( 'No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP).', 'astroway' ) ] );
 		}
 		wp_send_json_success( $client->get_keys_me( true ) );
 	}

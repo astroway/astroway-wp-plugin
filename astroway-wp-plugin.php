@@ -10,7 +10,7 @@
  * Author URI:        https://astroway.info
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
- * Text Domain:       astroway-wp-plugin
+ * Text Domain:       astroway
  * Domain Path:       /languages
  */
 

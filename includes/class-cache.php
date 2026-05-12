@@ -30,7 +30,9 @@ class Cache {
 		global $wpdb;
 		$like_value   = $wpdb->esc_like( '_transient_' . self::PREFIX ) . '%';
 		$like_timeout = $wpdb->esc_like( '_transient_timeout_' . self::PREFIX ) . '%';
-		$count        = (int) $wpdb->query(
+		// Direct query required: WP transient API exposes no bulk-by-prefix operation. No caching needed — this IS cache management.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$count = (int) $wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
 				$like_value,
@@ -44,6 +46,8 @@ class Cache {
 	public static function stats(): array {
 		global $wpdb;
 		$like = $wpdb->esc_like( '_transient_' . self::PREFIX ) . '%';
+		// Direct query required: enumerating prefixed transients is not possible via public WP API. Stats are advisory; no caching needed.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT LENGTH(option_value) AS sz FROM {$wpdb->options} WHERE option_name LIKE %s",
