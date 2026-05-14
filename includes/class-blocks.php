@@ -15,7 +15,7 @@ class Blocks {
 			'daily-horoscope' => [ Shortcodes::class, 'render_daily_horoscope' ],
 			'moon-phase'      => [ Shortcodes::class, 'render_moon_phase' ],
 			'bodygraph'       => [ Shortcodes::class, 'render_bodygraph' ],
-			'tarot-daily'     => [ Shortcodes::class, 'render_tarot_card' ],
+			'daily-tarot'     => [ Shortcodes::class, 'render_tarot_card' ],
 		];
 	}
 

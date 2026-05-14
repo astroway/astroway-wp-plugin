@@ -1,0 +1,831 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AstroWay WP Plugin\n"
+"Report-Msgid-Bugs-To: https://github.com/astroway/astroway-wp-plugin/issues\n"
+"POT-Creation-Date: 2026-05-13T17:11:36+00:00\n"
+"PO-Revision-Date: 2026-05-13 20:13+0300\n"
+"Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
+"Language-Team: Vietnamese <translations@astroway.info>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: astroway\n"
+"X-Generator: _dev/generate-translations.py (AI gateway primary, DeepL reserve)\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: astroway-wp-plugin.php includes/class-admin.php:33
+#: includes/class-admin.php:34
+msgid "AstroWay"
+msgstr "AstroWay"
+
+#. Plugin URI of the plugin
+#: astroway-wp-plugin.php
+msgid "https://github.com/astroway/astroway-wp-plugin"
+msgstr "https://github.com/astroway/astroway-wp-plugin"
+
+#. Description of the plugin
+#: astroway-wp-plugin.php
+msgid ""
+"Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI "
+"horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info."
+msgstr ""
+"Biểu đồ cung hoàng đạo, tương hợp, quá cảnh, Tarot, Chiêm tinh học, Thiết kế"
+" Con người, tử vi AI — shortcode + khối Gutenberg. Được cung cấp bởi "
+"api.astroway.info."
+
+#. Author URI of the plugin
+#: astroway-wp-plugin.php
+msgid "https://astroway.info"
+msgstr "https://astroway.info"
+
+#: includes/class-admin.php:44 includes/class-admin.php:45
+#: includes/views/admin-api-key.php:17
+#: includes/views/partials/admin-footer-nav.php:13
+msgid "API Key"
+msgstr "Khóa API"
+
+#: includes/class-admin.php:52
+msgid "AstroWay Settings"
+msgstr "Cài đặt AstroWay"
+
+#: includes/class-admin.php:53 includes/class-admin.php:120
+#: includes/views/admin-settings.php:17
+#: includes/views/partials/admin-footer-nav.php:14
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: includes/class-admin.php:60
+msgid "AstroWay Shortcodes"
+msgstr "Shortcode AstroWay"
+
+#: includes/class-admin.php:61 includes/views/admin-shortcodes.php:14
+#: includes/views/partials/admin-footer-nav.php:15
+msgid "Shortcodes"
+msgstr "Shortcode"
+
+#: includes/class-admin.php:103
+msgid ""
+"API key must start with \"aw_\" and contain only letters, digits, and "
+"underscores."
+msgstr ""
+"Khóa API phải bắt đầu bằng \"aw_\" và chỉ chứa chữ cái, chữ số và dấu gạch "
+"dưới."
+
+#: includes/class-admin.php:125
+msgid "Get API Key"
+msgstr "Lấy Khóa API"
+
+#: includes/class-admin.php:160
+msgid "Verifying…"
+msgstr "Đang xác minh…"
+
+#: includes/class-admin.php:161
+msgid "limited info"
+msgstr "thông tin giới hạn"
+
+#: includes/class-admin.php:162
+msgid "Plan"
+msgstr "Gói"
+
+#: includes/class-admin.php:163
+msgid "Used"
+msgstr "Đã dùng"
+
+#: includes/class-admin.php:164
+msgid "Rate"
+msgstr "Tỷ lệ"
+
+#: includes/class-admin.php:165
+msgid "Bound to"
+msgstr "Ràng buộc vào"
+
+#: includes/class-admin.php:166
+msgid "Enter a valid API key first."
+msgstr "Vui lòng nhập khóa API hợp lệ trước."
+
+#: includes/class-admin.php:167
+msgid "Network error"
+msgstr "Lỗi mạng"
+
+#: includes/class-admin.php:181
+msgid "Pinging…"
+msgstr "Đang ping…"
+
+#: includes/class-admin.php:182
+msgid "API is healthy"
+msgstr "API hoạt động bình thường"
+
+#: includes/class-admin.php:183
+msgid "API unreachable"
+msgstr "Không thể kết nối API"
+
+#: includes/class-admin.php:184
+msgid "Purge all cached data?"
+msgstr "Xóa toàn bộ dữ liệu cache?"
+
+#: includes/class-admin.php:185
+msgid "Cache cleared:"
+msgstr "Đã xóa cache:"
+
+#: includes/class-admin.php:186 includes/class-admin.php:201
+msgid "copied!"
+msgstr "đã sao chép!"
+
+#: includes/class-admin.php:202
+msgid "Searching…"
+msgstr "Đang tìm kiếm…"
+
+#: includes/class-admin.php:203
+msgid "No cities found."
+msgstr "Không tìm thấy thành phố nào."
+
+#: includes/class-admin.php:204
+msgid "Search error. Try again."
+msgstr "Lỗi tìm kiếm. Vui lòng thử lại."
+
+#: includes/class-admin.php:205
+msgid "Type at least 2 characters."
+msgstr "Gõ ít nhất 2 ký tự."
+
+#: includes/class-admin.php:206
+msgid "Pick a city to fill in lat / lon / tz"
+msgstr "Chọn một thành phố để điền lat / lon / tz"
+
+#: includes/class-admin.php:214 includes/class-admin.php:222
+#: includes/class-admin.php:231
+msgid "Unauthorized."
+msgstr "Không được phép."
+
+#: includes/class-admin.php:244
+msgid ""
+"No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
+"IP)."
+msgstr ""
+"Không có khóa API — plugin hoạt động ở chế độ ẩn danh (30 yêu cầu/giờ cho "
+"mỗi địa chỉ IP khách truy cập)."
+
+#: includes/class-plugin.php:67
+msgid "AstroWay is active"
+msgstr "AstroWay đang hoạt động"
+
+#: includes/class-plugin.php:68
+msgid ""
+"Shortcodes work without an API key (30 requests/hour per visitor IP). For "
+"higher limits and Pro features, get a free API key."
+msgstr ""
+"Shortcode hoạt động mà không cần khóa API (30 yêu cầu/giờ cho mỗi địa chỉ IP"
+" khách truy cập). Để có giới hạn cao hơn và tính năng Pro, hãy lấy khóa API "
+"miễn phí."
+
+#: includes/class-plugin.php:72 includes/views/partials/admin-hero.php:55
+msgid "Get free API key"
+msgstr "Lấy khóa API miễn phí"
+
+#: includes/class-plugin.php:75
+msgid "Open Settings"
+msgstr "Mở Cài đặt"
+
+#: includes/class-public-client.php:59
+msgid "Natal chart wheel"
+msgstr "Bánh xe biểu đồ cung"
+
+#: includes/class-public-client.php:60
+msgid "Daily horoscope"
+msgstr "Tử vi hàng ngày"
+
+#: includes/class-public-client.php:61
+msgid "Moon phase"
+msgstr "Pha mặt trăng"
+
+#: includes/class-public-client.php:62
+msgid "Human Design bodygraph"
+msgstr "Biểu đồ Thiết kế Con người"
+
+#: includes/class-public-client.php:63
+msgid "Daily Tarot card"
+msgstr "Lá bài Tarot hàng ngày"
+
+#: includes/class-public-client.php:65
+msgid "AstroWay widget"
+msgstr "Tiện ích AstroWay"
+
+#: includes/views/admin-api-key.php:18
+msgid "Higher limits, advanced widgets, no watermark."
+msgstr "Giới hạn cao hơn, tiện ích nâng cao, không có hình mờ."
+
+#: includes/views/admin-api-key.php:31
+msgid "Your API key"
+msgstr "Khóa API của bạn"
+
+#: includes/views/admin-api-key.php:32
+msgid "paste · verify · save"
+msgstr "dán · xác minh · lưu"
+
+#: includes/views/admin-api-key.php:36
+msgid "Paste your key"
+msgstr "Dán khóa của bạn"
+
+#: includes/views/admin-api-key.php:47
+msgid "Verify"
+msgstr "Xác minh"
+
+#: includes/views/admin-api-key.php:51
+msgid ""
+"Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
+"Anonymous mode."
+msgstr ""
+"Dán khóa từ api.astroway.info/dashboard. Để trống để quay lại chế độ Ẩn "
+"danh."
+
+#: includes/views/admin-api-key.php:55
+msgid "Save changes"
+msgstr "Lưu thay đổi"
+
+#: includes/views/admin-api-key.php:63
+msgid "What you get"
+msgstr "Những gì bạn nhận được"
+
+#: includes/views/admin-api-key.php:64
+msgid "3 tiers compared"
+msgstr "So sánh 3 gói"
+
+#: includes/views/admin-api-key.php:72
+msgid "Anonymous"
+msgstr "Ẩn danh"
+
+#: includes/views/admin-api-key.php:73
+msgid "no setup"
+msgstr "không cần cài đặt"
+
+#: includes/views/admin-api-key.php:76
+msgid "Free key"
+msgstr "Khóa miễn phí"
+
+#: includes/views/admin-api-key.php:77
+msgid "signup"
+msgstr "đăng ký"
+
+#: includes/views/admin-api-key.php:80
+msgid "Paid"
+msgstr "Trả phí"
+
+#: includes/views/admin-api-key.php:81
+msgid "from $5/mo"
+msgstr "từ $5/tháng"
+
+#: includes/views/admin-api-key.php:87
+msgid "Rate limit"
+msgstr "Giới hạn yêu cầu"
+
+#: includes/views/admin-api-key.php:88
+msgid "30/hour/IP"
+msgstr "30/giờ/IP"
+
+#: includes/views/admin-api-key.php:89
+msgid "~60/min/key"
+msgstr "~60/phút/khóa"
+
+#: includes/views/admin-api-key.php:90
+msgid "30–1000/min"
+msgstr "30–1000/phút"
+
+#: includes/views/admin-api-key.php:93
+msgid "Credits / month"
+msgstr "Tín dụng / tháng"
+
+#: includes/views/admin-api-key.php:95
+msgid "10,000"
+msgstr "10.000"
+
+#: includes/views/admin-api-key.php:96
+msgid "50K – 3.5M"
+msgstr "50K – 3,5M"
+
+#: includes/views/admin-api-key.php:99
+msgid "Render mode"
+msgstr "Chế độ hiển thị"
+
+#: includes/views/admin-api-key.php:100 includes/views/admin-api-key.php:101
+msgid "iframe"
+msgstr "iframe"
+
+#: includes/views/admin-api-key.php:102
+msgid "native"
+msgstr "bản gốc"
+
+#: includes/views/admin-api-key.php:105
+msgid "Widgets"
+msgstr "Tiện ích"
+
+#: includes/views/admin-api-key.php:106 includes/views/admin-api-key.php:107
+msgid "5 basic"
+msgstr "5 cơ bản"
+
+#: includes/views/admin-api-key.php:108
+msgid "+ Tarot, HD, Synastry, Numerology"
+msgstr "+ Tarot, Thiết kế Con người, Tương hợp, Chiêm tinh học"
+
+#: includes/views/admin-api-key.php:111
+msgid "AI interpretations"
+msgstr "Giải thích AI"
+
+#: includes/views/admin-api-key.php:114 includes/views/admin-api-key.php:132
+msgid "included"
+msgstr "đã bao gồm"
+
+#: includes/views/admin-api-key.php:117
+msgid "Watermark"
+msgstr "Hình mờ"
+
+#: includes/views/admin-api-key.php:118 includes/views/admin-api-key.php:119
+msgid "shown"
+msgstr "hiển thị"
+
+#: includes/views/admin-api-key.php:120
+msgid "removed"
+msgstr "đã xóa"
+
+#: includes/views/admin-api-key.php:123
+#: includes/views/partials/admin-sidebar.php:36
+msgid "Support"
+msgstr "Hỗ trợ"
+
+#: includes/views/admin-api-key.php:125
+msgid "community"
+msgstr "cộng đồng"
+
+#: includes/views/admin-api-key.php:126
+msgid "priority"
+msgstr "ưu tiên"
+
+#: includes/views/admin-api-key.php:129
+msgid "Spend cap"
+msgstr "Giới hạn chi tiêu"
+
+#. translators: %s is a link to the canonical pricing page on
+#. api.astroway.info
+#: includes/views/admin-api-key.php:140
+#, php-format
+msgid "Numbers shown for context. Canonical pricing → %s"
+msgstr "Hiển thị số liệu để tham khảo. Giá niêm yết → %s"
+
+#: includes/views/admin-api-key.php:151
+msgid "How it works"
+msgstr "Cách hoạt động"
+
+#: includes/views/admin-api-key.php:155
+msgid "No key."
+msgstr "Không có khóa."
+
+#: includes/views/admin-api-key.php:156
+msgid ""
+"Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
+"traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
+"shown."
+msgstr ""
+"Plugin hiển thị tiện ích iframe, giới hạn theo địa chỉ IP khách truy cập. "
+"Phù hợp cho các trang web ít lưu lượng và thử nghiệm nhanh. Hình mờ "
+"\"Powered by AstroWay\" sẽ hiển thị."
+
+#: includes/views/admin-api-key.php:159
+msgid "Free key."
+msgstr "Khóa miễn phí."
+
+#: includes/views/admin-api-key.php:160
+msgid ""
+"Personal credit bucket (10,000/month), isolated from other sites. Iframe "
+"rendering stays, but you get a dashboard with activity history. Watermark is"
+" still shown."
+msgstr ""
+"Tài khoản tín dụng cá nhân (10.000/tháng), tách biệt khỏi các trang web "
+"khác. Vẫn hiển thị dưới dạng iframe, nhưng bạn có thể xem lịch sử hoạt động "
+"trên bảng điều khiển. Hình mờ vẫn hiển thị."
+
+#: includes/views/admin-api-key.php:163
+msgid "Paid key."
+msgstr "Khóa trả phí."
+
+#: includes/views/admin-api-key.php:164
+msgid ""
+"Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
+"synastry, Human Design, Numerology), AI-written interpretations, and no "
+"watermark. Spend cap available to protect against bill spikes."
+msgstr ""
+"Hiển thị gốc phía máy khách (không iframe), tiện ích nâng cao (bộ bài Tarot,"
+" tương hợp, Thiết kế Con người, Chiêm tinh học), giải thích do AI viết, "
+"không có hình mờ. Có thể thiết lập giới hạn chi tiêu để ngăn ngừa tăng đột "
+"biến chi phí."
+
+#: includes/views/admin-settings.php:18
+msgid "Connection, cache, diagnostics."
+msgstr "Kết nối, cache, chẩn đoán."
+
+#: includes/views/admin-settings.php:21
+#: includes/views/partials/admin-sidebar.php:45
+msgid "Plugin"
+msgstr "Plugin"
+
+#: includes/views/admin-settings.php:22
+#: includes/views/partials/admin-sidebar.php:47
+msgid "WordPress"
+msgstr "WordPress"
+
+#: includes/views/admin-settings.php:23
+#: includes/views/partials/admin-sidebar.php:49
+msgid "PHP"
+msgstr "PHP"
+
+#: includes/views/admin-settings.php:24
+msgid "WP_DEBUG"
+msgstr "WP_DEBUG"
+
+#: includes/views/admin-settings.php:24
+msgid "on"
+msgstr "bật"
+
+#: includes/views/admin-settings.php:24
+msgid "off"
+msgstr "tắt"
+
+#: includes/views/admin-settings.php:25
+msgid "Active theme"
+msgstr "Giao diện đang dùng"
+
+#: includes/views/admin-settings.php:26
+msgid "wp_remote_post"
+msgstr "wp_remote_post"
+
+#: includes/views/admin-settings.php:26
+msgid "available"
+msgstr "có sẵn"
+
+#: includes/views/admin-settings.php:26
+msgid "missing"
+msgstr "bị thiếu"
+
+#: includes/views/admin-settings.php:27
+msgid "Locale"
+msgstr "Ngôn ngữ"
+
+#: includes/views/admin-settings.php:28
+#: includes/views/partials/admin-sidebar.php:51
+msgid "API host"
+msgstr "Máy chủ API"
+
+#: includes/views/admin-settings.php:29
+#: includes/views/partials/admin-sidebar.php:53
+msgid "Site ID"
+msgstr "ID Trang"
+
+#: includes/views/admin-settings.php:43
+msgid "Connection"
+msgstr "Kết nối"
+
+#: includes/views/admin-settings.php:44
+msgid "live ping · api.astroway.info"
+msgstr "ping trực tiếp · api.astroway.info"
+
+#: includes/views/admin-settings.php:49
+msgid "Test connection"
+msgstr "Kiểm tra kết nối"
+
+#. translators: %s = API health endpoint
+#: includes/views/admin-settings.php:57
+#, php-format
+msgid "Pings %s to confirm reachability from this server."
+msgstr "Ping %s để xác nhận khả năng truy cập từ máy chủ này."
+
+#: includes/views/admin-settings.php:68
+msgid "Cache"
+msgstr "Cache"
+
+#: includes/views/admin-settings.php:69
+msgid "WP transients · prefix astroway_v1_"
+msgstr "Bộ nhớ tạm WordPress · tiền tố astroway_v1_"
+
+#: includes/views/admin-settings.php:75
+msgid "items"
+msgstr "mục"
+
+#: includes/views/admin-settings.php:79
+msgid "cached size"
+msgstr "dung lượng đã cache"
+
+#: includes/views/admin-settings.php:82
+msgid "Purge all"
+msgstr "Xóa tất cả"
+
+#: includes/views/admin-settings.php:86
+msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
+msgstr ""
+"TTLs: biểu đồ 1h · mặt trăng 24h · dữ liệu tham khảo 7 ngày · khóa /me 30 "
+"phút."
+
+#: includes/views/admin-settings.php:94
+#: includes/views/partials/admin-sidebar.php:43
+msgid "System"
+msgstr "Hệ thống"
+
+#: includes/views/admin-settings.php:95
+msgid "diagnostic info for support"
+msgstr "thông tin chẩn đoán cho hỗ trợ"
+
+#: includes/views/admin-settings.php:111
+msgid "Copy diagnostic info"
+msgstr "Sao chép thông tin chẩn đoán"
+
+#: includes/views/admin-shortcodes.php:15
+msgid ""
+"Drop any shortcode into a post or page. Also available as Gutenberg blocks "
+"(/astroway)."
+msgstr ""
+"Thả bất kỳ shortcode nào vào bài viết hoặc trang. Cũng có sẵn dưới dạng khối"
+" Gutenberg (/astroway)."
+
+#: includes/views/admin-shortcodes.php:20
+msgid "Natal Chart"
+msgstr "Biểu đồ Cung"
+
+#: includes/views/admin-shortcodes.php:21
+msgid "Birth chart wheel — planet positions, houses, aspects."
+msgstr "Bánh xe biểu đồ cung — vị trí hành tinh, nhà, góc hợp."
+
+#: includes/views/admin-shortcodes.php:23
+msgid "AstroWay — Natal Chart"
+msgstr "AstroWay — Biểu đồ Cung"
+
+#: includes/views/admin-shortcodes.php:25
+#: includes/views/admin-shortcodes.php:60
+msgid "Birth date in YYYY-MM-DD."
+msgstr "Ngày sinh theo định dạng YYYY-MM-DD."
+
+#: includes/views/admin-shortcodes.php:26
+#: includes/views/admin-shortcodes.php:61
+msgid "Birth time in HH:MM (24-hour)."
+msgstr "Giờ sinh theo định dạng HH:MM (24 giờ)."
+
+#: includes/views/admin-shortcodes.php:27
+msgid "WGS-84 latitude (e.g. 50.45)."
+msgstr "Vĩ độ WGS-84 (ví dụ: 50.45)."
+
+#: includes/views/admin-shortcodes.php:28
+msgid "WGS-84 longitude (e.g. 30.52)."
+msgstr "Kinh độ WGS-84 (ví dụ: 30.52)."
+
+#: includes/views/admin-shortcodes.php:29
+msgid "IANA timezone (e.g. Europe/Kyiv)."
+msgstr "Múi giờ IANA (ví dụ: Europe/Kyiv)."
+
+#: includes/views/admin-shortcodes.php:30
+msgid "Display name on the chart."
+msgstr "Tên hiển thị trên biểu đồ."
+
+#: includes/views/admin-shortcodes.php:35
+msgid "Daily Horoscope"
+msgstr "Tử vi Hàng ngày"
+
+#: includes/views/admin-shortcodes.php:36
+msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
+msgstr ""
+"Tử vi hàng ngày cho một cung hoàng đạo. Tự động làm mới hàng ngày từ phía "
+"máy chủ API."
+
+#: includes/views/admin-shortcodes.php:38
+msgid "AstroWay — Daily Horoscope"
+msgstr "AstroWay — Tử vi Hàng ngày"
+
+#: includes/views/admin-shortcodes.php:40
+msgid ""
+"One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
+"sagittarius, capricorn, aquarius, pisces."
+msgstr ""
+"Một trong các giá trị: aries, taurus, gemini, cancer, leo, virgo, libra, "
+"scorpio, sagittarius, capricorn, aquarius, pisces."
+
+#: includes/views/admin-shortcodes.php:45
+msgid "Moon Phase"
+msgstr "Pha Mặt Trăng"
+
+#: includes/views/admin-shortcodes.php:46
+msgid "Current Moon phase visualization with illumination percent."
+msgstr "Hiển thị trực quan pha mặt trăng với phần trăm chiếu sáng."
+
+#: includes/views/admin-shortcodes.php:48
+msgid "AstroWay — Moon Phase"
+msgstr "AstroWay — Pha Mặt Trăng"
+
+#: includes/views/admin-shortcodes.php:50
+msgid "Override date in YYYY-MM-DD. Defaults to today."
+msgstr "Ngày thay thế theo định dạng YYYY-MM-DD. Mặc định là hôm nay."
+
+#: includes/views/admin-shortcodes.php:55
+msgid "Human Design Bodygraph"
+msgstr "Biểu đồ Thiết kế Con người"
+
+#: includes/views/admin-shortcodes.php:56
+msgid "Human Design body graph with centers, channels, gates."
+msgstr "Biểu đồ Thiết kế Con người với các trung tâm, kênh và cổng."
+
+#: includes/views/admin-shortcodes.php:58
+msgid "AstroWay — Bodygraph"
+msgstr "AstroWay — Biểu đồ Thiết kế Con người"
+
+#: includes/views/admin-shortcodes.php:62
+msgid "WGS-84 latitude."
+msgstr "Vĩ độ WGS-84."
+
+#: includes/views/admin-shortcodes.php:63
+msgid "WGS-84 longitude."
+msgstr "Kinh độ WGS-84."
+
+#: includes/views/admin-shortcodes.php:64
+msgid "IANA timezone."
+msgstr "Múi giờ IANA."
+
+#: includes/views/admin-shortcodes.php:65
+msgid "Display name."
+msgstr "Tên hiển thị."
+
+#: includes/views/admin-shortcodes.php:70
+msgid "Daily Tarot Card"
+msgstr "Lá bài Tarot Hàng ngày"
+
+#: includes/views/admin-shortcodes.php:71
+msgid "Single card pull of the day from a chosen deck."
+msgstr "Rút một lá bài Tarot mỗi ngày từ bộ bài đã chọn."
+
+#: includes/views/admin-shortcodes.php:73
+msgid "AstroWay — Daily Tarot Card"
+msgstr "AstroWay — Lá bài Tarot Hàng ngày"
+
+#: includes/views/admin-shortcodes.php:75
+msgid "Deck slug: rider-waite (default), marseille, or lenormand."
+msgstr "Tên bộ bài: rider-waite (mặc định), marseille, hoặc lenormand."
+
+#: includes/views/admin-shortcodes.php:91
+msgid "Find your coordinates and timezone"
+msgstr "Tìm tọa độ và múi giờ của bạn"
+
+#: includes/views/admin-shortcodes.php:92
+msgid "city → lat · lon · IANA tz"
+msgstr "thành phố → lat · lon · IANA tz"
+
+#: includes/views/admin-shortcodes.php:99
+msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
+msgstr "Gõ tên thành phố — ví dụ: Kyiv, Berlin, São Paulo"
+
+#: includes/views/admin-shortcodes.php:103
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#. translators: %s is a link to the Wikipedia IANA tz list
+#: includes/views/admin-shortcodes.php:110
+#, php-format
+msgid ""
+"Pick the matching city to copy values into the shortcode. Reference: %s."
+msgstr ""
+"Chọn thành phố phù hợp để sao chép giá trị vào shortcode. Tham khảo: %s."
+
+#: includes/views/admin-shortcodes.php:111
+msgid "IANA timezone list"
+msgstr "Danh sách múi giờ IANA"
+
+#: includes/views/admin-shortcodes.php:132
+msgid "Click to copy"
+msgstr "Nhấp để sao chép"
+
+#: includes/views/admin-shortcodes.php:136
+msgid "copy"
+msgstr "sao chép"
+
+#: includes/views/admin-shortcodes.php:144
+msgid "Parameter"
+msgstr "Tham số"
+
+#: includes/views/admin-shortcodes.php:145
+msgid "Type"
+msgstr "Kiểu"
+
+#: includes/views/admin-shortcodes.php:146
+msgid "Required"
+msgstr "Bắt buộc"
+
+#: includes/views/admin-shortcodes.php:147
+msgid "Description"
+msgstr "Mô tả"
+
+#: includes/views/admin-shortcodes.php:158
+msgid "required"
+msgstr "bắt buộc"
+
+#: includes/views/admin-shortcodes.php:160
+msgid "optional"
+msgstr "tùy chọn"
+
+#. translators: %s is a Gutenberg block name
+#: includes/views/admin-shortcodes.php:174
+#, php-format
+msgid "Also available as Gutenberg block \"%s\"."
+msgstr "Cũng có sẵn dưới dạng khối Gutenberg \"%s\"."
+
+#: includes/views/partials/admin-footer-nav.php:20
+msgid "Plugin pages"
+msgstr "Trang plugin"
+
+#: includes/views/partials/admin-footer-nav.php:31
+msgid "Docs"
+msgstr "Tài liệu"
+
+#: includes/views/partials/admin-hero.php:30
+msgid "astroway · plugin · v"
+msgstr "astroway · plugin · v"
+
+#: includes/views/partials/admin-hero.php:41
+msgid "Authenticated"
+msgstr "Đã xác thực"
+
+#: includes/views/partials/admin-hero.php:42
+msgid "API key configured"
+msgstr "Đã cấu hình khóa API"
+
+#: includes/views/partials/admin-hero.php:49
+msgid "Anonymous mode"
+msgstr "Chế độ Ẩn danh"
+
+#: includes/views/partials/admin-hero.php:50
+msgid "30 requests / hour / visitor IP"
+msgstr "30 yêu cầu / giờ / địa chỉ IP khách truy cập"
+
+#: includes/views/partials/admin-hero.php:59
+msgid "View paid plans"
+msgstr "Xem các gói trả phí"
+
+#: includes/views/partials/admin-sidebar.php:21
+msgid "Resources"
+msgstr "Tài nguyên"
+
+#: includes/views/partials/admin-sidebar.php:24
+msgid "API dashboard"
+msgstr "Bảng điều khiển API"
+
+#: includes/views/partials/admin-sidebar.php:28
+msgid "Documentation"
+msgstr "Tài liệu"
+
+#: includes/views/partials/admin-sidebar.php:32
+msgid "GitHub repository"
+msgstr "Kho lưu trữ GitHub"
+
+#: includes/views/partials/admin-sidebar.php:60
+msgid "“As above, so below.”"
+msgstr "“Như trên, vậy dưới.”"
+
+#: includes/views/partials/admin-sidebar.php:62
+msgid "Hermes Trismegistus"
+msgstr "Hermes Trismegistus"
+
+#: blocks/bodygraph/block.json
+msgid "AstroWay: Human Design Bodygraph"
+msgstr "AstroWay: Biểu đồ Thiết kế Con người"
+
+#: blocks/bodygraph/block.json
+msgid "Human Design bodygraph with type, profile, and gates."
+msgstr "Biểu đồ Thiết kế Con người với loại, hồ sơ và cổng."
+
+#: blocks/daily-horoscope/block.json
+msgid "AstroWay: Daily Horoscope"
+msgstr "AstroWay: Tử vi Hàng ngày"
+
+#: blocks/daily-horoscope/block.json
+msgid "Daily horoscope text for a zodiac sign."
+msgstr "Văn bản tử vi hàng ngày cho một cung hoàng đạo."
+
+#: blocks/moon-phase/block.json
+msgid "AstroWay: Moon Phase"
+msgstr "AstroWay: Pha Mặt Trăng"
+
+#: blocks/moon-phase/block.json
+msgid "Current moon phase with illumination percentage."
+msgstr "Pha mặt trăng hiện tại với phần trăm chiếu sáng."
+
+#: blocks/natal-chart/block.json
+msgid "AstroWay: Natal Chart"
+msgstr "AstroWay: Biểu đồ Cung"
+
+#: blocks/natal-chart/block.json
+msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
+msgstr ""
+"Bánh xe biểu đồ cung được cung cấp bởi api.astroway.info dưới dạng iframe "
+"đáp ứng."
+
+#: blocks/tarot-daily/block.json
+msgid "AstroWay: Daily Tarot"
+msgstr "AstroWay: Tarot Hàng ngày"
+
+#: blocks/tarot-daily/block.json
+msgid "Single-card daily Tarot draw with interpretation."
+msgstr "Rút một lá Tarot hàng ngày kèm giải thích."

@@ -3,7 +3,7 @@
  * Plugin Name:       AstroWay
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
  * Description:       Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info.
- * Version:           0.2.0
+ * Version:           0.2.3
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            AstroWay
@@ -18,7 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ASTROWAY_WP_PLUGIN_VERSION', '0.2.0' );
+$astroway_plugin_data = get_file_data( __FILE__, [ 'Version' => 'Version' ] );
+define( 'ASTROWAY_WP_PLUGIN_VERSION', $astroway_plugin_data['Version'] );
+unset( $astroway_plugin_data );
 define( 'ASTROWAY_WP_PLUGIN_FILE', __FILE__ );
 define( 'ASTROWAY_WP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ASTROWAY_WP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -37,3 +39,9 @@ register_activation_hook( __FILE__, [ '\\AstroWay\\WPPlugin\\Plugin', 'activate'
 register_deactivation_hook( __FILE__, [ '\\AstroWay\\WPPlugin\\Plugin', 'deactivate' ] );
 
 add_action( 'plugins_loaded', [ '\\AstroWay\\WPPlugin\\Plugin', 'boot' ] );
+
+// Load bundled translations before WP 6.x just-in-time loader runs, so admin
+// strings hit our /languages/ before anything else queries them.
+add_action( 'init', static function () {
+	load_plugin_textdomain( 'astroway', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+} );

@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.2.0
+Stable tag: 0.2.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -47,11 +47,11 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 
 == Screenshots ==
 
-1. Settings screen — paste your API key, verify in one click, see plan/credits/rate-limit at a glance. The page also lists the five shortcodes ready to copy into any post or page.
-2. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
-3. Moon phase widget on the frontend via `[astroway_moon_phase]` — anonymous-mode example, no API key required, 30 requests/hour/IP.
-4. Daily tarot widget via `[astroway_tarot_card deck="rider-waite"]` — fresh card pulled each day with name and meaning.
-5. Gutenberg block picker showing all five AstroWay blocks (Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot) with live ServerSideRender preview in the editor.
+1. AstroWay menu → API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu — paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
+2. Settings — connection, cache, and system diagnostics. Test the connection to api.astroway.info, inspect the local transient cache (size, entry count, purge), and copy a diagnostic block (PHP / WP / plugin version, key status) for support.
+3. Shortcodes reference with built-in city → lat/lon helper. Five copy-to-clipboard reference cards (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
+4. Gutenberg block in the editor. Five blocks — Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot — render via ServerSideRender with live preview. Block selection and the Inspector panel work the standard WordPress way.
+5. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
 
 == External services ==
 
@@ -85,6 +85,30 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
+= 0.2.3 =
+* All 3 subpages share one hero (brand + status badge + CTAs); only title and tagline vary per page
+* Right sidebar restored (Resources + System + quote) in a 1fr + 280px grid
+* Buttons read as buttons in both light panels and the dark hero (ghost variant + on-dark override)
+* Shortcode reference cards gain proper panel-body inset
+* New: city → lat/lon/IANA-tz helper on the Shortcodes page (server-side proxy to app.astroway.info atlas + click-to-copy snippet)
+* Type tokens drop bundled webfont declarations — pure ui-sans-serif/system-ui stack, multi-script coverage via OS fonts
+* 20 bundled translations: uk, de_DE, ru_RU, pl_PL, es_ES, pt_BR, hi_IN, fr_FR, ko_KR, it_IT, ja, id_ID, tr_TR, nl_NL, ro_RO, cs_CZ, vi, ar (RTL), el, hu_HU
+* Translation filenames corrected to {textdomain}-{locale}.mo + explicit load_plugin_textdomain call
+
+= 0.2.2 =
+* Admin UI split into 3 submenu pages: API Key (default landing), Settings, Shortcodes
+* API Key landing rebuilt with 3-tier comparison (Anonymous / Free key / Paid), state badge, key form, prominent CTAs
+* Settings page focused on diagnostics: Connection ping, Cache stats + purge, System info with Copy diagnostic button
+* Shortcodes page rebuilt as expanded reference cards (description + copyable code + params table + Gutenberg block hint per shortcode)
+* JS split per-page (api-key / settings / shortcodes), reducing payload on each admin screen
+
+= 0.2.1 =
+* Settings page promoted to a top-level admin menu item with a custom brand icon (star inside orbit ring, single-path SVG)
+* Activation notice rebranded with a cosmic-gradient mark, two CTAs (Get free API key / Open Settings), and persistent dismiss (fix for a latent bug where the dismiss action did not survive page reloads)
+* Settings page fully redesigned with an observatory aesthetic — hero with owl-moon logo, four numbered panels (API key / Connection / Cache / Shortcodes), right-side Resources / System / quote aside, paper-warm cards with gold hairlines
+* Shortcode rows copy-to-clipboard on click
+* ASTROWAY_WP_PLUGIN_VERSION constant auto-derived from the plugin header via get_file_data — single source of truth, simpler release pipeline
+
 = 0.2.0 =
 * Settings page under Settings → AstroWay (API key input, Verify Key, Test Connection, Cache controls, shortcode reference, Diagnostics)
 * API key field accepts both sandbox (aw_test_*) and live (aw_live_*) keys
@@ -105,6 +129,15 @@ This plugin stores the following on the WordPress site:
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 0.2.3 =
+Admin UI polish — unified hero, restored sidebar, city search on the Shortcodes page, 20 bundled translations. Drop-in upgrade.
+
+= 0.2.2 =
+Admin split into 3 submenu pages (API Key / Settings / Shortcodes). Drop-in upgrade.
+
+= 0.2.1 =
+Settings page moves to a top-level admin menu with a brand icon. Drop-in upgrade.
 
 = 0.2.0 =
 Adds Settings page for API key configuration. Drop-in upgrade from 0.1.0 — anonymous mode shortcodes continue to work.

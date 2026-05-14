@@ -7,66 +7,68 @@
 	var TextControl       = wp.components.TextControl;
 	var SelectControl     = wp.components.SelectControl;
 	var PanelBody         = wp.components.PanelBody;
+	var Disabled          = wp.components.Disabled;
 	var InspectorControls = wp.blockEditor.InspectorControls;
+	var useBlockProps     = wp.blockEditor.useBlockProps;
 	var ServerSideRender  = wp.serverSideRender;
 	var __                = wp.i18n.__;
 
 	var SIGN_OPTIONS = [
-		{ label: __( 'Default (today\'s featured sign)', 'astroway-wp-plugin' ), value: '' },
-		{ label: __( 'Aries', 'astroway-wp-plugin' ),       value: 'aries' },
-		{ label: __( 'Taurus', 'astroway-wp-plugin' ),      value: 'taurus' },
-		{ label: __( 'Gemini', 'astroway-wp-plugin' ),      value: 'gemini' },
-		{ label: __( 'Cancer', 'astroway-wp-plugin' ),      value: 'cancer' },
-		{ label: __( 'Leo', 'astroway-wp-plugin' ),         value: 'leo' },
-		{ label: __( 'Virgo', 'astroway-wp-plugin' ),       value: 'virgo' },
-		{ label: __( 'Libra', 'astroway-wp-plugin' ),       value: 'libra' },
-		{ label: __( 'Scorpio', 'astroway-wp-plugin' ),     value: 'scorpio' },
-		{ label: __( 'Sagittarius', 'astroway-wp-plugin' ), value: 'sagittarius' },
-		{ label: __( 'Capricorn', 'astroway-wp-plugin' ),   value: 'capricorn' },
-		{ label: __( 'Aquarius', 'astroway-wp-plugin' ),    value: 'aquarius' },
-		{ label: __( 'Pisces', 'astroway-wp-plugin' ),      value: 'pisces' }
+		{ label: __( 'Default (today\'s featured sign)', 'astroway' ), value: '' },
+		{ label: __( 'Aries', 'astroway' ),       value: 'aries' },
+		{ label: __( 'Taurus', 'astroway' ),      value: 'taurus' },
+		{ label: __( 'Gemini', 'astroway' ),      value: 'gemini' },
+		{ label: __( 'Cancer', 'astroway' ),      value: 'cancer' },
+		{ label: __( 'Leo', 'astroway' ),         value: 'leo' },
+		{ label: __( 'Virgo', 'astroway' ),       value: 'virgo' },
+		{ label: __( 'Libra', 'astroway' ),       value: 'libra' },
+		{ label: __( 'Scorpio', 'astroway' ),     value: 'scorpio' },
+		{ label: __( 'Sagittarius', 'astroway' ), value: 'sagittarius' },
+		{ label: __( 'Capricorn', 'astroway' ),   value: 'capricorn' },
+		{ label: __( 'Aquarius', 'astroway' ),    value: 'aquarius' },
+		{ label: __( 'Pisces', 'astroway' ),      value: 'pisces' }
 	];
 
 	var DECK_OPTIONS = [
-		{ label: __( 'Rider-Waite-Smith', 'astroway-wp-plugin' ), value: 'rider-waite' },
-		{ label: __( 'Marseille', 'astroway-wp-plugin' ),         value: 'marseille' },
-		{ label: __( 'Lenormand', 'astroway-wp-plugin' ),         value: 'lenormand' }
+		{ label: __( 'Rider-Waite-Smith', 'astroway' ), value: 'rider-waite' },
+		{ label: __( 'Marseille', 'astroway' ),         value: 'marseille' },
+		{ label: __( 'Lenormand', 'astroway' ),         value: 'lenormand' }
 	];
 
 	var CHART_FIELDS = [
-		{ name: 'date', type: 'text', label: __( 'Date (YYYY-MM-DD)', 'astroway-wp-plugin' ) },
-		{ name: 'time', type: 'text', label: __( 'Time (HH:MM)', 'astroway-wp-plugin' ) },
-		{ name: 'lat',  type: 'text', label: __( 'Latitude (-90 to 90)', 'astroway-wp-plugin' ) },
-		{ name: 'lon',  type: 'text', label: __( 'Longitude (-180 to 180)', 'astroway-wp-plugin' ) },
-		{ name: 'name', type: 'text', label: __( 'Person name (optional)', 'astroway-wp-plugin' ) },
-		{ name: 'tz',   type: 'text', label: __( 'Timezone (Europe/Kyiv or +03:00)', 'astroway-wp-plugin' ) }
+		{ name: 'date', type: 'text', label: __( 'Date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time', type: 'text', label: __( 'Time (HH:MM)', 'astroway' ) },
+		{ name: 'lat',  type: 'text', label: __( 'Latitude (-90 to 90)', 'astroway' ) },
+		{ name: 'lon',  type: 'text', label: __( 'Longitude (-180 to 180)', 'astroway' ) },
+		{ name: 'name', type: 'text', label: __( 'Person name (optional)', 'astroway' ) },
+		{ name: 'tz',   type: 'text', label: __( 'Timezone (Europe/Kyiv or +03:00)', 'astroway' ) }
 	];
 
 	var BLOCKS = {
 		'astroway/natal-chart': {
-			panel:  __( 'Birth data', 'astroway-wp-plugin' ),
+			panel:  __( 'Birth data', 'astroway' ),
 			fields: CHART_FIELDS
 		},
 		'astroway/bodygraph': {
-			panel:  __( 'Birth data', 'astroway-wp-plugin' ),
+			panel:  __( 'Birth data', 'astroway' ),
 			fields: CHART_FIELDS
 		},
 		'astroway/daily-horoscope': {
-			panel:  __( 'Daily horoscope', 'astroway-wp-plugin' ),
+			panel:  __( 'Daily horoscope', 'astroway' ),
 			fields: [
-				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway-wp-plugin' ), options: SIGN_OPTIONS }
+				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway' ), options: SIGN_OPTIONS }
 			]
 		},
 		'astroway/moon-phase': {
-			panel:  __( 'Moon phase', 'astroway-wp-plugin' ),
+			panel:  __( 'Moon phase', 'astroway' ),
 			fields: [
-				{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway-wp-plugin' ) }
+				{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway' ) }
 			]
 		},
-		'astroway/tarot-daily': {
-			panel:  __( 'Daily Tarot', 'astroway-wp-plugin' ),
+		'astroway/daily-tarot': {
+			panel:  __( 'Daily Tarot', 'astroway' ),
 			fields: [
-				{ name: 'deck', type: 'select', label: __( 'Deck', 'astroway-wp-plugin' ), options: DECK_OPTIONS }
+				{ name: 'deck', type: 'select', label: __( 'Deck', 'astroway' ), options: DECK_OPTIONS }
 			]
 		}
 	};
@@ -93,6 +95,7 @@
 	function makeEdit( blockName ) {
 		var cfg = BLOCKS[ blockName ];
 		return function Edit( props ) {
+			var blockProps = useBlockProps();
 			return el(
 				Fragment,
 				null,
@@ -107,10 +110,14 @@
 						} )
 					)
 				),
-				el( ServerSideRender, {
-					block:      blockName,
-					attributes: props.attributes
-				} )
+				el( 'div', blockProps,
+					el( Disabled, null,
+						el( ServerSideRender, {
+							block:      blockName,
+							attributes: props.attributes
+						} )
+					)
+				)
 			);
 		};
 	}

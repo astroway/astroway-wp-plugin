@@ -1,891 +1,907 @@
-# Copyright (C) 2026 AstroWay
-# This file is distributed under the MIT.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay WP Plugin\n"
 "Report-Msgid-Bugs-To: https://github.com/astroway/astroway-wp-plugin/issues\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-05-13T21:12:46+00:00\n"
+"PO-Revision-Date: 2026-05-14 00:13+0300\n"
+"Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
+"Language-Team: Korean <translations@astroway.info>\n"
+"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-13T21:21:43+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Domain: astroway\n"
+"X-Generator: _dev/generate-translations.py (AI gateway primary, DeepL reserve)\n"
 
 #. Plugin Name of the plugin
 #. Author of the plugin
-#: astroway-wp-plugin.php
-#: includes/class-admin.php:33
+#: astroway-wp-plugin.php includes/class-admin.php:33
 #: includes/class-admin.php:34
 msgid "AstroWay"
-msgstr ""
+msgstr "AstroWay"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
 msgid "https://github.com/astroway/astroway-wp-plugin"
-msgstr ""
+msgstr "https://github.com/astroway/astroway-wp-plugin"
 
 #. Description of the plugin
 #: astroway-wp-plugin.php
-msgid "Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info."
+msgid ""
+"Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI "
+"horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info."
 msgstr ""
+"natal 차트, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes"
+" — shortcodes + Gutenberg blocks. Powered by api.astroway.info."
 
 #. Author URI of the plugin
 #: astroway-wp-plugin.php
 msgid "https://astroway.info"
-msgstr ""
+msgstr "https://astroway.info"
 
-#: includes/class-admin.php:44
-#: includes/class-admin.php:45
+#: includes/class-admin.php:44 includes/class-admin.php:45
 #: includes/views/admin-api-key.php:17
 #: includes/views/partials/admin-footer-nav.php:13
 msgid "API Key"
-msgstr ""
+msgstr "API 키"
 
 #: includes/class-admin.php:52
 msgid "AstroWay Settings"
-msgstr ""
+msgstr "AstroWay 설정"
 
-#: includes/class-admin.php:53
-#: includes/class-admin.php:120
+#: includes/class-admin.php:53 includes/class-admin.php:120
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
 #: includes/class-admin.php:60
 msgid "AstroWay Shortcodes"
-msgstr ""
+msgstr "AstroWay_shortcode"
 
-#: includes/class-admin.php:61
-#: includes/views/admin-shortcodes.php:14
+#: includes/class-admin.php:61 includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
-msgstr ""
+msgstr "shortcode"
 
 #: includes/class-admin.php:103
-msgid "API key must start with \"aw_\" and contain only letters, digits, and underscores."
-msgstr ""
+msgid ""
+"API key must start with \"aw_\" and contain only letters, digits, and "
+"underscores."
+msgstr "API 키는 \"aw_\"로 시작해야 하며 문자, 숫자, 밑줄만 포함할 수 있습니다."
 
 #: includes/class-admin.php:125
 msgid "Get API Key"
-msgstr ""
+msgstr "API 키 받기"
 
 #: includes/class-admin.php:160
 msgid "Verifying…"
-msgstr ""
+msgstr "검증 중…"
 
 #: includes/class-admin.php:161
 msgid "limited info"
-msgstr ""
+msgstr "제한된 정보"
 
 #: includes/class-admin.php:162
 msgid "Plan"
-msgstr ""
+msgstr "플랜"
 
 #: includes/class-admin.php:163
 msgid "Used"
-msgstr ""
+msgstr "사용됨"
 
 #: includes/class-admin.php:164
 msgid "Rate"
-msgstr ""
+msgstr "요금"
 
 #: includes/class-admin.php:165
 msgid "Bound to"
-msgstr ""
+msgstr "바인딩"
 
 #: includes/class-admin.php:166
 msgid "Enter a valid API key first."
-msgstr ""
+msgstr "유효한 API 키를 먼저 입력하세요."
 
 #: includes/class-admin.php:167
 msgid "Network error"
-msgstr ""
+msgstr "네트워크 오류"
 
 #: includes/class-admin.php:181
 msgid "Pinging…"
-msgstr ""
+msgstr "핑 중…"
 
 #: includes/class-admin.php:182
 msgid "API is healthy"
-msgstr ""
+msgstr "API가 정상입니다"
 
 #: includes/class-admin.php:183
 msgid "API unreachable"
-msgstr ""
+msgstr "API에 접근할 수 없음"
 
 #: includes/class-admin.php:184
 msgid "Purge all cached data?"
-msgstr ""
+msgstr "모든 캐시 데이터를 지우시겠습니까?"
 
 #: includes/class-admin.php:185
 msgid "Cache cleared:"
-msgstr ""
+msgstr "캐시 지움:"
 
-#: includes/class-admin.php:186
-#: includes/class-admin.php:201
+#: includes/class-admin.php:186 includes/class-admin.php:201
 msgid "copied!"
-msgstr ""
+msgstr "복사됨!"
 
 #: includes/class-admin.php:202
 msgid "Searching…"
-msgstr ""
+msgstr "검색 중…"
 
 #: includes/class-admin.php:203
 msgid "No cities found."
-msgstr ""
+msgstr "도시를 찾을 수 없습니다."
 
 #: includes/class-admin.php:204
 msgid "Search error. Try again."
-msgstr ""
+msgstr "검색 오류. 다시 시도하세요."
 
 #: includes/class-admin.php:205
 msgid "Type at least 2 characters."
-msgstr ""
+msgstr "최소 2자를 입력하세요."
 
 #: includes/class-admin.php:206
 msgid "Pick a city to fill in lat / lon / tz"
-msgstr ""
+msgstr "위도 / 경도 / 시간대를 채우기 위해 도시를 선택하세요."
 
-#: includes/class-admin.php:214
-#: includes/class-admin.php:222
+#: includes/class-admin.php:214 includes/class-admin.php:222
 #: includes/class-admin.php:231
 msgid "Unauthorized."
-msgstr ""
+msgstr "권한 없음."
 
 #: includes/class-admin.php:244
-msgid "No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP)."
-msgstr ""
+msgid ""
+"No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
+"IP)."
+msgstr "API 키가 없음 — 플러그인이 익명 모드(방문자 IP당 1시간에 30개 요청)로 실행됩니다."
 
 #: includes/class-plugin.php:67
 msgid "AstroWay is active"
-msgstr ""
+msgstr "AstroWay 활성화"
 
 #: includes/class-plugin.php:68
-msgid "Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, get a free API key."
+msgid ""
+"Shortcodes work without an API key (30 requests/hour per visitor IP). For "
+"higher limits and Pro features, get a free API key."
 msgstr ""
+"shortcode는 API 키 없이 작동합니다(방문자 IP당 1시간에 30개 요청). 더 높은 제한과 Pro 기능을 위해 무료 API "
+"키를 받으세요."
 
-#: includes/class-plugin.php:72
-#: includes/views/partials/admin-hero.php:55
+#: includes/class-plugin.php:72 includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
-msgstr ""
+msgstr "무료 API 키 받기"
 
 #: includes/class-plugin.php:75
 msgid "Open Settings"
-msgstr ""
+msgstr "설정 열기"
 
 #: includes/class-public-client.php:59
 msgid "Natal chart wheel"
-msgstr ""
+msgstr "natal 차트 휠"
 
-#: includes/class-public-client.php:60
-#: assets/js/astroway-blocks-editor.js:55
+#: includes/class-public-client.php:60 assets/js/astroway-blocks-editor.js:55
 msgid "Daily horoscope"
-msgstr ""
+msgstr "일일 운세"
 
-#: includes/class-public-client.php:61
-#: assets/js/astroway-blocks-editor.js:61
+#: includes/class-public-client.php:61 assets/js/astroway-blocks-editor.js:61
 msgid "Moon phase"
-msgstr ""
+msgstr "달의 위상"
 
 #: includes/class-public-client.php:62
 msgid "Human Design bodygraph"
-msgstr ""
+msgstr "Human Design 바디그래프"
 
 #: includes/class-public-client.php:63
 msgid "Daily Tarot card"
-msgstr ""
+msgstr "일일 타로 카드"
 
 #: includes/class-public-client.php:65
 msgid "AstroWay widget"
-msgstr ""
+msgstr "AstroWay 위젯"
 
 #: includes/views/admin-api-key.php:18
 msgid "Higher limits, advanced widgets, no watermark."
-msgstr ""
+msgstr "더 높은 제한, 고급 위젯, 워터마크 없음."
 
 #: includes/views/admin-api-key.php:31
 msgid "Your API key"
-msgstr ""
+msgstr "您的 API 키"
 
 #: includes/views/admin-api-key.php:32
 msgid "paste · verify · save"
-msgstr ""
+msgstr "貼上 · 검증 · 저장"
 
 #: includes/views/admin-api-key.php:36
 msgid "Paste your key"
-msgstr ""
+msgstr "키貼上"
 
 #: includes/views/admin-api-key.php:47
 msgid "Verify"
-msgstr ""
+msgstr "검증"
 
 #: includes/views/admin-api-key.php:51
-msgid "Paste a key from api.astroway.info/dashboard. Leave empty to revert to Anonymous mode."
-msgstr ""
+msgid ""
+"Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
+"Anonymous mode."
+msgstr "api.astroway.info/대시보드에서 키를貼上하세요. 빈칸으로 두면 익명 모드로 돌아갑니다."
 
 #: includes/views/admin-api-key.php:55
 msgid "Save changes"
-msgstr ""
+msgstr "변경 사항 저장"
 
 #: includes/views/admin-api-key.php:63
 msgid "What you get"
-msgstr ""
+msgstr "무엇을 얻을 수 있는지"
 
 #: includes/views/admin-api-key.php:64
 msgid "3 tiers compared"
-msgstr ""
+msgstr "3티어 비교"
 
 #: includes/views/admin-api-key.php:72
 msgid "Anonymous"
-msgstr ""
+msgstr "익명"
 
 #: includes/views/admin-api-key.php:73
 msgid "no setup"
-msgstr ""
+msgstr "설정 없음"
 
 #: includes/views/admin-api-key.php:76
 msgid "Free key"
-msgstr ""
+msgstr "무료 키"
 
 #: includes/views/admin-api-key.php:77
 msgid "signup"
-msgstr ""
+msgstr "가입"
 
 #: includes/views/admin-api-key.php:80
 msgid "Paid"
-msgstr ""
+msgstr "유료"
 
 #: includes/views/admin-api-key.php:81
 msgid "from $5/mo"
-msgstr ""
+msgstr "월 $5부터"
 
 #: includes/views/admin-api-key.php:87
 msgid "Rate limit"
-msgstr ""
+msgstr "요금 제한"
 
 #: includes/views/admin-api-key.php:88
 msgid "30/hour/IP"
-msgstr ""
+msgstr "1시간당 30개/방문자 IP"
 
 #: includes/views/admin-api-key.php:89
 msgid "~60/min/key"
-msgstr ""
+msgstr "키당 약 60개/분"
 
 #: includes/views/admin-api-key.php:90
 msgid "30–1000/min"
-msgstr ""
+msgstr "30–1000개/분"
 
 #: includes/views/admin-api-key.php:93
 msgid "Credits / month"
-msgstr ""
+msgstr "월간 크레딧"
 
 #: includes/views/admin-api-key.php:95
 msgid "10,000"
-msgstr ""
+msgstr "10,000"
 
 #: includes/views/admin-api-key.php:96
 msgid "50K – 3.5M"
-msgstr ""
+msgstr "50K – 3.5M"
 
 #: includes/views/admin-api-key.php:99
 msgid "Render mode"
-msgstr ""
+msgstr "렌더링 모드"
 
-#: includes/views/admin-api-key.php:100
-#: includes/views/admin-api-key.php:101
+#: includes/views/admin-api-key.php:100 includes/views/admin-api-key.php:101
 msgid "iframe"
-msgstr ""
+msgstr "iframe"
 
 #: includes/views/admin-api-key.php:102
 msgid "native"
-msgstr ""
+msgstr "네이티브"
 
 #: includes/views/admin-api-key.php:105
 msgid "Widgets"
-msgstr ""
+msgstr "위젯"
 
-#: includes/views/admin-api-key.php:106
-#: includes/views/admin-api-key.php:107
+#: includes/views/admin-api-key.php:106 includes/views/admin-api-key.php:107
 msgid "5 basic"
-msgstr ""
+msgstr "5개의 기본 위젯"
 
 #: includes/views/admin-api-key.php:108
 msgid "+ Tarot, HD, Synastry, Numerology"
-msgstr ""
+msgstr "+ 타로, HD, synastry, Numerology"
 
 #: includes/views/admin-api-key.php:111
 msgid "AI interpretations"
-msgstr ""
+msgstr "AI 해석"
 
-#: includes/views/admin-api-key.php:114
-#: includes/views/admin-api-key.php:132
+#: includes/views/admin-api-key.php:114 includes/views/admin-api-key.php:132
 msgid "included"
-msgstr ""
+msgstr "포함됨"
 
 #: includes/views/admin-api-key.php:117
 msgid "Watermark"
-msgstr ""
+msgstr "워터마크"
 
-#: includes/views/admin-api-key.php:118
-#: includes/views/admin-api-key.php:119
+#: includes/views/admin-api-key.php:118 includes/views/admin-api-key.php:119
 msgid "shown"
-msgstr ""
+msgstr "표시됨"
 
 #: includes/views/admin-api-key.php:120
 msgid "removed"
-msgstr ""
+msgstr "제거됨"
 
 #: includes/views/admin-api-key.php:123
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
-msgstr ""
+msgstr "지원"
 
 #: includes/views/admin-api-key.php:125
 msgid "community"
-msgstr ""
+msgstr "커뮤니티"
 
 #: includes/views/admin-api-key.php:126
 msgid "priority"
-msgstr ""
+msgstr "우선순위"
 
 #: includes/views/admin-api-key.php:129
 msgid "Spend cap"
-msgstr ""
+msgstr "지출 상한"
 
-#. translators: %s is a link to the canonical pricing page on api.astroway.info
+#. translators: %s is a link to the canonical pricing page on
+#. api.astroway.info
 #: includes/views/admin-api-key.php:140
 #, php-format
 msgid "Numbers shown for context. Canonical pricing → %s"
-msgstr ""
+msgstr "참조를 위해 표시된 숫자. 표준 가격 → %s"
 
 #: includes/views/admin-api-key.php:151
 msgid "How it works"
-msgstr ""
+msgstr "작동 방식"
 
 #: includes/views/admin-api-key.php:155
 msgid "No key."
-msgstr ""
+msgstr "키 없음."
 
 #: includes/views/admin-api-key.php:156
-msgid "Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-traffic sites and quick trials. The \"Powered by AstroWay\" watermark is shown."
+msgid ""
+"Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
+"traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
+"shown."
 msgstr ""
+"플러그인이 iframe 위젯을 렌더링하며 방문자 IP로 제한됩니다. 저 트래픽 사이트와 빠른 테스트에 적합합니다. \"AstroWay "
+"제공\" 워터마크가 표시됩니다."
 
 #: includes/views/admin-api-key.php:159
 msgid "Free key."
-msgstr ""
+msgstr "무료 키."
 
 #: includes/views/admin-api-key.php:160
-msgid "Personal credit bucket (10,000/month), isolated from other sites. Iframe rendering stays, but you get a dashboard with activity history. Watermark is still shown."
+msgid ""
+"Personal credit bucket (10,000/month), isolated from other sites. Iframe "
+"rendering stays, but you get a dashboard with activity history. Watermark is"
+" still shown."
 msgstr ""
+"개인 크레딧 버킷(월 10,000개), 다른 사이트와 분리됩니다. iframe 렌더링은 유지되지만 대시보드에 활동 기록이 표시됩니다. "
+"워터마크는 여전히 표시됩니다."
 
 #: includes/views/admin-api-key.php:163
 msgid "Paid key."
-msgstr ""
+msgstr "유료 키."
 
 #: includes/views/admin-api-key.php:164
-msgid "Native client-side rendering (no iframe), advanced widgets (Tarot decks, synastry, Human Design, Numerology), AI-written interpretations, and no watermark. Spend cap available to protect against bill spikes."
+msgid ""
+"Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
+"synastry, Human Design, Numerology), AI-written interpretations, and no "
+"watermark. Spend cap available to protect against bill spikes."
 msgstr ""
+"클라이언트 측 네이티브 렌더링(iframe 없음), 고급 위젯(Tarot 덱, synastry, Human Design, "
+"Numerology), AI 작성 해석, 워터마크 없음. 지출 상한을 설정하여 청구 급증을 방지할 수 있습니다."
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
-msgstr ""
+msgstr "연결, 캐시, 진단."
 
 #: includes/views/admin-settings.php:20
 #: includes/views/partials/admin-sidebar.php:44
 msgid "Plugin"
-msgstr ""
+msgstr "플러그인"
 
 #: includes/views/admin-settings.php:21
 #: includes/views/partials/admin-sidebar.php:46
 msgid "WordPress"
-msgstr ""
+msgstr "WordPress"
 
 #: includes/views/admin-settings.php:22
 #: includes/views/partials/admin-sidebar.php:48
 msgid "PHP"
-msgstr ""
+msgstr "PHP"
 
 #: includes/views/admin-settings.php:23
 msgid "WP_DEBUG"
-msgstr ""
+msgstr "WP_DEBUG"
 
 #: includes/views/admin-settings.php:23
 msgid "on"
-msgstr ""
+msgstr "켜짐"
 
 #: includes/views/admin-settings.php:23
 msgid "off"
-msgstr ""
+msgstr "꺼짐"
 
 #: includes/views/admin-settings.php:24
 msgid "Active theme"
-msgstr ""
+msgstr "활성화된 테마"
 
 #: includes/views/admin-settings.php:25
 msgid "wp_remote_post"
-msgstr ""
+msgstr "wp_remote_post"
 
 #: includes/views/admin-settings.php:25
 msgid "available"
-msgstr ""
+msgstr "사용 가능"
 
 #: includes/views/admin-settings.php:25
 msgid "missing"
-msgstr ""
+msgstr "없음"
 
 #: includes/views/admin-settings.php:26
 msgid "Locale"
-msgstr ""
+msgstr "로케일"
 
 #: includes/views/admin-settings.php:27
 #: includes/views/partials/admin-sidebar.php:50
 msgid "API host"
-msgstr ""
+msgstr "API 호스트"
 
 #: includes/views/admin-settings.php:41
 msgid "Connection"
-msgstr ""
+msgstr "연결"
 
 #: includes/views/admin-settings.php:42
 msgid "live ping · api.astroway.info"
-msgstr ""
+msgstr "실시간 핑 · api.astroway.info"
 
 #: includes/views/admin-settings.php:47
 msgid "Test connection"
-msgstr ""
+msgstr "연결 테스트"
 
 #. translators: %s = API health endpoint
 #: includes/views/admin-settings.php:55
 #, php-format
 msgid "Pings %s to confirm reachability from this server."
-msgstr ""
+msgstr "이 서버에서 %s에 도달할 수 있는지 확인하기 위해 핑을 보냅니다."
 
 #: includes/views/admin-settings.php:66
 msgid "Cache"
-msgstr ""
+msgstr "캐시"
 
 #: includes/views/admin-settings.php:67
 msgid "WP transients · prefix astroway_v1_"
-msgstr ""
+msgstr "WP 일시적 · prefix astroway_v1_"
 
 #: includes/views/admin-settings.php:73
 msgid "items"
-msgstr ""
+msgstr "항목"
 
 #: includes/views/admin-settings.php:77
 msgid "cached size"
-msgstr ""
+msgstr "캐시된 크기"
 
 #: includes/views/admin-settings.php:80
 msgid "Purge all"
-msgstr ""
+msgstr "모두 지우기"
 
 #: includes/views/admin-settings.php:84
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
-msgstr ""
+msgstr "TTL: 차트 1시간 · 달 24시간 · 참조 데이터 7일 · 키 /me 30분."
 
 #: includes/views/admin-settings.php:92
 #: includes/views/partials/admin-sidebar.php:42
 msgid "System"
-msgstr ""
+msgstr "시스템"
 
 #: includes/views/admin-settings.php:93
 msgid "diagnostic info for support"
-msgstr ""
+msgstr "지원을 위한 진단 정보"
 
 #: includes/views/admin-settings.php:109
 msgid "Copy diagnostic info"
-msgstr ""
+msgstr "진단 정보 복사"
 
 #: includes/views/admin-shortcodes.php:15
-msgid "Drop any shortcode into a post or page. Also available as Gutenberg blocks (/astroway)."
+msgid ""
+"Drop any shortcode into a post or page. Also available as Gutenberg blocks "
+"(/astroway)."
 msgstr ""
+"任意의 shortcode를 게시물이나 페이지에 드롭하세요. 또한 Gutenberg 블록(/astroway)으로 사용할 수 있습니다."
 
 #: includes/views/admin-shortcodes.php:20
 msgid "Natal Chart"
-msgstr ""
+msgstr "natal 차트"
 
 #: includes/views/admin-shortcodes.php:21
 msgid "Birth chart wheel — planet positions, houses, aspects."
-msgstr ""
+msgstr "출생 차트 휠 — 행성 위치, 하우스, 측면."
 
 #: includes/views/admin-shortcodes.php:23
 msgid "AstroWay — Natal Chart"
-msgstr ""
+msgstr "AstroWay — natal 차트"
 
 #: includes/views/admin-shortcodes.php:25
 #: includes/views/admin-shortcodes.php:60
 msgid "Birth date in YYYY-MM-DD."
-msgstr ""
+msgstr "출생일 YYYY-MM-DD."
 
 #: includes/views/admin-shortcodes.php:26
 #: includes/views/admin-shortcodes.php:61
 msgid "Birth time in HH:MM (24-hour)."
-msgstr ""
+msgstr "출생시 HH:MM (24시간)."
 
 #: includes/views/admin-shortcodes.php:27
 msgid "WGS-84 latitude (e.g. 50.45)."
-msgstr ""
+msgstr "WGS-84 위도(예: 50.45)."
 
 #: includes/views/admin-shortcodes.php:28
 msgid "WGS-84 longitude (e.g. 30.52)."
-msgstr ""
+msgstr "WGS-84 경도(예: 30.52)."
 
 #: includes/views/admin-shortcodes.php:29
 msgid "IANA timezone (e.g. Europe/Kyiv)."
-msgstr ""
+msgstr "IANA 시간대(예: Europe/Kyiv)."
 
 #: includes/views/admin-shortcodes.php:30
 msgid "Display name on the chart."
-msgstr ""
+msgstr "차트에 표시할 이름."
 
 #: includes/views/admin-shortcodes.php:35
 msgid "Daily Horoscope"
-msgstr ""
+msgstr "일일 운세"
 
 #: includes/views/admin-shortcodes.php:36
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
-msgstr ""
+msgstr "오늘의 운세를 한 개의 별자리 기호에 대한 것입니다. api 측에서 일일 자동 새로고침."
 
 #: includes/views/admin-shortcodes.php:38
 msgid "AstroWay — Daily Horoscope"
-msgstr ""
+msgstr "AstroWay — 일일 운세"
 
 #: includes/views/admin-shortcodes.php:40
-msgid "One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces."
+msgid ""
+"One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
+"sagittarius, capricorn, aquarius, pisces."
 msgstr ""
+"다음 중 하나: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
+"sagittarius, capricorn, aquarius, pisces."
 
 #: includes/views/admin-shortcodes.php:45
 msgid "Moon Phase"
-msgstr ""
+msgstr "달의 위상"
 
 #: includes/views/admin-shortcodes.php:46
 msgid "Current Moon phase visualization with illumination percent."
-msgstr ""
+msgstr "현재 달의 위상 시각화와 조명 百分比."
 
 #: includes/views/admin-shortcodes.php:48
 msgid "AstroWay — Moon Phase"
-msgstr ""
+msgstr "AstroWay — 달의 위상"
 
 #: includes/views/admin-shortcodes.php:50
 msgid "Override date in YYYY-MM-DD. Defaults to today."
-msgstr ""
+msgstr "YYYY-MM-DD 형식의 날짜를 재정의합니다. 기본적으로 오늘 날짜입니다."
 
 #: includes/views/admin-shortcodes.php:55
 msgid "Human Design Bodygraph"
-msgstr ""
+msgstr "Human Design 바디그래프"
 
 #: includes/views/admin-shortcodes.php:56
 msgid "Human Design body graph with centers, channels, gates."
-msgstr ""
+msgstr "Human Design 바디 그래프와 센터, 채널, 게이트."
 
 #: includes/views/admin-shortcodes.php:58
 msgid "AstroWay — Bodygraph"
-msgstr ""
+msgstr "AstroWay — 바디그래프"
 
 #: includes/views/admin-shortcodes.php:62
 msgid "WGS-84 latitude."
-msgstr ""
+msgstr "WGS-84 위도."
 
 #: includes/views/admin-shortcodes.php:63
 msgid "WGS-84 longitude."
-msgstr ""
+msgstr "WGS-84 경도."
 
 #: includes/views/admin-shortcodes.php:64
 msgid "IANA timezone."
-msgstr ""
+msgstr "IANA 시간대."
 
 #: includes/views/admin-shortcodes.php:65
 msgid "Display name."
-msgstr ""
+msgstr "표시 이름."
 
 #: includes/views/admin-shortcodes.php:70
 msgid "Daily Tarot Card"
-msgstr ""
+msgstr "일일 타로 카드"
 
 #: includes/views/admin-shortcodes.php:71
 msgid "Single card pull of the day from a chosen deck."
-msgstr ""
+msgstr "선택한 덱에서 당일의 단일 카드 당첨."
 
 #: includes/views/admin-shortcodes.php:73
 msgid "AstroWay — Daily Tarot Card"
-msgstr ""
+msgstr "AstroWay — 일일 타로 카드"
 
 #: includes/views/admin-shortcodes.php:75
 msgid "Deck slug: rider-waite (default), marseille, or lenormand."
-msgstr ""
+msgstr "덱 슬러그: rider-waite (기본값), marseille, 또는 lenormand."
 
 #: includes/views/admin-shortcodes.php:91
 msgid "Find your coordinates and timezone"
-msgstr ""
+msgstr "좌표와 시간대를 찾으세요."
 
 #: includes/views/admin-shortcodes.php:92
 msgid "city → lat · lon · IANA tz"
-msgstr ""
+msgstr "도시 → 위도 · 경도 · IANA 시간대"
 
 #: includes/views/admin-shortcodes.php:99
 msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
-msgstr ""
+msgstr "도시 이름을 입력하세요 — 예: 키예프, 베를린, 상파울루"
 
 #: includes/views/admin-shortcodes.php:103
 msgid "Search"
-msgstr ""
+msgstr "검색"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
 #: includes/views/admin-shortcodes.php:110
 #, php-format
-msgid "Pick the matching city to copy values into the shortcode. Reference: %s."
-msgstr ""
+msgid ""
+"Pick the matching city to copy values into the shortcode. Reference: %s."
+msgstr "일치하는 도시를 선택하여 값을 shortcode에 복사하세요. 참조: %s."
 
 #: includes/views/admin-shortcodes.php:111
 msgid "IANA timezone list"
-msgstr ""
+msgstr "IANA 시간대 목록"
 
 #: includes/views/admin-shortcodes.php:132
 msgid "Click to copy"
-msgstr ""
+msgstr "클릭하여 복사"
 
 #: includes/views/admin-shortcodes.php:136
 msgid "copy"
-msgstr ""
+msgstr "복사"
 
 #: includes/views/admin-shortcodes.php:144
 msgid "Parameter"
-msgstr ""
+msgstr "매개 변수"
 
 #: includes/views/admin-shortcodes.php:145
 msgid "Type"
-msgstr ""
+msgstr "유형"
 
 #: includes/views/admin-shortcodes.php:146
 msgid "Required"
-msgstr ""
+msgstr "필수"
 
 #: includes/views/admin-shortcodes.php:147
 msgid "Description"
-msgstr ""
+msgstr "설명"
 
 #: includes/views/admin-shortcodes.php:158
 msgid "required"
-msgstr ""
+msgstr "필수"
 
 #: includes/views/admin-shortcodes.php:160
 msgid "optional"
-msgstr ""
+msgstr "선택"
 
 #. translators: %s is a Gutenberg block name
 #: includes/views/admin-shortcodes.php:174
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
-msgstr ""
+msgstr "Gutenberg 블록 \"%s\"으로도 사용할 수 있습니다."
 
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
-msgstr ""
+msgstr "플러그인 페이지"
 
 #: includes/views/partials/admin-footer-nav.php:31
 msgid "Docs"
-msgstr ""
+msgstr "문서"
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
-msgstr ""
+msgstr "astroway · 플러그인 · v"
 
 #: includes/views/partials/admin-hero.php:41
 msgid "Authenticated"
-msgstr ""
+msgstr "인증됨"
 
 #: includes/views/partials/admin-hero.php:42
 msgid "API key configured"
-msgstr ""
+msgstr "API 키 구성됨"
 
 #: includes/views/partials/admin-hero.php:49
 msgid "Anonymous mode"
-msgstr ""
+msgstr "익명 모드"
 
 #: includes/views/partials/admin-hero.php:50
 msgid "30 requests / hour / visitor IP"
-msgstr ""
+msgstr "방문자 IP당 1시간에 30개 요청"
 
 #: includes/views/partials/admin-hero.php:59
 msgid "View paid plans"
-msgstr ""
+msgstr "유료 플랜 보기"
 
 #: includes/views/partials/admin-sidebar.php:20
 msgid "Resources"
-msgstr ""
+msgstr "리소스"
 
 #: includes/views/partials/admin-sidebar.php:23
 msgid "API dashboard"
-msgstr ""
+msgstr "API 대시보드"
 
 #: includes/views/partials/admin-sidebar.php:27
 msgid "Documentation"
-msgstr ""
+msgstr "문서"
 
 #: includes/views/partials/admin-sidebar.php:31
 msgid "GitHub repository"
-msgstr ""
+msgstr "GitHub 저장소"
 
 #: assets/js/astroway-blocks-editor.js:15
 msgid "Default (today's featured sign)"
-msgstr ""
+msgstr "기본값(오늘의 추천 기호)"
 
 #: assets/js/astroway-blocks-editor.js:16
 msgid "Aries"
-msgstr ""
+msgstr "양자리"
 
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Taurus"
-msgstr ""
+msgstr "황소자리"
 
 #: assets/js/astroway-blocks-editor.js:18
 msgid "Gemini"
-msgstr ""
+msgstr "쌍둥이자리"
 
 #: assets/js/astroway-blocks-editor.js:19
 msgid "Cancer"
-msgstr ""
+msgstr "암"
 
 #: assets/js/astroway-blocks-editor.js:20
 msgid "Leo"
-msgstr ""
+msgstr "Leo"
 
 #: assets/js/astroway-blocks-editor.js:21
 msgid "Virgo"
-msgstr ""
+msgstr "처녀자리"
 
 #: assets/js/astroway-blocks-editor.js:22
 msgid "Libra"
-msgstr ""
+msgstr "천칭자리"
 
 #: assets/js/astroway-blocks-editor.js:23
 msgid "Scorpio"
-msgstr ""
+msgstr "전갈자리"
 
 #: assets/js/astroway-blocks-editor.js:24
 msgid "Sagittarius"
-msgstr ""
+msgstr "궁수자리"
 
 #: assets/js/astroway-blocks-editor.js:25
 msgid "Capricorn"
-msgstr ""
+msgstr "염소 자리"
 
 #: assets/js/astroway-blocks-editor.js:26
 msgid "Aquarius"
-msgstr ""
+msgstr "물병자리"
 
 #: assets/js/astroway-blocks-editor.js:27
 msgid "Pisces"
-msgstr ""
+msgstr "물고기자리"
 
 #: assets/js/astroway-blocks-editor.js:31
 msgid "Rider-Waite-Smith"
-msgstr ""
+msgstr "라이더-화이트-스미스"
 
 #: assets/js/astroway-blocks-editor.js:32
 msgid "Marseille"
-msgstr ""
+msgstr "마르세유"
 
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Lenormand"
-msgstr ""
+msgstr "레노르망"
 
 #: assets/js/astroway-blocks-editor.js:37
 msgid "Date (YYYY-MM-DD)"
-msgstr ""
+msgstr "날짜(YYYY-MM-DD)"
 
 #: assets/js/astroway-blocks-editor.js:38
 msgid "Time (HH:MM)"
-msgstr ""
+msgstr "시간(HH:MM)"
 
 #: assets/js/astroway-blocks-editor.js:39
 msgid "Latitude (-90 to 90)"
-msgstr ""
+msgstr "위도(-90~90)"
 
 #: assets/js/astroway-blocks-editor.js:40
 msgid "Longitude (-180 to 180)"
-msgstr ""
+msgstr "경도(-180~180)"
 
 #: assets/js/astroway-blocks-editor.js:41
 msgid "Person name (optional)"
-msgstr ""
+msgstr "사람 이름(선택 사항)"
 
 #: assets/js/astroway-blocks-editor.js:42
 msgid "Timezone (Europe/Kyiv or +03:00)"
-msgstr ""
+msgstr "표준 시간대(유럽/키예프 또는 +03:00)"
 
 #: assets/js/astroway-blocks-editor.js:47
 #: assets/js/astroway-blocks-editor.js:51
 msgid "Birth data"
-msgstr ""
+msgstr "출생 데이터"
 
 #: assets/js/astroway-blocks-editor.js:57
 msgid "Zodiac sign"
-msgstr ""
+msgstr "조디악 표지판"
 
 #: assets/js/astroway-blocks-editor.js:63
 msgid "Date (leave blank for today)"
-msgstr ""
+msgstr "날짜(오늘은 비워둡니다)"
 
 #: assets/js/astroway-blocks-editor.js:67
 msgid "Daily Tarot"
-msgstr ""
+msgstr "데일리 타로"
 
 #: assets/js/astroway-blocks-editor.js:69
 msgid "Deck"
-msgstr ""
+msgstr "데크"
 
 #: blocks/bodygraph/block.json
-msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
-msgstr ""
+msgstr "AstroWay: Human Design 바디그래프"
 
 #: blocks/bodygraph/block.json
-msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
-msgstr ""
+msgstr "Human Design 바디그래프와 유형, 프로파일, 게이트."
 
 #: blocks/daily-horoscope/block.json
-msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
-msgstr ""
+msgstr "AstroWay: 일일 운세"
 
 #: blocks/daily-horoscope/block.json
-msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
-msgstr ""
-
-#: blocks/daily-tarot/block.json
-msgctxt "block title"
-msgid "AstroWay: Daily Tarot"
-msgstr ""
-
-#: blocks/daily-tarot/block.json
-msgctxt "block description"
-msgid "Single-card daily Tarot draw with interpretation."
-msgstr ""
+msgstr "한 개의 별자리 기호에 대한 일일 운세 텍스트."
 
 #: blocks/moon-phase/block.json
-msgctxt "block title"
 msgid "AstroWay: Moon Phase"
-msgstr ""
+msgstr "AstroWay: 달의 위상"
 
 #: blocks/moon-phase/block.json
-msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
-msgstr ""
+msgstr "현재 달의 위상과 조명 百分비."
 
 #: blocks/natal-chart/block.json
-msgctxt "block title"
 msgid "AstroWay: Natal Chart"
-msgstr ""
+msgstr "AstroWay: natal 차트"
 
 #: blocks/natal-chart/block.json
-msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
-msgstr ""
+msgstr "api.astroway.info에서 제공하는 반응형 iframe으로 렌더링되는 natal 차트 휠."
+
+#: blocks/tarot-daily/block.json
+msgid "AstroWay: Daily Tarot"
+msgstr "AstroWay: 일일 타로"
+
+#: blocks/tarot-daily/block.json
+msgid "Single-card daily Tarot draw with interpretation."
+msgstr "단일 카드 일일 타로 당첨과 해석."

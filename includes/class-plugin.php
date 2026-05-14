@@ -36,30 +36,58 @@ class Plugin {
 			return;
 		}
 
-		$dismiss_url = wp_nonce_url(
+		$dismiss_url  = wp_nonce_url(
 			admin_url( 'admin-ajax.php?action=astroway_dismiss_activation_notice' ),
 			'astroway_dismiss_activation_notice'
 		);
+		$settings_url = admin_url( 'admin.php?page=' . Admin::PAGE_SLUG );
+		$signup_url   = 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin';
 
-		printf(
-			'<div class="notice notice-info is-dismissible" data-astroway-dismiss="%1$s"><p>%2$s</p></div>',
-			esc_url( $dismiss_url ),
-			wp_kses(
-				sprintf(
-					/* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */
-					__( 'AstroWay is active. Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, %1$sget a free API key%2$s.', 'astroway' ),
-					'<a href="https://api.astroway.info/dashboard/sign-up?source=wp_plugin" target="_blank" rel="noopener">',
-					'</a>'
-				),
-				[
-					'a' => [
-						'href'   => true,
-						'target' => true,
-						'rel'    => true,
-					],
-				]
-			)
-		);
+		$star_svg = '<svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5l2.36 5.34 5.83.55-4.4 3.85 1.31 5.71L10 13.93l-5.1 2.92 1.31-5.71-4.4-3.85 5.83-.55L10 1.5z"/></svg>';
+		?>
+		<div class="notice is-dismissible astroway-activation-notice" data-astroway-dismiss="<?php echo esc_url( $dismiss_url ); ?>">
+			<style>
+				.astroway-activation-notice{border-left:0;padding:14px 12px 14px 18px;background:#fff;display:flex;align-items:center;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+				.astroway-activation-notice .awn-mark{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 25%, #1d1c24 0%, #0a0a10 75%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(240,180,41,.35), 0 0 18px rgba(240,180,41,.18)}
+				.astroway-activation-notice .awn-mark svg{width:24px;height:24px;color:#f0b429;filter:drop-shadow(0 0 4px rgba(240,180,41,.5))}
+				.astroway-activation-notice .awn-text{flex:1 1 auto;min-width:0}
+				.astroway-activation-notice .awn-title{margin:0 0 2px;font-size:14px;font-weight:600;color:#1a1815;line-height:1.3}
+				.astroway-activation-notice .awn-desc{margin:0;font-size:13px;color:#4a4640;line-height:1.45}
+				.astroway-activation-notice .awn-actions{flex:0 0 auto;display:flex;align-items:center;gap:8px;margin-right:24px}
+				.astroway-activation-notice .awn-btn{display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:4px;font-size:13px;line-height:30px;text-decoration:none;font-weight:500;border:1px solid transparent;white-space:nowrap}
+				.astroway-activation-notice .awn-btn-primary{background:#f0b429;color:#1a1815;border-color:#b88419}
+				.astroway-activation-notice .awn-btn-primary:hover{background:#ffd773;color:#1a1815}
+				.astroway-activation-notice .awn-btn-secondary{background:transparent;color:#b88419;border-color:#d9d3c2}
+				.astroway-activation-notice .awn-btn-secondary:hover{border-color:#f0b429;color:#b88419}
+				.astroway-activation-notice .awn-btn:focus{box-shadow:0 0 0 2px rgba(240,180,41,.4);outline:none}
+				@media (max-width:782px){.astroway-activation-notice{flex-wrap:wrap}.astroway-activation-notice .awn-actions{margin-right:30px;width:100%;margin-top:6px}}
+			</style>
+			<div class="awn-mark"><?php echo $star_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG markup ?></div>
+			<div class="awn-text">
+				<p class="awn-title"><?php esc_html_e( 'AstroWay is active', 'astroway' ); ?></p>
+				<p class="awn-desc"><?php esc_html_e( 'Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, get a free API key.', 'astroway' ); ?></p>
+			</div>
+			<div class="awn-actions">
+				<a href="<?php echo esc_url( $signup_url ); ?>" target="_blank" rel="noopener" class="awn-btn awn-btn-primary">
+					<?php esc_html_e( 'Get free API key', 'astroway' ); ?>
+				</a>
+				<a href="<?php echo esc_url( $settings_url ); ?>" class="awn-btn awn-btn-secondary">
+					<?php esc_html_e( 'Open Settings', 'astroway' ); ?>
+				</a>
+			</div>
+			<script>
+				( function () {
+					var n = document.currentScript && document.currentScript.parentNode;
+					if ( ! n ) return;
+					n.addEventListener( 'click', function ( e ) {
+						if ( ! e.target.classList.contains( 'notice-dismiss' ) ) return;
+						var url = n.getAttribute( 'data-astroway-dismiss' );
+						if ( url ) { var img = new Image(); img.src = url; }
+					}, true );
+				} )();
+			</script>
+		</div>
+		<?php
 	}
 
 	public static function dismiss_activation_notice(): void {

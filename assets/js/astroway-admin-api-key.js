@@ -1,4 +1,4 @@
-/* AstroWay admin Settings page JS — jQuery for WP admin compat (no build step). */
+/* AstroWay admin — API Key page: verify-key handler. */
 ( function ( $ ) {
 	'use strict';
 
@@ -7,10 +7,10 @@
 		var i18n = cfg.i18n || {};
 
 		function show( $el, html, type ) {
-			$el.removeClass( 'notice-info notice-success notice-error' )
-				.addClass( 'notice notice-' + type + ' inline' )
-				.html( html )
-				.show();
+			var cls = 'aw-result';
+			if ( type === 'success' ) cls += ' is-success';
+			else if ( type === 'error' ) cls += ' is-error';
+			$el.attr( 'class', cls ).html( html ).show();
 		}
 
 		function escapeHtml( str ) {
@@ -61,40 +61,6 @@
 				show( $status, html, 'success' );
 			} ).fail( function () {
 				show( $status, '<p>' + escapeHtml( i18n.networkError || 'Network error' ) + '</p>', 'error' );
-			} );
-		} );
-
-		$( '#aw-test-connection' ).on( 'click', function () {
-			var $result = $( '#aw-test-result' );
-			$result.text( ' ' + ( i18n.pinging || 'Pinging…' ) );
-
-			$.post( window.ajaxurl, {
-				action: 'astroway_ping_health',
-				nonce:  cfg.nonce
-			} ).done( function ( resp ) {
-				var ok = resp && resp.success && resp.data && resp.data.status === 200;
-				if ( ok ) {
-					$result.html( ' <span style="color:#0a7d3a;">✓ ' + escapeHtml( i18n.healthy || 'API healthy' ) + '</span>' );
-				} else {
-					$result.html( ' <span style="color:#b32d2e;">✗ ' + escapeHtml( i18n.unreachable || 'API unreachable' ) + '</span>' );
-				}
-			} ).fail( function () {
-				$result.html( ' <span style="color:#b32d2e;">✗ ' + escapeHtml( i18n.unreachable || 'API unreachable' ) + '</span>' );
-			} );
-		} );
-
-		$( '#aw-purge-cache' ).on( 'click', function () {
-			if ( ! window.confirm( i18n.confirmPurge || 'Purge all cached data?' ) ) {
-				return;
-			}
-			$.post( window.ajaxurl, {
-				action: 'astroway_purge_cache',
-				nonce:  cfg.nonce
-			} ).done( function ( resp ) {
-				if ( resp && resp.success ) {
-					window.alert( ( i18n.purged || 'Cache cleared:' ) + ' ' + ( resp.data.purged || 0 ) );
-					window.location.reload();
-				}
 			} );
 		} );
 	} );
