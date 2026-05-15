@@ -54,8 +54,8 @@ class ApiClient {
 		if ( 200 !== ( $resp['status'] ?? 0 ) ) {
 			return $resp;
 		}
-		$usage             = $resp['data']['data'] ?? [];
-		$resp['fallback']  = true;
+		$usage            = $resp['data']['data'] ?? [];
+		$resp['fallback'] = true;
 		$resp['data']     = [
 			'ok'   => true,
 			'data' => [
@@ -73,7 +73,7 @@ class ApiClient {
 	}
 
 	private function get( string $path, array $params = [] ): array {
-		$url  = $this->base . $path;
+		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {
 			$url = add_query_arg( $params, $url );
 		}

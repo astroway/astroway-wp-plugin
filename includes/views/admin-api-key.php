@@ -19,23 +19,23 @@ $astroway_hero_title   = __( 'API Key', 'astroway' );
 $astroway_hero_tagline = __( 'Higher limits, advanced widgets, no watermark.', 'astroway' );
 
 // Status panel state machine — derived from $status_data (passed from render_api_key_page).
-$astroway_status_state    = 'none';     // none | valid | suspended | revoked | invalid_key | api_down
-$astroway_status_payload  = [];
-$astroway_status_partial  = false;
+$astroway_status_state   = 'none';     // none | valid | suspended | revoked | invalid_key | api_down
+$astroway_status_payload = [];
+$astroway_status_partial = false;
 if ( '' !== $api_key && is_array( $status_data ) ) {
 	$astroway_status_partial = ! empty( $status_data['fallback'] );
-	$http_code               = (int) ( $status_data['status'] ?? 0 );
-	if ( 200 === $http_code ) {
+	$astroway_http_code      = (int) ( $status_data['status'] ?? 0 );
+	if ( 200 === $astroway_http_code ) {
 		$astroway_status_payload = (array) ( $status_data['data']['data'] ?? [] );
-		$key_status              = (string) ( $astroway_status_payload['status'] ?? 'active' );
-		if ( 'suspended' === $key_status ) {
+		$astroway_key_status     = (string) ( $astroway_status_payload['status'] ?? 'active' );
+		if ( 'suspended' === $astroway_key_status ) {
 			$astroway_status_state = 'suspended';
-		} elseif ( 'revoked' === $key_status ) {
+		} elseif ( 'revoked' === $astroway_key_status ) {
 			$astroway_status_state = 'revoked';
 		} else {
 			$astroway_status_state = 'valid';
 		}
-	} elseif ( 401 === $http_code ) {
+	} elseif ( 401 === $astroway_http_code ) {
 		$astroway_status_state = 'invalid_key';
 	} else {
 		$astroway_status_state = 'api_down';
@@ -165,7 +165,7 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 								printf(
 									'%s <span class="aw-status-sub">%s</span>',
 									esc_html( gmdate( 'Y-m-d', $astroway_period_ts ) ),
-									$astroway_rel // already escaped above
+									wp_kses_post( $astroway_rel )
 								);
 							}
 							?>
@@ -179,13 +179,15 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 							<?php if ( ! empty( $astroway_status_payload['domain'] ) ) : ?>
 								<code><?php echo esc_html( $astroway_status_payload['domain'] ); ?></code>
 								<?php if ( ! empty( $astroway_status_payload['domain_bound_at'] ) ) : ?>
-									<span class="aw-status-sub"><?php
-										/* translators: %s = relative time the key was bound to this domain. */
+									<span class="aw-status-sub">
+									<?php
 										printf(
+											/* translators: %s = relative time the key was bound to this domain. */
 											esc_html__( 'bound %s ago', 'astroway' ),
 											esc_html( human_time_diff( strtotime( (string) $astroway_status_payload['domain_bound_at'] ) ) )
 										);
-									?></span>
+									?>
+									</span>
 								<?php endif; ?>
 							<?php else : ?>
 								<em class="aw-status-sub"><?php esc_html_e( 'not bound — first request will bind this site', 'astroway' ); ?></em>

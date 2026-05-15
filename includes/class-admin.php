@@ -71,6 +71,7 @@ class Admin {
 		$svg = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">'
 			. '<path fill="#fff" fill-rule="evenodd" d="M10 1A9 9 0 1 0 10 19A9 9 0 1 0 10 1ZM10 5L11.32 7.98L14.58 8.29L12.12 10.44L12.85 13.63L10 11.96L7.15 13.63L7.88 10.44L5.42 8.29L8.68 7.98Z"/>'
 			. '</svg>';
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- legit inline SVG embed for admin menu icon.
 		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
 
@@ -106,6 +107,7 @@ class Admin {
 		return $existing;
 	}
 
+	// phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound -- WP option-get convention.
 	public static function get( string $key, $default = null ) {
 		$opts = (array) get_option( self::OPTION_KEY, [] );
 		return $opts[ $key ] ?? $default;
@@ -154,19 +156,23 @@ class Admin {
 				ASTROWAY_WP_PLUGIN_VERSION,
 				true
 			);
-			wp_localize_script( 'astroway-admin-api-key', 'astrowayAdmin', [
-				'nonce' => wp_create_nonce( 'astroway_admin' ),
-				'i18n'  => [
-					'verifying'    => __( 'Verifying…', 'astroway' ),
-					'fallback'     => __( 'limited info', 'astroway' ),
-					'plan'         => __( 'Plan', 'astroway' ),
-					'creditsUsed'  => __( 'Used', 'astroway' ),
-					'rateLimit'    => __( 'Rate', 'astroway' ),
-					'domain'       => __( 'Bound to', 'astroway' ),
-					'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
-					'networkError' => __( 'Network error', 'astroway' ),
-				],
-			] );
+			wp_localize_script(
+				'astroway-admin-api-key',
+				'astrowayAdmin',
+				[
+					'nonce' => wp_create_nonce( 'astroway_admin' ),
+					'i18n'  => [
+						'verifying'    => __( 'Verifying…', 'astroway' ),
+						'fallback'     => __( 'limited info', 'astroway' ),
+						'plan'         => __( 'Plan', 'astroway' ),
+						'creditsUsed'  => __( 'Used', 'astroway' ),
+						'rateLimit'    => __( 'Rate', 'astroway' ),
+						'domain'       => __( 'Bound to', 'astroway' ),
+						'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
+						'networkError' => __( 'Network error', 'astroway' ),
+					],
+				]
+			);
 		} elseif ( $hook === $hook_settings ) {
 			wp_enqueue_script(
 				'astroway-admin-settings',
@@ -175,17 +181,21 @@ class Admin {
 				ASTROWAY_WP_PLUGIN_VERSION,
 				true
 			);
-			wp_localize_script( 'astroway-admin-settings', 'astrowayAdmin', [
-				'nonce' => wp_create_nonce( 'astroway_admin' ),
-				'i18n'  => [
-					'pinging'      => __( 'Pinging…', 'astroway' ),
-					'healthy'      => __( 'API is healthy', 'astroway' ),
-					'unreachable'  => __( 'API unreachable', 'astroway' ),
-					'confirmPurge' => __( 'Purge all cached data?', 'astroway' ),
-					'purged'       => __( 'Cache cleared:', 'astroway' ),
-					'copied'       => __( 'copied!', 'astroway' ),
-				],
-			] );
+			wp_localize_script(
+				'astroway-admin-settings',
+				'astrowayAdmin',
+				[
+					'nonce' => wp_create_nonce( 'astroway_admin' ),
+					'i18n'  => [
+						'pinging'      => __( 'Pinging…', 'astroway' ),
+						'healthy'      => __( 'API is healthy', 'astroway' ),
+						'unreachable'  => __( 'API unreachable', 'astroway' ),
+						'confirmPurge' => __( 'Purge all cached data?', 'astroway' ),
+						'purged'       => __( 'Cache cleared:', 'astroway' ),
+						'copied'       => __( 'copied!', 'astroway' ),
+					],
+				]
+			);
 		} else { // $hook_shortcodes
 			wp_enqueue_script(
 				'astroway-admin-shortcodes',
@@ -194,18 +204,22 @@ class Admin {
 				ASTROWAY_WP_PLUGIN_VERSION,
 				true
 			);
-			wp_localize_script( 'astroway-admin-shortcodes', 'astrowayAdmin', [
-				'nonce'   => wp_create_nonce( 'astroway_admin' ),
-				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'i18n'    => [
-					'copied'      => __( 'copied!', 'astroway' ),
-					'searching'   => __( 'Searching…', 'astroway' ),
-					'noResults'   => __( 'No cities found.', 'astroway' ),
-					'searchError' => __( 'Search error. Try again.', 'astroway' ),
-					'minChars'    => __( 'Type at least 2 characters.', 'astroway' ),
-					'pickCity'    => __( 'Pick a city to fill in lat / lon / tz', 'astroway' ),
-				],
-			] );
+			wp_localize_script(
+				'astroway-admin-shortcodes',
+				'astrowayAdmin',
+				[
+					'nonce'   => wp_create_nonce( 'astroway_admin' ),
+					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+					'i18n'    => [
+						'copied'      => __( 'copied!', 'astroway' ),
+						'searching'   => __( 'Searching…', 'astroway' ),
+						'noResults'   => __( 'No cities found.', 'astroway' ),
+						'searchError' => __( 'Search error. Try again.', 'astroway' ),
+						'minChars'    => __( 'Type at least 2 characters.', 'astroway' ),
+						'pickCity'    => __( 'Pick a city to fill in lat / lon / tz', 'astroway' ),
+					],
+				]
+			);
 		}
 	}
 
@@ -292,10 +306,16 @@ class Admin {
 		}
 		$resp = wp_remote_get(
 			add_query_arg(
-				[ 'q' => $q, 'limit' => 6 ],
+				[
+					'q'     => $q,
+					'limit' => 6,
+				],
 				'https://app.astroway.info/api/atlas/search'
 			),
-			[ 'timeout' => 10, 'headers' => [ 'Accept' => 'application/json' ] ]
+			[
+				'timeout' => 10,
+				'headers' => [ 'Accept' => 'application/json' ],
+			]
 		);
 		if ( is_wp_error( $resp ) ) {
 			wp_send_json_error( [ 'message' => $resp->get_error_message() ] );

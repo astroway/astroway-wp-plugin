@@ -16,7 +16,7 @@ class Shortcodes {
 	}
 
 	public static function render_natal( $atts ): string {
-		$atts = shortcode_atts(
+		$atts           = shortcode_atts(
 			[
 				'date' => '',
 				'time' => '',
@@ -35,23 +35,43 @@ class Shortcodes {
 	}
 
 	public static function render_daily_horoscope( $atts ): string {
-		$atts = shortcode_atts( [ 'sign' => '', 'lang' => '' ], (array) $atts, 'astroway_daily_horoscope' );
-		return PublicClient::embed_iframe( 'daily_horoscope', [
-			'sign' => self::sanitize_sign( $atts['sign'] ),
-			'lang' => self::resolve_lang( $atts['lang'] ),
-		] );
+		$atts = shortcode_atts(
+			[
+				'sign' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_daily_horoscope'
+		);
+		return PublicClient::embed_iframe(
+			'daily_horoscope',
+			[
+				'sign' => self::sanitize_sign( $atts['sign'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
 	}
 
 	public static function render_moon_phase( $atts ): string {
-		$atts = shortcode_atts( [ 'date' => '', 'lang' => '' ], (array) $atts, 'astroway_moon_phase' );
-		return PublicClient::embed_iframe( 'moon_phase', [
-			'date' => self::sanitize_date( $atts['date'] ),
-			'lang' => self::resolve_lang( $atts['lang'] ),
-		] );
+		$atts = shortcode_atts(
+			[
+				'date' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_moon_phase'
+		);
+		return PublicClient::embed_iframe(
+			'moon_phase',
+			[
+				'date' => self::sanitize_date( $atts['date'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
 	}
 
 	public static function render_bodygraph( $atts ): string {
-		$atts = shortcode_atts(
+		$atts           = shortcode_atts(
 			[
 				'date' => '',
 				'time' => '',
@@ -79,10 +99,13 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_tarot_card'
 		);
-		return PublicClient::embed_iframe( 'tarot_daily', [
-			'deck' => self::sanitize_deck( $atts['deck'] ),
-			'lang' => self::resolve_lang( $atts['lang'] ),
-		] );
+		return PublicClient::embed_iframe(
+			'tarot_daily',
+			[
+				'deck' => self::sanitize_deck( $atts['deck'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
 	}
 
 	/**
@@ -112,17 +135,17 @@ class Shortcodes {
 		];
 	}
 
-	private static function sanitize_date( $value ): string {
+	public static function sanitize_date( $value ): string {
 		$value = trim( (string) $value );
 		return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ? $value : '';
 	}
 
-	private static function sanitize_time( $value ): string {
+	public static function sanitize_time( $value ): string {
 		$value = trim( (string) $value );
 		return preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', $value ) ? $value : '';
 	}
 
-	private static function sanitize_coord( $value, float $min, float $max ): string {
+	public static function sanitize_coord( $value, float $min, float $max ): string {
 		$value = trim( (string) $value );
 		if ( ! is_numeric( $value ) ) {
 			return '';
@@ -134,7 +157,7 @@ class Shortcodes {
 		return (string) $float;
 	}
 
-	private static function sanitize_tz( $value ): string {
+	public static function sanitize_tz( $value ): string {
 		$value = trim( (string) $value );
 		// Accept IANA names (Europe/Kyiv) or fixed offsets (+03:00, -05:30)
 		if ( preg_match( '#^[A-Za-z]+(?:/[A-Za-z_]+)+$#', $value ) ) {
@@ -146,13 +169,13 @@ class Shortcodes {
 		return '';
 	}
 
-	private static function sanitize_sign( $value ): string {
+	public static function sanitize_sign( $value ): string {
 		$sign  = strtolower( sanitize_key( (string) $value ) );
 		$valid = [ 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ];
 		return in_array( $sign, $valid, true ) ? $sign : '';
 	}
 
-	private static function sanitize_deck( $value ): string {
+	public static function sanitize_deck( $value ): string {
 		$deck  = sanitize_key( (string) $value );
 		$valid = [ 'rider-waite', 'marseille', 'lenormand' ];
 		return in_array( $deck, $valid, true ) ? $deck : 'rider-waite';

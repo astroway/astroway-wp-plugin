@@ -9,7 +9,7 @@ class RendererDecisions {
 
 	public static function widgets(): array {
 		return [
-			'natal' => [
+			'natal'           => [
 				'embed_path'   => 'wheel',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -25,7 +25,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'sign', 'lang' ],
 			],
-			'moon_phase' => [
+			'moon_phase'      => [
 				'embed_path'   => 'moon-phase',
 				'iframe_attrs' => [
 					'width'  => '320',
@@ -33,7 +33,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'lang' ],
 			],
-			'bodygraph' => [
+			'bodygraph'       => [
 				'embed_path'   => 'bodygraph',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -41,7 +41,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'time', 'lat', 'lon', 'name', 'tz', 'lang' ],
 			],
-			'tarot_daily' => [
+			'tarot_daily'     => [
 				'embed_path'   => 'daily-tarot',
 				'iframe_attrs' => [
 					'width'  => '320',

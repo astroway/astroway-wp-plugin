@@ -14,8 +14,27 @@ class Plugin {
 	 * dropdown. Update this list when api expands locale coverage.
 	 */
 	public const SUPPORTED_LANGS = [
-		'uk', 'en', 'de', 'ru', 'pl', 'es', 'pt', 'fr', 'it', 'nl',
-		'cs', 'ro', 'hu', 'el', 'tr', 'ar', 'hi', 'ja', 'ko', 'vi', 'id',
+		'uk',
+		'en',
+		'de',
+		'ru',
+		'pl',
+		'es',
+		'pt',
+		'fr',
+		'it',
+		'nl',
+		'cs',
+		'ro',
+		'hu',
+		'el',
+		'tr',
+		'ar',
+		'hi',
+		'ja',
+		'ko',
+		'vi',
+		'id',
 	];
 
 	/**

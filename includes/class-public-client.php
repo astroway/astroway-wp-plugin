@@ -13,7 +13,7 @@ class PublicClient {
 			return null;
 		}
 
-		$allowed = array_intersect_key( $params, array_flip( $config['params'] ) );
+		$allowed  = array_intersect_key( $params, array_flip( $config['params'] ) );
 		$filtered = array_filter(
 			$allowed,
 			static function ( $v ) {

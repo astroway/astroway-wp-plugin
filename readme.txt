@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.3.0
+Stable tag: 0.4.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.4.0 =
+* CI/Tests infrastructure: PHPUnit unit tests + WPCS lint via GitHub Actions matrix (PHP 8.1-8.4 full test, 7.4/8.0 syntax compat)
+* Refactor: input sanitization extracted as public statics on Shortcodes class (no behavior change, enables addon reuse)
+* No user-visible changes — pure foundation for upcoming addon ecosystem (v0.6.0)
 
 = 0.3.0 =
 * New: live Status panel on the API Key admin landing — plan / credits / period / domain pulled from /v1/auth/keys/me (30 min transient cache)

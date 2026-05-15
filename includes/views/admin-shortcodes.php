@@ -22,11 +22,11 @@ $astroway_cards = [
 		'example'     => '[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52" name="Anna" tz="Europe/Kyiv"]',
 		'block_name'  => __( 'AstroWay — Natal Chart', 'astroway' ),
 		'params'      => [
-			[ 'date', 'string', true,  __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
-			[ 'time', 'string', true,  __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
-			[ 'lat',  'float',  true,  __( 'WGS-84 latitude (e.g. 50.45).', 'astroway' ) ],
-			[ 'lon',  'float',  true,  __( 'WGS-84 longitude (e.g. 30.52).', 'astroway' ) ],
-			[ 'tz',   'string', true,  __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude (e.g. 50.45).', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude (e.g. 30.52).', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
 			[ 'name', 'string', false, __( 'Display name on the chart.', 'astroway' ) ],
 		],
 	],
@@ -57,11 +57,11 @@ $astroway_cards = [
 		'example'     => '[astroway_bodygraph date="1990-05-15" time="14:30" lat="50.45" lon="30.52" name="Anna" tz="Europe/Kyiv"]',
 		'block_name'  => __( 'AstroWay — Bodygraph', 'astroway' ),
 		'params'      => [
-			[ 'date', 'string', true,  __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
-			[ 'time', 'string', true,  __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
-			[ 'lat',  'float',  true,  __( 'WGS-84 latitude.', 'astroway' ) ],
-			[ 'lon',  'float',  true,  __( 'WGS-84 longitude.', 'astroway' ) ],
-			[ 'tz',   'string', true,  __( 'IANA timezone.', 'astroway' ) ],
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
 			[ 'name', 'string', false, __( 'Display name.', 'astroway' ) ],
 		],
 	],
@@ -148,8 +148,10 @@ $astroway_cards = [
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ( $astroway_card['params'] as $astroway_param ) :
-							list( $astroway_pname, $astroway_ptype, $astroway_preq, $astroway_pdesc ) = $astroway_param; ?>
+						<?php
+						foreach ( $astroway_card['params'] as $astroway_param ) :
+							list( $astroway_pname, $astroway_ptype, $astroway_preq, $astroway_pdesc ) = $astroway_param;
+							?>
 							<tr>
 								<td><code><?php echo esc_html( $astroway_pname ); ?></code></td>
 								<td><?php echo esc_html( $astroway_ptype ); ?></td>

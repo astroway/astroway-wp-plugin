@@ -17,14 +17,14 @@ $astroway_hero_title   = __( 'Settings', 'astroway' );
 $astroway_hero_tagline = __( 'Connection, cache, diagnostics.', 'astroway' );
 
 $astroway_diag = [
-	[ __( 'Plugin', 'astroway' ),         ASTROWAY_WP_PLUGIN_VERSION ],
-	[ __( 'WordPress', 'astroway' ),      get_bloginfo( 'version' ) . ( is_multisite() ? ' (multisite)' : '' ) ],
-	[ __( 'PHP', 'astroway' ),            PHP_VERSION ],
-	[ __( 'WP_DEBUG', 'astroway' ),       ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? __( 'on', 'astroway' ) : __( 'off', 'astroway' ) ],
-	[ __( 'Active theme', 'astroway' ),   wp_get_theme()->get( 'Name' ) ],
+	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
+	[ __( 'WordPress', 'astroway' ), get_bloginfo( 'version' ) . ( is_multisite() ? ' (multisite)' : '' ) ],
+	[ __( 'PHP', 'astroway' ), PHP_VERSION ],
+	[ __( 'WP_DEBUG', 'astroway' ), ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? __( 'on', 'astroway' ) : __( 'off', 'astroway' ) ],
+	[ __( 'Active theme', 'astroway' ), wp_get_theme()->get( 'Name' ) ],
 	[ __( 'wp_remote_post', 'astroway' ), function_exists( 'wp_remote_post' ) ? __( 'available', 'astroway' ) : __( 'missing', 'astroway' ) ],
-	[ __( 'Locale', 'astroway' ),         get_locale() ],
-	[ __( 'API host', 'astroway' ),       $astroway_api_host ],
+	[ __( 'Locale', 'astroway' ), get_locale() ],
+	[ __( 'API host', 'astroway' ), $astroway_api_host ],
 ];
 ?>
 <div class="wrap aw-app">
@@ -95,8 +95,10 @@ $astroway_diag = [
 			<div class="aw-panel-body">
 				<table class="aw-diag">
 					<tbody>
-						<?php foreach ( $astroway_diag as $astroway_row ) :
-							list( $astroway_label, $astroway_value ) = $astroway_row; ?>
+						<?php
+						foreach ( $astroway_diag as $astroway_row ) :
+							list( $astroway_label, $astroway_value ) = $astroway_row;
+							?>
 							<tr>
 								<th scope="row"><?php echo esc_html( $astroway_label ); ?></th>
 								<td><code><?php echo esc_html( $astroway_value ); ?></code></td>
@@ -109,12 +111,14 @@ $astroway_diag = [
 						<?php esc_html_e( 'Copy diagnostic info', 'astroway' ); ?>
 					</button>
 				</div>
-				<textarea id="aw-diag-payload" readonly aria-hidden="true" class="aw-diag-payload"><?php
-					foreach ( $astroway_diag as $astroway_row ) {
-						list( $astroway_label, $astroway_value ) = $astroway_row;
-						echo esc_textarea( $astroway_label . ': ' . $astroway_value ) . "\n";
-					}
-				?></textarea>
+				<textarea id="aw-diag-payload" readonly aria-hidden="true" class="aw-diag-payload">
+				<?php
+				foreach ( $astroway_diag as $astroway_row ) {
+					list( $astroway_label, $astroway_value ) = $astroway_row;
+					echo esc_textarea( $astroway_label . ': ' . $astroway_value ) . "\n";
+				}
+				?>
+				</textarea>
 			</div>
 		</article>
 

@@ -3,7 +3,7 @@
  * Plugin Name:       AstroWay
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
  * Description:       Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info.
- * Version:           0.3.0
+ * Version:           0.4.0
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            AstroWay
@@ -42,6 +42,9 @@ add_action( 'plugins_loaded', [ '\\AstroWay\\WPPlugin\\Plugin', 'boot' ] );
 
 // Load bundled translations before WP 6.x just-in-time loader runs, so admin
 // strings hit our /languages/ before anything else queries them.
-add_action( 'init', static function () {
-	load_plugin_textdomain( 'astroway', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-} );
+add_action(
+	'init',
+	static function () {
+		load_plugin_textdomain( 'astroway', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+);
