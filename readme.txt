@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.2.3
+Stable tag: 0.3.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -85,6 +85,15 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
+= 0.3.0 =
+* New: live Status panel on the API Key admin landing — plan / credits / period / domain pulled from /v1/auth/keys/me (30 min transient cache)
+* New: `lang` attribute on all 5 shortcodes (e.g. `[astroway_natal date="..." lang="ru"]`) — 21 api-supported locales
+* New: Language Inspector dropdown on all 5 Gutenberg blocks — uk, en, de, ru, pl, es, pt, fr, it, nl, cs, ro, hu, el, tr, ar, hi, ja, ko, vi, id
+* Default lang resolves to the WP site locale; invalid codes silently fall back, no user-facing error
+* Status panel handles all 5 states: valid / suspended / revoked / invalid_key / api_down with per-state color accent
+* Requires api.astroway.info v2.33.0+ for /v1/auth/keys/me; falls back to legacy /v1/keys/usage with "Limited data" notice on older self-hosted api
+* No regressions on v0.2.3 — existing shortcodes/blocks without `lang=` render in site default exactly as before
+
 = 0.2.3 =
 * All 3 subpages share one hero (brand + status badge + CTAs); only title and tagline vary per page
 * Right sidebar restored (Resources + System + quote) in a 1fr + 280px grid
@@ -129,6 +138,9 @@ This plugin stores the following on the WordPress site:
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 0.3.0 =
+Adds a live Status panel on the API Key admin page (plan / credits / period / domain) and a `lang` attribute on all shortcodes and Gutenberg blocks for 21 api-supported locales. Drop-in upgrade.
 
 = 0.2.3 =
 Admin UI polish — unified hero, restored sidebar, city search on the Shortcodes page, 20 bundled translations. Drop-in upgrade.

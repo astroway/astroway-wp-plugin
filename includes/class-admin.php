@@ -214,6 +214,14 @@ class Admin {
 			wp_die( esc_html__( 'Unauthorized.', 'astroway' ) );
 		}
 		$api_key = (string) self::get( 'api_key', '' );
+
+		// Pre-fetch /v1/auth/keys/me for the Status panel — uses TTL_KEYS_ME transient cache (30min).
+		$status_data = null;
+		if ( '' !== $api_key ) {
+			$client      = new ApiClient();
+			$status_data = $client->get_keys_me();
+		}
+
 		require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/admin-api-key.php';
 	}
 

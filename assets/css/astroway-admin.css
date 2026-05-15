@@ -1151,3 +1151,97 @@
 	margin-left: auto;
 	opacity: 0.85;
 }
+
+/* Status panel — live /v1/auth/keys/me data on API Key landing (v0.3.0) */
+.aw-panel--status .aw-panel-num--status {
+	background: transparent;
+	border: none;
+	width: 32px;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.aw-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.04);
+}
+.aw-dot.is-ok   { background: var(--aw-success); box-shadow: 0 0 0 4px rgba(47, 140, 91, 0.18); }
+.aw-dot.is-warn { background: var(--aw-warn);    box-shadow: 0 0 0 4px rgba(176, 124, 15, 0.18); }
+.aw-dot.is-err  { background: var(--aw-error);   box-shadow: 0 0 0 4px rgba(177, 60, 60, 0.18); }
+
+.aw-status-grid {
+	display: grid;
+	grid-template-columns: minmax(120px, 0.4fr) 1fr;
+	gap: 12px 20px;
+	margin: 0;
+}
+.aw-status-grid .aw-status-row {
+	display: contents;
+}
+.aw-status-grid dt {
+	color: var(--aw-ink-mute);
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	align-self: center;
+}
+.aw-status-grid dd {
+	color: var(--aw-ink);
+	margin: 0;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+.aw-status-grid dd code {
+	background: var(--aw-rule-soft);
+	border-radius: 4px;
+	padding: 2px 6px;
+	font-family: var(--aw-mono);
+	font-size: 12.5px;
+}
+.aw-status-sub {
+	color: var(--aw-ink-mute);
+	font-size: 12px;
+}
+
+/* Plan pills */
+.aw-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-size: 12.5px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+}
+.aw-pill--free, .aw-pill--internal {
+	background: var(--aw-success-bg);
+	color: var(--aw-success);
+	border-color: rgba(47, 140, 91, 0.24);
+}
+.aw-pill--hobby, .aw-pill--starter, .aw-pill--indie {
+	background: rgba(240, 180, 41, 0.12);
+	color: var(--aw-gold-deep);
+	border-color: var(--aw-gold-line);
+}
+.aw-pill--pro, .aw-pill--business, .aw-pill--enterprise {
+	background: var(--aw-ink);
+	color: var(--aw-gold-glow);
+	border-color: var(--aw-gold-deep);
+}
+
+/* Panel state coloring for the status border-left accent */
+.aw-panel--status[data-state="valid"]      { border-left: 3px solid var(--aw-success); }
+.aw-panel--status[data-state="suspended"],
+.aw-panel--status[data-state="revoked"],
+.aw-panel--status[data-state="api_down"]   { border-left: 3px solid var(--aw-error); }
+.aw-panel--status[data-state="invalid_key"]{ border-left: 3px solid var(--aw-warn); }

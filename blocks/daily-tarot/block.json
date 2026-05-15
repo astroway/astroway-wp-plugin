@@ -13,7 +13,8 @@
 		"customClassName": true
 	},
 	"attributes": {
-		"deck": { "type": "string", "default": "rider-waite", "enum": [ "rider-waite", "marseille", "lenormand" ] }
+		"deck": { "type": "string", "default": "rider-waite", "enum": [ "rider-waite", "marseille", "lenormand" ] },
+		"lang": { "type": "string", "default": "" }
 	},
 	"editorScript": "astroway-blocks-editor"
 }

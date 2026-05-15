@@ -7,6 +7,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Plugin {
 
+	/**
+	 * Locales accepted by api.astroway.info `/v1/horoscope/*` and `/v1/interpret/*`
+	 * (Accept-Language Phase 6, shipped 2026-05-14 in api v2.30.0). Source of truth
+	 * for plugin shortcode `lang=` attribute + Gutenberg block `lang` Inspector
+	 * dropdown. Update this list when api expands locale coverage.
+	 */
+	public const SUPPORTED_LANGS = [
+		'uk', 'en', 'de', 'ru', 'pl', 'es', 'pt', 'fr', 'it', 'nl',
+		'cs', 'ro', 'hu', 'el', 'tr', 'ar', 'hi', 'ja', 'ko', 'vi', 'id',
+	];
+
+	/**
+	 * Map WP locale (`uk_UA`, `de_DE`, `pt_BR`, ...) to api short code (`uk`, `de`, `pt`).
+	 * Falls back to `uk` if the site language is outside the api's supported set —
+	 * `uk` is the source language for api content, so widgets render correctly there.
+	 */
+	public static function normalize_locale( string $wp_locale ): string {
+		$short = strtolower( substr( $wp_locale, 0, 2 ) );
+		return in_array( $short, self::SUPPORTED_LANGS, true ) ? $short : 'uk';
+	}
+
 	public static function boot(): void {
 		// WP 4.6+ auto-loads textdomain from /languages when slug matches; no manual call needed for wp.org-hosted plugins.
 

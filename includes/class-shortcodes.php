@@ -24,23 +24,30 @@ class Shortcodes {
 				'lon'  => '',
 				'name' => '',
 				'tz'   => '',
+				'lang' => '',
 			],
 			(array) $atts,
 			'astroway_natal'
 		);
-		return PublicClient::embed_iframe( 'natal', self::sanitize_chart_params( $atts ) );
+		$params         = self::sanitize_chart_params( $atts );
+		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		return PublicClient::embed_iframe( 'natal', $params );
 	}
 
 	public static function render_daily_horoscope( $atts ): string {
-		$atts = shortcode_atts( [ 'sign' => '' ], (array) $atts, 'astroway_daily_horoscope' );
-		$sign = self::sanitize_sign( $atts['sign'] );
-		return PublicClient::embed_iframe( 'daily_horoscope', [ 'sign' => $sign ] );
+		$atts = shortcode_atts( [ 'sign' => '', 'lang' => '' ], (array) $atts, 'astroway_daily_horoscope' );
+		return PublicClient::embed_iframe( 'daily_horoscope', [
+			'sign' => self::sanitize_sign( $atts['sign'] ),
+			'lang' => self::resolve_lang( $atts['lang'] ),
+		] );
 	}
 
 	public static function render_moon_phase( $atts ): string {
-		$atts = shortcode_atts( [ 'date' => '' ], (array) $atts, 'astroway_moon_phase' );
-		$date = self::sanitize_date( $atts['date'] );
-		return PublicClient::embed_iframe( 'moon_phase', [ 'date' => $date ] );
+		$atts = shortcode_atts( [ 'date' => '', 'lang' => '' ], (array) $atts, 'astroway_moon_phase' );
+		return PublicClient::embed_iframe( 'moon_phase', [
+			'date' => self::sanitize_date( $atts['date'] ),
+			'lang' => self::resolve_lang( $atts['lang'] ),
+		] );
 	}
 
 	public static function render_bodygraph( $atts ): string {
@@ -52,11 +59,14 @@ class Shortcodes {
 				'lon'  => '',
 				'name' => '',
 				'tz'   => '',
+				'lang' => '',
 			],
 			(array) $atts,
 			'astroway_bodygraph'
 		);
-		return PublicClient::embed_iframe( 'bodygraph', self::sanitize_chart_params( $atts ) );
+		$params         = self::sanitize_chart_params( $atts );
+		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		return PublicClient::embed_iframe( 'bodygraph', $params );
 	}
 
 	public static function render_tarot_card( $atts ): string {
@@ -64,12 +74,31 @@ class Shortcodes {
 			[
 				'type' => 'daily',
 				'deck' => 'rider-waite',
+				'lang' => '',
 			],
 			(array) $atts,
 			'astroway_tarot_card'
 		);
-		$deck = self::sanitize_deck( $atts['deck'] );
-		return PublicClient::embed_iframe( 'tarot_daily', [ 'deck' => $deck ] );
+		return PublicClient::embed_iframe( 'tarot_daily', [
+			'deck' => self::sanitize_deck( $atts['deck'] ),
+			'lang' => self::resolve_lang( $atts['lang'] ),
+		] );
+	}
+
+	/**
+	 * Resolve the language for an api request:
+	 *   1. Explicit shortcode/block param (must be in Plugin::SUPPORTED_LANGS)
+	 *   2. Fallback to the site locale normalised to a 2-letter code
+	 *
+	 * Invalid codes silently fall through to the site-locale fallback —
+	 * no user-facing error for typos.
+	 */
+	private static function resolve_lang( $raw ): string {
+		$raw = strtolower( trim( (string) $raw ) );
+		if ( '' !== $raw && in_array( $raw, Plugin::SUPPORTED_LANGS, true ) ) {
+			return $raw;
+		}
+		return Plugin::normalize_locale( get_locale() );
 	}
 
 	private static function sanitize_chart_params( array $atts ): array {

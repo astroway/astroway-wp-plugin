@@ -2,7 +2,24 @@
 
 All notable changes to `astroway/wp-plugin` are documented here.
 
-## [0.2.3] — 2026-05-14
+## [0.3.0] — 2026-05-15
+
+### Added
+- **Live Status panel** on the API Key admin landing — pulls `GET /v1/auth/keys/me` on page load (TTL_KEYS_ME 30min transient), surfaces plan badge with tier-coloured pill, credits remaining / total with percentage, period_end with relative countdown, bound domain with "bound N days ago" caption, referrer source. State machine: `valid` / `suspended` / `revoked` / `invalid_key` / `api_down` with per-state border accent.
+- **`lang` attribute on all 5 shortcodes** — `[astroway_natal date="…" lang="ru"]`, `[astroway_daily_horoscope sign="leo" lang="hi"]`, etc. Default = site locale via `Plugin::normalize_locale(get_locale())`; invalid codes silently fall back.
+- **Inspector dropdown on all 5 Gutenberg blocks** — 21 locale options (uk, en, de, ru, pl, es, pt, fr, it, nl, cs, ro, hu, el, tr, ar, hi, ja, ko, vi, id), native script labels per WP Polyglots convention.
+- **`Plugin::SUPPORTED_LANGS` const + `Plugin::normalize_locale()` helper** — single source of truth for the 21-locale whitelist; `WP locale` (`uk_UA`, `pt_BR`) → short api code (`uk`, `pt`).
+- **`'lang'` added to every widget's `params` whitelist** in `RendererDecisions` — propagates to api as `?lang={code}` query on `/v1/embed/*` URLs.
+
+### Requires
+- api.astroway.info v2.33.0+ for the Status panel `/v1/auth/keys/me` endpoint. Falls back to legacy `/v1/keys/usage` with "Limited data" notice if a self-hosted api is older.
+
+### Backwards compatibility
+- No breaking changes. Shortcodes without `lang=` continue to render in site default locale exactly as before.
+- Status panel renders only when a key is configured; anonymous-mode sites unchanged.
+- 30-min cache + invalidation on key change means no extra api calls on repeated admin visits.
+
+## [0.2.3] — 2026-05-14 (shipped to wp.org)
 
 ### Changed
 - **Hero parity** across all 3 subpages: extracted shared hero partial (`includes/views/partials/admin-hero.php`) — Settings and Shortcodes now render the same brand mark + version eyebrow + status badge + CTAs as the API Key landing. Title and tagline are the only per-page variables.

@@ -15,7 +15,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '520',
 				],
-				'params'       => [ 'date', 'time', 'lat', 'lon', 'name', 'tz' ],
+				'params'       => [ 'date', 'time', 'lat', 'lon', 'name', 'tz', 'lang' ],
 			],
 			'daily_horoscope' => [
 				'embed_path'   => 'daily-horoscope',
@@ -23,7 +23,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '320',
 				],
-				'params'       => [ 'sign' ],
+				'params'       => [ 'sign', 'lang' ],
 			],
 			'moon_phase' => [
 				'embed_path'   => 'moon-phase',
@@ -31,7 +31,7 @@ class RendererDecisions {
 					'width'  => '320',
 					'height' => '320',
 				],
-				'params'       => [ 'date' ],
+				'params'       => [ 'date', 'lang' ],
 			],
 			'bodygraph' => [
 				'embed_path'   => 'bodygraph',
@@ -39,7 +39,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '620',
 				],
-				'params'       => [ 'date', 'time', 'lat', 'lon', 'name', 'tz' ],
+				'params'       => [ 'date', 'time', 'lat', 'lon', 'name', 'tz', 'lang' ],
 			],
 			'tarot_daily' => [
 				'embed_path'   => 'daily-tarot',
@@ -47,7 +47,7 @@ class RendererDecisions {
 					'width'  => '320',
 					'height' => '480',
 				],
-				'params'       => [ 'deck' ],
+				'params'       => [ 'deck', 'lang' ],
 			],
 		];
 	}
