@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.0
+Stable tag: 0.5.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.1 =
+* Channel B download endpoint live at astroway.info/wp-plugin/download/{version}/ — 302-redirects paid-tier keys to versioned ZIP on GitHub Releases.
+* update.json now returns full download_url field for paid tiers.
+* No user-visible plugin code change. Plugin-side update hooks land in v0.5.3.
 
 = 0.5.0 =
 * Channel B server endpoint deployed at astroway.info/wp-plugin/update.json — paid-tier auto-update infrastructure (first of 6 atomic pieces, v0.5.0-v0.5.5).
