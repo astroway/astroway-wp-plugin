@@ -2,7 +2,7 @@
 Contributors: astrowayteam
 Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 0.5.2
 License: MIT
