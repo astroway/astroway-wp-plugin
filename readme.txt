@@ -1,6 +1,6 @@
-=== AstroWay ===
+=== AstroWay – Astrology & Horoscopes ===
 Contributors: astrowayteam
-Tags: astrology, natal chart, horoscope, tarot, human design
+Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
@@ -8,7 +8,7 @@ Stable tag: 0.5.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks.
+Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API.
 
 == Description ==
 
