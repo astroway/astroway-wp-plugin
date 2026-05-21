@@ -4,7 +4,7 @@ Tags: astrology, natal chart, horoscope, tarot, human design
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.1
+Stable tag: 0.5.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.2 =
+* Bundled YahnisElsts/plugin-update-checker v5.6 library at includes/lib/plugin-update-checker/ — autoloaded via load-v5p6.php. Foundation for v0.5.3 Channel B update hook.
+* No new user-visible behavior. PUC is loaded but no update checker instance is created yet.
 
 = 0.5.1 =
 * Channel B download endpoint live at astroway.info/wp-plugin/download/{version}/ — 302-redirects paid-tier keys to versioned ZIP on GitHub Releases.
