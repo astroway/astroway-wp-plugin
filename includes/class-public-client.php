@@ -72,7 +72,11 @@ class PublicClient {
 	 * per-visitor hiding.
 	 */
 	private static function rate_limit_active(): bool {
-		if ( Tier::current() !== 'anonymous' ) {
+		// Skip the probe for paid tiers (Tier class arrives in v0.7.0). When the
+		// class isn't loaded yet — pre-v0.7.0 ZIPs — we still probe everyone,
+		// which is fine because paid tiers have rate caps high enough that
+		// `remaining < 3` essentially never trips.
+		if ( class_exists( __NAMESPACE__ . '\\Tier' ) && 'anonymous' !== Tier::current() ) {
 			return false;
 		}
 
