@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.5.7
+Stable tag: 0.5.8
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.8 =
+* Follow-up hotfix on v0.5.7: also guards require_once for class-updater.php and class_exists() checks around Updater::boot() / ElementorLoader::boot(). All forward-version dependencies in the main plugin file and Plugin::boot() now degrade gracefully if the corresponding includes/ files aren't bundled in the current ZIP.
 
 = 0.5.7 =
 * Hotfix on top of v0.5.6: the main plugin file required class-tier.php / class-addon-api.php / elementor.php unconditionally, but those classes only ship in later versions and were missing from the v0.5.6 ZIP — every page load fatal-erred. Those three require_once calls are now guarded by file_exists() so older ZIPs load cleanly. Also wraps Tier::current() in class_exists() for the same reason.

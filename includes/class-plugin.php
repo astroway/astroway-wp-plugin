@@ -61,8 +61,15 @@ class Plugin {
 		Shortcodes::register();
 		Blocks::register();
 		Admin::register();
-		Updater::boot();
-		Elementor\Loader::boot();
+		// Guard later-version dependencies: a partial ZIP missing these files
+		// (e.g. v0.5.6/v0.5.7 hotfix shipped before the Channel B/Elementor
+		// classes land in public repo) must still load cleanly.
+		if ( class_exists( __NAMESPACE__ . '\\Updater' ) ) {
+			Updater::boot();
+		}
+		if ( class_exists( __NAMESPACE__ . '\\Elementor\\Loader' ) ) {
+			Elementor\Loader::boot();
+		}
 
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_activation_notice' ] );
