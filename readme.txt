@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.5.2
+Stable tag: 0.5.6
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.6 =
+* Added a one-time review prompt in WP admin shown 14 days after activation, dismissible per-user.
+* Anonymous rate-limit guard: when the api responds that the public 30/h-per-IP limit is exhausted, the plugin now skips rendering the iframe (no more raw JSON error visible to visitors) and surfaces a one-time admin notice pointing the site owner at a free API key. Paid tiers and any configured API key skip the probe entirely. The probe itself is cached for 5 minutes in a transient so it adds at most one extra api hit per site every five minutes.
 
 = 0.5.2 =
 * Bundled YahnisElsts/plugin-update-checker v5.6 library at includes/lib/plugin-update-checker/ — autoloaded via load-v5p6.php. Foundation for v0.5.3 Channel B update hook.
