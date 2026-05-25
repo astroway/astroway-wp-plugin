@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       AstroWay – Astrology & Horoscopes
+ * Plugin Name:       AstroWay
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
- * Description:       Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API. Powered by api.astroway.info.
- * Version:           0.5.8
+ * Description:       Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info.
+ * Version:           0.5.3
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            AstroWay
@@ -34,16 +34,7 @@ require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-blocks.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-cache.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-api-client.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-admin.php';
-// Classes below are added in later atomic versions (v0.5.3 onwards) — guard the
-// require so a partial ZIP (e.g. v0.5.6 with this main file but without these
-// later includes/) loads cleanly instead of fatal-erroring on a missing file.
-foreach ( [ 'class-updater', 'class-tier', 'class-addon-api', 'elementor' ] as $astroway_opt_include ) {
-	$astroway_opt_path = ASTROWAY_WP_PLUGIN_DIR . 'includes/' . $astroway_opt_include . '.php';
-	if ( file_exists( $astroway_opt_path ) ) {
-		require_once $astroway_opt_path;
-	}
-}
-unset( $astroway_opt_include, $astroway_opt_path );
+require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-updater.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-plugin.php';
 
 register_activation_hook( __FILE__, [ '\\AstroWay\\WPPlugin\\Plugin', 'activate' ] );

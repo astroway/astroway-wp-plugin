@@ -2,9 +2,9 @@
 Contributors: astrowayteam
 Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.8
+Stable tag: 0.5.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.3 =
+* Channel B custom updater wired via plugin-update-checker — registers against https://astroway.info/wp-plugin/update.json with the saved API key carried as ?key= query arg.
+* When PUC is absent or the server endpoint is unreachable, wp.org Channel A continues to deliver updates as before.
 
 = 0.5.8 =
 * Follow-up hotfix on v0.5.7: also guards require_once for class-updater.php and class_exists() checks around Updater::boot() / ElementorLoader::boot(). All forward-version dependencies in the main plugin file and Plugin::boot() now degrade gracefully if the corresponding includes/ files aren't bundled in the current ZIP.
