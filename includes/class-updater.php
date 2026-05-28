@@ -41,5 +41,15 @@ class Updater {
 				return $args;
 			}
 		);
+
+		// Force fresh response from astroway.info (defeats any transit cache).
+		$puc->addHttpRequestArgFilter(
+			static function ( $args ) {
+				$args['headers']                  = isset( $args['headers'] ) && is_array( $args['headers'] ) ? $args['headers'] : [];
+				$args['headers']['Cache-Control'] = 'no-cache';
+				$args['headers']['Pragma']        = 'no-cache';
+				return $args;
+			}
+		);
 	}
 }

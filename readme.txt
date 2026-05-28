@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.3
+Stable tag: 0.5.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.4 =
+* Channel B update checks now send Cache-Control: no-cache + Pragma: no-cache headers, ensuring fresh response from astroway.info even if a transit cache sits between WP and the server.
+* "View details" modal verified to render correctly with PUC defaults — pulls changelog/sections from update.json.
 
 = 0.5.3 =
 * Channel B custom updater wired via plugin-update-checker — registers against https://astroway.info/wp-plugin/update.json with the saved API key carried as ?key= query arg.
