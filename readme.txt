@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.6.2
+Stable tag: 0.6.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.6.3 =
+* New filter: `astroway_widgets` lets addons append entries to the widget registry without touching core. Useful for new shortcodes/blocks that map to api `/v1/embed/*` endpoints.
 
 = 0.6.2 =
 * New action: `astroway_register_blocks` fires at end of Blocks::register_assets_and_blocks(). Addons hook here to call register_block_type() for their own astroway/* Gutenberg blocks.

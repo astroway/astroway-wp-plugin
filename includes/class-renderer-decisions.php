@@ -8,6 +8,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 class RendererDecisions {
 
 	public static function widgets(): array {
+		/**
+		 * Filters the widget registry. Addons append their own widget configs here.
+		 *
+		 * Each widget entry must be an array with keys:
+		 *   - embed_path: string (relative path appended to /v1/embed/)
+		 *   - iframe_attrs: array with at least 'width' and 'height'
+		 *   - params: array of allowed query params
+		 *
+		 * @since 0.6.3
+		 *
+		 * @param array $widgets Default widget registry.
+		 */
+		return apply_filters( 'astroway_widgets', self::widgets_default() );
+	}
+
+	private static function widgets_default(): array {
 		return [
 			'natal'           => [
 				'embed_path'   => 'wheel',
