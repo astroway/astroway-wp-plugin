@@ -13,6 +13,14 @@ class Shortcodes {
 		add_shortcode( 'astroway_moon_phase', [ __CLASS__, 'render_moon_phase' ] );
 		add_shortcode( 'astroway_bodygraph', [ __CLASS__, 'render_bodygraph' ] );
 		add_shortcode( 'astroway_tarot_card', [ __CLASS__, 'render_tarot_card' ] );
+
+		/**
+		 * Fires after core shortcodes are registered.
+		 * Addons should hook here to call add_shortcode() for their own astroway_* shortcodes.
+		 *
+		 * @since 0.6.1
+		 */
+		do_action( 'astroway_register_shortcodes' );
 	}
 
 	public static function render_natal( $atts ): string {
