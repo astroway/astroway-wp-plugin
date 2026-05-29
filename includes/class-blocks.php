@@ -49,5 +49,13 @@ class Blocks {
 				);
 			}
 		}
+
+		/**
+		 * Fires after core Gutenberg blocks are registered.
+		 * Addons hook here to call register_block_type() for their own astroway/* blocks.
+		 *
+		 * @since 0.6.2
+		 */
+		do_action( 'astroway_register_blocks' );
 	}
 }
