@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.5
+Stable tag: 0.6.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.6.0 =
+* New action: `astroway_init` fires early in plugin boot, signalling addons that core classes are loaded and they can hook into upcoming registration actions.
+* First atomic piece of the Addon Hooks API (v0.6.0-v0.6.5). Unlocks third-party addon ecosystem.
 
 = 0.5.5 =
 * Admin: new "Update channel" panel on the API Key page shows current channel (A/B), whether PUC library is loaded, whether an API key is set, and last update check timestamp.

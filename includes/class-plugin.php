@@ -50,6 +50,14 @@ class Plugin {
 	public static function boot(): void {
 		// WP 4.6+ auto-loads textdomain from /languages when slug matches; no manual call needed for wp.org-hosted plugins.
 
+		/**
+		 * Fires after core plugin classes are loaded but before any registration.
+		 * Addons should hook here to set up their own state.
+		 *
+		 * @since 0.6.0
+		 */
+		do_action( 'astroway_init' );
+
 		Shortcodes::register();
 		Blocks::register();
 		Admin::register();
