@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.5.4
+Stable tag: 0.5.5
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.5.5 =
+* Admin: new "Update channel" panel on the API Key page shows current channel (A/B), whether PUC library is loaded, whether an API key is set, and last update check timestamp.
+* Closes the Channel B atomic stack v0.5.0-v0.5.5. Plugin meets the v1.0 "Channel B custom updater" stability gate condition.
 
 = 0.5.4 =
 * Channel B update checks now send Cache-Control: no-cache + Pragma: no-cache headers, ensuring fresh response from astroway.info even if a transit cache sits between WP and the server.

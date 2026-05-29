@@ -52,4 +52,32 @@ class Updater {
 			}
 		);
 	}
+
+	/**
+	 * Snapshot of Channel B state for admin display.
+	 *
+	 * @return array{active:bool, channel:string, endpoint:string, has_key:bool, last_check:?int}
+	 */
+	public static function get_status(): array {
+		$active     = class_exists( PucFactory::class );
+		$opts       = (array) get_option( Admin::OPTION_KEY, [] );
+		$key        = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
+		$has_key    = '' !== $key;
+		$channel    = $has_key && $active ? 'B' : 'A';
+		$last_check = null;
+		// PUC v5 stores last check time in `external_updates-<slug>` site option.
+		$puc_option = get_site_option( 'external_updates-astroway' );
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- PUC third-party property name.
+		if ( is_object( $puc_option ) && isset( $puc_option->lastCheck ) ) {
+			$last_check = (int) $puc_option->lastCheck;
+		}
+		// phpcs:enable
+		return [
+			'active'     => $active,
+			'channel'    => $channel,
+			'endpoint'   => 'https://astroway.info/wp-plugin/update.json',
+			'has_key'    => $has_key,
+			'last_check' => $last_check,
+		];
+	}
 }

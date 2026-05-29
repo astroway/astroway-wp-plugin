@@ -324,6 +324,8 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 			</div>
 		</article>
 
+		<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-channel-b-status.php'; ?>
+
 	</main>
 
 	<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-sidebar.php'; ?>
