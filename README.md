@@ -1,4 +1,4 @@
-# AstroWay WordPress Plugin
+# AstroWay WordPress Plugin — astrology API for natal charts, Tarot & Human Design
 
 > Official WordPress plugin for the [AstroWay API](https://api.astroway.info) — natal charts, synastry, transits, Vedic dashas, Tarot (Rider-Waite / Marseille / Lenormand), Numerology, Human Design, AI horoscopes. Shortcodes + Gutenberg blocks.
 
