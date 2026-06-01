@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.6.4
+Stable tag: 0.6.5
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.6.5 =
+* New developer guide `docs/addon-development.md` documents the v0.6.x Addon Hooks API + AddonAPI reference + minimal working example.
+* New example addon scaffold `docs/example-addon/` shows shortcode registration + tier check + widget declaration.
+* Closes the Addon Hooks API atomic stack v0.6.0-v0.6.5. Track 3 addon plugins can now develop against a stable surface.
 
 = 0.6.4 =
 * New public class `AstroWayWPPluginAddonAPI` — BC-locked stable surface for addon developers. Methods: `register_widget()`, `current_tier()`, `api_base()`, `has_key()`, `cache_key()`. Internal classes (RendererDecisions, ApiClient, Cache, Admin) remain unstable.
