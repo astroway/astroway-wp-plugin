@@ -44,13 +44,7 @@ class AddonAPI {
 	 * Cached via the existing keys_me transient (30 min TTL).
 	 */
 	public static function current_tier(): string {
-		$client = new ApiClient();
-		if ( ! $client->has_key() ) {
-			return 'anonymous';
-		}
-		$resp = $client->get_keys_me();
-		$plan = $resp['data']['data']['plan'] ?? null;
-		return is_string( $plan ) && '' !== $plan ? $plan : 'anonymous';
+		return Tier::current();
 	}
 
 	/**

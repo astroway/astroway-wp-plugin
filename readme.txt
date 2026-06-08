@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.6.5
+Stable tag: 0.7.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.7.0 =
+* New utility class `AstroWayWPPluginTier` with `Tier::current()` resolving the user's plan from cached /v1/auth/keys/me response (30 min TTL). Returns anonymous/free/indie/starter/pro/business/internal.
+* AddonAPI::current_tier() refactored as facade delegating to Tier::current(). First piece of tier-gating subsystem (v0.7.x).
 
 = 0.6.5 =
 * New developer guide `docs/addon-development.md` documents the v0.6.x Addon Hooks API + AddonAPI reference + minimal working example.
