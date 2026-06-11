@@ -4,7 +4,7 @@ Tags: astrology, astro, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.7.0
+Stable tag: 0.7.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -84,6 +84,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.7.1 =
+* New `Tier::can( string $feature ): bool` checks whether current tier can access a feature.
+* New `Tier::matrix(): array` returns feature → allowed tiers map, filterable via `astroway_tier_matrix` so addons can declare their own features.
+* Default matrix: v1 widgets (natal, daily_horoscope, moon_phase, bodygraph, daily_tarot) anonymous-OK; synastry/solar_return/lunar_return/progressions/native_render paid-only; ai_chat/transit_alerts pro+.
 
 = 0.7.0 =
 * New utility class `AstroWayWPPluginTier` with `Tier::current()` resolving the user's plan from cached /v1/auth/keys/me response (30 min TTL). Returns anonymous/free/indie/starter/pro/business/internal.
