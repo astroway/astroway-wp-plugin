@@ -19,6 +19,36 @@ class Blocks {
 		];
 	}
 
+	/**
+	 * Map block slug → feature name for tier-gating.
+	 */
+	private static function feature_for( string $slug ): string {
+		$map = [
+			'natal-chart'     => 'natal',
+			'daily-horoscope' => 'daily_horoscope',
+			'moon-phase'      => 'moon_phase',
+			'bodygraph'       => 'bodygraph',
+			'daily-tarot'     => 'daily_tarot',
+		];
+		return $map[ $slug ] ?? $slug;
+	}
+
+	/**
+	 * Wrap a block callback with a Tier::can() gate. v0.7.4 swaps the
+	 * inline CTA for Tier::render_upgrade_cta() helper.
+	 *
+	 * @since 0.7.2
+	 */
+	private static function gated( string $feature, callable $callback ): callable {
+		return static function ( $atts ) use ( $feature, $callback ) {
+			if ( ! Tier::can( $feature ) ) {
+				return '<p class="astroway-locked"><strong>' . esc_html__( 'Pro feature.', 'astroway' ) . '</strong> '
+					. esc_html__( 'Upgrade your AstroWay plan to unlock this block.', 'astroway' ) . '</p>';
+			}
+			return call_user_func( $callback, $atts );
+		};
+	}
+
 	public static function register(): void {
 		add_action( 'init', [ __CLASS__, 'register_assets_and_blocks' ] );
 	}
@@ -45,7 +75,7 @@ class Blocks {
 			if ( file_exists( $block_dir . '/block.json' ) ) {
 				register_block_type(
 					$block_dir,
-					[ 'render_callback' => $callback ]
+					[ 'render_callback' => self::gated( self::feature_for( $slug ), $callback ) ]
 				);
 			}
 		}
