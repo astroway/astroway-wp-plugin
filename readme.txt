@@ -1,6 +1,6 @@
 === AstroWay – Astrology & Horoscopes ===
 Contributors: astrowayteam
-Tags: astrology, astro, natal chart, horoscope, tarot
+Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
@@ -8,7 +8,7 @@ Stable tag: 0.7.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API.
+Astrology & horoscope widgets for WordPress: birth & natal charts, synastry, Tarot, Numerology, Human Design via shortcodes & blocks.
 
 == Description ==
 
@@ -24,6 +24,10 @@ Add astrological calculations to any WordPress page or post via shortcodes or Gu
 4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]`.
 
 == Frequently Asked Questions ==
+
+= How do I add a horoscope or birth chart to WordPress? =
+
+Drop a shortcode into any page or post — for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Every widget is also a Gutenberg block: Natal Chart, Daily Horoscope, Moon Phase, Human Design Bodygraph, and Daily Tarot.
 
 = Do I need an API key? =
 
