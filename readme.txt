@@ -1,4 +1,4 @@
-=== AstroWay – Astrology & Horoscopes ===
+=== AstroWay – Astrology, Birth Chart & Horoscope Widgets ===
 Contributors: astrowayteam
 Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
