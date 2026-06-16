@@ -47,9 +47,9 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 
 == Screenshots ==
 
-1. AstroWay menu → API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu — paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
+1. AstroWay menu — API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu — paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
 2. Settings — connection, cache, and system diagnostics. Test the connection to api.astroway.info, inspect the local transient cache (size, entry count, purge), and copy a diagnostic block (PHP / WP / plugin version, key status) for support.
-3. Shortcodes reference with built-in city → lat/lon helper. Five copy-to-clipboard reference cards (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
+3. Shortcodes reference with built-in city — lat/lon helper. Five copy-to-clipboard reference cards (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
 4. Gutenberg block in the editor. Five blocks — Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot — render via ServerSideRender with live preview. Block selection and the Inspector panel work the standard WordPress way.
 5. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
 
