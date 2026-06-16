@@ -24,6 +24,15 @@ class Updater {
 			return; // PUC not loaded — wp.org Channel A continues to work.
 		}
 
+		// Channel B (custom update server) is a paid-tier feature. Anonymous and
+		// free-key installs must stay on wp.org Channel A: building PUC for them
+		// hijacks the `astroway` slug, and since update.json serves no package
+		// without a paid key it silently blocks BOTH one-click updates and wp.org
+		// active-install counting. Gate strictly on a paying tier.
+		if ( ! self::channel_b_eligible() ) {
+			return;
+		}
+
 		$puc = PucFactory::buildUpdateChecker(
 			self::METADATA_URL,
 			ASTROWAY_WP_PLUGIN_FILE,
@@ -54,6 +63,18 @@ class Updater {
 	}
 
 	/**
+	 * Whether this install should use Channel B (custom update server).
+	 * True only for paying tiers — everyone else (anonymous, free-key) stays on
+	 * wp.org Channel A so one-click updates + active-install telemetry keep working.
+	 */
+	private static function channel_b_eligible(): bool {
+		if ( ! class_exists( Tier::class ) ) {
+			return false; // Can't confirm a paid tier → stay on wp.org Channel A.
+		}
+		return in_array( Tier::current(), Tier::PAID, true );
+	}
+
+	/**
 	 * Snapshot of Channel B state for admin display.
 	 *
 	 * @return array{active:bool, channel:string, endpoint:string, has_key:bool, last_check:?int}
@@ -63,7 +84,7 @@ class Updater {
 		$opts       = (array) get_option( Admin::OPTION_KEY, [] );
 		$key        = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
 		$has_key    = '' !== $key;
-		$channel    = $has_key && $active ? 'B' : 'A';
+		$channel    = ( $active && self::channel_b_eligible() ) ? 'B' : 'A';
 		$last_check = null;
 		// PUC v5 stores last check time in `external_updates-<slug>` site option.
 		$puc_option = get_site_option( 'external_updates-astroway' );

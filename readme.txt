@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.7.2
+Stable tag: 0.7.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -88,6 +88,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.7.3 =
+* Fix: free and anonymous installs now receive updates via WordPress.org again. The bundled paid-tier update channel was registering for every install and suppressing the standard update check; it is now correctly limited to paid API keys, so one-click updates work for everyone else.
 
 = 0.7.2 =
 * Per-block tier guards: each registered Gutenberg block is now wrapped with `Tier::can( $feature )`. Locked blocks render an inline "Pro feature" CTA instead of the widget. All v1 blocks remain accessible to anonymous users (matrix default); guards activate for v1.x+ Pro blocks.
