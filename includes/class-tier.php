@@ -105,4 +105,56 @@ class Tier {
 		}
 		return in_array( self::current(), $matrix[ $feature ], true );
 	}
+
+	/**
+	 * Render a unified upgrade CTA for a locked feature.
+	 *
+	 * Filterable via `astroway_upgrade_cta_html` so themes / addons can
+	 * override the markup or copy.
+	 *
+	 * @since 0.7.4
+	 */
+	public static function render_upgrade_cta( string $feature ): string {
+		$upgrade_url = add_query_arg(
+			[
+				'source'  => 'wp_plugin',
+				'feature' => $feature,
+			],
+			'https://api.astroway.info/dashboard/upgrade'
+		);
+
+		$label = ucwords( str_replace( '_', ' ', $feature ) );
+
+		ob_start();
+		?>
+		<div class="astroway-locked" role="region" aria-label="<?php esc_attr_e( 'Locked feature', 'astroway' ); ?>">
+			<style>
+				.astroway-locked{border:1px solid #d9d3c2;border-radius:6px;padding:14px 18px;background:#fff;display:flex;align-items:center;gap:14px;color:#1a1815;font-size:14px}
+				.astroway-locked .awl-text{flex:1 1 auto;min-width:0}
+				.astroway-locked .awl-title{margin:0 0 2px;font-weight:600;color:#1a1815}
+				.astroway-locked .awl-desc{margin:0;color:#4a4640;font-size:13px}
+				.astroway-locked .awl-btn{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:4px;background:#f0b429;color:#1a1815;font-weight:500;text-decoration:none;border:1px solid #b88419}
+				.astroway-locked .awl-btn:hover{background:#ffd773}
+			</style>
+			<div class="awl-text">
+				<p class="awl-title"><?php echo esc_html( $label ); ?> — <?php esc_html_e( 'Pro feature', 'astroway' ); ?></p>
+				<p class="awl-desc"><?php esc_html_e( 'This widget is available on a paid AstroWay plan.', 'astroway' ); ?></p>
+			</div>
+			<a class="awl-btn" href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener">
+				<?php esc_html_e( 'Upgrade →', 'astroway' ); ?>
+			</a>
+		</div>
+		<?php
+		$html = (string) ob_get_clean();
+
+		/**
+		 * Filters the locked-feature upgrade CTA HTML.
+		 *
+		 * @since 0.7.4
+		 *
+		 * @param string $html    Default CTA markup.
+		 * @param string $feature Feature name being locked.
+		 */
+		return apply_filters( 'astroway_upgrade_cta_html', $html, $feature );
+	}
 }

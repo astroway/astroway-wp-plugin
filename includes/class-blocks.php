@@ -42,8 +42,7 @@ class Blocks {
 	private static function gated( string $feature, callable $callback ): callable {
 		return static function ( $atts ) use ( $feature, $callback ) {
 			if ( ! Tier::can( $feature ) ) {
-				return '<p class="astroway-locked"><strong>' . esc_html__( 'Pro feature.', 'astroway' ) . '</strong> '
-					. esc_html__( 'Upgrade your AstroWay plan to unlock this block.', 'astroway' ) . '</p>';
+				return Tier::render_upgrade_cta( $feature );
 			}
 			return call_user_func( $callback, $atts );
 		};

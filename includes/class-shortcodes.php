@@ -8,11 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Shortcodes {
 
 	public static function register(): void {
-		add_shortcode( 'astroway_natal', [ __CLASS__, 'render_natal' ] );
-		add_shortcode( 'astroway_daily_horoscope', [ __CLASS__, 'render_daily_horoscope' ] );
-		add_shortcode( 'astroway_moon_phase', [ __CLASS__, 'render_moon_phase' ] );
-		add_shortcode( 'astroway_bodygraph', [ __CLASS__, 'render_bodygraph' ] );
-		add_shortcode( 'astroway_tarot_card', [ __CLASS__, 'render_tarot_card' ] );
+		add_shortcode( 'astroway_natal', self::gated( 'natal', [ __CLASS__, 'render_natal' ] ) );
+		add_shortcode( 'astroway_daily_horoscope', self::gated( 'daily_horoscope', [ __CLASS__, 'render_daily_horoscope' ] ) );
+		add_shortcode( 'astroway_moon_phase', self::gated( 'moon_phase', [ __CLASS__, 'render_moon_phase' ] ) );
+		add_shortcode( 'astroway_bodygraph', self::gated( 'bodygraph', [ __CLASS__, 'render_bodygraph' ] ) );
+		add_shortcode( 'astroway_tarot_card', self::gated( 'daily_tarot', [ __CLASS__, 'render_tarot_card' ] ) );
 
 		/**
 		 * Fires after core shortcodes are registered.
@@ -21,6 +21,21 @@ class Shortcodes {
 		 * @since 0.6.1
 		 */
 		do_action( 'astroway_register_shortcodes' );
+	}
+
+	/**
+	 * Wrap a shortcode callback with a Tier::can() gate. v0.7.4 swaps the
+	 * inline CTA for Tier::render_upgrade_cta() helper.
+	 *
+	 * @since 0.7.3
+	 */
+	private static function gated( string $feature, callable $callback ): callable {
+		return static function ( $atts ) use ( $feature, $callback ) {
+			if ( ! Tier::can( $feature ) ) {
+				return Tier::render_upgrade_cta( $feature );
+			}
+			return call_user_func( $callback, $atts );
+		};
 	}
 
 	public static function render_natal( $atts ): string {
