@@ -32,7 +32,8 @@ class Shortcodes {
 	private static function gated( string $feature, callable $callback ): callable {
 		return static function ( $atts ) use ( $feature, $callback ) {
 			if ( ! Tier::can( $feature ) ) {
-				return Tier::render_upgrade_cta( $feature );
+				return '<p class="astroway-locked"><strong>' . esc_html__( 'Pro feature.', 'astroway' ) . '</strong> '
+					. esc_html__( 'Upgrade your AstroWay plan to unlock this shortcode.', 'astroway' ) . '</p>';
 			}
 			return call_user_func( $callback, $atts );
 		};

@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.7.4
+Stable tag: 0.7.5
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -88,6 +88,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.7.5 =
+* Per-shortcode tier guards: each core `astroway_*` shortcode is now wrapped with `Tier::can( $feature )`. Locked shortcodes render an inline "Pro feature" CTA. Behavior matches v0.7.2 block-side gating — v1 shortcodes remain anonymous-accessible.
 
 = 0.7.4 =
 * New `Tier::render_upgrade_cta( $feature )` returns a styled CTA panel with feature label + upgrade button linking to api.astroway.info/dashboard/upgrade. Filterable via `astroway_upgrade_cta_html` for theme/addon customization.
