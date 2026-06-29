@@ -87,23 +87,33 @@ class Admin {
 		);
 	}
 
+	public const RENDER_MODES = [ 'auto', 'iframe', 'client' ];
+
 	public static function sanitize_settings( $input ): array {
 		$existing = (array) get_option( self::OPTION_KEY, [] );
-		$key      = isset( $input['api_key'] ) ? trim( (string) $input['api_key'] ) : '';
 
-		if ( '' === $key || preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $key ) ) {
-			$existing['api_key'] = $key;
-			// Invalidate any cached /me payload for the previous key
-			if ( ! empty( $input['api_key'] ) ) {
-				Cache::delete( 'keys_me_' . md5( $key ) );
+		if ( isset( $input['api_key'] ) ) {
+			$key = trim( (string) $input['api_key'] );
+			if ( '' === $key || preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $key ) ) {
+				$existing['api_key'] = $key;
+				// Invalidate any cached /me payload for the previous key
+				if ( '' !== $key ) {
+					Cache::delete( 'keys_me_' . md5( $key ) );
+				}
+			} else {
+				add_settings_error(
+					self::PAGE_API_KEY,
+					'invalid_key',
+					__( 'API key must start with "aw_" and contain only letters, digits, and underscores.', 'astroway' )
+				);
 			}
-		} else {
-			add_settings_error(
-				self::PAGE_API_KEY,
-				'invalid_key',
-				__( 'API key must start with "aw_" and contain only letters, digits, and underscores.', 'astroway' )
-			);
 		}
+
+		if ( isset( $input['render_mode'] ) ) {
+			$mode                    = (string) $input['render_mode'];
+			$existing['render_mode'] = in_array( $mode, self::RENDER_MODES, true ) ? $mode : 'auto';
+		}
+
 		return $existing;
 	}
 

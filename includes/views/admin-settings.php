@@ -16,6 +16,9 @@ $astroway_api_host     = wp_parse_url( ASTROWAY_API_BASE, PHP_URL_HOST );
 $astroway_hero_title   = __( 'Settings', 'astroway' );
 $astroway_hero_tagline = __( 'Connection, cache, diagnostics.', 'astroway' );
 
+$astroway_opts        = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
+$astroway_render_mode = isset( $astroway_opts['render_mode'] ) ? (string) $astroway_opts['render_mode'] : 'auto';
+
 $astroway_diag = [
 	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
 	[ __( 'WordPress', 'astroway' ), get_bloginfo( 'version' ) . ( is_multisite() ? ' (multisite)' : '' ) ],
@@ -119,6 +122,40 @@ $astroway_diag = [
 				}
 				?>
 				</textarea>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="04">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">04</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Render mode', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'how widgets render on the front-end', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<fieldset>
+						<label style="display:flex;gap:8px;margin-bottom:6px;align-items:flex-start">
+							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="auto" <?php checked( $astroway_render_mode, 'auto' ); ?>>
+							<span><strong><?php esc_html_e( 'Auto (recommended)', 'astroway' ); ?></strong><br>
+								<span class="aw-hint"><?php esc_html_e( 'Plugin decides per widget: iframe for anonymous/free tiers, native client when paid tier supports it (v1.1+).', 'astroway' ); ?></span>
+							</span>
+						</label>
+						<label style="display:flex;gap:8px;margin-bottom:6px;align-items:flex-start">
+							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="iframe" <?php checked( $astroway_render_mode, 'iframe' ); ?>>
+							<span><strong><?php esc_html_e( 'Force iframe', 'astroway' ); ?></strong><br>
+								<span class="aw-hint"><?php esc_html_e( 'All widgets render as iframes via /v1/embed/*. Slower first paint, lower JS footprint, full ad-blocker safety.', 'astroway' ); ?></span>
+							</span>
+						</label>
+						<label style="display:flex;gap:8px;align-items:flex-start">
+							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="client" <?php checked( $astroway_render_mode, 'client' ); ?>>
+							<span><strong><?php esc_html_e( 'Force client', 'astroway' ); ?></strong><br>
+								<span class="aw-hint"><?php esc_html_e( 'Native render for all supported widgets (paid tiers, v1.1+). Falls back to iframe for widgets without native support.', 'astroway' ); ?></span>
+							</span>
+						</label>
+					</fieldset>
+					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+				</form>
 			</div>
 		</article>
 
