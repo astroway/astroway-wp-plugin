@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -88,6 +88,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.8.1 =
+* New Settings panel "Spend cap" — local mirror of the monthly USD ceiling configurable at api.astroway.info/dashboard/billing. Stored as integer 0..100000 in OPTION_KEY['spend_cap_usd'].
 
 = 0.8.0 =
 * New Settings panel "Render mode" with radio toggle: Auto (default) / Force iframe / Force client. Stored in OPTION_KEY['render_mode']. RendererDecisions wiring lands when native client widgets ship in v1.1+.

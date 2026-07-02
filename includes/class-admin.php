@@ -114,6 +114,11 @@ class Admin {
 			$existing['render_mode'] = in_array( $mode, self::RENDER_MODES, true ) ? $mode : 'auto';
 		}
 
+		if ( isset( $input['spend_cap_usd'] ) ) {
+			$cap                       = (int) $input['spend_cap_usd'];
+			$existing['spend_cap_usd'] = max( 0, min( 100000, $cap ) );
+		}
+
 		return $existing;
 	}
 

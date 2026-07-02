@@ -16,8 +16,9 @@ $astroway_api_host     = wp_parse_url( ASTROWAY_API_BASE, PHP_URL_HOST );
 $astroway_hero_title   = __( 'Settings', 'astroway' );
 $astroway_hero_tagline = __( 'Connection, cache, diagnostics.', 'astroway' );
 
-$astroway_opts        = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
-$astroway_render_mode = isset( $astroway_opts['render_mode'] ) ? (string) $astroway_opts['render_mode'] : 'auto';
+$astroway_opts          = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
+$astroway_render_mode   = isset( $astroway_opts['render_mode'] ) ? (string) $astroway_opts['render_mode'] : 'auto';
+$astroway_spend_cap_usd = isset( $astroway_opts['spend_cap_usd'] ) ? (int) $astroway_opts['spend_cap_usd'] : 0;
 
 $astroway_diag = [
 	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
@@ -155,6 +156,37 @@ $astroway_diag = [
 						</label>
 					</fieldset>
 					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+				</form>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="05">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">05</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Spend cap', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'monthly USD ceiling for paid api usage', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<label style="display:flex;flex-direction:column;gap:6px;max-width:280px">
+						<span><?php esc_html_e( 'Max USD per month (0 = unlimited)', 'astroway' ); ?></span>
+						<input type="number" min="0" max="100000" step="1"
+							name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[spend_cap_usd]"
+							value="<?php echo esc_attr( (string) $astroway_spend_cap_usd ); ?>"
+							class="aw-input"
+							style="padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px;font-size:14px">
+					</label>
+					<p class="aw-hint" style="margin-top:8px">
+						<?php
+						printf(
+							/* translators: %s = api dashboard URL */
+							esc_html__( 'Mirror of the cap configurable at %s. The api enforces it; this field locally caches the value for display purposes.', 'astroway' ),
+							'<a href="https://api.astroway.info/dashboard/billing" target="_blank" rel="noopener">api.astroway.info/dashboard/billing</a>'
+						);
+						?>
+					</p>
+					<?php submit_button( __( 'Save spend cap', 'astroway' ), 'aw-btn', 'submit', false ); ?>
 				</form>
 			</div>
 		</article>
