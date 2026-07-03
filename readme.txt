@@ -12,9 +12,11 @@ Astrology & horoscope widgets for WordPress: birth & natal charts, synastry, Tar
 
 == Description ==
 
-Add astrological calculations to any WordPress page or post via shortcodes or Gutenberg blocks. Powered by api.astroway.info — 700+ endpoints covering Western, Vedic, Hellenistic, Chinese, Mayan astrology + Tarot (Rider-Waite, Marseille, Lenormand) + Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil) + Human Design + AI horoscopes.
+Add astrology and horoscope widgets to any WordPress page or post via shortcodes or Gutenberg blocks: natal and birth charts, synastry, Tarot, Numerology, Human Design, moon phase and daily horoscopes.
 
-**Works without an API key** in anonymous mode (30 requests/hour per visitor IP). Get a free API key at api.astroway.info/dashboard/sign-up for 10,000 credits/month and higher rate limits.
+**Free and open source. No account, no API key, and no credit card required.** The core widgets render out of the box in anonymous mode (30 requests/hour per visitor IP), which is enough for most blogs and small sites. Need more volume? A free API key (still no card) raises the limit to 10,000 calls/month, and paid plans are optional and only unlock advanced Pro widgets.
+
+Under the hood the widgets are powered by api.astroway.info, with 700+ endpoints covering Western, Vedic, Hellenistic, Chinese and Mayan astrology, Tarot (Rider-Waite, Marseille, Lenormand), Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil), Human Design and AI horoscopes.
 
 == Installation ==
 
@@ -24,6 +26,10 @@ Add astrological calculations to any WordPress page or post via shortcodes or Gu
 4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]`.
 
 == Frequently Asked Questions ==
+
+= Is AstroWay free? Are there any hidden costs? =
+
+Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. They render in anonymous mode (30 requests/hour per visitor IP), which is plenty for most blogs and small sites. If you need higher limits, a free API key (still no card) gives you 10,000 calls/month. Paid plans are optional and only unlock advanced Pro widgets; anything you have already added keeps working.
 
 = How do I add a horoscope or birth chart to WordPress? =
 
