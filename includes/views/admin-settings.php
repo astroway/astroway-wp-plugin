@@ -19,6 +19,9 @@ $astroway_hero_tagline = __( 'Connection, cache, diagnostics.', 'astroway' );
 $astroway_opts          = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
 $astroway_render_mode   = isset( $astroway_opts['render_mode'] ) ? (string) $astroway_opts['render_mode'] : 'auto';
 $astroway_spend_cap_usd = isset( $astroway_opts['spend_cap_usd'] ) ? (int) $astroway_opts['spend_cap_usd'] : 0;
+$astroway_matrix        = \AstroWay\WPPlugin\Tier::matrix();
+$astroway_current_tier  = \AstroWay\WPPlugin\Tier::current();
+$astroway_tier_columns  = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business' ];
 
 $astroway_diag = [
 	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
@@ -188,6 +191,51 @@ $astroway_diag = [
 					</p>
 					<?php submit_button( __( 'Save spend cap', 'astroway' ), 'aw-btn', 'submit', false ); ?>
 				</form>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="06">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">06</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Feature matrix', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint">
+					<?php
+					printf(
+						/* translators: %s = current tier */
+						esc_html__( 'current tier: %s', 'astroway' ),
+						'<strong>' . esc_html( $astroway_current_tier ) . '</strong>'
+					);
+					?>
+				</span>
+			</header>
+			<div class="aw-panel-body">
+				<table class="aw-matrix" style="border-collapse:collapse;font-size:13px">
+					<thead>
+						<tr>
+							<th style="text-align:left;padding:6px 10px;border-bottom:1px solid #d9d3c2"><?php esc_html_e( 'Feature', 'astroway' ); ?></th>
+							<?php foreach ( $astroway_tier_columns as $astroway_tier_col ) : ?>
+								<th style="padding:6px 10px;border-bottom:1px solid #d9d3c2;text-transform:capitalize;<?php echo $astroway_tier_col === $astroway_current_tier ? 'background:#fff7e0' : ''; ?>">
+									<?php echo esc_html( $astroway_tier_col ); ?>
+								</th>
+							<?php endforeach; ?>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ( $astroway_matrix as $astroway_feature => $astroway_allowed_tiers ) : ?>
+							<tr>
+								<td style="padding:6px 10px;border-bottom:1px solid #f0ece2"><code><?php echo esc_html( $astroway_feature ); ?></code></td>
+								<?php foreach ( $astroway_tier_columns as $astroway_tier_col ) : ?>
+									<td style="text-align:center;padding:6px 10px;border-bottom:1px solid #f0ece2;<?php echo $astroway_tier_col === $astroway_current_tier ? 'background:#fff7e0' : ''; ?>">
+										<?php echo in_array( $astroway_tier_col, $astroway_allowed_tiers, true ) ? '<span style="color:#5a8f3f">✓</span>' : '<span style="color:#c0c0c0">·</span>'; ?>
+									</td>
+								<?php endforeach; ?>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<p class="aw-hint" style="margin-top:8px">
+					<?php esc_html_e( 'Matrix is filterable via the `astroway_tier_matrix` filter — addons can append their own features.', 'astroway' ); ?>
+				</p>
 			</div>
 		</article>
 
