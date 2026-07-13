@@ -23,6 +23,7 @@ class Admin {
 		add_action( 'wp_ajax_astroway_ping_health', [ __CLASS__, 'ajax_ping_health' ] );
 		add_action( 'wp_ajax_astroway_purge_cache', [ __CLASS__, 'ajax_purge_cache' ] );
 		add_action( 'wp_ajax_astroway_atlas_search', [ __CLASS__, 'ajax_atlas_search' ] );
+		add_action( 'wp_ajax_astroway_domain_change', [ __CLASS__, 'ajax_domain_change' ] );
 
 		$basename = plugin_basename( ASTROWAY_WP_PLUGIN_FILE );
 		add_filter( 'plugin_action_links_' . $basename, [ __CLASS__, 'plugin_action_links' ] );
@@ -298,6 +299,58 @@ class Admin {
 			wp_send_json_error( null, 403 );
 		}
 		wp_send_json_success( [ 'purged' => Cache::purge_all() ] );
+	}
+
+	/**
+	 * POST {new_domain} to api.astroway.info to request rebinding the
+	 * configured key to a different domain. Surfaces api response verbatim;
+	 * if the endpoint returns 404, the api hasn't shipped it yet — the
+	 * dashboard link below the button is the manual fallback.
+	 *
+	 * @since 0.8.3
+	 */
+	public static function ajax_domain_change(): void {
+		check_ajax_referer( 'astroway_admin', 'nonce' );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( null, 403 );
+		}
+		$opts = (array) get_option( self::OPTION_KEY, [] );
+		$key  = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
+		if ( '' === $key ) {
+			wp_send_json_error( [ 'message' => __( 'API key required.', 'astroway' ) ] );
+		}
+		$new_domain = isset( $_POST['new_domain'] ) ? sanitize_text_field( wp_unslash( $_POST['new_domain'] ) ) : '';
+		if ( '' === $new_domain || ! preg_match( '/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i', $new_domain ) ) {
+			wp_send_json_error( [ 'message' => __( 'Enter a valid domain (e.g. example.com).', 'astroway' ) ] );
+		}
+
+		$res = wp_remote_post(
+			ASTROWAY_API_BASE . '/auth/keys/domain-change',
+			[
+				'timeout' => 6,
+				'headers' => [
+					'Accept'       => 'application/json',
+					'Content-Type' => 'application/json',
+					'X-Api-Key'    => $key,
+				],
+				'body'    => wp_json_encode( [ 'new_domain' => $new_domain ] ),
+			]
+		);
+		if ( is_wp_error( $res ) ) {
+			wp_send_json_error( [ 'message' => $res->get_error_message() ] );
+		}
+		$code = (int) wp_remote_retrieve_response_code( $res );
+		$body = json_decode( wp_remote_retrieve_body( $res ), true );
+		if ( 200 === $code ) {
+			Cache::delete( 'keys_me_' . md5( $key ) );
+			wp_send_json_success( $body );
+		}
+		wp_send_json_error(
+			[
+				'status'  => $code,
+				'message' => $body['error'] ?? __( 'Domain change failed. Use the dashboard link below.', 'astroway' ),
+			]
+		);
 	}
 
 	/**

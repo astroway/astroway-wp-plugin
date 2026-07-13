@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.8.2
+Stable tag: 0.8.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -94,6 +94,10 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.8.3 =
+* New Settings panel "Domain binding" — shows current domain attached to the key + input to request rebinding via POST /v1/auth/keys/domain-change. Manual fallback link to api dashboard if the endpoint returns an error.
+* Closes admin enhancements stack (v0.8.0-v0.8.3).
 
 = 0.8.2 =
 * New Settings panel "Feature matrix" — visual grid of features × tiers with checkmarks. Highlights the current tier's column. Reads from `Tier::matrix()` so addon-registered features appear automatically.

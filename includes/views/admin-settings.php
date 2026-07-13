@@ -23,6 +23,14 @@ $astroway_matrix        = \AstroWay\WPPlugin\Tier::matrix();
 $astroway_current_tier  = \AstroWay\WPPlugin\Tier::current();
 $astroway_tier_columns  = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business' ];
 
+// Current domain binding (from cached /me response if api key is set).
+$astroway_current_domain = '';
+if ( '' !== (string) ( $astroway_opts['api_key'] ?? '' ) ) {
+	$astroway_client         = new \AstroWay\WPPlugin\ApiClient();
+	$astroway_me             = $astroway_client->get_keys_me();
+	$astroway_current_domain = (string) ( $astroway_me['data']['data']['domain'] ?? '' );
+}
+
 $astroway_diag = [
 	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
 	[ __( 'WordPress', 'astroway' ), get_bloginfo( 'version' ) . ( is_multisite() ? ' (multisite)' : '' ) ],
@@ -236,6 +244,74 @@ $astroway_diag = [
 				<p class="aw-hint" style="margin-top:8px">
 					<?php esc_html_e( 'Matrix is filterable via the `astroway_tier_matrix` filter — addons can append their own features.', 'astroway' ); ?>
 				</p>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="07">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">07</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Domain binding', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint">
+					<?php
+					if ( '' !== $astroway_current_domain ) {
+						printf(
+							/* translators: %s = current domain */
+							esc_html__( 'bound to: %s', 'astroway' ),
+							'<code>' . esc_html( $astroway_current_domain ) . '</code>'
+						);
+					} else {
+						esc_html_e( 'no domain binding yet', 'astroway' );
+					}
+					?>
+				</span>
+			</header>
+			<div class="aw-panel-body">
+				<div class="aw-inline-action" style="gap:8px">
+					<input type="text" id="aw-new-domain" placeholder="example.com" class="aw-input"
+						style="padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px;font-size:14px;width:240px">
+					<button type="button" class="aw-btn aw-btn-ghost" id="aw-domain-change-btn">
+						<?php esc_html_e( 'Request rebind', 'astroway' ); ?>
+					</button>
+					<span id="aw-domain-change-result" class="aw-test-result"></span>
+				</div>
+				<p class="aw-hint" style="margin-top:8px">
+					<?php
+					printf(
+						/* translators: %s = api dashboard URL */
+						esc_html__( 'Manual fallback: %s.', 'astroway' ),
+						'<a href="https://api.astroway.info/dashboard/account" target="_blank" rel="noopener">api.astroway.info/dashboard/account</a>'
+					);
+					?>
+				</p>
+				<script>
+				(function(){
+					var btn = document.getElementById('aw-domain-change-btn');
+					if (!btn) return;
+					btn.addEventListener('click', function(){
+						var input = document.getElementById('aw-new-domain');
+						var out = document.getElementById('aw-domain-change-result');
+						var d = (input.value || '').trim();
+						if (!d) { out.textContent = '<?php echo esc_js( __( 'Enter a domain first.', 'astroway' ) ); ?>'; return; }
+						btn.disabled = true; out.textContent = '<?php echo esc_js( __( 'Requesting…', 'astroway' ) ); ?>';
+						var fd = new FormData();
+						fd.append('action', 'astroway_domain_change');
+						fd.append('nonce', astrowayAdmin.nonce);
+						fd.append('new_domain', d);
+						fetch(ajaxurl, { method:'POST', body:fd })
+							.then(function(r){ return r.json(); })
+							.then(function(j){
+								btn.disabled = false;
+								out.textContent = j.success
+									? '<?php echo esc_js( __( '✓ requested', 'astroway' ) ); ?>'
+									: '✗ ' + (j.data && j.data.message ? j.data.message : '<?php echo esc_js( __( 'failed', 'astroway' ) ); ?>');
+							})
+							.catch(function(){
+								btn.disabled = false;
+								out.textContent = '<?php echo esc_js( __( 'Network error', 'astroway' ) ); ?>';
+							});
+					});
+				})();
+				</script>
 			</div>
 		</article>
 
