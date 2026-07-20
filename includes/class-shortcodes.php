@@ -13,6 +13,7 @@ class Shortcodes {
 		add_shortcode( 'astroway_moon_phase', self::gated( 'moon_phase', [ __CLASS__, 'render_moon_phase' ] ) );
 		add_shortcode( 'astroway_bodygraph', self::gated( 'bodygraph', [ __CLASS__, 'render_bodygraph' ] ) );
 		add_shortcode( 'astroway_tarot_card', self::gated( 'daily_tarot', [ __CLASS__, 'render_tarot_card' ] ) );
+		add_shortcode( 'astroway_today_in_sky', self::gated( 'today_in_sky', [ __CLASS__, 'render_today_in_sky' ] ) );
 
 		/**
 		 * Fires after core shortcodes are registered.
@@ -32,8 +33,7 @@ class Shortcodes {
 	private static function gated( string $feature, callable $callback ): callable {
 		return static function ( $atts ) use ( $feature, $callback ) {
 			if ( ! Tier::can( $feature ) ) {
-				return '<p class="astroway-locked"><strong>' . esc_html__( 'Pro feature.', 'astroway' ) . '</strong> '
-					. esc_html__( 'Upgrade your AstroWay plan to unlock this shortcode.', 'astroway' ) . '</p>';
+				return Tier::render_upgrade_cta( $feature );
 			}
 			return call_user_func( $callback, $atts );
 		};
@@ -127,6 +127,22 @@ class Shortcodes {
 			'tarot_daily',
 			[
 				'deck' => self::sanitize_deck( $atts['deck'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
+	public static function render_today_in_sky( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_today_in_sky'
+		);
+		return PublicClient::embed_iframe(
+			'today_in_sky',
+			[
 				'lang' => self::resolve_lang( $atts['lang'] ),
 			]
 		);

@@ -65,6 +65,14 @@ class RendererDecisions {
 				],
 				'params'       => [ 'deck', 'lang' ],
 			],
+			'today_in_sky'    => [
+				'embed_path'   => 'today-in-sky',
+				'iframe_attrs' => [
+					'width'  => '460',
+					'height' => '360',
+				],
+				'params'       => [ 'lang' ],
+			],
 		];
 	}
 

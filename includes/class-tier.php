@@ -79,6 +79,7 @@ class Tier {
 			'moon_phase'             => $all_tiers,
 			'bodygraph'              => $all_tiers,
 			'daily_tarot'            => $all_tiers,
+			'today_in_sky'           => $all_tiers,
 			// Paid-only (v0.8+ features).
 			'synastry'               => $paid_plus,
 			'solar_return'           => $paid_plus,
