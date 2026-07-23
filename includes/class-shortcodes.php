@@ -135,7 +135,8 @@ class Shortcodes {
 	public static function render_today_in_sky( $atts ): string {
 		$atts = shortcode_atts(
 			[
-				'lang' => '',
+				'lang'       => '',
+				'show_signs' => '1',
 			],
 			(array) $atts,
 			'astroway_today_in_sky'
@@ -143,9 +144,14 @@ class Shortcodes {
 		return PublicClient::embed_iframe(
 			'today_in_sky',
 			[
-				'lang' => self::resolve_lang( $atts['lang'] ),
+				'lang'       => self::resolve_lang( $atts['lang'] ),
+				'show_signs' => self::sanitize_bool_flag( $atts['show_signs'] ),
 			]
 		);
+	}
+
+	public static function sanitize_bool_flag( $value ): string {
+		return in_array( strtolower( (string) $value ), [ '1', 'true', 'yes', 'on' ], true ) ? '1' : '0';
 	}
 
 	/**
