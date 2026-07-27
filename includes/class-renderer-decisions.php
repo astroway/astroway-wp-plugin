@@ -71,7 +71,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '360',
 				],
-				'params'       => [ 'lang', 'show_signs' ],
+				'params'       => [ 'lang', 'show_signs', 'show_retrograde' ],
 			],
 		];
 	}

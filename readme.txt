@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.9.1
+Stable tag: 0.9.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -94,6 +94,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 0.9.2 =
+* `[astroway_today_in_sky]` accepts `show_retrograde` parameter (default `1`) — toggles the Mercury retrograde indicator section. SEO-friendly viral content for retrograde periods.
 
 = 0.9.1 =
 * `[astroway_today_in_sky]` accepts `show_signs` parameter (default `1`) — toggles the Sun/Moon zodiac positions block. New `sanitize_bool_flag()` helper added as public static for addon reuse.
