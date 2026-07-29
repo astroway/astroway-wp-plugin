@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/kundli",
+	"title": "AstroWay: Vedic Kundli",
+	"category": "widgets",
+	"description": "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "star-filled",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date":  { "type": "string", "default": "" },
+		"time":  { "type": "string", "default": "" },
+		"lat":   { "type": "string", "default": "" },
+		"lon":   { "type": "string", "default": "" },
+		"tz":    { "type": "string", "default": "" },
+		"theme": { "type": "string", "default": "" },
+		"lang":  { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

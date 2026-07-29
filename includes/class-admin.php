@@ -67,11 +67,9 @@ class Admin {
 	}
 
 	private static function menu_icon_data_uri(): string {
-		// WP rewrites SVG fill colors to current admin scheme; outline disc + star cutout (evenodd fill-rule)
-		// reads as "star inside orbit" silhouette regardless of which solid color WP injects.
-		$svg = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">'
-			. '<path fill="#fff" fill-rule="evenodd" d="M10 1A9 9 0 1 0 10 19A9 9 0 1 0 10 1ZM10 5L11.32 7.98L14.58 8.29L12.12 10.44L12.85 13.63L10 11.96L7.15 13.63L7.88 10.44L5.42 8.29L8.68 7.98Z"/>'
-			. '</svg>';
+		// Brand owl mark, white fill — WP dims it via .wp-menu-image.svg opacity on the dark sidebar.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local bundled asset, not a remote URL.
+		$svg = (string) file_get_contents( ASTROWAY_WP_PLUGIN_DIR . 'assets/img/menu-icon-owl.svg' );
 		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- legit inline SVG embed for admin menu icon.
 		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
@@ -118,6 +116,12 @@ class Admin {
 		if ( isset( $input['spend_cap_usd'] ) ) {
 			$cap                       = (int) $input['spend_cap_usd'];
 			$existing['spend_cap_usd'] = max( 0, min( 100000, $cap ) );
+		}
+
+		// Checkbox: the hidden _submitted marker tells this form apart from the
+		// other settings forms (an unchecked box sends no value of its own).
+		if ( isset( $input['widget_disclaimer_submitted'] ) ) {
+			$existing['widget_disclaimer'] = empty( $input['widget_disclaimer'] ) ? 0 : 1;
 		}
 
 		return $existing;
@@ -186,6 +190,7 @@ class Admin {
 						'domain'       => __( 'Bound to', 'astroway' ),
 						'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
 						'networkError' => __( 'Network error', 'astroway' ),
+						'keyValid'     => __( 'Key verified.', 'astroway' ),
 					],
 				]
 			);
@@ -281,7 +286,20 @@ class Admin {
 		if ( ! $client->has_key() ) {
 			wp_send_json_error( [ 'message' => __( 'No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP).', 'astroway' ) ] );
 		}
-		wp_send_json_success( $client->get_keys_me( true ) );
+		$result = $client->get_keys_me( true );
+		$status = (int) ( $result['status'] ?? 0 );
+		// Anything but 200 is a real failure — surface it as an error so the UI
+		// shows a red message instead of an empty green "success" panel.
+		if ( 200 !== $status ) {
+			if ( 401 === $status ) {
+				$message = __( 'Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear the field for anonymous mode.', 'astroway' );
+			} else {
+				/* translators: %d is the HTTP status code returned by the API. */
+				$message = sprintf( __( 'Could not verify the key (HTTP %d).', 'astroway' ), $status );
+			}
+			wp_send_json_error( [ 'message' => $message ] );
+		}
+		wp_send_json_success( $result );
 	}
 
 	public static function ajax_ping_health(): void {

@@ -16,12 +16,10 @@ $astroway_api_host     = wp_parse_url( ASTROWAY_API_BASE, PHP_URL_HOST );
 $astroway_hero_title   = __( 'Settings', 'astroway' );
 $astroway_hero_tagline = __( 'Connection, cache, diagnostics.', 'astroway' );
 
-$astroway_opts          = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
-$astroway_render_mode   = isset( $astroway_opts['render_mode'] ) ? (string) $astroway_opts['render_mode'] : 'auto';
-$astroway_spend_cap_usd = isset( $astroway_opts['spend_cap_usd'] ) ? (int) $astroway_opts['spend_cap_usd'] : 0;
-$astroway_matrix        = \AstroWay\WPPlugin\Tier::matrix();
-$astroway_current_tier  = \AstroWay\WPPlugin\Tier::current();
-$astroway_tier_columns  = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business' ];
+$astroway_opts         = (array) get_option( \AstroWay\WPPlugin\Admin::OPTION_KEY, [] );
+$astroway_matrix       = \AstroWay\WPPlugin\Tier::matrix();
+$astroway_current_tier = \AstroWay\WPPlugin\Tier::current();
+$astroway_tier_columns = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business' ];
 
 // Current domain binding (from cached /me response if api key is set).
 $astroway_current_domain = '';
@@ -43,6 +41,9 @@ $astroway_diag = [
 ];
 ?>
 <div class="wrap aw-app">
+
+	<?php // WP moves admin notices here; without the marker they land inside our hero. ?>
+	<hr class="wp-header-end">
 
 	<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-hero.php'; ?>
 
@@ -140,71 +141,6 @@ $astroway_diag = [
 		<article class="aw-panel" data-num="04">
 			<header class="aw-panel-head">
 				<span class="aw-panel-num" aria-hidden="true">04</span>
-				<h2 class="aw-panel-title"><?php esc_html_e( 'Render mode', 'astroway' ); ?></h2>
-				<span class="aw-panel-hint"><?php esc_html_e( 'how widgets render on the front-end', 'astroway' ); ?></span>
-			</header>
-			<div class="aw-panel-body">
-				<form method="post" action="options.php">
-					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
-					<fieldset>
-						<label style="display:flex;gap:8px;margin-bottom:6px;align-items:flex-start">
-							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="auto" <?php checked( $astroway_render_mode, 'auto' ); ?>>
-							<span><strong><?php esc_html_e( 'Auto (recommended)', 'astroway' ); ?></strong><br>
-								<span class="aw-hint"><?php esc_html_e( 'Plugin decides per widget: iframe for anonymous/free tiers, native client when paid tier supports it (v1.1+).', 'astroway' ); ?></span>
-							</span>
-						</label>
-						<label style="display:flex;gap:8px;margin-bottom:6px;align-items:flex-start">
-							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="iframe" <?php checked( $astroway_render_mode, 'iframe' ); ?>>
-							<span><strong><?php esc_html_e( 'Force iframe', 'astroway' ); ?></strong><br>
-								<span class="aw-hint"><?php esc_html_e( 'All widgets render as iframes via /v1/embed/*. Slower first paint, lower JS footprint, full ad-blocker safety.', 'astroway' ); ?></span>
-							</span>
-						</label>
-						<label style="display:flex;gap:8px;align-items:flex-start">
-							<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="client" <?php checked( $astroway_render_mode, 'client' ); ?>>
-							<span><strong><?php esc_html_e( 'Force client', 'astroway' ); ?></strong><br>
-								<span class="aw-hint"><?php esc_html_e( 'Native render for all supported widgets (paid tiers, v1.1+). Falls back to iframe for widgets without native support.', 'astroway' ); ?></span>
-							</span>
-						</label>
-					</fieldset>
-					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn', 'submit', false ); ?>
-				</form>
-			</div>
-		</article>
-
-		<article class="aw-panel" data-num="05">
-			<header class="aw-panel-head">
-				<span class="aw-panel-num" aria-hidden="true">05</span>
-				<h2 class="aw-panel-title"><?php esc_html_e( 'Spend cap', 'astroway' ); ?></h2>
-				<span class="aw-panel-hint"><?php esc_html_e( 'monthly USD ceiling for paid api usage', 'astroway' ); ?></span>
-			</header>
-			<div class="aw-panel-body">
-				<form method="post" action="options.php">
-					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
-					<label style="display:flex;flex-direction:column;gap:6px;max-width:280px">
-						<span><?php esc_html_e( 'Max USD per month (0 = unlimited)', 'astroway' ); ?></span>
-						<input type="number" min="0" max="100000" step="1"
-							name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[spend_cap_usd]"
-							value="<?php echo esc_attr( (string) $astroway_spend_cap_usd ); ?>"
-							class="aw-input"
-							style="padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px;font-size:14px">
-					</label>
-					<p class="aw-hint" style="margin-top:8px">
-						<?php
-						printf(
-							/* translators: %s = api dashboard URL */
-							esc_html__( 'Mirror of the cap configurable at %s. The api enforces it; this field locally caches the value for display purposes.', 'astroway' ),
-							'<a href="https://api.astroway.info/dashboard/billing" target="_blank" rel="noopener">api.astroway.info/dashboard/billing</a>'
-						);
-						?>
-					</p>
-					<?php submit_button( __( 'Save spend cap', 'astroway' ), 'aw-btn', 'submit', false ); ?>
-				</form>
-			</div>
-		</article>
-
-		<article class="aw-panel" data-num="06">
-			<header class="aw-panel-head">
-				<span class="aw-panel-num" aria-hidden="true">06</span>
 				<h2 class="aw-panel-title"><?php esc_html_e( 'Feature matrix', 'astroway' ); ?></h2>
 				<span class="aw-panel-hint">
 					<?php
@@ -247,9 +183,9 @@ $astroway_diag = [
 			</div>
 		</article>
 
-		<article class="aw-panel" data-num="07">
+		<article class="aw-panel" data-num="05">
 			<header class="aw-panel-head">
-				<span class="aw-panel-num" aria-hidden="true">07</span>
+				<span class="aw-panel-num" aria-hidden="true">05</span>
 				<h2 class="aw-panel-title"><?php esc_html_e( 'Domain binding', 'astroway' ); ?></h2>
 				<span class="aw-panel-hint">
 					<?php
@@ -312,6 +248,27 @@ $astroway_diag = [
 					});
 				})();
 				</script>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="06">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">06</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Widget disclaimer', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'optional legal line in the widget footer', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<input type="hidden" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[widget_disclaimer_submitted]" value="1">
+					<label style="display:flex;gap:8px;align-items:flex-start">
+						<input type="checkbox" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[widget_disclaimer]" value="1" <?php checked( ! empty( $astroway_opts['widget_disclaimer'] ) ); ?>>
+						<span><strong><?php esc_html_e( 'Show a disclaimer in embedded widgets', 'astroway' ); ?></strong><br>
+							<span class="aw-hint"><?php esc_html_e( 'Appends a short "informational, not professional advice" line to the widget footer. Off by default — enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info.', 'astroway' ); ?></span>
+						</span>
+					</label>
+					<?php submit_button( __( 'Save disclaimer setting', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+				</form>
 			</div>
 		</article>
 

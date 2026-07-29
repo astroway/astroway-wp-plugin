@@ -16,6 +16,11 @@ class Blocks {
 			'moon-phase'      => [ Shortcodes::class, 'render_moon_phase' ],
 			'bodygraph'       => [ Shortcodes::class, 'render_bodygraph' ],
 			'daily-tarot'     => [ Shortcodes::class, 'render_tarot_card' ],
+			'kundli'          => [ Shortcodes::class, 'render_kundli' ],
+			'transit'         => [ Shortcodes::class, 'render_transit' ],
+			'panchang'        => [ Shortcodes::class, 'render_panchang' ],
+			'numerology'      => [ Shortcodes::class, 'render_numerology' ],
+			'synastry'        => [ Shortcodes::class, 'render_synastry' ],
 		];
 	}
 

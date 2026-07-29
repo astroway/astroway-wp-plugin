@@ -21,6 +21,13 @@ class PublicClient {
 			}
 		);
 
+		// Opt-in legal disclaimer in the widget footer (Settings → AstroWay).
+		// The api renders it when disclaimer=1; off by default to protect conversion.
+		$opts = (array) get_option( Admin::OPTION_KEY, [] );
+		if ( ! empty( $opts['widget_disclaimer'] ) ) {
+			$filtered['disclaimer'] = '1';
+		}
+
 		$base = ASTROWAY_API_BASE . '/embed/' . $config['embed_path'];
 		return empty( $filtered ) ? $base : add_query_arg( $filtered, $base );
 	}
@@ -36,13 +43,10 @@ class PublicClient {
 			return '';
 		}
 
-		// Anonymous tier may be over the 30/h per-IP limit — skip rendering ugly
-		// JSON error in iframe; admin notice instead points the owner at signup.
-		if ( self::rate_limit_active() ) {
-			update_option( 'astroway_rate_limit_hit_at', time(), false );
-			return '';
-		}
-
+		// No probe here on purpose. The probe measures this server's IP quota,
+		// but the iframe is fetched by the visitor's browser against the
+		// visitor's own quota. Suppressing the render on a server-side signal
+		// blanked widgets for every visitor whose quota was untouched.
 		$attrs       = array_merge( $config['iframe_attrs'], $overrides );
 		$widget_slug = str_replace( '_', '-', $widget );
 
@@ -66,12 +70,13 @@ class PublicClient {
 	 * exhausted (x-ratelimit-remaining < 3 OR HTTP 429). Skipped entirely when
 	 * a paid API key is configured (Tier::current() != 'anonymous').
 	 *
-	 * Cached for 5 min in a transient so we don't add an api hit per shortcode
-	 * render. Reflects the WP server's own IP rate limit, not visitors' — the
-	 * api side needs to send postMessage on rate-limit for fully accurate
-	 * per-visitor hiding.
+	 * Cached for 5 min in a transient so we don't add an api hit per call.
+	 * Reflects the WP server's own IP quota, not visitors', so it may only
+	 * drive the admin notice. Front-end rendering must never depend on it.
+	 * Called from the admin notice path only, which is why the front end no
+	 * longer spends up to 12 requests per hour of the server quota on probes.
 	 */
-	private static function rate_limit_active(): bool {
+	public static function rate_limit_active(): bool {
 		// Skip the probe for paid tiers (Tier class arrives in v0.7.0). When the
 		// class isn't loaded yet — pre-v0.7.0 ZIPs — we still probe everyone,
 		// which is fine because paid tiers have rate caps high enough that
@@ -100,6 +105,10 @@ class PublicClient {
 		$limited = ( 429 === $code ) || ( null !== $remaining && $remaining < 3 );
 		set_transient( 'astroway_rate_limit_probe', $limited ? 'limited' : 'ok', 5 * MINUTE_IN_SECONDS );
 
+		if ( $limited ) {
+			update_option( 'astroway_rate_limit_hit_at', time(), false );
+		}
+
 		return $limited;
 	}
 
@@ -110,6 +119,11 @@ class PublicClient {
 			'moon_phase'      => __( 'Moon phase', 'astroway' ),
 			'bodygraph'       => __( 'Human Design bodygraph', 'astroway' ),
 			'tarot_daily'     => __( 'Daily Tarot card', 'astroway' ),
+			'kundli'          => __( 'Vedic kundli chart', 'astroway' ),
+			'transit'         => __( 'Transit sky snapshot', 'astroway' ),
+			'panchang'        => __( 'Daily Panchang', 'astroway' ),
+			'numerology'      => __( 'Numerology core numbers', 'astroway' ),
+			'synastry'        => __( 'Synastry compatibility', 'astroway' ),
 		];
 		return $titles[ $widget ] ?? __( 'AstroWay widget', 'astroway' );
 	}

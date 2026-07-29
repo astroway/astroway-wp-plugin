@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/synastry",
+	"title": "AstroWay: Synastry Compatibility",
+	"category": "widgets",
+	"description": "Synastry compatibility score and top inter-aspects for two birth charts, served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "heart",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date_a": { "type": "string", "default": "" },
+		"time_a": { "type": "string", "default": "" },
+		"lat_a":  { "type": "string", "default": "" },
+		"lon_a":  { "type": "string", "default": "" },
+		"tz_a":   { "type": "string", "default": "" },
+		"date_b": { "type": "string", "default": "" },
+		"time_b": { "type": "string", "default": "" },
+		"lat_b":  { "type": "string", "default": "" },
+		"lon_b":  { "type": "string", "default": "" },
+		"tz_b":   { "type": "string", "default": "" },
+		"theme":  { "type": "string", "default": "" },
+		"lang":   { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

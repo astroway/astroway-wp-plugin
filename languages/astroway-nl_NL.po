@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay WP Plugin\n"
-"Report-Msgid-Bugs-To: https://github.com/astroway/astroway-wp-plugin/issues\n"
-"POT-Creation-Date: 2026-05-13T21:12:46+00:00\n"
-"PO-Revision-Date: 2026-05-14 00:13+0300\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 0.10.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
+"POT-Creation-Date: 2026-07-29T16:41:13+00:00\n"
+"PO-Revision-Date: 2026-07-29 19:51+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Dutch <translations@astroway.info>\n"
 "Language: nl_NL\n"
@@ -16,11 +16,9 @@ msgstr ""
 "X-Generator: _dev/generate-translations.py (AI gateway primary, DeepL reserve)\n"
 
 #. Plugin Name of the plugin
-#. Author of the plugin
-#: astroway-wp-plugin.php includes/class-admin.php:33
-#: includes/class-admin.php:34
-msgid "AstroWay"
-msgstr "AstroWay"
+#: astroway-wp-plugin.php
+msgid "AstroWay – Astrology & Horoscopes"
+msgstr "AstroWay — Dagelijkse Horoscoop"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
@@ -30,44 +28,50 @@ msgstr "https://github.com/astroway/astroway-wp-plugin"
 #. Description of the plugin
 #: astroway-wp-plugin.php
 msgid ""
-"Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI "
-"horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info."
+"Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, "
+"Tarot, Numerology, Human Design API. Powered by api.astroway.info."
 msgstr ""
 "Natal charts, synastrie, transits, Tarot, Numerologie, Human Design, AI-"
 "horoscopen — shortcodes + Gutenberg-blokken. Aangedreven door "
 "api.astroway.info."
+
+#. Author of the plugin
+#: astroway-wp-plugin.php includes/class-admin.php:34
+#: includes/class-admin.php:35
+msgid "AstroWay"
+msgstr "AstroWay"
 
 #. Author URI of the plugin
 #: astroway-wp-plugin.php
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
 
-#: includes/class-admin.php:44 includes/class-admin.php:45
-#: includes/views/admin-api-key.php:17
+#: includes/class-admin.php:45 includes/class-admin.php:46
+#: includes/views/admin-api-key.php:18
 #: includes/views/partials/admin-footer-nav.php:13
 msgid "API Key"
 msgstr "API-sleutel"
 
-#: includes/class-admin.php:52
+#: includes/class-admin.php:53
 msgid "AstroWay Settings"
 msgstr "AstroWay-instellingen"
 
-#: includes/class-admin.php:53 includes/class-admin.php:120
+#: includes/class-admin.php:54 includes/class-admin.php:142
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr "Instellingen"
 
-#: includes/class-admin.php:60
+#: includes/class-admin.php:61
 msgid "AstroWay Shortcodes"
 msgstr "AstroWay Shortcodes"
 
-#: includes/class-admin.php:61 includes/views/admin-shortcodes.php:14
+#: includes/class-admin.php:62 includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: includes/class-admin.php:103
+#: includes/class-admin.php:106
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -75,92 +79,96 @@ msgstr ""
 "De API-sleutel moet beginnen met \"aw_\" en alleen letters, cijfers en "
 "underscores bevatten."
 
-#: includes/class-admin.php:125
+#: includes/class-admin.php:147
 msgid "Get API Key"
 msgstr "Haal API-sleutel op"
 
-#: includes/class-admin.php:160
+#: includes/class-admin.php:185
 msgid "Verifying…"
 msgstr "Bezig met verifiëren…"
 
-#: includes/class-admin.php:161
+#: includes/class-admin.php:186
 msgid "limited info"
 msgstr "beperkte info"
 
-#: includes/class-admin.php:162
+#: includes/class-admin.php:187 includes/views/admin-api-key.php:133
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:163
+#: includes/class-admin.php:188
 msgid "Used"
 msgstr "Gebruikt"
 
-#: includes/class-admin.php:164
+#: includes/class-admin.php:189
 msgid "Rate"
 msgstr "Tarief"
 
-#: includes/class-admin.php:165
+#: includes/class-admin.php:190
 msgid "Bound to"
 msgstr "Gekoppeld aan"
 
-#: includes/class-admin.php:166
+#: includes/class-admin.php:191
 msgid "Enter a valid API key first."
 msgstr "Voer eerst een geldige API-sleutel in."
 
-#: includes/class-admin.php:167
+#: includes/class-admin.php:192 includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr "Netwerkfout"
 
-#: includes/class-admin.php:181
+#: includes/class-admin.php:193
+msgid "Key verified."
+msgstr "Sleutel geverifieerd."
+
+#: includes/class-admin.php:211
 msgid "Pinging…"
 msgstr "Pingen…"
 
-#: includes/class-admin.php:182
+#: includes/class-admin.php:212
 msgid "API is healthy"
 msgstr "API is bereikbaar"
 
-#: includes/class-admin.php:183
+#: includes/class-admin.php:213
 msgid "API unreachable"
 msgstr "API niet bereikbaar"
 
-#: includes/class-admin.php:184
+#: includes/class-admin.php:214
 msgid "Purge all cached data?"
 msgstr "Alle cached data wissen?"
 
-#: includes/class-admin.php:185
+#: includes/class-admin.php:215
 msgid "Cache cleared:"
 msgstr "Cache gewist:"
 
-#: includes/class-admin.php:186 includes/class-admin.php:201
+#: includes/class-admin.php:216 includes/class-admin.php:235
 msgid "copied!"
 msgstr "gekopieerd!"
 
-#: includes/class-admin.php:202
+#: includes/class-admin.php:236
 msgid "Searching…"
 msgstr "Zoeken…"
 
-#: includes/class-admin.php:203
+#: includes/class-admin.php:237
 msgid "No cities found."
 msgstr "Geen steden gevonden."
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:238
 msgid "Search error. Try again."
 msgstr "Zoekfout. Probeer het opnieuw."
 
-#: includes/class-admin.php:205
+#: includes/class-admin.php:239
 msgid "Type at least 2 characters."
 msgstr "Typ minstens 2 tekens."
 
-#: includes/class-admin.php:206
+#: includes/class-admin.php:240
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Kies een stad om lat / lon / tz in te vullen"
 
-#: includes/class-admin.php:214 includes/class-admin.php:222
-#: includes/class-admin.php:231
+#: includes/class-admin.php:249 includes/class-admin.php:265
+#: includes/class-admin.php:274
 msgid "Unauthorized."
 msgstr "Niet geautoriseerd."
 
-#: includes/class-admin.php:244
+#: includes/class-admin.php:287
 msgid ""
 "No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
 "IP)."
@@ -168,11 +176,39 @@ msgstr ""
 "Geen API-sleutel — plugin werkt in anonieme modus (30 verzoeken/uur per "
 "bezoekers-IP)."
 
-#: includes/class-plugin.php:67
+#: includes/class-admin.php:295
+msgid ""
+"Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
+"the field for anonymous mode."
+msgstr ""
+"Sleutel geweigerd door api.astroway.info (HTTP 401). Plak een geldige "
+"sleutel opnieuw of wis het veld om in de anonieme modus te gaan."
+
+#. translators: %d is the HTTP status code returned by the API.
+#: includes/class-admin.php:298
+#, php-format
+msgid "Could not verify the key (HTTP %d)."
+msgstr "De sleutel kon niet worden geverifieerd (HTTP %d)."
+
+#: includes/class-admin.php:338
+msgid "API key required."
+msgstr "API-sleutel geconfigureerd"
+
+#: includes/class-admin.php:342
+msgid "Enter a valid domain (e.g. example.com)."
+msgstr "Voer een geldig domein in (bijv. example.com)."
+
+#: includes/class-admin.php:369
+msgid "Domain change failed. Use the dashboard link below."
+msgstr ""
+"Het wijzigen van het domein is mislukt. Gebruik de onderstaande link naar "
+"het dashboard."
+
+#: includes/class-plugin.php:148
 msgid "AstroWay is active"
 msgstr "AstroWay is actief"
 
-#: includes/class-plugin.php:68
+#: includes/class-plugin.php:149
 msgid ""
 "Shortcodes work without an API key (30 requests/hour per visitor IP). For "
 "higher limits and Pro features, get a free API key."
@@ -180,59 +216,142 @@ msgstr ""
 "Shortcodes werken zonder API-sleutel (30 verzoeken/uur per bezoekers-IP). "
 "Voor hogere limieten en Pro-functies, haal een gratis API-sleutel op."
 
-#: includes/class-plugin.php:72 includes/views/partials/admin-hero.php:55
+#: includes/class-plugin.php:153 includes/class-plugin.php:298
+#: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Haal gratis API-sleutel op"
 
-#: includes/class-plugin.php:75
+#: includes/class-plugin.php:156
 msgid "Open Settings"
 msgstr "Open instellingen"
 
-#: includes/class-public-client.php:59
+#: includes/class-plugin.php:228
+msgid "Enjoying AstroWay?"
+msgstr "AstroWay"
+
+#: includes/class-plugin.php:229
+msgid ""
+"A short review on wordpress.org helps other site owners discover the plugin,"
+" and tells us what to build next."
+msgstr ""
+"Een korte recensie op wordpress.org helpt andere websitebeheerders de plug-"
+"in te ontdekken en geeft ons ideeën voor onze volgende ontwikkelingen."
+
+#: includes/class-plugin.php:233
+msgid "Leave a review"
+msgstr "Schrijf een recensie"
+
+#: includes/class-plugin.php:296
+msgid "This server has used up its anonymous AstroWay quota:"
+msgstr "Deze server heeft zijn anonieme AstroWay-quotum opgebruikt:"
+
+#: includes/class-plugin.php:297
+msgid ""
+"the free tier allows 30 requests per hour per IP. Visitors are unaffected, "
+"since their widgets count against their own IP, but preview and admin calls "
+"from this server will fail until the hour resets. Add a free API key to lift"
+" the limit and get 10,000 credits/month plus 60 req/min."
+msgstr ""
+"Het gratis abonnement staat 30 verzoeken per uur per IP-adres toe. Bezoekers"
+" ondervinden hier geen hinder van, aangezien hun widgets op hun eigen IP-"
+"adres worden geteld, maar verzoeken voor voorbeelden en beheer vanaf deze "
+"server zullen mislukken totdat het uur opnieuw begint. Voeg een gratis API-"
+"sleutel toe om de limiet op te heffen en 10.000 credits per maand plus 60 "
+"verzoeken per minuut te krijgen."
+
+#: includes/class-public-client.php:117
 msgid "Natal chart wheel"
 msgstr "Natal chart-wiel"
 
-#: includes/class-public-client.php:60 assets/js/astroway-blocks-editor.js:55
+#: includes/class-public-client.php:118
+#: assets/js/astroway-blocks-editor.js:168
 msgid "Daily horoscope"
 msgstr "Dagelijkse horoscoop"
 
-#: includes/class-public-client.php:61 assets/js/astroway-blocks-editor.js:61
+#: includes/class-public-client.php:119
+#: assets/js/astroway-blocks-editor.js:175
 msgid "Moon phase"
 msgstr "Maanfase"
 
-#: includes/class-public-client.php:62
+#: includes/class-public-client.php:120
 msgid "Human Design bodygraph"
 msgstr "Human Design-bodygrafiek"
 
-#: includes/class-public-client.php:63
+#: includes/class-public-client.php:121
 msgid "Daily Tarot card"
 msgstr "Dagelijkse Tarotkaart"
 
-#: includes/class-public-client.php:65
+#: includes/class-public-client.php:122
+msgid "Vedic kundli chart"
+msgstr "Vedische horoscoopkaart"
+
+#: includes/class-public-client.php:123
+msgid "Transit sky snapshot"
+msgstr "Momentopname van de transithemel"
+
+#: includes/class-public-client.php:124
+msgid "Daily Panchang"
+msgstr "Dagelijkse Tarotkaart"
+
+#: includes/class-public-client.php:125
+msgid "Numerology core numbers"
+msgstr "Kerncijfers in de numerologie"
+
+#: includes/class-public-client.php:126
+msgid "Synastry compatibility"
+msgstr "Synastrische compatibiliteit"
+
+#: includes/class-public-client.php:128
 msgid "AstroWay widget"
 msgstr "AstroWay-widget"
 
-#: includes/views/admin-api-key.php:18
+#. translators: %s = shortcode name
+#: includes/class-shortcodes.php:164
+#, php-format
+msgid ""
+"The %s widget is temporarily unavailable, so it renders nothing. Only "
+"administrators see this note."
+msgstr ""
+"De %s-widget is tijdelijk niet beschikbaar en geeft daarom niets weer. "
+"Alleen beheerders zien deze mededeling."
+
+#: includes/class-tier.php:138
+msgid "Locked feature"
+msgstr "Functie is vergrendeld"
+
+#: includes/class-tier.php:148
+msgid "Pro feature"
+msgstr "Pro-functie"
+
+#: includes/class-tier.php:149
+msgid "This widget is available on a paid AstroWay plan."
+msgstr "Deze widget is beschikbaar bij een betaald AstroWay-abonnement."
+
+#: includes/class-tier.php:152
+msgid "Upgrade →"
+msgstr "Upgraden →"
+
+#: includes/views/admin-api-key.php:19
 msgid "Higher limits, advanced widgets, no watermark."
 msgstr "Hogere limieten, geavanceerde widgets, geen watermerk."
 
-#: includes/views/admin-api-key.php:31
+#: includes/views/admin-api-key.php:59
 msgid "Your API key"
 msgstr "Jouw API-sleutel"
 
-#: includes/views/admin-api-key.php:32
+#: includes/views/admin-api-key.php:60
 msgid "paste · verify · save"
 msgstr "plakken · verifiëren · opslaan"
 
-#: includes/views/admin-api-key.php:36
+#: includes/views/admin-api-key.php:64
 msgid "Paste your key"
 msgstr "Plak je sleutel"
 
-#: includes/views/admin-api-key.php:47
+#: includes/views/admin-api-key.php:75
 msgid "Verify"
 msgstr "Verifiëren"
 
-#: includes/views/admin-api-key.php:51
+#: includes/views/admin-api-key.php:79
 msgid ""
 "Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
 "Anonymous mode."
@@ -240,147 +359,237 @@ msgstr ""
 "Plak een sleutel van api.astroway.info/dashboard. Laat leeg om terug te "
 "keren naar anonieme modus."
 
-#: includes/views/admin-api-key.php:55
+#: includes/views/admin-api-key.php:83
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
 
-#: includes/views/admin-api-key.php:63
+#: includes/views/admin-api-key.php:98
+msgid "Status"
+msgstr "Status"
+
+#: includes/views/admin-api-key.php:103
+msgid "live · key authenticated"
+msgstr "Geauthenticeerd"
+
+#: includes/views/admin-api-key.php:106
+msgid "suspended — contact support"
+msgstr "opgeschort — neem contact op met de klantenservice"
+
+#: includes/views/admin-api-key.php:109
+msgid "revoked — re-issue key"
+msgstr "ingetrokken — sleutel opnieuw genereren"
+
+#: includes/views/admin-api-key.php:112
+msgid "invalid key"
+msgstr "Betaalde sleutel."
+
+#: includes/views/admin-api-key.php:115
+msgid "unreachable — check connection"
+msgstr "niet bereikbaar — controleer de verbinding"
+
+#: includes/views/admin-api-key.php:126
+msgid "Key"
+msgstr "API-sleutel"
+
+#: includes/views/admin-api-key.php:140
+msgid "Credits"
+msgstr "Credits / maand"
+
+#: includes/views/admin-api-key.php:159
+msgid "Period ends"
+msgstr "De periode loopt af"
+
+#. translators: %s = relative time.
+#: includes/views/admin-api-key.php:166
+#, php-format
+msgid "in %s"
+msgstr "in %s"
+
+#. translators: %s = relative time.
+#: includes/views/admin-api-key.php:167
+msgid "expired"
+msgstr "Verplicht"
+
+#: includes/views/admin-api-key.php:180
+msgid "Domain"
+msgstr "Domein"
+
+#. translators: %s = relative time the key was bound to this domain.
+#: includes/views/admin-api-key.php:189
+#, php-format
+msgid "bound %s ago"
+msgstr "gebonden %s geleden"
+
+#: includes/views/admin-api-key.php:196
+msgid "not bound — first request will bind this site"
+msgstr "nog niet gekoppeld — bij het eerste verzoek wordt deze site gekoppeld"
+
+#: includes/views/admin-api-key.php:203
+msgid "Source"
+msgstr "Hulpmiddelen"
+
+#: includes/views/admin-api-key.php:210
+msgid ""
+"Limited data — connected api does not yet expose /v1/auth/keys/me. Plan and "
+"credits shown via legacy fallback."
+msgstr ""
+"Beperkte gegevens — de gekoppelde API stelt /v1/auth/keys/me nog niet "
+"beschikbaar. Het abonnement en het tegoed worden weergegeven via de oude "
+"fallback-oplossing."
+
+#: includes/views/admin-api-key.php:213
+msgid ""
+"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
+" key above, or clear the field to revert to anonymous mode."
+msgstr ""
+"Plak een sleutel van api.astroway.info/dashboard. Laat leeg om terug te "
+"keren naar anonieme modus."
+
+#: includes/views/admin-api-key.php:215
+msgid ""
+"Could not reach api.astroway.info. Network or upstream issue — try again in "
+"a moment."
+msgstr ""
+"api.astroway.info kon niet worden bereikt. Probleem met het netwerk of de "
+"upstream — probeer het straks nog eens."
+
+#: includes/views/admin-api-key.php:224
 msgid "What you get"
 msgstr "Wat je krijgt"
 
-#: includes/views/admin-api-key.php:64
+#: includes/views/admin-api-key.php:225
 msgid "3 tiers compared"
 msgstr "3 niveaus vergeleken"
 
-#: includes/views/admin-api-key.php:72
+#: includes/views/admin-api-key.php:233
 msgid "Anonymous"
 msgstr "Anoniem"
 
-#: includes/views/admin-api-key.php:73
+#: includes/views/admin-api-key.php:234
 msgid "no setup"
 msgstr "geen setup"
 
-#: includes/views/admin-api-key.php:76
+#: includes/views/admin-api-key.php:237
 msgid "Free key"
 msgstr "Gratis sleutel"
 
-#: includes/views/admin-api-key.php:77
+#: includes/views/admin-api-key.php:238
 msgid "signup"
 msgstr "registreren"
 
-#: includes/views/admin-api-key.php:80
+#: includes/views/admin-api-key.php:241
 msgid "Paid"
 msgstr "Betaald"
 
-#: includes/views/admin-api-key.php:81
+#: includes/views/admin-api-key.php:242
 msgid "from $5/mo"
 msgstr "vanaf €5/maand"
 
-#: includes/views/admin-api-key.php:87
+#: includes/views/admin-api-key.php:248
 msgid "Rate limit"
 msgstr "Verzoeklimiet"
 
-#: includes/views/admin-api-key.php:88
+#: includes/views/admin-api-key.php:249
 msgid "30/hour/IP"
 msgstr "30/uur/IP"
 
-#: includes/views/admin-api-key.php:89
+#: includes/views/admin-api-key.php:250
 msgid "~60/min/key"
 msgstr "~60/min/sleutel"
 
-#: includes/views/admin-api-key.php:90
+#: includes/views/admin-api-key.php:251
 msgid "30–1000/min"
 msgstr "30–1000/min"
 
-#: includes/views/admin-api-key.php:93
+#: includes/views/admin-api-key.php:254
 msgid "Credits / month"
 msgstr "Credits / maand"
 
-#: includes/views/admin-api-key.php:95
+#: includes/views/admin-api-key.php:256
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:96
+#: includes/views/admin-api-key.php:257
 msgid "50K – 3.5M"
 msgstr "50K – 3,5M"
 
-#: includes/views/admin-api-key.php:99
+#: includes/views/admin-api-key.php:260
 msgid "Render mode"
 msgstr "Render-modus"
 
-#: includes/views/admin-api-key.php:100 includes/views/admin-api-key.php:101
+#: includes/views/admin-api-key.php:261 includes/views/admin-api-key.php:262
 msgid "iframe"
 msgstr "iframe"
 
-#: includes/views/admin-api-key.php:102
+#: includes/views/admin-api-key.php:263
 msgid "native"
 msgstr "nativ"
 
-#: includes/views/admin-api-key.php:105
+#: includes/views/admin-api-key.php:266
 msgid "Widgets"
 msgstr "Widgets"
 
-#: includes/views/admin-api-key.php:106 includes/views/admin-api-key.php:107
+#: includes/views/admin-api-key.php:267 includes/views/admin-api-key.php:268
 msgid "5 basic"
 msgstr "5 basis"
 
-#: includes/views/admin-api-key.php:108
+#: includes/views/admin-api-key.php:269
 msgid "+ Tarot, HD, Synastry, Numerology"
 msgstr "+ Tarot, HD, Synastrie, Numerologie"
 
-#: includes/views/admin-api-key.php:111
+#: includes/views/admin-api-key.php:272
 msgid "AI interpretations"
 msgstr "AI-interpretaties"
 
-#: includes/views/admin-api-key.php:114 includes/views/admin-api-key.php:132
+#: includes/views/admin-api-key.php:275 includes/views/admin-api-key.php:293
 msgid "included"
 msgstr "inbegrepen"
 
-#: includes/views/admin-api-key.php:117
+#: includes/views/admin-api-key.php:278
 msgid "Watermark"
 msgstr "Watermerk"
 
-#: includes/views/admin-api-key.php:118 includes/views/admin-api-key.php:119
+#: includes/views/admin-api-key.php:279 includes/views/admin-api-key.php:280
 msgid "shown"
 msgstr "getoond"
 
-#: includes/views/admin-api-key.php:120
+#: includes/views/admin-api-key.php:281
 msgid "removed"
 msgstr "verwijderd"
 
-#: includes/views/admin-api-key.php:123
+#: includes/views/admin-api-key.php:284
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Ondersteuning"
 
-#: includes/views/admin-api-key.php:125
+#: includes/views/admin-api-key.php:286
 msgid "community"
 msgstr "community"
 
-#: includes/views/admin-api-key.php:126
+#: includes/views/admin-api-key.php:287
 msgid "priority"
 msgstr "prioriteit"
 
-#: includes/views/admin-api-key.php:129
+#: includes/views/admin-api-key.php:290
 msgid "Spend cap"
 msgstr "Uitgavenlimiet"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:140
+#: includes/views/admin-api-key.php:301
 #, php-format
 msgid "Numbers shown for context. Canonical pricing → %s"
 msgstr "Getallen zijn ter illustratie. Officiële prijzen → %s"
 
-#: includes/views/admin-api-key.php:151
+#: includes/views/admin-api-key.php:312
 msgid "How it works"
 msgstr "Hoe het werkt"
 
-#: includes/views/admin-api-key.php:155
+#: includes/views/admin-api-key.php:316
 msgid "No key."
 msgstr "Geen sleutel."
 
-#: includes/views/admin-api-key.php:156
+#: includes/views/admin-api-key.php:317
 msgid ""
 "Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
 "traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
@@ -390,11 +599,11 @@ msgstr ""
 "met laag verkeer en snelle tests. Het \"Aangedreven door "
 "AstroWay\"-watermerk wordt getoond."
 
-#: includes/views/admin-api-key.php:159
+#: includes/views/admin-api-key.php:320
 msgid "Free key."
 msgstr "Gratis sleutel."
 
-#: includes/views/admin-api-key.php:160
+#: includes/views/admin-api-key.php:321
 msgid ""
 "Personal credit bucket (10,000/month), isolated from other sites. Iframe "
 "rendering stays, but you get a dashboard with activity history. Watermark is"
@@ -404,11 +613,11 @@ msgstr ""
 "Iframe-rendering blijft, maar je krijgt een dashboard met "
 "activiteitsgeschiedenis. Het watermerk wordt nog steeds getoond."
 
-#: includes/views/admin-api-key.php:163
+#: includes/views/admin-api-key.php:324
 msgid "Paid key."
 msgstr "Betaalde sleutel."
 
-#: includes/views/admin-api-key.php:164
+#: includes/views/admin-api-key.php:325
 msgid ""
 "Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
 "synastry, Human Design, Numerology), AI-written interpretations, and no "
@@ -423,112 +632,204 @@ msgstr ""
 msgid "Connection, cache, diagnostics."
 msgstr "Verbinding, cache, diagnostiek."
 
-#: includes/views/admin-settings.php:20
+#: includes/views/admin-settings.php:33
 #: includes/views/partials/admin-sidebar.php:44
 msgid "Plugin"
 msgstr "Plugin"
 
-#: includes/views/admin-settings.php:21
+#: includes/views/admin-settings.php:34
 #: includes/views/partials/admin-sidebar.php:46
 msgid "WordPress"
 msgstr "WordPress"
 
-#: includes/views/admin-settings.php:22
+#: includes/views/admin-settings.php:35
 #: includes/views/partials/admin-sidebar.php:48
 msgid "PHP"
 msgstr "PHP"
 
-#: includes/views/admin-settings.php:23
+#: includes/views/admin-settings.php:36
 msgid "WP_DEBUG"
 msgstr "WP_DEBUG"
 
-#: includes/views/admin-settings.php:23
+#: includes/views/admin-settings.php:36
 msgid "on"
 msgstr "aan"
 
-#: includes/views/admin-settings.php:23
+#: includes/views/admin-settings.php:36
 msgid "off"
 msgstr "uit"
 
-#: includes/views/admin-settings.php:24
+#: includes/views/admin-settings.php:37
 msgid "Active theme"
 msgstr "Actief thema"
 
-#: includes/views/admin-settings.php:25
+#: includes/views/admin-settings.php:38
 msgid "wp_remote_post"
 msgstr "wp_remote_post"
 
-#: includes/views/admin-settings.php:25
+#: includes/views/admin-settings.php:38
 msgid "available"
 msgstr "beschikbaar"
 
-#: includes/views/admin-settings.php:25
+#: includes/views/admin-settings.php:38
 msgid "missing"
 msgstr "ontbreekt"
 
-#: includes/views/admin-settings.php:26
+#: includes/views/admin-settings.php:39
 msgid "Locale"
 msgstr "Taalgebied"
 
-#: includes/views/admin-settings.php:27
+#: includes/views/admin-settings.php:40
 #: includes/views/partials/admin-sidebar.php:50
 msgid "API host"
 msgstr "API-host"
 
-#: includes/views/admin-settings.php:41
+#: includes/views/admin-settings.php:57
 msgid "Connection"
 msgstr "Verbinding"
 
-#: includes/views/admin-settings.php:42
+#: includes/views/admin-settings.php:58
 msgid "live ping · api.astroway.info"
 msgstr "live ping · api.astroway.info"
 
-#: includes/views/admin-settings.php:47
+#: includes/views/admin-settings.php:63
 msgid "Test connection"
 msgstr "Verbinding testen"
 
 #. translators: %s = API health endpoint
-#: includes/views/admin-settings.php:55
+#: includes/views/admin-settings.php:71
 #, php-format
 msgid "Pings %s to confirm reachability from this server."
 msgstr "Pingt %s om de bereikbaarheid vanaf deze server te bevestigen."
 
-#: includes/views/admin-settings.php:66
+#: includes/views/admin-settings.php:82
 msgid "Cache"
 msgstr "Cache"
 
-#: includes/views/admin-settings.php:67
+#: includes/views/admin-settings.php:83
 msgid "WP transients · prefix astroway_v1_"
 msgstr "WP-transiënten · voorvoegsel astroway_v1_"
 
-#: includes/views/admin-settings.php:73
+#: includes/views/admin-settings.php:89
 msgid "items"
 msgstr "items"
 
-#: includes/views/admin-settings.php:77
+#: includes/views/admin-settings.php:93
 msgid "cached size"
 msgstr "gecachete grootte"
 
-#: includes/views/admin-settings.php:80
+#: includes/views/admin-settings.php:96
 msgid "Purge all"
 msgstr "Alles wissen"
 
-#: includes/views/admin-settings.php:84
+#: includes/views/admin-settings.php:100
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
 msgstr "TTL's: charts 1u · maan 24u · referentiedata 7d · sleutel /me 30 min."
 
-#: includes/views/admin-settings.php:92
+#: includes/views/admin-settings.php:108
 #: includes/views/partials/admin-sidebar.php:42
+#: assets/js/astroway-blocks-editor.js:158
 msgid "System"
 msgstr "Systeem"
 
-#: includes/views/admin-settings.php:93
+#: includes/views/admin-settings.php:109
 msgid "diagnostic info for support"
 msgstr "diagnostische info voor ondersteuning"
 
-#: includes/views/admin-settings.php:109
+#: includes/views/admin-settings.php:127
 msgid "Copy diagnostic info"
 msgstr "Diagnostische info kopiëren"
+
+#: includes/views/admin-settings.php:144
+msgid "Feature matrix"
+msgstr "Overzicht van functies"
+
+#. translators: %s = current tier
+#: includes/views/admin-settings.php:149
+#, php-format
+msgid "current tier: %s"
+msgstr "huidige niveau: %s"
+
+#: includes/views/admin-settings.php:159
+msgid "Feature"
+msgstr "Functie"
+
+#: includes/views/admin-settings.php:181
+msgid ""
+"Matrix is filterable via the `astroway_tier_matrix` filter — addons can "
+"append their own features."
+msgstr ""
+"De matrix kan worden gefilterd via het filter `astroway_tier_matrix` — add-"
+"ons kunnen hun eigen functies hieraan toevoegen."
+
+#: includes/views/admin-settings.php:189
+msgid "Domain binding"
+msgstr "Domeinbinding"
+
+#. translators: %s = current domain
+#: includes/views/admin-settings.php:195
+#, php-format
+msgid "bound to: %s"
+msgstr "gebonden aan: %s"
+
+#: includes/views/admin-settings.php:199
+msgid "no domain binding yet"
+msgstr "nog geen domein gekoppeld"
+
+#: includes/views/admin-settings.php:209
+msgid "Request rebind"
+msgstr "Verplicht"
+
+#. translators: %s = api dashboard URL
+#: includes/views/admin-settings.php:217
+#, php-format
+msgid "Manual fallback: %s."
+msgstr "Handmatige terugvaloptie: %s."
+
+#: includes/views/admin-settings.php:230
+msgid "Enter a domain first."
+msgstr "Voer eerst een geldige API-sleutel in."
+
+#: includes/views/admin-settings.php:231
+msgid "Requesting…"
+msgstr "Bezig met opvragen…"
+
+#: includes/views/admin-settings.php:241
+msgid "✓ requested"
+msgstr "✓ aangevraagd"
+
+#: includes/views/admin-settings.php:242
+msgid "failed"
+msgstr "mislukt"
+
+#: includes/views/admin-settings.php:257
+msgid "Widget disclaimer"
+msgstr "Disclaimer widget"
+
+#: includes/views/admin-settings.php:258
+msgid "optional legal line in the widget footer"
+msgstr "optionele juridische vermelding in de voettekst van de widget"
+
+#: includes/views/admin-settings.php:266
+msgid "Show a disclaimer in embedded widgets"
+msgstr "Een disclaimer weergeven in ingesloten widgets"
+
+#: includes/views/admin-settings.php:267
+msgid ""
+"Appends a short \"informational, not professional advice\" line to the "
+"widget footer. Off by default — enable it if your jurisdiction or compliance"
+" policy requires it. The wording is rendered and localized by "
+"api.astroway.info."
+msgstr ""
+"Voegt een korte vermelding toe aan de voettekst van de widget met de tekst "
+"„informatief, geen professioneel advies“. Standaard uitgeschakeld — schakel "
+"deze functie in als dit vereist is volgens de wetgeving of het "
+"nalevingsbeleid in jouw rechtsgebied. De tekst wordt weergegeven en "
+"gelokaliseerd door api.astroway.info."
+
+#: includes/views/admin-settings.php:270
+msgid "Save disclaimer setting"
+msgstr "Instelling voor de disclaimer opslaan"
 
 #: includes/views/admin-shortcodes.php:15
 msgid ""
@@ -658,24 +959,24 @@ msgstr "AstroWay — Dagelijkse Tarotkaart"
 msgid "Deck slug: rider-waite (default), marseille, or lenormand."
 msgstr "Deck-slug: rider-waite (standaard), marseille, of lenormand."
 
-#: includes/views/admin-shortcodes.php:91
+#: includes/views/admin-shortcodes.php:94
 msgid "Find your coordinates and timezone"
 msgstr "Vind je coördinaten en tijdzone"
 
-#: includes/views/admin-shortcodes.php:92
+#: includes/views/admin-shortcodes.php:95
 msgid "city → lat · lon · IANA tz"
 msgstr "stad → lat · lon · IANA tz"
 
-#: includes/views/admin-shortcodes.php:99
+#: includes/views/admin-shortcodes.php:102
 msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
 msgstr "Typ een stadsnaam — bijv. Kyiv, Berlijn, São Paulo"
 
-#: includes/views/admin-shortcodes.php:103
+#: includes/views/admin-shortcodes.php:106
 msgid "Search"
 msgstr "Zoeken"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:110
+#: includes/views/admin-shortcodes.php:113
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -683,53 +984,117 @@ msgstr ""
 "Kies de bijpassende stad om waarden in de shortcode te kopiëren. Referentie:"
 " %s."
 
-#: includes/views/admin-shortcodes.php:111
+#: includes/views/admin-shortcodes.php:114
 msgid "IANA timezone list"
 msgstr "IANA tijdzone lijst"
 
-#: includes/views/admin-shortcodes.php:132
+#: includes/views/admin-shortcodes.php:135
 msgid "Click to copy"
 msgstr "Klik om te kopiëren"
 
-#: includes/views/admin-shortcodes.php:136
+#: includes/views/admin-shortcodes.php:139
 msgid "copy"
 msgstr "kopiëren"
 
-#: includes/views/admin-shortcodes.php:144
+#: includes/views/admin-shortcodes.php:147
 msgid "Parameter"
 msgstr "Parameter"
 
-#: includes/views/admin-shortcodes.php:145
+#: includes/views/admin-shortcodes.php:148
 msgid "Type"
 msgstr "Type"
 
-#: includes/views/admin-shortcodes.php:146
+#: includes/views/admin-shortcodes.php:149
 msgid "Required"
 msgstr "Verplicht"
 
-#: includes/views/admin-shortcodes.php:147
+#: includes/views/admin-shortcodes.php:150
 msgid "Description"
 msgstr "Beschrijving"
 
-#: includes/views/admin-shortcodes.php:158
+#: includes/views/admin-shortcodes.php:163
 msgid "required"
 msgstr "verplicht"
 
-#: includes/views/admin-shortcodes.php:160
+#: includes/views/admin-shortcodes.php:165
 msgid "optional"
 msgstr "optioneel"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:174
+#: includes/views/admin-shortcodes.php:179
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Ook beschikbaar als Gutenberg-blok \"%s\"."
+
+#: includes/views/partials/admin-channel-b-status.php:21
+msgid "Update channel"
+msgstr "Wijzigingen opslaan"
+
+#: includes/views/partials/admin-channel-b-status.php:25
+msgid "Channel B"
+msgstr "Kanaal B"
+
+#: includes/views/partials/admin-channel-b-status.php:25
+msgid "Channel A"
+msgstr "Kanaal A"
+
+#: includes/views/partials/admin-channel-b-status.php:27
+msgid ""
+"Updates are delivered directly from astroway.info using your API key. Paid-"
+"tier features and early releases reach you first."
+msgstr ""
+"Updates worden rechtstreeks vanaf astroway.info geleverd via je API-sleutel."
+" Je krijgt als eerste toegang tot functies van het betaalde abonnement en "
+"vroege releases."
+
+#: includes/views/partials/admin-channel-b-status.php:29
+msgid ""
+"Updates are delivered through the WordPress.org plugin directory. To "
+"activate Channel B for paid-tier delivery, add a paid API key above."
+msgstr ""
+"Updates worden geleverd via de plug-inbibliotheek van WordPress.org. Om "
+"Channel B te activeren voor levering via het betaalde abonnement, voeg je "
+"hierboven een betaalde API-sleutel toe."
+
+#: includes/views/partials/admin-channel-b-status.php:34
+msgid "Update endpoint"
+msgstr "Eindpunt bijwerken"
+
+#: includes/views/partials/admin-channel-b-status.php:38
+msgid "Library loaded"
+msgstr "Bibliotheek geladen"
+
+#: includes/views/partials/admin-channel-b-status.php:39
+#: includes/views/partials/admin-channel-b-status.php:43
+msgid "yes"
+msgstr "ja"
+
+#: includes/views/partials/admin-channel-b-status.php:39
+#: includes/views/partials/admin-channel-b-status.php:43
+msgid "no"
+msgstr "nee"
+
+#: includes/views/partials/admin-channel-b-status.php:42
+msgid "API key set"
+msgstr "API-sleutel"
+
+#: includes/views/partials/admin-channel-b-status.php:46
+msgid "Last update check"
+msgstr "Laatste updatecontrole"
+
+#: includes/views/partials/admin-channel-b-status.php:49
+msgid "ago"
+msgstr "geleden"
+
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "not yet"
+msgstr "nog niet"
 
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
 msgstr "Plugin-pagina's"
 
-#: includes/views/partials/admin-footer-nav.php:31
+#: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Documentatie"
 
@@ -773,112 +1138,225 @@ msgstr "Documentatie"
 msgid "GitHub repository"
 msgstr "GitHub repository"
 
-#: assets/js/astroway-blocks-editor.js:15
+#: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
 msgstr "Standaard (het uithangbord van vandaag)"
 
-#: assets/js/astroway-blocks-editor.js:16
+#: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Ram"
 
-#: assets/js/astroway-blocks-editor.js:17
+#: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Stier"
 
-#: assets/js/astroway-blocks-editor.js:18
+#: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Tweelingen"
 
-#: assets/js/astroway-blocks-editor.js:19
+#: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Kanker"
 
-#: assets/js/astroway-blocks-editor.js:20
+#: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Leo"
 
-#: assets/js/astroway-blocks-editor.js:21
+#: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Maagd"
 
-#: assets/js/astroway-blocks-editor.js:22
+#: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Weegschaal"
 
-#: assets/js/astroway-blocks-editor.js:23
+#: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Schorpioen"
 
-#: assets/js/astroway-blocks-editor.js:24
+#: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Boogschutter"
 
-#: assets/js/astroway-blocks-editor.js:25
+#: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Steenbok"
 
-#: assets/js/astroway-blocks-editor.js:26
+#: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Waterman"
 
-#: assets/js/astroway-blocks-editor.js:27
+#: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Vissen"
 
-#: assets/js/astroway-blocks-editor.js:31
+#: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "Rider-Waite-Smith"
 
-#: assets/js/astroway-blocks-editor.js:32
+#: assets/js/astroway-blocks-editor.js:34
 msgid "Marseille"
 msgstr "Marseille"
 
-#: assets/js/astroway-blocks-editor.js:33
+#: assets/js/astroway-blocks-editor.js:35
 msgid "Lenormand"
 msgstr "Lenormand"
 
-#: assets/js/astroway-blocks-editor.js:37
+#: assets/js/astroway-blocks-editor.js:41
+msgid "Site default"
+msgstr "Standaardinstelling van de site"
+
+#: assets/js/astroway-blocks-editor.js:65
+msgid "Language"
+msgstr "Taal"
+
+#: assets/js/astroway-blocks-editor.js:68
+#: assets/js/astroway-blocks-editor.js:94
 msgid "Date (YYYY-MM-DD)"
 msgstr "Datum (JJJJ-MM-DD)"
 
-#: assets/js/astroway-blocks-editor.js:38
+#: assets/js/astroway-blocks-editor.js:69
+#: assets/js/astroway-blocks-editor.js:95
 msgid "Time (HH:MM)"
 msgstr "Tijd (HH:MM)"
 
-#: assets/js/astroway-blocks-editor.js:39
+#: assets/js/astroway-blocks-editor.js:70
+#: assets/js/astroway-blocks-editor.js:96
+#: assets/js/astroway-blocks-editor.js:105
 msgid "Latitude (-90 to 90)"
 msgstr "Breedtegraad (-90 tot 90)"
 
-#: assets/js/astroway-blocks-editor.js:40
+#: assets/js/astroway-blocks-editor.js:71
+#: assets/js/astroway-blocks-editor.js:97
+#: assets/js/astroway-blocks-editor.js:106
 msgid "Longitude (-180 to 180)"
 msgstr "Lengtegraad (-180 tot 180)"
 
-#: assets/js/astroway-blocks-editor.js:41
+#: assets/js/astroway-blocks-editor.js:72
 msgid "Person name (optional)"
 msgstr "Naam persoon (optioneel)"
 
-#: assets/js/astroway-blocks-editor.js:42
+#: assets/js/astroway-blocks-editor.js:73
 msgid "Timezone (Europe/Kyiv or +03:00)"
 msgstr "Tijdzone (Europa/Kyiv of +03:00)"
 
-#: assets/js/astroway-blocks-editor.js:47
-#: assets/js/astroway-blocks-editor.js:51
-msgid "Birth data"
-msgstr "Geboortegegevens"
+#: assets/js/astroway-blocks-editor.js:78
+msgid "Default (dark)"
+msgstr "Standaard (donker)"
 
-#: assets/js/astroway-blocks-editor.js:57
-msgid "Zodiac sign"
-msgstr "Sterrenbeeld"
+#: assets/js/astroway-blocks-editor.js:79
+msgid "Dark"
+msgstr "Donker"
 
-#: assets/js/astroway-blocks-editor.js:63
+#: assets/js/astroway-blocks-editor.js:80
+msgid "Light"
+msgstr "Licht"
+
+#: assets/js/astroway-blocks-editor.js:81
+msgid "Console (green on black)"
+msgstr "Console (groen op zwart)"
+
+#: assets/js/astroway-blocks-editor.js:85
+msgid "Pythagorean"
+msgstr "Pythagoreïsch"
+
+#: assets/js/astroway-blocks-editor.js:86
+msgid "Chaldean"
+msgstr "Chaldeeuws"
+
+#: assets/js/astroway-blocks-editor.js:89
+msgid "Theme"
+msgstr "Thema"
+
+#: assets/js/astroway-blocks-editor.js:90
+msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
+msgstr "Tijdzone (Europa/Kyiv of +03:00)"
+
+#: assets/js/astroway-blocks-editor.js:104
+#: assets/js/astroway-blocks-editor.js:144
+#: assets/js/astroway-blocks-editor.js:177
 msgid "Date (leave blank for today)"
 msgstr "Datum (laat leeg voor vandaag)"
 
-#: assets/js/astroway-blocks-editor.js:67
+#: assets/js/astroway-blocks-editor.js:114
+msgid "Person A — date (YYYY-MM-DD)"
+msgstr "Datum (JJJJ-MM-DD)"
+
+#: assets/js/astroway-blocks-editor.js:115
+msgid "Person A — time (HH:MM)"
+msgstr "Persoon A — tijd (UU:MM)"
+
+#: assets/js/astroway-blocks-editor.js:116
+msgid "Person A — latitude"
+msgstr "Persoon A — breedtegraad"
+
+#: assets/js/astroway-blocks-editor.js:117
+msgid "Person A — longitude"
+msgstr "Persoon A — lengtegraad"
+
+#: assets/js/astroway-blocks-editor.js:118
+msgid "Person A — timezone"
+msgstr "Persoon A — tijdzone"
+
+#: assets/js/astroway-blocks-editor.js:119
+msgid "Person B — date (YYYY-MM-DD)"
+msgstr "Datum (JJJJ-MM-DD)"
+
+#: assets/js/astroway-blocks-editor.js:120
+msgid "Person B — time (HH:MM)"
+msgstr "Persoon B — tijd (UU:MM)"
+
+#: assets/js/astroway-blocks-editor.js:121
+msgid "Person B — latitude"
+msgstr "Persoon B — breedtegraad"
+
+#: assets/js/astroway-blocks-editor.js:122
+msgid "Person B — longitude"
+msgstr "Persoon B — lengtegraad"
+
+#: assets/js/astroway-blocks-editor.js:123
+msgid "Person B — timezone"
+msgstr "Persoon B — tijdzone"
+
+#: assets/js/astroway-blocks-editor.js:130
+#: assets/js/astroway-blocks-editor.js:134
+#: assets/js/astroway-blocks-editor.js:138
+msgid "Birth data"
+msgstr "Geboortegegevens"
+
+#: assets/js/astroway-blocks-editor.js:142
+msgid "Transit date"
+msgstr "Doorgangsdatum"
+
+#: assets/js/astroway-blocks-editor.js:150
+msgid "Panchang"
+msgstr "Wijzigingen opslaan"
+
+#: assets/js/astroway-blocks-editor.js:154
+msgid "Numerology"
+msgstr "Numerologie"
+
+#: assets/js/astroway-blocks-editor.js:156
+msgid "Full name"
+msgstr "Volledige naam"
+
+#: assets/js/astroway-blocks-editor.js:157
+msgid "Date of birth (YYYY-MM-DD)"
+msgstr "Datum (JJJJ-MM-DD)"
+
+#: assets/js/astroway-blocks-editor.js:164
+msgid "Two subjects"
+msgstr "Twee onderwerpen"
+
+#: assets/js/astroway-blocks-editor.js:170
+msgid "Zodiac sign"
+msgstr "Sterrenbeeld"
+
+#: assets/js/astroway-blocks-editor.js:182
 msgid "Daily Tarot"
 msgstr "Dagelijkse Tarot"
 
-#: assets/js/astroway-blocks-editor.js:69
+#: assets/js/astroway-blocks-editor.js:184
 msgid "Deck"
 msgstr "Dek"
 
@@ -898,6 +1376,25 @@ msgstr "AstroWay: Dagelijkse Horoscoop"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "Dagelijkse horoscooptekst voor een sterrenbeeld."
 
+#: blocks/daily-tarot/block.json
+msgid "AstroWay: Daily Tarot"
+msgstr "AstroWay: Dagelijkse Tarot"
+
+#: blocks/daily-tarot/block.json
+msgid "Single-card daily Tarot draw with interpretation."
+msgstr "Enkele kaart dagelijkse Tarot-trek met interpretatie."
+
+#: blocks/kundli/block.json
+msgid "AstroWay: Vedic Kundli"
+msgstr "AstroWay-instellingen"
+
+#: blocks/kundli/block.json
+msgid ""
+"Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
+"responsive iframe."
+msgstr ""
+"Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
+
 #: blocks/moon-phase/block.json
 msgid "AstroWay: Moon Phase"
 msgstr "AstroWay: Maanfase"
@@ -915,10 +1412,46 @@ msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
-#: blocks/tarot-daily/block.json
-msgid "AstroWay: Daily Tarot"
+#: blocks/numerology/block.json
+msgid "AstroWay: Numerology"
+msgstr "AstroWay: Maanfase"
+
+#: blocks/numerology/block.json
+msgid ""
+"Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
+"served by api.astroway.info as a responsive iframe."
+msgstr ""
+"Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
+
+#: blocks/panchang/block.json
+msgid "AstroWay: Daily Panchang"
 msgstr "AstroWay: Dagelijkse Tarot"
 
-#: blocks/tarot-daily/block.json
-msgid "Single-card daily Tarot draw with interpretation."
-msgstr "Enkele kaart dagelijkse Tarot-trek met interpretatie."
+#: blocks/panchang/block.json
+msgid ""
+"Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
+"and location, served by api.astroway.info as a responsive iframe."
+msgstr ""
+"Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
+
+#: blocks/synastry/block.json
+msgid "AstroWay: Synastry Compatibility"
+msgstr "AstroWay: Natal Chart"
+
+#: blocks/synastry/block.json
+msgid ""
+"Synastry compatibility score and top inter-aspects for two birth charts, "
+"served by api.astroway.info as a responsive iframe."
+msgstr ""
+"Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
+
+#: blocks/transit/block.json
+msgid "AstroWay: Transit Sky"
+msgstr "AstroWay: Natal Chart"
+
+#: blocks/transit/block.json
+msgid ""
+"Snapshot of the transiting planets' signs and degrees for a date, served by "
+"api.astroway.info as a responsive iframe."
+msgstr ""
+"Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."

@@ -851,7 +851,8 @@
    ────────────────────────────────────────────────────────────── */
 
 .aw-app .form-table { margin: 0; }
-.aw-app .notice    { display: none; } /* hide stray WP notices inside our app */
+/* Hide stray third-party notices inside our app, but never our own. */
+.aw-app .notice:not([class*="astroway-"]) { display: none; }
 
 /* Restore .wrap reset that we override */
 .wrap.aw-app > h1:first-of-type { display: none; }

@@ -53,11 +53,17 @@
 				if ( d.domain ) {
 					bits.push( '<strong>' + escapeHtml( i18n.domain || 'Bound' ) + ':</strong> ' + escapeHtml( d.domain ) );
 				}
-				var html = '<p>' + bits.join( ' · ' );
-				if ( fallback ) {
-					html += ' <em>(' + escapeHtml( i18n.fallback || 'limited info' ) + ')</em>';
+				var html;
+				if ( bits.length ) {
+					html = '<p>' + bits.join( ' · ' );
+					if ( fallback ) {
+						html += ' <em>(' + escapeHtml( i18n.fallback || 'limited info' ) + ')</em>';
+					}
+					html += '</p>';
+				} else {
+					// 200 with no usage fields — confirm validity rather than render an empty panel.
+					html = '<p>' + escapeHtml( i18n.keyValid || 'Key verified.' ) + '</p>';
 				}
-				html += '</p>';
 				show( $status, html, 'success' );
 			} ).fail( function () {
 				show( $status, '<p>' + escapeHtml( i18n.networkError || 'Network error' ) + '</p>', 'error' );

@@ -44,6 +44,9 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 ?>
 <div class="wrap aw-app">
 
+	<?php // WP moves admin notices here; without the marker they land inside our hero. ?>
+	<hr class="wp-header-end">
+
 	<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-hero.php'; ?>
 
 	<div class="aw-grid">

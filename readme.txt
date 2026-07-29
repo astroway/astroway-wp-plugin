@@ -2,9 +2,9 @@
 Contributors: astrowayteam
 Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.9.2
+Stable tag: 0.10.7
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -33,7 +33,7 @@ Yes. The plugin is free and open source, and the core widgets work with no accou
 
 = How do I add a horoscope or birth chart to WordPress? =
 
-Drop a shortcode into any page or post — for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Every widget is also a Gutenberg block: Natal Chart, Daily Horoscope, Moon Phase, Human Design Bodygraph, and Daily Tarot.
+Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Every widget is also a Gutenberg block: Natal Chart, Daily Horoscope, Moon Phase, Human Design Bodygraph, Daily Tarot, Vedic Kundli, Transit Sky, Daily Panchang, Numerology and Synastry.
 
 = Do I need an API key? =
 
@@ -57,10 +57,10 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 
 == Screenshots ==
 
-1. AstroWay menu — API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu — paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
-2. Settings — connection, cache, and system diagnostics. Test the connection to api.astroway.info, inspect the local transient cache (size, entry count, purge), and copy a diagnostic block (PHP / WP / plugin version, key status) for support.
-3. Shortcodes reference with built-in city — lat/lon helper. Five copy-to-clipboard reference cards (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
-4. Gutenberg block in the editor. Five blocks — Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot — render via ServerSideRender with live preview. Block selection and the Inspector panel work the standard WordPress way.
+1. AstroWay menu: API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu, paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
+2. Settings: connection, cache, and system diagnostics. Test the connection to api.astroway.info, inspect the local transient cache (size, entry count, purge), and copy a diagnostic block (PHP / WP / plugin version, key status) for support.
+3. Shortcodes reference with built-in city: lat/lon helper. Five copy-to-clipboard reference cards (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
+4. Gutenberg block in the editor. Five blocks (Natal Chart, Human Design Bodygraph, Daily Horoscope, Moon Phase, Daily Tarot) render via ServerSideRender with live preview. Block selection and the Inspector panel work the standard WordPress way.
 5. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
 
 == External services ==
@@ -89,45 +89,89 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 This plugin stores the following on the WordPress site:
 
 * The site administrator's API key (if entered), stored in the `wp_options` table under `astroway_settings`. Visible only to users with `manage_options` capability.
-* WP transient cache of API responses (prefix `astroway_v1_`) to reduce repeat external calls. Cache contents are chart/horoscope/tarot output — no visitor PII beyond what was submitted via shortcode arguments. Purged via Settings → AstroWay → Purge Cache.
+* WP transient cache of API responses (prefix `astroway_v1_`) to reduce repeat external calls. Cache contents are chart/horoscope/tarot output, no visitor PII beyond what was submitted via shortcode arguments. Purged via Settings → AstroWay → Purge Cache.
 
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
 
+= 0.10.7 =
+* Fix: widgets no longer disappear from your pages. The plugin probed its own server's rate limit and, when that quota ran out, rendered nothing at all, even though each visitor has a separate quota. Rendering no longer depends on that probe, and the probe now runs only where its reading is meaningful: the admin notice.
+* Fix: [astroway_today_in_sky] and [astroway_fortune_cookie] are deprecated. The api routes they call were never implemented, so both rendered an empty frame. Pages containing them stay intact and administrators see a short note; the shortcodes will return when the routes exist.
+* Fix: the activation, review and rate-limit notices appeared on every admin page, including other plugins' settings screens, while being hidden on our own. Both halves fixed: they show up on AstroWay screens only, and they are visible there.
+* Fix: the "Render mode" and "Spend cap" settings were saved but never read by anything. Both panels are removed until they actually do something.
+* Change: wp.org builds no longer bundle an update checker, per directory rules. Updates come from wordpress.org as before.
+* New: five Gutenberg blocks with matching shortcodes, each rendering an anonymous embed: Vedic Kundli, Transit Sky, Daily Panchang, Numerology and Synastry. The plugin now ships ten blocks.
+* Fix: Natal Chart and Bodygraph sent longitude as lon (the api reads lng) and the timezone as a name rather than a numeric offset, so charts were built for longitude 0 and UTC. House cusps and the Ascendant are now correct. No content edits needed.
+* Fix: verifying a rejected API key showed an empty success panel instead of the rejection reason.
+* New: optional "Widget disclaimer" setting, off by default, appends a short informational line to embedded widgets.
+* New: the admin menu carries the AstroWay owl mark.
+* Note: the review prompt and the rate-limit notice announced in 0.5.6 were missing from the published builds until now. They ship with this release.
+
+= 0.10.6 =
+* New: "Widget disclaimer" setting (Settings → AstroWay). Off by default. When enabled, embedded widgets show a short "informational, not professional advice" line in their footer, useful when your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info.
+* Fix: the "Spend cap" field on the Settings page no longer renders as an oversized box (it had inherited a flex value meant for horizontal layouts).
+
+= 0.10.5 =
+* Branding: the admin menu icon and the review-prompt now use the AstroWay owl mark instead of a generic star.
+* Fix: verifying a rejected API key now shows a clear error message instead of an empty green panel (the panel only appeared blank because the request still reported success on a 401).
+
+= 0.10.4 =
+* New: 5 Gutenberg blocks + matching shortcodes, Vedic Kundli, Transit Sky, Daily Panchang, Numerology, and Synastry compatibility. Each wraps a /v1/embed/* endpoint as an anonymous-friendly responsive iframe. Plugin now ships 10 blocks.
+* New: dark / light / console theme selector on the new widgets.
+* Fix: Natal Chart and Bodygraph now send longitude as `lng` and the timezone as a numeric UTC offset. The api had been receiving longitude 0 and UTC, so house cusps and the Ascendant were computed for the wrong location/time, charts are now correct. Existing blocks need no changes; just upgrade.
+
+= 0.10.3 =
+* Two final Elementor widgets: AstroWay Today in Sky (with SWITCHER controls for Sun/Moon, Mercury retrograde, planetary hour, location fields conditional) + AstroWay Fortune Cookie (optional sign dropdown).
+* Closes Elementor wrapper stack (v0.10.0-v0.10.3). Plugin now ships 7 Elementor widgets covering all 7 core shortcodes.
+
+= 0.10.2 =
+* Two more Elementor widgets: AstroWay Human Design Bodygraph + AstroWay Daily Tarot (with deck dropdown, Rider-Waite/Marseille/Lenormand).
+
+= 0.10.1 =
+* Two more Elementor widgets: AstroWay Daily Horoscope (sign dropdown) + AstroWay Moon Phase (date + lang). Same render-via-shortcode pattern as v0.10.0.
+
+= 0.10.0 =
+* New AstroWay category in Elementor widget panel. First widget: AstroWay Natal Chart, which wraps the [astroway_natal] shortcode with Inspector controls for date/time/lat/lon/tz/lang. Loads only when Elementor plugin is active.
+* First piece of Elementor integration stack (v0.10.0-v0.10.3). Standalone `astroway-elementor` addon plugin (planned ~Aug 2026) will provide advanced controls + animations.
+
+= 0.9.4 =
+* New shortcode `[astroway_fortune_cookie]` shows a daily AI-generated cosmic quote via /v1/embed/fortune-cookie. Anonymous-accessible, sign-aware (optional `sign` param).
+* Closes Today in Sky stack (v0.9.0-v0.9.4).
+
+= 0.9.3 =
+* `[astroway_today_in_sky]` accepts `show_planetary_hour` (default `0`) + `lat`, `lon`, `tz` parameters. When enabled, the widget pulls today's planetary hour mapping for the supplied location.
+
 = 0.9.2 =
-* `[astroway_today_in_sky]` accepts `show_retrograde` parameter (default `1`) — toggles the Mercury retrograde indicator section. SEO-friendly viral content for retrograde periods.
+* `[astroway_today_in_sky]` accepts `show_retrograde` parameter (default `1`), toggles the Mercury retrograde indicator section. SEO-friendly viral content for retrograde periods.
 
 = 0.9.1 =
-* `[astroway_today_in_sky]` accepts `show_signs` parameter (default `1`) — toggles the Sun/Moon zodiac positions block. New `sanitize_bool_flag()` helper added as public static for addon reuse.
+* `[astroway_today_in_sky]` accepts `show_signs` parameter (default `1`): toggles the Sun/Moon zodiac positions block. New `sanitize_bool_flag()` helper added as public static for addon reuse.
 
 = 0.9.0 =
 * New shortcode `[astroway_today_in_sky]` renders the day's celestial overview via /v1/embed/today-in-sky. Anonymous-accessible (IP-rate-limited iframe).
 * New widget config in RendererDecisions registry; new feature key in Tier::matrix. Sub-features (sun/moon positions, retrogrades, planetary hour, Fortune Cookie) land in v0.9.1-v0.9.4.
 
 = 0.8.3 =
-* New Settings panel "Domain binding" — shows current domain attached to the key + input to request rebinding via POST /v1/auth/keys/domain-change. Manual fallback link to api dashboard if the endpoint returns an error.
+* New Settings panel "Domain binding": shows current domain attached to the key + input to request rebinding via POST /v1/auth/keys/domain-change. Manual fallback link to api dashboard if the endpoint returns an error.
 * Closes admin enhancements stack (v0.8.0-v0.8.3).
 
 = 0.8.2 =
-* New Settings panel "Feature matrix" — visual grid of features × tiers with checkmarks. Highlights the current tier's column. Reads from `Tier::matrix()` so addon-registered features appear automatically.
+* New Settings panel "Feature matrix": visual grid of features × tiers with checkmarks. Highlights the current tier's column. Reads from `Tier::matrix()` so addon-registered features appear automatically.
 
 = 0.8.1 =
-* New Settings panel "Spend cap" — local mirror of the monthly USD ceiling configurable at api.astroway.info/dashboard/billing. Stored as integer 0..100000 in OPTION_KEY['spend_cap_usd'].
+* New Settings panel "Spend cap": local mirror of the monthly USD ceiling configurable at api.astroway.info/dashboard/billing. Stored as integer 0..100000 in OPTION_KEY['spend_cap_usd'].
 
 = 0.8.0 =
 * New Settings panel "Render mode" with radio toggle: Auto (default) / Force iframe / Force client. Stored in OPTION_KEY['render_mode']. RendererDecisions wiring lands when native client widgets ship in v1.1+.
 * First piece of admin enhancements stack (v0.8.0-v0.8.3).
-
-= 0.7.5 =
-* Per-shortcode tier guards: each core `astroway_*` shortcode is now wrapped with `Tier::can( $feature )`. Locked shortcodes render an inline "Pro feature" CTA. Behavior matches v0.7.2 block-side gating — v1 shortcodes remain anonymous-accessible.
 
 = 0.7.4 =
 * New `Tier::render_upgrade_cta( $feature )` returns a styled CTA panel with feature label + upgrade button linking to api.astroway.info/dashboard/upgrade. Filterable via `astroway_upgrade_cta_html` for theme/addon customization.
 * Block + shortcode guards (v0.7.2/v0.7.3) refactored to call the helper. Closes the v0.7.x tier-gating stack and pre-v1.0 blocker B3.
 
 = 0.7.3 =
-* Fix: free and anonymous installs now receive updates via WordPress.org again. The bundled paid-tier update channel was registering for every install and suppressing the standard update check; it is now correctly limited to paid API keys, so one-click updates work for everyone else.
+* Per-shortcode tier guards: each core `astroway_*` shortcode is now wrapped with `Tier::can( $feature )`. Locked shortcodes render an inline "Pro feature" CTA. Behavior matches v0.7.2 block-side gating, v1 shortcodes remain anonymous-accessible.
 
 = 0.7.2 =
 * Per-block tier guards: each registered Gutenberg block is now wrapped with `Tier::can( $feature )`. Locked blocks render an inline "Pro feature" CTA instead of the widget. All v1 blocks remain accessible to anonymous users (matrix default); guards activate for v1.x+ Pro blocks.
@@ -138,7 +182,7 @@ This plugin stores the following on the WordPress site:
 * Default matrix: v1 widgets (natal, daily_horoscope, moon_phase, bodygraph, daily_tarot) anonymous-OK; synastry/solar_return/lunar_return/progressions/native_render paid-only; ai_chat/transit_alerts pro+.
 
 = 0.7.0 =
-* New utility class `AstroWayWPPluginTier` with `Tier::current()` resolving the user's plan from cached /v1/auth/keys/me response (30 min TTL). Returns anonymous/free/indie/starter/pro/business/internal.
+* New utility class `AstroWay\WPPlugin\Tier` with `Tier::current()` resolving the user's plan from cached /v1/auth/keys/me response (30 min TTL). Returns anonymous/free/indie/starter/pro/business/internal.
 * AddonAPI::current_tier() refactored as facade delegating to Tier::current(). First piece of tier-gating subsystem (v0.7.x).
 
 = 0.6.5 =
@@ -147,7 +191,7 @@ This plugin stores the following on the WordPress site:
 * Closes the Addon Hooks API atomic stack v0.6.0-v0.6.5. Track 3 addon plugins can now develop against a stable surface.
 
 = 0.6.4 =
-* New public class `AstroWayWPPluginAddonAPI` — BC-locked stable surface for addon developers. Methods: `register_widget()`, `current_tier()`, `api_base()`, `has_key()`, `cache_key()`. Internal classes (RendererDecisions, ApiClient, Cache, Admin) remain unstable.
+* New public class `AstroWay\WPPlugin\AddonAPI`: BC-locked stable surface for addon developers. Methods: `register_widget()`, `current_tier()`, `api_base()`, `has_key()`, `cache_key()`. Internal classes (RendererDecisions, ApiClient, Cache, Admin) remain unstable.
 
 = 0.6.3 =
 * New filter: `astroway_widgets` lets addons append entries to the widget registry without touching core. Useful for new shortcodes/blocks that map to api `/v1/embed/*` endpoints.
@@ -167,50 +211,39 @@ This plugin stores the following on the WordPress site:
 * Closes the Channel B atomic stack v0.5.0-v0.5.5. Plugin meets the v1.0 "Channel B custom updater" stability gate condition.
 
 = 0.5.4 =
-* Channel B update checks now send Cache-Control: no-cache + Pragma: no-cache headers, ensuring fresh response from astroway.info even if a transit cache sits between WP and the server.
-* "View details" modal verified to render correctly with PUC defaults — pulls changelog/sections from update.json.
+* Channel B update checks now send `Cache-Control: no-cache` + `Pragma: no-cache` headers, ensuring fresh response from `astroway.info` even if a transit cache sits between WP and the server.
+* "View details" modal verified to render correctly with PUC defaults: pulls changelog/sections from `update.json`.
 
 = 0.5.3 =
-* Channel B custom updater wired via plugin-update-checker — registers against https://astroway.info/wp-plugin/update.json with the saved API key carried as ?key= query arg.
+* Channel B custom updater wired via plugin-update-checker: registers against https://astroway.info/wp-plugin/update.json with the saved API key carried as ?key= query arg.
 * When PUC is absent or the server endpoint is unreachable, wp.org Channel A continues to deliver updates as before.
 
-= 0.5.8 =
-* Follow-up hotfix on v0.5.7: also guards require_once for class-updater.php and class_exists() checks around Updater::boot() / ElementorLoader::boot(). All forward-version dependencies in the main plugin file and Plugin::boot() now degrade gracefully if the corresponding includes/ files aren't bundled in the current ZIP.
-
-= 0.5.7 =
-* Hotfix on top of v0.5.6: the main plugin file required class-tier.php / class-addon-api.php / elementor.php unconditionally, but those classes only ship in later versions and were missing from the v0.5.6 ZIP — every page load fatal-erred. Those three require_once calls are now guarded by file_exists() so older ZIPs load cleanly. Also wraps Tier::current() in class_exists() for the same reason.
-* No behavior change for v0.5.6 features (review prompt + anonymous rate-limit guard) — they keep working as designed.
-
-= 0.5.6 =
-* Added a one-time review prompt in WP admin shown 14 days after activation, dismissible per-user.
-* Anonymous rate-limit guard: when the api responds that the public 30/h-per-IP limit is exhausted, the plugin now skips rendering the iframe (no more raw JSON error visible to visitors) and surfaces a one-time admin notice pointing the site owner at a free API key. Paid tiers and any configured API key skip the probe entirely. The probe itself is cached for 5 minutes in a transient so it adds at most one extra api hit per site every five minutes.
-
 = 0.5.2 =
-* Bundled YahnisElsts/plugin-update-checker v5.6 library at includes/lib/plugin-update-checker/ — autoloaded via load-v5p6.php. Foundation for v0.5.3 Channel B update hook.
+* Bundled `YahnisElsts/plugin-update-checker` v5.6 library at `includes/lib/plugin-update-checker/`, autoloaded via `load-v5p6.php`. Foundation for v0.5.3 Channel B update hook.
 * No new user-visible behavior. PUC is loaded but no update checker instance is created yet.
 
 = 0.5.1 =
-* Channel B download endpoint live at astroway.info/wp-plugin/download/{version}/ — 302-redirects paid-tier keys to versioned ZIP on GitHub Releases.
-* update.json now returns full download_url field for paid tiers.
+* Channel B download endpoint live at astroway.info/wp-plugin/download/{version}/, 302-redirects paid-tier keys to versioned ZIP on GitHub Releases.
+* update.json now returns full `download_url` field for paid tiers.
 * No user-visible plugin code change. Plugin-side update hooks land in v0.5.3.
 
 = 0.5.0 =
-* Channel B server endpoint deployed at astroway.info/wp-plugin/update.json — paid-tier auto-update infrastructure (first of 6 atomic pieces, v0.5.0-v0.5.5).
+* Channel B server endpoint deployed at astroway.info/wp-plugin/update.json, paid-tier auto-update infrastructure (first of 6 atomic pieces, v0.5.0-v0.5.5).
 * No user-visible plugin code change. Plugin-side updater hooks land in v0.5.3.
 
 = 0.4.0 =
 * CI/Tests infrastructure: PHPUnit unit tests + WPCS lint via GitHub Actions matrix (PHP 8.1-8.4 full test, 7.4/8.0 syntax compat)
 * Refactor: input sanitization extracted as public statics on Shortcodes class (no behavior change, enables addon reuse)
-* No user-visible changes — pure foundation for upcoming addon ecosystem (v0.6.0)
+* No user-visible changes: pure foundation for upcoming addon ecosystem (v0.6.0)
 
 = 0.3.0 =
-* New: live Status panel on the API Key admin landing — plan / credits / period / domain pulled from /v1/auth/keys/me (30 min transient cache)
-* New: `lang` attribute on all 5 shortcodes (e.g. `[astroway_natal date="..." lang="ru"]`) — 21 api-supported locales
-* New: Language Inspector dropdown on all 5 Gutenberg blocks — uk, en, de, ru, pl, es, pt, fr, it, nl, cs, ro, hu, el, tr, ar, hi, ja, ko, vi, id
+* New: live Status panel on the API Key admin landing, plan / credits / period / domain pulled from /v1/auth/keys/me (30 min transient cache)
+* New: `lang` attribute on all 5 shortcodes (e.g. `[astroway_natal date="..." lang="ru"]`), 21 api-supported locales
+* New: Language Inspector dropdown on all 5 Gutenberg blocks, uk, en, de, ru, pl, es, pt, fr, it, nl, cs, ro, hu, el, tr, ar, hi, ja, ko, vi, id
 * Default lang resolves to the WP site locale; invalid codes silently fall back, no user-facing error
 * Status panel handles all 5 states: valid / suspended / revoked / invalid_key / api_down with per-state color accent
 * Requires api.astroway.info v2.33.0+ for /v1/auth/keys/me; falls back to legacy /v1/keys/usage with "Limited data" notice on older self-hosted api
-* No regressions on v0.2.3 — existing shortcodes/blocks without `lang=` render in site default exactly as before
+* No regressions on v0.2.3: existing shortcodes/blocks without `lang=` render in site default exactly as before
 
 = 0.2.3 =
 * All 3 subpages share one hero (brand + status badge + CTAs); only title and tagline vary per page
@@ -218,7 +251,7 @@ This plugin stores the following on the WordPress site:
 * Buttons read as buttons in both light panels and the dark hero (ghost variant + on-dark override)
 * Shortcode reference cards gain proper panel-body inset
 * New: city → lat/lon/IANA-tz helper on the Shortcodes page (server-side proxy to app.astroway.info atlas + click-to-copy snippet)
-* Type tokens drop bundled webfont declarations — pure ui-sans-serif/system-ui stack, multi-script coverage via OS fonts
+* Type tokens drop bundled webfont declarations: pure ui-sans-serif/system-ui stack, multi-script coverage via OS fonts
 * 20 bundled translations: uk, de_DE, ru_RU, pl_PL, es_ES, pt_BR, hi_IN, fr_FR, ko_KR, it_IT, ja, id_ID, tr_TR, nl_NL, ro_RO, cs_CZ, vi, ar (RTL), el, hu_HU
 * Translation filenames corrected to {textdomain}-{locale}.mo + explicit load_plugin_textdomain call
 
@@ -232,9 +265,9 @@ This plugin stores the following on the WordPress site:
 = 0.2.1 =
 * Settings page promoted to a top-level admin menu item with a custom brand icon (star inside orbit ring, single-path SVG)
 * Activation notice rebranded with a cosmic-gradient mark, two CTAs (Get free API key / Open Settings), and persistent dismiss (fix for a latent bug where the dismiss action did not survive page reloads)
-* Settings page fully redesigned with an observatory aesthetic — hero with owl-moon logo, four numbered panels (API key / Connection / Cache / Shortcodes), right-side Resources / System / quote aside, paper-warm cards with gold hairlines
+* Settings page fully redesigned with an observatory aesthetic: hero with owl-moon logo, four numbered panels (API key / Connection / Cache / Shortcodes), right-side Resources / System / quote aside, paper-warm cards with gold hairlines
 * Shortcode rows copy-to-clipboard on click
-* ASTROWAY_WP_PLUGIN_VERSION constant auto-derived from the plugin header via get_file_data — single source of truth, simpler release pipeline
+* ASTROWAY_WP_PLUGIN_VERSION constant auto-derived from the plugin header via get_file_data, single source of truth, simpler release pipeline
 
 = 0.2.0 =
 * Settings page under Settings → AstroWay (API key input, Verify Key, Test Connection, Cache controls, shortcode reference, Diagnostics)
@@ -246,14 +279,14 @@ This plugin stores the following on the WordPress site:
 * Verify Key gracefully falls back to /v1/keys/usage until api ships /v1/auth/keys/me (Block A)
 
 = 0.1.0 =
-* MVP — 5 iframe shortcodes via /v1/embed/* (works without API key, 30/hr per IP)
+* MVP: 5 iframe shortcodes via /v1/embed/* (works without API key, 30/hr per IP)
 * 5 Gutenberg blocks with ServerSideRender
 * Vanilla CSS theme-overridable via CSS vars (--astroway-*)
 * i18n .pot + EN/UK/DE/PL base translations
 * Graceful 429 handler with 'Get free API key' admin notice
 
 = 0.1.0-alpha.1 =
-* Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet — first functional release planned as 0.1.0.
+* Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet, first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
 
@@ -261,7 +294,7 @@ This plugin stores the following on the WordPress site:
 Adds a live Status panel on the API Key admin page (plan / credits / period / domain) and a `lang` attribute on all shortcodes and Gutenberg blocks for 21 api-supported locales. Drop-in upgrade.
 
 = 0.2.3 =
-Admin UI polish — unified hero, restored sidebar, city search on the Shortcodes page, 20 bundled translations. Drop-in upgrade.
+Admin UI polish, unified hero, restored sidebar, city search on the Shortcodes page, 20 bundled translations. Drop-in upgrade.
 
 = 0.2.2 =
 Admin split into 3 submenu pages (API Key / Settings / Shortcodes). Drop-in upgrade.
@@ -270,7 +303,7 @@ Admin split into 3 submenu pages (API Key / Settings / Shortcodes). Drop-in upgr
 Settings page moves to a top-level admin menu with a brand icon. Drop-in upgrade.
 
 = 0.2.0 =
-Adds Settings page for API key configuration. Drop-in upgrade from 0.1.0 — anonymous mode shortcodes continue to work.
+Adds Settings page for API key configuration. Drop-in upgrade from 0.1.0, anonymous mode shortcodes continue to work.
 
 = 0.1.0 =
 First functional release. 5 shortcodes + 5 Gutenberg blocks work without an API key in anonymous mode (30 requests/hour per IP).

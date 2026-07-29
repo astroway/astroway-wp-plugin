@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/transit",
+	"title": "AstroWay: Transit Sky",
+	"category": "widgets",
+	"description": "Snapshot of the transiting planets' signs and degrees for a date, served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "visibility",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date":  { "type": "string", "default": "" },
+		"theme": { "type": "string", "default": "" },
+		"lang":  { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

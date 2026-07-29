@@ -73,15 +73,22 @@ class Tier {
 		$pro_plus  = [ 'pro', 'business', 'internal' ];
 
 		return [
-			// v1 widgets (5 shortcodes/blocks) — anonymous OK.
+			// Anonymous-OK embed widgets (iframe via /v1/embed/*).
 			'natal'                  => $all_tiers,
 			'daily_horoscope'        => $all_tiers,
 			'moon_phase'             => $all_tiers,
 			'bodygraph'              => $all_tiers,
 			'daily_tarot'            => $all_tiers,
 			'today_in_sky'           => $all_tiers,
+			'fortune_cookie'         => $all_tiers,
+			'kundli'                 => $all_tiers,
+			'transit'                => $all_tiers,
+			'panchang'               => $all_tiers,
+			'numerology'             => $all_tiers,
+			// synastry embed = free compatibility teaser (score + top aspects);
+			// the paid upsell is depth via native_render / custom_interpretations.
+			'synastry'               => $all_tiers,
 			// Paid-only (v0.8+ features).
-			'synastry'               => $paid_plus,
 			'solar_return'           => $paid_plus,
 			'lunar_return'           => $paid_plus,
 			'progressions'           => $paid_plus,

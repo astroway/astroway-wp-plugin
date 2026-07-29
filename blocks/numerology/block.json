@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/numerology",
+	"title": "AstroWay: Numerology",
+	"category": "widgets",
+	"description": "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "editor-ol",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"name":   { "type": "string", "default": "" },
+		"date":   { "type": "string", "default": "" },
+		"system": { "type": "string", "default": "pythagorean" },
+		"theme":  { "type": "string", "default": "" },
+		"lang":   { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

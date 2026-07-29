@@ -74,6 +74,57 @@
 		LANG_FIELD
 	];
 
+	var THEME_OPTIONS = [
+		{ label: __( 'Default (dark)', 'astroway' ),         value: '' },
+		{ label: __( 'Dark', 'astroway' ),                   value: 'dark' },
+		{ label: __( 'Light', 'astroway' ),                  value: 'light' },
+		{ label: __( 'Console (green on black)', 'astroway' ), value: 'console' }
+	];
+
+	var NUM_SYSTEM_OPTIONS = [
+		{ label: __( 'Pythagorean', 'astroway' ), value: 'pythagorean' },
+		{ label: __( 'Chaldean', 'astroway' ),    value: 'chaldean' }
+	];
+
+	var THEME_FIELD = { name: 'theme', type: 'select', label: __( 'Theme', 'astroway' ), options: THEME_OPTIONS };
+	var TZ_FIELD    = { name: 'tz', type: 'text', label: __( 'Timezone (Europe/Kyiv, +05:30, or 5.5)', 'astroway' ) };
+
+	// Vedic kundli — single birth subject, no name (api ignores it).
+	var KUNDLI_FIELDS = [
+		{ name: 'date', type: 'text', label: __( 'Date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time', type: 'text', label: __( 'Time (HH:MM)', 'astroway' ) },
+		{ name: 'lat',  type: 'text', label: __( 'Latitude (-90 to 90)', 'astroway' ) },
+		{ name: 'lon',  type: 'text', label: __( 'Longitude (-180 to 180)', 'astroway' ) },
+		TZ_FIELD,
+		THEME_FIELD,
+		LANG_FIELD
+	];
+
+	var PANCHANG_FIELDS = [
+		{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway' ) },
+		{ name: 'lat',  type: 'text', label: __( 'Latitude (-90 to 90)', 'astroway' ) },
+		{ name: 'lon',  type: 'text', label: __( 'Longitude (-180 to 180)', 'astroway' ) },
+		TZ_FIELD,
+		THEME_FIELD,
+		LANG_FIELD
+	];
+
+	// Synastry — two subjects (A and B) flattened into one block.
+	var SYNASTRY_FIELDS = [
+		{ name: 'date_a', type: 'text', label: __( 'Person A — date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_a', type: 'text', label: __( 'Person A — time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_a',  type: 'text', label: __( 'Person A — latitude', 'astroway' ) },
+		{ name: 'lon_a',  type: 'text', label: __( 'Person A — longitude', 'astroway' ) },
+		{ name: 'tz_a',   type: 'text', label: __( 'Person A — timezone', 'astroway' ) },
+		{ name: 'date_b', type: 'text', label: __( 'Person B — date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_b', type: 'text', label: __( 'Person B — time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_b',  type: 'text', label: __( 'Person B — latitude', 'astroway' ) },
+		{ name: 'lon_b',  type: 'text', label: __( 'Person B — longitude', 'astroway' ) },
+		{ name: 'tz_b',   type: 'text', label: __( 'Person B — timezone', 'astroway' ) },
+		THEME_FIELD,
+		LANG_FIELD
+	];
+
 	var BLOCKS = {
 		'astroway/natal-chart': {
 			panel:  __( 'Birth data', 'astroway' ),
@@ -82,6 +133,36 @@
 		'astroway/bodygraph': {
 			panel:  __( 'Birth data', 'astroway' ),
 			fields: CHART_FIELDS
+		},
+		'astroway/kundli': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: KUNDLI_FIELDS
+		},
+		'astroway/transit': {
+			panel:  __( 'Transit date', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway' ) },
+				THEME_FIELD,
+				LANG_FIELD
+			]
+		},
+		'astroway/panchang': {
+			panel:  __( 'Panchang', 'astroway' ),
+			fields: PANCHANG_FIELDS
+		},
+		'astroway/numerology': {
+			panel:  __( 'Numerology', 'astroway' ),
+			fields: [
+				{ name: 'name',   type: 'text',   label: __( 'Full name', 'astroway' ) },
+				{ name: 'date',   type: 'text',   label: __( 'Date of birth (YYYY-MM-DD)', 'astroway' ) },
+				{ name: 'system', type: 'select', label: __( 'System', 'astroway' ), options: NUM_SYSTEM_OPTIONS },
+				THEME_FIELD,
+				LANG_FIELD
+			]
+		},
+		'astroway/synastry': {
+			panel:  __( 'Two subjects', 'astroway' ),
+			fields: SYNASTRY_FIELDS
 		},
 		'astroway/daily-horoscope': {
 			panel:  __( 'Daily horoscope', 'astroway' ),

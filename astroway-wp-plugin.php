@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       AstroWay
+ * Plugin Name:       AstroWay – Astrology & Horoscopes
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
- * Description:       Natal charts, synastry, transits, Tarot, Numerology, Human Design, AI horoscopes — shortcodes + Gutenberg blocks. Powered by api.astroway.info.
- * Version:           0.9.2
+ * Description:       Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API. Powered by api.astroway.info.
+ * Version:           0.10.7
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            AstroWay
@@ -26,7 +26,14 @@ define( 'ASTROWAY_WP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ASTROWAY_WP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'ASTROWAY_API_BASE', 'https://api.astroway.info/v1' );
 
-require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/lib/plugin-update-checker/load-v5p6.php';
+// wp.org-hosted builds ship without the update checker: bundling one violates
+// the directory rules. Paid builds keep it, so the require must stay optional.
+$astroway_puc_loader = ASTROWAY_WP_PLUGIN_DIR . 'includes/lib/plugin-update-checker/load-v5p6.php';
+if ( file_exists( $astroway_puc_loader ) ) {
+	require_once $astroway_puc_loader;
+}
+unset( $astroway_puc_loader );
+
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-renderer-decisions.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-public-client.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-shortcodes.php';
@@ -34,9 +41,16 @@ require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-blocks.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-cache.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-api-client.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-admin.php';
-require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-tier.php';
-require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-addon-api.php';
-require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-updater.php';
+// Classes below are added in later atomic versions (v0.5.3 onwards) — guard the
+// require so a partial ZIP (e.g. v0.5.6 with this main file but without these
+// later includes/) loads cleanly instead of fatal-erroring on a missing file.
+foreach ( [ 'class-updater', 'class-tier', 'class-addon-api' ] as $astroway_opt_include ) {
+	$astroway_opt_path = ASTROWAY_WP_PLUGIN_DIR . 'includes/' . $astroway_opt_include . '.php';
+	if ( file_exists( $astroway_opt_path ) ) {
+		require_once $astroway_opt_path;
+	}
+}
+unset( $astroway_opt_include, $astroway_opt_path );
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-plugin.php';
 
 register_activation_hook( __FILE__, [ '\\AstroWay\\WPPlugin\\Plugin', 'activate' ] );
