@@ -4,40 +4,63 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.10.7
+Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Astrology & horoscope widgets for WordPress: birth & natal charts, synastry, Tarot, Numerology, Human Design via shortcodes & blocks.
+Put horoscopes and birth charts on your pages as real text search engines can read. Shortcodes and blocks, no account and no API key needed.
 
 == Description ==
 
-Add astrology and horoscope widgets to any WordPress page or post via shortcodes or Gutenberg blocks: natal and birth charts, synastry, Tarot, Numerology, Human Design, moon phase and daily horoscopes.
+Paste one shortcode into a page and the horoscope is on it: real text, in your theme's own fonts and colours, inside the HTML that search engines read. No frame, no JavaScript, no account, no API key, no credit card.
 
-**Free and open source. No account, no API key, and no credit card required.** The core widgets render out of the box in anonymous mode (30 requests/hour per visitor IP), which is enough for most blogs and small sites. Need more volume? A free API key (still no card) raises the limit to 10,000 calls/month, and paid plans are optional and only unlock advanced Pro widgets.
+= Three steps to the first widget =
+
+1. Install and activate. There is nothing to configure and nothing to sign up for.
+2. Paste this into any post or page: `[astroway_daily_horoscope sign="leo"]`
+3. Open the page. The reading is there, styled like the rest of your content.
+
+The moon phase takes no parameters at all, `[astroway_moon_phase]`. A birth chart takes a date, a time and a place:
+
+`[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]`
+
+AstroWay → Shortcodes in your admin lists every shortcode with its parameters and a copy button, next to a city search that fills in coordinates and timezone for you. Every one of them is a Gutenberg block as well: type `/astroway` in the editor and the preview shows the finished card, not a placeholder.
+
+= What renders into the page =
+
+Seven widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), planet of the day, and the natal chart. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The one exception is the natal chart's wheel, which stays a drawing produced by the API and therefore keeps a palette of its own; `theme="light"` or `theme="console"` on the shortcode matches it to your design. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+
+= What still loads in a frame =
+
+Widgets that have no page-side template yet, and any widget whose data cannot be fetched at that moment, fall back to an embedded frame loaded by the visitor's own browser (30 requests/hour per visitor IP). Every widget the plugin ships works this way without a key: nothing here is reserved for a paid plan. An API key is for calling api.astroway.info yourself, where the free tier gives 10,000 calls a month and paid plans raise the limits further.
 
 Under the hood the widgets are powered by api.astroway.info, with 700+ endpoints covering Western, Vedic, Hellenistic, Chinese and Mayan astrology, Tarot (Rider-Waite, Marseille, Lenormand), Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil), Human Design and AI horoscopes.
 
 == Installation ==
 
-1. Upload the plugin via Plugins → Add New, or unzip into `/wp-content/plugins/`.
-2. Activate through the Plugins menu.
-3. (Optional) Settings → AstroWay → paste your API key for higher rate limits and Pro features.
-4. Add a shortcode to any page: `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]`.
+1. Upload the plugin via Plugins → Add New, or unzip into `/wp-content/plugins/`, then activate it through the Plugins menu.
+2. Paste a shortcode into any post or page: `[astroway_daily_horoscope sign="leo"]`, or type `/astroway` in the block editor.
+3. Open the page. Nothing else is required: no account, no API key, no configuration.
+
+Optional: AstroWay → API Key, to paste a key from api.astroway.info. Every widget works without one; a key is what you use when you call the API yourself.
 
 == Frequently Asked Questions ==
 
 = Is AstroWay free? Are there any hidden costs? =
 
-Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. They render in anonymous mode (30 requests/hour per visitor IP), which is plenty for most blogs and small sites. If you need higher limits, a free API key (still no card) gives you 10,000 calls/month. Paid plans are optional and only unlock advanced Pro widgets; anything you have already added keeps working.
+Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The seven widgets your server renders into the page draw on the anonymous per-site allowance of 300 requests an hour, and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. No widget in the plugin is reserved for a paid plan. A free API key (still no card) gives you 10,000 calls a month against api.astroway.info, and paid plans raise that further; both are about calling the API yourself, not about what these shortcodes render.
 
 = How do I add a horoscope or birth chart to WordPress? =
 
-Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Every widget is also a Gutenberg block: Natal Chart, Daily Horoscope, Moon Phase, Human Design Bodygraph, Daily Tarot, Vedic Kundli, Transit Sky, Daily Panchang, Numerology and Synastry.
+Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. All 16 are Gutenberg blocks as well: type `/astroway` in the editor and pick one. Settings → AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
 
 = Do I need an API key? =
 
-No. The plugin works without a key in anonymous mode (30 requests/hour per visitor IP). For higher limits and Pro features, get a free key at api.astroway.info.
+No. The plugin works without a key. Page-rendered widgets then run on the anonymous per-site allowance of 300 requests an hour, and widgets that fall back to a frame run on the visitor's own 30 requests an hour per IP, which is enough for an ordinary site. If you do save a key, your server offers it when it fetches a widget, so those calls are counted against your plan instead of the shared anonymous allowance. Frames never carry it: that request is made by the visitor's browser. Get a free key at api.astroway.info.
+
+= Will the widgets show up in Google? =
+
+The seven page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. Settings → AstroWay → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
 
 = What data is sent to api.astroway.info? =
 
@@ -57,11 +80,12 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 
 == Screenshots ==
 
-1. AstroWay menu: API Key landing. Top-level admin menu item with a custom brand icon. The default landing page is the API Key submenu, paste your key, compare anonymous / free / paid plans side-by-side, and connect in one click.
-2. Settings: connection, cache, and system diagnostics. Test the connection to api.astroway.info, inspect the local transient cache (size, entry count, purge), and copy a diagnostic block (PHP / WP / plugin version, key status) for support.
-3. Shortcodes reference with built-in city: lat/lon helper. Every shortcode gets a copy-to-clipboard reference card (description, snippet, params table, Gutenberg block hint). The city search resolves coordinates and IANA timezone and pastes a ready-to-use shortcode.
-4. Gutenberg block in the editor. Blocks render via ServerSideRender with live preview. Block selection and the Inspector panel work the standard WordPress way.
-5. Natal chart widget on the frontend, rendered via `[astroway_natal date="…" time="…" lat="…" lon="…"]`. Includes zodiac wheel, planets with retrograde markers, and major aspects.
+1. A daily horoscope rendered straight into the page. The text is part of your HTML, so search engines index it and screen readers announce it, and it takes the type and colours of your own theme. No frame and no JavaScript involved.
+2. A birth chart with the reading beside the wheel: every planet with its sign, degree, house and retrograde marker, the Ascendant, the Midheaven and the major aspects. All of it is text on your page rather than a picture.
+3. The weekly horoscope keeps its shape. The API answers in Markdown, and the day-by-day notes and life areas arrive as real lists rather than a wall of prose.
+4. The same three cards on a light background and on a dark one. Nothing was configured between the two: the cards borrow the colour of the text around them.
+5. Every widget is also a block. What the editor previews is the finished card, not a placeholder, and the zodiac sign and language are ordinary Inspector controls.
+6. Settings → AstroWay → Shortcodes. Every shortcode with its parameters and a copy button, plus a city search that fills in coordinates and timezone for you.
 
 == External services ==
 
@@ -69,8 +93,8 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 **What is sent:**
 
-* When a natal chart, bodygraph, or transit widget renders: the parameters provided in the shortcode (date, time, latitude, longitude) plus the visitor's IP address (for anonymous rate-limiting).
-* When a daily horoscope, moon phase, or daily tarot widget renders: the zodiac sign or deck identifier plus the visitor's IP address.
+* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
+* When a widget falls back to an embedded frame (bodygraph, synastry, kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
 * When the site administrator clicks "Verify Key" or "Test Connection" in the Settings screen: the configured API key and a small diagnostics payload.
 
 **When this happens:**
@@ -94,6 +118,33 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.0.0 =
+* New: seven widgets are now rendered by your server into the page instead of being loaded in an embedded frame: daily, weekly and monthly horoscope, moon phase, Tarot card of the day (Rider-Waite), planet of the day, and the natal chart. Their text becomes part of your HTML, so search engines index it and screen readers announce it. Until now every widget lived in a frame, which is a separate document, and none of that content counted toward your page.
+* New: the widgets inherit your theme. They are styled with currentColor rather than a palette of their own, so they read correctly in light and dark themes with no configuration on either side, and they collapse to a single column on narrow screens.
+* New: three shortcodes that had templates but no way to reach them: [astroway_weekly_horoscope], [astroway_monthly_horoscope] and [astroway_planet_of_day].
+* New: the natal chart card carries planet placements with sign, degree, house and retrograde marker, the Ascendant, the Midheaven and the major aspects, alongside the wheel it always drew. A failed request falls back to the bare wheel, which is what the widget showed before.
+* New: `[astroway_natal]` accepts `theme`, which was previously reachable on other widgets but not this one. The wheel is an image drawn by the API and cannot read the page it lands on, so a dark wheel could end up inside a light card with no way to say otherwise. Values are `dark` (unchanged default), `light` and `console`.
+* New: "Render mode" is back in Settings and this time something reads it. "On this page" is the default; "In an iframe" puts every widget that has a frame equivalent back into one. The weekly and monthly horoscopes are page-render only, because the API has no embed route behind them.
+* Change: **the markup of those seven widgets has changed.** They are now wrapped in astroway-horoscope-card, astroway-moon-card, astroway-tarot-card, astroway-planet-card and astroway-natal-card elements rather than a frame. Custom CSS written against the old frame markup needs updating, or set Render mode to "In an iframe" to keep the old output.
+* Change: page-rendered widgets are counted against your site's allowance of 300 requests an hour rather than each visitor's 30, because the request now comes from your server. Answers are cached until the data itself changes: a daily horoscope until midnight UTC, a weekly one until Monday, a monthly one until the first of the month, a chart for a month. A page carrying all twelve signs spends twelve requests a day, not twelve an hour.
+* Change: failures are cached too, for 60 seconds, so an exhausted allowance is given a chance to recover instead of being hit again on every page load.
+* Fix: the weekly and monthly endpoints return Markdown, and the previous build would have printed the asterisks literally. A small safe subset is now parsed, with escaping applied before any tag is inserted.
+* Fix: readings in Ukrainian, Russian and other Cyrillic languages were cut in the middle of words. The text was split on line breaks with a pattern that, outside UTF-8 mode, also treats the second byte of the letter "х" as a line break, so "небесних тіл" came out as "небесни" followed by a line break and " тіл". Every pattern that touches the API's text now runs in UTF-8 mode.
+* Fix: a bulleted list that the API puts directly after a sentence, with no blank line between them, is now a list. It used to be printed as one run-on paragraph with the hyphens still in it.
+* Fix: two shortcodes on consecutive lines were wrapped in a single paragraph by WordPress, and a card cannot live inside a paragraph: the browser closed it early, leaving an empty bordered box with the widget's text spilled out below it. Paragraphs made up entirely of AstroWay shortcodes are now unwrapped. A sentence written around a widget is left as the author wrote it.
+* Fix: a site whose API key was on a plan this build did not have in its list saw the upgrade prompt in place of every widget, including the ones that need no key at all. The plan above Pro bought less than no plan. A plan name the plugin does not recognise is now read as newer than this release rather than lower than anonymous.
+* Fix: the rate-limit reading shown in the admin notice came from a separate probe request against the wrong bucket. Every render already returns the quota headers, so the notice now reports the bucket the widgets actually spend from.
+* Fix: the moon phase name and the planet of the day printed the API's English identifier on every non-English site, because the JSON endpoints used to answer in English whatever language was asked for, unlike the embedded frames. The API now returns a translation of its own for those fields and the card prefers it, which is what makes `lang="uk"` on an English site come out Ukrainian throughout; a translation the plugin carries covers anything the API has not translated, including chart placements and answers cached before this release. Tarot card names and the planet's theme words are open-ended lists and remain English until the API translates them.
+* Change: when a key is saved in Settings, your server now offers it on the calls it makes to render a widget, so they are counted against your plan instead of the anonymous per-site allowance. Frames are unaffected: that request is made by the visitor's browser, and putting a key in a URL that lands in your page's markup is not something the plugin will do.
+* Fix: five places in the admin screens still quoted the old limit of "30 requests/hour per visitor IP", and the rate-limit notice went further and promised that visitors were unaffected. With server-side rendering they are: the widgets fall back to a frame when the site's allowance runs out. All five now describe both buckets.
+* New: the plugin's first admin screen is now "Getting started" rather than "API Key". It opens with three steps and a copyable shortcode, because nothing in the plugin needs a key; the key form is still on the same page, below them.
+* New: three shortcodes for embed routes the API has had all along and the plugin never exposed: [astroway_mini_chart] (the natal wheel drawn small, for a sidebar), [astroway_monthly_forecast] (four weeks ahead for one sign) and [astroway_transit_timeline] (the next seven days of Moon ingresses).
+* New: six Gutenberg blocks, so all 16 widgets are now both a shortcode and a block: Weekly Horoscope, Monthly Horoscope, Planet of the Day, Mini Birth Chart, Monthly Forecast and Moon Transit Timeline. The first three render into the page; the readme used to say they were "shortcodes for now".
+* New: the shortcode reference lists all 16 shortcodes and has a search box. Kundli, Transit Sky, Panchang, Numerology and Synastry worked all along but appeared nowhere in the admin, so the only way to find them was the source. Their block names are corrected too: the reference named blocks that do not exist under those names in the inserter.
+* Fix: the "What you get" comparison on the API Key page claimed a paid plan unlocks native rendering, Tarot, Human Design, Synastry and Numerology, and removes the watermark. None of that is true of the plugin: every shortcode works on the anonymous tier, page rendering is not gated, and the key never reaches the frame, so it cannot remove a watermark. The table now compares what a key actually changes, and says plainly that the widgets on your pages are unaffected by it.
+* i18n: 63 new strings (signs, planets, aspects, houses, moon phases, settings) translated into all 20 bundled locales. Zodiac names got a second pass: the generic translator had left "Leo" in English in eleven of them and had rendered "Cancer" as the illness in Czech, Japanese, Korean, Turkish, Romanian, Indonesian and Dutch.
+* i18n: 70 more strings for the new screens, and every remaining em-dash removed from translatable text (19 strings, including the ten synastry field labels in the block editor).
 
 = 0.10.7 =
 * Fix: widgets no longer disappear from your pages. The plugin probed its own server's rate limit and, when that quota ran out, rendered nothing at all, even though each visitor has a separate quota. Rendering no longer depends on that probe, and the probe now runs only where its reading is meaningful: the admin notice.
@@ -289,6 +340,9 @@ This plugin stores the following on the WordPress site:
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet, first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 1.0.0 =
+Seven widgets now render into your page as indexable text instead of loading in a frame, and their markup changed accordingly. If you wrote custom CSS against the old frame markup, review it after upgrading, or set Settings → AstroWay → Render mode to "In an iframe" to keep the previous output.
 
 = 0.3.0 =
 Adds a live Status panel on the API Key admin page (plan / credits / period / domain) and a `lang` attribute on all shortcodes and Gutenberg blocks for 21 api-supported locales. Drop-in upgrade.

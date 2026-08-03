@@ -23,6 +23,17 @@ class ApiClient {
 		return '' !== $this->api_key && 0 === strpos( $this->api_key, 'aw_' );
 	}
 
+	/**
+	 * The configured key when it looks like one, '' otherwise.
+	 *
+	 * PublicData needs the value itself, not a yes/no, and the rule for what
+	 * counts as a key belongs in one place: the settings field takes free text
+	 * and collects pasted URLs and dashboard labels as readily as keys.
+	 */
+	public function key(): string {
+		return $this->has_key() ? $this->api_key : '';
+	}
+
 	public function ping_health(): array {
 		return $this->get( '/health' );
 	}

@@ -19,30 +19,68 @@ class Tier {
 	/**
 	 * Tiers a paying customer can be on. Used by Channel B updater + feature gates.
 	 */
-	public const PAID = [ 'indie', 'starter', 'pro', 'business' ];
+	public const PAID = [ 'indie', 'starter', 'pro', 'business', 'enterprise' ];
 
 	/**
 	 * Recognised tier values returned by api `/v1/auth/keys/me`.
+	 *
+	 * This list is a copy of strings owned by a service that releases on its own
+	 * schedule, so it goes stale between plugin releases by design. `can()`
+	 * treats anything missing from it as a plan introduced after this build,
+	 * never as a plan below anonymous.
 	 */
-	public const ALL = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business', 'internal' ];
+	public const ALL = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'business', 'enterprise', 'internal' ];
+
+	/**
+	 * Plan resolved earlier in this request, or null before the first lookup.
+	 */
+	private static ?string $resolved = null;
+
+	/**
+	 * Forget the resolved plan. Called when the key changes, so the request that
+	 * saved a new one does not keep answering with the old one's plan.
+	 */
+	public static function flush(): void {
+		self::$resolved = null;
+	}
 
 	/**
 	 * Resolve the current site's tier.
 	 *
 	 * Returns 'anonymous' if no key configured, 'free' if key invalid/expired,
 	 * otherwise whatever plan the api returns.
+	 *
+	 * Resolved once per request. ApiClient caches a successful answer in a
+	 * transient, but not a rejected key, and every gated shortcode calls can(),
+	 * which calls this: a page of sixteen widgets on a site with a mistyped key
+	 * made sixteen requests to the api, five second timeout each, all of them
+	 * certain to return the same 401.
 	 */
 	public static function current(): string {
+		if ( null !== self::$resolved ) {
+			return self::$resolved;
+		}
+
 		$client = new ApiClient();
 		if ( ! $client->has_key() ) {
-			return 'anonymous';
+			self::$resolved = 'anonymous';
+			return self::$resolved;
 		}
 		$resp = $client->get_keys_me();
 		if ( 200 !== ( $resp['status'] ?? 0 ) ) {
-			return 'free';
+			self::$resolved = 'free';
+			return self::$resolved;
 		}
 		$plan = $resp['data']['data']['plan'] ?? null;
-		return is_string( $plan ) && '' !== $plan ? $plan : 'free';
+		if ( ! is_string( $plan ) || '' === trim( $plan ) ) {
+			self::$resolved = 'free';
+			return self::$resolved;
+		}
+		// Normalised before it is compared: every list here is lower case, and a
+		// "Pro" coming back capitalised would match none of them and be read as
+		// a plan this build has never heard of.
+		self::$resolved = strtolower( trim( $plan ) );
+		return self::$resolved;
 	}
 
 	/**
@@ -68,14 +106,18 @@ class Tier {
 
 	private static function matrix_default(): array {
 		$all_tiers = self::ALL;
-		$free_plus = [ 'free', 'indie', 'starter', 'pro', 'business', 'internal' ];
-		$paid_plus = [ 'indie', 'starter', 'pro', 'business', 'internal' ];
-		$pro_plus  = [ 'pro', 'business', 'internal' ];
+		$free_plus = [ 'free', 'indie', 'starter', 'pro', 'business', 'enterprise', 'internal' ];
+		$paid_plus = [ 'indie', 'starter', 'pro', 'business', 'enterprise', 'internal' ];
+		$pro_plus  = [ 'pro', 'business', 'enterprise', 'internal' ];
 
 		return [
 			// Anonymous-OK embed widgets (iframe via /v1/embed/*).
 			'natal'                  => $all_tiers,
 			'daily_horoscope'        => $all_tiers,
+			// Same public endpoints as the daily one, only a longer period.
+			'weekly_horoscope'       => $all_tiers,
+			'monthly_horoscope'      => $all_tiers,
+			'planet_of_day'          => $all_tiers,
 			'moon_phase'             => $all_tiers,
 			'bodygraph'              => $all_tiers,
 			'daily_tarot'            => $all_tiers,
@@ -88,6 +130,9 @@ class Tier {
 			// synastry embed = free compatibility teaser (score + top aspects);
 			// the paid upsell is depth via native_render / custom_interpretations.
 			'synastry'               => $all_tiers,
+			'mini_chart'             => $all_tiers,
+			'monthly_forecast'       => $all_tiers,
+			'transit_timeline'       => $all_tiers,
 			// Paid-only (v0.8+ features).
 			'solar_return'           => $paid_plus,
 			'lunar_return'           => $paid_plus,
@@ -104,14 +149,28 @@ class Tier {
 	/**
 	 * Whether the current tier can access a given feature.
 	 *
-	 * Unknown features default to allowed (forward-compatible).
+	 * Unknown features default to allowed (forward-compatible), and so do
+	 * unknown plans. The second one was not theoretical: api.astroway.info issues
+	 * `enterprise` keys, the list above did not have that string, and every
+	 * lookup for such a site failed. Its owner saw an upgrade CTA in place of
+	 * each of the sixteen widgets while an anonymous visitor to the same page
+	 * would have seen all of them, because the plan above pro matched no row.
+	 *
+	 * A plan name this build does not recognise means the api issued it after
+	 * this copy of the plugin was released, not that it ranks below anonymous.
+	 * The key is valid and the api accepted it, so the honest reading is a plan
+	 * at least as good as the ones listed.
 	 */
 	public static function can( string $feature ): bool {
 		$matrix = self::matrix();
 		if ( ! isset( $matrix[ $feature ] ) ) {
 			return true;
 		}
-		return in_array( self::current(), $matrix[ $feature ], true );
+		$tier = self::current();
+		if ( ! in_array( $tier, self::ALL, true ) ) {
+			return true;
+		}
+		return in_array( $tier, $matrix[ $feature ], true );
 	}
 
 	/**
@@ -145,7 +204,7 @@ class Tier {
 				.astroway-locked .awl-btn:hover{background:#ffd773}
 			</style>
 			<div class="awl-text">
-				<p class="awl-title"><?php echo esc_html( $label ); ?> — <?php esc_html_e( 'Pro feature', 'astroway' ); ?></p>
+				<p class="awl-title"><?php echo esc_html( $label ); ?> (<?php esc_html_e( 'Pro feature', 'astroway' ); ?>)</p>
 				<p class="awl-desc"><?php esc_html_e( 'This widget is available on a paid AstroWay plan.', 'astroway' ); ?></p>
 			</div>
 			<a class="awl-btn" href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener">

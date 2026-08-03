@@ -39,11 +39,12 @@ class Admin {
 			self::menu_icon_data_uri(),
 			58
 		);
-		// Override the auto-duplicated first submenu (which would read "AstroWay") with "API Key".
+		// Override the auto-duplicated first submenu (which would read "AstroWay").
+		// Named for what a new install needs first; the key form lives on the same page.
 		add_submenu_page(
 			self::PAGE_API_KEY,
-			__( 'API Key', 'astroway' ),
-			__( 'API Key', 'astroway' ),
+			__( 'Getting started', 'astroway' ),
+			__( 'Getting started', 'astroway' ),
 			'manage_options',
 			self::PAGE_API_KEY,
 			[ __CLASS__, 'render_api_key_page' ]
@@ -86,7 +87,13 @@ class Admin {
 		);
 	}
 
-	public const RENDER_MODES = [ 'auto', 'iframe', 'client' ];
+	/**
+	 * `client` is gone: fetching from the visitor's browser needs CORS open to
+	 * arbitrary domains, and /v1/public/* is whitelisted. It returns when the api
+	 * side does (plan item 3.4). Render treats anything not `iframe` as `auto`,
+	 * so a `client` left in the database by an older build keeps rendering.
+	 */
+	public const RENDER_MODES = [ 'auto', 'iframe' ];
 
 	public static function sanitize_settings( $input ): array {
 		$existing = (array) get_option( self::OPTION_KEY, [] );
@@ -98,6 +105,12 @@ class Admin {
 				// Invalidate any cached /me payload for the previous key
 				if ( '' !== $key ) {
 					Cache::delete( 'keys_me_' . md5( $key ) );
+				}
+				// And the plan resolved earlier in this same request, which was
+				// the old key's. Without it the status panel rendered right
+				// after saving reports the plan that was just replaced.
+				if ( class_exists( __NAMESPACE__ . '\\Tier' ) ) {
+					Tier::flush();
 				}
 			} else {
 				add_settings_error(
@@ -191,6 +204,7 @@ class Admin {
 						'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
 						'networkError' => __( 'Network error', 'astroway' ),
 						'keyValid'     => __( 'Key verified.', 'astroway' ),
+						'copied'       => __( 'copied!', 'astroway' ),
 					],
 				]
 			);
@@ -238,6 +252,9 @@ class Admin {
 						'searchError' => __( 'Search error. Try again.', 'astroway' ),
 						'minChars'    => __( 'Type at least 2 characters.', 'astroway' ),
 						'pickCity'    => __( 'Pick a city to fill in lat / lon / tz', 'astroway' ),
+						/* translators: 1: number of shortcodes matching the filter, 2: total number of shortcodes */
+						'filterCount' => __( '%1$d of %2$d', 'astroway' ),
+						'filterNone'  => __( 'No shortcode matches.', 'astroway' ),
 					],
 				]
 			);
@@ -284,7 +301,7 @@ class Admin {
 		}
 		$client = new ApiClient();
 		if ( ! $client->has_key() ) {
-			wp_send_json_error( [ 'message' => __( 'No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP).', 'astroway' ) ] );
+			wp_send_json_error( [ 'message' => __( 'No API key. The plugin runs in anonymous mode: this site is allowed 300 requests an hour, and widgets that fall back to a frame use each visitor\'s own 30.', 'astroway' ) ] );
 		}
 		$result = $client->get_keys_me( true );
 		$status = (int) ( $result['status'] ?? 0 );

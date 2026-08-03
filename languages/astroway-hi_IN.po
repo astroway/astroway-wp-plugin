@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay WP Plugin\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
-"POT-Creation-Date: 2026-07-29T16:41:13+00:00\n"
-"PO-Revision-Date: 2026-05-13 20:12+0300\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"POT-Creation-Date: 2026-08-03T05:45:46+00:00\n"
+"PO-Revision-Date: 2026-08-03 08:46+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Hindi <translations@astroway.info>\n"
 "Language: hi_IN\n"
@@ -17,9 +17,8 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: astroway-wp-plugin.php
-#, fuzzy
 msgid "AstroWay – Astrology & Horoscopes"
-msgstr "अस्ट्रोवे — दैनिक होरोस्कोप"
+msgstr "अस्ट्रोवे – दैनिक होरोस्कोप"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
@@ -28,13 +27,12 @@ msgstr "https://github.com/astroway/astroway-wp-plugin"
 
 #. Description of the plugin
 #: astroway-wp-plugin.php
-#, fuzzy
 msgid ""
 "Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, "
 "Tarot, Numerology, Human Design API. Powered by api.astroway.info."
 msgstr ""
 "नैटल चार्ट, सिनास्ट्री, ट्रांजिट, टैरो, न्यूमरोलॉजी, ह्यूमन डिज़ाइन, AI "
-"होरोस्कोप — शॉर्टकोड + गुटेनबर्ग ब्लॉक। powered by api.astroway.info।"
+"होरोस्कोप – शॉर्टकोड + गुटेनबर्ग ब्लॉक। powered by api.astroway.info।"
 
 #. Author of the plugin
 #: astroway-wp-plugin.php includes/class-admin.php:34
@@ -47,32 +45,32 @@ msgstr "अस्ट्रोवे"
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
 
-#: includes/class-admin.php:45 includes/class-admin.php:46
+#: includes/class-admin.php:46 includes/class-admin.php:47
 #: includes/views/admin-api-key.php:18
-#: includes/views/partials/admin-footer-nav.php:13
-msgid "API Key"
-msgstr "एपीआई कुंजी"
+msgid "Getting started"
+msgstr "शुरू करना"
 
-#: includes/class-admin.php:53
+#: includes/class-admin.php:54
 msgid "AstroWay Settings"
 msgstr "अस्ट्रोवे सेटिंग्स"
 
-#: includes/class-admin.php:54 includes/class-admin.php:142
+#: includes/class-admin.php:55 includes/class-admin.php:149
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: includes/class-admin.php:61
+#: includes/class-admin.php:62
 msgid "AstroWay Shortcodes"
 msgstr "अस्ट्रोवे शॉर्टकोड्स"
 
-#: includes/class-admin.php:62 includes/views/admin-shortcodes.php:14
+#: includes/class-admin.php:63 includes/views/admin-api-key.php:116
+#: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr "शॉर्टकोड्स"
 
-#: includes/class-admin.php:106
+#: includes/class-admin.php:113
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -80,104 +78,118 @@ msgstr ""
 "एपीआई कुंजी \"aw_\" से शुरू होनी चाहिए और केवल अक्षरों, अंकों और अंडरस्कोर "
 "का उपयोग करें।"
 
-#: includes/class-admin.php:147
+#: includes/class-admin.php:154
 msgid "Get API Key"
 msgstr "एपीआई कुंजी प्राप्त करें"
 
-#: includes/class-admin.php:185
+#: includes/class-admin.php:192
 msgid "Verifying…"
 msgstr "सत्यापित किया जा रहा है…"
 
-#: includes/class-admin.php:186
+#: includes/class-admin.php:193
 msgid "limited info"
 msgstr "सीमित जानकारी"
 
-#: includes/class-admin.php:187 includes/views/admin-api-key.php:133
+#: includes/class-admin.php:194 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "योजना"
 
-#: includes/class-admin.php:188
+#: includes/class-admin.php:195
 msgid "Used"
 msgstr "उपयोग किया गया"
 
-#: includes/class-admin.php:189
+#: includes/class-admin.php:196
 msgid "Rate"
 msgstr "दर"
 
-#: includes/class-admin.php:190
+#: includes/class-admin.php:197
 msgid "Bound to"
 msgstr "बाध्य"
 
-#: includes/class-admin.php:191
+#: includes/class-admin.php:198
 msgid "Enter a valid API key first."
 msgstr "पहले एक मान्य एपीआई कुंजी दर्ज करें।"
 
-#: includes/class-admin.php:192 includes/views/admin-settings.php:246
+#: includes/class-admin.php:199 includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr "नेटवर्क त्रुटि"
 
-#: includes/class-admin.php:193
+#: includes/class-admin.php:200
 msgid "Key verified."
 msgstr "कुंजी सत्यापित की गई है।"
 
-#: includes/class-admin.php:211
-msgid "Pinging…"
-msgstr "पिंग किया जा रहा है…"
-
-#: includes/class-admin.php:212
-msgid "API is healthy"
-msgstr "एपीआई स्वस्थ है"
-
-#: includes/class-admin.php:213
-msgid "API unreachable"
-msgstr "एपीआई पहुंच योग्य नहीं"
-
-#: includes/class-admin.php:214
-msgid "Purge all cached data?"
-msgstr "सभी कैश्ड डेटा हटाएं?"
-
-#: includes/class-admin.php:215
-msgid "Cache cleared:"
-msgstr "कैश साफ़ किया गया:"
-
-#: includes/class-admin.php:216 includes/class-admin.php:235
+#: includes/class-admin.php:201 includes/class-admin.php:224
+#: includes/class-admin.php:243
 msgid "copied!"
 msgstr "कॉपी किया गया!"
 
-#: includes/class-admin.php:236
+#: includes/class-admin.php:219
+msgid "Pinging…"
+msgstr "पिंग किया जा रहा है…"
+
+#: includes/class-admin.php:220
+msgid "API is healthy"
+msgstr "एपीआई स्वस्थ है"
+
+#: includes/class-admin.php:221
+msgid "API unreachable"
+msgstr "एपीआई पहुंच योग्य नहीं"
+
+#: includes/class-admin.php:222
+msgid "Purge all cached data?"
+msgstr "सभी कैश्ड डेटा हटाएं?"
+
+#: includes/class-admin.php:223
+msgid "Cache cleared:"
+msgstr "कैश साफ़ किया गया:"
+
+#: includes/class-admin.php:244
 msgid "Searching…"
 msgstr "खोज रहे हैं…"
 
-#: includes/class-admin.php:237
+#: includes/class-admin.php:245
 msgid "No cities found."
 msgstr "कोई शहर नहीं मिला।"
 
-#: includes/class-admin.php:238
+#: includes/class-admin.php:246
 msgid "Search error. Try again."
 msgstr "खोज त्रुटि। फिर से प्रयास करें।"
 
-#: includes/class-admin.php:239
+#: includes/class-admin.php:247
 msgid "Type at least 2 characters."
 msgstr "कम से कम 2 अक्षर टाइप करें।"
 
-#: includes/class-admin.php:240
+#: includes/class-admin.php:248
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "अक्षांश / देशांतर / समय क्षेत्र भरने के लिए एक शहर चुनें"
 
-#: includes/class-admin.php:249 includes/class-admin.php:265
-#: includes/class-admin.php:274
+#. translators: 1: number of shortcodes matching the filter, 2: total number
+#. of shortcodes
+#: includes/class-admin.php:250
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d का %2$d"
+
+#: includes/class-admin.php:251
+msgid "No shortcode matches."
+msgstr "कोई शॉर्टकोड मेल नहीं खाता।"
+
+#: includes/class-admin.php:260 includes/class-admin.php:276
+#: includes/class-admin.php:285
 msgid "Unauthorized."
 msgstr "अनधिकृत।"
 
-#: includes/class-admin.php:287
+#: includes/class-admin.php:298
 msgid ""
-"No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
-"IP)."
+"No API key. The plugin runs in anonymous mode: this site is allowed 300 "
+"requests an hour, and widgets that fall back to a frame use each visitor's "
+"own 30."
 msgstr ""
-"कोई एपीआई कुंजी नहीं — प्लगइन गुमनाम मोड में चलता है (प्रति विज़िटर आईपी 30 "
-"अनुरोध/घंटा)।"
+"कोई API कुंजी नहीं। प्लगिन अनाम मोड में चलता है: इस साइट को एक घंटे में 300 "
+"अनुरोध की अनुमति है, और विजेट जो एक फ्रेम में वापस गिरते हैं वे प्रत्येक "
+"आगंतुक के अपने 30 का उपयोग करते हैं।"
 
-#: includes/class-admin.php:295
+#: includes/class-admin.php:306
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -186,52 +198,54 @@ msgstr ""
 " कुंजी पुनः चिपकाएं या गुमनाम मोड के लिए फ़ील्ड को साफ़ करें।"
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:298
+#: includes/class-admin.php:309
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "कुंजी की पुष्टि नहीं की जा सकी (HTTP %d)।"
 
-#: includes/class-admin.php:338
-#, fuzzy
+#: includes/class-admin.php:349
 msgid "API key required."
 msgstr "एपीआई कुंजी कॉन्फ़िगर की गई"
 
-#: includes/class-admin.php:342
+#: includes/class-admin.php:353
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "एक वैध डोमेन दर्ज करें (उदाहरण के लिए example.com)।"
 
-#: includes/class-admin.php:369
+#: includes/class-admin.php:380
 msgid "Domain change failed. Use the dashboard link below."
 msgstr "डोमेन परिवर्तन विफल रहा। नीचे दिए गए डैशबोर्ड लिंक का उपयोग करें।"
 
-#: includes/class-plugin.php:148
+#: includes/class-plugin.php:161
 msgid "AstroWay is active"
 msgstr "अस्ट्रोवे सक्रिय है"
 
-#: includes/class-plugin.php:149
+#: includes/class-plugin.php:162
 msgid ""
-"Shortcodes work without an API key (30 requests/hour per visitor IP). For "
-"higher limits and Pro features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the "
+"page draw on your site's allowance of 300 requests an hour; widgets that "
+"fall back to a frame draw on each visitor's own 30. For higher limits and "
+"Pro features, get a free API key."
 msgstr ""
-"शॉर्टकोड्स बिना एपीआई कुंजी के काम करते हैं (प्रति विज़िटर आईपी 30 "
-"अनुरोध/घंटा)। उच्च सीमाओं और प्रो सुविधाओं के लिए, एक मुफ्त एपीआई कुंजी "
-"प्राप्त करें।"
+"शॉर्टकोड API कुंजी के बिना काम करते हैं। आपके सर्वर द्वारा पेज में रेंडर किए"
+" गए विजेट आपकी साइट के 300 अनुरोध प्रति घंटे की अनुमति पर निर्भर करते हैं; "
+"विजेट जो एक फ्रेम में वापस गिरते हैं वे प्रत्येक आगंतुक के अपने 30 पर निर्भर"
+" करते हैं। उच्च सीमा और प्रो सुविधाओं के लिए, एक मुफ्त API कुंजी प्राप्त "
+"करें।"
 
-#: includes/class-plugin.php:153 includes/class-plugin.php:298
+#: includes/class-plugin.php:166 includes/class-plugin.php:311
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "मुफ्त एपीआई कुंजी प्राप्त करें"
 
-#: includes/class-plugin.php:156
+#: includes/class-plugin.php:169
 msgid "Open Settings"
 msgstr "सेटिंग्स खोलें"
 
-#: includes/class-plugin.php:228
-#, fuzzy
+#: includes/class-plugin.php:241
 msgid "Enjoying AstroWay?"
 msgstr "अस्ट्रोवे"
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:242
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -239,76 +253,342 @@ msgstr ""
 "wordpress.org पर एक छोटा समीक्षा अन्य साइट मालिकों को प्लगइन खोजने में मदद "
 "करता है, और हमें बताता है कि आगे क्या बनाना है।"
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:246
 msgid "Leave a review"
 msgstr "एक समीक्षा छोड़ दें"
 
-#: includes/class-plugin.php:296
+#: includes/class-plugin.php:309
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "इस सर्वर ने अपना गुमनाम AstroWay कोटा समाप्त कर दिया है:"
 
-#: includes/class-plugin.php:297
+#: includes/class-plugin.php:310
 msgid ""
-"the free tier allows 30 requests per hour per IP. Visitors are unaffected, "
-"since their widgets count against their own IP, but preview and admin calls "
-"from this server will fail until the hour resets. Add a free API key to lift"
-" the limit and get 10,000 credits/month plus 60 req/min."
+"the free tier allows this site 300 requests an hour. Until the hour resets, "
+"widgets that would have been rendered into the page fall back to a frame "
+"loaded by the visitor's own browser, and preview and admin calls from this "
+"server will fail. Add a free API key to lift the limit and get 10,000 "
+"credits/month plus 60 req/min."
 msgstr ""
-"मुफ्त स्तर प्रति घंटे प्रति आईपी 30 अनुरोधों की अनुमति देता है। आगंतुक "
-"प्रभावित नहीं होते हैं, क्योंकि उनके विजेट उनके अपने आईपी के खिलाफ गिने जाते"
-" हैं, लेकिन इस सर्वर से पूर्वावलोकन और प्रशासक कॉल घंटे के पुनर्निर्धारण तक "
-"विफल हो जाएंगे। सीमा को उठाने और 10,000 क्रेडिट/माह प्लस 60 अनुरोध/मिनट "
-"प्राप्त करने के लिए एक मुफ्त एपीआई कुंजी जोड़ें।"
+"नि:शुल्क स्तर इस साइट को प्रति घंटे 300 अनुरोध करने की अनुमति देता है। जब तक"
+" घंटा रीसेट नहीं हो जाता, तब तक पृष्ठ में जिन विजेट्स को रेंडर किया जा सकता "
+"था, वे आगंतुक के अपने ब्राउज़र द्वारा लोड किए गए फ्रेम में वापस आ जाते हैं, "
+"और इस सर्वर से पूर्वावलोकन और प्रशासक कॉल विफल हो जाते हैं। सीमा को उठाने और"
+" प्रति माह 10,000 क्रेडिट प्लस 60 अनुरोध/मिनट प्राप्त करने के लिए एक "
+"नि:शुल्क API कुंजी जोड़ें।"
 
-#: includes/class-public-client.php:117
+#: includes/class-public-client.php:138
 msgid "Natal chart wheel"
 msgstr "नैटल चार्ट व्हील"
 
-#: includes/class-public-client.php:118
+#: includes/class-public-client.php:139
 #: assets/js/astroway-blocks-editor.js:168
 msgid "Daily horoscope"
 msgstr "दैनिक होरोस्कोप"
 
-#: includes/class-public-client.php:119
+#: includes/class-public-client.php:140 includes/class-render.php:371
 #: assets/js/astroway-blocks-editor.js:175
 msgid "Moon phase"
 msgstr "चंद्रमा का चरण"
 
-#: includes/class-public-client.php:120
+#: includes/class-public-client.php:141
 msgid "Human Design bodygraph"
 msgstr "ह्यूमन डिज़ाइन बॉडीग्राफ"
 
-#: includes/class-public-client.php:121
+#: includes/class-public-client.php:142
 msgid "Daily Tarot card"
 msgstr "दैनिक टैरो कार्ड"
 
-#: includes/class-public-client.php:122
+#: includes/class-public-client.php:143
 msgid "Vedic kundli chart"
 msgstr "वैदिक कुंडली चार्ट"
 
-#: includes/class-public-client.php:123
+#: includes/class-public-client.php:144
 msgid "Transit sky snapshot"
 msgstr "गोचर आकाश स्नैपशॉट"
 
-#: includes/class-public-client.php:124
-#, fuzzy
+#: includes/class-public-client.php:145
+#: includes/views/admin-shortcodes.php:177
 msgid "Daily Panchang"
 msgstr "दैनिक टैरो कार्ड"
 
-#: includes/class-public-client.php:125
+#: includes/class-public-client.php:146
 msgid "Numerology core numbers"
 msgstr "अंक ज्योतिष मूल संख्याएं"
 
-#: includes/class-public-client.php:126
+#: includes/class-public-client.php:147
 msgid "Synastry compatibility"
 msgstr "सिनास्ट्री संगतता"
 
-#: includes/class-public-client.php:128
+#: includes/class-public-client.php:149
 msgid "AstroWay widget"
 msgstr "अस्ट्रोवे विजेट"
 
+#. translators: %s = widget name
+#: includes/class-render.php:81
+#, php-format
+msgid ""
+"The %s widget could not be loaded just now. Only administrators see this "
+"note."
+msgstr ""
+"%s विजेट अभी लोड नहीं किया जा सका। केवल व्यवस्थापक ही यह नोट देख सकते हैं।"
+
+#: includes/class-render.php:137
+msgid "Natal chart"
+msgstr "जन्म कुंडली"
+
+#. translators: %s = person's name
+#: includes/class-render.php:140
+#, php-format
+msgid "Natal chart: %s"
+msgstr "जन्म कुंडली: %s"
+
+#: includes/class-render.php:153
+msgid "Ascendant"
+msgstr "लग्न"
+
+#: includes/class-render.php:156
+msgid "Midheaven"
+msgstr "मध्य आकाश"
+
+#. translators: %d = house number
+#: includes/class-render.php:169
+#, php-format
+msgid "House %d"
+msgstr "भाव %d"
+
+#. translators: %d = house number
+#: includes/class-render.php:170
+msgid "retrograde"
+msgstr "वक्री"
+
+#: includes/class-render.php:173
+msgid "Placements"
+msgstr "स्थितियाँ"
+
+#. translators: 1: first planet, 2: aspect name, 3: second planet
+#: includes/class-render.php:194
+#, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: includes/class-render.php:204
+msgid "Major aspects"
+msgstr "प्रमुख पहलू"
+
+#: includes/class-render.php:278
+msgid "New Moon"
+msgstr "न्यू मून"
+
+#: includes/class-render.php:279
+msgid "Waxing Crescent"
+msgstr "वैक्सिंग क्रेसेंट"
+
+#: includes/class-render.php:280
+msgid "First Quarter"
+msgstr "फर्स्ट क्वार्टर"
+
+#: includes/class-render.php:281
+msgid "Waxing Gibbous"
+msgstr "वैक्सिंग जिबोस"
+
+#: includes/class-render.php:282
+msgid "Full Moon"
+msgstr "फुल मून"
+
+#: includes/class-render.php:283
+msgid "Waning Gibbous"
+msgstr "वैनिंग जिबोस"
+
+#: includes/class-render.php:284
+msgid "Last Quarter"
+msgstr "लास्ट क्वार्टर"
+
+#: includes/class-render.php:285
+msgid "Waning Crescent"
+msgstr "वैनिंग क्रेसेंट"
+
+#: includes/class-render.php:292
+msgid "Sun"
+msgstr "सूर्य"
+
+#: includes/class-render.php:293
+msgid "Moon"
+msgstr "चंद्रमा"
+
+#: includes/class-render.php:294
+msgid "Mercury"
+msgstr "बुध"
+
+#: includes/class-render.php:295
+msgid "Venus"
+msgstr "शुक्र"
+
+#: includes/class-render.php:296
+msgid "Mars"
+msgstr "मंगल"
+
+#: includes/class-render.php:297
+msgid "Jupiter"
+msgstr "बृहस्पति"
+
+#: includes/class-render.php:298
+msgid "Saturn"
+msgstr "शनि"
+
+#: includes/class-render.php:299
+msgid "Uranus"
+msgstr "यूरेनस"
+
+#: includes/class-render.php:300
+msgid "Neptune"
+msgstr "नेपच्यून"
+
+#: includes/class-render.php:301
+msgid "Pluto"
+msgstr "प्लूटो"
+
+#: includes/class-render.php:302
+msgid "Chiron"
+msgstr "चिरॉन"
+
+#: includes/class-render.php:303 includes/class-render.php:310
+#: includes/class-render.php:311
+msgid "Lilith"
+msgstr "लिलिथ"
+
+#: includes/class-render.php:304 includes/class-render.php:308
+#: includes/class-render.php:309
+msgid "North Node"
+msgstr "उत्तर नोड"
+
+#: includes/class-render.php:305
+msgid "South Node"
+msgstr "दक्षिण नोड"
+
+#: includes/class-render.php:318
+msgid "conjunct"
+msgstr "युति"
+
+#: includes/class-render.php:319
+msgid "opposite"
+msgstr "विपरीत"
+
+#: includes/class-render.php:320
+msgid "trine"
+msgstr "त्रिकोण"
+
+#: includes/class-render.php:321
+msgid "square"
+msgstr "वर्ग"
+
+#: includes/class-render.php:322
+msgid "sextile"
+msgstr "षष्ठक"
+
+#: includes/class-render.php:354
+msgid "Illumination"
+msgstr "प्रदीप्ति"
+
+#: includes/class-render.php:357
+msgid "Age"
+msgstr "आयु"
+
+#. translators: %s = number of days, may be fractional
+#: includes/class-render.php:359
+#, php-format
+msgid "%s days"
+msgstr "%s दिन"
+
+#: includes/class-render.php:364
+msgid "Moon in"
+msgstr "चंद्रमा में"
+
+#: includes/class-render.php:367
+msgid "Sun in"
+msgstr "सूर्य में"
+
+#. translators: %s = tarot card name
+#: includes/class-render.php:399
+#, php-format
+msgid "%s (reversed)"
+msgstr "%s (उल्टा)"
+
+#: includes/class-render.php:405
+msgid "Card of the day"
+msgstr "दिन का कार्ड"
+
+#: includes/class-render.php:435 assets/js/astroway-blocks-editor.js:205
+msgid "Planet of the day"
+msgstr "दिन का ग्रह"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:467
+#, php-format
+msgid "%s: horoscope for the week"
+msgstr "%s: सप्ताह का राशिफल"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:470
+#, php-format
+msgid "%s: horoscope for the month"
+msgstr "%s: महीने का राशिफल"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:473
+#, php-format
+msgid "%s: horoscope for today"
+msgstr "%s: आज का राशिफल"
+
+#: includes/class-render.php:480 assets/js/astroway-blocks-editor.js:18
+msgid "Aries"
+msgstr "मेष"
+
+#: includes/class-render.php:481 assets/js/astroway-blocks-editor.js:19
+msgid "Taurus"
+msgstr "वृषभ"
+
+#: includes/class-render.php:482 assets/js/astroway-blocks-editor.js:20
+msgid "Gemini"
+msgstr "मिथुन"
+
+#: includes/class-render.php:483 assets/js/astroway-blocks-editor.js:21
+msgid "Cancer"
+msgstr "कर्क"
+
+#: includes/class-render.php:484 assets/js/astroway-blocks-editor.js:22
+msgid "Leo"
+msgstr "सिंह"
+
+#: includes/class-render.php:485 assets/js/astroway-blocks-editor.js:23
+msgid "Virgo"
+msgstr "कन्या"
+
+#: includes/class-render.php:486 assets/js/astroway-blocks-editor.js:24
+msgid "Libra"
+msgstr "तुला"
+
+#: includes/class-render.php:487 assets/js/astroway-blocks-editor.js:25
+msgid "Scorpio"
+msgstr "वृश्चिक"
+
+#: includes/class-render.php:488 assets/js/astroway-blocks-editor.js:26
+msgid "Sagittarius"
+msgstr "धनु"
+
+#: includes/class-render.php:489 assets/js/astroway-blocks-editor.js:27
+msgid "Capricorn"
+msgstr "मकर"
+
+#: includes/class-render.php:490 assets/js/astroway-blocks-editor.js:28
+msgid "Aquarius"
+msgstr "कुम्भ"
+
+#: includes/class-render.php:491 assets/js/astroway-blocks-editor.js:29
+msgid "Pisces"
+msgstr "मीन"
+
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:164
+#: includes/class-shortcodes.php:233
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -317,135 +597,208 @@ msgstr ""
 " %s विजेट अस्थायी रूप से उपलब्ध नहीं है, इसलिए यह कुछ भी प्रस्तुत नहीं करता "
 "है। केवल प्रशासक इस नोट को देखते हैं।"
 
-#: includes/class-tier.php:138
+#: includes/class-tier.php:145
 msgid "Locked feature"
 msgstr "लॉक्ड सुविधा"
 
-#: includes/class-tier.php:148
+#: includes/class-tier.php:155
 msgid "Pro feature"
 msgstr "प्रो सुविधा"
 
-#: includes/class-tier.php:149
+#: includes/class-tier.php:156
 msgid "This widget is available on a paid AstroWay plan."
 msgstr "यह विजेट एक भुगतान किए गए AstroWay योजना पर उपलब्ध है।"
 
-#: includes/class-tier.php:152
+#: includes/class-tier.php:159
 msgid "Upgrade →"
 msgstr "अपग्रेड →"
 
 #: includes/views/admin-api-key.php:19
-msgid "Higher limits, advanced widgets, no watermark."
-msgstr "उच्च सीमाएं, उन्नत विजेट्स, वॉटरमार्क रहित।"
+msgid ""
+"Paste a shortcode into a page. No account, no key, nothing to configure."
+msgstr ""
+"पृष्ठ में एक शॉर्टकोड पेस्ट करें। कोई खाता नहीं, कोई कुंजी नहीं, कॉन्फ़िगर "
+"करने के लिए कुछ भी नहीं।"
 
-#: includes/views/admin-api-key.php:59
+#: includes/views/admin-api-key.php:24
+msgid "Tonight's Moon phase. Takes no parameters at all."
+msgstr "आज रात का चंद्रमा का चरण। इसमें कोई भी पैरामीटर नहीं लिया जाता।"
+
+#: includes/views/admin-api-key.php:25
+msgid "A birth chart: date, time and place."
+msgstr "एक जन्म कुंडली: तिथि, समय और स्थान।"
+
+#: includes/views/admin-api-key.php:67
+msgid "Your first widget"
+msgstr "आपका पहला विजेट"
+
+#: includes/views/admin-api-key.php:68
+msgid "copy · paste · open the page"
+msgstr "नकल · चिपकाएँ · पृष्ठ खोलें"
+
+#: includes/views/admin-api-key.php:73
+msgid "Copy a shortcode."
+msgstr "एक शॉर्टकोड कॉपी करें।"
+
+#: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
+#: includes/views/admin-shortcodes.php:291
+msgid "Click to copy"
+msgstr "कॉपी करने के लिए क्लिक करें"
+
+#: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
+#: includes/views/admin-shortcodes.php:295
+msgid "copy"
+msgstr "कॉपी करें"
+
+#: includes/views/admin-api-key.php:86
+msgid "Paste it into any post or page."
+msgstr "इसे किसी भी पोस्ट या पेज में पेस्ट करें।"
+
+#: includes/views/admin-api-key.php:87
+msgid ""
+"In the block editor you can type /astroway instead and pick the block: the "
+"preview shows the finished card, not a placeholder."
+msgstr ""
+"ब्लॉक एडिटर में आप इसके बजाय /astroway टाइप कर सकते हैं और ब्लॉक चुन सकते "
+"हैं: पूर्वावलोकन तैयार कार्ड दिखाता है, प्लेसहोल्डर नहीं।"
+
+#: includes/views/admin-api-key.php:90
+msgid "Open the page."
+msgstr "पृष्ठ खोलें।"
+
+#: includes/views/admin-api-key.php:91
+msgid ""
+"The reading is already in the HTML, in your theme's fonts and colours. "
+"Nothing below this panel is required to make it work."
+msgstr ""
+"पाठ पहले से ही HTML में है, आपके थीम के फ़ॉन्ट्स और रंगों में। इसे काम कराने"
+" के लिए इस पैनल के नीचे कुछ भी आवश्यक नहीं है।"
+
+#: includes/views/admin-api-key.php:96
+msgid "Two more to try:"
+msgstr "अजमाने के लिए दो और:"
+
+#. translators: %s is a link to the plugin's Shortcodes admin page
+#: includes/views/admin-api-key.php:115
+#, php-format
+msgid ""
+"All 16 shortcodes with their parameters, plus a city search that fills in "
+"coordinates and timezone: %s."
+msgstr ""
+"सभी 16 शॉर्टकोड अपने पैरामीटरों के साथ, साथ ही एक शहर खोज जो निर्देशांक और "
+"टाइमज़ोन भरती है: %s।"
+
+#: includes/views/admin-api-key.php:127
 msgid "Your API key"
 msgstr "आपकी एपीआई कुंजी"
 
-#: includes/views/admin-api-key.php:60
-msgid "paste · verify · save"
-msgstr "पेस्ट करें · सत्यापित करें · सहेजें"
+#: includes/views/admin-api-key.php:128
+msgid "optional · paste · verify · save"
+msgstr "वैकल्पिक · पेस्ट करें · सत्यापित करें · सहेजें"
 
-#: includes/views/admin-api-key.php:64
+#: includes/views/admin-api-key.php:132
 msgid "Paste your key"
 msgstr "अपनी कुंजी पेस्ट करें"
 
-#: includes/views/admin-api-key.php:75
+#: includes/views/admin-api-key.php:143
 msgid "Verify"
 msgstr "सत्यापित करें"
 
-#: includes/views/admin-api-key.php:79
+#: includes/views/admin-api-key.php:147
 msgid ""
-"Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
-"Anonymous mode."
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
+"Every widget renders without one. If you do save a key, your server offers "
+"it on the calls behind the page-rendered widgets, so a paid plan counts them"
+" against its own allowance rather than the one this site shares with every "
+"other anonymous caller. Saving a key also adds the status panel below, and "
+"the key itself is what you use when you call the API from your own code."
 msgstr ""
-"api.astroway.info/dashboard से एक कुंजी पेस्ट करें। गुमनाम मोड पर वापस जाने "
-"के लिए खाली छोड़ें।"
+"api.astroway.info/dashboard से एक कुंजी पेस्ट करें, या फ़ील्ड को खाली छोड़ "
+"दें। प्रत्येक विजेट बिना कुंजी के भी रेंडर हो जाता है। यदि आप कोई कुंजी "
+"सहेजते हैं, तो आपका सर्वर पेज पर दिखने वाले विजेट्स के पीछे होने वाली कॉल्स "
+"में इसे उपलब्ध कराता है, इसलिए एक सशुल्क प्लान इन्हें अपनी कोटा सीमा में ही "
+"गिनता है, न कि उस सीमा में जिसे यह साइट हर अन्य अनाम कॉलर के साथ साझा करती "
+"है। कुंजी सहेजने से नीचे दिया गया स्थिति पैनल भी जुड़ जाता है, और वही कुंजी "
+"है जिसका उपयोग आप अपने कोड से API को कॉल करते समय करते हैं।"
 
-#: includes/views/admin-api-key.php:83
+#: includes/views/admin-api-key.php:151
 msgid "Save changes"
 msgstr "बदलाव सहेजें"
 
-#: includes/views/admin-api-key.php:98
+#: includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr "स्थिति"
 
-#: includes/views/admin-api-key.php:103
-#, fuzzy
+#: includes/views/admin-api-key.php:171
 msgid "live · key authenticated"
 msgstr "प्रमाणित"
 
-#: includes/views/admin-api-key.php:106
-msgid "suspended — contact support"
-msgstr "निलंबित — समर्थन से संपर्क करें"
+#: includes/views/admin-api-key.php:174
+msgid "suspended, contact support"
+msgstr "निलंबित, सहायता से संपर्क करें"
 
-#: includes/views/admin-api-key.php:109
-msgid "revoked — re-issue key"
-msgstr "रद्द — कुंजी फिर से जारी करें"
+#: includes/views/admin-api-key.php:177
+msgid "revoked, re-issue key"
+msgstr "रद्द, कुंजी पुनः जारी करें"
 
-#: includes/views/admin-api-key.php:112
-#, fuzzy
+#: includes/views/admin-api-key.php:180
 msgid "invalid key"
 msgstr "भुगतान की गई कुंजी।"
 
-#: includes/views/admin-api-key.php:115
-msgid "unreachable — check connection"
-msgstr "अप्राप्य — कनेक्शन की जांच करें"
+#: includes/views/admin-api-key.php:183
+msgid "unreachable, check connection"
+msgstr "पहुँच से बाहर, कनेक्शन जाँचें"
 
-#: includes/views/admin-api-key.php:126
-#, fuzzy
+#: includes/views/admin-api-key.php:194
 msgid "Key"
 msgstr "एपीआई कुंजी"
 
-#: includes/views/admin-api-key.php:140
-#, fuzzy
+#: includes/views/admin-api-key.php:208
 msgid "Credits"
 msgstr "मासिक क्रेडिट"
 
-#: includes/views/admin-api-key.php:159
+#: includes/views/admin-api-key.php:227
 msgid "Period ends"
 msgstr "अवधि समाप्त"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:166
+#: includes/views/admin-api-key.php:234
 #, php-format
 msgid "in %s"
 msgstr "में %s"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:167
-#, fuzzy
+#: includes/views/admin-api-key.php:235
 msgid "expired"
 msgstr "आवश्यक"
 
-#: includes/views/admin-api-key.php:180
+#: includes/views/admin-api-key.php:248
 msgid "Domain"
 msgstr "डोमेन"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:189
-#, fuzzy, php-format
+#: includes/views/admin-api-key.php:257
+#, php-format
 msgid "bound %s ago"
 msgstr "%s पहले बाउंड"
 
-#: includes/views/admin-api-key.php:196
-msgid "not bound — first request will bind this site"
-msgstr "बंधित नहीं — पहला अनुरोध इस साइट को बांध देगा"
+#: includes/views/admin-api-key.php:264
+msgid "not bound: the first request binds this site"
+msgstr "बाध्य नहीं: पहली अनुरोध इस साइट को बाँधता है"
 
-#: includes/views/admin-api-key.php:203
-#, fuzzy
+#: includes/views/admin-api-key.php:271
 msgid "Source"
 msgstr "संसाधन"
 
-#: includes/views/admin-api-key.php:210
+#: includes/views/admin-api-key.php:278
 msgid ""
-"Limited data — connected api does not yet expose /v1/auth/keys/me. Plan and "
-"credits shown via legacy fallback."
+"Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
+"and credits shown via legacy fallback."
 msgstr ""
-"सीमित डेटा — जुड़ा हुआ एपीआई अभी तक /v1/auth/keys/me को उजागर नहीं करता है। "
-"योजना और क्रेडिट विरासत फॉलबैक के माध्यम से दिखाए जाते हैं।"
+"सीमित डेटा: कनेक्टेड एपीआई अभी तक /v1/auth/keys/me को एक्सपोज़ नहीं करता है।"
+" योजना और क्रेडिट्स लेगेसी फॉलबैक के माध्यम से दिखाए जाते हैं।"
 
-#: includes/views/admin-api-key.php:213
-#, fuzzy
+#: includes/views/admin-api-key.php:281
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -453,187 +806,185 @@ msgstr ""
 "api.astroway.info/dashboard से एक कुंजी पेस्ट करें। गुमनाम मोड पर वापस जाने "
 "के लिए खाली छोड़ें।"
 
-#: includes/views/admin-api-key.php:215
+#: includes/views/admin-api-key.php:283
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue — try again in "
-"a moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a"
+" moment."
 msgstr ""
-"api.astroway.info तक पहुंच नहीं हो सकी। नेटवर्क या अपस्ट्रीम समस्या — एक पल "
-"में फिर से कोशिश करें।"
+"api.astroway.info तक नहीं पहुँच पाया। नेटवर्क या अपस्ट्रीम समस्या, कुछ ही "
+"देर में फिर से प्रयास करें।"
 
-#: includes/views/admin-api-key.php:224
-msgid "What you get"
-msgstr "आपको क्या मिलता है"
+#: includes/views/admin-api-key.php:292
+msgid "What a key adds"
+msgstr "क्या एक कुंजी जोड़ती है"
 
-#: includes/views/admin-api-key.php:225
+#: includes/views/admin-api-key.php:293
 msgid "3 tiers compared"
 msgstr "3 स्तरों की तुलना"
 
-#: includes/views/admin-api-key.php:233
+#: includes/views/admin-api-key.php:301
 msgid "Anonymous"
 msgstr "गुमनाम"
 
-#: includes/views/admin-api-key.php:234
+#: includes/views/admin-api-key.php:302
 msgid "no setup"
 msgstr "कोई सेटअप नहीं"
 
-#: includes/views/admin-api-key.php:237
+#: includes/views/admin-api-key.php:305
 msgid "Free key"
 msgstr "मुफ्त कुंजी"
 
-#: includes/views/admin-api-key.php:238
+#: includes/views/admin-api-key.php:306
 msgid "signup"
 msgstr "साइनअप"
 
-#: includes/views/admin-api-key.php:241
+#: includes/views/admin-api-key.php:309
 msgid "Paid"
 msgstr "भुगतान किया गया"
 
-#: includes/views/admin-api-key.php:242
+#: includes/views/admin-api-key.php:310
 msgid "from $5/mo"
 msgstr "$5/माह से"
 
-#: includes/views/admin-api-key.php:248
-msgid "Rate limit"
-msgstr "दर सीमा"
+#: includes/views/admin-api-key.php:316
+msgid "Widgets in this plugin"
+msgstr "इस प्लगइन में विजेट्स"
 
-#: includes/views/admin-api-key.php:249
-msgid "30/hour/IP"
-msgstr "30/घंटा/आईपी"
+#: includes/views/admin-api-key.php:317 includes/views/admin-api-key.php:318
+#: includes/views/admin-api-key.php:319
+msgid "all of them"
+msgstr "वे सभी"
 
-#: includes/views/admin-api-key.php:250
-msgid "~60/min/key"
-msgstr "~60/मिनट/कुंजी"
+#: includes/views/admin-api-key.php:322
+msgid "API requests / month"
+msgstr "एपीआई अनुरोध / माह"
 
-#: includes/views/admin-api-key.php:251
-msgid "30–1000/min"
-msgstr "30–1000/मिनट"
+#: includes/views/admin-api-key.php:323 includes/views/admin-api-key.php:329
+#: includes/views/admin-api-key.php:335 includes/views/admin-api-key.php:341
+#: includes/views/admin-api-key.php:342 includes/views/admin-api-key.php:347
+#: includes/views/admin-api-key.php:353 includes/views/admin-api-key.php:354
+msgid "none"
+msgstr "कोई नहीं"
 
-#: includes/views/admin-api-key.php:254
-msgid "Credits / month"
-msgstr "मासिक क्रेडिट"
-
-#: includes/views/admin-api-key.php:256
+#: includes/views/admin-api-key.php:324
 msgid "10,000"
 msgstr "10,000"
 
-#: includes/views/admin-api-key.php:257
-msgid "50K – 3.5M"
-msgstr "50K – 3.5M"
+#: includes/views/admin-api-key.php:325
+msgid "50K to 3.5M"
+msgstr "50K से 3.5M"
 
-#: includes/views/admin-api-key.php:260
-msgid "Render mode"
-msgstr "रेंडर मोड"
+#: includes/views/admin-api-key.php:328
+msgid "Rate limit, keyed endpoints"
+msgstr "दर सीमा, कुंजीबद्ध एंडपॉइंट्स"
 
-#: includes/views/admin-api-key.php:261 includes/views/admin-api-key.php:262
-msgid "iframe"
-msgstr "iframe"
+#: includes/views/admin-api-key.php:330
+msgid "~60 requests/min"
+msgstr "~60 अनुरोध/मिनट"
 
-#: includes/views/admin-api-key.php:263
-msgid "native"
-msgstr "नेटिव"
+#: includes/views/admin-api-key.php:331
+msgid "30 to 1000 requests/min"
+msgstr "30 से 1000 अनुरोध/मिनट"
 
-#: includes/views/admin-api-key.php:266
-msgid "Widgets"
-msgstr "विजेट्स"
+#: includes/views/admin-api-key.php:334
+msgid "Dashboard, usage history"
+msgstr "डैशबोर्ड, उपयोग का इतिहास"
 
-#: includes/views/admin-api-key.php:267 includes/views/admin-api-key.php:268
-msgid "5 basic"
-msgstr "5 बुनियादी"
-
-#: includes/views/admin-api-key.php:269
-msgid "+ Tarot, HD, Synastry, Numerology"
-msgstr "+ टैरो, एचडी, सिनास्ट्री, न्यूमरोलॉजी"
-
-#: includes/views/admin-api-key.php:272
-msgid "AI interpretations"
-msgstr "AI व्याख्याएं"
-
-#: includes/views/admin-api-key.php:275 includes/views/admin-api-key.php:293
+#: includes/views/admin-api-key.php:336 includes/views/admin-api-key.php:337
+#: includes/views/admin-api-key.php:343 includes/views/admin-api-key.php:355
 msgid "included"
 msgstr "शामिल"
 
-#: includes/views/admin-api-key.php:278
-msgid "Watermark"
-msgstr "वॉटरमार्क"
+#: includes/views/admin-api-key.php:340
+msgid "AI interpretations"
+msgstr "AI व्याख्याएं"
 
-#: includes/views/admin-api-key.php:279 includes/views/admin-api-key.php:280
-msgid "shown"
-msgstr "दिखाया गया"
-
-#: includes/views/admin-api-key.php:281
-msgid "removed"
-msgstr "हटाया गया"
-
-#: includes/views/admin-api-key.php:284
+#: includes/views/admin-api-key.php:346
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "समर्थन"
 
-#: includes/views/admin-api-key.php:286
+#: includes/views/admin-api-key.php:348
 msgid "community"
 msgstr "समुदाय"
 
-#: includes/views/admin-api-key.php:287
+#: includes/views/admin-api-key.php:349
 msgid "priority"
 msgstr "प्राथमिकता"
 
-#: includes/views/admin-api-key.php:290
+#: includes/views/admin-api-key.php:352
 msgid "Spend cap"
 msgstr "खर्च सीमा"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:363
 #, php-format
-msgid "Numbers shown for context. Canonical pricing → %s"
-msgstr "संदर्भ के लिए संख्याएं दिखाई गई हैं। मूल्य निर्धारण → %s"
+msgid ""
+"Every row below the first one is about calling api.astroway.info from your "
+"own code. The widgets on your pages are not affected by any of it. Canonical"
+" pricing → %s"
+msgstr ""
+"पहली पंक्ति के नीचे की हर पंक्ति आपके अपने कोड से api.astroway.info को कॉल "
+"करने के बारे में है। आपके पेजों पर मौजूद विजेट्स इससे प्रभावित नहीं होते। "
+"कैनोनिकल प्राइसिंग → %s"
 
-#: includes/views/admin-api-key.php:312
+#: includes/views/admin-api-key.php:374
 msgid "How it works"
 msgstr "यह कैसे काम करता है"
 
-#: includes/views/admin-api-key.php:316
-msgid "No key."
-msgstr "कोई कुंजी नहीं।"
+#: includes/views/admin-api-key.php:378
+msgid "On your pages."
+msgstr "आपके पृष्ठों पर।"
 
-#: includes/views/admin-api-key.php:317
+#: includes/views/admin-api-key.php:379
 msgid ""
-"Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
-"traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
-"shown."
+"Your server renders seven widgets into the page, counted against this site's"
+" allowance of 300 requests an hour, or against your own plan when a paid key"
+" is saved above. The rest load in a frame against each visitor's own 30, and"
+" those carry the \"Powered by AstroWay\" watermark: a frame is fetched by "
+"the visitor's browser, which is no place for your key."
 msgstr ""
-"प्लगइन iframe विजेट्स प्रस्तुत करता है, विज़िटर आईपी द्वारा दर-सीमित। कम "
-"ट्रैफिक वाली साइटों और त्वरित परीक्षणों के लिए अच्छा है। \"Powered by "
-"AstroWay\" वॉटरमार्क दिखाया जाता है।"
+"आपका सर्वर पेज में सात विजेट्स रेंडर करता है, जिन्हें इस साइट की प्रति घंटे "
+"300 अनुरोधों की सीमा में गिना जाता है, या जब ऊपर एक सशुल्क कुंजी सहेजी जाती "
+"है तो आपकी अपनी योजना के अनुसार। बाकी विज़िटर की अपनी 30 अनुरोध सीमा के भीतर"
+" एक फ्रेम में लोड होते हैं, और उन पर \"Powered by AstroWay\" वॉटरमार्क होता "
+"है: एक फ्रेम विज़िटर के ब्राउज़र द्वारा प्राप्त किया जाता है, जो आपकी कुंजी "
+"के लिए कोई जगह नहीं है।"
 
-#: includes/views/admin-api-key.php:320
+#: includes/views/admin-api-key.php:382
 msgid "Free key."
 msgstr "मुफ्त कुंजी।"
 
-#: includes/views/admin-api-key.php:321
+#: includes/views/admin-api-key.php:383
 msgid ""
-"Personal credit bucket (10,000/month), isolated from other sites. Iframe "
-"rendering stays, but you get a dashboard with activity history. Watermark is"
-" still shown."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus "
+"a dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of "
+"the frame's address."
 msgstr ""
-"व्यक्तिगत क्रेडिट बकेट (10,000/माह), अन्य साइटों से अलग। iframe प्रस्तुति "
-"बनी रहती है, लेकिन आपको गतिविधि इतिहास के साथ डैशबोर्ड मिलता है। वॉटरमार्क "
-"अभी भी दिखाया जाता है।"
+"आप स्वयं लिखने वाले कोड के लिए प्रति माह 10,000 कॉल की एक व्यक्तिगत सीमा, "
+"साथ ही गतिविधि इतिहास वाला एक डैशबोर्ड। यह शॉर्टकोड्स द्वारा रेंडर की जाने "
+"वाली सामग्री को नहीं बदलता, और फ्रेम किए गए विजेट्स पर वॉटरमार्क बना रहता "
+"है: कुंजी फ्रेम के पते का हिस्सा नहीं होती।"
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:386
 msgid "Paid key."
 msgstr "भुगतान की गई कुंजी।"
 
-#: includes/views/admin-api-key.php:325
+#: includes/views/admin-api-key.php:387
 msgid ""
-"Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
-"synastry, Human Design, Numerology), AI-written interpretations, and no "
-"watermark. Spend cap available to protect against bill spikes."
+"Higher limits and more calls on api.astroway.info, AI-written "
+"interpretations, priority support, and a spend cap against bill spikes. The "
+"page-rendered widgets on this site draw on that plan too, instead of the "
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
+" the shortcode; none of the current ones do."
 msgstr ""
-"नेटिव क्लाइंट-साइड प्रस्तुति (iframe नहीं), उन्नत विजेट्स (टैरो डेक्स, "
-"सिनास्ट्री, ह्यूमन डिज़ाइन, न्यूमरोलॉजी), AI-लिखित व्याख्याएं, और वॉटरमार्क "
-"रहित। बिल स्पाइक्स से बचाने के लिए खर्च सीमा उपलब्ध।"
+"api.astroway.info पर उच्च सीमाएँ और अधिक कॉल, एआई-लिखित व्याख्याएँ, "
+"प्राथमिकता समर्थन, और बिल में अचानक वृद्धि के खिलाफ खर्च सीमा। इस साइट पर "
+"पेज-रेंडर किए गए विजेट्स भी उस प्लान पर निर्भर करते हैं, साझा गुमनाम कोटे के"
+" बजाय। जिन विजेट्स को भुगतान किए गए एंडपॉइंट की आवश्यकता होगी, वे शॉर्टकोड "
+"में यह बताएंगे; वर्तमान में ऐसा कोई नहीं है।"
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -764,11 +1115,11 @@ msgstr "विशेषता"
 
 #: includes/views/admin-settings.php:181
 msgid ""
-"Matrix is filterable via the `astroway_tier_matrix` filter — addons can "
+"Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"मैट्रिक्स `astroway_tier_matrix` फिल्टर के माध्यम से फिल्टरेबल है — ऐड-ऑन "
-"अपनी विशेषताओं को जोड़ सकते हैं।"
+"मैट्रिक्स को `astroway_tier_matrix` फ़िल्टर के माध्यम से फ़िल्टर किया जा "
+"सकता है, ताकि ऐडऑन अपनी खुद की सुविधाएँ जोड़ सकें।"
 
 #: includes/views/admin-settings.php:189
 msgid "Domain binding"
@@ -776,7 +1127,7 @@ msgstr "डोमेन बाइंडिंग"
 
 #. translators: %s = current domain
 #: includes/views/admin-settings.php:195
-#, fuzzy, php-format
+#, php-format
 msgid "bound to: %s"
 msgstr "बाउंड: %s"
 
@@ -785,7 +1136,6 @@ msgid "no domain binding yet"
 msgstr "अब तक कोई डोमेन बाइंडिंग नहीं"
 
 #: includes/views/admin-settings.php:209
-#, fuzzy
 msgid "Request rebind"
 msgstr "आवश्यक"
 
@@ -796,7 +1146,6 @@ msgid "Manual fallback: %s."
 msgstr "मैनुअल फॉलबैक: %s."
 
 #: includes/views/admin-settings.php:230
-#, fuzzy
 msgid "Enter a domain first."
 msgstr "पहले एक मान्य एपीआई कुंजी दर्ज करें।"
 
@@ -827,18 +1176,70 @@ msgstr "एम्बेडेड विजेट्स में एक अस�
 #: includes/views/admin-settings.php:267
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
-"widget footer. Off by default — enable it if your jurisdiction or compliance"
-" policy requires it. The wording is rendered and localized by "
+"widget footer. Off by default, enable it if your jurisdiction or compliance "
+"policy requires it. The wording is rendered and localized by "
 "api.astroway.info."
 msgstr ""
-"विजेट फुटर में एक छोटी सी \"सूचनात्मक, पेशेवर सलाह नहीं\" पंक्ति जोड़ता है। "
-"डिफ़ॉल्ट रूप से बंद है — यदि आपके क्षेत्राधिकार या अनुपालन नीति इसकी "
-"आवश्यकता है तो इसे सक्षम करें। शब्दों को api.astroway.info द्वारा रेंडर और "
-"स्थानीयकृत किया जाता है।"
+"विजेट फ़ुटर में एक संक्षिप्त \"सूचनात्मक, पेशेवर सलाह नहीं\" पंक्ति जोड़ता "
+"है। डिफ़ॉल्ट रूप से अक्षम है, यदि आपके क्षेत्राधिकार या अनुपालन नीति में "
+"इसकी आवश्यकता हो तो इसे सक्षम करें। यह शब्द-रचना api.astroway.info द्वारा "
+"प्रस्तुत और स्थानीयकृत की जाती है।"
 
 #: includes/views/admin-settings.php:270
 msgid "Save disclaimer setting"
 msgstr "अस्वीकरण सेटिंग को सहेजें"
+
+#: includes/views/admin-settings.php:278
+msgid "Render mode"
+msgstr "रेंडर मोड"
+
+#: includes/views/admin-settings.php:279
+msgid "where widget content is drawn"
+msgstr "जहाँ विजेट सामग्री खींची जाती है"
+
+#: includes/views/admin-settings.php:287
+msgid "On this page (recommended)"
+msgstr "इस पृष्ठ पर (अनुशंसित)"
+
+#: includes/views/admin-settings.php:288
+msgid ""
+"Your server fetches the text and prints it into the page. Search engines can"
+" read it, your theme styles it, and it works without JavaScript. Answers are"
+" cached until they change, so a daily horoscope is fetched once a day per "
+"sign."
+msgstr ""
+"आपका सर्वर टेक्स्ट प्राप्त करता है और उसे पृष्ठ में प्रिंट करता है। खोज इंजन"
+" इसे पढ़ सकते हैं, आपकी थीम इसे स्टाइल करती है, और यह JavaScript के बिना काम"
+" करता है। उत्तर तब तक कैश किए जाते हैं जब तक वे बदलते नहीं हैं, इसलिए दैनिक "
+"राशिफल प्रति राशि एक दिन में एक बार प्राप्त किया जाता है।"
+
+#: includes/views/admin-settings.php:293
+msgid "In an iframe"
+msgstr "एक iframe में"
+
+#: includes/views/admin-settings.php:294
+msgid ""
+"Each visitor's browser loads the widget from api.astroway.info. Nothing "
+"reaches your page source, so the content is not indexed and your theme "
+"cannot style it. Choose this if your host blocks outgoing requests, or to "
+"compare the two."
+msgstr ""
+"प्रत्येक विज़िटर का ब्राउज़र api.astroway.info से विजेट लोड करता है। आपकी "
+"पृष्ठ स्रोत तक कुछ भी नहीं पहुँचता है, इसलिए सामग्री अनुक्रमित नहीं होती है "
+"और आपकी थीम इसे स्टाइल नहीं कर सकती है। यदि आपका होस्ट आउटगोइंग अनुरोधों को "
+"ब्लॉक करता है, या दोनों की तुलना करने के लिए इसे चुनें।"
+
+#: includes/views/admin-settings.php:298
+msgid ""
+"Widgets without a page-side template, and any widget whose data cannot be "
+"fetched, fall back to the iframe on their own."
+msgstr ""
+"पृष्ठ-साइड टेम्पलेट के बिना विजेट, और कोई भी विजेट जिसका डेटा प्राप्त नहीं "
+"किया जा सकता है, अपने आप iframe पर वापस आ जाते हैं।"
+
+#: includes/views/admin-settings.php:300
+msgid "Save render mode"
+msgstr "रेंडर मोड सहेजें"
 
 #: includes/views/admin-shortcodes.php:15
 msgid ""
@@ -853,20 +1254,22 @@ msgid "Natal Chart"
 msgstr "नैटल चार्ट"
 
 #: includes/views/admin-shortcodes.php:21
-msgid "Birth chart wheel — planet positions, houses, aspects."
-msgstr "जन्म चार्ट व्हील — ग्रह स्थितियां, घर, पहलू।"
-
-#: includes/views/admin-shortcodes.php:23
-msgid "AstroWay — Natal Chart"
-msgstr "अस्ट्रोवे — नैटल चार्ट"
+msgid ""
+"Birth chart: the wheel plus planet positions, houses and aspects as text."
+msgstr "जन्म कुंडली: पहिया प्लस ग्रह स्थिति, घर और पहलुओं के रूप में पाठ."
 
 #: includes/views/admin-shortcodes.php:25
-#: includes/views/admin-shortcodes.php:60
+#: includes/views/admin-shortcodes.php:93
+#: includes/views/admin-shortcodes.php:118
+#: includes/views/admin-shortcodes.php:156
+#: includes/views/admin-shortcodes.php:197
 msgid "Birth date in YYYY-MM-DD."
 msgstr "जन्म तिथि YYYY-MM-DD में।"
 
 #: includes/views/admin-shortcodes.php:26
-#: includes/views/admin-shortcodes.php:61
+#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:119
+#: includes/views/admin-shortcodes.php:157
 msgid "Birth time in HH:MM (24-hour)."
 msgstr "जन्म समय HH:MM (24-घंटे) में।"
 
@@ -886,20 +1289,29 @@ msgstr "IANA समय क्षेत्र (उदा. Europe/Kyiv)।"
 msgid "Display name on the chart."
 msgstr "चार्ट पर प्रदर्शन नाम।"
 
-#: includes/views/admin-shortcodes.php:35
+#: includes/views/admin-shortcodes.php:31
+msgid ""
+"Palette of the wheel drawing: dark (default), light or console. The text "
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
+msgstr ""
+"पैलेट ऑफ़ द व्हील ड्रॉइंग: डार्क (डिफ़ॉल्ट), लाइट या कंसोल। इसके बगल में "
+"दिया गया टेक्स्ट अपने आप आपके थीम का पालन करता है; व्हील एक इमेज है और नहीं "
+"कर सकता, इसलिए इसे मैच करने के लिए सेट करें।"
+
+#: includes/views/admin-shortcodes.php:36
 msgid "Daily Horoscope"
 msgstr "दैनिक होरोस्कोप"
 
-#: includes/views/admin-shortcodes.php:36
+#: includes/views/admin-shortcodes.php:37
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
 msgstr ""
 "एक राशि चक्र के लिए आज का होरोस्कोप। एपीआई साइड पर दैनिक रिफ्रेश होता है।"
 
-#: includes/views/admin-shortcodes.php:38
-msgid "AstroWay — Daily Horoscope"
-msgstr "अस्ट्रोवे — दैनिक होरोस्कोप"
-
-#: includes/views/admin-shortcodes.php:40
+#: includes/views/admin-shortcodes.php:41
+#: includes/views/admin-shortcodes.php:51
+#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:133
 msgid ""
 "One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
 "sagittarius, capricorn, aquarius, pisces."
@@ -907,84 +1319,282 @@ msgstr ""
 "निम्न में से एक: मेष, वृषभ, मिथुन, कर्क, सिंह, कन्या, तुला, वृश्चिक, धनु, "
 "मकर, कुंभ, मीन।"
 
-#: includes/views/admin-shortcodes.php:45
-msgid "Moon Phase"
-msgstr "चंद्रमा का चरण"
-
 #: includes/views/admin-shortcodes.php:46
-msgid "Current Moon phase visualization with illumination percent."
-msgstr "वर्तमान चंद्रमा चरण दृश्यकरण, प्रकाश प्रतिशत के साथ।"
+msgid "Weekly Horoscope"
+msgstr "साप्ताहिक राशिफल"
 
-#: includes/views/admin-shortcodes.php:48
-msgid "AstroWay — Moon Phase"
-msgstr "अस्ट्रोवे — चंद्रमा का चरण"
+#: includes/views/admin-shortcodes.php:47
+msgid ""
+"Horoscope for the current week, anchored to Monday. Rendered into the page, "
+"not an iframe."
+msgstr ""
+"वर्तमान सप्ताह का राशिफल, सोमवार से शुरू। पृष्ठ में रेंडर किया गया, iframe "
+"में नहीं।"
 
-#: includes/views/admin-shortcodes.php:50
+#: includes/views/admin-shortcodes.php:52
+msgid "Any date inside the week you want. Defaults to today."
+msgstr ""
+"सप्ताह के भीतर कोई भी तिथि जो आप चाहते हैं। डिफ़ॉल्ट रूप से आज की तिथि।"
+
+#: includes/views/admin-shortcodes.php:57
+msgid "Monthly Horoscope"
+msgstr "मासिक राशिफल"
+
+#: includes/views/admin-shortcodes.php:58
+msgid ""
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
+msgstr ""
+"वर्तमान माह का राशिफल, 1 तारीख से शुरू। पृष्ठ में रेंडर किया गया, iframe में"
+" नहीं।"
+
+#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:134
+msgid "Any date inside the month you want. Defaults to today."
+msgstr ""
+"महीने के भीतर कोई भी तिथि जो आप चाहते हैं। डिफ़ॉल्ट रूप से आज की तिथि।"
+
+#: includes/views/admin-shortcodes.php:68
+msgid "Planet of the Day"
+msgstr "दिन का ग्रह"
+
+#: includes/views/admin-shortcodes.php:69
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes. "
+"Rendered into the page, not an iframe."
+msgstr ""
+"सप्ताह के दिन का पारंपरिक ग्रहीय शासक, उसके प्रतीक और विषयों के साथ। पृष्ठ "
+"में रेंडर किया गया, iframe में नहीं।"
+
+#: includes/views/admin-shortcodes.php:73
+#: includes/views/admin-shortcodes.php:83
+#: includes/views/admin-shortcodes.php:171
+#: includes/views/admin-shortcodes.php:182
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "YYYY-MM-DD में ओवरराइड तिथि। डिफ़ॉल्ट आज।"
 
-#: includes/views/admin-shortcodes.php:55
+#: includes/views/admin-shortcodes.php:78
+msgid "Moon Phase"
+msgstr "चंद्रमा का चरण"
+
+#: includes/views/admin-shortcodes.php:79
+msgid "Current Moon phase visualization with illumination percent."
+msgstr "वर्तमान चंद्रमा चरण दृश्यकरण, प्रकाश प्रतिशत के साथ।"
+
+#: includes/views/admin-shortcodes.php:88
 msgid "Human Design Bodygraph"
 msgstr "ह्यूमन डिज़ाइन बॉडीग्राफ"
 
-#: includes/views/admin-shortcodes.php:56
+#: includes/views/admin-shortcodes.php:89
 msgid "Human Design body graph with centers, channels, gates."
 msgstr "ह्यूमन डिज़ाइन बॉडी ग्राफ केंद्रों, चैनलों, द्वारों के साथ।"
 
-#: includes/views/admin-shortcodes.php:58
-msgid "AstroWay — Bodygraph"
-msgstr "अस्ट्रोवे — बॉडीग्राफ"
-
-#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:120
+#: includes/views/admin-shortcodes.php:158
+#: includes/views/admin-shortcodes.php:183
 msgid "WGS-84 latitude."
 msgstr "WGS-84 अक्षांश।"
 
-#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:96
+#: includes/views/admin-shortcodes.php:121
+#: includes/views/admin-shortcodes.php:159
+#: includes/views/admin-shortcodes.php:184
 msgid "WGS-84 longitude."
 msgstr "WGS-84 देशांतर।"
 
-#: includes/views/admin-shortcodes.php:64
+#: includes/views/admin-shortcodes.php:97
+#: includes/views/admin-shortcodes.php:122
+#: includes/views/admin-shortcodes.php:160
+#: includes/views/admin-shortcodes.php:185
 msgid "IANA timezone."
 msgstr "IANA समय क्षेत्र।"
 
-#: includes/views/admin-shortcodes.php:65
+#: includes/views/admin-shortcodes.php:98
 msgid "Display name."
 msgstr "प्रदर्शन नाम।"
 
-#: includes/views/admin-shortcodes.php:70
+#: includes/views/admin-shortcodes.php:103
 msgid "Daily Tarot Card"
 msgstr "दैनिक टैरो कार्ड"
 
-#: includes/views/admin-shortcodes.php:71
+#: includes/views/admin-shortcodes.php:104
 msgid "Single card pull of the day from a chosen deck."
 msgstr "एक चुने गए डेक से दिन का एक कार्ड।"
 
-#: includes/views/admin-shortcodes.php:73
-msgid "AstroWay — Daily Tarot Card"
-msgstr "अस्ट्रोवे — दैनिक टैरो कार्ड"
+#: includes/views/admin-shortcodes.php:108
+msgid ""
+"Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
+"renders into the page; the other two load in a frame."
+msgstr ""
+"डेक स्लग: राइडर-वेइट (डिफ़ॉल्ट), मार्सेई, या लेनॉरमैंड। केवल राइडर-वेइट पेज "
+"में रेंडर होता है; अन्य दो एक फ्रेम में लोड होते हैं।"
 
-#: includes/views/admin-shortcodes.php:75
-msgid "Deck slug: rider-waite (default), marseille, or lenormand."
-msgstr "डेक स्लग: rider-waite (डिफ़ॉल्ट), marseille, या lenormand।"
+#: includes/views/admin-shortcodes.php:113
+msgid "Mini Birth Chart"
+msgstr "लघु जन्म कुंडली"
 
-#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:114
+msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
+msgstr "साइडबार के लिए छोटा आकार का नटाल व्हील। एक फ्रेम में लोड होता है।"
+
+#: includes/views/admin-shortcodes.php:123
+#: includes/views/admin-shortcodes.php:135
+#: includes/views/admin-shortcodes.php:146
+#: includes/views/admin-shortcodes.php:161
+#: includes/views/admin-shortcodes.php:172
+#: includes/views/admin-shortcodes.php:186
+#: includes/views/admin-shortcodes.php:199
+#: includes/views/admin-shortcodes.php:219
+msgid "dark (default), light or console."
+msgstr "गहरा (डिफ़ॉल्ट), हल्का या कंसोल।"
+
+#: includes/views/admin-shortcodes.php:128
+msgid "Monthly Forecast"
+msgstr "मासिक पूर्वानुमान"
+
+#: includes/views/admin-shortcodes.php:129
+msgid ""
+"Four weeks ahead for one sign, each with its own theme. Loads in a frame."
+msgstr ""
+"एक संकेत के लिए चार सप्ताह आगे, प्रत्येक का अपना विषय। एक फ्रेम में लोड।"
+
+#: includes/views/admin-shortcodes.php:140
+msgid "Moon Transit Timeline"
+msgstr "चंद्र गोचर समयरेखा"
+
+#: includes/views/admin-shortcodes.php:141
+msgid ""
+"The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
+msgstr ""
+"चंद्रमा के अगले सात प्रवेश। राशि-विशिष्ट नहीं। एक फ्रेम में लोड करता है।"
+
+#: includes/views/admin-shortcodes.php:145
+msgid "Day the seven start from. Defaults to today."
+msgstr "सातवें दिन से शुरू करें। डिफ़ॉल्ट आज है।"
+
+#: includes/views/admin-shortcodes.php:151
+msgid "Vedic Kundli"
+msgstr "वैदिक कुंडली"
+
+#: includes/views/admin-shortcodes.php:152
+msgid ""
+"North-Indian D1 chart. Loads in a frame: there is no page-side template for "
+"it yet."
+msgstr ""
+"उत्तर-भारतीय D1 चार्ट। एक फ्रेम में लोड होता है: इसके लिए अभी तक कोई "
+"पेज-साइड टेम्पलेट नहीं है।"
+
+#: includes/views/admin-shortcodes.php:166
+msgid "Transit Sky"
+msgstr "परिवहन आकाश"
+
+#: includes/views/admin-shortcodes.php:167
+msgid ""
+"Where the planets stand on a given date. Loads in a frame: there is no page-"
+"side template for it yet."
+msgstr ""
+"निर्दिष्ट तिथि पर ग्रह कहाँ स्थित हैं। एक फ्रेम में लोड होता है: इसके लिए "
+"अभी तक कोई पेज-साइड टेम्पलेट नहीं है।"
+
+#: includes/views/admin-shortcodes.php:178
+msgid ""
+"Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
+"Loads in a frame."
+msgstr ""
+"दिनांक और स्थान के लिए तिथि, नक्षत्र, योग, करण, वार और राहुकाल। एक फ्रेम में"
+" लोड होता है।"
+
+#: includes/views/admin-shortcodes.php:191
+#: assets/js/astroway-blocks-editor.js:154
+msgid "Numerology"
+msgstr "अंक ज्योतिष"
+
+#: includes/views/admin-shortcodes.php:192
+msgid ""
+"Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
+msgstr ""
+"जीवन पथ, अभिव्यक्ति, आत्मा आवेग और व्यक्तित्व संख्याएँ। एक फ्रेम में लोड "
+"होता है।"
+
+#: includes/views/admin-shortcodes.php:196
+msgid "Full birth name. The letters are what the numbers are built from."
+msgstr "पूरा जन्म का नाम। अक्षर ही वे हैं जिनसे अंक बने होते हैं।"
+
+#: includes/views/admin-shortcodes.php:198
+msgid "pythagorean (default), chaldean, kabbalistic or tamil."
+msgstr "पाइथागोरियन (डिफ़ॉल्ट), कैल्डियन, कब्बलावादी या तमिल।"
+
+#: includes/views/admin-shortcodes.php:204
+msgid "Synastry Compatibility"
+msgstr "सिनैस्ट्रि अनुकूलता"
+
+#: includes/views/admin-shortcodes.php:205
+msgid ""
+"Compatibility score and top inter-aspects for two birth charts. Loads in a "
+"frame."
+msgstr ""
+"दो जन्म कुंडलियों के लिए अनुकूलता स्कोर और शीर्ष अंतर-पक्ष। एक फ्रेम में लोड"
+" होता है।"
+
+#: includes/views/admin-shortcodes.php:209
+msgid "First person: birth date in YYYY-MM-DD."
+msgstr "प्रथम व्यक्ति: जन्म तिथि YYYY-MM-DD में।"
+
+#: includes/views/admin-shortcodes.php:210
+msgid "First person: birth time in HH:MM."
+msgstr "प्रथम व्यक्ति: जन्म समय HH:MM में।"
+
+#: includes/views/admin-shortcodes.php:211
+msgid "First person: latitude."
+msgstr "प्रथम पुरुष: अक्षांश।"
+
+#: includes/views/admin-shortcodes.php:212
+msgid "First person: longitude."
+msgstr "प्रथम व्यक्ति: देशांतर।"
+
+#: includes/views/admin-shortcodes.php:213
+msgid "First person: IANA timezone."
+msgstr "प्रथम व्यक्ति: IANA समय क्षेत्र।"
+
+#: includes/views/admin-shortcodes.php:214
+msgid "Second person: birth date in YYYY-MM-DD."
+msgstr "दूसरा व्यक्ति: जन्म तिथि YYYY-MM-DD में।"
+
+#: includes/views/admin-shortcodes.php:215
+msgid "Second person: birth time in HH:MM."
+msgstr "दूसरा व्यक्ति: जन्म समय HH:MM में।"
+
+#: includes/views/admin-shortcodes.php:216
+msgid "Second person: latitude."
+msgstr "द्वितीय व्यक्ति: अक्षांश।"
+
+#: includes/views/admin-shortcodes.php:217
+msgid "Second person: longitude."
+msgstr "द्वितीय व्यक्ति: देशांतर।"
+
+#: includes/views/admin-shortcodes.php:218
+msgid "Second person: IANA timezone."
+msgstr "दूसरा व्यक्ति: मैं नहीं हूँ समय क्षेत्र।"
+
+#: includes/views/admin-shortcodes.php:238
 msgid "Find your coordinates and timezone"
 msgstr "अपने निर्देशांक और समय क्षेत्र खोजें"
 
-#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:239
 msgid "city → lat · lon · IANA tz"
 msgstr "शहर → अक्षांश · देशांतर · IANA समय क्षेत्र"
 
-#: includes/views/admin-shortcodes.php:102
-msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
-msgstr "एक शहर का नाम टाइप करें — जैसे कि Kyiv, Berlin, São Paulo"
+#: includes/views/admin-shortcodes.php:246
+msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
+msgstr "एक शहर का नाम टाइप करें, उदाहरण के लिए कीव, बर्लिन या साओ पाउलो"
 
-#: includes/views/admin-shortcodes.php:106
+#: includes/views/admin-shortcodes.php:250
 msgid "Search"
 msgstr "खोजें"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:113
+#: includes/views/admin-shortcodes.php:257
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -992,50 +1602,51 @@ msgstr ""
 "शहर का चयन करें जो मानों को शॉर्टकोड में कॉपी करने के लिए मेल खाता है। "
 "संदर्भ: %s।"
 
-#: includes/views/admin-shortcodes.php:114
+#: includes/views/admin-shortcodes.php:258
 msgid "IANA timezone list"
 msgstr "IANA समय क्षेत्र सूची"
 
-#: includes/views/admin-shortcodes.php:135
-msgid "Click to copy"
-msgstr "कॉपी करने के लिए क्लिक करें"
+#: includes/views/admin-shortcodes.php:267
+msgid "Filter shortcodes"
+msgstr "शॉर्टकोड फ़िल्टर करें"
 
-#: includes/views/admin-shortcodes.php:139
-msgid "copy"
-msgstr "कॉपी करें"
+#. translators: %d is the number of shortcodes
+#: includes/views/admin-shortcodes.php:271
+#, php-format
+msgid "Filter %d shortcodes: name, tag or what it does"
+msgstr "%d शॉर्टकोड्स को फ़िल्टर करें: नाम, टैग या यह क्या करता है"
 
-#: includes/views/admin-shortcodes.php:147
+#: includes/views/admin-shortcodes.php:303
 msgid "Parameter"
 msgstr "पैरामीटर"
 
-#: includes/views/admin-shortcodes.php:148
+#: includes/views/admin-shortcodes.php:304
 msgid "Type"
 msgstr "प्रकार"
 
-#: includes/views/admin-shortcodes.php:149
+#: includes/views/admin-shortcodes.php:305
 msgid "Required"
 msgstr "आवश्यक"
 
-#: includes/views/admin-shortcodes.php:150
+#: includes/views/admin-shortcodes.php:306
 msgid "Description"
 msgstr "विवरण"
 
-#: includes/views/admin-shortcodes.php:163
+#: includes/views/admin-shortcodes.php:319
 msgid "required"
 msgstr "आवश्यक"
 
-#: includes/views/admin-shortcodes.php:165
+#: includes/views/admin-shortcodes.php:321
 msgid "optional"
 msgstr "वैकल्पिक"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:179
+#: includes/views/admin-shortcodes.php:344
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "गुटेनबर्ग ब्लॉक \"%s\" के रूप में भी उपलब्ध।"
 
 #: includes/views/partials/admin-channel-b-status.php:21
-#, fuzzy
 msgid "Update channel"
 msgstr "बदलाव सहेजें"
 
@@ -1083,7 +1694,6 @@ msgid "no"
 msgstr "नहीं"
 
 #: includes/views/partials/admin-channel-b-status.php:42
-#, fuzzy
 msgid "API key set"
 msgstr "एपीआई कुंजी"
 
@@ -1098,6 +1708,10 @@ msgstr "पहले"
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "not yet"
 msgstr "अभी तक नहीं"
+
+#: includes/views/partials/admin-footer-nav.php:13
+msgid "API Key"
+msgstr "एपीआई कुंजी"
 
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
@@ -1124,8 +1738,8 @@ msgid "Anonymous mode"
 msgstr "गुमनाम मोड"
 
 #: includes/views/partials/admin-hero.php:50
-msgid "30 requests / hour / visitor IP"
-msgstr "30 अनुरोध / घंटा / विज़िटर आईपी"
+msgid "300 requests / hour / site"
+msgstr "300 अनुरोध / घंटा / साइट"
 
 #: includes/views/partials/admin-hero.php:59
 msgid "View paid plans"
@@ -1151,54 +1765,6 @@ msgstr "GitHub रिपॉजिटरी"
 msgid "Default (today's featured sign)"
 msgstr "डिफ़ॉल्ट (आज का विशेष संकेत)"
 
-#: assets/js/astroway-blocks-editor.js:18
-msgid "Aries"
-msgstr "मेष"
-
-#: assets/js/astroway-blocks-editor.js:19
-msgid "Taurus"
-msgstr "वृषभ"
-
-#: assets/js/astroway-blocks-editor.js:20
-msgid "Gemini"
-msgstr "मिथुन"
-
-#: assets/js/astroway-blocks-editor.js:21
-msgid "Cancer"
-msgstr "कर्क"
-
-#: assets/js/astroway-blocks-editor.js:22
-msgid "Leo"
-msgstr "सिंह"
-
-#: assets/js/astroway-blocks-editor.js:23
-msgid "Virgo"
-msgstr "कन्या"
-
-#: assets/js/astroway-blocks-editor.js:24
-msgid "Libra"
-msgstr "तुला"
-
-#: assets/js/astroway-blocks-editor.js:25
-msgid "Scorpio"
-msgstr "वृश्चिक"
-
-#: assets/js/astroway-blocks-editor.js:26
-msgid "Sagittarius"
-msgstr "धनु"
-
-#: assets/js/astroway-blocks-editor.js:27
-msgid "Capricorn"
-msgstr "मकर"
-
-#: assets/js/astroway-blocks-editor.js:28
-msgid "Aquarius"
-msgstr "कुम्भ"
-
-#: assets/js/astroway-blocks-editor.js:29
-msgid "Pisces"
-msgstr "मीन"
-
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "राइडर-वेट-स्मिथ"
@@ -1221,51 +1787,49 @@ msgstr "भाषा"
 
 #: assets/js/astroway-blocks-editor.js:68
 #: assets/js/astroway-blocks-editor.js:94
-#, fuzzy
 msgid "Date (YYYY-MM-DD)"
 msgstr "जन्म तिथि YYYY-MM-DD में।"
 
 #: assets/js/astroway-blocks-editor.js:69
 #: assets/js/astroway-blocks-editor.js:95
 msgid "Time (HH:MM)"
-msgstr ""
+msgstr "समय (HH:MM)"
 
 #: assets/js/astroway-blocks-editor.js:70
 #: assets/js/astroway-blocks-editor.js:96
 #: assets/js/astroway-blocks-editor.js:105
 msgid "Latitude (-90 to 90)"
-msgstr ""
+msgstr "अक्षांश (-90 से 90)"
 
 #: assets/js/astroway-blocks-editor.js:71
 #: assets/js/astroway-blocks-editor.js:97
 #: assets/js/astroway-blocks-editor.js:106
 msgid "Longitude (-180 to 180)"
-msgstr ""
+msgstr "देशांतर (-180 से 180)"
 
 #: assets/js/astroway-blocks-editor.js:72
 msgid "Person name (optional)"
-msgstr ""
+msgstr "व्यक्ति का नाम (वैकल्पिक)"
 
 #: assets/js/astroway-blocks-editor.js:73
-#, fuzzy
 msgid "Timezone (Europe/Kyiv or +03:00)"
 msgstr "IANA समय क्षेत्र (उदा. Europe/Kyiv)।"
 
 #: assets/js/astroway-blocks-editor.js:78
 msgid "Default (dark)"
-msgstr ""
+msgstr "डिफ़ॉल्ट (गहरा)"
 
 #: assets/js/astroway-blocks-editor.js:79
 msgid "Dark"
-msgstr ""
+msgstr "गहरा"
 
 #: assets/js/astroway-blocks-editor.js:80
 msgid "Light"
-msgstr ""
+msgstr "हल्का"
 
 #: assets/js/astroway-blocks-editor.js:81
 msgid "Console (green on black)"
-msgstr ""
+msgstr "कंसोल (काले पर हरा)"
 
 #: assets/js/astroway-blocks-editor.js:85
 msgid "Pythagorean"
@@ -1286,54 +1850,54 @@ msgstr "समय क्षेत्र (यूरोप/कीव, +05:30, य�
 #: assets/js/astroway-blocks-editor.js:104
 #: assets/js/astroway-blocks-editor.js:144
 #: assets/js/astroway-blocks-editor.js:177
+#: assets/js/astroway-blocks-editor.js:207
 msgid "Date (leave blank for today)"
 msgstr "दिनांक (आज के लिए खाली छोड़ें)"
 
 #: assets/js/astroway-blocks-editor.js:114
-#, fuzzy
-msgid "Person A — date (YYYY-MM-DD)"
-msgstr "जन्म तिथि YYYY-MM-DD में।"
+msgid "Person A: date (YYYY-MM-DD)"
+msgstr "व्यक्ति A: दिनांक (वर्ष-महीना-दिन)"
 
 #: assets/js/astroway-blocks-editor.js:115
-msgid "Person A — time (HH:MM)"
-msgstr "व्यक्ति ए — समय (HH:MM)"
+msgid "Person A: time (HH:MM)"
+msgstr "व्यक्ति A: समय (HH:MM)"
 
 #: assets/js/astroway-blocks-editor.js:116
-msgid "Person A — latitude"
-msgstr "व्यक्ति ए — अक्षांश"
+msgid "Person A: latitude"
+msgstr "व्यक्ति A: अक्षांश"
 
 #: assets/js/astroway-blocks-editor.js:117
-msgid "Person A — longitude"
-msgstr "व्यक्ति ए — देशांतर"
+msgid "Person A: longitude"
+msgstr "व्यक्ति A: देशांतर"
 
 #: assets/js/astroway-blocks-editor.js:118
-msgid "Person A — timezone"
-msgstr "व्यक्ति ए — समय क्षेत्र"
+msgid "Person A: timezone"
+msgstr "व्यक्ति A: समय क्षेत्र"
 
 #: assets/js/astroway-blocks-editor.js:119
-#, fuzzy
-msgid "Person B — date (YYYY-MM-DD)"
-msgstr "जन्म तिथि YYYY-MM-DD में।"
+msgid "Person B: date (YYYY-MM-DD)"
+msgstr "व्यक्ति बी: दिनांक (वर्ष-महीना-दिन)"
 
 #: assets/js/astroway-blocks-editor.js:120
-msgid "Person B — time (HH:MM)"
-msgstr "व्यक्ति बी — समय (HH:MM)"
+msgid "Person B: time (HH:MM)"
+msgstr "व्यक्ति बी: समय (घंटा:मिनट)"
 
 #: assets/js/astroway-blocks-editor.js:121
-msgid "Person B — latitude"
-msgstr "व्यक्ति बी — अक्षांश"
+msgid "Person B: latitude"
+msgstr "व्यक्ति बी: अक्षांश"
 
 #: assets/js/astroway-blocks-editor.js:122
-msgid "Person B — longitude"
-msgstr "व्यक्ति बी — देशांतर"
+msgid "Person B: longitude"
+msgstr "व्यक्ति बी: देशांतर"
 
 #: assets/js/astroway-blocks-editor.js:123
-msgid "Person B — timezone"
-msgstr "व्यक्ति बी — समय क्षेत्र"
+msgid "Person B: timezone"
+msgstr "व्यक्ति बी: समय क्षेत्र"
 
 #: assets/js/astroway-blocks-editor.js:130
 #: assets/js/astroway-blocks-editor.js:134
 #: assets/js/astroway-blocks-editor.js:138
+#: assets/js/astroway-blocks-editor.js:212
 msgid "Birth data"
 msgstr "जन्म डेटा"
 
@@ -1342,20 +1906,14 @@ msgid "Transit date"
 msgstr "गोचर तिथि"
 
 #: assets/js/astroway-blocks-editor.js:150
-#, fuzzy
 msgid "Panchang"
 msgstr "बदलाव सहेजें"
-
-#: assets/js/astroway-blocks-editor.js:154
-msgid "Numerology"
-msgstr "अंक ज्योतिष"
 
 #: assets/js/astroway-blocks-editor.js:156
 msgid "Full name"
 msgstr "पूरा नाम"
 
 #: assets/js/astroway-blocks-editor.js:157
-#, fuzzy
 msgid "Date of birth (YYYY-MM-DD)"
 msgstr "जन्म तिथि YYYY-MM-DD में।"
 
@@ -1364,11 +1922,13 @@ msgid "Two subjects"
 msgstr "दो विषय"
 
 #: assets/js/astroway-blocks-editor.js:170
+#: assets/js/astroway-blocks-editor.js:191
+#: assets/js/astroway-blocks-editor.js:199
+#: assets/js/astroway-blocks-editor.js:218
 msgid "Zodiac sign"
 msgstr "राशि चिन्ह"
 
 #: assets/js/astroway-blocks-editor.js:182
-#, fuzzy
 msgid "Daily Tarot"
 msgstr "दैनिक टैरो कार्ड"
 
@@ -1376,51 +1936,64 @@ msgstr "दैनिक टैरो कार्ड"
 msgid "Deck"
 msgstr "डेक"
 
+#: assets/js/astroway-blocks-editor.js:189
+msgid "Weekly horoscope"
+msgstr "साप्ताहिक राशिफल"
+
+#: assets/js/astroway-blocks-editor.js:192
+msgid "Any date inside the week (blank for this week)"
+msgstr "सप्ताह के अंदर कोई भी तारीख (इस सप्ताह के लिए खाली)"
+
+#: assets/js/astroway-blocks-editor.js:197
+msgid "Monthly horoscope"
+msgstr "मासिक राशिफल"
+
+#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:219
+msgid "Any date inside the month (blank for this month)"
+msgstr "महीने के अंदर कोई तारीख (इस महीने के लिए खाली)"
+
+#: assets/js/astroway-blocks-editor.js:216
+msgid "Monthly forecast"
+msgstr "मासिक पूर्वानुमान"
+
+#: assets/js/astroway-blocks-editor.js:225
+msgid "Moon transit timeline"
+msgstr "चंद्रमा का गोचर समयरेखा"
+
+#: assets/js/astroway-blocks-editor.js:227
+msgid "Day the seven start from (blank for today)"
+msgstr "दिन सात से शुरू करें (आज के लिए रिक्त)"
+
 #: blocks/bodygraph/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
 msgstr "अस्ट्रोवे: ह्यूमन डिज़ाइन बॉडीग्राफ"
 
 #: blocks/bodygraph/block.json
-#, fuzzy
-msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "टाइप, प्रोफाइल और द्वारों के साथ ह्यूमन डिज़ाइन बॉडीग्राफ।"
 
 #: blocks/daily-horoscope/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
 msgstr "अस्ट्रोवे: दैनिक होरोस्कोप"
 
 #: blocks/daily-horoscope/block.json
-#, fuzzy
-msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "एक राशि चक्र के लिए दैनिक होरोस्कोप पाठ।"
 
 #: blocks/daily-tarot/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Daily Tarot"
 msgstr "अस्ट्रोवे: दैनिक टैरो"
 
 #: blocks/daily-tarot/block.json
-#, fuzzy
-msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "व्याख्या के साथ एक-कार्ड दैनिक टैरो ड्रॉ।"
 
 #: blocks/kundli/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Vedic Kundli"
 msgstr "अस्ट्रोवे सेटिंग्स"
 
 #: blocks/kundli/block.json
-#, fuzzy
-msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
@@ -1428,41 +2001,65 @@ msgstr ""
 "responsive iframe के रूप में api.astroway.info द्वारा प्रस्तुत नैटल चार्ट "
 "व्हील।"
 
+#: blocks/mini-chart/block.json
+msgid "AstroWay: Mini Birth Chart"
+msgstr "एस्ट्रोवे: मिनी जन्म कुंडली"
+
+#: blocks/mini-chart/block.json
+msgid ""
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
+" responsive iframe."
+msgstr ""
+"साइडबार के लिए छोटा आकार में बनाया गया जन्म चक्र, api.astroway.info द्वारा "
+"एक रेस्पॉन्सिव iframe के रूप में प्रदान किया गया।"
+
+#: blocks/monthly-forecast/block.json
+msgid "AstroWay: Monthly Forecast"
+msgstr "एस्ट्रोवे: मासिक पूर्वानुमान"
+
+#: blocks/monthly-forecast/block.json
+msgid ""
+"Four weeks ahead for one sign, each week with its own theme, served as a "
+"responsive iframe."
+msgstr ""
+"एक संकेत के लिए चार सप्ताह आगे, प्रत्येक सप्ताह अपनी थीम के साथ, एक "
+"प्रतिक्रियाशील iframe के रूप में प्रस्तुत।"
+
+#: blocks/monthly-horoscope/block.json
+msgid "AstroWay: Monthly Horoscope"
+msgstr "एस्ट्रोवे: मासिक राशिफल"
+
+#: blocks/monthly-horoscope/block.json
+msgid ""
+"Horoscope for the current month, anchored to the 1st, rendered into the page"
+" as text."
+msgstr ""
+"वर्तमान महीने का राशिफल, 1 तारीख से संलग्न, पृष्ठ पर पाठ के रूप में "
+"प्रस्तुत।"
+
 #: blocks/moon-phase/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Moon Phase"
 msgstr "अस्ट्रोवे: चंद्रमा का चरण"
 
 #: blocks/moon-phase/block.json
-#, fuzzy
-msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "प्रकाश प्रतिशत के साथ वर्तमान चंद्रमा चरण।"
 
 #: blocks/natal-chart/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Natal Chart"
 msgstr "अस्ट्रोवे: नैटल चार्ट"
 
 #: blocks/natal-chart/block.json
-#, fuzzy
-msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "responsive iframe के रूप में api.astroway.info द्वारा प्रस्तुत नैटल चार्ट "
 "व्हील।"
 
 #: blocks/numerology/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Numerology"
 msgstr "अस्ट्रोवे: चंद्रमा का चरण"
 
 #: blocks/numerology/block.json
-#, fuzzy
-msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
@@ -1471,14 +2068,10 @@ msgstr ""
 "व्हील।"
 
 #: blocks/panchang/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Daily Panchang"
 msgstr "अस्ट्रोवे: दैनिक टैरो"
 
 #: blocks/panchang/block.json
-#, fuzzy
-msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
@@ -1486,15 +2079,23 @@ msgstr ""
 "responsive iframe के रूप में api.astroway.info द्वारा प्रस्तुत नैटल चार्ट "
 "व्हील।"
 
+#: blocks/planet-of-day/block.json
+msgid "AstroWay: Planet of the Day"
+msgstr "एस्ट्रोवे: दिन का ग्रह"
+
+#: blocks/planet-of-day/block.json
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes, "
+"rendered into the page."
+msgstr ""
+"सप्ताह के दिन का पारंपरिक ग्रह स्वामी, उसके प्रतीक और विषयों के साथ, पृष्ठ "
+"पर प्रस्तुत।"
+
 #: blocks/synastry/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
 msgstr "अस्ट्रोवे: नैटल चार्ट"
 
 #: blocks/synastry/block.json
-#, fuzzy
-msgctxt "block description"
 msgid ""
 "Synastry compatibility score and top inter-aspects for two birth charts, "
 "served by api.astroway.info as a responsive iframe."
@@ -1502,15 +2103,23 @@ msgstr ""
 "responsive iframe के रूप में api.astroway.info द्वारा प्रस्तुत नैटल चार्ट "
 "व्हील।"
 
+#: blocks/transit-timeline/block.json
+msgid "AstroWay: Moon Transit Timeline"
+msgstr "एस्ट्रोवे: चंद्र गोचर समयरेखा"
+
+#: blocks/transit-timeline/block.json
+msgid ""
+"The next seven days of Moon ingresses, served by api.astroway.info as a "
+"responsive iframe."
+msgstr ""
+"चंद्रमा के अगले सात प्रवेश, api.astroway.info द्वारा एक प्रतिक्रियाशील "
+"iframe के रूप में प्रदान किए गए।"
+
 #: blocks/transit/block.json
-#, fuzzy
-msgctxt "block title"
 msgid "AstroWay: Transit Sky"
 msgstr "अस्ट्रोवे: नैटल चार्ट"
 
 #: blocks/transit/block.json
-#, fuzzy
-msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
@@ -1518,11 +2127,14 @@ msgstr ""
 "responsive iframe के रूप में api.astroway.info द्वारा प्रस्तुत नैटल चार्ट "
 "व्हील।"
 
-#~ msgid "Site ID"
-#~ msgstr "साइट आईडी"
+#: blocks/weekly-horoscope/block.json
+msgid "AstroWay: Weekly Horoscope"
+msgstr "एस्ट्रोवे: साप्ताहिक राशिफल"
 
-#~ msgid "“As above, so below.”"
-#~ msgstr "“जैसा ऊपर, वैसा नीचे।”"
-
-#~ msgid "Hermes Trismegistus"
-#~ msgstr "हर्मेस त्रिस्मेगिस्टस"
+#: blocks/weekly-horoscope/block.json
+msgid ""
+"Horoscope for the current week, anchored to Monday, rendered into the page "
+"as text."
+msgstr ""
+"वर्तमान सप्ताह का राशिफल, सोमवार से आरंभ होकर, पृष्ठ पर पाठ के रूप में "
+"प्रस्तुत।"

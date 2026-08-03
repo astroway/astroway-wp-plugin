@@ -2,14 +2,14 @@
 # This file is distributed under the MIT.
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology & Horoscopes 0.10.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-29T16:41:13+00:00\n"
+"POT-Creation-Date: 2026-08-03T05:45:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: astroway\n"
@@ -41,525 +41,856 @@ msgstr ""
 msgid "https://astroway.info"
 msgstr ""
 
-#: includes/class-admin.php:45
 #: includes/class-admin.php:46
+#: includes/class-admin.php:47
 #: includes/views/admin-api-key.php:18
-#: includes/views/partials/admin-footer-nav.php:13
-msgid "API Key"
-msgstr ""
-
-#: includes/class-admin.php:53
-msgid "AstroWay Settings"
+msgid "Getting started"
 msgstr ""
 
 #: includes/class-admin.php:54
-#: includes/class-admin.php:142
+msgid "AstroWay Settings"
+msgstr ""
+
+#: includes/class-admin.php:55
+#: includes/class-admin.php:149
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr ""
 
-#: includes/class-admin.php:61
+#: includes/class-admin.php:62
 msgid "AstroWay Shortcodes"
 msgstr ""
 
-#: includes/class-admin.php:62
+#: includes/class-admin.php:63
+#: includes/views/admin-api-key.php:116
 #: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr ""
 
-#: includes/class-admin.php:106
+#: includes/class-admin.php:113
 msgid "API key must start with \"aw_\" and contain only letters, digits, and underscores."
 msgstr ""
 
-#: includes/class-admin.php:147
+#: includes/class-admin.php:154
 msgid "Get API Key"
 msgstr ""
 
-#: includes/class-admin.php:185
+#: includes/class-admin.php:192
 msgid "Verifying…"
 msgstr ""
 
-#: includes/class-admin.php:186
+#: includes/class-admin.php:193
 msgid "limited info"
 msgstr ""
 
-#: includes/class-admin.php:187
-#: includes/views/admin-api-key.php:133
+#: includes/class-admin.php:194
+#: includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr ""
 
-#: includes/class-admin.php:188
+#: includes/class-admin.php:195
 msgid "Used"
 msgstr ""
 
-#: includes/class-admin.php:189
+#: includes/class-admin.php:196
 msgid "Rate"
 msgstr ""
 
-#: includes/class-admin.php:190
+#: includes/class-admin.php:197
 msgid "Bound to"
 msgstr ""
 
-#: includes/class-admin.php:191
+#: includes/class-admin.php:198
 msgid "Enter a valid API key first."
 msgstr ""
 
-#: includes/class-admin.php:192
+#: includes/class-admin.php:199
 #: includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr ""
 
-#: includes/class-admin.php:193
+#: includes/class-admin.php:200
 msgid "Key verified."
 msgstr ""
 
-#: includes/class-admin.php:211
-msgid "Pinging…"
-msgstr ""
-
-#: includes/class-admin.php:212
-msgid "API is healthy"
-msgstr ""
-
-#: includes/class-admin.php:213
-msgid "API unreachable"
-msgstr ""
-
-#: includes/class-admin.php:214
-msgid "Purge all cached data?"
-msgstr ""
-
-#: includes/class-admin.php:215
-msgid "Cache cleared:"
-msgstr ""
-
-#: includes/class-admin.php:216
-#: includes/class-admin.php:235
+#: includes/class-admin.php:201
+#: includes/class-admin.php:224
+#: includes/class-admin.php:243
 msgid "copied!"
 msgstr ""
 
-#: includes/class-admin.php:236
+#: includes/class-admin.php:219
+msgid "Pinging…"
+msgstr ""
+
+#: includes/class-admin.php:220
+msgid "API is healthy"
+msgstr ""
+
+#: includes/class-admin.php:221
+msgid "API unreachable"
+msgstr ""
+
+#: includes/class-admin.php:222
+msgid "Purge all cached data?"
+msgstr ""
+
+#: includes/class-admin.php:223
+msgid "Cache cleared:"
+msgstr ""
+
+#: includes/class-admin.php:244
 msgid "Searching…"
 msgstr ""
 
-#: includes/class-admin.php:237
+#: includes/class-admin.php:245
 msgid "No cities found."
 msgstr ""
 
-#: includes/class-admin.php:238
+#: includes/class-admin.php:246
 msgid "Search error. Try again."
 msgstr ""
 
-#: includes/class-admin.php:239
+#: includes/class-admin.php:247
 msgid "Type at least 2 characters."
 msgstr ""
 
-#: includes/class-admin.php:240
+#: includes/class-admin.php:248
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr ""
 
-#: includes/class-admin.php:249
-#: includes/class-admin.php:265
-#: includes/class-admin.php:274
+#. translators: 1: number of shortcodes matching the filter, 2: total number of shortcodes
+#: includes/class-admin.php:250
+#, php-format
+msgid "%1$d of %2$d"
+msgstr ""
+
+#: includes/class-admin.php:251
+msgid "No shortcode matches."
+msgstr ""
+
+#: includes/class-admin.php:260
+#: includes/class-admin.php:276
+#: includes/class-admin.php:285
 msgid "Unauthorized."
 msgstr ""
 
-#: includes/class-admin.php:287
-msgid "No API key — plugin runs in anonymous mode (30 requests/hour per visitor IP)."
+#: includes/class-admin.php:298
+msgid "No API key. The plugin runs in anonymous mode: this site is allowed 300 requests an hour, and widgets that fall back to a frame use each visitor's own 30."
 msgstr ""
 
-#: includes/class-admin.php:295
+#: includes/class-admin.php:306
 msgid "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear the field for anonymous mode."
 msgstr ""
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:298
+#: includes/class-admin.php:309
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr ""
 
-#: includes/class-admin.php:338
+#: includes/class-admin.php:349
 msgid "API key required."
 msgstr ""
 
-#: includes/class-admin.php:342
+#: includes/class-admin.php:353
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr ""
 
-#: includes/class-admin.php:369
+#: includes/class-admin.php:380
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 
-#: includes/class-plugin.php:148
+#: includes/class-plugin.php:161
 msgid "AstroWay is active"
 msgstr ""
 
-#: includes/class-plugin.php:149
-msgid "Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, get a free API key."
+#: includes/class-plugin.php:162
+msgid "Shortcodes work without an API key. Widgets your server renders into the page draw on your site's allowance of 300 requests an hour; widgets that fall back to a frame draw on each visitor's own 30. For higher limits and Pro features, get a free API key."
 msgstr ""
 
-#: includes/class-plugin.php:153
-#: includes/class-plugin.php:298
+#: includes/class-plugin.php:166
+#: includes/class-plugin.php:311
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr ""
 
-#: includes/class-plugin.php:156
+#: includes/class-plugin.php:169
 msgid "Open Settings"
 msgstr ""
 
-#: includes/class-plugin.php:228
+#: includes/class-plugin.php:241
 msgid "Enjoying AstroWay?"
 msgstr ""
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:242
 msgid "A short review on wordpress.org helps other site owners discover the plugin, and tells us what to build next."
 msgstr ""
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:246
 msgid "Leave a review"
 msgstr ""
 
-#: includes/class-plugin.php:296
+#: includes/class-plugin.php:309
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr ""
 
-#: includes/class-plugin.php:297
-msgid "the free tier allows 30 requests per hour per IP. Visitors are unaffected, since their widgets count against their own IP, but preview and admin calls from this server will fail until the hour resets. Add a free API key to lift the limit and get 10,000 credits/month plus 60 req/min."
+#: includes/class-plugin.php:310
+msgid "the free tier allows this site 300 requests an hour. Until the hour resets, widgets that would have been rendered into the page fall back to a frame loaded by the visitor's own browser, and preview and admin calls from this server will fail. Add a free API key to lift the limit and get 10,000 credits/month plus 60 req/min."
 msgstr ""
 
-#: includes/class-public-client.php:117
+#: includes/class-public-client.php:138
 msgid "Natal chart wheel"
 msgstr ""
 
-#: includes/class-public-client.php:118
+#: includes/class-public-client.php:139
 #: assets/js/astroway-blocks-editor.js:168
 msgid "Daily horoscope"
 msgstr ""
 
-#: includes/class-public-client.php:119
+#: includes/class-public-client.php:140
+#: includes/class-render.php:371
 #: assets/js/astroway-blocks-editor.js:175
 msgid "Moon phase"
 msgstr ""
 
-#: includes/class-public-client.php:120
+#: includes/class-public-client.php:141
 msgid "Human Design bodygraph"
 msgstr ""
 
-#: includes/class-public-client.php:121
+#: includes/class-public-client.php:142
 msgid "Daily Tarot card"
 msgstr ""
 
-#: includes/class-public-client.php:122
+#: includes/class-public-client.php:143
 msgid "Vedic kundli chart"
 msgstr ""
 
-#: includes/class-public-client.php:123
+#: includes/class-public-client.php:144
 msgid "Transit sky snapshot"
 msgstr ""
 
-#: includes/class-public-client.php:124
+#: includes/class-public-client.php:145
+#: includes/views/admin-shortcodes.php:177
 msgid "Daily Panchang"
 msgstr ""
 
-#: includes/class-public-client.php:125
+#: includes/class-public-client.php:146
 msgid "Numerology core numbers"
 msgstr ""
 
-#: includes/class-public-client.php:126
+#: includes/class-public-client.php:147
 msgid "Synastry compatibility"
 msgstr ""
 
-#: includes/class-public-client.php:128
+#: includes/class-public-client.php:149
 msgid "AstroWay widget"
 msgstr ""
 
+#. translators: %s = widget name
+#: includes/class-render.php:81
+#, php-format
+msgid "The %s widget could not be loaded just now. Only administrators see this note."
+msgstr ""
+
+#: includes/class-render.php:137
+msgid "Natal chart"
+msgstr ""
+
+#. translators: %s = person's name
+#: includes/class-render.php:140
+#, php-format
+msgid "Natal chart: %s"
+msgstr ""
+
+#: includes/class-render.php:153
+msgid "Ascendant"
+msgstr ""
+
+#: includes/class-render.php:156
+msgid "Midheaven"
+msgstr ""
+
+#. translators: %d = house number
+#: includes/class-render.php:169
+#, php-format
+msgid "House %d"
+msgstr ""
+
+#. translators: %d = house number
+#: includes/class-render.php:170
+msgid "retrograde"
+msgstr ""
+
+#: includes/class-render.php:173
+msgid "Placements"
+msgstr ""
+
+#. translators: 1: first planet, 2: aspect name, 3: second planet
+#: includes/class-render.php:194
+#, php-format
+msgid "%1$s %2$s %3$s"
+msgstr ""
+
+#: includes/class-render.php:204
+msgid "Major aspects"
+msgstr ""
+
+#: includes/class-render.php:278
+msgid "New Moon"
+msgstr ""
+
+#: includes/class-render.php:279
+msgid "Waxing Crescent"
+msgstr ""
+
+#: includes/class-render.php:280
+msgid "First Quarter"
+msgstr ""
+
+#: includes/class-render.php:281
+msgid "Waxing Gibbous"
+msgstr ""
+
+#: includes/class-render.php:282
+msgid "Full Moon"
+msgstr ""
+
+#: includes/class-render.php:283
+msgid "Waning Gibbous"
+msgstr ""
+
+#: includes/class-render.php:284
+msgid "Last Quarter"
+msgstr ""
+
+#: includes/class-render.php:285
+msgid "Waning Crescent"
+msgstr ""
+
+#: includes/class-render.php:292
+msgid "Sun"
+msgstr ""
+
+#: includes/class-render.php:293
+msgid "Moon"
+msgstr ""
+
+#: includes/class-render.php:294
+msgid "Mercury"
+msgstr ""
+
+#: includes/class-render.php:295
+msgid "Venus"
+msgstr ""
+
+#: includes/class-render.php:296
+msgid "Mars"
+msgstr ""
+
+#: includes/class-render.php:297
+msgid "Jupiter"
+msgstr ""
+
+#: includes/class-render.php:298
+msgid "Saturn"
+msgstr ""
+
+#: includes/class-render.php:299
+msgid "Uranus"
+msgstr ""
+
+#: includes/class-render.php:300
+msgid "Neptune"
+msgstr ""
+
+#: includes/class-render.php:301
+msgid "Pluto"
+msgstr ""
+
+#: includes/class-render.php:302
+msgid "Chiron"
+msgstr ""
+
+#: includes/class-render.php:303
+#: includes/class-render.php:310
+#: includes/class-render.php:311
+msgid "Lilith"
+msgstr ""
+
+#: includes/class-render.php:304
+#: includes/class-render.php:308
+#: includes/class-render.php:309
+msgid "North Node"
+msgstr ""
+
+#: includes/class-render.php:305
+msgid "South Node"
+msgstr ""
+
+#: includes/class-render.php:318
+msgid "conjunct"
+msgstr ""
+
+#: includes/class-render.php:319
+msgid "opposite"
+msgstr ""
+
+#: includes/class-render.php:320
+msgid "trine"
+msgstr ""
+
+#: includes/class-render.php:321
+msgid "square"
+msgstr ""
+
+#: includes/class-render.php:322
+msgid "sextile"
+msgstr ""
+
+#: includes/class-render.php:354
+msgid "Illumination"
+msgstr ""
+
+#: includes/class-render.php:357
+msgid "Age"
+msgstr ""
+
+#. translators: %s = number of days, may be fractional
+#: includes/class-render.php:359
+#, php-format
+msgid "%s days"
+msgstr ""
+
+#: includes/class-render.php:364
+msgid "Moon in"
+msgstr ""
+
+#: includes/class-render.php:367
+msgid "Sun in"
+msgstr ""
+
+#. translators: %s = tarot card name
+#: includes/class-render.php:399
+#, php-format
+msgid "%s (reversed)"
+msgstr ""
+
+#: includes/class-render.php:405
+msgid "Card of the day"
+msgstr ""
+
+#: includes/class-render.php:435
+#: assets/js/astroway-blocks-editor.js:205
+msgid "Planet of the day"
+msgstr ""
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:467
+#, php-format
+msgid "%s: horoscope for the week"
+msgstr ""
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:470
+#, php-format
+msgid "%s: horoscope for the month"
+msgstr ""
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:473
+#, php-format
+msgid "%s: horoscope for today"
+msgstr ""
+
+#: includes/class-render.php:480
+#: assets/js/astroway-blocks-editor.js:18
+msgid "Aries"
+msgstr ""
+
+#: includes/class-render.php:481
+#: assets/js/astroway-blocks-editor.js:19
+msgid "Taurus"
+msgstr ""
+
+#: includes/class-render.php:482
+#: assets/js/astroway-blocks-editor.js:20
+msgid "Gemini"
+msgstr ""
+
+#: includes/class-render.php:483
+#: assets/js/astroway-blocks-editor.js:21
+msgid "Cancer"
+msgstr ""
+
+#: includes/class-render.php:484
+#: assets/js/astroway-blocks-editor.js:22
+msgid "Leo"
+msgstr ""
+
+#: includes/class-render.php:485
+#: assets/js/astroway-blocks-editor.js:23
+msgid "Virgo"
+msgstr ""
+
+#: includes/class-render.php:486
+#: assets/js/astroway-blocks-editor.js:24
+msgid "Libra"
+msgstr ""
+
+#: includes/class-render.php:487
+#: assets/js/astroway-blocks-editor.js:25
+msgid "Scorpio"
+msgstr ""
+
+#: includes/class-render.php:488
+#: assets/js/astroway-blocks-editor.js:26
+msgid "Sagittarius"
+msgstr ""
+
+#: includes/class-render.php:489
+#: assets/js/astroway-blocks-editor.js:27
+msgid "Capricorn"
+msgstr ""
+
+#: includes/class-render.php:490
+#: assets/js/astroway-blocks-editor.js:28
+msgid "Aquarius"
+msgstr ""
+
+#: includes/class-render.php:491
+#: assets/js/astroway-blocks-editor.js:29
+msgid "Pisces"
+msgstr ""
+
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:164
+#: includes/class-shortcodes.php:233
 #, php-format
 msgid "The %s widget is temporarily unavailable, so it renders nothing. Only administrators see this note."
 msgstr ""
 
-#: includes/class-tier.php:138
+#: includes/class-tier.php:145
 msgid "Locked feature"
 msgstr ""
 
-#: includes/class-tier.php:148
+#: includes/class-tier.php:155
 msgid "Pro feature"
 msgstr ""
 
-#: includes/class-tier.php:149
+#: includes/class-tier.php:156
 msgid "This widget is available on a paid AstroWay plan."
 msgstr ""
 
-#: includes/class-tier.php:152
+#: includes/class-tier.php:159
 msgid "Upgrade →"
 msgstr ""
 
 #: includes/views/admin-api-key.php:19
-msgid "Higher limits, advanced widgets, no watermark."
+msgid "Paste a shortcode into a page. No account, no key, nothing to configure."
 msgstr ""
 
-#: includes/views/admin-api-key.php:59
+#: includes/views/admin-api-key.php:24
+msgid "Tonight's Moon phase. Takes no parameters at all."
+msgstr ""
+
+#: includes/views/admin-api-key.php:25
+msgid "A birth chart: date, time and place."
+msgstr ""
+
+#: includes/views/admin-api-key.php:67
+msgid "Your first widget"
+msgstr ""
+
+#: includes/views/admin-api-key.php:68
+msgid "copy · paste · open the page"
+msgstr ""
+
+#: includes/views/admin-api-key.php:73
+msgid "Copy a shortcode."
+msgstr ""
+
+#: includes/views/admin-api-key.php:77
+#: includes/views/admin-api-key.php:101
+#: includes/views/admin-shortcodes.php:291
+msgid "Click to copy"
+msgstr ""
+
+#: includes/views/admin-api-key.php:81
+#: includes/views/admin-api-key.php:105
+#: includes/views/admin-shortcodes.php:295
+msgid "copy"
+msgstr ""
+
+#: includes/views/admin-api-key.php:86
+msgid "Paste it into any post or page."
+msgstr ""
+
+#: includes/views/admin-api-key.php:87
+msgid "In the block editor you can type /astroway instead and pick the block: the preview shows the finished card, not a placeholder."
+msgstr ""
+
+#: includes/views/admin-api-key.php:90
+msgid "Open the page."
+msgstr ""
+
+#: includes/views/admin-api-key.php:91
+msgid "The reading is already in the HTML, in your theme's fonts and colours. Nothing below this panel is required to make it work."
+msgstr ""
+
+#: includes/views/admin-api-key.php:96
+msgid "Two more to try:"
+msgstr ""
+
+#. translators: %s is a link to the plugin's Shortcodes admin page
+#: includes/views/admin-api-key.php:115
+#, php-format
+msgid "All 16 shortcodes with their parameters, plus a city search that fills in coordinates and timezone: %s."
+msgstr ""
+
+#: includes/views/admin-api-key.php:127
 msgid "Your API key"
 msgstr ""
 
-#: includes/views/admin-api-key.php:60
-msgid "paste · verify · save"
+#: includes/views/admin-api-key.php:128
+msgid "optional · paste · verify · save"
 msgstr ""
 
-#: includes/views/admin-api-key.php:64
+#: includes/views/admin-api-key.php:132
 msgid "Paste your key"
 msgstr ""
 
-#: includes/views/admin-api-key.php:75
+#: includes/views/admin-api-key.php:143
 msgid "Verify"
 msgstr ""
 
-#: includes/views/admin-api-key.php:79
-msgid "Paste a key from api.astroway.info/dashboard. Leave empty to revert to Anonymous mode."
+#: includes/views/admin-api-key.php:147
+msgid "Paste a key from api.astroway.info/dashboard, or leave the field empty. Every widget renders without one. If you do save a key, your server offers it on the calls behind the page-rendered widgets, so a paid plan counts them against its own allowance rather than the one this site shares with every other anonymous caller. Saving a key also adds the status panel below, and the key itself is what you use when you call the API from your own code."
 msgstr ""
 
-#: includes/views/admin-api-key.php:83
+#: includes/views/admin-api-key.php:151
 msgid "Save changes"
 msgstr ""
 
-#: includes/views/admin-api-key.php:98
+#: includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr ""
 
-#: includes/views/admin-api-key.php:103
+#: includes/views/admin-api-key.php:171
 msgid "live · key authenticated"
 msgstr ""
 
-#: includes/views/admin-api-key.php:106
-msgid "suspended — contact support"
+#: includes/views/admin-api-key.php:174
+msgid "suspended, contact support"
 msgstr ""
 
-#: includes/views/admin-api-key.php:109
-msgid "revoked — re-issue key"
+#: includes/views/admin-api-key.php:177
+msgid "revoked, re-issue key"
 msgstr ""
 
-#: includes/views/admin-api-key.php:112
+#: includes/views/admin-api-key.php:180
 msgid "invalid key"
 msgstr ""
 
-#: includes/views/admin-api-key.php:115
-msgid "unreachable — check connection"
+#: includes/views/admin-api-key.php:183
+msgid "unreachable, check connection"
 msgstr ""
 
-#: includes/views/admin-api-key.php:126
+#: includes/views/admin-api-key.php:194
 msgid "Key"
 msgstr ""
 
-#: includes/views/admin-api-key.php:140
+#: includes/views/admin-api-key.php:208
 msgid "Credits"
 msgstr ""
 
-#: includes/views/admin-api-key.php:159
+#: includes/views/admin-api-key.php:227
 msgid "Period ends"
 msgstr ""
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:166
+#: includes/views/admin-api-key.php:234
 #, php-format
 msgid "in %s"
 msgstr ""
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:167
+#: includes/views/admin-api-key.php:235
 msgid "expired"
 msgstr ""
 
-#: includes/views/admin-api-key.php:180
+#: includes/views/admin-api-key.php:248
 msgid "Domain"
 msgstr ""
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:189
+#: includes/views/admin-api-key.php:257
 #, php-format
 msgid "bound %s ago"
 msgstr ""
 
-#: includes/views/admin-api-key.php:196
-msgid "not bound — first request will bind this site"
+#: includes/views/admin-api-key.php:264
+msgid "not bound: the first request binds this site"
 msgstr ""
 
-#: includes/views/admin-api-key.php:203
+#: includes/views/admin-api-key.php:271
 msgid "Source"
 msgstr ""
 
-#: includes/views/admin-api-key.php:210
-msgid "Limited data — connected api does not yet expose /v1/auth/keys/me. Plan and credits shown via legacy fallback."
-msgstr ""
-
-#: includes/views/admin-api-key.php:213
-msgid "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid key above, or clear the field to revert to anonymous mode."
-msgstr ""
-
-#: includes/views/admin-api-key.php:215
-msgid "Could not reach api.astroway.info. Network or upstream issue — try again in a moment."
-msgstr ""
-
-#: includes/views/admin-api-key.php:224
-msgid "What you get"
-msgstr ""
-
-#: includes/views/admin-api-key.php:225
-msgid "3 tiers compared"
-msgstr ""
-
-#: includes/views/admin-api-key.php:233
-msgid "Anonymous"
-msgstr ""
-
-#: includes/views/admin-api-key.php:234
-msgid "no setup"
-msgstr ""
-
-#: includes/views/admin-api-key.php:237
-msgid "Free key"
-msgstr ""
-
-#: includes/views/admin-api-key.php:238
-msgid "signup"
-msgstr ""
-
-#: includes/views/admin-api-key.php:241
-msgid "Paid"
-msgstr ""
-
-#: includes/views/admin-api-key.php:242
-msgid "from $5/mo"
-msgstr ""
-
-#: includes/views/admin-api-key.php:248
-msgid "Rate limit"
-msgstr ""
-
-#: includes/views/admin-api-key.php:249
-msgid "30/hour/IP"
-msgstr ""
-
-#: includes/views/admin-api-key.php:250
-msgid "~60/min/key"
-msgstr ""
-
-#: includes/views/admin-api-key.php:251
-msgid "30–1000/min"
-msgstr ""
-
-#: includes/views/admin-api-key.php:254
-msgid "Credits / month"
-msgstr ""
-
-#: includes/views/admin-api-key.php:256
-msgid "10,000"
-msgstr ""
-
-#: includes/views/admin-api-key.php:257
-msgid "50K – 3.5M"
-msgstr ""
-
-#: includes/views/admin-api-key.php:260
-msgid "Render mode"
-msgstr ""
-
-#: includes/views/admin-api-key.php:261
-#: includes/views/admin-api-key.php:262
-msgid "iframe"
-msgstr ""
-
-#: includes/views/admin-api-key.php:263
-msgid "native"
-msgstr ""
-
-#: includes/views/admin-api-key.php:266
-msgid "Widgets"
-msgstr ""
-
-#: includes/views/admin-api-key.php:267
-#: includes/views/admin-api-key.php:268
-msgid "5 basic"
-msgstr ""
-
-#: includes/views/admin-api-key.php:269
-msgid "+ Tarot, HD, Synastry, Numerology"
-msgstr ""
-
-#: includes/views/admin-api-key.php:272
-msgid "AI interpretations"
-msgstr ""
-
-#: includes/views/admin-api-key.php:275
-#: includes/views/admin-api-key.php:293
-msgid "included"
-msgstr ""
-
 #: includes/views/admin-api-key.php:278
-msgid "Watermark"
-msgstr ""
-
-#: includes/views/admin-api-key.php:279
-#: includes/views/admin-api-key.php:280
-msgid "shown"
+msgid "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan and credits shown via legacy fallback."
 msgstr ""
 
 #: includes/views/admin-api-key.php:281
-msgid "removed"
+msgid "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid key above, or clear the field to revert to anonymous mode."
 msgstr ""
 
-#: includes/views/admin-api-key.php:284
+#: includes/views/admin-api-key.php:283
+msgid "Could not reach api.astroway.info. Network or upstream issue, try again in a moment."
+msgstr ""
+
+#: includes/views/admin-api-key.php:292
+msgid "What a key adds"
+msgstr ""
+
+#: includes/views/admin-api-key.php:293
+msgid "3 tiers compared"
+msgstr ""
+
+#: includes/views/admin-api-key.php:301
+msgid "Anonymous"
+msgstr ""
+
+#: includes/views/admin-api-key.php:302
+msgid "no setup"
+msgstr ""
+
+#: includes/views/admin-api-key.php:305
+msgid "Free key"
+msgstr ""
+
+#: includes/views/admin-api-key.php:306
+msgid "signup"
+msgstr ""
+
+#: includes/views/admin-api-key.php:309
+msgid "Paid"
+msgstr ""
+
+#: includes/views/admin-api-key.php:310
+msgid "from $5/mo"
+msgstr ""
+
+#: includes/views/admin-api-key.php:316
+msgid "Widgets in this plugin"
+msgstr ""
+
+#: includes/views/admin-api-key.php:317
+#: includes/views/admin-api-key.php:318
+#: includes/views/admin-api-key.php:319
+msgid "all of them"
+msgstr ""
+
+#: includes/views/admin-api-key.php:322
+msgid "API requests / month"
+msgstr ""
+
+#: includes/views/admin-api-key.php:323
+#: includes/views/admin-api-key.php:329
+#: includes/views/admin-api-key.php:335
+#: includes/views/admin-api-key.php:341
+#: includes/views/admin-api-key.php:342
+#: includes/views/admin-api-key.php:347
+#: includes/views/admin-api-key.php:353
+#: includes/views/admin-api-key.php:354
+msgid "none"
+msgstr ""
+
+#: includes/views/admin-api-key.php:324
+msgid "10,000"
+msgstr ""
+
+#: includes/views/admin-api-key.php:325
+msgid "50K to 3.5M"
+msgstr ""
+
+#: includes/views/admin-api-key.php:328
+msgid "Rate limit, keyed endpoints"
+msgstr ""
+
+#: includes/views/admin-api-key.php:330
+msgid "~60 requests/min"
+msgstr ""
+
+#: includes/views/admin-api-key.php:331
+msgid "30 to 1000 requests/min"
+msgstr ""
+
+#: includes/views/admin-api-key.php:334
+msgid "Dashboard, usage history"
+msgstr ""
+
+#: includes/views/admin-api-key.php:336
+#: includes/views/admin-api-key.php:337
+#: includes/views/admin-api-key.php:343
+#: includes/views/admin-api-key.php:355
+msgid "included"
+msgstr ""
+
+#: includes/views/admin-api-key.php:340
+msgid "AI interpretations"
+msgstr ""
+
+#: includes/views/admin-api-key.php:346
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr ""
 
-#: includes/views/admin-api-key.php:286
+#: includes/views/admin-api-key.php:348
 msgid "community"
 msgstr ""
 
-#: includes/views/admin-api-key.php:287
+#: includes/views/admin-api-key.php:349
 msgid "priority"
 msgstr ""
 
-#: includes/views/admin-api-key.php:290
+#: includes/views/admin-api-key.php:352
 msgid "Spend cap"
 msgstr ""
 
 #. translators: %s is a link to the canonical pricing page on api.astroway.info
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:363
 #, php-format
-msgid "Numbers shown for context. Canonical pricing → %s"
+msgid "Every row below the first one is about calling api.astroway.info from your own code. The widgets on your pages are not affected by any of it. Canonical pricing → %s"
 msgstr ""
 
-#: includes/views/admin-api-key.php:312
+#: includes/views/admin-api-key.php:374
 msgid "How it works"
 msgstr ""
 
-#: includes/views/admin-api-key.php:316
-msgid "No key."
+#: includes/views/admin-api-key.php:378
+msgid "On your pages."
 msgstr ""
 
-#: includes/views/admin-api-key.php:317
-msgid "Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-traffic sites and quick trials. The \"Powered by AstroWay\" watermark is shown."
+#: includes/views/admin-api-key.php:379
+msgid "Your server renders seven widgets into the page, counted against this site's allowance of 300 requests an hour, or against your own plan when a paid key is saved above. The rest load in a frame against each visitor's own 30, and those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the visitor's browser, which is no place for your key."
 msgstr ""
 
-#: includes/views/admin-api-key.php:320
+#: includes/views/admin-api-key.php:382
 msgid "Free key."
 msgstr ""
 
-#: includes/views/admin-api-key.php:321
-msgid "Personal credit bucket (10,000/month), isolated from other sites. Iframe rendering stays, but you get a dashboard with activity history. Watermark is still shown."
+#: includes/views/admin-api-key.php:383
+msgid "A personal bucket of 10,000 calls a month for code you write yourself, plus a dashboard with activity history. It does not change what the shortcodes render, and the watermark on framed widgets stays: the key is not part of the frame's address."
 msgstr ""
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:386
 msgid "Paid key."
 msgstr ""
 
-#: includes/views/admin-api-key.php:325
-msgid "Native client-side rendering (no iframe), advanced widgets (Tarot decks, synastry, Human Design, Numerology), AI-written interpretations, and no watermark. Spend cap available to protect against bill spikes."
+#: includes/views/admin-api-key.php:387
+msgid "Higher limits and more calls on api.astroway.info, AI-written interpretations, priority support, and a spend cap against bill spikes. The page-rendered widgets on this site draw on that plan too, instead of the shared anonymous allowance. Widgets that need a paid endpoint will say so on the shortcode; none of the current ones do."
 msgstr ""
 
 #: includes/views/admin-settings.php:17
@@ -689,7 +1020,7 @@ msgid "Feature"
 msgstr ""
 
 #: includes/views/admin-settings.php:181
-msgid "Matrix is filterable via the `astroway_tier_matrix` filter — addons can append their own features."
+msgid "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can append their own features."
 msgstr ""
 
 #: includes/views/admin-settings.php:189
@@ -745,11 +1076,43 @@ msgid "Show a disclaimer in embedded widgets"
 msgstr ""
 
 #: includes/views/admin-settings.php:267
-msgid "Appends a short \"informational, not professional advice\" line to the widget footer. Off by default — enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info."
+msgid "Appends a short \"informational, not professional advice\" line to the widget footer. Off by default, enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info."
 msgstr ""
 
 #: includes/views/admin-settings.php:270
 msgid "Save disclaimer setting"
+msgstr ""
+
+#: includes/views/admin-settings.php:278
+msgid "Render mode"
+msgstr ""
+
+#: includes/views/admin-settings.php:279
+msgid "where widget content is drawn"
+msgstr ""
+
+#: includes/views/admin-settings.php:287
+msgid "On this page (recommended)"
+msgstr ""
+
+#: includes/views/admin-settings.php:288
+msgid "Your server fetches the text and prints it into the page. Search engines can read it, your theme styles it, and it works without JavaScript. Answers are cached until they change, so a daily horoscope is fetched once a day per sign."
+msgstr ""
+
+#: includes/views/admin-settings.php:293
+msgid "In an iframe"
+msgstr ""
+
+#: includes/views/admin-settings.php:294
+msgid "Each visitor's browser loads the widget from api.astroway.info. Nothing reaches your page source, so the content is not indexed and your theme cannot style it. Choose this if your host blocks outgoing requests, or to compare the two."
+msgstr ""
+
+#: includes/views/admin-settings.php:298
+msgid "Widgets without a page-side template, and any widget whose data cannot be fetched, fall back to the iframe on their own."
+msgstr ""
+
+#: includes/views/admin-settings.php:300
+msgid "Save render mode"
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:15
@@ -761,20 +1124,21 @@ msgid "Natal Chart"
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:21
-msgid "Birth chart wheel — planet positions, houses, aspects."
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:23
-msgid "AstroWay — Natal Chart"
+msgid "Birth chart: the wheel plus planet positions, houses and aspects as text."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:25
-#: includes/views/admin-shortcodes.php:60
+#: includes/views/admin-shortcodes.php:93
+#: includes/views/admin-shortcodes.php:118
+#: includes/views/admin-shortcodes.php:156
+#: includes/views/admin-shortcodes.php:197
 msgid "Birth date in YYYY-MM-DD."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:26
-#: includes/views/admin-shortcodes.php:61
+#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:119
+#: includes/views/admin-shortcodes.php:157
 msgid "Birth time in HH:MM (24-hour)."
 msgstr ""
 
@@ -794,142 +1158,304 @@ msgstr ""
 msgid "Display name on the chart."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:35
-msgid "Daily Horoscope"
+#: includes/views/admin-shortcodes.php:31
+msgid "Palette of the wheel drawing: dark (default), light or console. The text beside it follows your theme on its own; the wheel is an image and cannot, so set this to match."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:36
+msgid "Daily Horoscope"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:37
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:38
-msgid "AstroWay — Daily Horoscope"
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:40
+#: includes/views/admin-shortcodes.php:41
+#: includes/views/admin-shortcodes.php:51
+#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:133
 msgid "One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:45
-msgid "Moon Phase"
-msgstr ""
-
 #: includes/views/admin-shortcodes.php:46
-msgid "Current Moon phase visualization with illumination percent."
+msgid "Weekly Horoscope"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:48
-msgid "AstroWay — Moon Phase"
+#: includes/views/admin-shortcodes.php:47
+msgid "Horoscope for the current week, anchored to Monday. Rendered into the page, not an iframe."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:50
-msgid "Override date in YYYY-MM-DD. Defaults to today."
+#: includes/views/admin-shortcodes.php:52
+msgid "Any date inside the week you want. Defaults to today."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:55
-msgid "Human Design Bodygraph"
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:56
-msgid "Human Design body graph with centers, channels, gates."
+#: includes/views/admin-shortcodes.php:57
+msgid "Monthly Horoscope"
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:58
-msgid "AstroWay — Bodygraph"
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:62
-msgid "WGS-84 latitude."
+msgid "Horoscope for the current month, anchored to the 1st. Rendered into the page, not an iframe."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:63
-msgid "WGS-84 longitude."
+#: includes/views/admin-shortcodes.php:134
+msgid "Any date inside the month you want. Defaults to today."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:64
-msgid "IANA timezone."
+#: includes/views/admin-shortcodes.php:68
+msgid "Planet of the Day"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:65
-msgid "Display name."
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:70
-msgid "Daily Tarot Card"
-msgstr ""
-
-#: includes/views/admin-shortcodes.php:71
-msgid "Single card pull of the day from a chosen deck."
+#: includes/views/admin-shortcodes.php:69
+msgid "Traditional planetary ruler of the weekday, with its glyph and themes. Rendered into the page, not an iframe."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:73
-msgid "AstroWay — Daily Tarot Card"
+#: includes/views/admin-shortcodes.php:83
+#: includes/views/admin-shortcodes.php:171
+#: includes/views/admin-shortcodes.php:182
+msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:75
-msgid "Deck slug: rider-waite (default), marseille, or lenormand."
+#: includes/views/admin-shortcodes.php:78
+msgid "Moon Phase"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:94
-msgid "Find your coordinates and timezone"
+#: includes/views/admin-shortcodes.php:79
+msgid "Current Moon phase visualization with illumination percent."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:88
+msgid "Human Design Bodygraph"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:89
+msgid "Human Design body graph with centers, channels, gates."
 msgstr ""
 
 #: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:120
+#: includes/views/admin-shortcodes.php:158
+#: includes/views/admin-shortcodes.php:183
+msgid "WGS-84 latitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:96
+#: includes/views/admin-shortcodes.php:121
+#: includes/views/admin-shortcodes.php:159
+#: includes/views/admin-shortcodes.php:184
+msgid "WGS-84 longitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:97
+#: includes/views/admin-shortcodes.php:122
+#: includes/views/admin-shortcodes.php:160
+#: includes/views/admin-shortcodes.php:185
+msgid "IANA timezone."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:98
+msgid "Display name."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:103
+msgid "Daily Tarot Card"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:104
+msgid "Single card pull of the day from a chosen deck."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:108
+msgid "Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite renders into the page; the other two load in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:113
+msgid "Mini Birth Chart"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:114
+msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:123
+#: includes/views/admin-shortcodes.php:135
+#: includes/views/admin-shortcodes.php:146
+#: includes/views/admin-shortcodes.php:161
+#: includes/views/admin-shortcodes.php:172
+#: includes/views/admin-shortcodes.php:186
+#: includes/views/admin-shortcodes.php:199
+#: includes/views/admin-shortcodes.php:219
+msgid "dark (default), light or console."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:128
+msgid "Monthly Forecast"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:129
+msgid "Four weeks ahead for one sign, each with its own theme. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:140
+msgid "Moon Transit Timeline"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:141
+msgid "The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:145
+msgid "Day the seven start from. Defaults to today."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:151
+msgid "Vedic Kundli"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:152
+msgid "North-Indian D1 chart. Loads in a frame: there is no page-side template for it yet."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:166
+msgid "Transit Sky"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:167
+msgid "Where the planets stand on a given date. Loads in a frame: there is no page-side template for it yet."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:178
+msgid "Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:191
+#: assets/js/astroway-blocks-editor.js:154
+msgid "Numerology"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:192
+msgid "Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:196
+msgid "Full birth name. The letters are what the numbers are built from."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:198
+msgid "pythagorean (default), chaldean, kabbalistic or tamil."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:204
+msgid "Synastry Compatibility"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:205
+msgid "Compatibility score and top inter-aspects for two birth charts. Loads in a frame."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:209
+msgid "First person: birth date in YYYY-MM-DD."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:210
+msgid "First person: birth time in HH:MM."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:211
+msgid "First person: latitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:212
+msgid "First person: longitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:213
+msgid "First person: IANA timezone."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:214
+msgid "Second person: birth date in YYYY-MM-DD."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:215
+msgid "Second person: birth time in HH:MM."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:216
+msgid "Second person: latitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:217
+msgid "Second person: longitude."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:218
+msgid "Second person: IANA timezone."
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:238
+msgid "Find your coordinates and timezone"
+msgstr ""
+
+#: includes/views/admin-shortcodes.php:239
 msgid "city → lat · lon · IANA tz"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:102
-msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
+#: includes/views/admin-shortcodes.php:246
+msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:106
+#: includes/views/admin-shortcodes.php:250
 msgid "Search"
 msgstr ""
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:113
+#: includes/views/admin-shortcodes.php:257
 #, php-format
 msgid "Pick the matching city to copy values into the shortcode. Reference: %s."
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:114
+#: includes/views/admin-shortcodes.php:258
 msgid "IANA timezone list"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:135
-msgid "Click to copy"
+#: includes/views/admin-shortcodes.php:267
+msgid "Filter shortcodes"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:139
-msgid "copy"
+#. translators: %d is the number of shortcodes
+#: includes/views/admin-shortcodes.php:271
+#, php-format
+msgid "Filter %d shortcodes: name, tag or what it does"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:147
+#: includes/views/admin-shortcodes.php:303
 msgid "Parameter"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:148
+#: includes/views/admin-shortcodes.php:304
 msgid "Type"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:149
+#: includes/views/admin-shortcodes.php:305
 msgid "Required"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:150
+#: includes/views/admin-shortcodes.php:306
 msgid "Description"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:163
+#: includes/views/admin-shortcodes.php:319
 msgid "required"
 msgstr ""
 
-#: includes/views/admin-shortcodes.php:165
+#: includes/views/admin-shortcodes.php:321
 msgid "optional"
 msgstr ""
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:179
+#: includes/views/admin-shortcodes.php:344
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr ""
@@ -988,6 +1514,10 @@ msgstr ""
 msgid "not yet"
 msgstr ""
 
+#: includes/views/partials/admin-footer-nav.php:13
+msgid "API Key"
+msgstr ""
+
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
 msgstr ""
@@ -1013,7 +1543,7 @@ msgid "Anonymous mode"
 msgstr ""
 
 #: includes/views/partials/admin-hero.php:50
-msgid "30 requests / hour / visitor IP"
+msgid "300 requests / hour / site"
 msgstr ""
 
 #: includes/views/partials/admin-hero.php:59
@@ -1038,54 +1568,6 @@ msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:18
-msgid "Aries"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:19
-msgid "Taurus"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:20
-msgid "Gemini"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:21
-msgid "Cancer"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:22
-msgid "Leo"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:23
-msgid "Virgo"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:24
-msgid "Libra"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:25
-msgid "Scorpio"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:26
-msgid "Sagittarius"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:27
-msgid "Capricorn"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:28
-msgid "Aquarius"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:29
-msgid "Pisces"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:33
@@ -1173,52 +1655,54 @@ msgstr ""
 #: assets/js/astroway-blocks-editor.js:104
 #: assets/js/astroway-blocks-editor.js:144
 #: assets/js/astroway-blocks-editor.js:177
+#: assets/js/astroway-blocks-editor.js:207
 msgid "Date (leave blank for today)"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:114
-msgid "Person A — date (YYYY-MM-DD)"
+msgid "Person A: date (YYYY-MM-DD)"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:115
-msgid "Person A — time (HH:MM)"
+msgid "Person A: time (HH:MM)"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:116
-msgid "Person A — latitude"
+msgid "Person A: latitude"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:117
-msgid "Person A — longitude"
+msgid "Person A: longitude"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:118
-msgid "Person A — timezone"
+msgid "Person A: timezone"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:119
-msgid "Person B — date (YYYY-MM-DD)"
+msgid "Person B: date (YYYY-MM-DD)"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:120
-msgid "Person B — time (HH:MM)"
+msgid "Person B: time (HH:MM)"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:121
-msgid "Person B — latitude"
+msgid "Person B: latitude"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:122
-msgid "Person B — longitude"
+msgid "Person B: longitude"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:123
-msgid "Person B — timezone"
+msgid "Person B: timezone"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:130
 #: assets/js/astroway-blocks-editor.js:134
 #: assets/js/astroway-blocks-editor.js:138
+#: assets/js/astroway-blocks-editor.js:212
 msgid "Birth data"
 msgstr ""
 
@@ -1228,10 +1712,6 @@ msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:150
 msgid "Panchang"
-msgstr ""
-
-#: assets/js/astroway-blocks-editor.js:154
-msgid "Numerology"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:156
@@ -1247,6 +1727,9 @@ msgid "Two subjects"
 msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:170
+#: assets/js/astroway-blocks-editor.js:191
+#: assets/js/astroway-blocks-editor.js:199
+#: assets/js/astroway-blocks-editor.js:218
 msgid "Zodiac sign"
 msgstr ""
 
@@ -1256,6 +1739,35 @@ msgstr ""
 
 #: assets/js/astroway-blocks-editor.js:184
 msgid "Deck"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:189
+msgid "Weekly horoscope"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:192
+msgid "Any date inside the week (blank for this week)"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:197
+msgid "Monthly horoscope"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:219
+msgid "Any date inside the month (blank for this month)"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:216
+msgid "Monthly forecast"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:225
+msgid "Moon transit timeline"
+msgstr ""
+
+#: assets/js/astroway-blocks-editor.js:227
+msgid "Day the seven start from (blank for today)"
 msgstr ""
 
 #: blocks/bodygraph/block.json
@@ -1298,6 +1810,36 @@ msgctxt "block description"
 msgid "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a responsive iframe."
 msgstr ""
 
+#: blocks/mini-chart/block.json
+msgctxt "block title"
+msgid "AstroWay: Mini Birth Chart"
+msgstr ""
+
+#: blocks/mini-chart/block.json
+msgctxt "block description"
+msgid "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a responsive iframe."
+msgstr ""
+
+#: blocks/monthly-forecast/block.json
+msgctxt "block title"
+msgid "AstroWay: Monthly Forecast"
+msgstr ""
+
+#: blocks/monthly-forecast/block.json
+msgctxt "block description"
+msgid "Four weeks ahead for one sign, each week with its own theme, served as a responsive iframe."
+msgstr ""
+
+#: blocks/monthly-horoscope/block.json
+msgctxt "block title"
+msgid "AstroWay: Monthly Horoscope"
+msgstr ""
+
+#: blocks/monthly-horoscope/block.json
+msgctxt "block description"
+msgid "Horoscope for the current month, anchored to the 1st, rendered into the page as text."
+msgstr ""
+
 #: blocks/moon-phase/block.json
 msgctxt "block title"
 msgid "AstroWay: Moon Phase"
@@ -1338,6 +1880,16 @@ msgctxt "block description"
 msgid "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date and location, served by api.astroway.info as a responsive iframe."
 msgstr ""
 
+#: blocks/planet-of-day/block.json
+msgctxt "block title"
+msgid "AstroWay: Planet of the Day"
+msgstr ""
+
+#: blocks/planet-of-day/block.json
+msgctxt "block description"
+msgid "Traditional planetary ruler of the weekday, with its glyph and themes, rendered into the page."
+msgstr ""
+
 #: blocks/synastry/block.json
 msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
@@ -1348,6 +1900,16 @@ msgctxt "block description"
 msgid "Synastry compatibility score and top inter-aspects for two birth charts, served by api.astroway.info as a responsive iframe."
 msgstr ""
 
+#: blocks/transit-timeline/block.json
+msgctxt "block title"
+msgid "AstroWay: Moon Transit Timeline"
+msgstr ""
+
+#: blocks/transit-timeline/block.json
+msgctxt "block description"
+msgid "The next seven days of Moon ingresses, served by api.astroway.info as a responsive iframe."
+msgstr ""
+
 #: blocks/transit/block.json
 msgctxt "block title"
 msgid "AstroWay: Transit Sky"
@@ -1356,4 +1918,14 @@ msgstr ""
 #: blocks/transit/block.json
 msgctxt "block description"
 msgid "Snapshot of the transiting planets' signs and degrees for a date, served by api.astroway.info as a responsive iframe."
+msgstr ""
+
+#: blocks/weekly-horoscope/block.json
+msgctxt "block title"
+msgid "AstroWay: Weekly Horoscope"
+msgstr ""
+
+#: blocks/weekly-horoscope/block.json
+msgctxt "block description"
+msgid "Horoscope for the current week, anchored to Monday, rendered into the page as text."
 msgstr ""

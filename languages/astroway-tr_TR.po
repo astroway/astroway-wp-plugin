@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology & Horoscopes 0.10.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
-"POT-Creation-Date: 2026-07-29T16:41:13+00:00\n"
-"PO-Revision-Date: 2026-07-29 19:50+0300\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"POT-Creation-Date: 2026-08-03T05:45:46+00:00\n"
+"PO-Revision-Date: 2026-08-03 08:46+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Turkish <translations@astroway.info>\n"
 "Language: tr_TR\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: astroway-wp-plugin.php
 msgid "AstroWay – Astrology & Horoscopes"
-msgstr "AstroWay — Günlük Burç Yorumu"
+msgstr "AstroWay – Günlük Burç Yorumu"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
@@ -32,7 +32,7 @@ msgid ""
 "Tarot, Numerology, Human Design API. Powered by api.astroway.info."
 msgstr ""
 "Doğum haritaları, senkroni, geçişler, Tarot, Numeroloji, İnsan Tasarımı, AI "
-"burç yorumları — kısa kodlar + Gutenberg blokları. api.astroway.info "
+"burç yorumları – kısa kodlar + Gutenberg blokları. api.astroway.info "
 "tarafından desteklenmektedir."
 
 #. Author of the plugin
@@ -46,32 +46,32 @@ msgstr "AstroWay"
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
 
-#: includes/class-admin.php:45 includes/class-admin.php:46
+#: includes/class-admin.php:46 includes/class-admin.php:47
 #: includes/views/admin-api-key.php:18
-#: includes/views/partials/admin-footer-nav.php:13
-msgid "API Key"
-msgstr "API Anahtarı"
+msgid "Getting started"
+msgstr "Başlangıç"
 
-#: includes/class-admin.php:53
+#: includes/class-admin.php:54
 msgid "AstroWay Settings"
 msgstr "AstroWay Ayarları"
 
-#: includes/class-admin.php:54 includes/class-admin.php:142
+#: includes/class-admin.php:55 includes/class-admin.php:149
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: includes/class-admin.php:61
+#: includes/class-admin.php:62
 msgid "AstroWay Shortcodes"
 msgstr "AstroWay Kısa Kodları"
 
-#: includes/class-admin.php:62 includes/views/admin-shortcodes.php:14
+#: includes/class-admin.php:63 includes/views/admin-api-key.php:116
+#: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr "Kısa Kodlar"
 
-#: includes/class-admin.php:106
+#: includes/class-admin.php:113
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -79,104 +79,118 @@ msgstr ""
 "API anahtarı \"aw_\" ile başlamalı ve yalnızca harfler, rakamlar ve alt "
 "çizgiler içermelidir."
 
-#: includes/class-admin.php:147
+#: includes/class-admin.php:154
 msgid "Get API Key"
 msgstr "API Anahtarı Al"
 
-#: includes/class-admin.php:185
+#: includes/class-admin.php:192
 msgid "Verifying…"
 msgstr "Doğrulanıyor…"
 
-#: includes/class-admin.php:186
+#: includes/class-admin.php:193
 msgid "limited info"
 msgstr "sınırlı bilgi"
 
-#: includes/class-admin.php:187 includes/views/admin-api-key.php:133
+#: includes/class-admin.php:194 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:188
+#: includes/class-admin.php:195
 msgid "Used"
 msgstr "Kullanılan"
 
-#: includes/class-admin.php:189
+#: includes/class-admin.php:196
 msgid "Rate"
 msgstr "Oran"
 
-#: includes/class-admin.php:190
+#: includes/class-admin.php:197
 msgid "Bound to"
 msgstr "Bağlı"
 
-#: includes/class-admin.php:191
+#: includes/class-admin.php:198
 msgid "Enter a valid API key first."
 msgstr "Önce geçerli bir API anahtarı girin."
 
-#: includes/class-admin.php:192 includes/views/admin-settings.php:246
+#: includes/class-admin.php:199 includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr "Ağ hatası"
 
-#: includes/class-admin.php:193
+#: includes/class-admin.php:200
 msgid "Key verified."
 msgstr "Anahtar doğrulandı."
 
-#: includes/class-admin.php:211
-msgid "Pinging…"
-msgstr "Ping atılıyor…"
-
-#: includes/class-admin.php:212
-msgid "API is healthy"
-msgstr "API sağlıklı"
-
-#: includes/class-admin.php:213
-msgid "API unreachable"
-msgstr "API ulaşılamıyor"
-
-#: includes/class-admin.php:214
-msgid "Purge all cached data?"
-msgstr "Tüm önbellekli veriyi temizlemek istiyor musunuz?"
-
-#: includes/class-admin.php:215
-msgid "Cache cleared:"
-msgstr "Önbellek temizlendi:"
-
-#: includes/class-admin.php:216 includes/class-admin.php:235
+#: includes/class-admin.php:201 includes/class-admin.php:224
+#: includes/class-admin.php:243
 msgid "copied!"
 msgstr "kopyalandı!"
 
-#: includes/class-admin.php:236
+#: includes/class-admin.php:219
+msgid "Pinging…"
+msgstr "Ping atılıyor…"
+
+#: includes/class-admin.php:220
+msgid "API is healthy"
+msgstr "API sağlıklı"
+
+#: includes/class-admin.php:221
+msgid "API unreachable"
+msgstr "API ulaşılamıyor"
+
+#: includes/class-admin.php:222
+msgid "Purge all cached data?"
+msgstr "Tüm önbellekli veriyi temizlemek istiyor musunuz?"
+
+#: includes/class-admin.php:223
+msgid "Cache cleared:"
+msgstr "Önbellek temizlendi:"
+
+#: includes/class-admin.php:244
 msgid "Searching…"
 msgstr "Aranıyor…"
 
-#: includes/class-admin.php:237
+#: includes/class-admin.php:245
 msgid "No cities found."
 msgstr "Hiçbir şehir bulunamadı."
 
-#: includes/class-admin.php:238
+#: includes/class-admin.php:246
 msgid "Search error. Try again."
 msgstr "Arama hatası. Tekrar deneyin."
 
-#: includes/class-admin.php:239
+#: includes/class-admin.php:247
 msgid "Type at least 2 characters."
 msgstr "En az 2 karakter yazın."
 
-#: includes/class-admin.php:240
+#: includes/class-admin.php:248
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Enlem / boylam / saat dilimi doldurmak için bir şehir seçin"
 
-#: includes/class-admin.php:249 includes/class-admin.php:265
-#: includes/class-admin.php:274
+#. translators: 1: number of shortcodes matching the filter, 2: total number
+#. of shortcodes
+#: includes/class-admin.php:250
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d / %2$d"
+
+#: includes/class-admin.php:251
+msgid "No shortcode matches."
+msgstr "Eşleşen kısa kod bulunamadı."
+
+#: includes/class-admin.php:260 includes/class-admin.php:276
+#: includes/class-admin.php:285
 msgid "Unauthorized."
 msgstr "Yetkisiz erişim."
 
-#: includes/class-admin.php:287
+#: includes/class-admin.php:298
 msgid ""
-"No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
-"IP)."
+"No API key. The plugin runs in anonymous mode: this site is allowed 300 "
+"requests an hour, and widgets that fall back to a frame use each visitor's "
+"own 30."
 msgstr ""
-"API anahtarı yok — eklenti anonim moda çalışır (30 istek/saat ziyaretçi IP "
-"başına)."
+"API anahtarı yok. Eklenti anonim modda çalışır: bu siteye saatte 300 istek "
+"izni verilir ve bir çerçeveye geri dönen widget'lar her ziyaretçinin kendi "
+"30'unu kullanır."
 
-#: includes/class-admin.php:295
+#: includes/class-admin.php:306
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -185,52 +199,55 @@ msgstr ""
 "anahtar girin veya anonim modda kullanmak için alanı boşaltın."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:298
+#: includes/class-admin.php:309
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Anahtar doğrulanamadı (HTTP %d)."
 
-#: includes/class-admin.php:338
+#: includes/class-admin.php:349
 msgid "API key required."
 msgstr "API anahtarı yapılandırılmış"
 
-#: includes/class-admin.php:342
+#: includes/class-admin.php:353
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Geçerli bir alan adı girin (örn. example.com)."
 
-#: includes/class-admin.php:369
+#: includes/class-admin.php:380
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Etki alanı değişikliği başarısız oldu. Aşağıdaki kontrol paneli bağlantısını"
 " kullanın."
 
-#: includes/class-plugin.php:148
+#: includes/class-plugin.php:161
 msgid "AstroWay is active"
 msgstr "AstroWay etkin"
 
-#: includes/class-plugin.php:149
+#: includes/class-plugin.php:162
 msgid ""
-"Shortcodes work without an API key (30 requests/hour per visitor IP). For "
-"higher limits and Pro features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the "
+"page draw on your site's allowance of 300 requests an hour; widgets that "
+"fall back to a frame draw on each visitor's own 30. For higher limits and "
+"Pro features, get a free API key."
 msgstr ""
-"Kısa kodlar API anahtarı olmadan çalışır (30 istek/saat ziyaretçi IP "
-"başına). Daha yüksek limitler ve Pro özellikleri için ücretsiz API anahtarı "
-"alın."
+"Shortcode'lar API anahtarı olmadan çalışır. Sunucunuzun sayfaya işlediği "
+"widget'lar sitenizin saatte 300 istek hakkını kullanır; bir çerçeveye geri "
+"dönen widget'lar her ziyaretçinin kendi 30'unu kullanır. Daha yüksek "
+"limitler ve Pro özellikler için ücretsiz bir API anahtarı edinin."
 
-#: includes/class-plugin.php:153 includes/class-plugin.php:298
+#: includes/class-plugin.php:166 includes/class-plugin.php:311
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Ücretsiz API anahtarı al"
 
-#: includes/class-plugin.php:156
+#: includes/class-plugin.php:169
 msgid "Open Settings"
 msgstr "Ayarları Aç"
 
-#: includes/class-plugin.php:228
+#: includes/class-plugin.php:241
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:242
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -239,75 +256,340 @@ msgstr ""
 "eklentiyi keşfetmesine yardımcı olur ve bize bir sonraki adımda ne "
 "geliştirmemiz gerektiğini gösterir."
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:246
 msgid "Leave a review"
 msgstr "Yorum yazın"
 
-#: includes/class-plugin.php:296
+#: includes/class-plugin.php:309
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Bu sunucunun AstroWay anonim kotası dolmuştur:"
 
-#: includes/class-plugin.php:297
+#: includes/class-plugin.php:310
 msgid ""
-"the free tier allows 30 requests per hour per IP. Visitors are unaffected, "
-"since their widgets count against their own IP, but preview and admin calls "
-"from this server will fail until the hour resets. Add a free API key to lift"
-" the limit and get 10,000 credits/month plus 60 req/min."
+"the free tier allows this site 300 requests an hour. Until the hour resets, "
+"widgets that would have been rendered into the page fall back to a frame "
+"loaded by the visitor's own browser, and preview and admin calls from this "
+"server will fail. Add a free API key to lift the limit and get 10,000 "
+"credits/month plus 60 req/min."
 msgstr ""
-"Ücretsiz kademede IP başına saatte 30 istek yapılabilir. Ziyaretçiler bundan"
-" etkilenmez, çünkü onların widget’ları kendi IP’lerinden sayılır; ancak bu "
-"sunucudan yapılan önizleme ve yönetici çağrıları, saat sıfırlanana kadar "
-"başarısız olacaktır. Sınırı kaldırmak ve aylık 10.000 kredi ile dakikada 60 "
-"istek hakkı elde etmek için ücretsiz bir API anahtarı ekleyin."
+"ücretsiz katman bu siteye saatte 300 istek izni verir. Saat sıfırlanana "
+"kadar, sayfaya işlenecek olan widget'lar ziyaretçinin kendi tarayıcısı "
+"tarafından yüklenen bir çerçeveye geri döner ve bu sunucudan gelen önizleme "
+"ve yönetici çağrıları başarısız olur. Limiti kaldırmak ve ayda 10.000 kredi "
+"artı dakikada 60 istek almak için ücretsiz bir API anahtarı ekleyin."
 
-#: includes/class-public-client.php:117
+#: includes/class-public-client.php:138
 msgid "Natal chart wheel"
 msgstr "Doğum haritası tekeri"
 
-#: includes/class-public-client.php:118
+#: includes/class-public-client.php:139
 #: assets/js/astroway-blocks-editor.js:168
 msgid "Daily horoscope"
 msgstr "Günlük burç yorumu"
 
-#: includes/class-public-client.php:119
+#: includes/class-public-client.php:140 includes/class-render.php:371
 #: assets/js/astroway-blocks-editor.js:175
 msgid "Moon phase"
 msgstr "Ay fazı"
 
-#: includes/class-public-client.php:120
+#: includes/class-public-client.php:141
 msgid "Human Design bodygraph"
 msgstr "İnsan Tasarımı beden grafiği"
 
-#: includes/class-public-client.php:121
+#: includes/class-public-client.php:142
 msgid "Daily Tarot card"
 msgstr "Günlük Tarot kartı"
 
-#: includes/class-public-client.php:122
+#: includes/class-public-client.php:143
 msgid "Vedic kundli chart"
 msgstr "Vedik kundli haritası"
 
-#: includes/class-public-client.php:123
+#: includes/class-public-client.php:144
 msgid "Transit sky snapshot"
 msgstr "Geçiş gökyüzü anlık görüntüsü"
 
-#: includes/class-public-client.php:124
+#: includes/class-public-client.php:145
+#: includes/views/admin-shortcodes.php:177
 msgid "Daily Panchang"
 msgstr "Günlük Tarot kartı"
 
-#: includes/class-public-client.php:125
+#: includes/class-public-client.php:146
 msgid "Numerology core numbers"
 msgstr "Numerolojide temel sayılar"
 
-#: includes/class-public-client.php:126
+#: includes/class-public-client.php:147
 msgid "Synastry compatibility"
 msgstr "Sinastri uyumu"
 
-#: includes/class-public-client.php:128
+#: includes/class-public-client.php:149
 msgid "AstroWay widget"
 msgstr "AstroWay widget’ı"
 
+#. translators: %s = widget name
+#: includes/class-render.php:81
+#, php-format
+msgid ""
+"The %s widget could not be loaded just now. Only administrators see this "
+"note."
+msgstr "%s widget'ı şu anda yüklenemedi. Bu notu yalnızca yöneticiler görür."
+
+#: includes/class-render.php:137
+msgid "Natal chart"
+msgstr "Doğum haritası"
+
+#. translators: %s = person's name
+#: includes/class-render.php:140
+#, php-format
+msgid "Natal chart: %s"
+msgstr "Doğum haritası: %s"
+
+#: includes/class-render.php:153
+msgid "Ascendant"
+msgstr "Yükselen"
+
+#: includes/class-render.php:156
+msgid "Midheaven"
+msgstr "MC (Tepe Noktası)"
+
+#. translators: %d = house number
+#: includes/class-render.php:169
+#, php-format
+msgid "House %d"
+msgstr "Ev %d"
+
+#. translators: %d = house number
+#: includes/class-render.php:170
+msgid "retrograde"
+msgstr "retro"
+
+#: includes/class-render.php:173
+msgid "Placements"
+msgstr "Yerleşimler"
+
+#. translators: 1: first planet, 2: aspect name, 3: second planet
+#: includes/class-render.php:194
+#, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: includes/class-render.php:204
+msgid "Major aspects"
+msgstr "Ana açılar"
+
+#: includes/class-render.php:278
+msgid "New Moon"
+msgstr "Yeni Ay"
+
+#: includes/class-render.php:279
+msgid "Waxing Crescent"
+msgstr "İlk Hilal"
+
+#: includes/class-render.php:280
+msgid "First Quarter"
+msgstr "İlk Dördün"
+
+#: includes/class-render.php:281
+msgid "Waxing Gibbous"
+msgstr "Büyüyen Şişkin Ay"
+
+#: includes/class-render.php:282
+msgid "Full Moon"
+msgstr "Dolunay"
+
+#: includes/class-render.php:283
+msgid "Waning Gibbous"
+msgstr "Küçülen Şişkin Ay"
+
+#: includes/class-render.php:284
+msgid "Last Quarter"
+msgstr "Son Dördün"
+
+#: includes/class-render.php:285
+msgid "Waning Crescent"
+msgstr "Balzamik Ay"
+
+#: includes/class-render.php:292
+msgid "Sun"
+msgstr "Güneş"
+
+#: includes/class-render.php:293
+msgid "Moon"
+msgstr "Ay"
+
+#: includes/class-render.php:294
+msgid "Mercury"
+msgstr "Merkür"
+
+#: includes/class-render.php:295
+msgid "Venus"
+msgstr "Venüs"
+
+#: includes/class-render.php:296
+msgid "Mars"
+msgstr "Mars"
+
+#: includes/class-render.php:297
+msgid "Jupiter"
+msgstr "Jüpiter"
+
+#: includes/class-render.php:298
+msgid "Saturn"
+msgstr "Satürn"
+
+#: includes/class-render.php:299
+msgid "Uranus"
+msgstr "Uranüs"
+
+#: includes/class-render.php:300
+msgid "Neptune"
+msgstr "Neptün"
+
+#: includes/class-render.php:301
+msgid "Pluto"
+msgstr "Plüton"
+
+#: includes/class-render.php:302
+msgid "Chiron"
+msgstr "Kiron"
+
+#: includes/class-render.php:303 includes/class-render.php:310
+#: includes/class-render.php:311
+msgid "Lilith"
+msgstr "Lilith"
+
+#: includes/class-render.php:304 includes/class-render.php:308
+#: includes/class-render.php:309
+msgid "North Node"
+msgstr "Kuzey Ay Düğümü"
+
+#: includes/class-render.php:305
+msgid "South Node"
+msgstr "Güney Ay Düğümü"
+
+#: includes/class-render.php:318
+msgid "conjunct"
+msgstr "kavuşum"
+
+#: includes/class-render.php:319
+msgid "opposite"
+msgstr "karşıt"
+
+#: includes/class-render.php:320
+msgid "trine"
+msgstr "üçgen"
+
+#: includes/class-render.php:321
+msgid "square"
+msgstr "kare"
+
+#: includes/class-render.php:322
+msgid "sextile"
+msgstr "sekstil"
+
+#: includes/class-render.php:354
+msgid "Illumination"
+msgstr "Aydınlanma"
+
+#: includes/class-render.php:357
+msgid "Age"
+msgstr "Yaş"
+
+#. translators: %s = number of days, may be fractional
+#: includes/class-render.php:359
+#, php-format
+msgid "%s days"
+msgstr "%s gün"
+
+#: includes/class-render.php:364
+msgid "Moon in"
+msgstr "Ay"
+
+#: includes/class-render.php:367
+msgid "Sun in"
+msgstr "Güneş"
+
+#. translators: %s = tarot card name
+#: includes/class-render.php:399
+#, php-format
+msgid "%s (reversed)"
+msgstr "%s (ters)"
+
+#: includes/class-render.php:405
+msgid "Card of the day"
+msgstr "Günün kartı"
+
+#: includes/class-render.php:435 assets/js/astroway-blocks-editor.js:205
+msgid "Planet of the day"
+msgstr "Günün gezegeni"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:467
+#, php-format
+msgid "%s: horoscope for the week"
+msgstr "%s: haftalık burç yorumu"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:470
+#, php-format
+msgid "%s: horoscope for the month"
+msgstr "%s: aylık burç yorumu"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:473
+#, php-format
+msgid "%s: horoscope for today"
+msgstr "%s: günlük burç yorumu"
+
+#: includes/class-render.php:480 assets/js/astroway-blocks-editor.js:18
+msgid "Aries"
+msgstr "Koç"
+
+#: includes/class-render.php:481 assets/js/astroway-blocks-editor.js:19
+msgid "Taurus"
+msgstr "Boğa"
+
+#: includes/class-render.php:482 assets/js/astroway-blocks-editor.js:20
+msgid "Gemini"
+msgstr "İkizler"
+
+#: includes/class-render.php:483 assets/js/astroway-blocks-editor.js:21
+msgid "Cancer"
+msgstr "Yengeç"
+
+#: includes/class-render.php:484 assets/js/astroway-blocks-editor.js:22
+msgid "Leo"
+msgstr "Aslan"
+
+#: includes/class-render.php:485 assets/js/astroway-blocks-editor.js:23
+msgid "Virgo"
+msgstr "Başak"
+
+#: includes/class-render.php:486 assets/js/astroway-blocks-editor.js:24
+msgid "Libra"
+msgstr "Terazi"
+
+#: includes/class-render.php:487 assets/js/astroway-blocks-editor.js:25
+msgid "Scorpio"
+msgstr "Akrep"
+
+#: includes/class-render.php:488 assets/js/astroway-blocks-editor.js:26
+msgid "Sagittarius"
+msgstr "Yay"
+
+#: includes/class-render.php:489 assets/js/astroway-blocks-editor.js:27
+msgid "Capricorn"
+msgstr "Oğlak"
+
+#: includes/class-render.php:490 assets/js/astroway-blocks-editor.js:28
+msgid "Aquarius"
+msgstr "Kova"
+
+#: includes/class-render.php:491 assets/js/astroway-blocks-editor.js:29
+msgid "Pisces"
+msgstr "Balık"
+
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:164
+#: includes/class-shortcodes.php:233
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -316,128 +598,209 @@ msgstr ""
 "%s widget'ı geçici olarak kullanılamıyor, bu nedenle hiçbir şey "
 "görüntülenmiyor. Bu notu yalnızca yöneticiler görebilir."
 
-#: includes/class-tier.php:138
+#: includes/class-tier.php:145
 msgid "Locked feature"
 msgstr "Kilitli özellik"
 
-#: includes/class-tier.php:148
+#: includes/class-tier.php:155
 msgid "Pro feature"
 msgstr "Pro özelliği"
 
-#: includes/class-tier.php:149
+#: includes/class-tier.php:156
 msgid "This widget is available on a paid AstroWay plan."
 msgstr "Bu widget, ücretli bir AstroWay planında kullanılabilir."
 
-#: includes/class-tier.php:152
+#: includes/class-tier.php:159
 msgid "Upgrade →"
 msgstr "Yükseltme →"
 
 #: includes/views/admin-api-key.php:19
-msgid "Higher limits, advanced widgets, no watermark."
-msgstr "Daha yüksek limitler, gelişmiş widget’lar, filigran yok."
+msgid ""
+"Paste a shortcode into a page. No account, no key, nothing to configure."
+msgstr ""
+"Bir sayfaya kısa kodu yapıştırın. Hesap yok, anahtar yok, ayarlamanız "
+"gereken hiçbir şey yok."
 
-#: includes/views/admin-api-key.php:59
+#: includes/views/admin-api-key.php:24
+msgid "Tonight's Moon phase. Takes no parameters at all."
+msgstr "Bu geceki Ay evresi. Hiçbir parametre almaz."
+
+#: includes/views/admin-api-key.php:25
+msgid "A birth chart: date, time and place."
+msgstr "Bir doğum haritası: tarih, saat ve yer."
+
+#: includes/views/admin-api-key.php:67
+msgid "Your first widget"
+msgstr "İlk widget'ınız"
+
+#: includes/views/admin-api-key.php:68
+msgid "copy · paste · open the page"
+msgstr "kopyala · yapıştır · sayfayı aç"
+
+#: includes/views/admin-api-key.php:73
+msgid "Copy a shortcode."
+msgstr "Bir kısa kodu kopyalayın."
+
+#: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
+#: includes/views/admin-shortcodes.php:291
+msgid "Click to copy"
+msgstr "Kopyalamak için tıklayın"
+
+#: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
+#: includes/views/admin-shortcodes.php:295
+msgid "copy"
+msgstr "kopyala"
+
+#: includes/views/admin-api-key.php:86
+msgid "Paste it into any post or page."
+msgstr "Bunu herhangi bir yazıya veya sayfaya yapıştırın."
+
+#: includes/views/admin-api-key.php:87
+msgid ""
+"In the block editor you can type /astroway instead and pick the block: the "
+"preview shows the finished card, not a placeholder."
+msgstr ""
+"Blok düzenleyicide bunun yerine /astroway yazıp bloğu seçebilirsiniz: "
+"önizlemede yer tutucu değil, tamamlanmış kart gösterilir."
+
+#: includes/views/admin-api-key.php:90
+msgid "Open the page."
+msgstr "Sayfayı açın."
+
+#: includes/views/admin-api-key.php:91
+msgid ""
+"The reading is already in the HTML, in your theme's fonts and colours. "
+"Nothing below this panel is required to make it work."
+msgstr ""
+"Görünüm, HTML kodunda, temanızın yazı tipleri ve renklerinde zaten mevcut. "
+"Bu panelin altındaki hiçbir şeyin çalışması için gerekli değildir."
+
+#: includes/views/admin-api-key.php:96
+msgid "Two more to try:"
+msgstr "Denemeniz gereken iki tane daha:"
+
+#. translators: %s is a link to the plugin's Shortcodes admin page
+#: includes/views/admin-api-key.php:115
+#, php-format
+msgid ""
+"All 16 shortcodes with their parameters, plus a city search that fills in "
+"coordinates and timezone: %s."
+msgstr ""
+"Parametreleriyle birlikte 16 kısa kodun tamamı ve koordinatları ile saat "
+"dilimini otomatik olarak dolduran şehir arama özelliği: %s."
+
+#: includes/views/admin-api-key.php:127
 msgid "Your API key"
 msgstr "API anahtarınız"
 
-#: includes/views/admin-api-key.php:60
-msgid "paste · verify · save"
-msgstr "yapıştır · doğrula · kaydet"
+#: includes/views/admin-api-key.php:128
+msgid "optional · paste · verify · save"
+msgstr "isteğe bağlı · yapıştır · doğrula · kaydet"
 
-#: includes/views/admin-api-key.php:64
+#: includes/views/admin-api-key.php:132
 msgid "Paste your key"
 msgstr "Anahtarınızı yapıştırın"
 
-#: includes/views/admin-api-key.php:75
+#: includes/views/admin-api-key.php:143
 msgid "Verify"
 msgstr "Doğrula"
 
-#: includes/views/admin-api-key.php:79
+#: includes/views/admin-api-key.php:147
 msgid ""
-"Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
-"Anonymous mode."
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
+"Every widget renders without one. If you do save a key, your server offers "
+"it on the calls behind the page-rendered widgets, so a paid plan counts them"
+" against its own allowance rather than the one this site shares with every "
+"other anonymous caller. Saving a key also adds the status panel below, and "
+"the key itself is what you use when you call the API from your own code."
 msgstr ""
-"api.astroway.info/control-panel adresinden bir anahtar yapıştırın. Anonim "
-"moda geri dönmek için boş bırakın."
+"api.astroway.info/dashboard adresinden bir anahtar yapıştırın ya da alanı "
+"boş bırakın. Her widget, anahtar olmadan da görüntülenir. Bir anahtar "
+"kaydederseniz, sunucunuz sayfa üzerinde görüntülenen widget'ların arka "
+"plandaki çağrılarda bu anahtarı kullanır; böylece ücretli bir plan, bu "
+"anahtarı sitenin diğer tüm anonim çağrı yapanlarla paylaştığı kotadan değil,"
+" kendi kotasından düşer. Anahtar kaydetmek ayrıca aşağıdaki durum panelini "
+"de ekler; kendi kodunuzdan API'yi çağırdığınızda kullanacağınız şey de bu "
+"anahtardır."
 
-#: includes/views/admin-api-key.php:83
+#: includes/views/admin-api-key.php:151
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
-#: includes/views/admin-api-key.php:98
+#: includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr "Durum"
 
-#: includes/views/admin-api-key.php:103
+#: includes/views/admin-api-key.php:171
 msgid "live · key authenticated"
 msgstr "Yetkilendirilmiş"
 
-#: includes/views/admin-api-key.php:106
-msgid "suspended — contact support"
-msgstr "askıya alındı — destek ekibiyle iletişime geçin"
+#: includes/views/admin-api-key.php:174
+msgid "suspended, contact support"
+msgstr "askıya alındı, destek ekibiyle iletişime geçin"
 
-#: includes/views/admin-api-key.php:109
-msgid "revoked — re-issue key"
-msgstr "iptal edildi — anahtarın yeniden düzenlenmesi"
+#: includes/views/admin-api-key.php:177
+msgid "revoked, re-issue key"
+msgstr "iptal edildi, anahtarın yeniden düzenlenmesi"
 
-#: includes/views/admin-api-key.php:112
+#: includes/views/admin-api-key.php:180
 msgid "invalid key"
 msgstr "Ücretli anahtar."
 
-#: includes/views/admin-api-key.php:115
-msgid "unreachable — check connection"
-msgstr "erişilemiyor — bağlantıyı kontrol edin"
+#: includes/views/admin-api-key.php:183
+msgid "unreachable, check connection"
+msgstr "erişilemiyor, bağlantıyı kontrol edin"
 
-#: includes/views/admin-api-key.php:126
+#: includes/views/admin-api-key.php:194
 msgid "Key"
 msgstr "API Anahtarı"
 
-#: includes/views/admin-api-key.php:140
+#: includes/views/admin-api-key.php:208
 msgid "Credits"
 msgstr "Ay başına kredi"
 
-#: includes/views/admin-api-key.php:159
+#: includes/views/admin-api-key.php:227
 msgid "Period ends"
 msgstr "Dönem sona eriyor"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:166
+#: includes/views/admin-api-key.php:234
 #, php-format
 msgid "in %s"
 msgstr "%s içinde"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:167
+#: includes/views/admin-api-key.php:235
 msgid "expired"
 msgstr "Gerekli"
 
-#: includes/views/admin-api-key.php:180
+#: includes/views/admin-api-key.php:248
 msgid "Domain"
 msgstr "Etki Alanı"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:189
+#: includes/views/admin-api-key.php:257
 #, php-format
 msgid "bound %s ago"
-msgstr ""
+msgstr "%s önce bağlandı"
 
-#: includes/views/admin-api-key.php:196
-msgid "not bound — first request will bind this site"
-msgstr "bağlı değil — ilk istek bu siteyi bağlayacaktır"
+#: includes/views/admin-api-key.php:264
+msgid "not bound: the first request binds this site"
+msgstr "bağlanmamış: ilk istek bu siteyi bağlar"
 
-#: includes/views/admin-api-key.php:203
+#: includes/views/admin-api-key.php:271
 msgid "Source"
 msgstr "Kaynaklar"
 
-#: includes/views/admin-api-key.php:210
+#: includes/views/admin-api-key.php:278
 msgid ""
-"Limited data — connected api does not yet expose /v1/auth/keys/me. Plan and "
-"credits shown via legacy fallback."
+"Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
+"and credits shown via legacy fallback."
 msgstr ""
-"Sınırlı veri — Bağlı API henüz /v1/auth/keys/me yolunu sunmamaktadır. Plan "
-"ve krediler, eski yedek sistem üzerinden gösterilmektedir."
+"Sınırlı veri: Bağlı API henüz /v1/auth/keys/me yolunu sunmamaktadır. Plan ve"
+" bakiye bilgileri eski yedek sistem üzerinden gösterilmektedir."
 
-#: includes/views/admin-api-key.php:213
+#: includes/views/admin-api-key.php:281
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -445,188 +808,186 @@ msgstr ""
 "api.astroway.info/control-panel adresinden bir anahtar yapıştırın. Anonim "
 "moda geri dönmek için boş bırakın."
 
-#: includes/views/admin-api-key.php:215
+#: includes/views/admin-api-key.php:283
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue — try again in "
-"a moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a"
+" moment."
 msgstr ""
 "api.astroway.info adresine ulaşılamadı. Ağ veya kaynak sunucu ile ilgili bir"
-" sorun var — bir süre sonra tekrar deneyin."
+" sorun olabilir; bir süre sonra tekrar deneyin."
 
-#: includes/views/admin-api-key.php:224
-msgid "What you get"
-msgstr "Ne elde edersiniz"
+#: includes/views/admin-api-key.php:292
+msgid "What a key adds"
+msgstr "Bir anahtarın sağladığı faydalar"
 
-#: includes/views/admin-api-key.php:225
+#: includes/views/admin-api-key.php:293
 msgid "3 tiers compared"
 msgstr "3 seviye karşılaştırması"
 
-#: includes/views/admin-api-key.php:233
+#: includes/views/admin-api-key.php:301
 msgid "Anonymous"
 msgstr "Anonim"
 
-#: includes/views/admin-api-key.php:234
+#: includes/views/admin-api-key.php:302
 msgid "no setup"
 msgstr "kurulum yok"
 
-#: includes/views/admin-api-key.php:237
+#: includes/views/admin-api-key.php:305
 msgid "Free key"
 msgstr "Ücretsiz anahtar"
 
-#: includes/views/admin-api-key.php:238
+#: includes/views/admin-api-key.php:306
 msgid "signup"
 msgstr "kayıt ol"
 
-#: includes/views/admin-api-key.php:241
+#: includes/views/admin-api-key.php:309
 msgid "Paid"
 msgstr "Ücretli"
 
-#: includes/views/admin-api-key.php:242
+#: includes/views/admin-api-key.php:310
 msgid "from $5/mo"
 msgstr "5$/aydan itibaren"
 
-#: includes/views/admin-api-key.php:248
-msgid "Rate limit"
-msgstr "Oran limiti"
+#: includes/views/admin-api-key.php:316
+msgid "Widgets in this plugin"
+msgstr "Bu eklentideki widget'lar"
 
-#: includes/views/admin-api-key.php:249
-msgid "30/hour/IP"
-msgstr "30/saat/IP"
+#: includes/views/admin-api-key.php:317 includes/views/admin-api-key.php:318
+#: includes/views/admin-api-key.php:319
+msgid "all of them"
+msgstr "hepsi"
 
-#: includes/views/admin-api-key.php:250
-msgid "~60/min/key"
-msgstr "~60/dakika/anahtar"
+#: includes/views/admin-api-key.php:322
+msgid "API requests / month"
+msgstr "Aylık API istek sayısı"
 
-#: includes/views/admin-api-key.php:251
-msgid "30–1000/min"
-msgstr "30–1000/dakika"
+#: includes/views/admin-api-key.php:323 includes/views/admin-api-key.php:329
+#: includes/views/admin-api-key.php:335 includes/views/admin-api-key.php:341
+#: includes/views/admin-api-key.php:342 includes/views/admin-api-key.php:347
+#: includes/views/admin-api-key.php:353 includes/views/admin-api-key.php:354
+msgid "none"
+msgstr "yok"
 
-#: includes/views/admin-api-key.php:254
-msgid "Credits / month"
-msgstr "Ay başına kredi"
-
-#: includes/views/admin-api-key.php:256
+#: includes/views/admin-api-key.php:324
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:257
-msgid "50K – 3.5M"
-msgstr "50K – 3,5M"
+#: includes/views/admin-api-key.php:325
+msgid "50K to 3.5M"
+msgstr "50 bin ila 3,5 milyon"
 
-#: includes/views/admin-api-key.php:260
-msgid "Render mode"
-msgstr "Görüntüleme modu"
+#: includes/views/admin-api-key.php:328
+msgid "Rate limit, keyed endpoints"
+msgstr "İstak sınırı, anahtarlı uç noktalar"
 
-#: includes/views/admin-api-key.php:261 includes/views/admin-api-key.php:262
-msgid "iframe"
-msgstr "iframe"
+#: includes/views/admin-api-key.php:330
+msgid "~60 requests/min"
+msgstr "~60 istek/dakika"
 
-#: includes/views/admin-api-key.php:263
-msgid "native"
-msgstr "yerel"
+#: includes/views/admin-api-key.php:331
+msgid "30 to 1000 requests/min"
+msgstr "Dakikada 30 ila 1000 istek"
 
-#: includes/views/admin-api-key.php:266
-msgid "Widgets"
-msgstr "Widget’lar"
+#: includes/views/admin-api-key.php:334
+msgid "Dashboard, usage history"
+msgstr "Kontrol paneli, kullanım geçmişi"
 
-#: includes/views/admin-api-key.php:267 includes/views/admin-api-key.php:268
-msgid "5 basic"
-msgstr "5 temel"
-
-#: includes/views/admin-api-key.php:269
-msgid "+ Tarot, HD, Synastry, Numerology"
-msgstr "+ Tarot, İnsan Tasarımı, Senkroni, Numeroloji"
-
-#: includes/views/admin-api-key.php:272
-msgid "AI interpretations"
-msgstr "AI yorumları"
-
-#: includes/views/admin-api-key.php:275 includes/views/admin-api-key.php:293
+#: includes/views/admin-api-key.php:336 includes/views/admin-api-key.php:337
+#: includes/views/admin-api-key.php:343 includes/views/admin-api-key.php:355
 msgid "included"
 msgstr "dahil"
 
-#: includes/views/admin-api-key.php:278
-msgid "Watermark"
-msgstr "Filigran"
+#: includes/views/admin-api-key.php:340
+msgid "AI interpretations"
+msgstr "AI yorumları"
 
-#: includes/views/admin-api-key.php:279 includes/views/admin-api-key.php:280
-msgid "shown"
-msgstr "gösteriliyor"
-
-#: includes/views/admin-api-key.php:281
-msgid "removed"
-msgstr "kaldırıldı"
-
-#: includes/views/admin-api-key.php:284
+#: includes/views/admin-api-key.php:346
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Destek"
 
-#: includes/views/admin-api-key.php:286
+#: includes/views/admin-api-key.php:348
 msgid "community"
 msgstr "topluluk"
 
-#: includes/views/admin-api-key.php:287
+#: includes/views/admin-api-key.php:349
 msgid "priority"
 msgstr "öncelikli"
 
-#: includes/views/admin-api-key.php:290
+#: includes/views/admin-api-key.php:352
 msgid "Spend cap"
 msgstr "Harcama limiti"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:363
 #, php-format
-msgid "Numbers shown for context. Canonical pricing → %s"
-msgstr "Bağlam için sayılar gösterilir. Resmi fiyatlandırma → %s"
+msgid ""
+"Every row below the first one is about calling api.astroway.info from your "
+"own code. The widgets on your pages are not affected by any of it. Canonical"
+" pricing → %s"
+msgstr ""
+"İlk satırın altındaki her satır, kendi kodunuzdan api.astroway.info’yu "
+"çağırmakla ilgilidir. Sayfalarınızda bulunan widget’lar bunlardan hiçbir "
+"şekilde etkilenmez. Standart fiyatlandırma → %s"
 
-#: includes/views/admin-api-key.php:312
+#: includes/views/admin-api-key.php:374
 msgid "How it works"
 msgstr "Nasıl çalışır"
 
-#: includes/views/admin-api-key.php:316
-msgid "No key."
-msgstr "Anahtar yok."
+#: includes/views/admin-api-key.php:378
+msgid "On your pages."
+msgstr "Sayfalarınızda."
 
-#: includes/views/admin-api-key.php:317
+#: includes/views/admin-api-key.php:379
 msgid ""
-"Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
-"traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
-"shown."
+"Your server renders seven widgets into the page, counted against this site's"
+" allowance of 300 requests an hour, or against your own plan when a paid key"
+" is saved above. The rest load in a frame against each visitor's own 30, and"
+" those carry the \"Powered by AstroWay\" watermark: a frame is fetched by "
+"the visitor's browser, which is no place for your key."
 msgstr ""
-"Eklenti ziyaretçi IP’si tarafından oran limitli iframe widget’ları "
-"oluşturur. Düşük trafikli siteler ve hızlı denemeler için uygundur. "
-"\"AstroWay tarafından desteklenmektedir\" filigranı gösterilir."
+"Sunucunuz, sayfaya yedi widget yerleştirir; bu işlem, bu sitenin saatte 300 "
+"istek kotasından veya yukarıda ücretli bir anahtar kaydedildiğinde kendi "
+"planınızdan düşülür. Geri kalanlar ise her ziyaretçinin kendi 30 istek "
+"kotası kapsamında bir çerçeve içinde yüklenir ve bunlar üzerinde \"Powered "
+"by AstroWay\" filigranı bulunur: çerçeve, ziyaretçinin tarayıcısı tarafından"
+" alınır ve bu çerçeve, anahtarınızın yer alacağı bir yer değildir."
 
-#: includes/views/admin-api-key.php:320
+#: includes/views/admin-api-key.php:382
 msgid "Free key."
 msgstr "Ücretsiz anahtar."
 
-#: includes/views/admin-api-key.php:321
+#: includes/views/admin-api-key.php:383
 msgid ""
-"Personal credit bucket (10,000/month), isolated from other sites. Iframe "
-"rendering stays, but you get a dashboard with activity history. Watermark is"
-" still shown."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus "
+"a dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of "
+"the frame's address."
 msgstr ""
-"Kişisel kredi havuzu (ayda 10.000), diğer sitelerden izole. Iframe "
-"görüntüleme devam eder, ancak aktivite geçmişi olan bir kontrol paneli "
-"alırsınız. Filigran hala gösterilir."
+"Kendi yazdığınız kodlar için aylık 10.000 çağrıdan oluşan kişisel bir kota "
+"ve etkinlik geçmişini gösteren bir kontrol paneli. Bu, kısa kodların "
+"görüntülediği içeriği değiştirmez ve çerçeveli widget’lardaki filigran "
+"kalır: anahtar, çerçevenin adresinin bir parçası değildir."
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:386
 msgid "Paid key."
 msgstr "Ücretli anahtar."
 
-#: includes/views/admin-api-key.php:325
+#: includes/views/admin-api-key.php:387
 msgid ""
-"Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
-"synastry, Human Design, Numerology), AI-written interpretations, and no "
-"watermark. Spend cap available to protect against bill spikes."
+"Higher limits and more calls on api.astroway.info, AI-written "
+"interpretations, priority support, and a spend cap against bill spikes. The "
+"page-rendered widgets on this site draw on that plan too, instead of the "
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
+" the shortcode; none of the current ones do."
 msgstr ""
-"Yerel istemci tarafı görüntüleme (iframe değil), gelişmiş widget’lar (Tarot "
-"destes, senkroni, İnsan Tasarımı, Numeroloji), AI tarafından yazılmış "
-"yorumlar ve filigran yok. Fatura artışlarına karşı koruma için harcama "
-"limiti mevcut."
+"api.astroway.info’da daha yüksek limitler ve daha fazla çağrı, yapay zeka "
+"tarafından yazılmış yorumlar, öncelikli destek ve fatura artışlarına karşı "
+"harcama sınırı. Bu sitedeki sayfa üzerinde görüntülenen widget'lar da, "
+"paylaşılan anonim kotadan ziyade bu plana tabidir. Ücretli bir uç noktaya "
+"ihtiyaç duyan widget'larda kısa kodda bu durum belirtilecektir; mevcut "
+"widget'ların hiçbirinde böyle bir durum söz konusu değildir."
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -757,11 +1118,11 @@ msgstr "Özellik"
 
 #: includes/views/admin-settings.php:181
 msgid ""
-"Matrix is filterable via the `astroway_tier_matrix` filter — addons can "
+"Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"Matrix, `astroway_tier_matrix` filtresi aracılığıyla filtrelenebilir — "
-"eklentiler kendi özelliklerini ekleyebilir."
+"Matrix, `astroway_tier_matrix` filtresi aracılığıyla filtrelenebilir; bu "
+"sayede eklentiler kendi özelliklerini ekleyebilir."
 
 #: includes/views/admin-settings.php:189
 msgid "Domain binding"
@@ -771,7 +1132,7 @@ msgstr "Etki alanı bağlama"
 #: includes/views/admin-settings.php:195
 #, php-format
 msgid "bound to: %s"
-msgstr ""
+msgstr "bağlı olduğu: %s"
 
 #: includes/views/admin-settings.php:199
 msgid "no domain binding yet"
@@ -818,19 +1179,71 @@ msgstr "Gömülü widget'larda sorumluluk reddi beyanını göster"
 #: includes/views/admin-settings.php:267
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
-"widget footer. Off by default — enable it if your jurisdiction or compliance"
-" policy requires it. The wording is rendered and localized by "
+"widget footer. Off by default, enable it if your jurisdiction or compliance "
+"policy requires it. The wording is rendered and localized by "
 "api.astroway.info."
 msgstr ""
 "Widget’ın alt bilgisine “bilgilendirme amaçlıdır, profesyonel tavsiye "
-"niteliği taşımaz” şeklinde kısa bir satır ekler. Varsayılan olarak kapalıdır"
-" — bulunduğunuz yargı bölgesi veya uyum politikası gerektiriyorsa "
-"etkinleştirin. Metin, api.astroway.info tarafından oluşturulur ve "
-"yerelleştirilir."
+"niteliği taşımaz” şeklinde kısa bir satır ekler. Varsayılan olarak "
+"kapalıdır; bulunduğunuz yargı bölgesi veya uyum politikası gerektiriyorsa bu"
+" özelliği etkinleştirin. Metin, api.astroway.info tarafından görüntülenir ve"
+" yerelleştirilir."
 
 #: includes/views/admin-settings.php:270
 msgid "Save disclaimer setting"
 msgstr "Feragatname ayarını kaydet"
+
+#: includes/views/admin-settings.php:278
+msgid "Render mode"
+msgstr "Görüntüleme modu"
+
+#: includes/views/admin-settings.php:279
+msgid "where widget content is drawn"
+msgstr "widget içeriğinin çekildiği yer"
+
+#: includes/views/admin-settings.php:287
+msgid "On this page (recommended)"
+msgstr "Bu sayfada (önerilen)"
+
+#: includes/views/admin-settings.php:288
+msgid ""
+"Your server fetches the text and prints it into the page. Search engines can"
+" read it, your theme styles it, and it works without JavaScript. Answers are"
+" cached until they change, so a daily horoscope is fetched once a day per "
+"sign."
+msgstr ""
+"Sunucunuz metni alır ve sayfaya yazdırır. Arama motorları okuyabilir, "
+"temanız biçimlendirir ve JavaScript olmadan çalışır. Cevaplar değişene kadar"
+" önbelleğe alınır, bu nedenle günlük burç yorumu her burç için günde bir kez"
+" alınır."
+
+#: includes/views/admin-settings.php:293
+msgid "In an iframe"
+msgstr "Bir iframe içinde"
+
+#: includes/views/admin-settings.php:294
+msgid ""
+"Each visitor's browser loads the widget from api.astroway.info. Nothing "
+"reaches your page source, so the content is not indexed and your theme "
+"cannot style it. Choose this if your host blocks outgoing requests, or to "
+"compare the two."
+msgstr ""
+"Her ziyaretçinin tarayıcısı widget'ı api.astroway.info adresinden yükler. "
+"Sayfa kaynağınıza hiçbir şey ulaşmaz, bu nedenle içerik dizine eklenmez ve "
+"temanız biçimlendiremez. Barındırıcınız giden istekleri engelliyorsa veya "
+"ikisini karşılaştırmak için bunu seçin."
+
+#: includes/views/admin-settings.php:298
+msgid ""
+"Widgets without a page-side template, and any widget whose data cannot be "
+"fetched, fall back to the iframe on their own."
+msgstr ""
+"Sayfa tarafı şablonu olmayan widget'lar ve verileri alınamayan tüm "
+"widget'lar otomatik olarak iframe'e geri döner."
+
+#: includes/views/admin-settings.php:300
+msgid "Save render mode"
+msgstr "Oluşturma modunu kaydet"
 
 #: includes/views/admin-shortcodes.php:15
 msgid ""
@@ -845,20 +1258,23 @@ msgid "Natal Chart"
 msgstr "Doğum Haritası"
 
 #: includes/views/admin-shortcodes.php:21
-msgid "Birth chart wheel — planet positions, houses, aspects."
-msgstr "Doğum haritası tekeri — gezegen konumları, evler, açılar."
-
-#: includes/views/admin-shortcodes.php:23
-msgid "AstroWay — Natal Chart"
-msgstr "AstroWay — Doğum Haritası"
+msgid ""
+"Birth chart: the wheel plus planet positions, houses and aspects as text."
+msgstr ""
+"Doğum haritası: tekerlek ve gezegen konumları, evler ve yönler metin olarak."
 
 #: includes/views/admin-shortcodes.php:25
-#: includes/views/admin-shortcodes.php:60
+#: includes/views/admin-shortcodes.php:93
+#: includes/views/admin-shortcodes.php:118
+#: includes/views/admin-shortcodes.php:156
+#: includes/views/admin-shortcodes.php:197
 msgid "Birth date in YYYY-MM-DD."
 msgstr "Doğum tarihi YYYY-AA-GG formatında."
 
 #: includes/views/admin-shortcodes.php:26
-#: includes/views/admin-shortcodes.php:61
+#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:119
+#: includes/views/admin-shortcodes.php:157
 msgid "Birth time in HH:MM (24-hour)."
 msgstr "Doğum saati SS:DD (24 saatlik) formatında."
 
@@ -878,20 +1294,29 @@ msgstr "IANA zaman dilimi (örn. Europe/Kyiv)."
 msgid "Display name on the chart."
 msgstr "Haritada gösterilecek isim."
 
-#: includes/views/admin-shortcodes.php:35
+#: includes/views/admin-shortcodes.php:31
+msgid ""
+"Palette of the wheel drawing: dark (default), light or console. The text "
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
+msgstr ""
+"Dönme çarkı çiziminin renk paleti: koyu (varsayılan), açık veya konsol. "
+"Yanındaki metin temanıza göre otomatik olarak değişir; ancak dönme çarkı bir"
+" görsel olduğu için bu ayarı temanıza uyacak şekilde ayarlamanız gerekir."
+
+#: includes/views/admin-shortcodes.php:36
 msgid "Daily Horoscope"
 msgstr "Günlük Burç Yorumu"
 
-#: includes/views/admin-shortcodes.php:36
+#: includes/views/admin-shortcodes.php:37
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
 msgstr ""
 "Bir burç için günlük burç yorumu. API tarafında her gün otomatik yenilenir."
 
-#: includes/views/admin-shortcodes.php:38
-msgid "AstroWay — Daily Horoscope"
-msgstr "AstroWay — Günlük Burç Yorumu"
-
-#: includes/views/admin-shortcodes.php:40
+#: includes/views/admin-shortcodes.php:41
+#: includes/views/admin-shortcodes.php:51
+#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:133
 msgid ""
 "One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
 "sagittarius, capricorn, aquarius, pisces."
@@ -899,129 +1324,332 @@ msgstr ""
 "Aşağıdakilerden biri: aries, taurus, gemini, cancer, leo, virgo, libra, "
 "scorpio, sagittarius, capricorn, aquarius, pisces."
 
-#: includes/views/admin-shortcodes.php:45
-msgid "Moon Phase"
-msgstr "Ay Fazı"
-
 #: includes/views/admin-shortcodes.php:46
-msgid "Current Moon phase visualization with illumination percent."
-msgstr "Mevcut Ay fazı görselleştirmesi, aydınlanma yüzdesi ile."
+msgid "Weekly Horoscope"
+msgstr "Haftalık Burç Yorumu"
 
-#: includes/views/admin-shortcodes.php:48
-msgid "AstroWay — Moon Phase"
-msgstr "AstroWay — Ay Fazı"
+#: includes/views/admin-shortcodes.php:47
+msgid ""
+"Horoscope for the current week, anchored to Monday. Rendered into the page, "
+"not an iframe."
+msgstr ""
+"Pazartesi'ye sabitlenmiş mevcut haftanın burç yorumu. Sayfaya işlenir, "
+"iframe'e değil."
 
-#: includes/views/admin-shortcodes.php:50
+#: includes/views/admin-shortcodes.php:52
+msgid "Any date inside the week you want. Defaults to today."
+msgstr "İstediğiniz haftanın herhangi bir tarihi. Varsayılan olarak bugün."
+
+#: includes/views/admin-shortcodes.php:57
+msgid "Monthly Horoscope"
+msgstr "Aylık Burç Yorumu"
+
+#: includes/views/admin-shortcodes.php:58
+msgid ""
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
+msgstr ""
+"Ayın 1'ine sabitlenmiş mevcut ayın burç yorumu. Sayfaya işlenir, iframe'e "
+"değil."
+
+#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:134
+msgid "Any date inside the month you want. Defaults to today."
+msgstr "İstediğiniz ayın herhangi bir tarihi. Varsayılan olarak bugün."
+
+#: includes/views/admin-shortcodes.php:68
+msgid "Planet of the Day"
+msgstr "Günün Gezegeni"
+
+#: includes/views/admin-shortcodes.php:69
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes. "
+"Rendered into the page, not an iframe."
+msgstr ""
+"Hafta gününün geleneksel gezegen yöneticisi, glifi ve temalarıyla birlikte. "
+"Sayfaya işlenir, iframe'e değil."
+
+#: includes/views/admin-shortcodes.php:73
+#: includes/views/admin-shortcodes.php:83
+#: includes/views/admin-shortcodes.php:171
+#: includes/views/admin-shortcodes.php:182
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr ""
 "Varsayılan olarak bugün olmak üzere YYYY-AA-GG formatında tarih girin."
 
-#: includes/views/admin-shortcodes.php:55
+#: includes/views/admin-shortcodes.php:78
+msgid "Moon Phase"
+msgstr "Ay Fazı"
+
+#: includes/views/admin-shortcodes.php:79
+msgid "Current Moon phase visualization with illumination percent."
+msgstr "Mevcut Ay fazı görselleştirmesi, aydınlanma yüzdesi ile."
+
+#: includes/views/admin-shortcodes.php:88
 msgid "Human Design Bodygraph"
 msgstr "İnsan Tasarımı Beden Grafiği"
 
-#: includes/views/admin-shortcodes.php:56
+#: includes/views/admin-shortcodes.php:89
 msgid "Human Design body graph with centers, channels, gates."
 msgstr "Merkezler, kanallar, kapılar ile İnsan Tasarımı beden grafiği."
 
-#: includes/views/admin-shortcodes.php:58
-msgid "AstroWay — Bodygraph"
-msgstr "AstroWay — Beden Grafiği"
-
-#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:120
+#: includes/views/admin-shortcodes.php:158
+#: includes/views/admin-shortcodes.php:183
 msgid "WGS-84 latitude."
 msgstr "WGS-84 enlem."
 
-#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:96
+#: includes/views/admin-shortcodes.php:121
+#: includes/views/admin-shortcodes.php:159
+#: includes/views/admin-shortcodes.php:184
 msgid "WGS-84 longitude."
 msgstr "WGS-84 boylam."
 
-#: includes/views/admin-shortcodes.php:64
+#: includes/views/admin-shortcodes.php:97
+#: includes/views/admin-shortcodes.php:122
+#: includes/views/admin-shortcodes.php:160
+#: includes/views/admin-shortcodes.php:185
 msgid "IANA timezone."
 msgstr "IANA zaman dilimi."
 
-#: includes/views/admin-shortcodes.php:65
+#: includes/views/admin-shortcodes.php:98
 msgid "Display name."
 msgstr "Görüntülenecek isim."
 
-#: includes/views/admin-shortcodes.php:70
+#: includes/views/admin-shortcodes.php:103
 msgid "Daily Tarot Card"
 msgstr "Günlük Tarot Kartı"
 
-#: includes/views/admin-shortcodes.php:71
+#: includes/views/admin-shortcodes.php:104
 msgid "Single card pull of the day from a chosen deck."
 msgstr "Seçilen desteden günlük tek kart çekimi."
 
-#: includes/views/admin-shortcodes.php:73
-msgid "AstroWay — Daily Tarot Card"
-msgstr "AstroWay — Günlük Tarot Kartı"
+#: includes/views/admin-shortcodes.php:108
+msgid ""
+"Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
+"renders into the page; the other two load in a frame."
+msgstr ""
+"Kart destesi türü: Rider-Waite (varsayılan), Marsilya veya Lenormand. "
+"Yalnızca Rider-Waite kartları sayfaya doğrudan görüntülenir; diğer ikisi ise"
+" bir çerçeve içinde yüklenir."
 
-#: includes/views/admin-shortcodes.php:75
-msgid "Deck slug: rider-waite (default), marseille, or lenormand."
-msgstr "Dest takma adı: rider-waite (varsayılan), marseille, veya lenormand."
+#: includes/views/admin-shortcodes.php:113
+msgid "Mini Birth Chart"
+msgstr "Mini Doğum Haritası"
 
-#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:114
+msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
+msgstr ""
+"Kenar çubuğu için küçük boyutlu olarak çizilmiş doğum haritası. Bir çerçeve "
+"içinde yüklenir."
+
+#: includes/views/admin-shortcodes.php:123
+#: includes/views/admin-shortcodes.php:135
+#: includes/views/admin-shortcodes.php:146
+#: includes/views/admin-shortcodes.php:161
+#: includes/views/admin-shortcodes.php:172
+#: includes/views/admin-shortcodes.php:186
+#: includes/views/admin-shortcodes.php:199
+#: includes/views/admin-shortcodes.php:219
+msgid "dark (default), light or console."
+msgstr "koyu (varsayılan), açık veya konsol."
+
+#: includes/views/admin-shortcodes.php:128
+msgid "Monthly Forecast"
+msgstr "Aylık Tahmin"
+
+#: includes/views/admin-shortcodes.php:129
+msgid ""
+"Four weeks ahead for one sign, each with its own theme. Loads in a frame."
+msgstr ""
+"Bir burç için önümüzdeki dört hafta; her birinin kendine özgü bir teması "
+"var. Bir çerçeveye sığar."
+
+#: includes/views/admin-shortcodes.php:140
+msgid "Moon Transit Timeline"
+msgstr "Ay’ın Geçişi Zaman Çizelgesi"
+
+#: includes/views/admin-shortcodes.php:141
+msgid ""
+"The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
+msgstr ""
+"Önümüzdeki yedi gün boyunca Ay’ın burçlara girişleri. Burçlara özgü "
+"değildir. Tek bir çerçeve içinde yüklenir."
+
+#: includes/views/admin-shortcodes.php:145
+msgid "Day the seven start from. Defaults to today."
+msgstr "Yedinci günün başlangıç tarihi. Varsayılan olarak bugündür."
+
+#: includes/views/admin-shortcodes.php:151
+msgid "Vedic Kundli"
+msgstr "Vedik Kundli"
+
+#: includes/views/admin-shortcodes.php:152
+msgid ""
+"North-Indian D1 chart. Loads in a frame: there is no page-side template for "
+"it yet."
+msgstr ""
+"Kuzey Hindistan D1 tablosu. Bir çerçeveye yüklenir: bunun için henüz sayfa "
+"tarafında bir şablon bulunmamaktadır."
+
+#: includes/views/admin-shortcodes.php:166
+msgid "Transit Sky"
+msgstr "Transit Sky"
+
+#: includes/views/admin-shortcodes.php:167
+msgid ""
+"Where the planets stand on a given date. Loads in a frame: there is no page-"
+"side template for it yet."
+msgstr ""
+"Belirli bir tarihte gezegenlerin konumları. Bir çerçeve içinde yüklenir: "
+"bunun için henüz sayfa tarafında bir şablon bulunmamaktadır."
+
+#: includes/views/admin-shortcodes.php:178
+msgid ""
+"Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
+"Loads in a frame."
+msgstr ""
+"Belirli bir tarih ve yer için tithi, nakshatra, yoga, karana, vara ve rahu-"
+"kaal. Bir pencerede yüklenir."
+
+#: includes/views/admin-shortcodes.php:191
+#: assets/js/astroway-blocks-editor.js:154
+msgid "Numerology"
+msgstr "Numeroloji"
+
+#: includes/views/admin-shortcodes.php:192
+msgid ""
+"Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
+msgstr ""
+"Yaşam Yolu, İfade, Ruhsal İhtiyaç ve Kişilik sayıları. Bir çerçeve içinde "
+"görüntülenir."
+
+#: includes/views/admin-shortcodes.php:196
+msgid "Full birth name. The letters are what the numbers are built from."
+msgstr "Tam doğum adı. Harfler, sayıların oluşumunda temel teşkil eder."
+
+#: includes/views/admin-shortcodes.php:198
+msgid "pythagorean (default), chaldean, kabbalistic or tamil."
+msgstr "Pisagor (varsayılan), Keldani, Kabalistik veya Tamil."
+
+#: includes/views/admin-shortcodes.php:204
+msgid "Synastry Compatibility"
+msgstr "Sinastri Uyumluluğu"
+
+#: includes/views/admin-shortcodes.php:205
+msgid ""
+"Compatibility score and top inter-aspects for two birth charts. Loads in a "
+"frame."
+msgstr ""
+"İki doğum haritası için uyumluluk puanı ve en önemli etkileşimler. Bir "
+"çerçeve içinde yüklenir."
+
+#: includes/views/admin-shortcodes.php:209
+msgid "First person: birth date in YYYY-MM-DD."
+msgstr "Birinci kişi: Doğum tarihi YYYY-AA-GG biçiminde."
+
+#: includes/views/admin-shortcodes.php:210
+msgid "First person: birth time in HH:MM."
+msgstr "Birinci kişi: doğum saati saat:dakika biçiminde."
+
+#: includes/views/admin-shortcodes.php:211
+msgid "First person: latitude."
+msgstr "Birinci şahıs: enlem."
+
+#: includes/views/admin-shortcodes.php:212
+msgid "First person: longitude."
+msgstr "Birinci kişi: boylam."
+
+#: includes/views/admin-shortcodes.php:213
+msgid "First person: IANA timezone."
+msgstr "Birinci şahıs: IANA saat dilimi."
+
+#: includes/views/admin-shortcodes.php:214
+msgid "Second person: birth date in YYYY-MM-DD."
+msgstr "İkinci kişi: Doğum tarihi YYYY-AA-GG biçiminde."
+
+#: includes/views/admin-shortcodes.php:215
+msgid "Second person: birth time in HH:MM."
+msgstr "İkinci kişi: Doğum saati saat:dakika biçiminde."
+
+#: includes/views/admin-shortcodes.php:216
+msgid "Second person: latitude."
+msgstr "İkinci kişi: enlem."
+
+#: includes/views/admin-shortcodes.php:217
+msgid "Second person: longitude."
+msgstr "İkinci kişi: boylam."
+
+#: includes/views/admin-shortcodes.php:218
+msgid "Second person: IANA timezone."
+msgstr "İkinci kişi: IANA saat dilimi."
+
+#: includes/views/admin-shortcodes.php:238
 msgid "Find your coordinates and timezone"
 msgstr "Koordinatlarınızı ve saat diliminizi bulun"
 
-#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:239
 msgid "city → lat · lon · IANA tz"
 msgstr "şehir → enlem · boylam · IANA saat dilimi"
 
-#: includes/views/admin-shortcodes.php:102
-msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
-msgstr "Bir şehir adı yazın — örn. Kyiv, Berlin, São Paulo"
+#: includes/views/admin-shortcodes.php:246
+msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
+msgstr "Örneğin Kyiv, Berlin veya São Paulo gibi bir şehir adını yazın."
 
-#: includes/views/admin-shortcodes.php:106
+#: includes/views/admin-shortcodes.php:250
 msgid "Search"
 msgstr "Ara"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:113
+#: includes/views/admin-shortcodes.php:257
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
 msgstr ""
 "Değerleri shortcode'a kopyalamak için eşleşen şehri seçin. Referans: %s."
 
-#: includes/views/admin-shortcodes.php:114
+#: includes/views/admin-shortcodes.php:258
 msgid "IANA timezone list"
 msgstr "IANA saat dilimi listesi"
 
-#: includes/views/admin-shortcodes.php:135
-msgid "Click to copy"
-msgstr "Kopyalamak için tıklayın"
+#: includes/views/admin-shortcodes.php:267
+msgid "Filter shortcodes"
+msgstr "Filtre kısa kodları"
 
-#: includes/views/admin-shortcodes.php:139
-msgid "copy"
-msgstr "kopyala"
+#. translators: %d is the number of shortcodes
+#: includes/views/admin-shortcodes.php:271
+#, php-format
+msgid "Filter %d shortcodes: name, tag or what it does"
+msgstr "%d kısa kodunu filtrele: ad, etiket veya işlevi"
 
-#: includes/views/admin-shortcodes.php:147
+#: includes/views/admin-shortcodes.php:303
 msgid "Parameter"
 msgstr "Parametre"
 
-#: includes/views/admin-shortcodes.php:148
+#: includes/views/admin-shortcodes.php:304
 msgid "Type"
 msgstr "Tür"
 
-#: includes/views/admin-shortcodes.php:149
+#: includes/views/admin-shortcodes.php:305
 msgid "Required"
 msgstr "Gerekli"
 
-#: includes/views/admin-shortcodes.php:150
+#: includes/views/admin-shortcodes.php:306
 msgid "Description"
 msgstr "Açıklama"
 
-#: includes/views/admin-shortcodes.php:163
+#: includes/views/admin-shortcodes.php:319
 msgid "required"
 msgstr "gerekli"
 
-#: includes/views/admin-shortcodes.php:165
+#: includes/views/admin-shortcodes.php:321
 msgid "optional"
 msgstr "isteğe bağlı"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:179
+#: includes/views/admin-shortcodes.php:344
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Ayrıca Gutenberg bloğu \"%s\" olarak da mevcuttur."
@@ -1090,6 +1718,10 @@ msgstr "önce"
 msgid "not yet"
 msgstr "henüz değil"
 
+#: includes/views/partials/admin-footer-nav.php:13
+msgid "API Key"
+msgstr "API Anahtarı"
+
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
 msgstr "Eklenti sayfaları"
@@ -1115,8 +1747,8 @@ msgid "Anonymous mode"
 msgstr "Anonim moda"
 
 #: includes/views/partials/admin-hero.php:50
-msgid "30 requests / hour / visitor IP"
-msgstr "30 istek / saat / ziyaretçi IP"
+msgid "300 requests / hour / site"
+msgstr "300 istek / saat / site"
 
 #: includes/views/partials/admin-hero.php:59
 msgid "View paid plans"
@@ -1141,54 +1773,6 @@ msgstr "GitHub deposu"
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
 msgstr "Varsayılan (bugünün öne çıkan işareti)"
-
-#: assets/js/astroway-blocks-editor.js:18
-msgid "Aries"
-msgstr "Koç"
-
-#: assets/js/astroway-blocks-editor.js:19
-msgid "Taurus"
-msgstr "Boğa burcu"
-
-#: assets/js/astroway-blocks-editor.js:20
-msgid "Gemini"
-msgstr "İkizler"
-
-#: assets/js/astroway-blocks-editor.js:21
-msgid "Cancer"
-msgstr "Kanser"
-
-#: assets/js/astroway-blocks-editor.js:22
-msgid "Leo"
-msgstr "Leo"
-
-#: assets/js/astroway-blocks-editor.js:23
-msgid "Virgo"
-msgstr "Başak"
-
-#: assets/js/astroway-blocks-editor.js:24
-msgid "Libra"
-msgstr "Terazi"
-
-#: assets/js/astroway-blocks-editor.js:25
-msgid "Scorpio"
-msgstr "Akrep"
-
-#: assets/js/astroway-blocks-editor.js:26
-msgid "Sagittarius"
-msgstr "Yay burcu"
-
-#: assets/js/astroway-blocks-editor.js:27
-msgid "Capricorn"
-msgstr "Oğlak"
-
-#: assets/js/astroway-blocks-editor.js:28
-msgid "Aquarius"
-msgstr "Kova burcu"
-
-#: assets/js/astroway-blocks-editor.js:29
-msgid "Pisces"
-msgstr "Balık"
 
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
@@ -1275,52 +1859,54 @@ msgstr "Saat Dilimi (Avrupa/Kyiv veya +03:00)"
 #: assets/js/astroway-blocks-editor.js:104
 #: assets/js/astroway-blocks-editor.js:144
 #: assets/js/astroway-blocks-editor.js:177
+#: assets/js/astroway-blocks-editor.js:207
 msgid "Date (leave blank for today)"
 msgstr "Tarih (bugün için boş bırakın)"
 
 #: assets/js/astroway-blocks-editor.js:114
-msgid "Person A — date (YYYY-MM-DD)"
-msgstr "Tarih (YYY-MA-DD)"
+msgid "Person A: date (YYYY-MM-DD)"
+msgstr "A Kişisi: tarih (YYYY-MM-DD)"
 
 #: assets/js/astroway-blocks-editor.js:115
-msgid "Person A — time (HH:MM)"
-msgstr "A Kişisi — saat (SS:DD)"
+msgid "Person A: time (HH:MM)"
+msgstr "A Kişisi: saat (SS:DD)"
 
 #: assets/js/astroway-blocks-editor.js:116
-msgid "Person A — latitude"
-msgstr "A Kişisi — enlem"
+msgid "Person A: latitude"
+msgstr "A Kişisi: enlem"
 
 #: assets/js/astroway-blocks-editor.js:117
-msgid "Person A — longitude"
-msgstr "A Kişisi — boylam"
+msgid "Person A: longitude"
+msgstr "A Kişisi: boylam"
 
 #: assets/js/astroway-blocks-editor.js:118
-msgid "Person A — timezone"
-msgstr "A Kişisi — saat dilimi"
+msgid "Person A: timezone"
+msgstr "A Kişisi: saat dilimi"
 
 #: assets/js/astroway-blocks-editor.js:119
-msgid "Person B — date (YYYY-MM-DD)"
-msgstr "Tarih (YYY-MA-DD)"
+msgid "Person B: date (YYYY-MM-DD)"
+msgstr "B Kişisi: tarih (YYYY-MM-DD)"
 
 #: assets/js/astroway-blocks-editor.js:120
-msgid "Person B — time (HH:MM)"
-msgstr "B Kişisi — saat (SS:DD)"
+msgid "Person B: time (HH:MM)"
+msgstr "B Kişisi: saat (SS:DD)"
 
 #: assets/js/astroway-blocks-editor.js:121
-msgid "Person B — latitude"
-msgstr "B Kişisi — enlem"
+msgid "Person B: latitude"
+msgstr "B Kişisi: enlem"
 
 #: assets/js/astroway-blocks-editor.js:122
-msgid "Person B — longitude"
-msgstr "B Kişisi — boylam"
+msgid "Person B: longitude"
+msgstr "B Kişisi: boylam"
 
 #: assets/js/astroway-blocks-editor.js:123
-msgid "Person B — timezone"
-msgstr "B Kişisi — saat dilimi"
+msgid "Person B: timezone"
+msgstr "B Kişisi: saat dilimi"
 
 #: assets/js/astroway-blocks-editor.js:130
 #: assets/js/astroway-blocks-editor.js:134
 #: assets/js/astroway-blocks-editor.js:138
+#: assets/js/astroway-blocks-editor.js:212
 msgid "Birth data"
 msgstr "Doğum verileri"
 
@@ -1331,10 +1917,6 @@ msgstr "Aktarma tarihi"
 #: assets/js/astroway-blocks-editor.js:150
 msgid "Panchang"
 msgstr "Değişiklikleri kaydet"
-
-#: assets/js/astroway-blocks-editor.js:154
-msgid "Numerology"
-msgstr "Numeroloji"
 
 #: assets/js/astroway-blocks-editor.js:156
 msgid "Full name"
@@ -1349,6 +1931,9 @@ msgid "Two subjects"
 msgstr "İki konu"
 
 #: assets/js/astroway-blocks-editor.js:170
+#: assets/js/astroway-blocks-editor.js:191
+#: assets/js/astroway-blocks-editor.js:199
+#: assets/js/astroway-blocks-editor.js:218
 msgid "Zodiac sign"
 msgstr "Zodyak Burcu"
 
@@ -1359,6 +1944,35 @@ msgstr "Günlük Tarot"
 #: assets/js/astroway-blocks-editor.js:184
 msgid "Deck"
 msgstr "Güverte"
+
+#: assets/js/astroway-blocks-editor.js:189
+msgid "Weekly horoscope"
+msgstr "Haftalık burç yorumu"
+
+#: assets/js/astroway-blocks-editor.js:192
+msgid "Any date inside the week (blank for this week)"
+msgstr "Hafta içindeki herhangi bir tarih (bu hafta için boş bırakın)"
+
+#: assets/js/astroway-blocks-editor.js:197
+msgid "Monthly horoscope"
+msgstr "Aylık burç yorumu"
+
+#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:219
+msgid "Any date inside the month (blank for this month)"
+msgstr "Ay içindeki herhangi bir tarih (bu ay için boş bırakın)"
+
+#: assets/js/astroway-blocks-editor.js:216
+msgid "Monthly forecast"
+msgstr "Aylık tahmin"
+
+#: assets/js/astroway-blocks-editor.js:225
+msgid "Moon transit timeline"
+msgstr "Ay’ın geçişine ilişkin zaman çizelgesi"
+
+#: assets/js/astroway-blocks-editor.js:227
+msgid "Day the seven start from (blank for today)"
+msgstr "Yedinci günün başlangıç tarihi (bugün için boş bırakıldı)"
 
 #: blocks/bodygraph/block.json
 msgid "AstroWay: Human Design Bodygraph"
@@ -1395,6 +2009,42 @@ msgid ""
 msgstr ""
 "api.astroway.info tarafından sağlanan yanıt veren iframe ile doğum haritası "
 "tekeri."
+
+#: blocks/mini-chart/block.json
+msgid "AstroWay: Mini Birth Chart"
+msgstr "AstroWay: Mini Doğum Haritası"
+
+#: blocks/mini-chart/block.json
+msgid ""
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
+" responsive iframe."
+msgstr ""
+"Kenar çubuğu için küçük boyutlu olarak çizilmiş doğum haritası, "
+"api.astroway.info tarafından duyarlı bir iframe olarak sunulmaktadır."
+
+#: blocks/monthly-forecast/block.json
+msgid "AstroWay: Monthly Forecast"
+msgstr "AstroWay: Aylık Tahmin"
+
+#: blocks/monthly-forecast/block.json
+msgid ""
+"Four weeks ahead for one sign, each week with its own theme, served as a "
+"responsive iframe."
+msgstr ""
+"Bir burç için dört haftalık program, her haftanın kendine özgü bir teması "
+"ile, duyarlı bir iframe olarak sunuldu."
+
+#: blocks/monthly-horoscope/block.json
+msgid "AstroWay: Monthly Horoscope"
+msgstr "AstroWay: Aylık Burç Yorumu"
+
+#: blocks/monthly-horoscope/block.json
+msgid ""
+"Horoscope for the current month, anchored to the 1st, rendered into the page"
+" as text."
+msgstr ""
+"Bu ayın burç yorumu, ayın 1’i esas alınarak sayfaya metin olarak "
+"eklenmiştir."
 
 #: blocks/moon-phase/block.json
 msgid "AstroWay: Moon Phase"
@@ -1438,6 +2088,18 @@ msgstr ""
 "api.astroway.info tarafından sağlanan yanıt veren iframe ile doğum haritası "
 "tekeri."
 
+#: blocks/planet-of-day/block.json
+msgid "AstroWay: Planet of the Day"
+msgstr "AstroWay: Günün Gezegeni"
+
+#: blocks/planet-of-day/block.json
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes, "
+"rendered into the page."
+msgstr ""
+"Hafta gününün geleneksel gezegeni, sembolü ve temalarıyla birlikte sayfaya "
+"işlenmiştir."
+
 #: blocks/synastry/block.json
 msgid "AstroWay: Synastry Compatibility"
 msgstr "AstroWay: Doğum Haritası"
@@ -1450,6 +2112,18 @@ msgstr ""
 "api.astroway.info tarafından sağlanan yanıt veren iframe ile doğum haritası "
 "tekeri."
 
+#: blocks/transit-timeline/block.json
+msgid "AstroWay: Moon Transit Timeline"
+msgstr "AstroWay: Ay’ın Geçiş Zaman Çizelgesi"
+
+#: blocks/transit-timeline/block.json
+msgid ""
+"The next seven days of Moon ingresses, served by api.astroway.info as a "
+"responsive iframe."
+msgstr ""
+"api.astroway.info tarafından duyarlı bir iframe olarak sunulan, önümüzdeki "
+"yedi günün Ay’ın burçlara girişleri."
+
 #: blocks/transit/block.json
 msgid "AstroWay: Transit Sky"
 msgstr "AstroWay: Doğum Haritası"
@@ -1461,3 +2135,15 @@ msgid ""
 msgstr ""
 "api.astroway.info tarafından sağlanan yanıt veren iframe ile doğum haritası "
 "tekeri."
+
+#: blocks/weekly-horoscope/block.json
+msgid "AstroWay: Weekly Horoscope"
+msgstr "AstroWay: Haftalık Burç Yorumu"
+
+#: blocks/weekly-horoscope/block.json
+msgid ""
+"Horoscope for the current week, anchored to Monday, rendered into the page "
+"as text."
+msgstr ""
+"Pazartesi gününü başlangıç noktası olarak alan bu haftanın burç yorumu, "
+"sayfaya metin olarak aktarılmıştır."

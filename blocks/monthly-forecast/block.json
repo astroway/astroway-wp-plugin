@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/monthly-forecast",
+	"title": "AstroWay: Monthly Forecast",
+	"category": "widgets",
+	"description": "Four weeks ahead for one sign, each week with its own theme, served as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "chart-line",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"sign": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"theme": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "astroway-blocks-editor"
+}

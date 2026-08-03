@@ -10,6 +10,9 @@ class Shortcodes {
 	public static function register(): void {
 		add_shortcode( 'astroway_natal', self::gated( 'natal', [ __CLASS__, 'render_natal' ] ) );
 		add_shortcode( 'astroway_daily_horoscope', self::gated( 'daily_horoscope', [ __CLASS__, 'render_daily_horoscope' ] ) );
+		add_shortcode( 'astroway_weekly_horoscope', self::gated( 'weekly_horoscope', [ __CLASS__, 'render_weekly_horoscope' ] ) );
+		add_shortcode( 'astroway_monthly_horoscope', self::gated( 'monthly_horoscope', [ __CLASS__, 'render_monthly_horoscope' ] ) );
+		add_shortcode( 'astroway_planet_of_day', self::gated( 'planet_of_day', [ __CLASS__, 'render_planet_of_day' ] ) );
 		add_shortcode( 'astroway_moon_phase', self::gated( 'moon_phase', [ __CLASS__, 'render_moon_phase' ] ) );
 		add_shortcode( 'astroway_bodygraph', self::gated( 'bodygraph', [ __CLASS__, 'render_bodygraph' ] ) );
 		add_shortcode( 'astroway_tarot_card', self::gated( 'daily_tarot', [ __CLASS__, 'render_tarot_card' ] ) );
@@ -20,6 +23,15 @@ class Shortcodes {
 		add_shortcode( 'astroway_panchang', self::gated( 'panchang', [ __CLASS__, 'render_panchang' ] ) );
 		add_shortcode( 'astroway_numerology', self::gated( 'numerology', [ __CLASS__, 'render_numerology' ] ) );
 		add_shortcode( 'astroway_synastry', self::gated( 'synastry', [ __CLASS__, 'render_synastry' ] ) );
+		add_shortcode( 'astroway_mini_chart', self::gated( 'mini_chart', [ __CLASS__, 'render_mini_chart' ] ) );
+		add_shortcode( 'astroway_monthly_forecast', self::gated( 'monthly_forecast', [ __CLASS__, 'render_monthly_forecast' ] ) );
+		add_shortcode( 'astroway_transit_timeline', self::gated( 'transit_timeline', [ __CLASS__, 'render_transit_timeline' ] ) );
+
+		// Priority 10 lands after wpautop and shortcode_unautop, which core adds
+		// at 10 before this file ever runs, and before do_shortcode at 11. The
+		// shortcodes are still text at that point, which is the only moment the
+		// paragraph can be removed rather than repaired.
+		add_filter( 'the_content', [ __CLASS__, 'unautop_shortcode_run' ], 10 );
 
 		/**
 		 * Fires after core shortcodes are registered.
@@ -28,6 +40,90 @@ class Shortcodes {
 		 * @since 0.6.1
 		 */
 		do_action( 'astroway_register_shortcodes' );
+	}
+
+	/**
+	 * Drop the paragraph WordPress wraps around a run of our shortcodes.
+	 *
+	 * `wpautop` decides the paragraphs while the shortcodes are still text, and
+	 * core only undoes the wrapper when a paragraph holds exactly one shortcode.
+	 * Two of them on consecutive lines become one `<p>` joined by `<br />`, which
+	 * did no harm while every widget was an iframe. Since 1.0.0 a widget renders
+	 * as a card built from `<header>`, `<dl>` and `<p>`, and a browser closes the
+	 * enclosing paragraph at the first of those: the card element is left empty
+	 * and its content spills out below it, unstyled.
+	 *
+	 * Only paragraphs made up entirely of `astroway_*` shortcodes are touched. A
+	 * sentence wrapped around a widget is the author's formatting, and a run
+	 * containing someone else's shortcode is not ours to reformat.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function unautop_shortcode_run( $content ) {
+		// Not typed as string: plugins and themes do call
+		// apply_filters('the_content', null), and a typed callback turns that
+		// into a fatal TypeError for the whole page. Core leaves its own
+		// callbacks untyped for the same reason.
+		if ( ! is_string( $content ) || false === strpos( $content, '[astroway_' ) ) {
+			return $content;
+		}
+
+		/*
+		 * The paragraph is matched with one lazy group and nothing nested, then
+		 * inspected in PHP. Expressing the run itself as a repeated group cost a
+		 * release candidate: that pattern repeated a sequence holding two
+		 * adjacent whitespace quantifiers, and on a paragraph starting with our
+		 * shortcodes and ending in something else ("[astroway_moon_phase] "
+		 * twenty times followed by [gallery]) PCRE walked every way of splitting
+		 * those spaces and hit its backtrack limit. preg_replace_callback then
+		 * returns null, which the filter cast to an empty string: every post
+		 * shaped like that lost all of its content, silently.
+		 */
+		$filtered = preg_replace_callback(
+			'#<p>(.*?)</p>#s',
+			static function ( array $matches ) {
+				$run = self::shortcode_run( $matches[1] );
+				return null === $run ? $matches[0] : "\n" . $run . "\n";
+			},
+			$content
+		);
+
+		// Any PCRE failure still returns null. The content is worth more than
+		// the fix, so a failed pass means the paragraph stays as it was.
+		return null === $filtered ? $content : $filtered;
+	}
+
+	/**
+	 * The shortcodes of a paragraph that holds nothing else, one per line, or
+	 * null when the paragraph holds anything besides them.
+	 *
+	 * Newlines rather than nothing between them: the content still goes through
+	 * do_shortcode, and two shortcodes left on one line read as a single
+	 * paragraph to any later pass.
+	 */
+	private static function shortcode_run( string $inner ): ?string {
+		// Case-sensitive on purpose: WordPress matches shortcode tags that way,
+		// so [ASTROWAY_MOON_PHASE] renders as the literal text its author typed
+		// and their paragraph is not ours to take apart.
+		$tag = '#\[astroway_[^\]\[]*\]#';
+
+		if ( ! preg_match_all( $tag, $inner, $matches ) ) {
+			return null;
+		}
+
+		// Decided by subtraction rather than by describing the run as a pattern:
+		// take our shortcodes and the line breaks out, and whatever is left has
+		// to be nothing. Prose, another plugin's shortcode and the leftover
+		// brackets of an escaped [[astroway_moon_phase]] all survive the removal
+		// and stop the rewrite, and separators between our own shortcodes never
+		// have to be described at all, which is where the backtracking lived.
+		$rest = preg_replace( $tag, '', $inner );
+		$rest = null === $rest ? null : preg_replace( '#<br\s*/?>#i', '', $rest );
+		if ( null === $rest || '' !== trim( $rest ) ) {
+			return null;
+		}
+
+		return implode( "\n", $matches[0] );
 	}
 
 	/**
@@ -48,20 +144,28 @@ class Shortcodes {
 	public static function render_natal( $atts ): string {
 		$atts           = shortcode_atts(
 			[
-				'date' => '',
-				'time' => '',
-				'lat'  => '',
-				'lon'  => '',
-				'name' => '',
-				'tz'   => '',
-				'lang' => '',
+				'date'  => '',
+				'time'  => '',
+				'lat'   => '',
+				'lon'   => '',
+				'name'  => '',
+				'tz'    => '',
+				'lang'  => '',
+				'theme' => '',
 			],
 			(array) $atts,
 			'astroway_natal'
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
-		return PublicClient::embed_iframe( 'natal', $params );
+		// The wheel is a picture drawn by the api and cannot read the page it lands
+		// on, so its palette has to be declared. Left empty it keeps the api default
+		// the widget has always used, which is why upgrading changes no colours.
+		$theme = self::sanitize_theme( $atts['theme'] );
+		if ( '' !== $theme ) {
+			$params['theme'] = $theme;
+		}
+		return Render::widget( 'natal', $params );
 	}
 
 	public static function render_daily_horoscope( $atts ): string {
@@ -73,10 +177,61 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_daily_horoscope'
 		);
-		return PublicClient::embed_iframe(
+		return Render::widget(
 			'daily_horoscope',
 			[
 				'sign' => self::sanitize_sign( $atts['sign'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
+	/**
+	 * Weekly and monthly horoscopes exist only as page-side cards: there is no
+	 * /v1/embed/* route for either, so Render's fallback shows administrators a
+	 * note and visitors nothing rather than an iframe that would 404.
+	 */
+	public static function render_weekly_horoscope( $atts ): string {
+		return self::render_period_horoscope( $atts, 'weekly_horoscope', 'astroway_weekly_horoscope' );
+	}
+
+	public static function render_monthly_horoscope( $atts ): string {
+		return self::render_period_horoscope( $atts, 'monthly_horoscope', 'astroway_monthly_horoscope' );
+	}
+
+	private static function render_period_horoscope( $atts, string $widget, string $tag ): string {
+		$atts = shortcode_atts(
+			[
+				'sign' => '',
+				'date' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			$tag
+		);
+		return Render::widget(
+			$widget,
+			[
+				'sign' => self::sanitize_sign( $atts['sign'] ),
+				'date' => self::sanitize_date( $atts['date'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
+	public static function render_planet_of_day( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_planet_of_day'
+		);
+		return Render::widget(
+			'planet_of_day',
+			[
+				'date' => self::sanitize_date( $atts['date'] ),
 				'lang' => self::resolve_lang( $atts['lang'] ),
 			]
 		);
@@ -91,7 +246,7 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_moon_phase'
 		);
-		return PublicClient::embed_iframe(
+		return Render::widget(
 			'moon_phase',
 			[
 				'date' => self::sanitize_date( $atts['date'] ),
@@ -129,11 +284,21 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_tarot_card'
 		);
+		$deck = self::sanitize_deck( $atts['deck'] );
+		$lang = self::resolve_lang( $atts['lang'] );
+
+		// The public JSON route draws from Rider-Waite and nothing else, so any
+		// other deck stays on the iframe rather than being answered with cards
+		// from the wrong deck under the right heading.
+		if ( 'rider-waite' === $deck ) {
+			return Render::widget( 'tarot_daily', [ 'lang' => $lang ] );
+		}
+
 		return PublicClient::embed_iframe(
 			'tarot_daily',
 			[
-				'deck' => self::sanitize_deck( $atts['deck'] ),
-				'lang' => self::resolve_lang( $atts['lang'] ),
+				'deck' => $deck,
+				'lang' => $lang,
 			]
 		);
 	}
@@ -152,18 +317,11 @@ class Shortcodes {
 	 * one explanatory line for administrators, never a frame containing a 401.
 	 */
 	private static function unavailable_widget( string $shortcode ): string {
-		if ( ! function_exists( 'current_user_can' ) || ! current_user_can( 'manage_options' ) ) {
-			return '';
-		}
-
-		return sprintf(
-			'<div class="astroway-embed astroway-embed--unavailable"><p>%s</p></div>',
-			esc_html(
-				sprintf(
-					/* translators: %s = shortcode name */
-					__( 'The %s widget is temporarily unavailable, so it renders nothing. Only administrators see this note.', 'astroway' ),
-					'[' . $shortcode . ']'
-				)
+		return Render::admin_note(
+			sprintf(
+				/* translators: %s = shortcode name */
+				__( 'The %s widget is temporarily unavailable, so it renders nothing. Only administrators see this note.', 'astroway' ),
+				'[' . $shortcode . ']'
 			)
 		);
 	}
@@ -185,6 +343,84 @@ class Shortcodes {
 	 * Vedic kundli (North-Indian D1). Single subject; api ignores any style
 	 * param and always renders the North-Indian diamond.
 	 */
+	/**
+	 * Compact natal wheel for a sidebar. Same birth data as the full chart,
+	 * drawn small; there is no page-side template, so it is always a frame.
+	 */
+	public static function render_mini_chart( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date'  => '',
+				'time'  => '',
+				'lat'   => '',
+				'lon'   => '',
+				'tz'    => '',
+				'theme' => '',
+				'lang'  => '',
+			],
+			(array) $atts,
+			'astroway_mini_chart'
+		);
+		$date = self::sanitize_date( $atts['date'] );
+		$time = self::sanitize_time( $atts['time'] );
+		return PublicClient::embed_iframe(
+			'mini_chart',
+			[
+				'date'  => $date,
+				'time'  => $time,
+				'lat'   => self::sanitize_coord( $atts['lat'], -90, 90 ),
+				'lng'   => self::sanitize_coord( $atts['lon'], -180, 180 ),
+				'tz'    => self::tz_offset_hours( $atts['tz'], $date, $time ),
+				'theme' => self::sanitize_theme( $atts['theme'] ),
+				'lang'  => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
+	/** Four-week themed forecast for one sign. */
+	public static function render_monthly_forecast( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'sign'  => '',
+				'date'  => '',
+				'theme' => '',
+				'lang'  => '',
+			],
+			(array) $atts,
+			'astroway_monthly_forecast'
+		);
+		return PublicClient::embed_iframe(
+			'monthly_forecast',
+			[
+				'sign'  => self::sanitize_sign( $atts['sign'] ),
+				'date'  => self::sanitize_date( $atts['date'] ),
+				'theme' => self::sanitize_theme( $atts['theme'] ),
+				'lang'  => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
+	/** Seven-day Moon ingress timeline. Not sign-specific. */
+	public static function render_transit_timeline( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date'  => '',
+				'theme' => '',
+				'lang'  => '',
+			],
+			(array) $atts,
+			'astroway_transit_timeline'
+		);
+		return PublicClient::embed_iframe(
+			'transit_timeline',
+			[
+				'date'  => self::sanitize_date( $atts['date'] ),
+				'theme' => self::sanitize_theme( $atts['theme'] ),
+				'lang'  => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
 	public static function render_kundli( $atts ): string {
 		$atts = shortcode_atts(
 			[
@@ -353,11 +589,9 @@ class Shortcodes {
 	 * no user-facing error for typos.
 	 */
 	private static function resolve_lang( $raw ): string {
-		$raw = strtolower( trim( (string) $raw ) );
-		if ( '' !== $raw && in_array( $raw, Plugin::SUPPORTED_LANGS, true ) ) {
-			return $raw;
-		}
-		return Plugin::normalize_locale( get_locale() );
+		// Lives on Plugin now: it owns SUPPORTED_LANGS and normalize_locale, and
+		// the server-side client needs the same resolution.
+		return Plugin::resolve_lang( $raw );
 	}
 
 	private static function sanitize_chart_params( array $atts ): array {

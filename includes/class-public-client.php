@@ -85,13 +85,34 @@ class PublicClient {
 			return false;
 		}
 
+		// A real render answers this question for free, and answers it about the
+		// bucket the widgets actually spend from. Prefer it over any probe.
+		$seen = PublicData::quota_seen();
+		if ( null !== $seen ) {
+			$limited = 429 === (int) ( $seen['status'] ?? 0 )
+				|| ( null !== $seen['remaining'] && (int) $seen['remaining'] < 3 );
+			if ( $limited ) {
+				update_option( 'astroway_rate_limit_hit_at', time(), false );
+			}
+			return $limited;
+		}
+
 		$cached = get_transient( 'astroway_rate_limit_probe' );
 		if ( false !== $cached ) {
 			return 'limited' === $cached;
 		}
 
+		// Nothing has rendered lately, so fall back to asking. The site header
+		// matters here too: without it the probe reads the per-IP tier and would
+		// report an exhausted quota while the per-site one is untouched.
 		$probe_url = ASTROWAY_API_BASE . '/embed/wheel?date=2000-01-01&time=12:00&lat=0&lon=0';
-		$res       = wp_remote_head( $probe_url, [ 'timeout' => 3 ] );
+		$res       = wp_remote_head(
+			$probe_url,
+			[
+				'timeout' => 3,
+				'headers' => [ 'X-AstroWay-Site-URL' => home_url() ],
+			]
+		);
 
 		if ( is_wp_error( $res ) ) {
 			set_transient( 'astroway_rate_limit_probe', 'ok', 5 * MINUTE_IN_SECONDS );

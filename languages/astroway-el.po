@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology & Horoscopes 0.10.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
-"POT-Creation-Date: 2026-07-29T16:41:13+00:00\n"
-"PO-Revision-Date: 2026-07-29 19:54+0300\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"POT-Creation-Date: 2026-08-03T05:45:46+00:00\n"
+"PO-Revision-Date: 2026-08-03 08:46+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Greek <translations@astroway.info>\n"
 "Language: el\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: astroway-wp-plugin.php
 msgid "AstroWay – Astrology & Horoscopes"
-msgstr "AstroWay — Ωροσκόπος Ημέρας"
+msgstr "AstroWay – Ωροσκόπος Ημέρας"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
@@ -32,7 +32,7 @@ msgid ""
 "Tarot, Numerology, Human Design API. Powered by api.astroway.info."
 msgstr ""
 "Χάρτες γεννήσεων, σύναστρα, διαβάσεις, Ταρό, Αριθμολογία, Human Design, "
-"Ωροσκόποι AI — shortcodes + μπλοκ Gutenberg. Powered by api.astroway.info."
+"Ωροσκόποι AI – shortcodes + μπλοκ Gutenberg. Powered by api.astroway.info."
 
 #. Author of the plugin
 #: astroway-wp-plugin.php includes/class-admin.php:34
@@ -45,32 +45,32 @@ msgstr "AstroWay"
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
 
-#: includes/class-admin.php:45 includes/class-admin.php:46
+#: includes/class-admin.php:46 includes/class-admin.php:47
 #: includes/views/admin-api-key.php:18
-#: includes/views/partials/admin-footer-nav.php:13
-msgid "API Key"
-msgstr "Κλειδί API"
+msgid "Getting started"
+msgstr "Πρώτα βήματα"
 
-#: includes/class-admin.php:53
+#: includes/class-admin.php:54
 msgid "AstroWay Settings"
 msgstr "Ρυθμίσεις AstroWay"
 
-#: includes/class-admin.php:54 includes/class-admin.php:142
+#: includes/class-admin.php:55 includes/class-admin.php:149
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: includes/class-admin.php:61
+#: includes/class-admin.php:62
 msgid "AstroWay Shortcodes"
 msgstr "Shortcodes AstroWay"
 
-#: includes/class-admin.php:62 includes/views/admin-shortcodes.php:14
+#: includes/class-admin.php:63 includes/views/admin-api-key.php:116
+#: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: includes/class-admin.php:106
+#: includes/class-admin.php:113
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -78,104 +78,119 @@ msgstr ""
 "Το κλειδί API πρέπει να ξεκινά με \"aw_\" και να περιέχει μόνο γράμματα, "
 "αριθμούς και underscores."
 
-#: includes/class-admin.php:147
+#: includes/class-admin.php:154
 msgid "Get API Key"
 msgstr "Λήψη κλειδιού API"
 
-#: includes/class-admin.php:185
+#: includes/class-admin.php:192
 msgid "Verifying…"
 msgstr "Επικύρωση…"
 
-#: includes/class-admin.php:186
+#: includes/class-admin.php:193
 msgid "limited info"
 msgstr "περιορισμένες πληροφορίες"
 
-#: includes/class-admin.php:187 includes/views/admin-api-key.php:133
+#: includes/class-admin.php:194 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "Πλάνο"
 
-#: includes/class-admin.php:188
+#: includes/class-admin.php:195
 msgid "Used"
 msgstr "Χρησιμοποιημένα"
 
-#: includes/class-admin.php:189
+#: includes/class-admin.php:196
 msgid "Rate"
 msgstr "Ρυθμός"
 
-#: includes/class-admin.php:190
+#: includes/class-admin.php:197
 msgid "Bound to"
 msgstr "Συνδεδεμένο με"
 
-#: includes/class-admin.php:191
+#: includes/class-admin.php:198
 msgid "Enter a valid API key first."
 msgstr "Εισαγάγετε πρώτα ένα έγκυρο κλειδί API."
 
-#: includes/class-admin.php:192 includes/views/admin-settings.php:246
+#: includes/class-admin.php:199 includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr "Σφάλμα δικτύου"
 
-#: includes/class-admin.php:193
+#: includes/class-admin.php:200
 msgid "Key verified."
 msgstr "Το κλειδί επαληθεύτηκε."
 
-#: includes/class-admin.php:211
-msgid "Pinging…"
-msgstr "Ελέγχω σύνδεση…"
-
-#: includes/class-admin.php:212
-msgid "API is healthy"
-msgstr "Η API λειτουργεί σωστά"
-
-#: includes/class-admin.php:213
-msgid "API unreachable"
-msgstr "Η API δεν είναι προσβάσιμη"
-
-#: includes/class-admin.php:214
-msgid "Purge all cached data?"
-msgstr "Να αδειάσετε όλα τα προσωρινά δεδομένα;"
-
-#: includes/class-admin.php:215
-msgid "Cache cleared:"
-msgstr "Τα προσωρινά δεδομένα καθαρίστηκαν:"
-
-#: includes/class-admin.php:216 includes/class-admin.php:235
+#: includes/class-admin.php:201 includes/class-admin.php:224
+#: includes/class-admin.php:243
 msgid "copied!"
 msgstr "αντιγραφή!"
 
-#: includes/class-admin.php:236
+#: includes/class-admin.php:219
+msgid "Pinging…"
+msgstr "Ελέγχω σύνδεση…"
+
+#: includes/class-admin.php:220
+msgid "API is healthy"
+msgstr "Η API λειτουργεί σωστά"
+
+#: includes/class-admin.php:221
+msgid "API unreachable"
+msgstr "Η API δεν είναι προσβάσιμη"
+
+#: includes/class-admin.php:222
+msgid "Purge all cached data?"
+msgstr "Να αδειάσετε όλα τα προσωρινά δεδομένα;"
+
+#: includes/class-admin.php:223
+msgid "Cache cleared:"
+msgstr "Τα προσωρινά δεδομένα καθαρίστηκαν:"
+
+#: includes/class-admin.php:244
 msgid "Searching…"
 msgstr "Αναζητώντας…"
 
-#: includes/class-admin.php:237
+#: includes/class-admin.php:245
 msgid "No cities found."
 msgstr "Δεν βρέθηκαν πόλεις."
 
-#: includes/class-admin.php:238
+#: includes/class-admin.php:246
 msgid "Search error. Try again."
 msgstr "Σφάλμα αναζήτησης. Δοκιμάστε ξανά."
 
-#: includes/class-admin.php:239
+#: includes/class-admin.php:247
 msgid "Type at least 2 characters."
 msgstr "Πληκτρολογήστε τουλάχιστον 2 χαρακτήρες."
 
-#: includes/class-admin.php:240
+#: includes/class-admin.php:248
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Επιλέξτε μια πόλη για να συμπληρώσετε lat / lon / tz"
 
-#: includes/class-admin.php:249 includes/class-admin.php:265
-#: includes/class-admin.php:274
+#. translators: 1: number of shortcodes matching the filter, 2: total number
+#. of shortcodes
+#: includes/class-admin.php:250
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d από %2$d"
+
+#: includes/class-admin.php:251
+msgid "No shortcode matches."
+msgstr "Δεν βρέθηκε shortcode που να ταιριάζει."
+
+#: includes/class-admin.php:260 includes/class-admin.php:276
+#: includes/class-admin.php:285
 msgid "Unauthorized."
 msgstr "Μη εξουσιοδοτημένο."
 
-#: includes/class-admin.php:287
+#: includes/class-admin.php:298
 msgid ""
-"No API key — plugin runs in anonymous mode (30 requests/hour per visitor "
-"IP)."
+"No API key. The plugin runs in anonymous mode: this site is allowed 300 "
+"requests an hour, and widgets that fall back to a frame use each visitor's "
+"own 30."
 msgstr ""
-"Δεν υπάρχει κλειδί API — το πρόσθετο λειτουργεί σε ανώνυμη λειτουργία (30 "
-"αιτήματα/ώρα ανά IP επισκέπτη)."
+"Δεν υπάρχει κλειδί API. Το πρόσθετο λειτουργεί σε ανώνυμη λειτουργία: ο "
+"ιστότοπος αυτός έχει όριο 300 αιτήσεων ανά ώρα, ενώ τα widget που "
+"χρησιμοποιούν πλαίσιο καταναλώνουν τις 30 αιτήσεις του κάθε επισκέπτη "
+"ξεχωριστά."
 
-#: includes/class-admin.php:295
+#: includes/class-admin.php:306
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -185,52 +200,57 @@ msgstr ""
 "χρησιμοποιήσετε την ανώνυμη λειτουργία."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:298
+#: includes/class-admin.php:309
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Δεν ήταν δυνατή η επαλήθευση του κλειδιού (HTTP %d)."
 
-#: includes/class-admin.php:338
+#: includes/class-admin.php:349
 msgid "API key required."
 msgstr "Διαμορφωμένο κλειδί API"
 
-#: includes/class-admin.php:342
+#: includes/class-admin.php:353
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Εισάγετε ένα έγκυρο όνομα τομέα (π.χ. example.com)."
 
-#: includes/class-admin.php:369
+#: includes/class-admin.php:380
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Η αλλαγή του domain απέτυχε. Χρησιμοποιήστε τον παρακάτω σύνδεσμο προς τον "
 "πίνακα ελέγχου."
 
-#: includes/class-plugin.php:148
+#: includes/class-plugin.php:161
 msgid "AstroWay is active"
 msgstr "Το AstroWay είναι ενεργό"
 
-#: includes/class-plugin.php:149
+#: includes/class-plugin.php:162
 msgid ""
-"Shortcodes work without an API key (30 requests/hour per visitor IP). For "
-"higher limits and Pro features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the "
+"page draw on your site's allowance of 300 requests an hour; widgets that "
+"fall back to a frame draw on each visitor's own 30. For higher limits and "
+"Pro features, get a free API key."
 msgstr ""
-"Τα shortcodes λειτουργούν χωρίς κλειδί API (30 αιτήματα/ώρα ανά IP "
-"επισκέπτη). Για υψηλότερα όρια και χαρακτηριστικά Pro, λάβετε ένα δωρεάν "
-"κλειδί API."
+"Οι σύντομοι κωδικοί λειτουργούν χωρίς κλειδί API. Τα widget που εμφανίζει ο "
+"διακομιστής σας στη σελίδα καταναλώνουν από το όριο των 300 αιτήσεων ανά ώρα"
+" που διαθέτει ο ιστότοπός σας· τα widget που χρησιμοποιούν πλαίσιο "
+"καταναλώνουν από το όριο των 30 αιτήσεων που διαθέτει ο κάθε επισκέπτης. Για"
+" υψηλότερα όρια και λειτουργίες της έκδοσης Pro, αποκτήστε ένα δωρεάν κλειδί"
+" API."
 
-#: includes/class-plugin.php:153 includes/class-plugin.php:298
+#: includes/class-plugin.php:166 includes/class-plugin.php:311
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Λήψη δωρεάν κλειδιού API"
 
-#: includes/class-plugin.php:156
+#: includes/class-plugin.php:169
 msgid "Open Settings"
 msgstr "Άνοιγμα ρυθμίσεων"
 
-#: includes/class-plugin.php:228
+#: includes/class-plugin.php:241
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:242
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -239,77 +259,345 @@ msgstr ""
 "να ανακαλύψουν το πρόσθετο και μας δίνει ιδέες για το τι να δημιουργήσουμε "
 "στη συνέχεια."
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:246
 msgid "Leave a review"
 msgstr "Αφήστε μια κριτική"
 
-#: includes/class-plugin.php:296
+#: includes/class-plugin.php:309
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr ""
 "Αυτός ο διακομιστής έχει εξαντλήσει το όριο ανώνυμης πρόσβασης στο AstroWay:"
 
-#: includes/class-plugin.php:297
+#: includes/class-plugin.php:310
 msgid ""
-"the free tier allows 30 requests per hour per IP. Visitors are unaffected, "
-"since their widgets count against their own IP, but preview and admin calls "
-"from this server will fail until the hour resets. Add a free API key to lift"
-" the limit and get 10,000 credits/month plus 60 req/min."
+"the free tier allows this site 300 requests an hour. Until the hour resets, "
+"widgets that would have been rendered into the page fall back to a frame "
+"loaded by the visitor's own browser, and preview and admin calls from this "
+"server will fail. Add a free API key to lift the limit and get 10,000 "
+"credits/month plus 60 req/min."
 msgstr ""
-"Το δωρεάν πακέτο επιτρέπει 30 αιτήσεις ανά ώρα ανά IP. Οι επισκέπτες δεν "
-"επηρεάζονται, καθώς τα widget τους υπολογίζονται στη δική τους IP, αλλά οι "
-"κλήσεις προεπισκόπησης και διαχείρισης από αυτόν τον διακομιστή θα "
-"αποτυγχάνουν μέχρι να μηδενιστεί η ώρα. Προσθέστε ένα δωρεάν κλειδί API για "
-"να καταργήσετε το όριο και να λάβετε 10.000 μονάδες/μήνα καθώς και 60 "
+"Το δωρεάν πακέτο επιτρέπει σε αυτόν τον ιστότοπο 300 αιτήσεις ανά ώρα. Μέχρι"
+" να μηδενιστεί η ώρα, τα widget που θα είχαν εμφανιστεί στη σελίδα θα "
+"εμφανίζονται σε ένα πλαίσιο που φορτώνεται από το ίδιο το πρόγραμμα "
+"περιήγησης του επισκέπτη, ενώ οι κλήσεις προεπισκόπησης και διαχείρισης από "
+"αυτόν τον διακομιστή θα αποτυγχάνουν. Προσθέστε ένα δωρεάν κλειδί API για να"
+" καταργήσετε το όριο και να λάβετε 10.000 μονάδες/μήνα καθώς και 60 "
 "αιτήσεις/λεπτό."
 
-#: includes/class-public-client.php:117
+#: includes/class-public-client.php:138
 msgid "Natal chart wheel"
 msgstr "Ρόδα χάρτη γεννήσεων"
 
-#: includes/class-public-client.php:118
+#: includes/class-public-client.php:139
 #: assets/js/astroway-blocks-editor.js:168
 msgid "Daily horoscope"
 msgstr "Ωροσκόπος ημέρας"
 
-#: includes/class-public-client.php:119
+#: includes/class-public-client.php:140 includes/class-render.php:371
 #: assets/js/astroway-blocks-editor.js:175
 msgid "Moon phase"
 msgstr "Φάση Σελήνης"
 
-#: includes/class-public-client.php:120
+#: includes/class-public-client.php:141
 msgid "Human Design bodygraph"
 msgstr "Human Design bodygraph"
 
-#: includes/class-public-client.php:121
+#: includes/class-public-client.php:142
 msgid "Daily Tarot card"
 msgstr "Κάρτα Ταρό ημέρας"
 
-#: includes/class-public-client.php:122
+#: includes/class-public-client.php:143
 msgid "Vedic kundli chart"
 msgstr "Βεδικός χάρτης κούντλι"
 
-#: includes/class-public-client.php:123
+#: includes/class-public-client.php:144
 msgid "Transit sky snapshot"
 msgstr "Στιγμιότυπο του ουρανού κατά τη διέλευση"
 
-#: includes/class-public-client.php:124
+#: includes/class-public-client.php:145
+#: includes/views/admin-shortcodes.php:177
 msgid "Daily Panchang"
 msgstr "Κάρτα Ταρό ημέρας"
 
-#: includes/class-public-client.php:125
+#: includes/class-public-client.php:146
 msgid "Numerology core numbers"
 msgstr "Βασικοί αριθμοί της αριθμολογίας"
 
-#: includes/class-public-client.php:126
+#: includes/class-public-client.php:147
 msgid "Synastry compatibility"
 msgstr "Συμβατότητα σύναστρίας"
 
-#: includes/class-public-client.php:128
+#: includes/class-public-client.php:149
 msgid "AstroWay widget"
 msgstr "Widget AstroWay"
 
+#. translators: %s = widget name
+#: includes/class-render.php:81
+#, php-format
+msgid ""
+"The %s widget could not be loaded just now. Only administrators see this "
+"note."
+msgstr ""
+"Το %s widget δεν μπόρεσε να φορτωθεί αυτή τη στιγμή. Μόνο οι διαχειριστές "
+"βλέπουν αυτή τη σημείωση."
+
+#: includes/class-render.php:137
+msgid "Natal chart"
+msgstr "Γενέθλιος χάρτης"
+
+#. translators: %s = person's name
+#: includes/class-render.php:140
+#, php-format
+msgid "Natal chart: %s"
+msgstr "Γενέθλιος χάρτης: %s"
+
+#: includes/class-render.php:153
+msgid "Ascendant"
+msgstr "Ωροσκόπος"
+
+#: includes/class-render.php:156
+msgid "Midheaven"
+msgstr "Μεσουράνημα"
+
+#. translators: %d = house number
+#: includes/class-render.php:169
+#, php-format
+msgid "House %d"
+msgstr "Οίκος %d"
+
+#. translators: %d = house number
+#: includes/class-render.php:170
+msgid "retrograde"
+msgstr "ανάδρομος"
+
+#: includes/class-render.php:173
+msgid "Placements"
+msgstr "Θέσεις"
+
+#. translators: 1: first planet, 2: aspect name, 3: second planet
+#: includes/class-render.php:194
+#, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: includes/class-render.php:204
+msgid "Major aspects"
+msgstr "Κύριες όψεις"
+
+#: includes/class-render.php:278
+msgid "New Moon"
+msgstr "Νέα Σελήνη"
+
+#: includes/class-render.php:279
+msgid "Waxing Crescent"
+msgstr "Ημισέληνος που αυξάνεται"
+
+#: includes/class-render.php:280
+msgid "First Quarter"
+msgstr "Πρώτο τρίμηνο"
+
+#: includes/class-render.php:281
+msgid "Waxing Gibbous"
+msgstr "Ημισέληνος σε φάση πλήρωσης"
+
+#: includes/class-render.php:282
+msgid "Full Moon"
+msgstr "Πανσέληνος"
+
+#: includes/class-render.php:283
+msgid "Waning Gibbous"
+msgstr "Φθίνουσα ημισέληνος"
+
+#: includes/class-render.php:284
+msgid "Last Quarter"
+msgstr "Τελευταίο τρίμηνο"
+
+#: includes/class-render.php:285
+msgid "Waning Crescent"
+msgstr "Φθίνουσα ημισέληνος"
+
+#: includes/class-render.php:292
+msgid "Sun"
+msgstr "Ήλιος"
+
+#: includes/class-render.php:293
+msgid "Moon"
+msgstr "Σελήνη"
+
+#: includes/class-render.php:294
+msgid "Mercury"
+msgstr "Ερμής"
+
+#: includes/class-render.php:295
+msgid "Venus"
+msgstr "Αφροδίτη"
+
+#: includes/class-render.php:296
+msgid "Mars"
+msgstr "Άρης"
+
+#: includes/class-render.php:297
+msgid "Jupiter"
+msgstr "Δίας"
+
+#: includes/class-render.php:298
+msgid "Saturn"
+msgstr "Κρόνος"
+
+#: includes/class-render.php:299
+msgid "Uranus"
+msgstr "Ουρανός"
+
+#: includes/class-render.php:300
+msgid "Neptune"
+msgstr "Ποσειδώνας"
+
+#: includes/class-render.php:301
+msgid "Pluto"
+msgstr "Πλούτωνας"
+
+#: includes/class-render.php:302
+msgid "Chiron"
+msgstr "Χείρωνας"
+
+#: includes/class-render.php:303 includes/class-render.php:310
+#: includes/class-render.php:311
+msgid "Lilith"
+msgstr "Λίλιθ"
+
+#: includes/class-render.php:304 includes/class-render.php:308
+#: includes/class-render.php:309
+msgid "North Node"
+msgstr "Βόρειος Δεσμός"
+
+#: includes/class-render.php:305
+msgid "South Node"
+msgstr "Νότιος Δεσμός"
+
+#: includes/class-render.php:318
+msgid "conjunct"
+msgstr "σύνοδος"
+
+#: includes/class-render.php:319
+msgid "opposite"
+msgstr "αντίθεση"
+
+#: includes/class-render.php:320
+msgid "trine"
+msgstr "τρίγωνο"
+
+#: includes/class-render.php:321
+msgid "square"
+msgstr "τετράγωνο"
+
+#: includes/class-render.php:322
+msgid "sextile"
+msgstr "εξάγωνο"
+
+#: includes/class-render.php:354
+msgid "Illumination"
+msgstr "Φωτισμός"
+
+#: includes/class-render.php:357
+msgid "Age"
+msgstr "Ηλικία"
+
+#. translators: %s = number of days, may be fractional
+#: includes/class-render.php:359
+#, php-format
+msgid "%s days"
+msgstr "%s ημέρες"
+
+#: includes/class-render.php:364
+msgid "Moon in"
+msgstr "Σελήνη σε"
+
+#: includes/class-render.php:367
+msgid "Sun in"
+msgstr "Ήλιος σε"
+
+#. translators: %s = tarot card name
+#: includes/class-render.php:399
+#, php-format
+msgid "%s (reversed)"
+msgstr "%s (ανεστραμμένο)"
+
+#: includes/class-render.php:405
+msgid "Card of the day"
+msgstr "Κάρτα της ημέρας"
+
+#: includes/class-render.php:435 assets/js/astroway-blocks-editor.js:205
+msgid "Planet of the day"
+msgstr "Πλανήτης της ημέρας"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:467
+#, php-format
+msgid "%s: horoscope for the week"
+msgstr "%s: ωροσκόπιο για την εβδομάδα"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:470
+#, php-format
+msgid "%s: horoscope for the month"
+msgstr "%s: ωροσκόπιο για τον μήνα"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:473
+#, php-format
+msgid "%s: horoscope for today"
+msgstr "%s: ωροσκόπιο για σήμερα"
+
+#: includes/class-render.php:480 assets/js/astroway-blocks-editor.js:18
+msgid "Aries"
+msgstr "Κριός"
+
+#: includes/class-render.php:481 assets/js/astroway-blocks-editor.js:19
+msgid "Taurus"
+msgstr "Ταύρος"
+
+#: includes/class-render.php:482 assets/js/astroway-blocks-editor.js:20
+msgid "Gemini"
+msgstr "Δίδυμοι"
+
+#: includes/class-render.php:483 assets/js/astroway-blocks-editor.js:21
+msgid "Cancer"
+msgstr "Καρκίνος"
+
+#: includes/class-render.php:484 assets/js/astroway-blocks-editor.js:22
+msgid "Leo"
+msgstr "Λέων"
+
+#: includes/class-render.php:485 assets/js/astroway-blocks-editor.js:23
+msgid "Virgo"
+msgstr "Παρθένος"
+
+#: includes/class-render.php:486 assets/js/astroway-blocks-editor.js:24
+msgid "Libra"
+msgstr "Ζυγός"
+
+#: includes/class-render.php:487 assets/js/astroway-blocks-editor.js:25
+msgid "Scorpio"
+msgstr "Σκορπιός"
+
+#: includes/class-render.php:488 assets/js/astroway-blocks-editor.js:26
+msgid "Sagittarius"
+msgstr "Τοξότης"
+
+#: includes/class-render.php:489 assets/js/astroway-blocks-editor.js:27
+msgid "Capricorn"
+msgstr "Αιγόκερως"
+
+#: includes/class-render.php:490 assets/js/astroway-blocks-editor.js:28
+msgid "Aquarius"
+msgstr "Υδροχόος"
+
+#: includes/class-render.php:491 assets/js/astroway-blocks-editor.js:29
+msgid "Pisces"
+msgstr "Ιχθύες"
+
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:164
+#: includes/class-shortcodes.php:233
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -318,130 +606,212 @@ msgstr ""
 "Το widget %s δεν είναι προσωρινά διαθέσιμο, οπότε δεν εμφανίζει τίποτα. Μόνο"
 " οι διαχειριστές βλέπουν αυτή τη σημείωση."
 
-#: includes/class-tier.php:138
+#: includes/class-tier.php:145
 msgid "Locked feature"
 msgstr "Λειτουργία με κλείδωμα"
 
-#: includes/class-tier.php:148
+#: includes/class-tier.php:155
 msgid "Pro feature"
 msgstr "Λειτουργία για επαγγελματίες"
 
-#: includes/class-tier.php:149
+#: includes/class-tier.php:156
 msgid "This widget is available on a paid AstroWay plan."
 msgstr "Αυτό το widget διατίθεται σε ένα πρόγραμμα AstroWay επί πληρωμή."
 
-#: includes/class-tier.php:152
+#: includes/class-tier.php:159
 msgid "Upgrade →"
 msgstr "Αναβάθμιση →"
 
 #: includes/views/admin-api-key.php:19
-msgid "Higher limits, advanced widgets, no watermark."
-msgstr "Υψηλότερα όρια, προηγμένα widgets, χωρίς υδατογράφημα."
+msgid ""
+"Paste a shortcode into a page. No account, no key, nothing to configure."
+msgstr ""
+"Επικολλήστε έναν σύντομο κωδικό σε μια σελίδα. Χωρίς λογαριασμό, χωρίς "
+"κλειδί, χωρίς καμία ρύθμιση."
 
-#: includes/views/admin-api-key.php:59
+#: includes/views/admin-api-key.php:24
+msgid "Tonight's Moon phase. Takes no parameters at all."
+msgstr "Η φάση της Σελήνης απόψε. Δεν δέχεται καμία παράμετρο."
+
+#: includes/views/admin-api-key.php:25
+msgid "A birth chart: date, time and place."
+msgstr "Ένας γενέθλιος χάρτης: ημερομηνία, ώρα και τόπος."
+
+#: includes/views/admin-api-key.php:67
+msgid "Your first widget"
+msgstr "Το πρώτο σου widget"
+
+#: includes/views/admin-api-key.php:68
+msgid "copy · paste · open the page"
+msgstr "αντιγραφή · επικόλληση · άνοιγμα της σελίδας"
+
+#: includes/views/admin-api-key.php:73
+msgid "Copy a shortcode."
+msgstr "Αντιγράψτε έναν σύντομο κωδικό."
+
+#: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
+#: includes/views/admin-shortcodes.php:291
+msgid "Click to copy"
+msgstr "Κλικ για αντιγραφή"
+
+#: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
+#: includes/views/admin-shortcodes.php:295
+msgid "copy"
+msgstr "αντίγραφο"
+
+#: includes/views/admin-api-key.php:86
+msgid "Paste it into any post or page."
+msgstr "Επικόλλησέ το σε οποιαδήποτε ανάρτηση ή σελίδα."
+
+#: includes/views/admin-api-key.php:87
+msgid ""
+"In the block editor you can type /astroway instead and pick the block: the "
+"preview shows the finished card, not a placeholder."
+msgstr ""
+"Στον επεξεργαστή μπλοκ μπορείτε να πληκτρολογήσετε /astroway και να "
+"επιλέξετε το μπλοκ: η προεπισκόπηση εμφανίζει την ολοκληρωμένη κάρτα, όχι "
+"ένα προσωρινό στοιχείο."
+
+#: includes/views/admin-api-key.php:90
+msgid "Open the page."
+msgstr "Άνοιξε τη σελίδα."
+
+#: includes/views/admin-api-key.php:91
+msgid ""
+"The reading is already in the HTML, in your theme's fonts and colours. "
+"Nothing below this panel is required to make it work."
+msgstr ""
+"Η εμφάνιση έχει ήδη οριστεί στον κώδικα HTML, σύμφωνα με τις γραμματοσειρές "
+"και τα χρώματα του θέματος σας. Δεν απαιτείται τίποτα από τα στοιχεία που "
+"βρίσκονται κάτω από αυτό το πλαίσιο για να λειτουργήσει."
+
+#: includes/views/admin-api-key.php:96
+msgid "Two more to try:"
+msgstr "Δύο ακόμα για να δοκιμάσετε:"
+
+#. translators: %s is a link to the plugin's Shortcodes admin page
+#: includes/views/admin-api-key.php:115
+#, php-format
+msgid ""
+"All 16 shortcodes with their parameters, plus a city search that fills in "
+"coordinates and timezone: %s."
+msgstr ""
+"Και οι 16 σύντομοι κωδικοί με τις παραμέτρους τους, καθώς και μια αναζήτηση "
+"πόλης που συμπληρώνει τις συντεταγμένες και τη ζώνη ώρας: %s."
+
+#: includes/views/admin-api-key.php:127
 msgid "Your API key"
 msgstr "Το κλειδί σας API"
 
-#: includes/views/admin-api-key.php:60
-msgid "paste · verify · save"
-msgstr "επικόλληση · επικύρωση · αποθήκευση"
+#: includes/views/admin-api-key.php:128
+msgid "optional · paste · verify · save"
+msgstr "προαιρετικό · επικόλληση · επαλήθευση · αποθήκευση"
 
-#: includes/views/admin-api-key.php:64
+#: includes/views/admin-api-key.php:132
 msgid "Paste your key"
 msgstr "Επικόλληση κλειδιού"
 
-#: includes/views/admin-api-key.php:75
+#: includes/views/admin-api-key.php:143
 msgid "Verify"
 msgstr "Επικύρωση"
 
-#: includes/views/admin-api-key.php:79
+#: includes/views/admin-api-key.php:147
 msgid ""
-"Paste a key from api.astroway.info/dashboard. Leave empty to revert to "
-"Anonymous mode."
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
+"Every widget renders without one. If you do save a key, your server offers "
+"it on the calls behind the page-rendered widgets, so a paid plan counts them"
+" against its own allowance rather than the one this site shares with every "
+"other anonymous caller. Saving a key also adds the status panel below, and "
+"the key itself is what you use when you call the API from your own code."
 msgstr ""
-"Επικολλήστε ένα κλειδί από api.astroway.info/dashboard. Αφήστε κενό για "
-"επιστροφή στην ανώνυμη λειτουργία."
+"Επικολλήστε ένα κλειδί από το api.astroway.info/dashboard ή αφήστε το πεδίο "
+"κενό. Κάθε widget εμφανίζεται και χωρίς κλειδί. Εάν αποθηκεύσετε ένα κλειδί,"
+" ο διακομιστής σας το παρέχει στις κλήσεις που πραγματοποιούνται πίσω από τα"
+" widget που εμφανίζονται στη σελίδα, οπότε ένα πρόγραμμα επί πληρωμή τις "
+"υπολογίζει στο δικό του όριο και όχι σε αυτό που μοιράζεται αυτός ο "
+"ιστότοπος με κάθε άλλο ανώνυμο χρήστη. Η αποθήκευση ενός κλειδιού προσθέτει "
+"επίσης τον πίνακα κατάστασης που βρίσκεται παρακάτω, ενώ το ίδιο το κλειδί "
+"είναι αυτό που χρησιμοποιείτε όταν καλείτε το API από τον δικό σας κώδικα."
 
-#: includes/views/admin-api-key.php:83
+#: includes/views/admin-api-key.php:151
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
 
-#: includes/views/admin-api-key.php:98
+#: includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: includes/views/admin-api-key.php:103
+#: includes/views/admin-api-key.php:171
 msgid "live · key authenticated"
 msgstr "Εξουσιοδοτημένο"
 
-#: includes/views/admin-api-key.php:106
-msgid "suspended — contact support"
-msgstr "σε αναστολή — επικοινωνήστε με την υποστήριξη"
+#: includes/views/admin-api-key.php:174
+msgid "suspended, contact support"
+msgstr "αναστολή, επικοινωνήστε με την υποστήριξη"
 
-#: includes/views/admin-api-key.php:109
-msgid "revoked — re-issue key"
-msgstr "ακύρωση — επανέκδοση κλειδιού"
+#: includes/views/admin-api-key.php:177
+msgid "revoked, re-issue key"
+msgstr "ανάκληση, επανέκδοση κλειδιού"
 
-#: includes/views/admin-api-key.php:112
+#: includes/views/admin-api-key.php:180
 msgid "invalid key"
 msgstr "Εισιτήριο κλειδί."
 
-#: includes/views/admin-api-key.php:115
-msgid "unreachable — check connection"
-msgstr "δεν υπάρχει σύνδεση — ελέγξτε τη σύνδεση"
+#: includes/views/admin-api-key.php:183
+msgid "unreachable, check connection"
+msgstr "δεν υπάρχει σύνδεση, ελέγξτε τη σύνδεση"
 
-#: includes/views/admin-api-key.php:126
+#: includes/views/admin-api-key.php:194
 msgid "Key"
 msgstr "Κλειδί API"
 
-#: includes/views/admin-api-key.php:140
+#: includes/views/admin-api-key.php:208
 msgid "Credits"
 msgstr "Πιστώσεις / μήνα"
 
-#: includes/views/admin-api-key.php:159
+#: includes/views/admin-api-key.php:227
 msgid "Period ends"
 msgstr "Η περίοδος λήγει"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:166
+#: includes/views/admin-api-key.php:234
 #, php-format
 msgid "in %s"
 msgstr "στο %s"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:167
+#: includes/views/admin-api-key.php:235
 msgid "expired"
 msgstr "Απαιτούμενο"
 
-#: includes/views/admin-api-key.php:180
+#: includes/views/admin-api-key.php:248
 msgid "Domain"
 msgstr "Τομέας"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:189
+#: includes/views/admin-api-key.php:257
 #, php-format
 msgid "bound %s ago"
 msgstr "δεσμεύτηκε πριν από %s"
 
-#: includes/views/admin-api-key.php:196
-msgid "not bound — first request will bind this site"
-msgstr ""
-"δεν έχει γίνει σύνδεση — η πρώτη αίτηση θα συνδέσει αυτόν τον ιστότοπο"
+#: includes/views/admin-api-key.php:264
+msgid "not bound: the first request binds this site"
+msgstr "δεν έχει γίνει σύνδεση: το πρώτο αίτημα συνδέει αυτόν τον ιστότοπο"
 
-#: includes/views/admin-api-key.php:203
+#: includes/views/admin-api-key.php:271
 msgid "Source"
 msgstr "Πόροι"
 
-#: includes/views/admin-api-key.php:210
+#: includes/views/admin-api-key.php:278
 msgid ""
-"Limited data — connected api does not yet expose /v1/auth/keys/me. Plan and "
-"credits shown via legacy fallback."
+"Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
+"and credits shown via legacy fallback."
 msgstr ""
-"Περιορισμένα δεδομένα — το συνδεδεμένο API δεν παρέχει ακόμη πρόσβαση στο "
+"Περιορισμένα δεδομένα: το συνδεδεμένο API δεν παρέχει ακόμη πρόσβαση στο "
 "/v1/auth/keys/me. Το πρόγραμμα και οι μονάδες πιστώσεων εμφανίζονται μέσω "
 "της εναλλακτικής λύσης παλαιού τύπου."
 
-#: includes/views/admin-api-key.php:213
+#: includes/views/admin-api-key.php:281
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -449,189 +819,189 @@ msgstr ""
 "Επικολλήστε ένα κλειδί από api.astroway.info/dashboard. Αφήστε κενό για "
 "επιστροφή στην ανώνυμη λειτουργία."
 
-#: includes/views/admin-api-key.php:215
+#: includes/views/admin-api-key.php:283
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue — try again in "
-"a moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a"
+" moment."
 msgstr ""
 "Δεν ήταν δυνατή η πρόσβαση στο api.astroway.info. Πρόβλημα δικτύου ή του "
-"παρόχου — δοκιμάστε ξανά σε λίγο."
+"παρόχου, δοκιμάστε ξανά σε λίγο."
 
-#: includes/views/admin-api-key.php:224
-msgid "What you get"
-msgstr "Τι παίρνετε"
+#: includes/views/admin-api-key.php:292
+msgid "What a key adds"
+msgstr "Τι προσθέτει ένα κλειδί"
 
-#: includes/views/admin-api-key.php:225
+#: includes/views/admin-api-key.php:293
 msgid "3 tiers compared"
 msgstr "Σύγκριση 3 επιπέδων"
 
-#: includes/views/admin-api-key.php:233
+#: includes/views/admin-api-key.php:301
 msgid "Anonymous"
 msgstr "Ανώνυμο"
 
-#: includes/views/admin-api-key.php:234
+#: includes/views/admin-api-key.php:302
 msgid "no setup"
 msgstr "χωρίς εγκατάσταση"
 
-#: includes/views/admin-api-key.php:237
+#: includes/views/admin-api-key.php:305
 msgid "Free key"
 msgstr "Δωρεάν κλειδί"
 
-#: includes/views/admin-api-key.php:238
+#: includes/views/admin-api-key.php:306
 msgid "signup"
 msgstr "εγγραφή"
 
-#: includes/views/admin-api-key.php:241
+#: includes/views/admin-api-key.php:309
 msgid "Paid"
 msgstr "Εισιτήριο"
 
-#: includes/views/admin-api-key.php:242
+#: includes/views/admin-api-key.php:310
 msgid "from $5/mo"
 msgstr "από $5/μήνα"
 
-#: includes/views/admin-api-key.php:248
-msgid "Rate limit"
-msgstr "Όριο αιτημάτων"
+#: includes/views/admin-api-key.php:316
+msgid "Widgets in this plugin"
+msgstr "Widgets σε αυτό το πρόσθετο"
 
-#: includes/views/admin-api-key.php:249
-msgid "30/hour/IP"
-msgstr "30/ώρα/IP"
+#: includes/views/admin-api-key.php:317 includes/views/admin-api-key.php:318
+#: includes/views/admin-api-key.php:319
+msgid "all of them"
+msgstr "όλοι τους"
 
-#: includes/views/admin-api-key.php:250
-msgid "~60/min/key"
-msgstr "~60/λεπ/κλειδί"
+#: includes/views/admin-api-key.php:322
+msgid "API requests / month"
+msgstr "Αιτήματα API ανά μήνα"
 
-#: includes/views/admin-api-key.php:251
-msgid "30–1000/min"
-msgstr "30–1000/λεπ"
+#: includes/views/admin-api-key.php:323 includes/views/admin-api-key.php:329
+#: includes/views/admin-api-key.php:335 includes/views/admin-api-key.php:341
+#: includes/views/admin-api-key.php:342 includes/views/admin-api-key.php:347
+#: includes/views/admin-api-key.php:353 includes/views/admin-api-key.php:354
+msgid "none"
+msgstr "κανένα"
 
-#: includes/views/admin-api-key.php:254
-msgid "Credits / month"
-msgstr "Πιστώσεις / μήνα"
-
-#: includes/views/admin-api-key.php:256
+#: includes/views/admin-api-key.php:324
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:257
-msgid "50K – 3.5M"
-msgstr "50K – 3,5M"
+#: includes/views/admin-api-key.php:325
+msgid "50K to 3.5M"
+msgstr "50.000 έως 3,5 εκατομμύρια"
 
-#: includes/views/admin-api-key.php:260
-msgid "Render mode"
-msgstr "Λειτουργία απόδοσης"
+#: includes/views/admin-api-key.php:328
+msgid "Rate limit, keyed endpoints"
+msgstr "Όριο συχνότητας, τερματικά με κλειδί"
 
-#: includes/views/admin-api-key.php:261 includes/views/admin-api-key.php:262
-msgid "iframe"
-msgstr "iframe"
+#: includes/views/admin-api-key.php:330
+msgid "~60 requests/min"
+msgstr "~60 αιτήματα/λεπτό"
 
-#: includes/views/admin-api-key.php:263
-msgid "native"
-msgstr "εγγενής"
+#: includes/views/admin-api-key.php:331
+msgid "30 to 1000 requests/min"
+msgstr "30 έως 1.000 αιτήματα/λεπτό"
 
-#: includes/views/admin-api-key.php:266
-msgid "Widgets"
-msgstr "Widgets"
+#: includes/views/admin-api-key.php:334
+msgid "Dashboard, usage history"
+msgstr "Πίνακας ελέγχου, ιστορικό χρήσης"
 
-#: includes/views/admin-api-key.php:267 includes/views/admin-api-key.php:268
-msgid "5 basic"
-msgstr "5 βασικά"
-
-#: includes/views/admin-api-key.php:269
-msgid "+ Tarot, HD, Synastry, Numerology"
-msgstr "+ Ταρό, HD, Σύναστρα, Αριθμολογία"
-
-#: includes/views/admin-api-key.php:272
-msgid "AI interpretations"
-msgstr "Ερμηνείες AI"
-
-#: includes/views/admin-api-key.php:275 includes/views/admin-api-key.php:293
+#: includes/views/admin-api-key.php:336 includes/views/admin-api-key.php:337
+#: includes/views/admin-api-key.php:343 includes/views/admin-api-key.php:355
 msgid "included"
 msgstr "συμπεριλαμβάνονται"
 
-#: includes/views/admin-api-key.php:278
-msgid "Watermark"
-msgstr "Υδατογράφημα"
+#: includes/views/admin-api-key.php:340
+msgid "AI interpretations"
+msgstr "Ερμηνείες AI"
 
-#: includes/views/admin-api-key.php:279 includes/views/admin-api-key.php:280
-msgid "shown"
-msgstr "εμφανίζεται"
-
-#: includes/views/admin-api-key.php:281
-msgid "removed"
-msgstr "αφαιρείται"
-
-#: includes/views/admin-api-key.php:284
+#: includes/views/admin-api-key.php:346
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Υποστήριξη"
 
-#: includes/views/admin-api-key.php:286
+#: includes/views/admin-api-key.php:348
 msgid "community"
 msgstr "κοινοτική"
 
-#: includes/views/admin-api-key.php:287
+#: includes/views/admin-api-key.php:349
 msgid "priority"
 msgstr "προτεραιότητας"
 
-#: includes/views/admin-api-key.php:290
+#: includes/views/admin-api-key.php:352
 msgid "Spend cap"
 msgstr "Όριο δαπανών"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:363
 #, php-format
-msgid "Numbers shown for context. Canonical pricing → %s"
+msgid ""
+"Every row below the first one is about calling api.astroway.info from your "
+"own code. The widgets on your pages are not affected by any of it. Canonical"
+" pricing → %s"
 msgstr ""
-"Οι αριθμοί εμφανίζονται για πληροφοριακούς σκοπούς. Τιμοκατάλογος → %s"
+"Κάθε σειρά μετά την πρώτη αφορά την κλήση της διεύθυνσης api.astroway.info "
+"από τον δικό σας κώδικα. Τα widget στις σελίδες σας δεν επηρεάζονται καθόλου"
+" από αυτό. Τυπική τιμολόγηση → %s"
 
-#: includes/views/admin-api-key.php:312
+#: includes/views/admin-api-key.php:374
 msgid "How it works"
 msgstr "Πώς λειτουργεί"
 
-#: includes/views/admin-api-key.php:316
-msgid "No key."
-msgstr "Χωρίς κλειδί."
+#: includes/views/admin-api-key.php:378
+msgid "On your pages."
+msgstr "Στις σελίδες σας."
 
-#: includes/views/admin-api-key.php:317
+#: includes/views/admin-api-key.php:379
 msgid ""
-"Plugin renders iframe widgets, rate-limited by visitor IP. Good for low-"
-"traffic sites and quick trials. The \"Powered by AstroWay\" watermark is "
-"shown."
+"Your server renders seven widgets into the page, counted against this site's"
+" allowance of 300 requests an hour, or against your own plan when a paid key"
+" is saved above. The rest load in a frame against each visitor's own 30, and"
+" those carry the \"Powered by AstroWay\" watermark: a frame is fetched by "
+"the visitor's browser, which is no place for your key."
 msgstr ""
-"Το πρόσθετο αποδίδει widgets iframe, με όριο αιτημάτων ανά IP επισκέπτη. "
-"Κατάλληλο για ιστότοπους χαμηλής επισκεψιμότητας και γρήγορες δοκιμές. "
-"Εμφανίζεται το υδατογράφημα \"Powered by AstroWay\"."
+"Ο διακομιστής σας εμφανίζει επτά widget στη σελίδα, τα οποία υπολογίζονται "
+"στο όριο των 300 αιτήσεων ανά ώρα αυτού του ιστότοπου ή στο δικό σας πακέτο,"
+" όταν έχει αποθηκευτεί παραπάνω ένα κλειδί επί πληρωμή. Τα υπόλοιπα "
+"φορτώνονται σε ένα πλαίσιο, το οποίο υπολογίζεται στο όριο των 30 αιτήσεων "
+"ανά επισκέπτη, και φέρουν το υδατογράφημα «Powered by AstroWay»: το πλαίσιο "
+"αυτό ανακτάται από το πρόγραμμα περιήγησης του επισκέπτη, όπου δεν υπάρχει "
+"χώρος για το κλειδί σας."
 
-#: includes/views/admin-api-key.php:320
+#: includes/views/admin-api-key.php:382
 msgid "Free key."
 msgstr "Δωρεάν κλειδί."
 
-#: includes/views/admin-api-key.php:321
+#: includes/views/admin-api-key.php:383
 msgid ""
-"Personal credit bucket (10,000/month), isolated from other sites. Iframe "
-"rendering stays, but you get a dashboard with activity history. Watermark is"
-" still shown."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus "
+"a dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of "
+"the frame's address."
 msgstr ""
-"Προσωπικός κάδος πιστώσεων (10.000/μήνα), απομονωμένος από άλλους "
-"ιστότοπους. Η απόδοση iframe παραμένει, αλλά έχετε πρόσβαση στο dashboard με"
-" ιστορικό δραστηριότητας. Το υδατογράφημα εξακολουθεί να εμφανίζεται."
+"Ένα προσωπικό όριο 10.000 κλήσεων το μήνα για κώδικα που γράφετε εσείς οι "
+"ίδιοι, καθώς και ένας πίνακας ελέγχου με το ιστορικό δραστηριότητας. Δεν "
+"αλλάζει το περιεχόμενο που εμφανίζουν οι σύντομοι κωδικοί, ενώ το "
+"υδατογράφημα στα πλαισιωμένα widget παραμένει: το κλειδί δεν αποτελεί μέρος "
+"της διεύθυνσης του πλαισίου."
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:386
 msgid "Paid key."
 msgstr "Εισιτήριο κλειδί."
 
-#: includes/views/admin-api-key.php:325
+#: includes/views/admin-api-key.php:387
 msgid ""
-"Native client-side rendering (no iframe), advanced widgets (Tarot decks, "
-"synastry, Human Design, Numerology), AI-written interpretations, and no "
-"watermark. Spend cap available to protect against bill spikes."
+"Higher limits and more calls on api.astroway.info, AI-written "
+"interpretations, priority support, and a spend cap against bill spikes. The "
+"page-rendered widgets on this site draw on that plan too, instead of the "
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
+" the shortcode; none of the current ones do."
 msgstr ""
-"Εγγενής απόδοση από πλευράς πελάτη (χωρίς iframe), προηγμένα widgets "
-"(τράπουλες Ταρό, σύναστρα, Human Design, Αριθμολογία), ερμηνείες γραμμένες "
-"από AI, και χωρίς υδατογράφημα. Διαθέσιμος οριοθέτης δαπανών για προστασία "
-"από αιφνίδιες αυξήσεις λογαριασμού."
+"Υψηλότερα όρια και περισσότερες κλήσεις στο api.astroway.info, ερμηνείες που"
+" δημιουργούνται από τεχνητή νοημοσύνη, υποστήριξη προτεραιότητας και ανώτατο"
+" όριο δαπανών για την αποφυγή απότομων αυξήσεων στο λογαριασμό. Τα widget "
+"που εμφανίζονται στη σελίδα αυτού του ιστότοπου χρησιμοποιούν επίσης αυτό το"
+" πακέτο, αντί του κοινόχρηστου ανώνυμου ορίου. Τα widget που απαιτούν ένα "
+"επί πληρωμή endpoint θα το αναφέρουν στον σύντομο κωδικό· κανένα από τα "
+"τρέχοντα δεν το κάνει."
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -764,11 +1134,11 @@ msgstr "Χαρακτηριστικό"
 
 #: includes/views/admin-settings.php:181
 msgid ""
-"Matrix is filterable via the `astroway_tier_matrix` filter — addons can "
+"Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"Η μήτρα μπορεί να φιλτραριστεί μέσω του φίλτρου `astroway_tier_matrix` — τα "
-"πρόσθετα μπορούν να προσθέσουν τις δικές τους λειτουργίες."
+"Το Matrix μπορεί να φιλτραριστεί μέσω του φίλτρου `astroway_tier_matrix`, "
+"οπότε τα πρόσθετα μπορούν να προσθέσουν τις δικές τους λειτουργίες."
 
 #: includes/views/admin-settings.php:189
 msgid "Domain binding"
@@ -825,19 +1195,74 @@ msgstr "Εμφάνιση δήλωσης αποποίησης ευθύνης σε
 #: includes/views/admin-settings.php:267
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
-"widget footer. Off by default — enable it if your jurisdiction or compliance"
-" policy requires it. The wording is rendered and localized by "
+"widget footer. Off by default, enable it if your jurisdiction or compliance "
+"policy requires it. The wording is rendered and localized by "
 "api.astroway.info."
 msgstr ""
 "Προσθέτει μια σύντομη φράση του τύπου «πληροφοριακός χαρακτήρας, δεν "
 "αποτελεί επαγγελματική συμβουλή» στο υποσέλιδο του widget. Είναι "
-"απενεργοποιημένη από προεπιλογή — ενεργοποιήστε την αν το απαιτεί η "
-"νομοθεσία της περιοχής σας ή η πολιτική συμμόρφωσης. Το κείμενο εμφανίζεται "
-"και μεταφράζεται από το api.astroway.info."
+"απενεργοποιημένη από προεπιλογή· ενεργοποιήστε την αν το απαιτεί η νομοθεσία"
+" της περιοχής σας ή η πολιτική συμμόρφωσης. Το κείμενο εμφανίζεται και "
+"μεταφράζεται από το api.astroway.info."
 
 #: includes/views/admin-settings.php:270
 msgid "Save disclaimer setting"
 msgstr "Αποθήκευση ρύθμισης αποποίησης ευθύνης"
+
+#: includes/views/admin-settings.php:278
+msgid "Render mode"
+msgstr "Λειτουργία απόδοσης"
+
+#: includes/views/admin-settings.php:279
+msgid "where widget content is drawn"
+msgstr "όπου αντλείται το περιεχόμενο του widget"
+
+#: includes/views/admin-settings.php:287
+msgid "On this page (recommended)"
+msgstr "Σε αυτή τη σελίδα (συνιστάται)"
+
+#: includes/views/admin-settings.php:288
+msgid ""
+"Your server fetches the text and prints it into the page. Search engines can"
+" read it, your theme styles it, and it works without JavaScript. Answers are"
+" cached until they change, so a daily horoscope is fetched once a day per "
+"sign."
+msgstr ""
+"Ο διακομιστής σας ανακτά το κείμενο και το εκτυπώνει στη σελίδα. Οι μηχανές "
+"αναζήτησης μπορούν να το διαβάσουν, το θέμα σας το διαμορφώνει και "
+"λειτουργεί χωρίς JavaScript. Οι απαντήσεις αποθηκεύονται στην κρυφή μνήμη "
+"μέχρι να αλλάξουν, οπότε ένα καθημερινό ωροσκόπιο ανακτάται μία φορά την "
+"ημέρα ανά ζώδιο."
+
+#: includes/views/admin-settings.php:293
+msgid "In an iframe"
+msgstr "Σε ένα iframe"
+
+#: includes/views/admin-settings.php:294
+msgid ""
+"Each visitor's browser loads the widget from api.astroway.info. Nothing "
+"reaches your page source, so the content is not indexed and your theme "
+"cannot style it. Choose this if your host blocks outgoing requests, or to "
+"compare the two."
+msgstr ""
+"Το πρόγραμμα περιήγησης κάθε επισκέπτη φορτώνει το widget από το "
+"api.astroway.info. Τίποτα δεν φτάνει στον πηγαίο κώδικα της σελίδας σας, "
+"οπότε το περιεχόμενο δεν ευρετηριάζεται και το θέμα σας δεν μπορεί να το "
+"διαμορφώσει. Επιλέξτε αυτή την επιλογή εάν ο πάροχος φιλοξενίας σας "
+"μπλοκάρει τις εξερχόμενες αιτήσεις, ή για να συγκρίνετε τις δύο."
+
+#: includes/views/admin-settings.php:298
+msgid ""
+"Widgets without a page-side template, and any widget whose data cannot be "
+"fetched, fall back to the iframe on their own."
+msgstr ""
+"Τα widget χωρίς πρότυπο από την πλευρά της σελίδας, και οποιοδήποτε widget "
+"του οποίου τα δεδομένα δεν μπορούν να ανακτηθούν, επιστρέφουν αυτόματα στο "
+"iframe."
+
+#: includes/views/admin-settings.php:300
+msgid "Save render mode"
+msgstr "Αποθήκευση λειτουργίας απόδοσης"
 
 #: includes/views/admin-shortcodes.php:15
 msgid ""
@@ -852,20 +1277,24 @@ msgid "Natal Chart"
 msgstr "Χάρτης Γεννήσεων"
 
 #: includes/views/admin-shortcodes.php:21
-msgid "Birth chart wheel — planet positions, houses, aspects."
-msgstr "Ρόδα χάρτη γεννήσεων — θέσεις πλανητών, οίκοι, όψεις."
-
-#: includes/views/admin-shortcodes.php:23
-msgid "AstroWay — Natal Chart"
-msgstr "AstroWay — Χάρτης Γεννήσεων"
+msgid ""
+"Birth chart: the wheel plus planet positions, houses and aspects as text."
+msgstr ""
+"Αστρολογικό χάρτη: το τροχό plus θέσεις πλανητών, σπίτια και όψεις ως "
+"κείμενο."
 
 #: includes/views/admin-shortcodes.php:25
-#: includes/views/admin-shortcodes.php:60
+#: includes/views/admin-shortcodes.php:93
+#: includes/views/admin-shortcodes.php:118
+#: includes/views/admin-shortcodes.php:156
+#: includes/views/admin-shortcodes.php:197
 msgid "Birth date in YYYY-MM-DD."
 msgstr "Ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
 
 #: includes/views/admin-shortcodes.php:26
-#: includes/views/admin-shortcodes.php:61
+#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:119
+#: includes/views/admin-shortcodes.php:157
 msgid "Birth time in HH:MM (24-hour)."
 msgstr "Ώρα γέννησης σε μορφή ΩΩ:ΛΛ (24ωρο)."
 
@@ -885,21 +1314,31 @@ msgstr "Ζώνη ώρας IANA (π.χ. Europe/Kyiv)."
 msgid "Display name on the chart."
 msgstr "Όνομα εμφάνισης στον χάρτη."
 
-#: includes/views/admin-shortcodes.php:35
+#: includes/views/admin-shortcodes.php:31
+msgid ""
+"Palette of the wheel drawing: dark (default), light or console. The text "
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
+msgstr ""
+"Χρωματική παλέτα του σχεδίου του τροχού: σκούρο (προεπιλογή), ανοιχτό ή "
+"κονσόλα. Το κείμενο δίπλα του προσαρμόζεται αυτόματα στο θέμα σας· ο τροχός "
+"είναι εικόνα και δεν μπορεί να προσαρμοστεί, οπότε ρυθμίστε αυτή την επιλογή"
+" ώστε να ταιριάζει."
+
+#: includes/views/admin-shortcodes.php:36
 msgid "Daily Horoscope"
 msgstr "Ωροσκόπος Ημέρας"
 
-#: includes/views/admin-shortcodes.php:36
+#: includes/views/admin-shortcodes.php:37
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
 msgstr ""
 "Ωροσκόπος ημέρας για ένα ζώδιο. Ανανεώνεται αυτόματα καθημερινά από πλευράς "
 "API."
 
-#: includes/views/admin-shortcodes.php:38
-msgid "AstroWay — Daily Horoscope"
-msgstr "AstroWay — Ωροσκόπος Ημέρας"
-
-#: includes/views/admin-shortcodes.php:40
+#: includes/views/admin-shortcodes.php:41
+#: includes/views/admin-shortcodes.php:51
+#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:133
 msgid ""
 "One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
 "sagittarius, capricorn, aquarius, pisces."
@@ -907,84 +1346,290 @@ msgstr ""
 "Ένα από: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
 "sagittarius, capricorn, aquarius, pisces."
 
-#: includes/views/admin-shortcodes.php:45
-msgid "Moon Phase"
-msgstr "Φάση Σελήνης"
-
 #: includes/views/admin-shortcodes.php:46
-msgid "Current Moon phase visualization with illumination percent."
-msgstr "Οπτικοποίηση τρέχουσας φάσης Σελήνης με ποσοστό φωτισμού."
+msgid "Weekly Horoscope"
+msgstr "Εβδομαδιαίο Ωροσκόπιο"
 
-#: includes/views/admin-shortcodes.php:48
-msgid "AstroWay — Moon Phase"
-msgstr "AstroWay — Φάση Σελήνης"
+#: includes/views/admin-shortcodes.php:47
+msgid ""
+"Horoscope for the current week, anchored to Monday. Rendered into the page, "
+"not an iframe."
+msgstr ""
+"Ωροσκόπιο για την τρέχουσα εβδομάδα, με αφετηρία τη Δευτέρα. Αποδίδεται στη "
+"σελίδα, όχι σε ένα iframe."
 
-#: includes/views/admin-shortcodes.php:50
+#: includes/views/admin-shortcodes.php:52
+msgid "Any date inside the week you want. Defaults to today."
+msgstr ""
+"Οποιαδήποτε ημερομηνία εντός της εβδομάδας θέλετε. Προεπιλογή είναι η "
+"σημερινή."
+
+#: includes/views/admin-shortcodes.php:57
+msgid "Monthly Horoscope"
+msgstr "Μηνιαίο Ωροσκόπιο"
+
+#: includes/views/admin-shortcodes.php:58
+msgid ""
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
+msgstr ""
+"Ωροσκόπιο για τον τρέχοντα μήνα, με αφετηρία την 1η. Αποδίδεται στη σελίδα, "
+"όχι σε ένα iframe."
+
+#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:134
+msgid "Any date inside the month you want. Defaults to today."
+msgstr ""
+"Οποιαδήποτε ημερομηνία εντός του μήνα θέλετε. Προεπιλογή είναι η σημερινή."
+
+#: includes/views/admin-shortcodes.php:68
+msgid "Planet of the Day"
+msgstr "Πλανήτης της Ημέρας"
+
+#: includes/views/admin-shortcodes.php:69
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes. "
+"Rendered into the page, not an iframe."
+msgstr ""
+"Παραδοσιακός πλανητικός κυβερνήτης της ημέρας της εβδομάδας, με το σύμβολο "
+"και τα θέματά του. Αποδίδεται στη σελίδα, όχι σε ένα iframe."
+
+#: includes/views/admin-shortcodes.php:73
+#: includes/views/admin-shortcodes.php:83
+#: includes/views/admin-shortcodes.php:171
+#: includes/views/admin-shortcodes.php:182
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "Υπέρβαση ημερομηνίας σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ. Προεπιλογή σήμερα."
 
-#: includes/views/admin-shortcodes.php:55
+#: includes/views/admin-shortcodes.php:78
+msgid "Moon Phase"
+msgstr "Φάση Σελήνης"
+
+#: includes/views/admin-shortcodes.php:79
+msgid "Current Moon phase visualization with illumination percent."
+msgstr "Οπτικοποίηση τρέχουσας φάσης Σελήνης με ποσοστό φωτισμού."
+
+#: includes/views/admin-shortcodes.php:88
 msgid "Human Design Bodygraph"
 msgstr "Human Design Bodygraph"
 
-#: includes/views/admin-shortcodes.php:56
+#: includes/views/admin-shortcodes.php:89
 msgid "Human Design body graph with centers, channels, gates."
 msgstr "Human Design bodygraph με κέντρα, κανάλια, πύλες."
 
-#: includes/views/admin-shortcodes.php:58
-msgid "AstroWay — Bodygraph"
-msgstr "AstroWay — Bodygraph"
-
-#: includes/views/admin-shortcodes.php:62
+#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:120
+#: includes/views/admin-shortcodes.php:158
+#: includes/views/admin-shortcodes.php:183
 msgid "WGS-84 latitude."
 msgstr "Γεωγραφικό πλάτος WGS-84."
 
-#: includes/views/admin-shortcodes.php:63
+#: includes/views/admin-shortcodes.php:96
+#: includes/views/admin-shortcodes.php:121
+#: includes/views/admin-shortcodes.php:159
+#: includes/views/admin-shortcodes.php:184
 msgid "WGS-84 longitude."
 msgstr "Γεωγραφικό μήκος WGS-84."
 
-#: includes/views/admin-shortcodes.php:64
+#: includes/views/admin-shortcodes.php:97
+#: includes/views/admin-shortcodes.php:122
+#: includes/views/admin-shortcodes.php:160
+#: includes/views/admin-shortcodes.php:185
 msgid "IANA timezone."
 msgstr "Ζώνη ώρας IANA."
 
-#: includes/views/admin-shortcodes.php:65
+#: includes/views/admin-shortcodes.php:98
 msgid "Display name."
 msgstr "Όνομα εμφάνισης."
 
-#: includes/views/admin-shortcodes.php:70
+#: includes/views/admin-shortcodes.php:103
 msgid "Daily Tarot Card"
 msgstr "Κάρτα Ταρό Ημέρας"
 
-#: includes/views/admin-shortcodes.php:71
+#: includes/views/admin-shortcodes.php:104
 msgid "Single card pull of the day from a chosen deck."
 msgstr "Μοναδική τράπουλα Ταρό ημέρας από επιλεγμένη τράπουλα."
 
-#: includes/views/admin-shortcodes.php:73
-msgid "AstroWay — Daily Tarot Card"
-msgstr "AstroWay — Κάρτα Ταρό Ημέρας"
+#: includes/views/admin-shortcodes.php:108
+msgid ""
+"Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
+"renders into the page; the other two load in a frame."
+msgstr ""
+"Επιλογή τράπουλας: Rider-Waite (προεπιλογή), Μασσαλίας ή Λενόρμαν. Μόνο η "
+"τράπουλα Rider-Waite εμφανίζεται απευθείας στη σελίδα· οι άλλες δύο "
+"φορτώνονται σε πλαίσιο."
 
-#: includes/views/admin-shortcodes.php:75
-msgid "Deck slug: rider-waite (default), marseille, or lenormand."
-msgstr "Slug τράπουλας: rider-waite (προεπιλογή), marseille, ή lenormand."
+#: includes/views/admin-shortcodes.php:113
+msgid "Mini Birth Chart"
+msgstr "Μικρό Γεννητικός Χάρτης"
 
-#: includes/views/admin-shortcodes.php:94
+#: includes/views/admin-shortcodes.php:114
+msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
+msgstr ""
+"Ο γενέθλιος χάρτης, σχεδιασμένος σε μικρό μέγεθος, για μια πλευρική στήλη. "
+"Φορτώνεται σε πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:123
+#: includes/views/admin-shortcodes.php:135
+#: includes/views/admin-shortcodes.php:146
+#: includes/views/admin-shortcodes.php:161
+#: includes/views/admin-shortcodes.php:172
+#: includes/views/admin-shortcodes.php:186
+#: includes/views/admin-shortcodes.php:199
+#: includes/views/admin-shortcodes.php:219
+msgid "dark (default), light or console."
+msgstr "σκοτεινό (προεπιλογή), ανοιχτό ή κονσόλα."
+
+#: includes/views/admin-shortcodes.php:128
+msgid "Monthly Forecast"
+msgstr "Μηνιαία πρόβλεψη"
+
+#: includes/views/admin-shortcodes.php:129
+msgid ""
+"Four weeks ahead for one sign, each with its own theme. Loads in a frame."
+msgstr ""
+"Τέσσερις εβδομάδες μπροστά για κάθε ζώδιο, η καθεμία με το δικό της θέμα. "
+"Φορτώνεται σε ένα πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:140
+msgid "Moon Transit Timeline"
+msgstr "Χρονοδιάγραμμα Διαδρομής Σελήνης"
+
+#: includes/views/admin-shortcodes.php:141
+msgid ""
+"The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
+msgstr ""
+"Οι επόμενες επτά ημέρες με τις εισόδους της Σελήνης. Δεν αφορούν "
+"συγκεκριμένα ζώδια. Φορτώνεται σε ένα πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:145
+msgid "Day the seven start from. Defaults to today."
+msgstr "Ημέρα από την οποία ξεκινά η έβδομη. Προεπιλεγμένη τιμή: σήμερα."
+
+#: includes/views/admin-shortcodes.php:151
+msgid "Vedic Kundli"
+msgstr "Βεδικό Κούντλι"
+
+#: includes/views/admin-shortcodes.php:152
+msgid ""
+"North-Indian D1 chart. Loads in a frame: there is no page-side template for "
+"it yet."
+msgstr ""
+"Διάγραμμα D1 της Βόρειας Ινδίας. Φορτώνεται σε πλαίσιο: δεν υπάρχει ακόμα "
+"πρότυπο για τη σελίδα."
+
+#: includes/views/admin-shortcodes.php:166
+msgid "Transit Sky"
+msgstr "Transit Sky"
+
+#: includes/views/admin-shortcodes.php:167
+msgid ""
+"Where the planets stand on a given date. Loads in a frame: there is no page-"
+"side template for it yet."
+msgstr ""
+"Η θέση των πλανητών σε μια συγκεκριμένη ημερομηνία. Φορτώνεται σε πλαίσιο: "
+"δεν υπάρχει ακόμη πρότυπο για τη σελίδα."
+
+#: includes/views/admin-shortcodes.php:178
+msgid ""
+"Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
+"Loads in a frame."
+msgstr ""
+"Τίθι, νακσάτρα, γιόγκα, καράνα, βάρα και ραχού-καάλ για μια ημερομηνία και "
+"έναν τόπο. Φορτώνεται σε ένα πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:191
+#: assets/js/astroway-blocks-editor.js:154
+msgid "Numerology"
+msgstr "Αριθμολογία"
+
+#: includes/views/admin-shortcodes.php:192
+msgid ""
+"Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
+msgstr ""
+"Αριθμοί «Πορείας Ζωής», «Έκφρασης», «Ποθού της Ψυχής» και «Προσωπικότητας». "
+"Εμφανίζονται σε πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:196
+msgid "Full birth name. The letters are what the numbers are built from."
+msgstr ""
+"Πλήρες όνομα γέννησης. Τα γράμματα αποτελούν τη βάση για τη δημιουργία των "
+"αριθμών."
+
+#: includes/views/admin-shortcodes.php:198
+msgid "pythagorean (default), chaldean, kabbalistic or tamil."
+msgstr "πυθαγόρειο (προεπιλογή), χαλδαϊκό, καβαλιστικό ή ταμίλ."
+
+#: includes/views/admin-shortcodes.php:204
+msgid "Synastry Compatibility"
+msgstr "Συμβατότητα σύναστρίας"
+
+#: includes/views/admin-shortcodes.php:205
+msgid ""
+"Compatibility score and top inter-aspects for two birth charts. Loads in a "
+"frame."
+msgstr ""
+"Δείκτης συμβατότητας και κορυφαίες διασταυρώσεις για δύο γενέθλια χάρτες. "
+"Εμφανίζεται σε πλαίσιο."
+
+#: includes/views/admin-shortcodes.php:209
+msgid "First person: birth date in YYYY-MM-DD."
+msgstr "Πρώτο πρόσωπο: ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
+
+#: includes/views/admin-shortcodes.php:210
+msgid "First person: birth time in HH:MM."
+msgstr "Πρώτο πρόσωπο: ώρα γέννησης σε ώρες και λεπτά."
+
+#: includes/views/admin-shortcodes.php:211
+msgid "First person: latitude."
+msgstr "Πρώτο πρόσωπο: γεωγραφικό πλάτος."
+
+#: includes/views/admin-shortcodes.php:212
+msgid "First person: longitude."
+msgstr "Πρώτο πρόσωπο: γεωγραφικό μήκος."
+
+#: includes/views/admin-shortcodes.php:213
+msgid "First person: IANA timezone."
+msgstr "Πρώτο πρόσωπο: Ζώνη ώρας IANA."
+
+#: includes/views/admin-shortcodes.php:214
+msgid "Second person: birth date in YYYY-MM-DD."
+msgstr "Δεύτερο πρόσωπο: ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
+
+#: includes/views/admin-shortcodes.php:215
+msgid "Second person: birth time in HH:MM."
+msgstr "Δεύτερο άτομο: ώρα γέννησης σε ώρες και λεπτά."
+
+#: includes/views/admin-shortcodes.php:216
+msgid "Second person: latitude."
+msgstr "Δεύτερο πρόσωπο: γεωγραφικό πλάτος."
+
+#: includes/views/admin-shortcodes.php:217
+msgid "Second person: longitude."
+msgstr "Δεύτερο πρόσωπο: γεωγραφικό μήκος."
+
+#: includes/views/admin-shortcodes.php:218
+msgid "Second person: IANA timezone."
+msgstr "Δεύτερο πρόσωπο: Ζώνη ώρας IANA."
+
+#: includes/views/admin-shortcodes.php:238
 msgid "Find your coordinates and timezone"
 msgstr "Βρείτε τις συντεταγμένες και τη ζώνη ώρας σας"
 
-#: includes/views/admin-shortcodes.php:95
+#: includes/views/admin-shortcodes.php:239
 msgid "city → lat · lon · IANA tz"
 msgstr "πόλη → lat · lon · IANA tz"
 
-#: includes/views/admin-shortcodes.php:102
-msgid "Type a city name — e.g. Kyiv, Berlin, São Paulo"
-msgstr "Πληκτρολογήστε το όνομα μιας πόλης — π.χ. Κίεβο, Βερολίνο, Σάο Πάολο"
+#: includes/views/admin-shortcodes.php:246
+msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
+msgstr "Γράψτε το όνομα μιας πόλης, για παράδειγμα Kyiv, Berlin ή São Paulo"
 
-#: includes/views/admin-shortcodes.php:106
+#: includes/views/admin-shortcodes.php:250
 msgid "Search"
 msgstr "Αναζήτηση"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:113
+#: includes/views/admin-shortcodes.php:257
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -992,44 +1637,46 @@ msgstr ""
 "Επιλέξτε την αντίστοιχη πόλη για να αντιγράψετε τις τιμές στο shortcode. "
 "Αναφορά: %s."
 
-#: includes/views/admin-shortcodes.php:114
+#: includes/views/admin-shortcodes.php:258
 msgid "IANA timezone list"
 msgstr "Λίστα ζωνών IANA"
 
-#: includes/views/admin-shortcodes.php:135
-msgid "Click to copy"
-msgstr "Κλικ για αντιγραφή"
+#: includes/views/admin-shortcodes.php:267
+msgid "Filter shortcodes"
+msgstr "Φίλτρο συντομογραφιών"
 
-#: includes/views/admin-shortcodes.php:139
-msgid "copy"
-msgstr "αντίγραφο"
+#. translators: %d is the number of shortcodes
+#: includes/views/admin-shortcodes.php:271
+#, php-format
+msgid "Filter %d shortcodes: name, tag or what it does"
+msgstr "Φιλτράρισμα %d συντομογραφιών: όνομα, ετικέτα ή λειτουργία"
 
-#: includes/views/admin-shortcodes.php:147
+#: includes/views/admin-shortcodes.php:303
 msgid "Parameter"
 msgstr "Παράμετρος"
 
-#: includes/views/admin-shortcodes.php:148
+#: includes/views/admin-shortcodes.php:304
 msgid "Type"
 msgstr "Τύπος"
 
-#: includes/views/admin-shortcodes.php:149
+#: includes/views/admin-shortcodes.php:305
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: includes/views/admin-shortcodes.php:150
+#: includes/views/admin-shortcodes.php:306
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: includes/views/admin-shortcodes.php:163
+#: includes/views/admin-shortcodes.php:319
 msgid "required"
 msgstr "απαιτούμενο"
 
-#: includes/views/admin-shortcodes.php:165
+#: includes/views/admin-shortcodes.php:321
 msgid "optional"
 msgstr "προαιρετικό"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:179
+#: includes/views/admin-shortcodes.php:344
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Επίσης διαθέσιμο ως μπλοκ Gutenberg \"%s\"."
@@ -1098,6 +1745,10 @@ msgstr "πριν"
 msgid "not yet"
 msgstr "όχι ακόμα"
 
+#: includes/views/partials/admin-footer-nav.php:13
+msgid "API Key"
+msgstr "Κλειδί API"
+
 #: includes/views/partials/admin-footer-nav.php:20
 msgid "Plugin pages"
 msgstr "Σελίδες πρόσθετου"
@@ -1123,8 +1774,8 @@ msgid "Anonymous mode"
 msgstr "Λειτουργία ανώνυμου"
 
 #: includes/views/partials/admin-hero.php:50
-msgid "30 requests / hour / visitor IP"
-msgstr "30 αιτήματα / ώρα / IP επισκέπτη"
+msgid "300 requests / hour / site"
+msgstr "300 αιτήματα / ώρα / ιστότοπος"
 
 #: includes/views/partials/admin-hero.php:59
 msgid "View paid plans"
@@ -1149,54 +1800,6 @@ msgstr "Αποθετήριο GitHub"
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
 msgstr "Default (το σημερινό σύμβολο)"
-
-#: assets/js/astroway-blocks-editor.js:18
-msgid "Aries"
-msgstr "Κριός"
-
-#: assets/js/astroway-blocks-editor.js:19
-msgid "Taurus"
-msgstr "Ταύρος"
-
-#: assets/js/astroway-blocks-editor.js:20
-msgid "Gemini"
-msgstr "Δίδυμοι"
-
-#: assets/js/astroway-blocks-editor.js:21
-msgid "Cancer"
-msgstr "Καρκίνος"
-
-#: assets/js/astroway-blocks-editor.js:22
-msgid "Leo"
-msgstr "Leo"
-
-#: assets/js/astroway-blocks-editor.js:23
-msgid "Virgo"
-msgstr "Παρθένος"
-
-#: assets/js/astroway-blocks-editor.js:24
-msgid "Libra"
-msgstr "Ζυγός"
-
-#: assets/js/astroway-blocks-editor.js:25
-msgid "Scorpio"
-msgstr "Σκορπιός"
-
-#: assets/js/astroway-blocks-editor.js:26
-msgid "Sagittarius"
-msgstr "Τοξότης"
-
-#: assets/js/astroway-blocks-editor.js:27
-msgid "Capricorn"
-msgstr "Αιγόκερως"
-
-#: assets/js/astroway-blocks-editor.js:28
-msgid "Aquarius"
-msgstr "Υδροχόος"
-
-#: assets/js/astroway-blocks-editor.js:29
-msgid "Pisces"
-msgstr "Ιχθείς"
 
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
@@ -1283,52 +1886,54 @@ msgstr "Ζώνη ώρας (Ευρώπη/Κίεβο ή +03:00)"
 #: assets/js/astroway-blocks-editor.js:104
 #: assets/js/astroway-blocks-editor.js:144
 #: assets/js/astroway-blocks-editor.js:177
+#: assets/js/astroway-blocks-editor.js:207
 msgid "Date (leave blank for today)"
 msgstr "Ημερομηνία (αφήστε κενό για σήμερα)"
 
 #: assets/js/astroway-blocks-editor.js:114
-msgid "Person A — date (YYYY-MM-DD)"
-msgstr "Ημερομηνία (YYYY-MM-DD)"
+msgid "Person A: date (YYYY-MM-DD)"
+msgstr "Πρόσωπο Α: ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)"
 
 #: assets/js/astroway-blocks-editor.js:115
-msgid "Person A — time (HH:MM)"
-msgstr "Πρόσωπο Α — ώρα (ΩΩ:ΛΛ)"
+msgid "Person A: time (HH:MM)"
+msgstr "Πρόσωπο Α: ώρα (ΩΩ:ΛΛ)"
 
 #: assets/js/astroway-blocks-editor.js:116
-msgid "Person A — latitude"
-msgstr "Πρόσωπο Α — γεωγραφικό πλάτος"
+msgid "Person A: latitude"
+msgstr "Πρόσωπο Α: γεωγραφικό πλάτος"
 
 #: assets/js/astroway-blocks-editor.js:117
-msgid "Person A — longitude"
-msgstr "Πρόσωπο Α — γεωγραφικό μήκος"
+msgid "Person A: longitude"
+msgstr "Πρόσωπο Α: γεωγραφικό μήκος"
 
 #: assets/js/astroway-blocks-editor.js:118
-msgid "Person A — timezone"
-msgstr "Πρόσωπο Α — ζώνη ώρας"
+msgid "Person A: timezone"
+msgstr "Πρόσωπο Α: ζώνη ώρας"
 
 #: assets/js/astroway-blocks-editor.js:119
-msgid "Person B — date (YYYY-MM-DD)"
-msgstr "Ημερομηνία (YYYY-MM-DD)"
+msgid "Person B: date (YYYY-MM-DD)"
+msgstr "Πρόσωπο Β: ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)"
 
 #: assets/js/astroway-blocks-editor.js:120
-msgid "Person B — time (HH:MM)"
-msgstr "Πρόσωπο Β — ώρα (ΩΩ:ΛΛ)"
+msgid "Person B: time (HH:MM)"
+msgstr "Πρόσωπο Β: ώρα (ΩΩ:ΛΛ)"
 
 #: assets/js/astroway-blocks-editor.js:121
-msgid "Person B — latitude"
-msgstr "Πρόσωπο Β — γεωγραφικό πλάτος"
+msgid "Person B: latitude"
+msgstr "Πρόσωπο Β: γεωγραφικό πλάτος"
 
 #: assets/js/astroway-blocks-editor.js:122
-msgid "Person B — longitude"
-msgstr "Πρόσωπο Β — γεωγραφικό μήκος"
+msgid "Person B: longitude"
+msgstr "Πρόσωπο Β: γεωγραφικό μήκος"
 
 #: assets/js/astroway-blocks-editor.js:123
-msgid "Person B — timezone"
-msgstr "Πρόσωπο Β — ζώνη ώρας"
+msgid "Person B: timezone"
+msgstr "Πρόσωπο Β: ζώνη ώρας"
 
 #: assets/js/astroway-blocks-editor.js:130
 #: assets/js/astroway-blocks-editor.js:134
 #: assets/js/astroway-blocks-editor.js:138
+#: assets/js/astroway-blocks-editor.js:212
 msgid "Birth data"
 msgstr "Δεδομένα γέννησης"
 
@@ -1339,10 +1944,6 @@ msgstr "Ημερομηνία διαμετακόμισης"
 #: assets/js/astroway-blocks-editor.js:150
 msgid "Panchang"
 msgstr "Αποθήκευση αλλαγών"
-
-#: assets/js/astroway-blocks-editor.js:154
-msgid "Numerology"
-msgstr "Αριθμολογία"
 
 #: assets/js/astroway-blocks-editor.js:156
 msgid "Full name"
@@ -1357,6 +1958,9 @@ msgid "Two subjects"
 msgstr "Δύο θέματα"
 
 #: assets/js/astroway-blocks-editor.js:170
+#: assets/js/astroway-blocks-editor.js:191
+#: assets/js/astroway-blocks-editor.js:199
+#: assets/js/astroway-blocks-editor.js:218
 msgid "Zodiac sign"
 msgstr "Ζώδιο"
 
@@ -1367,6 +1971,35 @@ msgstr "Καθημερινή ταρώ"
 #: assets/js/astroway-blocks-editor.js:184
 msgid "Deck"
 msgstr "Κατάστρωμα"
+
+#: assets/js/astroway-blocks-editor.js:189
+msgid "Weekly horoscope"
+msgstr "Εβδομαδιαίο ωροσκόπιο"
+
+#: assets/js/astroway-blocks-editor.js:192
+msgid "Any date inside the week (blank for this week)"
+msgstr "Οποιαδήποτε ημερομηνία της εβδομάδας (κενό για αυτή την εβδομάδα)"
+
+#: assets/js/astroway-blocks-editor.js:197
+msgid "Monthly horoscope"
+msgstr "Μηνιαίο ωροσκόπιο"
+
+#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:219
+msgid "Any date inside the month (blank for this month)"
+msgstr "Οποιαδήποτε ημερομηνία του μήνα (κενό για τον τρέχοντα μήνα)"
+
+#: assets/js/astroway-blocks-editor.js:216
+msgid "Monthly forecast"
+msgstr "Μηνιαία πρόβλεψη"
+
+#: assets/js/astroway-blocks-editor.js:225
+msgid "Moon transit timeline"
+msgstr "χρονοδιάγραμμα διαδρομής σελήνης"
+
+#: assets/js/astroway-blocks-editor.js:227
+msgid "Day the seven start from (blank for today)"
+msgstr "Ημέρα από την οποία ξεκινά η έβδομη (κενό για σήμερα)"
 
 #: blocks/bodygraph/block.json
 msgid "AstroWay: Human Design Bodygraph"
@@ -1403,6 +2036,42 @@ msgid ""
 msgstr ""
 "Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
 "προσαρμοσμένο στις οθόνες."
+
+#: blocks/mini-chart/block.json
+msgid "AstroWay: Mini Birth Chart"
+msgstr "AstroWay: Μικρό Γεννητικός Χάρτης"
+
+#: blocks/mini-chart/block.json
+msgid ""
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
+" responsive iframe."
+msgstr ""
+"Ο γενέθλιος χάρτης, σχεδιασμένος σε μικρό μέγεθος για μια πλευρική στήλη, "
+"παρέχεται από το api.astroway.info ως iframe με προσαρμοστική εμφάνιση."
+
+#: blocks/monthly-forecast/block.json
+msgid "AstroWay: Monthly Forecast"
+msgstr "AstroWay: Μηνιαία πρόβλεψη"
+
+#: blocks/monthly-forecast/block.json
+msgid ""
+"Four weeks ahead for one sign, each week with its own theme, served as a "
+"responsive iframe."
+msgstr ""
+"Ένα πρόγραμμα τεσσάρων εβδομάδων για ένα ζώδιο, με ξεχωριστό θέμα για κάθε "
+"εβδομάδα, παρουσιάζονταν μέσα σε ένα ανταποκρινόμενο iframe."
+
+#: blocks/monthly-horoscope/block.json
+msgid "AstroWay: Monthly Horoscope"
+msgstr "AstroWay: Μηνιαίο Ωροσκόπιο"
+
+#: blocks/monthly-horoscope/block.json
+msgid ""
+"Horoscope for the current month, anchored to the 1st, rendered into the page"
+" as text."
+msgstr ""
+"Ωροσκόπιο για τον τρέχοντα μήνα, με ημερομηνία αναφοράς την 1η, που "
+"εμφανίζεται στη σελίδα ως κείμενο."
 
 #: blocks/moon-phase/block.json
 msgid "AstroWay: Moon Phase"
@@ -1446,6 +2115,19 @@ msgstr ""
 "Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
 "προσαρμοσμένο στις οθόνες."
 
+#: blocks/planet-of-day/block.json
+msgid "AstroWay: Planet of the Day"
+msgstr "AstroWay: Ο πλανήτης της ημέρας"
+
+#: blocks/planet-of-day/block.json
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes, "
+"rendered into the page."
+msgstr ""
+"Ο παραδοσιακός πλανητικός κυβερνήτης της ημέρας της εβδομάδας, μαζί με το "
+"σύμβολό του και τα θέματα που σχετίζονται με αυτόν, αποτυπώνονται στη "
+"σελίδα."
+
 #: blocks/synastry/block.json
 msgid "AstroWay: Synastry Compatibility"
 msgstr "AstroWay: Χάρτης Γεννήσεων"
@@ -1458,6 +2140,18 @@ msgstr ""
 "Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
 "προσαρμοσμένο στις οθόνες."
 
+#: blocks/transit-timeline/block.json
+msgid "AstroWay: Moon Transit Timeline"
+msgstr "AstroWay: Χρονοδιάγραμμα Διαδρομής Σελήνης"
+
+#: blocks/transit-timeline/block.json
+msgid ""
+"The next seven days of Moon ingresses, served by api.astroway.info as a "
+"responsive iframe."
+msgstr ""
+"Οι επόμενες επτά ημέρες με τις εισόδους της Σελήνης, που παρουσιάζονται από "
+"το api.astroway.info ως ανταποκρινόμενο iframe."
+
 #: blocks/transit/block.json
 msgid "AstroWay: Transit Sky"
 msgstr "AstroWay: Χάρτης Γεννήσεων"
@@ -1469,3 +2163,15 @@ msgid ""
 msgstr ""
 "Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
 "προσαρμοσμένο στις οθόνες."
+
+#: blocks/weekly-horoscope/block.json
+msgid "AstroWay: Weekly Horoscope"
+msgstr "AstroWay: Εβδομαδιαίο Ωροσκόπιο"
+
+#: blocks/weekly-horoscope/block.json
+msgid ""
+"Horoscope for the current week, anchored to Monday, rendered into the page "
+"as text."
+msgstr ""
+"Ωροσκόπιο για την τρέχουσα εβδομάδα, με αφετηρία τη Δευτέρα, που εμφανίζεται"
+" στη σελίδα ως κείμενο."

@@ -47,6 +47,19 @@ class Plugin {
 		return in_array( $short, self::SUPPORTED_LANGS, true ) ? $short : 'uk';
 	}
 
+	/**
+	 * Language to ask the api for: an explicit override when it names a supported
+	 * language, the site language otherwise. Every request must carry it, because
+	 * without `lang` the api answers in Ukrainian, its source language.
+	 */
+	public static function resolve_lang( $raw ): string {
+		$raw = strtolower( trim( (string) $raw ) );
+		if ( '' !== $raw && in_array( $raw, self::SUPPORTED_LANGS, true ) ) {
+			return $raw;
+		}
+		return self::normalize_locale( get_locale() );
+	}
+
 	public static function boot(): void {
 		// WP 4.6+ auto-loads textdomain from /languages when slug matches; no manual call needed for wp.org-hosted plugins.
 
@@ -146,7 +159,7 @@ class Plugin {
 			<div class="awn-mark"><?php echo $star_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG markup ?></div>
 			<div class="awn-text">
 				<p class="awn-title"><?php esc_html_e( 'AstroWay is active', 'astroway' ); ?></p>
-				<p class="awn-desc"><?php esc_html_e( 'Shortcodes work without an API key (30 requests/hour per visitor IP). For higher limits and Pro features, get a free API key.', 'astroway' ); ?></p>
+				<p class="awn-desc"><?php esc_html_e( 'Shortcodes work without an API key. Widgets your server renders into the page draw on your site\'s allowance of 300 requests an hour; widgets that fall back to a frame draw on each visitor\'s own 30. For higher limits and Pro features, get a free API key.', 'astroway' ); ?></p>
 			</div>
 			<div class="awn-actions">
 				<a href="<?php echo esc_url( $signup_url ); ?>" target="_blank" rel="noopener" class="awn-btn awn-btn-primary">
@@ -294,7 +307,7 @@ class Plugin {
 		<div class="notice notice-warning is-dismissible astroway-rl-notice" data-astroway-dismiss="<?php echo esc_url( $dismiss_url ); ?>">
 			<p>
 				<strong><?php esc_html_e( 'This server has used up its anonymous AstroWay quota:', 'astroway' ); ?></strong>
-				<?php esc_html_e( 'the free tier allows 30 requests per hour per IP. Visitors are unaffected, since their widgets count against their own IP, but preview and admin calls from this server will fail until the hour resets. Add a free API key to lift the limit and get 10,000 credits/month plus 60 req/min.', 'astroway' ); ?>
+				<?php esc_html_e( 'the free tier allows this site 300 requests an hour. Until the hour resets, widgets that would have been rendered into the page fall back to a frame loaded by the visitor\'s own browser, and preview and admin calls from this server will fail. Add a free API key to lift the limit and get 10,000 credits/month plus 60 req/min.', 'astroway' ); ?>
 				<a href="<?php echo esc_url( $signup_url ); ?>" target="_blank" rel="noopener" class="button button-primary" style="margin-left:8px;"><?php esc_html_e( 'Get free API key', 'astroway' ); ?></a>
 			</p>
 			<script>

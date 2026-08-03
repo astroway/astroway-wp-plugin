@@ -111,16 +111,16 @@
 
 	// Synastry — two subjects (A and B) flattened into one block.
 	var SYNASTRY_FIELDS = [
-		{ name: 'date_a', type: 'text', label: __( 'Person A — date (YYYY-MM-DD)', 'astroway' ) },
-		{ name: 'time_a', type: 'text', label: __( 'Person A — time (HH:MM)', 'astroway' ) },
-		{ name: 'lat_a',  type: 'text', label: __( 'Person A — latitude', 'astroway' ) },
-		{ name: 'lon_a',  type: 'text', label: __( 'Person A — longitude', 'astroway' ) },
-		{ name: 'tz_a',   type: 'text', label: __( 'Person A — timezone', 'astroway' ) },
-		{ name: 'date_b', type: 'text', label: __( 'Person B — date (YYYY-MM-DD)', 'astroway' ) },
-		{ name: 'time_b', type: 'text', label: __( 'Person B — time (HH:MM)', 'astroway' ) },
-		{ name: 'lat_b',  type: 'text', label: __( 'Person B — latitude', 'astroway' ) },
-		{ name: 'lon_b',  type: 'text', label: __( 'Person B — longitude', 'astroway' ) },
-		{ name: 'tz_b',   type: 'text', label: __( 'Person B — timezone', 'astroway' ) },
+		{ name: 'date_a', type: 'text', label: __( 'Person A: date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_a', type: 'text', label: __( 'Person A: time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_a',  type: 'text', label: __( 'Person A: latitude', 'astroway' ) },
+		{ name: 'lon_a',  type: 'text', label: __( 'Person A: longitude', 'astroway' ) },
+		{ name: 'tz_a',   type: 'text', label: __( 'Person A: timezone', 'astroway' ) },
+		{ name: 'date_b', type: 'text', label: __( 'Person B: date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_b', type: 'text', label: __( 'Person B: time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_b',  type: 'text', label: __( 'Person B: latitude', 'astroway' ) },
+		{ name: 'lon_b',  type: 'text', label: __( 'Person B: longitude', 'astroway' ) },
+		{ name: 'tz_b',   type: 'text', label: __( 'Person B: timezone', 'astroway' ) },
 		THEME_FIELD,
 		LANG_FIELD
 	];
@@ -182,6 +182,50 @@
 			panel:  __( 'Daily Tarot', 'astroway' ),
 			fields: [
 				{ name: 'deck', type: 'select', label: __( 'Deck', 'astroway' ), options: DECK_OPTIONS },
+				LANG_FIELD
+			]
+		},
+		'astroway/weekly-horoscope': {
+			panel:  __( 'Weekly horoscope', 'astroway' ),
+			fields: [
+				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway' ), options: SIGN_OPTIONS },
+				{ name: 'date', type: 'text', label: __( 'Any date inside the week (blank for this week)', 'astroway' ) },
+				LANG_FIELD
+			]
+		},
+		'astroway/monthly-horoscope': {
+			panel:  __( 'Monthly horoscope', 'astroway' ),
+			fields: [
+				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway' ), options: SIGN_OPTIONS },
+				{ name: 'date', type: 'text', label: __( 'Any date inside the month (blank for this month)', 'astroway' ) },
+				LANG_FIELD
+			]
+		},
+		'astroway/planet-of-day': {
+			panel:  __( 'Planet of the day', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway' ) },
+				LANG_FIELD
+			]
+		},
+		'astroway/mini-chart': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: KUNDLI_FIELDS
+		},
+		'astroway/monthly-forecast': {
+			panel:  __( 'Monthly forecast', 'astroway' ),
+			fields: [
+				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway' ), options: SIGN_OPTIONS },
+				{ name: 'date', type: 'text', label: __( 'Any date inside the month (blank for this month)', 'astroway' ) },
+				THEME_FIELD,
+				LANG_FIELD
+			]
+		},
+		'astroway/transit-timeline': {
+			panel:  __( 'Moon transit timeline', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Day the seven start from (blank for today)', 'astroway' ) },
+				THEME_FIELD,
 				LANG_FIELD
 			]
 		}

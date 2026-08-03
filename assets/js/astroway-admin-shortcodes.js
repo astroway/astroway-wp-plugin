@@ -46,6 +46,33 @@
 			} );
 		} );
 
+		/* Filter the cards. Matching is on a data-search attribute built server
+		   side, so it searches the translated title and description too. */
+		var filter = document.getElementById( 'aw-sc-filter' );
+		var count  = document.getElementById( 'aw-sc-filter-count' );
+		var cards  = [].slice.call( document.querySelectorAll( '.aw-card[data-search]' ) );
+
+		if ( filter && cards.length ) {
+			filter.addEventListener( 'input', function () {
+				var q = filter.value.trim().toLowerCase();
+				var shown = 0;
+				cards.forEach( function ( card ) {
+					var hit = ! q || card.getAttribute( 'data-search' ).indexOf( q ) !== -1;
+					card.hidden = ! hit;
+					if ( hit ) shown++;
+				} );
+				if ( ! count ) return;
+				if ( ! q ) {
+					count.textContent = '';
+				} else if ( shown ) {
+					count.textContent = ( i18n.filterCount || '%1$d of %2$d' )
+						.replace( '%1$d', shown ).replace( '%2$d', cards.length );
+				} else {
+					count.textContent = i18n.filterNone || 'Nothing matches.';
+				}
+			} );
+		}
+
 		/* City → lat / lon / tz helper. DOM-only, never innerHTML with user data. */
 		var input     = document.getElementById( 'aw-city-search' );
 		var searchBtn = document.getElementById( 'aw-city-search-btn' );

@@ -178,7 +178,7 @@ $astroway_diag = [
 					</tbody>
 				</table>
 				<p class="aw-hint" style="margin-top:8px">
-					<?php esc_html_e( 'Matrix is filterable via the `astroway_tier_matrix` filter — addons can append their own features.', 'astroway' ); ?>
+					<?php esc_html_e( 'Matrix is filterable via the `astroway_tier_matrix` filter, so addons can append their own features.', 'astroway' ); ?>
 				</p>
 			</div>
 		</article>
@@ -264,10 +264,40 @@ $astroway_diag = [
 					<label style="display:flex;gap:8px;align-items:flex-start">
 						<input type="checkbox" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[widget_disclaimer]" value="1" <?php checked( ! empty( $astroway_opts['widget_disclaimer'] ) ); ?>>
 						<span><strong><?php esc_html_e( 'Show a disclaimer in embedded widgets', 'astroway' ); ?></strong><br>
-							<span class="aw-hint"><?php esc_html_e( 'Appends a short "informational, not professional advice" line to the widget footer. Off by default — enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info.', 'astroway' ); ?></span>
+							<span class="aw-hint"><?php esc_html_e( 'Appends a short "informational, not professional advice" line to the widget footer. Off by default, enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info.', 'astroway' ); ?></span>
 						</span>
 					</label>
 					<?php submit_button( __( 'Save disclaimer setting', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+				</form>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="07">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">07</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Render mode', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'where widget content is drawn', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<?php $astroway_mode = 'iframe' === ( $astroway_opts['render_mode'] ?? 'auto' ) ? 'iframe' : 'auto'; ?>
+					<label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px">
+						<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="auto" <?php checked( 'auto', $astroway_mode ); ?>>
+						<span><strong><?php esc_html_e( 'On this page (recommended)', 'astroway' ); ?></strong><br>
+							<span class="aw-hint"><?php esc_html_e( 'Your server fetches the text and prints it into the page. Search engines can read it, your theme styles it, and it works without JavaScript. Answers are cached until they change, so a daily horoscope is fetched once a day per sign.', 'astroway' ); ?></span>
+						</span>
+					</label>
+					<label style="display:flex;gap:8px;align-items:flex-start">
+						<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[render_mode]" value="iframe" <?php checked( 'iframe', $astroway_mode ); ?>>
+						<span><strong><?php esc_html_e( 'In an iframe', 'astroway' ); ?></strong><br>
+							<span class="aw-hint"><?php esc_html_e( 'Each visitor\'s browser loads the widget from api.astroway.info. Nothing reaches your page source, so the content is not indexed and your theme cannot style it. Choose this if your host blocks outgoing requests, or to compare the two.', 'astroway' ); ?></span>
+						</span>
+					</label>
+					<p class="aw-hint" style="margin-top:10px">
+						<?php esc_html_e( 'Widgets without a page-side template, and any widget whose data cannot be fetched, fall back to the iframe on their own.', 'astroway' ); ?>
+					</p>
+					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn', 'submit', false ); ?>
 				</form>
 			</div>
 		</article>

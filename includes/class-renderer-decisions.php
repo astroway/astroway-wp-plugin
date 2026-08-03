@@ -25,15 +25,15 @@ class RendererDecisions {
 
 	private static function widgets_default(): array {
 		return [
-			'natal'           => [
+			'natal'            => [
 				'embed_path'   => 'wheel',
 				'iframe_attrs' => [
 					'width'  => '460',
 					'height' => '520',
 				],
-				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang' ],
+				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang', 'theme' ],
 			],
-			'daily_horoscope' => [
+			'daily_horoscope'  => [
 				'embed_path'   => 'daily-horoscope',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -41,7 +41,19 @@ class RendererDecisions {
 				],
 				'params'       => [ 'sign', 'lang' ],
 			],
-			'moon_phase'      => [
+			// Registered so "In an iframe" does not simply delete this widget from
+			// the page. Weekly and monthly horoscope get no entry on purpose: the
+			// embed router has no route for them, and a frame pointed at a missing
+			// route renders a 401 body rather than a fallback.
+			'planet_of_day'    => [
+				'embed_path'   => 'planet-of-day',
+				'iframe_attrs' => [
+					'width'  => '320',
+					'height' => '320',
+				],
+				'params'       => [ 'date', 'lang' ],
+			],
+			'moon_phase'       => [
 				'embed_path'   => 'moon-phase',
 				'iframe_attrs' => [
 					'width'  => '320',
@@ -49,7 +61,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'lang' ],
 			],
-			'bodygraph'       => [
+			'bodygraph'        => [
 				'embed_path'   => 'bodygraph',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -57,7 +69,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang' ],
 			],
-			'tarot_daily'     => [
+			'tarot_daily'      => [
 				'embed_path'   => 'daily-tarot',
 				'iframe_attrs' => [
 					'width'  => '320',
@@ -69,7 +81,7 @@ class RendererDecisions {
 			// has no /v1/embed/today-in-sky or /v1/embed/fortune-cookie route, so
 			// both rendered an iframe whose only content was a 401 JSON body.
 			// Restore them here once the routes exist api-side.
-			'kundli'          => [
+			'kundli'           => [
 				'embed_path'   => 'kundli',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -77,7 +89,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'time', 'lat', 'lng', 'tz', 'theme', 'lang' ],
 			],
-			'transit'         => [
+			'transit'          => [
 				'embed_path'   => 'transit',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -85,7 +97,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'theme', 'lang' ],
 			],
-			'panchang'        => [
+			'panchang'         => [
 				'embed_path'   => 'panchang',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -93,7 +105,7 @@ class RendererDecisions {
 				],
 				'params'       => [ 'date', 'lat', 'lng', 'tz', 'theme', 'lang' ],
 			],
-			'numerology'      => [
+			'numerology'       => [
 				'embed_path'   => 'numerology',
 				'iframe_attrs' => [
 					'width'  => '460',
@@ -101,13 +113,40 @@ class RendererDecisions {
 				],
 				'params'       => [ 'name', 'date', 'system', 'theme', 'lang' ],
 			],
-			'synastry'        => [
+			'synastry'         => [
 				'embed_path'   => 'synastry',
 				'iframe_attrs' => [
 					'width'  => '460',
 					'height' => '420',
 				],
 				'params'       => [ 'date_a', 'time_a', 'lat_a', 'lng_a', 'tz_a', 'date_b', 'time_b', 'lat_b', 'lng_b', 'tz_b', 'theme', 'lang' ],
+			],
+			// The last three embed routes the api has and the plugin did not expose.
+			// Parameters verified against live responses, not against the OpenAPI
+			// spec, which documents none for any of them.
+			'mini_chart'       => [
+				'embed_path'   => 'mini-chart',
+				'iframe_attrs' => [
+					'width'  => '300',
+					'height' => '300',
+				],
+				'params'       => [ 'date', 'time', 'lat', 'lng', 'tz', 'theme', 'lang' ],
+			],
+			'monthly_forecast' => [
+				'embed_path'   => 'monthly-forecast',
+				'iframe_attrs' => [
+					'width'  => '460',
+					'height' => '420',
+				],
+				'params'       => [ 'sign', 'date', 'theme', 'lang' ],
+			],
+			'transit_timeline' => [
+				'embed_path'   => 'transit-timeline',
+				'iframe_attrs' => [
+					'width'  => '460',
+					'height' => '380',
+				],
+				'params'       => [ 'date', 'theme', 'lang' ],
 			],
 		];
 	}

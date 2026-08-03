@@ -18,9 +18,9 @@ $astroway_cards = [
 	[
 		'tag'         => 'astroway_natal',
 		'title'       => __( 'Natal Chart', 'astroway' ),
-		'description' => __( 'Birth chart wheel — planet positions, houses, aspects.', 'astroway' ),
+		'description' => __( 'Birth chart: the wheel plus planet positions, houses and aspects as text.', 'astroway' ),
 		'example'     => '[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52" name="Anna" tz="Europe/Kyiv"]',
-		'block_name'  => __( 'AstroWay — Natal Chart', 'astroway' ),
+		'block'       => 'astroway/natal-chart',
 		'params'      => [
 			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
 			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
@@ -28,6 +28,7 @@ $astroway_cards = [
 			[ 'lon', 'float', true, __( 'WGS-84 longitude (e.g. 30.52).', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
 			[ 'name', 'string', false, __( 'Display name on the chart.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'Palette of the wheel drawing: dark (default), light or console. The text beside it follows your theme on its own; the wheel is an image and cannot, so set this to match.', 'astroway' ) ],
 		],
 	],
 	[
@@ -35,9 +36,41 @@ $astroway_cards = [
 		'title'       => __( 'Daily Horoscope', 'astroway' ),
 		'description' => __( "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side.", 'astroway' ),
 		'example'     => '[astroway_daily_horoscope sign="aries"]',
-		'block_name'  => __( 'AstroWay — Daily Horoscope', 'astroway' ),
+		'block'       => 'astroway/daily-horoscope',
 		'params'      => [
 			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_weekly_horoscope',
+		'title'       => __( 'Weekly Horoscope', 'astroway' ),
+		'description' => __( 'Horoscope for the current week, anchored to Monday. Rendered into the page, not an iframe.', 'astroway' ),
+		'example'     => '[astroway_weekly_horoscope sign="aries"]',
+		'block'       => 'astroway/weekly-horoscope',
+		'params'      => [
+			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'date', 'string', false, __( 'Any date inside the week you want. Defaults to today.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_monthly_horoscope',
+		'title'       => __( 'Monthly Horoscope', 'astroway' ),
+		'description' => __( 'Horoscope for the current month, anchored to the 1st. Rendered into the page, not an iframe.', 'astroway' ),
+		'example'     => '[astroway_monthly_horoscope sign="aries"]',
+		'block'       => 'astroway/monthly-horoscope',
+		'params'      => [
+			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'date', 'string', false, __( 'Any date inside the month you want. Defaults to today.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_planet_of_day',
+		'title'       => __( 'Planet of the Day', 'astroway' ),
+		'description' => __( 'Traditional planetary ruler of the weekday, with its glyph and themes. Rendered into the page, not an iframe.', 'astroway' ),
+		'example'     => '[astroway_planet_of_day]',
+		'block'       => 'astroway/planet-of-day',
+		'params'      => [
+			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
 		],
 	],
 	[
@@ -45,7 +78,7 @@ $astroway_cards = [
 		'title'       => __( 'Moon Phase', 'astroway' ),
 		'description' => __( 'Current Moon phase visualization with illumination percent.', 'astroway' ),
 		'example'     => '[astroway_moon_phase]',
-		'block_name'  => __( 'AstroWay — Moon Phase', 'astroway' ),
+		'block'       => 'astroway/moon-phase',
 		'params'      => [
 			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
 		],
@@ -55,7 +88,7 @@ $astroway_cards = [
 		'title'       => __( 'Human Design Bodygraph', 'astroway' ),
 		'description' => __( 'Human Design body graph with centers, channels, gates.', 'astroway' ),
 		'example'     => '[astroway_bodygraph date="1990-05-15" time="14:30" lat="50.45" lon="30.52" name="Anna" tz="Europe/Kyiv"]',
-		'block_name'  => __( 'AstroWay — Bodygraph', 'astroway' ),
+		'block'       => 'astroway/bodygraph',
 		'params'      => [
 			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
 			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
@@ -70,9 +103,120 @@ $astroway_cards = [
 		'title'       => __( 'Daily Tarot Card', 'astroway' ),
 		'description' => __( 'Single card pull of the day from a chosen deck.', 'astroway' ),
 		'example'     => '[astroway_tarot_card deck="rider-waite"]',
-		'block_name'  => __( 'AstroWay — Daily Tarot Card', 'astroway' ),
+		'block'       => 'astroway/daily-tarot',
 		'params'      => [
-			[ 'deck', 'string', false, __( 'Deck slug: rider-waite (default), marseille, or lenormand.', 'astroway' ) ],
+			[ 'deck', 'string', false, __( 'Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite renders into the page; the other two load in a frame.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_mini_chart',
+		'title'       => __( 'Mini Birth Chart', 'astroway' ),
+		'description' => __( 'The natal wheel drawn small, for a sidebar. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_mini_chart date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
+		'block'       => 'astroway/mini-chart',
+		'params'      => [
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_monthly_forecast',
+		'title'       => __( 'Monthly Forecast', 'astroway' ),
+		'description' => __( 'Four weeks ahead for one sign, each with its own theme. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_monthly_forecast sign="leo"]',
+		'block'       => 'astroway/monthly-forecast',
+		'params'      => [
+			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'date', 'string', false, __( 'Any date inside the month you want. Defaults to today.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_transit_timeline',
+		'title'       => __( 'Moon Transit Timeline', 'astroway' ),
+		'description' => __( 'The next seven days of Moon ingresses. Not sign-specific. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_transit_timeline]',
+		'block'       => 'astroway/transit-timeline',
+		'params'      => [
+			[ 'date', 'string', false, __( 'Day the seven start from. Defaults to today.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_kundli',
+		'title'       => __( 'Vedic Kundli', 'astroway' ),
+		'description' => __( 'North-Indian D1 chart. Loads in a frame: there is no page-side template for it yet.', 'astroway' ),
+		'example'     => '[astroway_kundli date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
+		'block'       => 'astroway/kundli',
+		'params'      => [
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_transit',
+		'title'       => __( 'Transit Sky', 'astroway' ),
+		'description' => __( 'Where the planets stand on a given date. Loads in a frame: there is no page-side template for it yet.', 'astroway' ),
+		'example'     => '[astroway_transit]',
+		'block'       => 'astroway/transit',
+		'params'      => [
+			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_panchang',
+		'title'       => __( 'Daily Panchang', 'astroway' ),
+		'description' => __( 'Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_panchang lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
+		'block'       => 'astroway/panchang',
+		'params'      => [
+			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_numerology',
+		'title'       => __( 'Numerology', 'astroway' ),
+		'description' => __( 'Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_numerology name="Anna Kovalenko" date="1990-05-15"]',
+		'block'       => 'astroway/numerology',
+		'params'      => [
+			[ 'name', 'string', true, __( 'Full birth name. The letters are what the numbers are built from.', 'astroway' ) ],
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'system', 'string', false, __( 'pythagorean (default), chaldean, kabbalistic or tamil.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_synastry',
+		'title'       => __( 'Synastry Compatibility', 'astroway' ),
+		'description' => __( 'Compatibility score and top inter-aspects for two birth charts. Loads in a frame.', 'astroway' ),
+		'example'     => '[astroway_synastry date_a="1990-05-15" time_a="14:30" lat_a="50.45" lon_a="30.52" tz_a="Europe/Kyiv" date_b="1988-11-02" time_b="09:15" lat_b="52.52" lon_b="13.40" tz_b="Europe/Berlin"]',
+		'block'       => 'astroway/synastry',
+		'params'      => [
+			[ 'date_a', 'string', true, __( 'First person: birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time_a', 'string', true, __( 'First person: birth time in HH:MM.', 'astroway' ) ],
+			[ 'lat_a', 'float', true, __( 'First person: latitude.', 'astroway' ) ],
+			[ 'lon_a', 'float', true, __( 'First person: longitude.', 'astroway' ) ],
+			[ 'tz_a', 'string', true, __( 'First person: IANA timezone.', 'astroway' ) ],
+			[ 'date_b', 'string', true, __( 'Second person: birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time_b', 'string', true, __( 'Second person: birth time in HH:MM.', 'astroway' ) ],
+			[ 'lat_b', 'float', true, __( 'Second person: latitude.', 'astroway' ) ],
+			[ 'lon_b', 'float', true, __( 'Second person: longitude.', 'astroway' ) ],
+			[ 'tz_b', 'string', true, __( 'Second person: IANA timezone.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
 		],
 	],
 ];
@@ -99,7 +243,7 @@ $astroway_cards = [
 					<input type="search"
 						id="aw-city-search"
 						class="aw-input"
-						placeholder="<?php esc_attr_e( 'Type a city name — e.g. Kyiv, Berlin, São Paulo', 'astroway' ); ?>"
+						placeholder="<?php esc_attr_e( 'Type a city name, for example Kyiv, Berlin or São Paulo', 'astroway' ); ?>"
 						autocomplete="off"
 						spellcheck="false" />
 					<button type="button" class="aw-btn aw-btn-ghost" id="aw-city-search-btn">
@@ -119,8 +263,20 @@ $astroway_cards = [
 			</div>
 		</article>
 
+		<div class="aw-filter">
+			<label class="screen-reader-text" for="aw-sc-filter"><?php esc_html_e( 'Filter shortcodes', 'astroway' ); ?></label>
+			<input type="search"
+				id="aw-sc-filter"
+				class="aw-input"
+				placeholder="<?php echo esc_attr( sprintf( /* translators: %d is the number of shortcodes */ __( 'Filter %d shortcodes: name, tag or what it does', 'astroway' ), count( $astroway_cards ) ) ); ?>"
+				autocomplete="off"
+				spellcheck="false" />
+			<p class="aw-filter-count" id="aw-sc-filter-count" role="status" aria-live="polite"></p>
+		</div>
+
 		<?php foreach ( $astroway_cards as $astroway_card ) : ?>
-			<article class="aw-panel aw-card">
+			<article class="aw-panel aw-card"
+				data-search="<?php echo esc_attr( strtolower( $astroway_card['tag'] . ' ' . $astroway_card['title'] . ' ' . $astroway_card['description'] ) ); ?>">
 				<div class="aw-panel-body">
 					<header class="aw-card-head">
 						<code class="aw-card-tag">[<?php echo esc_html( $astroway_card['tag'] ); ?>]</code>
@@ -171,16 +327,26 @@ $astroway_cards = [
 					</tbody>
 				</table>
 
+					<?php
+					// Title comes from the registry rather than a copy here: WP
+					// translates block.json titles, and a second copy would both
+					// drift and collide as a duplicate msgid in the .pot.
+					$astroway_block = $astroway_card['block']
+						? \WP_Block_Type_Registry::get_instance()->get_registered( $astroway_card['block'] )
+						: null;
+					?>
+					<?php if ( $astroway_block && ! empty( $astroway_block->title ) ) : ?>
 					<p class="aw-card-block-hint">
 						<span aria-hidden="true">💡</span>
 						<?php
 						printf(
 							/* translators: %s is a Gutenberg block name */
 							esc_html__( 'Also available as Gutenberg block "%s".', 'astroway' ),
-							esc_html( $astroway_card['block_name'] )
+							esc_html( $astroway_block->title )
 						);
 						?>
 					</p>
+					<?php endif; ?>
 				</div>
 			</article>
 		<?php endforeach; ?>

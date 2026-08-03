@@ -45,3 +45,221 @@
 		margin-right: 0;
 	}
 }
+
+/* ── Server-rendered cards ───────────────────────────────────────────────────
+   These hold real text in the page DOM, so unlike the iframe they inherit the
+   theme's font and colour by default. Every value is a custom property a theme
+   can override; the defaults deliberately borrow currentColor rather than
+   picking a palette, so a card looks native in a light and a dark theme alike
+   without either side knowing about the other. */
+
+.astroway-card {
+	--astroway-card-bg: transparent;
+	--astroway-card-fg: inherit;
+	--astroway-card-muted: color-mix(in srgb, currentColor 62%, transparent);
+	--astroway-card-line: color-mix(in srgb, currentColor 18%, transparent);
+	--astroway-card-accent: currentColor;
+	--astroway-card-radius: 10px;
+	--astroway-card-padding: 1.25em 1.4em;
+	--astroway-card-max-width: 34em;
+	--astroway-card-margin: 1.5em 0;
+
+	display: block;
+	box-sizing: border-box;
+	max-width: var(--astroway-card-max-width);
+	margin: var(--astroway-card-margin);
+	padding: var(--astroway-card-padding);
+	background: var(--astroway-card-bg);
+	color: var(--astroway-card-fg);
+	border: 1px solid var(--astroway-card-line);
+	border-radius: var(--astroway-card-radius);
+}
+
+/* Older engines without color-mix fall back to a flat tint rather than an
+   invisible border. */
+@supports not (color: color-mix(in srgb, currentColor 50%, transparent)) {
+	.astroway-card {
+		--astroway-card-muted: inherit;
+		--astroway-card-line: rgba(128, 128, 128, 0.32);
+	}
+}
+
+.astroway-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25em 1em;
+	margin-bottom: 0.75em;
+}
+
+.astroway-card__title {
+	margin: 0;
+	font-size: 1.05em;
+	line-height: 1.3;
+}
+
+.astroway-card__meta {
+	font-size: 0.85em;
+	color: var(--astroway-card-muted);
+}
+
+.astroway-card__lead {
+	margin: 0 0 0.5em;
+	font-size: 1.25em;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--astroway-card-accent);
+}
+
+.astroway-card__glyph {
+	font-size: 1.15em;
+	line-height: 1;
+}
+
+.astroway-card__body {
+	margin: 0;
+}
+
+.astroway-card__body p {
+	margin: 0 0 0.85em;
+}
+
+.astroway-card__body p:last-child {
+	margin-bottom: 0;
+}
+
+.astroway-card__keywords {
+	margin: 0 0 0.75em;
+	font-size: 0.9em;
+	color: var(--astroway-card-muted);
+}
+
+.astroway-card__details {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.35em 1em;
+	margin: 0;
+}
+
+.astroway-card__details dt {
+	font-size: 0.9em;
+	color: var(--astroway-card-muted);
+}
+
+.astroway-card__details dd {
+	margin: 0;
+	font-size: 0.95em;
+}
+
+.astroway-card__themes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.astroway-card__themes li {
+	padding: 0.15em 0.6em;
+	font-size: 0.85em;
+	border: 1px solid var(--astroway-card-line);
+	border-radius: 999px;
+}
+
+.astroway-card__note {
+	margin-top: 1em;
+	padding-top: 0.75em;
+	border-top: 1px solid var(--astroway-card-line);
+	font-size: 0.8em;
+	line-height: 1.45;
+	color: var(--astroway-card-muted);
+}
+
+@media (max-width: 480px) {
+	.astroway-card {
+		--astroway-card-padding: 1em;
+		--astroway-card-max-width: 100%;
+	}
+
+	.astroway-card__details {
+		grid-template-columns: 1fr;
+		gap: 0.1em;
+	}
+
+	.astroway-card__details dd {
+		margin-bottom: 0.5em;
+	}
+}
+
+/* Natal card: the wheel keeps its own sizing, the text below it is a table so a
+   screen reader can navigate it by row and column. */
+
+.astroway-card--natal {
+	--astroway-card-max-width: 40em;
+}
+
+.astroway-card--natal .astroway-embed {
+	margin: 0 0 1em;
+	min-height: 0;
+}
+
+.astroway-card__subtitle {
+	margin: 1.2em 0 0.5em;
+	font-size: 0.95em;
+	font-weight: 600;
+}
+
+.astroway-card__placements {
+	width: 100%;
+	margin: 0.5em 0 0;
+	border-collapse: collapse;
+	font-size: 0.92em;
+}
+
+.astroway-card__placements caption {
+	margin-bottom: 0.4em;
+	font-size: 1.03em;
+	font-weight: 600;
+	text-align: left;
+}
+
+.astroway-card__placements th,
+.astroway-card__placements td {
+	padding: 0.3em 0.6em 0.3em 0;
+	text-align: left;
+	vertical-align: baseline;
+	border-bottom: 1px solid var(--astroway-card-line);
+}
+
+.astroway-card__placements th {
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.astroway-card__placements td:last-child {
+	font-size: 0.88em;
+	color: var(--astroway-card-muted);
+}
+
+.astroway-card__aspects {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3em 0.9em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9em;
+}
+
+@media (max-width: 480px) {
+	.astroway-card__placements {
+		font-size: 0.86em;
+	}
+
+	.astroway-card__placements th,
+	.astroway-card__placements td {
+		padding-right: 0.4em;
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/transit-timeline",
+	"title": "AstroWay: Moon Transit Timeline",
+	"category": "widgets",
+	"description": "The next seven days of Moon ingresses, served by api.astroway.info as a responsive iframe.",
+	"textdomain": "astroway",
+	"icon": "clock",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"theme": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "astroway-blocks-editor"
+}

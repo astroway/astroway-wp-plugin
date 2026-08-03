@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/planet-of-day",
+	"title": "AstroWay: Planet of the Day",
+	"category": "widgets",
+	"description": "Traditional planetary ruler of the weekday, with its glyph and themes, rendered into the page.",
+	"textdomain": "astroway",
+	"icon": "star-filled",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "astroway-blocks-editor"
+}

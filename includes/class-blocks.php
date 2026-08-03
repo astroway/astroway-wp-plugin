@@ -11,16 +11,22 @@ class Blocks {
 
 	private static function blocks(): array {
 		return [
-			'natal-chart'     => [ Shortcodes::class, 'render_natal' ],
-			'daily-horoscope' => [ Shortcodes::class, 'render_daily_horoscope' ],
-			'moon-phase'      => [ Shortcodes::class, 'render_moon_phase' ],
-			'bodygraph'       => [ Shortcodes::class, 'render_bodygraph' ],
-			'daily-tarot'     => [ Shortcodes::class, 'render_tarot_card' ],
-			'kundli'          => [ Shortcodes::class, 'render_kundli' ],
-			'transit'         => [ Shortcodes::class, 'render_transit' ],
-			'panchang'        => [ Shortcodes::class, 'render_panchang' ],
-			'numerology'      => [ Shortcodes::class, 'render_numerology' ],
-			'synastry'        => [ Shortcodes::class, 'render_synastry' ],
+			'natal-chart'       => [ Shortcodes::class, 'render_natal' ],
+			'daily-horoscope'   => [ Shortcodes::class, 'render_daily_horoscope' ],
+			'weekly-horoscope'  => [ Shortcodes::class, 'render_weekly_horoscope' ],
+			'monthly-horoscope' => [ Shortcodes::class, 'render_monthly_horoscope' ],
+			'planet-of-day'     => [ Shortcodes::class, 'render_planet_of_day' ],
+			'moon-phase'        => [ Shortcodes::class, 'render_moon_phase' ],
+			'bodygraph'         => [ Shortcodes::class, 'render_bodygraph' ],
+			'daily-tarot'       => [ Shortcodes::class, 'render_tarot_card' ],
+			'kundli'            => [ Shortcodes::class, 'render_kundli' ],
+			'transit'           => [ Shortcodes::class, 'render_transit' ],
+			'panchang'          => [ Shortcodes::class, 'render_panchang' ],
+			'numerology'        => [ Shortcodes::class, 'render_numerology' ],
+			'synastry'          => [ Shortcodes::class, 'render_synastry' ],
+			'mini-chart'        => [ Shortcodes::class, 'render_mini_chart' ],
+			'monthly-forecast'  => [ Shortcodes::class, 'render_monthly_forecast' ],
+			'transit-timeline'  => [ Shortcodes::class, 'render_transit_timeline' ],
 		];
 	}
 
@@ -29,11 +35,17 @@ class Blocks {
 	 */
 	private static function feature_for( string $slug ): string {
 		$map = [
-			'natal-chart'     => 'natal',
-			'daily-horoscope' => 'daily_horoscope',
-			'moon-phase'      => 'moon_phase',
-			'bodygraph'       => 'bodygraph',
-			'daily-tarot'     => 'daily_tarot',
+			'natal-chart'       => 'natal',
+			'daily-horoscope'   => 'daily_horoscope',
+			'weekly-horoscope'  => 'weekly_horoscope',
+			'monthly-horoscope' => 'monthly_horoscope',
+			'planet-of-day'     => 'planet_of_day',
+			'moon-phase'        => 'moon_phase',
+			'bodygraph'         => 'bodygraph',
+			'daily-tarot'       => 'daily_tarot',
+			'mini-chart'        => 'mini_chart',
+			'monthly-forecast'  => 'monthly_forecast',
+			'transit-timeline'  => 'transit_timeline',
 		];
 		return $map[ $slug ] ?? $slug;
 	}

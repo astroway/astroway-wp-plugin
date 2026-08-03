@@ -17,6 +17,39 @@
 			return $( '<div>' ).text( String( str == null ? '' : str ) ).html();
 		}
 
+		/* Copy buttons in the getting-started steps. Same markup and behaviour
+		   as the Shortcodes page; execCommand is the fallback for plain http. */
+		$( '.aw-sc-code' ).on( 'click', function () {
+			var btn  = this;
+			var code = btn.getAttribute( 'data-copy' );
+			if ( ! code ) return;
+
+			var $label = $( btn ).find( '.aw-sc-action-text' );
+			var prev   = $label.text();
+
+			function done() {
+				btn.classList.add( 'is-copied' );
+				$label.text( i18n.copied || 'copied!' );
+				setTimeout( function () {
+					btn.classList.remove( 'is-copied' );
+					$label.text( prev );
+				}, 1400 );
+			}
+
+			if ( navigator.clipboard && window.isSecureContext ) {
+				navigator.clipboard.writeText( code ).then( done );
+				return;
+			}
+			var ta = document.createElement( 'textarea' );
+			ta.value = code;
+			ta.style.position = 'absolute';
+			ta.style.left = '-9999px';
+			document.body.appendChild( ta );
+			ta.select();
+			try { document.execCommand( 'copy' ); done(); } catch ( e ) {}
+			document.body.removeChild( ta );
+		} );
+
 		$( '#aw-verify-key' ).on( 'click', function () {
 			var $status = $( '#aw-key-status' );
 			var key     = ( $( '#aw-api-key' ).val() || '' ).trim();

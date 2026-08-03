@@ -47,7 +47,7 @@ $astroway_pricing_url = 'https://api.astroway.info/pricing?source=wp_plugin';
 					<span class="aw-status-dot" aria-hidden="true"></span>
 					<div class="aw-status-text">
 						<span class="aw-status-label"><?php esc_html_e( 'Anonymous mode', 'astroway' ); ?></span>
-						<span class="aw-status-detail"><?php esc_html_e( '30 requests / hour / visitor IP', 'astroway' ); ?></span>
+						<span class="aw-status-detail"><?php esc_html_e( '300 requests / hour / site', 'astroway' ); ?></span>
 					</div>
 				</div>
 				<div class="aw-hero-ctas">

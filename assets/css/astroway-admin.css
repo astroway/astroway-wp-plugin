@@ -929,6 +929,81 @@
 	opacity: 0.75;
 }
 
+/* Getting-started steps — numbered by the counter, not by list markers,
+   so the digits match the panel numbering above them. */
+.aw-steps {
+	counter-reset: aw-step;
+	list-style: none;
+	margin: 0 0 18px;
+	padding: 0;
+}
+.aw-step {
+	counter-increment: aw-step;
+	position: relative;
+	padding: 0 0 14px 34px;
+	margin: 0;
+}
+.aw-step:last-child {
+	padding-bottom: 0;
+}
+.aw-step::before {
+	content: counter( aw-step, decimal-leading-zero );
+	position: absolute;
+	left: 0;
+	top: 1px;
+	font-family: var(--aw-mono);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	color: var(--aw-gold-deep);
+}
+.aw-step-title {
+	margin: 0 0 6px;
+	font-weight: 600;
+	line-height: 1.45;
+	color: var(--aw-ink);
+}
+.aw-step .aw-hint {
+	margin: 6px 0 0;
+}
+.aw-sc-code--block {
+	width: 100%;
+}
+/* Everything after the list keeps the step text column, so the panel reads
+   as one column of prose rather than two ragged left edges. */
+.aw-steps-more {
+	padding-left: 34px;
+	border-top: 1px solid var(--aw-rule-soft);
+	padding-top: 14px;
+}
+.aw-step-more {
+	margin: 0 0 8px;
+	font-weight: 600;
+	color: var(--aw-ink);
+}
+.aw-step-caption {
+	margin: 6px 0 14px;
+}
+.aw-step-caption:last-of-type {
+	margin-bottom: 10px;
+}
+
+/* Shortcode filter — sits above the cards, not inside a panel of its own. */
+.aw-filter {
+	margin-bottom: 4px;
+}
+.aw-filter .aw-input {
+	width: 100%;
+}
+.aw-filter-count {
+	margin: 6px 2px 0;
+	font-family: var(--aw-mono);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--aw-ink-mute);
+	min-height: 14px;
+}
+
 /* How-it-works paragraphs */
 .aw-how p {
 	margin: 0 0 10px;
