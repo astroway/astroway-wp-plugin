@@ -9,6 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Builds published on wordpress.org ship without includes/class-updater.php and
+// without the update-checker library: self-updating from our own server is not
+// allowed there, and the release workflow excludes both. Channel B does not
+// exist on those installs, so this card has nothing to report.
+if ( ! class_exists( '\AstroWay\WPPlugin\Updater' ) ) {
+	return;
+}
+
 $astroway_cb_status     = \AstroWay\WPPlugin\Updater::get_status();
 $astroway_cb_channel    = $astroway_cb_status['channel'];
 $astroway_cb_active     = $astroway_cb_status['active'];

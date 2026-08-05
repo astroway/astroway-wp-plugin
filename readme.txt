@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -118,6 +118,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix: opening the AstroWay admin page could end in a fatal error ("Class AstroWayWPPluginUpdater not found") on sites that installed the plugin from wordpress.org. The update-channel card is now skipped on those builds, where it never applied.
 
 = 1.0.0 =
 * New: seven widgets are now rendered by your server into the page instead of being loaded in an embedded frame: daily, weekly and monthly horoscope, moon phase, Tarot card of the day (Rider-Waite), planet of the day, and the natal chart. Their text becomes part of your HTML, so search engines index it and screen readers announce it. Until now every widget lived in a frame, which is a separate document, and none of that content counted toward your page.
