@@ -417,13 +417,31 @@ class Admin {
 			),
 			[
 				'timeout' => 10,
-				'headers' => [ 'Accept' => 'application/json' ],
+				'headers' => [
+					'Accept'              => 'application/json',
+					// Without it the atlas counts every site sharing this server's
+					// egress address in one bucket, which on shared hosting is
+					// somebody else's traffic spending your allowance.
+					'X-AstroWay-Site-URL' => home_url(),
+				],
 			]
 		);
 		if ( is_wp_error( $resp ) ) {
 			wp_send_json_error( [ 'message' => $resp->get_error_message() ] );
 		}
 		$code = wp_remote_retrieve_response_code( $resp );
+		if ( 429 === $code ) {
+			// Retrying before retry_after is refused anyway and keeps the window
+			// sliding forward, so hand the wait back to the caller.
+			$retry = (int) wp_remote_retrieve_header( $resp, 'retry-after' );
+			wp_send_json_error(
+				[
+					'message'     => __( 'City lookup is busy, try again in a moment.', 'astroway' ),
+					'retry_after' => $retry > 0 ? $retry : 60,
+				],
+				429
+			);
+		}
 		if ( 200 !== $code ) {
 			wp_send_json_error( [ 'message' => 'upstream ' . $code ] );
 		}

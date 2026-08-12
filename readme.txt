@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -118,6 +118,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: the city search on the settings screens now counts against your own site's hourly allowance instead of one shared with every site on the same server. On shared hosting a busy neighbour could use it up.
+* Fix: when the city service is rate-limited the search reports how long to wait, instead of showing "upstream 429".
+* i18n: the new message is translated in all 20 bundled locales.
 
 = 1.0.1 =
 * Fix: opening the AstroWay admin page could end in a fatal error ("Class AstroWayWPPluginUpdater not found") on sites that installed the plugin from wordpress.org. The update-channel card is now skipped on those builds, where it never applied.

@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.0\n"
+"Project-Id-Version: AstroWay – Astrology & Horoscopes 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-03T05:45:46+00:00\n"
-"PO-Revision-Date: 2026-08-03 08:46+0300\n"
+"POT-Creation-Date: 2026-08-12T10:55:44+00:00\n"
+"PO-Revision-Date: 2026-08-12 14:09+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: French <translations@astroway.info>\n"
 "Language: fr_FR\n"
@@ -55,7 +55,7 @@ msgstr "Pour commencer"
 msgid "AstroWay Settings"
 msgstr "Paramètres AstroWay"
 
-#: includes/class-admin.php:55 includes/class-admin.php:149
+#: includes/class-admin.php:55 includes/class-admin.php:155
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -71,7 +71,7 @@ msgstr "Shortcodes AstroWay"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: includes/class-admin.php:113
+#: includes/class-admin.php:119
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -79,108 +79,108 @@ msgstr ""
 "La clé API doit commencer par \"aw_\" et ne contenir que des lettres, "
 "chiffres et tirets bas."
 
-#: includes/class-admin.php:154
+#: includes/class-admin.php:160
 msgid "Get API Key"
 msgstr "Obtenir une clé API"
 
-#: includes/class-admin.php:192
+#: includes/class-admin.php:198
 msgid "Verifying…"
 msgstr "Vérification…"
 
-#: includes/class-admin.php:193
+#: includes/class-admin.php:199
 msgid "limited info"
 msgstr "infos limitées"
 
-#: includes/class-admin.php:194 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:200 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:195
+#: includes/class-admin.php:201
 msgid "Used"
 msgstr "Utilisé"
 
-#: includes/class-admin.php:196
+#: includes/class-admin.php:202
 msgid "Rate"
 msgstr "Taux"
 
-#: includes/class-admin.php:197
+#: includes/class-admin.php:203
 msgid "Bound to"
 msgstr "Lié à"
 
-#: includes/class-admin.php:198
+#: includes/class-admin.php:204
 msgid "Enter a valid API key first."
 msgstr "Veuillez d'abord entrer une clé API valide."
 
-#: includes/class-admin.php:199 includes/views/admin-settings.php:246
+#: includes/class-admin.php:205 includes/views/admin-settings.php:246
 msgid "Network error"
 msgstr "Erreur réseau"
 
-#: includes/class-admin.php:200
+#: includes/class-admin.php:206
 msgid "Key verified."
 msgstr "Clé vérifiée."
 
-#: includes/class-admin.php:201 includes/class-admin.php:224
-#: includes/class-admin.php:243
+#: includes/class-admin.php:207 includes/class-admin.php:230
+#: includes/class-admin.php:249
 msgid "copied!"
 msgstr "copié !"
 
-#: includes/class-admin.php:219
+#: includes/class-admin.php:225
 msgid "Pinging…"
 msgstr "Test de connexion…"
 
-#: includes/class-admin.php:220
+#: includes/class-admin.php:226
 msgid "API is healthy"
 msgstr "L'API est opérationnelle"
 
-#: includes/class-admin.php:221
+#: includes/class-admin.php:227
 msgid "API unreachable"
 msgstr "L'API est inaccessible"
 
-#: includes/class-admin.php:222
+#: includes/class-admin.php:228
 msgid "Purge all cached data?"
 msgstr "Vider tout le cache ?"
 
-#: includes/class-admin.php:223
+#: includes/class-admin.php:229
 msgid "Cache cleared:"
 msgstr "Cache vidé :"
 
-#: includes/class-admin.php:244
+#: includes/class-admin.php:250
 msgid "Searching…"
 msgstr "Recherche…"
 
-#: includes/class-admin.php:245
+#: includes/class-admin.php:251
 msgid "No cities found."
 msgstr "Aucune ville trouvée."
 
-#: includes/class-admin.php:246
+#: includes/class-admin.php:252
 msgid "Search error. Try again."
 msgstr "Erreur de recherche. Réessayez."
 
-#: includes/class-admin.php:247
+#: includes/class-admin.php:253
 msgid "Type at least 2 characters."
 msgstr "Tapez au moins 2 caractères."
 
-#: includes/class-admin.php:248
+#: includes/class-admin.php:254
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Choisissez une ville pour remplir lat / lon / tz"
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:250
+#: includes/class-admin.php:256
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d sur %2$d"
 
-#: includes/class-admin.php:251
+#: includes/class-admin.php:257
 msgid "No shortcode matches."
 msgstr "Aucun shortcode ne correspond."
 
-#: includes/class-admin.php:260 includes/class-admin.php:276
-#: includes/class-admin.php:285
+#: includes/class-admin.php:266 includes/class-admin.php:282
+#: includes/class-admin.php:291
 msgid "Unauthorized."
 msgstr "Non autorisé."
 
-#: includes/class-admin.php:298
+#: includes/class-admin.php:304
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -190,7 +190,7 @@ msgstr ""
 "quota de 300 requêtes par heure, et les widgets qui utilisent un cadre "
 "consomment les 30 requêtes de chaque visiteur."
 
-#: includes/class-admin.php:306
+#: includes/class-admin.php:312
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -199,24 +199,28 @@ msgstr ""
 "valide ou vider le champ pour passer en mode anonyme."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:309
+#: includes/class-admin.php:315
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Impossible de vérifier la clé (HTTP %d)."
 
-#: includes/class-admin.php:349
+#: includes/class-admin.php:355
 msgid "API key required."
 msgstr "Clé API configurée"
 
-#: includes/class-admin.php:353
+#: includes/class-admin.php:359
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Saisissez un nom de domaine valide (par exemple, example.com)."
 
-#: includes/class-admin.php:380
+#: includes/class-admin.php:386
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Le changement de domaine a échoué. Utilisez le lien vers le tableau de bord "
 "ci-dessous."
+
+#: includes/class-admin.php:439
+msgid "City lookup is busy, try again in a moment."
+msgstr "La recherche de ville est occupée, réessayez dans un moment."
 
 #: includes/class-plugin.php:161
 msgid "AstroWay is active"
@@ -596,7 +600,7 @@ msgid "Pisces"
 msgstr "Poissons"
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:233
+#: includes/class-shortcodes.php:323
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -605,20 +609,20 @@ msgstr ""
 "Le widget %s est temporairement indisponible ; il n'affiche donc rien. Seuls"
 " les administrateurs peuvent voir cette note."
 
-#: includes/class-tier.php:145
+#: includes/class-tier.php:197
 msgid "Locked feature"
 msgstr "Fonctionnalité verrouillée"
 
-#: includes/class-tier.php:155
+#: includes/class-tier.php:207
 msgid "Pro feature"
 msgstr "Fonctionnalité Pro"
 
-#: includes/class-tier.php:156
+#: includes/class-tier.php:208
 msgid "This widget is available on a paid AstroWay plan."
 msgstr ""
 "Ce widget est disponible dans le cadre d'un abonnement payant à AstroWay."
 
-#: includes/class-tier.php:159
+#: includes/class-tier.php:211
 msgid "Upgrade →"
 msgstr "Mise à jour →"
 
@@ -1679,19 +1683,19 @@ msgstr "optionnel"
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Également disponible sous forme de bloc Gutenberg \"%s\"."
 
-#: includes/views/partials/admin-channel-b-status.php:21
+#: includes/views/partials/admin-channel-b-status.php:29
 msgid "Update channel"
 msgstr "Enregistrer les modifications"
 
-#: includes/views/partials/admin-channel-b-status.php:25
+#: includes/views/partials/admin-channel-b-status.php:33
 msgid "Channel B"
 msgstr "Chaîne B"
 
-#: includes/views/partials/admin-channel-b-status.php:25
+#: includes/views/partials/admin-channel-b-status.php:33
 msgid "Channel A"
 msgstr "Chaîne A"
 
-#: includes/views/partials/admin-channel-b-status.php:27
+#: includes/views/partials/admin-channel-b-status.php:35
 msgid ""
 "Updates are delivered directly from astroway.info using your API key. Paid-"
 "tier features and early releases reach you first."
@@ -1700,7 +1704,7 @@ msgstr ""
 "votre clé API. Vous bénéficiez en priorité des fonctionnalités réservées aux"
 " abonnés payants et des versions en avant-première."
 
-#: includes/views/partials/admin-channel-b-status.php:29
+#: includes/views/partials/admin-channel-b-status.php:37
 msgid ""
 "Updates are delivered through the WordPress.org plugin directory. To "
 "activate Channel B for paid-tier delivery, add a paid API key above."
@@ -1709,37 +1713,37 @@ msgstr ""
 "WordPress.org. Pour activer le canal B pour la diffusion dans le cadre d'un "
 "abonnement payant, ajoutez une clé API payante ci-dessus."
 
-#: includes/views/partials/admin-channel-b-status.php:34
+#: includes/views/partials/admin-channel-b-status.php:42
 msgid "Update endpoint"
 msgstr "Mettre à jour le point de terminaison"
 
-#: includes/views/partials/admin-channel-b-status.php:38
+#: includes/views/partials/admin-channel-b-status.php:46
 msgid "Library loaded"
 msgstr "Bibliothèque chargée"
 
-#: includes/views/partials/admin-channel-b-status.php:39
-#: includes/views/partials/admin-channel-b-status.php:43
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "oui"
 
-#: includes/views/partials/admin-channel-b-status.php:39
-#: includes/views/partials/admin-channel-b-status.php:43
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "non"
 
-#: includes/views/partials/admin-channel-b-status.php:42
+#: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "Clé API"
 
-#: includes/views/partials/admin-channel-b-status.php:46
+#: includes/views/partials/admin-channel-b-status.php:54
 msgid "Last update check"
 msgstr "Dernière vérification de la mise à jour"
 
-#: includes/views/partials/admin-channel-b-status.php:49
+#: includes/views/partials/admin-channel-b-status.php:57
 msgid "ago"
 msgstr "il y a"
 
-#: includes/views/partials/admin-channel-b-status.php:51
+#: includes/views/partials/admin-channel-b-status.php:59
 msgid "not yet"
 msgstr "pas encore"
 
