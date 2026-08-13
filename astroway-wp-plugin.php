@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       AstroWay – Astrology & Horoscopes
+ * Plugin Name:       AstroWay – Astrology, Birth Chart & Horoscope Widgets
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
  * Description:       Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API. Powered by api.astroway.info.
- * Version:           1.0.2
- * Requires at least: 5.0
+ * Version:           1.0.3
+ * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            AstroWay
  * Author URI:        https://astroway.info

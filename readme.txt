@@ -1,10 +1,10 @@
 === AstroWay – Astrology, Birth Chart & Horoscope Widgets ===
 Contributors: astrowayteam
 Tags: astrology, birth chart, natal chart, horoscope, tarot
-Requires at least: 5.0
-Tested up to: 7.0
+Requires at least: 6.3
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -119,13 +119,17 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
+= 1.0.3 =
+* Tested against WordPress 7.1: all sixteen blocks render inside the iframed post editor and on the front end, the inspector panels still draw their controls, and the settings screen is unchanged.
+* Housekeeping: the minimum WordPress version now states 6.3, which is what the blocks have needed since they moved to block.json API version 3. The plugin name matches between the plugin header and this file.
+
 = 1.0.2 =
 * Fix: the city search on the settings screens now counts against your own site's hourly allowance instead of one shared with every site on the same server. On shared hosting a busy neighbour could use it up.
 * Fix: when the city service is rate-limited the search reports how long to wait, instead of showing "upstream 429".
 * i18n: the new message is translated in all 20 bundled locales.
 
 = 1.0.1 =
-* Fix: opening the AstroWay admin page could end in a fatal error ("Class AstroWayWPPluginUpdater not found") on sites that installed the plugin from wordpress.org. The update-channel card is now skipped on those builds, where it never applied.
+* Fix: opening the AstroWay admin page could end in a fatal error ("Class AstroWay\WPPlugin\Updater not found") on sites that installed the plugin from wordpress.org. The update-channel card is now skipped on those builds, where it never applied.
 
 = 1.0.0 =
 * New: seven widgets are now rendered by your server into the page instead of being loaded in an embedded frame: daily, weekly and monthly horoscope, moon phase, Tarot card of the day (Rider-Waite), planet of the day, and the natal chart. Their text becomes part of your HTML, so search engines index it and screen readers announce it. Until now every widget lived in a frame, which is a separate document, and none of that content counted toward your page.
@@ -349,8 +353,11 @@ This plugin stores the following on the WordPress site:
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+Tested with WordPress 7.1. Drop-in upgrade, no changes to markup or settings.
+
 = 1.0.0 =
-Seven widgets now render into your page as indexable text instead of loading in a frame, and their markup changed accordingly. If you wrote custom CSS against the old frame markup, review it after upgrading, or set Settings → AstroWay → Render mode to "In an iframe" to keep the previous output.
+Seven widgets now render into the page as text instead of loading in a frame, so their markup changed. Custom CSS written against the old frame markup needs a review, or set Render mode to "In an iframe" to keep the previous output.
 
 = 0.3.0 =
 Adds a live Status panel on the API Key admin page (plan / credits / period / domain) and a `lang` attribute on all shortcodes and Gutenberg blocks for 21 api-supported locales. Drop-in upgrade.
