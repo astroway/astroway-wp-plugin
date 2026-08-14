@@ -82,6 +82,7 @@ class Plugin {
 		}
 
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
+		add_action( 'enqueue_block_assets', [ __CLASS__, 'enqueue_editor_canvas' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_activation_notice' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_review_prompt' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_rate_limit_notice' ] );
@@ -97,6 +98,19 @@ class Plugin {
 			[],
 			ASTROWAY_WP_PLUGIN_VERSION
 		);
+	}
+
+	/**
+	 * The editor draws blocks in an iframe, which `wp_enqueue_scripts` never
+	 * reaches, so the preview showed the cards unstyled. `enqueue_block_assets`
+	 * is the hook that document reads; the front end is served above already,
+	 * hence the admin check rather than a second enqueue for everyone.
+	 */
+	public static function enqueue_editor_canvas(): void {
+		if ( ! is_admin() ) {
+			return;
+		}
+		self::enqueue_frontend();
 	}
 
 	/**

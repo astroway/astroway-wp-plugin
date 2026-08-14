@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -118,6 +118,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix: the block preview in the editor is styled again. WordPress draws the editor canvas in an iframe, which the plugin stylesheet never reached, so a horoscope card previewed as bare text while the published page showed it framed and spaced.
 
 = 1.0.3 =
 * Tested against WordPress 7.1: all sixteen blocks render inside the iframed post editor and on the front end, the inspector panels still draw their controls, and the settings screen is unchanged.
@@ -352,6 +355,9 @@ This plugin stores the following on the WordPress site:
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet, first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+Block previews in the editor pick up the plugin stylesheet again. Nothing changes on the published page.
 
 = 1.0.3 =
 Tested with WordPress 7.1. Drop-in upgrade, no changes to markup or settings.
