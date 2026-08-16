@@ -36,6 +36,10 @@ Widgets that have no page-side template yet, and any widget whose data cannot be
 
 Under the hood the widgets are powered by api.astroway.info, with 700+ endpoints covering Western, Vedic, Hellenistic, Chinese and Mayan astrology, Tarot (Rider-Waite, Marseille, Lenormand), Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil), Human Design and AI horoscopes.
 
+= Try it before you install =
+
+The same calculations run as free web tools, with no install and no account: a [birth chart](https://app.astroway.info/en/tools/natal) and a [synastry comparison](https://app.astroway.info/en/tools/synastry). Useful for seeing what a widget will output before you put a shortcode on a page.
+
 == Installation ==
 
 1. Upload the plugin via Plugins → Add New, or unzip into `/wp-content/plugins/`, then activate it through the Plugins menu.
@@ -53,6 +57,10 @@ Yes. The plugin is free and open source, and the core widgets work with no accou
 = How do I add a horoscope or birth chart to WordPress? =
 
 Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. All 16 are Gutenberg blocks as well: type `/astroway` in the editor and pick one. Settings → AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
+
+= Can I see a chart without installing the plugin? =
+
+Yes. The same calculations run as free web tools with no install and no account: a [birth chart](https://app.astroway.info/en/tools/natal). Handy for checking the output before you add a shortcode, or for a one-off chart you do not need on the site.
 
 = Do I need an API key? =
 
