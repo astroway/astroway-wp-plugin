@@ -26,6 +26,25 @@
 	background: transparent;
 }
 
+/* The admin-only note is text, not a frame, so it needs the line box back:
+   `line-height: 0` on the wrapper exists to kill the gap under an iframe, and
+   it collapsed the note's lines onto each other. */
+
+.astroway-embed--unavailable {
+	--astroway-min-height: 0;
+
+	line-height: 1.5;
+	padding: 0.9em 1.1em;
+	border: 1px dashed var(--astroway-card-line, rgba(128, 128, 128, 0.35));
+	border-radius: 8px;
+	font-size: 0.9em;
+	opacity: 0.85;
+}
+
+.astroway-embed--unavailable p {
+	margin: 0;
+}
+
 /* Per-widget max-width matches the embed page's intrinsic content width */
 .astroway-embed--natal,
 .astroway-embed--bodygraph,
@@ -262,4 +281,42 @@
 	.astroway-card__placements td {
 		padding-right: 0.4em;
 	}
+}
+
+/* Bodygraph card: all text, no drawing to make room for. */
+
+.astroway-card--bodygraph {
+	--astroway-card-max-width: 40em;
+}
+
+.astroway-card__channels {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3em 0.9em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9em;
+}
+
+/* A single placement: one answer, so the sign itself carries the card. */
+
+.astroway-card--moon-sign,
+.astroway-card--rising-sign {
+	--astroway-card-max-width: 26em;
+}
+
+.astroway-card--moon-sign .astroway-card__lead,
+.astroway-card--rising-sign .astroway-card__lead {
+	font-size: 1.5em;
+	line-height: 1.2;
+}
+
+/* The section only groups: it sets the sign for the blocks inside and stays out
+   of the way of whatever layout the theme gives them. */
+
+.astroway-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25em;
 }

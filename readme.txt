@@ -4,7 +4,7 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -28,7 +28,11 @@ AstroWay → Shortcodes in your admin lists every shortcode with its parameters 
 
 = What renders into the page =
 
-Seven widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), planet of the day, and the natal chart. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The one exception is the natal chart's wheel, which stays a drawing produced by the API and therefore keeps a palette of its own; `theme="light"` or `theme="console"` on the shortcode matches it to your design. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+Ten widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), planet of the day, the natal chart, the Human Design bodygraph, the moon sign and the rising sign. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The one exception is the natal chart's wheel, which stays a drawing produced by the API and therefore keeps a palette of its own; `theme="light"` or `theme="console"` on the shortcode matches it to your design. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+
+= One sign for a whole section =
+
+The Astrology Section block sets a zodiac sign once and every AstroWay block inside it follows: four horoscopes on a sign's landing page, and the sign is written in one place rather than four. A block that has its own sign keeps it.
 
 = What still loads in a frame =
 
@@ -52,11 +56,11 @@ Optional: AstroWay → API Key, to paste a key from api.astroway.info. Every wid
 
 = Is AstroWay free? Are there any hidden costs? =
 
-Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The seven widgets your server renders into the page draw on the anonymous per-site allowance of 300 requests an hour, and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. No widget in the plugin is reserved for a paid plan. A free API key (still no card) gives you 10,000 calls a month against api.astroway.info, and paid plans raise that further; both are about calling the API yourself, not about what these shortcodes render.
+Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The ten widgets your server renders into the page draw on the anonymous per-site allowance of 300 requests an hour, and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. No widget in the plugin is reserved for a paid plan. A free API key (still no card) gives you 10,000 calls a month against api.astroway.info, and paid plans raise that further; both are about calling the API yourself, not about what these shortcodes render.
 
 = How do I add a horoscope or birth chart to WordPress? =
 
-Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. All 16 are Gutenberg blocks as well: type `/astroway` in the editor and pick one. Settings → AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
+Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. All 18 are Gutenberg blocks as well: type `/astroway` in the editor and pick one. Settings → AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
 
 = Can I see a chart without installing the plugin? =
 
@@ -68,7 +72,7 @@ No. The plugin works without a key. Page-rendered widgets then run on the anonym
 
 = Will the widgets show up in Google? =
 
-The seven page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. Settings → AstroWay → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
+The ten page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. Settings → AstroWay → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
 
 = What data is sent to api.astroway.info? =
 
@@ -101,8 +105,8 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 **What is sent:**
 
-* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
-* When a widget falls back to an embedded frame (bodygraph, synastry, kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
+* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
+* When a widget falls back to an embedded frame (synastry, kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
 * When the site administrator clicks "Verify Key" or "Test Connection" in the Settings screen: the configured API key and a small diagnostics payload.
 
 **When this happens:**
@@ -126,6 +130,13 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.1.0 =
+* New: Human Design is rendered into the page. Type, strategy, authority, profile, definition, incarnation cross, the defined and open centres and the channels are now text your visitors can read and search engines can index, in place of the frame that held the same facts where neither could reach them.
+* New: Moon Sign and Rising Sign, each answering one question on its own instead of burying it in a full chart. The rising sign card also names the chart ruler, where it sits, and the Midheaven.
+* New: the Astrology Section block. Set a zodiac sign on it once and every AstroWay block inside follows, in the editor preview as well as on the page. A block with its own sign keeps it.
+* Efficiency: the natal chart, moon sign and rising sign cards share one cached answer, so a page carrying all three costs one request instead of three.
+* i18n: 45 new strings, translated in all 20 bundled locales.
 
 = 1.0.4 =
 * Fix: the block preview in the editor is styled again. WordPress draws the editor canvas in an iframe, which the plugin stylesheet never reached, so a horoscope card previewed as bare text while the published page showed it framed and spaced.

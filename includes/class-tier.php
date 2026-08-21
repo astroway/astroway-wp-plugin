@@ -120,6 +120,9 @@ class Tier {
 			'planet_of_day'          => $all_tiers,
 			'moon_phase'             => $all_tiers,
 			'bodygraph'              => $all_tiers,
+			// Single placements out of the same anonymous chart the natal card reads.
+			'moon_sign'              => $all_tiers,
+			'rising_sign'            => $all_tiers,
 			'daily_tarot'            => $all_tiers,
 			'today_in_sky'           => $all_tiers,
 			'fortune_cookie'         => $all_tiers,

@@ -134,6 +134,14 @@
 			panel:  __( 'Birth data', 'astroway' ),
 			fields: CHART_FIELDS
 		},
+		'astroway/moon-sign': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: CHART_FIELDS
+		},
+		'astroway/rising-sign': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: CHART_FIELDS
+		},
 		'astroway/kundli': {
 			panel:  __( 'Birth data', 'astroway' ),
 			fields: KUNDLI_FIELDS
@@ -250,6 +258,27 @@
 		return el( TextControl, common );
 	}
 
+	/**
+	 * Attributes as the front end will see them, with the section's sign and
+	 * language filled into whatever the block left blank.
+	 *
+	 * ServerSideRender renders through the REST endpoint, which knows nothing
+	 * about block context, so a horoscope inside a Leo section previewed as a
+	 * horoscope with no sign at all. PHP already resolves this the same way; this
+	 * only makes the editor agree with the page. The block's own attributes are
+	 * not touched, so removing it from the section restores its own blank.
+	 */
+	function previewAttributes( attrs, context ) {
+		var merged = Object.assign( {}, attrs );
+		[ 'sign', 'lang' ].forEach( function ( name ) {
+			var inherited = context && context[ 'astroway/' + name ];
+			if ( inherited && ! merged[ name ] ) {
+				merged[ name ] = inherited;
+			}
+		} );
+		return merged;
+	}
+
 	function makeEdit( blockName ) {
 		var cfg = BLOCKS[ blockName ];
 		return function Edit( props ) {
@@ -272,7 +301,7 @@
 					el( Disabled, null,
 						el( ServerSideRender, {
 							block:      blockName,
-							attributes: props.attributes
+							attributes: previewAttributes( props.attributes, props.context )
 						} )
 					)
 				)
@@ -285,5 +314,48 @@
 			edit: makeEdit( blockName ),
 			save: function () { return null; }
 		} );
+	} );
+
+	// The container is the one block that is not server-rendered in the editor:
+	// it holds other blocks, so it shows them, and the sign it sets reaches them
+	// through block context rather than through a preview request.
+	var InnerBlocks = wp.blockEditor.InnerBlocks;
+
+	wp.blocks.registerBlockType( 'astroway/astrology-section', {
+		edit: function Edit( props ) {
+			var blockProps = useBlockProps( { className: 'astroway-section' } );
+			return el(
+				Fragment,
+				null,
+				el(
+					InspectorControls,
+					null,
+					el(
+						PanelBody,
+						{ title: __( 'Section', 'astroway' ), initialOpen: true },
+						el( SelectControl, {
+							key:      'sign',
+							label:    __( 'Zodiac sign for blocks inside', 'astroway' ),
+							value:    props.attributes.sign || '',
+							options:  SIGN_OPTIONS,
+							onChange: function ( value ) { props.setAttributes( { sign: value } ); }
+						} ),
+						el( SelectControl, {
+							key:      'lang',
+							label:    __( 'Language for blocks inside', 'astroway' ),
+							value:    props.attributes.lang || '',
+							options:  LANG_OPTIONS,
+							onChange: function ( value ) { props.setAttributes( { lang: value } ); }
+						} )
+					)
+				),
+				el( 'div', blockProps, el( InnerBlocks, null ) )
+			);
+		},
+		// Inner blocks have to be serialised into the post, so this one saves
+		// their markup even though the wrapper itself is rendered in PHP.
+		save: function () {
+			return el( InnerBlocks.Content );
+		}
 	} );
 } )( window.wp );

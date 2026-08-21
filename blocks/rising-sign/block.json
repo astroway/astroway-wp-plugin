@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/rising-sign",
+	"title": "AstroWay: Rising Sign",
+	"category": "widgets",
+	"description": "The rising sign with its chart ruler. Needs coordinates: the ascendant is the horizon at a place.",
+	"textdomain": "astroway",
+	"icon": "sunrise",
+	"supports": {
+		"html": false,
+		"align": [ "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"time": { "type": "string", "default": "" },
+		"lat": { "type": "string", "default": "" },
+		"lon": { "type": "string", "default": "" },
+		"name": { "type": "string", "default": "" },
+		"tz": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

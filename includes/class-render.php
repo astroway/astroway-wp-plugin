@@ -31,6 +31,9 @@ class Render {
 		'tarot_daily'       => [ 'astroway-tarot-card', 'tarot' ],
 		'planet_of_day'     => [ 'astroway-planet-card', 'planet' ],
 		'natal'             => [ 'astroway-natal-card', 'natal' ],
+		'moon_sign'         => [ 'astroway-sign-card', 'moon-sign' ],
+		'rising_sign'       => [ 'astroway-sign-card', 'rising-sign' ],
+		'bodygraph'         => [ 'astroway-bodygraph-card', 'bodygraph' ],
 	];
 
 	/**
@@ -40,7 +43,11 @@ class Render {
 	 * @param array  $params Shortcode params, already sanitised by the caller.
 	 */
 	public static function widget( string $widget, array $params = [] ): string {
-		if ( 'iframe' === self::mode() || ! PublicData::supports( $widget ) || ! isset( self::CARDS[ $widget ] ) ) {
+		// "In an iframe" is a preference, and it only applies where a frame is
+		// actually an option. The moon and rising sign cards have no embed route
+		// behind them, so honouring the setting there would render nothing at all.
+		$framed = null !== RendererDecisions::get( $widget );
+		if ( ( $framed && 'iframe' === self::mode() ) || ! PublicData::supports( $widget ) || ! isset( self::CARDS[ $widget ] ) ) {
 			return PublicClient::embed_iframe( $widget, $params );
 		}
 
@@ -75,11 +82,20 @@ class Render {
 		if ( null !== RendererDecisions::get( $widget ) ) {
 			return PublicClient::embed_iframe( $widget, $params );
 		}
+		// The rising sign is the one widget that can reach here by refusing rather
+		// than failing, and telling an editor "try again" would send them looking
+		// for a fault that is not there.
+		if ( 'rising_sign' === $widget ) {
+			return self::admin_note(
+				__( 'The rising sign needs a latitude and a longitude: it is the horizon at a place, not a date. Only administrators see this note.', 'astroway' )
+			);
+		}
+
 		return self::admin_note(
 			sprintf(
-				/* translators: %s = widget name */
+				/* translators: %s = widget name, e.g. "moon sign" */
 				__( 'The %s widget could not be loaded just now. Only administrators see this note.', 'astroway' ),
-				$widget
+				str_replace( '_', ' ', $widget )
 			)
 		);
 	}
@@ -112,8 +128,302 @@ class Render {
 				return self::planet_card( $data, $lang );
 			case 'natal':
 				return self::natal_card( $data, $lang, $params );
+			case 'moon_sign':
+				return self::placement_card( 'moon_sign', $data, $lang, $params );
+			case 'rising_sign':
+				return self::placement_card( 'rising_sign', $data, $lang, $params );
+			case 'bodygraph':
+				return self::bodygraph_card( $data, $lang, $params );
 		}
 		return '';
+	}
+
+	/**
+	 * One placement out of a whole chart: the Moon's sign, or the rising sign.
+	 *
+	 * Both read the same payload the natal card does, so a page carrying all
+	 * three spends one api call. The reason they exist as separate widgets is
+	 * that "what's my moon sign" is a question people ask on its own, and
+	 * answering it with the full placements table buries the answer.
+	 */
+	private static function placement_card( string $widget, array $data, string $lang, array $params ): string {
+		$houses = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
+		$cusps  = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+
+		if ( 'rising_sign' === $widget ) {
+			if ( ! isset( $houses['ascendant'] ) ) {
+				return '';
+			}
+			$longitude = (float) $houses['ascendant'];
+			$title     = __( 'Rising sign', 'astroway' );
+			$house     = null;
+		} else {
+			$moon = null;
+			foreach ( ( isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [] ) as $planet ) {
+				if ( is_array( $planet ) && 'Moon' === ( $planet['name'] ?? '' ) && isset( $planet['longitude'] ) ) {
+					$moon = $planet;
+					break;
+				}
+			}
+			if ( null === $moon ) {
+				return '';
+			}
+			$longitude = (float) $moon['longitude'];
+			$title     = __( 'Moon sign', 'astroway' );
+			$house     = self::house_of( $longitude, $cusps );
+		}
+
+		$sign = self::sign_of( $longitude );
+		$name = trim( (string) ( $params['name'] ?? '' ) );
+		if ( '' !== $name ) {
+			$title = sprintf(
+				/* translators: 1: heading such as "Moon sign", 2: person's name */
+				__( '%1$s: %2$s', 'astroway' ),
+				$title,
+				$name
+			);
+		}
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html( $title ) . '</h3>';
+		$inner .= self::date_line( (string) ( $params['date'] ?? '' ) );
+		$inner .= '</header>';
+		$inner .= '<p class="astroway-card__lead">' . esc_html( self::sign_label( $sign ) ) . '</p>';
+
+		$rows = [ __( 'Position', 'astroway' ) => self::position_label( $longitude ) ];
+		if ( null !== $house ) {
+			/* translators: %d = house number */
+			$rows[ __( 'House', 'astroway' ) ] = sprintf( __( 'House %d', 'astroway' ), $house );
+		}
+
+		if ( 'rising_sign' === $widget ) {
+			// The chart ruler is the planet that rules the rising sign, and where
+			// it sits is the first thing a reader is told to look at next.
+			$ruler = self::ruler_of( $sign );
+			if ( '' !== $ruler ) {
+				$rows[ __( 'Chart ruler', 'astroway' ) ] = self::planet_label( $ruler );
+				foreach ( ( isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [] ) as $planet ) {
+					if ( is_array( $planet ) && ( $planet['name'] ?? '' ) === $ruler && isset( $planet['longitude'] ) ) {
+						$rows[ __( 'Ruler position', 'astroway' ) ] = self::position_label( (float) $planet['longitude'] );
+						break;
+					}
+				}
+			}
+			if ( isset( $houses['mc'] ) ) {
+				$rows[ __( 'Midheaven', 'astroway' ) ] = self::position_label( (float) $houses['mc'] );
+			}
+		}
+
+		$inner .= self::detail_list( $rows );
+
+		return self::shell( $widget, $lang, $inner );
+	}
+
+	/**
+	 * Human Design chart as text.
+	 *
+	 * Unlike the natal card this one drops the frame entirely rather than keeping
+	 * it alongside. The natal frame draws a wheel, a picture the JSON does not
+	 * carry. `/v1/embed/bodygraph` draws nothing: checked against the live
+	 * response, it is the same handful of facts as a text table with emoji for
+	 * the centres. Keeping it would print the reading twice on the page, the
+	 * second copy in someone else's stylesheet and invisible to a crawler.
+	 */
+	private static function bodygraph_card( array $data, string $lang, array $params ): string {
+		$type = trim( (string) ( $data['type'] ?? '' ) );
+		if ( '' === $type ) {
+			return '';
+		}
+
+		$name  = trim( (string) ( $params['name'] ?? '' ) );
+		$title = __( 'Human Design', 'astroway' );
+		if ( '' !== $name ) {
+			/* translators: %s = person's name */
+			$title = sprintf( __( 'Human Design: %s', 'astroway' ), $name );
+		}
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html( $title ) . '</h3>';
+		$inner .= self::date_line( (string) ( $params['date'] ?? '' ) );
+		$inner .= '</header>';
+		$inner .= '<p class="astroway-card__lead">' . esc_html( self::hd_type_label( $type ) ) . '</p>';
+
+		$rows = [];
+		if ( ! empty( $data['strategy'] ) ) {
+			$rows[ __( 'Strategy', 'astroway' ) ] = self::hd_strategy_label( (string) $data['strategy'] );
+		}
+		if ( ! empty( $data['authority'] ) ) {
+			$rows[ __( 'Authority', 'astroway' ) ] = self::hd_authority_label( (string) $data['authority'] );
+		}
+		if ( ! empty( $data['profile']['profile'] ) ) {
+			$profile = (string) $data['profile']['profile'];
+			if ( ! empty( $data['profile']['geometry'] ) ) {
+				$profile = sprintf(
+					/* translators: 1: profile such as 6/2, 2: incarnation geometry such as Left Angle */
+					__( '%1$s, %2$s', 'astroway' ),
+					$profile,
+					self::hd_geometry_label( (string) $data['profile']['geometry'] )
+				);
+			}
+			$rows[ __( 'Profile', 'astroway' ) ] = $profile;
+		}
+		if ( ! empty( $data['definition'] ) ) {
+			$rows[ __( 'Definition', 'astroway' ) ] = self::hd_definition_label( (string) $data['definition'] );
+		}
+		if ( ! empty( $data['notSelfTheme'] ) ) {
+			$rows[ __( 'Not-self theme', 'astroway' ) ] = self::hd_theme_label( (string) $data['notSelfTheme'] );
+		}
+		if ( ! empty( $data['cross']['name'] ) ) {
+			// The cross names are an open set of hundreds, so they stay as sent.
+			$rows[ __( 'Incarnation cross', 'astroway' ) ] = (string) $data['cross']['name'];
+		}
+		$inner .= self::detail_list( $rows );
+
+		$inner .= self::hd_centres( $data['centers'] ?? [] );
+		$inner .= self::hd_channels( $data['channels'] ?? [] );
+
+		return self::shell( 'bodygraph', $lang, $inner );
+	}
+
+	/** Defined centres named, undefined ones counted: nine lines would drown the card. */
+	private static function hd_centres( $centres ): string {
+		if ( ! is_array( $centres ) || empty( $centres ) ) {
+			return '';
+		}
+		$defined = [];
+		$open    = [];
+		foreach ( $centres as $centre ) {
+			if ( ! is_array( $centre ) || empty( $centre['name'] ) ) {
+				continue;
+			}
+			$label = self::hd_centre_label( (string) $centre['name'] );
+			if ( ! empty( $centre['defined'] ) ) {
+				$defined[] = $label;
+			} else {
+				$open[] = $label;
+			}
+		}
+		if ( empty( $defined ) && empty( $open ) ) {
+			return '';
+		}
+
+		$rows = [];
+		if ( ! empty( $defined ) ) {
+			$rows[ __( 'Defined centres', 'astroway' ) ] = implode( ', ', $defined );
+		}
+		if ( ! empty( $open ) ) {
+			$rows[ __( 'Open centres', 'astroway' ) ] = implode( ', ', $open );
+		}
+		return '<h4 class="astroway-card__subtitle">' . esc_html__( 'Centres', 'astroway' ) . '</h4>' . self::detail_list( $rows );
+	}
+
+	private static function hd_channels( $channels ): string {
+		if ( ! is_array( $channels ) || empty( $channels ) ) {
+			return '';
+		}
+		$items = '';
+		foreach ( $channels as $channel ) {
+			if ( ! is_array( $channel ) || ! isset( $channel['gate1'], $channel['gate2'] ) ) {
+				continue;
+			}
+			$items .= '<li>' . esc_html(
+				sprintf(
+					/* translators: 1: first gate number, 2: second gate number, 3: first centre, 4: second centre */
+					__( '%1$d-%2$d, %3$s to %4$s', 'astroway' ),
+					(int) $channel['gate1'],
+					(int) $channel['gate2'],
+					self::hd_centre_label( (string) ( $channel['centerA'] ?? '' ) ),
+					self::hd_centre_label( (string) ( $channel['centerB'] ?? '' ) )
+				)
+			) . '</li>';
+		}
+		if ( '' === $items ) {
+			return '';
+		}
+		return '<h4 class="astroway-card__subtitle">' . esc_html__( 'Channels', 'astroway' ) . '</h4><ul class="astroway-card__channels">' . $items . '</ul>';
+	}
+
+	private static function hd_type_label( string $raw ): string {
+		$labels = [
+			'Generator'             => __( 'Generator', 'astroway' ),
+			'Manifesting Generator' => __( 'Manifesting Generator', 'astroway' ),
+			'Manifestor'            => __( 'Manifestor', 'astroway' ),
+			'Projector'             => __( 'Projector', 'astroway' ),
+			'Reflector'             => __( 'Reflector', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	private static function hd_strategy_label( string $raw ): string {
+		$labels = [
+			'Wait to Respond'         => __( 'Wait to respond', 'astroway' ),
+			'Wait for the Invitation' => __( 'Wait for the invitation', 'astroway' ),
+			'Inform before Acting'    => __( 'Inform before acting', 'astroway' ),
+			'To Inform'               => __( 'Inform before acting', 'astroway' ),
+			'Wait a Lunar Cycle'      => __( 'Wait a lunar cycle', 'astroway' ),
+			'Respond, then Inform'    => __( 'Respond, then inform', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	private static function hd_authority_label( string $raw ): string {
+		$labels = [
+			'Emotional (Solar Plexus)' => __( 'Emotional (Solar Plexus)', 'astroway' ),
+			'Sacral'                   => __( 'Sacral', 'astroway' ),
+			'Splenic'                  => __( 'Splenic', 'astroway' ),
+			'Ego (Heart)'              => __( 'Ego (Heart)', 'astroway' ),
+			'Self-Projected'           => __( 'Self-projected', 'astroway' ),
+			'Mental (Environment)'     => __( 'Mental (environment)', 'astroway' ),
+			'Lunar Cycle'              => __( 'Lunar cycle', 'astroway' ),
+			'None (Lunar)'             => __( 'Lunar cycle', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	private static function hd_definition_label( string $raw ): string {
+		$labels = [
+			'Single'          => __( 'Single definition', 'astroway' ),
+			'Split'           => __( 'Split definition', 'astroway' ),
+			'Triple Split'    => __( 'Triple split definition', 'astroway' ),
+			'Quadruple Split' => __( 'Quadruple split definition', 'astroway' ),
+			'No Definition'   => __( 'No definition', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	private static function hd_theme_label( string $raw ): string {
+		$labels = [
+			'Frustration'    => __( 'Frustration', 'astroway' ),
+			'Bitterness'     => __( 'Bitterness', 'astroway' ),
+			'Anger'          => __( 'Anger', 'astroway' ),
+			'Disappointment' => __( 'Disappointment', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	private static function hd_geometry_label( string $raw ): string {
+		$labels = [
+			'Right Angle'   => __( 'Right Angle', 'astroway' ),
+			'Left Angle'    => __( 'Left Angle', 'astroway' ),
+			'Juxtaposition' => __( 'Juxtaposition', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
+	}
+
+	/** The nine centres, as the api spells them: "SolarPlexus" is one word there. */
+	private static function hd_centre_label( string $raw ): string {
+		$labels = [
+			'Head'        => __( 'Head', 'astroway' ),
+			'Ajna'        => __( 'Ajna', 'astroway' ),
+			'Throat'      => __( 'Throat', 'astroway' ),
+			'G'           => __( 'G (identity)', 'astroway' ),
+			'Heart'       => __( 'Heart (ego)', 'astroway' ),
+			'SolarPlexus' => __( 'Solar Plexus', 'astroway' ),
+			'Spleen'      => __( 'Spleen', 'astroway' ),
+			'Sacral'      => __( 'Sacral', 'astroway' ),
+			'Root'        => __( 'Root', 'astroway' ),
+		];
+		return $labels[ $raw ] ?? $raw;
 	}
 
 	/**
@@ -207,16 +517,47 @@ class Render {
 	/** "Leo 24°22'" from an ecliptic longitude. */
 	private static function position_label( float $longitude ): string {
 		$lon     = fmod( fmod( $longitude, 360 ) + 360, 360 );
-		$index   = (int) floor( $lon / 30 );
-		$in_sign = $lon - ( $index * 30 );
+		$in_sign = $lon - ( ( (int) floor( $lon / 30 ) ) * 30 );
 		$degrees = (int) floor( $in_sign );
 		$minutes = (int) round( ( $in_sign - $degrees ) * 60 );
 		if ( 60 === $minutes ) {
 			$minutes = 0;
 			++$degrees;
 		}
+		return sprintf( '%s %d°%02d\'', self::sign_label( self::sign_of( $longitude ) ), $degrees, $minutes );
+	}
+
+	/** Sign key an ecliptic longitude falls in, e.g. 296.39 → aquarius. */
+	public static function sign_of( float $longitude ): string {
+		$lon   = fmod( fmod( $longitude, 360 ) + 360, 360 );
 		$names = [ 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ];
-		return sprintf( '%s %d°%02d\'', self::sign_label( $names[ $index ] ?? '' ), $degrees, $minutes );
+		return $names[ (int) floor( $lon / 30 ) ] ?? '';
+	}
+
+	/**
+	 * Modern ruler of a sign, spelled the way the api names its planets.
+	 *
+	 * Modern rather than traditional, because the chart the ruler is looked up
+	 * in carries Uranus, Neptune and Pluto: naming Mars the ruler of Scorpio and
+	 * then pointing at a chart that also has Pluto in it invites the question of
+	 * which one the card means.
+	 */
+	public static function ruler_of( string $sign ): string {
+		$rulers = [
+			'aries'       => 'Mars',
+			'taurus'      => 'Venus',
+			'gemini'      => 'Mercury',
+			'cancer'      => 'Moon',
+			'leo'         => 'Sun',
+			'virgo'       => 'Mercury',
+			'libra'       => 'Venus',
+			'scorpio'     => 'Pluto',
+			'sagittarius' => 'Jupiter',
+			'capricorn'   => 'Saturn',
+			'aquarius'    => 'Uranus',
+			'pisces'      => 'Neptune',
+		];
+		return $rulers[ strtolower( trim( $sign ) ) ] ?? '';
 	}
 
 	/**

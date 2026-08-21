@@ -102,6 +102,36 @@ class PublicData {
 			'required'  => [ 'date', 'time' ],
 			'lang'      => false,
 		],
+		// Moon and rising signs read the same chart as the natal card and are
+		// cached under the same key: three widgets on one page cost one call.
+		'moon_sign'         => [
+			'path'      => '/public/chart',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time' ],
+			'lang'      => false,
+		],
+		'rising_sign'       => [
+			'path'      => '/public/chart',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			// A rising sign is the horizon at a place and a minute; without
+			// coordinates it would be the horizon of the Atlantic at Greenwich.
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+		],
+		// Human Design carries no `localized` object, so its closed sets (type,
+		// strategy, authority, definition, centre names) are translated here.
+		'bodygraph'         => [
+			'path'      => '/public/human-design',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time' ],
+			'lang'      => false,
+		],
 	];
 
 	/** Widget keys this client can read. */
@@ -129,7 +159,7 @@ class PublicData {
 			return null;
 		}
 
-		$key    = self::cache_key( $widget, $query );
+		$key    = self::cache_key( $config['path'], $query );
 		$cached = Cache::get( $key );
 		if ( is_array( $cached ) ) {
 			return $cached;
@@ -184,10 +214,18 @@ class PublicData {
 		return max( self::MIN_TTL, $boundary - $now );
 	}
 
-	/** Cache key over the exact query, so two signs or two languages never share an entry. */
-	public static function cache_key( string $widget, array $query ): string {
+	/**
+	 * Cache key over the endpoint and the exact query, so two signs or two
+	 * languages never share an entry.
+	 *
+	 * Keyed on the path rather than the widget on purpose: the natal, moon sign
+	 * and rising sign cards all read POST /public/chart, and a page carrying all
+	 * three should spend one call, not three.
+	 */
+	public static function cache_key( string $path, array $query ): string {
 		ksort( $query );
-		return 'pub_' . $widget . '_' . md5( (string) wp_json_encode( $query ) );
+		$slug = trim( (string) preg_replace( '/[^a-z0-9]+/', '_', strtolower( $path ) ), '_' );
+		return 'pub_' . $slug . '_' . md5( (string) wp_json_encode( $query ) );
 	}
 
 	/**
@@ -253,9 +291,14 @@ class PublicData {
 			$time = '';
 		}
 
+		// The raw attributes, not the cast ones: a missing coordinate arrives as
+		// an empty string and a real one may legitimately be "0", and (float)
+		// collapses both to the same number.
 		$have = [
-			'date' => $date,
-			'time' => $time,
+			'date'      => $date,
+			'time'      => $time,
+			'latitude'  => trim( (string) ( $params['lat'] ?? '' ) ),
+			'longitude' => trim( (string) ( $params['lng'] ?? '' ) ),
 		];
 		foreach ( $required as $name ) {
 			if ( '' === ( $have[ $name ] ?? '' ) ) {

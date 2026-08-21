@@ -86,7 +86,7 @@ $astroway_cards = [
 	[
 		'tag'         => 'astroway_bodygraph',
 		'title'       => __( 'Human Design Bodygraph', 'astroway' ),
-		'description' => __( 'Human Design body graph with centers, channels, gates.', 'astroway' ),
+		'description' => __( 'The bodygraph drawing, with type, strategy, authority, profile and the defined centres as text beside it.', 'astroway' ),
 		'example'     => '[astroway_bodygraph date="1990-05-15" time="14:30" lat="50.45" lon="30.52" name="Anna" tz="Europe/Kyiv"]',
 		'block'       => 'astroway/bodygraph',
 		'params'      => [
@@ -96,6 +96,36 @@ $astroway_cards = [
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
 			[ 'name', 'string', false, __( 'Display name.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_moon_sign',
+		'title'       => __( 'Moon Sign', 'astroway' ),
+		'description' => __( 'The Moon\'s sign, degree and house from a birth chart. Answers "what is my moon sign" on its own, without the whole chart around it.', 'astroway' ),
+		'example'     => '[astroway_moon_sign date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
+		'block'       => 'astroway/moon-sign',
+		'params'      => [
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', false, __( 'WGS-84 latitude. Only affects the house shown; the sign is the same anywhere.', 'astroway' ) ],
+			[ 'lon', 'float', false, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
+			[ 'name', 'string', false, __( 'Display name in the heading.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_rising_sign',
+		'title'       => __( 'Rising Sign', 'astroway' ),
+		'description' => __( 'The rising sign with its chart ruler and the Midheaven. Coordinates are required: the ascendant is the horizon at a place.', 'astroway' ),
+		'example'     => '[astroway_rising_sign date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
+		'block'       => 'astroway/rising-sign',
+		'params'      => [
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', true, __( 'Birth time in HH:MM (24-hour).', 'astroway' ) ],
+			[ 'lat', 'float', true, __( 'WGS-84 latitude. Without it the card renders nothing rather than the wrong horizon.', 'astroway' ) ],
+			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'tz', 'string', true, __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
+			[ 'name', 'string', false, __( 'Display name in the heading.', 'astroway' ) ],
 		],
 	],
 	[

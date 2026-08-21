@@ -27,7 +27,38 @@ class Blocks {
 			'mini-chart'        => [ Shortcodes::class, 'render_mini_chart' ],
 			'monthly-forecast'  => [ Shortcodes::class, 'render_monthly_forecast' ],
 			'transit-timeline'  => [ Shortcodes::class, 'render_transit_timeline' ],
+			'moon-sign'         => [ Shortcodes::class, 'render_moon_sign' ],
+			'rising-sign'       => [ Shortcodes::class, 'render_rising_sign' ],
+			'astrology-section' => [ __CLASS__, 'render_section' ],
 		];
+	}
+
+	/**
+	 * The container block: it renders its children and nothing of its own.
+	 *
+	 * Its whole job is `providesContext`, which WordPress hands to every
+	 * descendant that asks for it. That is why the sign lives on the wrapper and
+	 * not repeated on four horoscope blocks that are all about the same person.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array  $atts    Block attributes.
+	 * @param string $content Inner blocks, already rendered.
+	 */
+	public static function render_section( $atts, string $content = '' ): string {
+		if ( '' === trim( $content ) ) {
+			return '';
+		}
+		$sign  = Shortcodes::sanitize_sign( $atts['sign'] ?? '' );
+		$class = 'astroway-section';
+		if ( '' !== $sign ) {
+			$class .= ' astroway-section--' . $sign;
+		}
+		return sprintf(
+			'<div class="%s">%s</div>',
+			esc_attr( $class ),
+			$content
+		);
 	}
 
 	/**
@@ -46,6 +77,8 @@ class Blocks {
 			'mini-chart'        => 'mini_chart',
 			'monthly-forecast'  => 'monthly_forecast',
 			'transit-timeline'  => 'transit_timeline',
+			'moon-sign'         => 'moon_sign',
+			'rising-sign'       => 'rising_sign',
 		];
 		return $map[ $slug ] ?? $slug;
 	}
@@ -57,12 +90,36 @@ class Blocks {
 	 * @since 0.7.2
 	 */
 	private static function gated( string $feature, callable $callback ): callable {
-		return static function ( $atts ) use ( $feature, $callback ) {
+		return static function ( $atts, $content = '', $block = null ) use ( $feature, $callback ) {
 			if ( ! Tier::can( $feature ) ) {
 				return Tier::render_upgrade_cta( $feature );
 			}
-			return call_user_func( $callback, $atts );
+			return call_user_func( $callback, self::with_context( (array) $atts, $block ), (string) $content );
 		};
+	}
+
+	/**
+	 * Attributes with the section's context filled in where the block left a
+	 * blank.
+	 *
+	 * The block's own attribute wins: an author who set a sign on one horoscope
+	 * inside a Leo section meant that one to differ, and silently overriding it
+	 * would make the container impossible to opt out of.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array $atts  Block attributes.
+	 * @param mixed $block WP_Block instance, or null outside the block renderer.
+	 */
+	private static function with_context( array $atts, $block ): array {
+		$context = ( is_object( $block ) && isset( $block->context ) && is_array( $block->context ) ) ? $block->context : [];
+		foreach ( [ 'sign', 'lang' ] as $name ) {
+			$inherited = trim( (string) ( $context[ 'astroway/' . $name ] ?? '' ) );
+			if ( '' !== $inherited && '' === trim( (string) ( $atts[ $name ] ?? '' ) ) ) {
+				$atts[ $name ] = $inherited;
+			}
+		}
+		return $atts;
 	}
 
 	public static function register(): void {

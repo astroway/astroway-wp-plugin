@@ -1,21 +1,24 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "astroway/daily-horoscope",
-	"title": "AstroWay: Daily Horoscope",
+	"name": "astroway/astrology-section",
+	"title": "AstroWay: Astrology Section",
 	"category": "widgets",
-	"description": "Daily horoscope text for a zodiac sign.",
+	"description": "Sets one zodiac sign for every AstroWay block placed inside it.",
 	"textdomain": "astroway",
-	"icon": "calendar-alt",
+	"icon": "screenoptions",
 	"supports": {
 		"html": false,
-		"align": [ "wide", "center" ],
+		"align": [ "wide", "full" ],
 		"customClassName": true
 	},
 	"attributes": {
 		"sign": { "type": "string", "default": "" },
 		"lang": { "type": "string", "default": "" }
 	},
-	"usesContext": [ "astroway/sign", "astroway/lang" ],
+	"providesContext": {
+		"astroway/sign": "sign",
+		"astroway/lang": "lang"
+	},
 	"editorScript": "astroway-blocks-editor"
 }

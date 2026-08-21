@@ -15,6 +15,8 @@ class Shortcodes {
 		add_shortcode( 'astroway_planet_of_day', self::gated( 'planet_of_day', [ __CLASS__, 'render_planet_of_day' ] ) );
 		add_shortcode( 'astroway_moon_phase', self::gated( 'moon_phase', [ __CLASS__, 'render_moon_phase' ] ) );
 		add_shortcode( 'astroway_bodygraph', self::gated( 'bodygraph', [ __CLASS__, 'render_bodygraph' ] ) );
+		add_shortcode( 'astroway_moon_sign', self::gated( 'moon_sign', [ __CLASS__, 'render_moon_sign' ] ) );
+		add_shortcode( 'astroway_rising_sign', self::gated( 'rising_sign', [ __CLASS__, 'render_rising_sign' ] ) );
 		add_shortcode( 'astroway_tarot_card', self::gated( 'daily_tarot', [ __CLASS__, 'render_tarot_card' ] ) );
 		add_shortcode( 'astroway_today_in_sky', self::gated( 'today_in_sky', [ __CLASS__, 'render_today_in_sky' ] ) );
 		add_shortcode( 'astroway_fortune_cookie', self::gated( 'fortune_cookie', [ __CLASS__, 'render_fortune_cookie' ] ) );
@@ -271,7 +273,53 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
-		return PublicClient::embed_iframe( 'bodygraph', $params );
+		return Render::widget( 'bodygraph', $params );
+	}
+
+	/** The Moon's sign out of a birth chart, on its own. */
+	public static function render_moon_sign( $atts ): string {
+		$atts           = shortcode_atts(
+			[
+				'date' => '',
+				'time' => '',
+				'lat'  => '',
+				'lon'  => '',
+				'name' => '',
+				'tz'   => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_moon_sign'
+		);
+		$params         = self::sanitize_chart_params( $atts );
+		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		return Render::widget( 'moon_sign', $params );
+	}
+
+	/**
+	 * The rising sign, with the chart ruler beside it.
+	 *
+	 * Coordinates are not optional here the way they are for a moon sign: the
+	 * ascendant is the horizon at a place, so without them the card would answer
+	 * confidently about the wrong horizon.
+	 */
+	public static function render_rising_sign( $atts ): string {
+		$atts           = shortcode_atts(
+			[
+				'date' => '',
+				'time' => '',
+				'lat'  => '',
+				'lon'  => '',
+				'name' => '',
+				'tz'   => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_rising_sign'
+		);
+		$params         = self::sanitize_chart_params( $atts );
+		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		return Render::widget( 'rising_sign', $params );
 	}
 
 	public static function render_tarot_card( $atts ): string {
