@@ -20,7 +20,6 @@ return [
 	'astroway_chinese_solar_terms' => [ '/chinese/solar-terms', 'POST', [ [ 'year', '', 'n', 1 ] ] ],
 	'astroway_chinese_tong_shu' => [ '/chinese/tong-shu', 'POST', [ [ 'date', '', 's', 1 ], [ 'time', '', 's', 0 ], [ 'timezone_offset', 'timezoneOffset', 'n', 0 ] ] ],
 	'astroway_chinese_tong_shu_select' => [ '/chinese/tong-shu/select', 'POST', [ [ 'from', '', 's', 1 ], [ 'to', '', 's', 1 ], [ 'activity', '', 's', 1 ], [ 'avoid_clash_with', 'avoidClashWith', 's', 0 ], [ 'include_neutral', 'includeNeutral', 'b', 0 ] ] ],
-	'astroway_chinese_zodiac_animal' => [ '/chinese/zodiac/animal', 'POST', [ [ 'date', '', 's', 1 ], [ 'time', '', 's', 0 ], [ 'timezone_offset', 'timezoneOffset', 'n', 0 ], [ 'solar_year', 'solarYear', 'n', 0 ] ] ],
 	'astroway_chinese_zodiac_compatibility' => [ '/chinese/zodiac/compatibility', 'POST', [ [ 'person1', '', 'j', 3 ], [ 'person2', '', 'j', 3 ] ] ],
 	'astroway_chinese_zodiac_element' => [ '/chinese/zodiac/element', 'POST', [ [ 'date', '', 's', 1 ], [ 'time', '', 's', 0 ], [ 'timezone_offset', 'timezoneOffset', 'n', 0 ], [ 'solar_year', 'solarYear', 'n', 0 ] ] ],
 	'astroway_chinese_zodiac_inner_animal' => [ '/chinese/zodiac/inner-animal', 'POST', [ [ 'date', '', 's', 1 ], [ 'time', '', 's', 0 ], [ 'timezone_offset', 'timezoneOffset', 'n', 0 ], [ 'solar_year', 'solarYear', 'n', 0 ] ] ],

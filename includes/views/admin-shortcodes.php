@@ -305,6 +305,40 @@ $astroway_cards = [
 			[ 'timezone_offset', 'float', false, __( 'Hours from UTC. Defaults to the site timezone.', 'astroway' ) ],
 		],
 	],
+	[
+		'tag'         => 'astroway_yearly_horoscope',
+		'title'       => __( 'Yearly Horoscope', 'astroway' ),
+		'description' => __( 'The year ahead for one sign. Also answers to [astroway_horoscope_yearly], the name it had as a generated shortcode.', 'astroway' ),
+		'example'     => '[astroway_yearly_horoscope sign="leo"]',
+		'block'       => 'astroway/yearly-horoscope',
+		'params'      => [
+			[ 'sign', 'string', true, __( 'Zodiac sign in English, lowercase.', 'astroway' ) ],
+			[ 'date', 'string', false, __( 'Any date inside the year. Defaults to this year.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_zodiac_compatibility',
+		'title'       => __( 'Zodiac Compatibility', 'astroway' ),
+		'description' => __( 'How two signs read together. Prose, not a percentage: the endpoint returns no score and inventing one would be a number with no calculation behind it.', 'astroway' ),
+		'example'     => '[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]',
+		'block'       => 'astroway/zodiac-compatibility',
+		'params'      => [
+			[ 'sign1', 'string', true, __( 'First sign in English, lowercase.', 'astroway' ) ],
+			[ 'sign2', 'string', true, __( 'Second sign in English, lowercase.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_chinese_zodiac',
+		'title'       => __( 'Chinese Zodiac', 'astroway' ),
+		'description' => __( 'The animal of a birth year with its element, polarity and pillar. A birth time sharpens the answer at the turn of the year.', 'astroway' ),
+		'example'     => '[astroway_chinese_zodiac date="1990-05-15"]',
+		'block'       => 'astroway/chinese-zodiac',
+		'params'      => [
+			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
+			[ 'time', 'string', false, __( 'Birth time in HH:MM.', 'astroway' ) ],
+			[ 'timezone_offset', 'float', false, __( 'Hours from UTC. Defaults to the site timezone.', 'astroway' ) ],
+		],
+	],
 ];
 ?>
 <div class="wrap aw-app">

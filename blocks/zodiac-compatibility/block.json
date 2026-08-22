@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/zodiac-compatibility",
+	"title": "AstroWay: Zodiac Compatibility",
+	"category": "widgets",
+	"description": "How two zodiac signs read together.",
+	"textdomain": "astroway",
+	"icon": "heart",
+	"supports": {
+		"html": false,
+		"align": [ "center", "wide" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"sign1": { "type": "string", "default": "" },
+		"sign2": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

@@ -8,32 +8,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Blocks {
 
 	private const EDITOR_HANDLE = 'astroway-blocks-editor';
+	public const TABS_HANDLE    = 'astroway-tabs';
 
 	private static function blocks(): array {
 		return [
-			'natal-chart'       => [ Shortcodes::class, 'render_natal' ],
-			'daily-horoscope'   => [ Shortcodes::class, 'render_daily_horoscope' ],
-			'weekly-horoscope'  => [ Shortcodes::class, 'render_weekly_horoscope' ],
-			'monthly-horoscope' => [ Shortcodes::class, 'render_monthly_horoscope' ],
-			'planet-of-day'     => [ Shortcodes::class, 'render_planet_of_day' ],
-			'moon-phase'        => [ Shortcodes::class, 'render_moon_phase' ],
-			'bodygraph'         => [ Shortcodes::class, 'render_bodygraph' ],
-			'daily-tarot'       => [ Shortcodes::class, 'render_tarot_card' ],
-			'kundli'            => [ Shortcodes::class, 'render_kundli' ],
-			'transit'           => [ Shortcodes::class, 'render_transit' ],
-			'panchang'          => [ Shortcodes::class, 'render_panchang' ],
-			'numerology'        => [ Shortcodes::class, 'render_numerology' ],
-			'synastry'          => [ Shortcodes::class, 'render_synastry' ],
-			'mini-chart'        => [ Shortcodes::class, 'render_mini_chart' ],
-			'monthly-forecast'  => [ Shortcodes::class, 'render_monthly_forecast' ],
-			'transit-timeline'  => [ Shortcodes::class, 'render_transit_timeline' ],
-			'moon-sign'         => [ Shortcodes::class, 'render_moon_sign' ],
-			'rising-sign'       => [ Shortcodes::class, 'render_rising_sign' ],
-			'retrograde'        => [ Shortcodes::class, 'render_retrograde' ],
-			'retrogrades'       => [ Shortcodes::class, 'render_retrogrades' ],
-			'moon-voc'          => [ Shortcodes::class, 'render_moon_voc' ],
-			'planetary-hours'   => [ Shortcodes::class, 'render_planetary_hours' ],
-			'astrology-section' => [ __CLASS__, 'render_section' ],
+			'natal-chart'          => [ Shortcodes::class, 'render_natal' ],
+			'daily-horoscope'      => [ Shortcodes::class, 'render_daily_horoscope' ],
+			'weekly-horoscope'     => [ Shortcodes::class, 'render_weekly_horoscope' ],
+			'monthly-horoscope'    => [ Shortcodes::class, 'render_monthly_horoscope' ],
+			'planet-of-day'        => [ Shortcodes::class, 'render_planet_of_day' ],
+			'moon-phase'           => [ Shortcodes::class, 'render_moon_phase' ],
+			'bodygraph'            => [ Shortcodes::class, 'render_bodygraph' ],
+			'daily-tarot'          => [ Shortcodes::class, 'render_tarot_card' ],
+			'kundli'               => [ Shortcodes::class, 'render_kundli' ],
+			'transit'              => [ Shortcodes::class, 'render_transit' ],
+			'panchang'             => [ Shortcodes::class, 'render_panchang' ],
+			'numerology'           => [ Shortcodes::class, 'render_numerology' ],
+			'synastry'             => [ Shortcodes::class, 'render_synastry' ],
+			'mini-chart'           => [ Shortcodes::class, 'render_mini_chart' ],
+			'monthly-forecast'     => [ Shortcodes::class, 'render_monthly_forecast' ],
+			'transit-timeline'     => [ Shortcodes::class, 'render_transit_timeline' ],
+			'moon-sign'            => [ Shortcodes::class, 'render_moon_sign' ],
+			'rising-sign'          => [ Shortcodes::class, 'render_rising_sign' ],
+			'yearly-horoscope'     => [ Shortcodes::class, 'render_yearly_horoscope' ],
+			'zodiac-compatibility' => [ Shortcodes::class, 'render_zodiac_compatibility' ],
+			'chinese-zodiac'       => [ Shortcodes::class, 'render_chinese_zodiac' ],
+			'retrograde'           => [ Shortcodes::class, 'render_retrograde' ],
+			'retrogrades'          => [ Shortcodes::class, 'render_retrogrades' ],
+			'moon-voc'             => [ Shortcodes::class, 'render_moon_voc' ],
+			'planetary-hours'      => [ Shortcodes::class, 'render_planetary_hours' ],
+			'astrology-section'    => [ __CLASS__, 'render_section' ],
 		];
 	}
 
@@ -58,9 +62,21 @@ class Blocks {
 		if ( '' !== $sign ) {
 			$class .= ' astroway-section--' . $sign;
 		}
+
+		// Tabs are an enhancement over this markup, never a replacement for it.
+		// The cards are all rendered, in order, and the script folds them into a
+		// tablist once it runs. With JavaScript off the page is the stack it has
+		// always been, which is also what a crawler reads.
+		$tabs = 'tabs' === ( $atts['layout'] ?? 'stack' );
+		if ( $tabs ) {
+			$class .= ' astroway-section--tabs';
+			wp_enqueue_script( self::TABS_HANDLE );
+		}
+
 		return sprintf(
-			'<div class="%s">%s</div>',
+			'<div class="%1$s"%2$s>%3$s</div>',
 			esc_attr( $class ),
+			$tabs ? ' data-astroway-tabs' : '',
 			$content
 		);
 	}
@@ -70,23 +86,26 @@ class Blocks {
 	 */
 	private static function feature_for( string $slug ): string {
 		$map = [
-			'natal-chart'       => 'natal',
-			'daily-horoscope'   => 'daily_horoscope',
-			'weekly-horoscope'  => 'weekly_horoscope',
-			'monthly-horoscope' => 'monthly_horoscope',
-			'planet-of-day'     => 'planet_of_day',
-			'moon-phase'        => 'moon_phase',
-			'bodygraph'         => 'bodygraph',
-			'daily-tarot'       => 'daily_tarot',
-			'mini-chart'        => 'mini_chart',
-			'monthly-forecast'  => 'monthly_forecast',
-			'transit-timeline'  => 'transit_timeline',
-			'moon-sign'         => 'moon_sign',
-			'rising-sign'       => 'rising_sign',
-			'retrograde'        => 'retrograde',
-			'retrogrades'       => 'retrogrades',
-			'moon-voc'          => 'moon_voc',
-			'planetary-hours'   => 'planetary_hours',
+			'natal-chart'          => 'natal',
+			'daily-horoscope'      => 'daily_horoscope',
+			'weekly-horoscope'     => 'weekly_horoscope',
+			'monthly-horoscope'    => 'monthly_horoscope',
+			'planet-of-day'        => 'planet_of_day',
+			'moon-phase'           => 'moon_phase',
+			'bodygraph'            => 'bodygraph',
+			'daily-tarot'          => 'daily_tarot',
+			'mini-chart'           => 'mini_chart',
+			'monthly-forecast'     => 'monthly_forecast',
+			'transit-timeline'     => 'transit_timeline',
+			'moon-sign'            => 'moon_sign',
+			'rising-sign'          => 'rising_sign',
+			'retrograde'           => 'retrograde',
+			'retrogrades'          => 'retrogrades',
+			'moon-voc'             => 'moon_voc',
+			'planetary-hours'      => 'planetary_hours',
+			'yearly-horoscope'     => 'yearly_horoscope',
+			'zodiac-compatibility' => 'zodiac_compatibility',
+			'chinese-zodiac'       => 'chinese_zodiac',
 		];
 		return $map[ $slug ] ?? $slug;
 	}
@@ -130,6 +149,11 @@ class Blocks {
 		return $atts;
 	}
 
+	/** A title for a legacy block name, so the editor has something to show. */
+	private static function legacy_title( string $name ): string {
+		return 'AstroWay: ' . ucwords( str_replace( '-', ' ', substr( $name, strlen( 'astroway/' ) ) ) );
+	}
+
 	public static function register(): void {
 		add_action( 'init', [ __CLASS__, 'register_assets_and_blocks' ] );
 		add_filter( 'block_categories_all', [ __CLASS__, 'add_category' ] );
@@ -156,6 +180,23 @@ class Blocks {
 		return $categories;
 	}
 
+	/**
+	 * Block names 1.2.0 generated for endpoints a hand-built card has since
+	 * taken over under a different name.
+	 *
+	 * The generator no longer emits them, so without this a page built on
+	 * `astroway/horoscope-yearly` in 1.2.0 would render nothing at all after the
+	 * upgrade. They render the same card as their replacement and stay out of
+	 * the inserter, which is where the replacement belongs.
+	 *
+	 * @since 1.4.0
+	 */
+	private const LEGACY_BLOCKS = [
+		'astroway/horoscope-yearly'        => [ Shortcodes::class, 'render_yearly_horoscope' ],
+		'astroway/horoscope-compatibility' => [ Shortcodes::class, 'render_zodiac_compatibility' ],
+		'astroway/chinese-zodiac-animal'   => [ Shortcodes::class, 'render_chinese_zodiac' ],
+	];
+
 	public static function register_assets_and_blocks(): void {
 		wp_register_script(
 			self::EDITOR_HANDLE,
@@ -173,6 +214,17 @@ class Blocks {
 			);
 		}
 
+		// Registered, not enqueued: only a section that asked for tabs pulls it
+		// in, from its own render callback, so a page without one ships no
+		// JavaScript at all.
+		wp_register_script(
+			self::TABS_HANDLE,
+			ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-tabs.js',
+			[],
+			ASTROWAY_WP_PLUGIN_VERSION,
+			true
+		);
+
 		foreach ( self::blocks() as $slug => $callback ) {
 			$block_dir = ASTROWAY_WP_PLUGIN_DIR . 'blocks/' . $slug;
 			if ( file_exists( $block_dir . '/block.json' ) ) {
@@ -181,6 +233,35 @@ class Blocks {
 					[ 'render_callback' => self::gated( self::feature_for( $slug ), $callback ) ]
 				);
 			}
+		}
+
+		foreach ( self::LEGACY_BLOCKS as $name => $callback ) {
+			if ( \WP_Block_Type_Registry::get_instance()->is_registered( $name ) ) {
+				continue;
+			}
+			register_block_type(
+				$name,
+				[
+					'api_version'     => 3,
+					'title'           => self::legacy_title( $name ),
+					'category'        => 'widgets',
+					'supports'        => [ 'inserter' => false ],
+					'attributes'      => [
+						'sign'            => [ 'type' => 'string' ],
+						'sign1'           => [ 'type' => 'string' ],
+						'sign2'           => [ 'type' => 'string' ],
+						'date'            => [ 'type' => 'string' ],
+						'time'            => [ 'type' => 'string' ],
+						'timezone_offset' => [ 'type' => 'string' ],
+						'solar_year'      => [ 'type' => 'string' ],
+						'language'        => [ 'type' => 'string' ],
+						'lang'            => [ 'type' => 'string' ],
+					],
+					'render_callback' => static function ( $atts ) use ( $callback ) {
+						return call_user_func( $callback, (array) $atts );
+					},
+				]
+			);
 		}
 
 		/**

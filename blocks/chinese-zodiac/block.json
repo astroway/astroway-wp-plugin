@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/chinese-zodiac",
+	"title": "AstroWay: Chinese Zodiac",
+	"category": "widgets",
+	"description": "The Chinese animal, element and pillar of a birth date.",
+	"textdomain": "astroway",
+	"icon": "star-filled",
+	"supports": {
+		"html": false,
+		"align": [ "center" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"time": { "type": "string", "default": "" },
+		"timezone_offset": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

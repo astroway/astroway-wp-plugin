@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -37,6 +37,14 @@ Four cards answer the questions people search for rather than calculate: is Merc
 = Seven hundred more, for when you need them =
 
 Ten widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for 680 more endpoints: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; the free tier covers 10,000 calls a month.
+
+= The year, two signs, and the Chinese animal =
+
+`[astroway_yearly_horoscope sign="leo"]` prints the year ahead. `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]` prints how two signs read together, as prose rather than as a percentage: the API returns no score, and a number with no calculation behind it is worse than no number. `[astroway_chinese_zodiac date="1990-05-15"]` prints the animal of a birth year with its element, polarity and pillar.
+
+= Tabs, without the JavaScript =
+
+Put several AstroWay blocks inside an Astrology Section and set its layout to Tabs. Your server still renders every card, one after another, and a 3 KB script folds that stack into a proper tab strip with arrow-key navigation. Turn JavaScript off and the page is the stack it always was, with every word still in the HTML: nothing is fetched in the browser and nothing is hidden from a crawler. Tab labels drop the words they all share, so four horoscopes for one sign read "today", "the week", "the month" and "the year".
 
 = An email when the sky does something =
 
@@ -143,15 +151,15 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
-= 1.3.0 =
-* New: is Mercury retrograde? `[astroway_mercury_retrograde]` answers yes or no with the dates of the retrograde it is in or heading for, and a countdown. `[astroway_retrograde planet="saturn"]` does the same for any of the eight planets that station.
-* New: `[astroway_retrogrades]` puts all eight in one table, with the ones running backwards marked.
-* New: `[astroway_moon_voc]` says whether the Moon is void of course right now and lists the windows around it, each with its last aspect and the sign the Moon enters next.
-* New: `[astroway_planetary_hours latitude="50.45" longitude="30.52"]` prints the twenty-four planetary hours of the day with the hour you are in marked.
-* New: daily transit alerts. Your site emails you on the days a planet stations or the Moon goes void of course, and stays quiet otherwise. AstroWay → Settings, Pro plan.
-* Better: `[astroway_moon_voc]` and `[astroway_planetary_hours]` existed as generated shortcodes in 1.2.0 and printed a generic table. Same names, same attributes, purpose-built cards.
-* Correct: every date and time in these cards is printed on your site's clock rather than in UTC. Saturn turns direct at 23:31 on 10 December, which is the 11th anywhere east of Greenwich.
-* Efficiency: the single-planet card and the whole board ask the same question, so a page carrying both spends one request, and the answer is cached for a month while the reading is worked out fresh on every page view.
+= 1.4.0 =
+* New: `[astroway_yearly_horoscope sign="leo"]`, the year ahead for one sign.
+* New: `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]`, how two signs read together. Prose rather than a percentage: the API returns no score, and a number with no calculation behind it is worse than no number.
+* New: `[astroway_chinese_zodiac date="1990-05-15"]`, the animal of a birth year with its element, polarity and pillar.
+* New: tabs. Put several AstroWay blocks inside an Astrology Section and set its layout to Tabs. Your server still renders every card into the page; a 3 KB script folds the stack into a tab strip with arrow-key navigation, and with JavaScript off the page is the stack it always was.
+* Better: cards now separate. A rule under every header, a rule above every section, and one framed table with a banded header row and striped body in place of an underline per row.
+* Better: the row you are in, the current planetary hour or the open void of course window, is marked strongly enough to see when it lands on a striped row.
+* Better: tables and field lists follow the reading direction, which matters in Arabic and Hebrew.
+* Compatibility: the three endpoints above keep the shortcode and block names they had as generated ones in 1.2.0, so pages written then keep working and get the new card.
 
 = 1.2.0 =
 * New: a shortcode and a Gutenberg block for nearly every endpoint the API has, 682 of them across 49 families, generated from the API specification instead of written by hand. Vedic, numerology, tarot, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary and more. They need an API key; the ten hand-built widgets still need nothing.

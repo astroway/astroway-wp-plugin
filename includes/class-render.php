@@ -24,20 +24,23 @@ class Render {
 
 	/** Custom element and modifier per widget. */
 	private const CARDS = [
-		'daily_horoscope'   => [ 'astroway-horoscope-card', 'horoscope' ],
-		'weekly_horoscope'  => [ 'astroway-horoscope-card', 'horoscope' ],
-		'monthly_horoscope' => [ 'astroway-horoscope-card', 'horoscope' ],
-		'moon_phase'        => [ 'astroway-moon-card', 'moon' ],
-		'tarot_daily'       => [ 'astroway-tarot-card', 'tarot' ],
-		'planet_of_day'     => [ 'astroway-planet-card', 'planet' ],
-		'natal'             => [ 'astroway-natal-card', 'natal' ],
-		'moon_sign'         => [ 'astroway-sign-card', 'moon-sign' ],
-		'rising_sign'       => [ 'astroway-sign-card', 'rising-sign' ],
-		'bodygraph'         => [ 'astroway-bodygraph-card', 'bodygraph' ],
-		'retrograde'        => [ 'astroway-retrograde-card', 'retrograde' ],
-		'retrogrades'       => [ 'astroway-retrograde-card', 'retrogrades' ],
-		'moon_voc'          => [ 'astroway-voc-card', 'moon-voc' ],
-		'planetary_hours'   => [ 'astroway-hours-card', 'planetary-hours' ],
+		'daily_horoscope'      => [ 'astroway-horoscope-card', 'horoscope' ],
+		'weekly_horoscope'     => [ 'astroway-horoscope-card', 'horoscope' ],
+		'monthly_horoscope'    => [ 'astroway-horoscope-card', 'horoscope' ],
+		'moon_phase'           => [ 'astroway-moon-card', 'moon' ],
+		'tarot_daily'          => [ 'astroway-tarot-card', 'tarot' ],
+		'planet_of_day'        => [ 'astroway-planet-card', 'planet' ],
+		'natal'                => [ 'astroway-natal-card', 'natal' ],
+		'moon_sign'            => [ 'astroway-sign-card', 'moon-sign' ],
+		'rising_sign'          => [ 'astroway-sign-card', 'rising-sign' ],
+		'bodygraph'            => [ 'astroway-bodygraph-card', 'bodygraph' ],
+		'retrograde'           => [ 'astroway-retrograde-card', 'retrograde' ],
+		'retrogrades'          => [ 'astroway-retrograde-card', 'retrogrades' ],
+		'moon_voc'             => [ 'astroway-voc-card', 'moon-voc' ],
+		'planetary_hours'      => [ 'astroway-hours-card', 'planetary-hours' ],
+		'yearly_horoscope'     => [ 'astroway-horoscope-card', 'horoscope' ],
+		'zodiac_compatibility' => [ 'astroway-compat-card', 'zodiac-compatibility' ],
+		'chinese_zodiac'       => [ 'astroway-chinese-card', 'chinese-zodiac' ],
 	];
 
 	/**
@@ -669,13 +672,16 @@ class Render {
 		return $labels[ $raw ] ?? strtolower( $raw );
 	}
 
-	private static function horoscope_card( string $widget, array $data, string $lang ): string {
+	private static function horoscope_card( string $widget, array $data, string $lang, array $params = [] ): string {
 		$body = trim( (string) ( $data['horoscope'] ?? '' ) );
 		if ( '' === $body ) {
 			return '';
 		}
 
-		$sign  = self::sign_label( (string) ( $data['sign'] ?? '' ) );
+		// The public routes echo the sign back, the keyed yearly one does not,
+		// so the shortcode's own attribute is the fallback.
+		$raw   = (string) ( $data['sign'] ?? ( $params['sign'] ?? '' ) );
+		$sign  = self::sign_label( $raw );
 		$title = self::horoscope_title( $widget, $sign );
 
 		$inner  = '<header class="astroway-card__header">';
@@ -813,6 +819,9 @@ class Render {
 			case 'monthly_horoscope':
 				/* translators: %s = zodiac sign name */
 				return sprintf( __( '%s: horoscope for the month', 'astroway' ), $sign );
+			case 'yearly_horoscope':
+				/* translators: %s = zodiac sign name */
+				return sprintf( __( '%s: horoscope for the year', 'astroway' ), $sign );
 			default:
 				/* translators: %s = zodiac sign name */
 				return sprintf( __( '%s: horoscope for today', 'astroway' ), $sign );
@@ -960,7 +969,7 @@ class Render {
 	 */
 
 	/**
-	 * A card describing the current sky, or a note saying why there is none.
+	 * A hand-built card that needs an API key, or a note saying why there is none.
 	 *
 	 * The mirror of widget() for the keyed half of the api, differing in two
 	 * ways. None of these endpoints has an embed route, so there is no iframe to
@@ -972,12 +981,12 @@ class Render {
 	 * @since 1.3.0
 	 *
 	 * @param string   $tag    Shortcode tag, used in the administrator notes.
-	 * @param string   $widget retrograde, retrogrades, moon_voc or planetary_hours.
+	 * @param string   $widget One of the keyed widget keys handled below.
 	 * @param array    $params Attributes, already sanitised by the caller.
 	 * @param int|null $now    The moment to answer about. Overridable so a test
 	 *                         can ask about a station it knows the date of.
 	 */
-	public static function sky( string $tag, string $widget, array $params, ?int $now = null ): string {
+	public static function keyed( string $tag, string $widget, array $params, ?int $now = null ): string {
 		if ( ! ( new ApiClient() )->has_key() ) {
 			return self::admin_note(
 				sprintf(
@@ -1022,6 +1031,18 @@ class Render {
 			case 'planetary_hours':
 				$data   = Sky::planetary_hours( $params, $now );
 				$markup = is_array( $data ) ? self::planetary_hours_card( $data, $lang, $params, $now ) : '';
+				break;
+			case 'yearly_horoscope':
+				$data   = Signs::yearly_horoscope( $params, $now );
+				$markup = is_array( $data ) ? self::horoscope_card( 'yearly_horoscope', $data, $lang, $params ) : '';
+				break;
+			case 'zodiac_compatibility':
+				$data   = Signs::compatibility( $params );
+				$markup = is_array( $data ) ? self::compatibility_card( $data, $lang, $params ) : '';
+				break;
+			case 'chinese_zodiac':
+				$data   = Signs::chinese_zodiac( $params );
+				$markup = is_array( $data ) ? self::chinese_card( $data, $lang ) : '';
 				break;
 		}
 
@@ -1370,6 +1391,115 @@ class Render {
 		) . '</p>';
 
 		return self::shell( 'planetary_hours', $lang, $inner );
+	}
+
+	/**
+	 * Two signs read together.
+	 *
+	 * Prose and nothing else: the endpoint returns an essay and no number. A
+	 * percentage would have to be invented here, and a figure with no
+	 * calculation behind it is worse than no figure.
+	 */
+	private static function compatibility_card( array $data, string $lang, array $params ): string {
+		$body = trim( (string) ( $data['horoscope'] ?? '' ) );
+		if ( '' === $body ) {
+			return '';
+		}
+
+		$one = self::sign_label( (string) ( $data['sign1'] ?? ( $params['sign1'] ?? '' ) ) );
+		$two = self::sign_label( (string) ( $data['sign2'] ?? ( $params['sign2'] ?? '' ) ) );
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html(
+			sprintf(
+				/* translators: 1: zodiac sign name, 2: zodiac sign name */
+				__( '%1$s and %2$s', 'astroway' ),
+				$one,
+				$two
+			)
+		) . '</h3></header>';
+		$inner .= '<div class="astroway-card__body">' . self::paragraphs( $body ) . '</div>';
+
+		return self::shell( 'zodiac_compatibility', $lang, $inner );
+	}
+
+	/**
+	 * The Chinese animal of a birth year, with its element and pillar.
+	 *
+	 * The api sends the animal as an emoji beside its English name. The emoji
+	 * is printed as decoration and hidden from assistive technology, because
+	 * "horse face" read aloud in front of the word Horse is noise.
+	 */
+	private static function chinese_card( array $data, string $lang ): string {
+		$animal = trim( (string) ( $data['animal'] ?? '' ) );
+		if ( '' === $animal ) {
+			return '';
+		}
+
+		$element = is_array( $data['element'] ?? null ) ? $data['element'] : [];
+		$glyph   = trim( (string) ( $data['glyph'] ?? '' ) );
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Chinese zodiac', 'astroway' ) . '</h3>';
+		if ( ! empty( $data['solarYear'] ) ) {
+			$inner .= '<span class="astroway-card__meta">' . esc_html( (string) (int) $data['solarYear'] ) . '</span>';
+		}
+		$inner .= '</header>';
+
+		$inner .= '<p class="astroway-card__lead">';
+		if ( '' !== $glyph ) {
+			$inner .= '<span class="astroway-card__glyph" aria-hidden="true">' . esc_html( $glyph ) . '</span> ';
+		}
+		$inner .= esc_html( self::animal_label( $animal ) ) . '</p>';
+
+		$rows = [];
+		if ( ! empty( $element['fixed'] ) ) {
+			$rows[ __( 'Element', 'astroway' ) ] = self::element_label( (string) $element['fixed'] );
+		}
+		if ( ! empty( $element['cycling'] ) ) {
+			// The element of the year itself, which turns every two years and is
+			// what "Metal Horse" names; the fixed one belongs to the animal.
+			$rows[ __( 'Year element', 'astroway' ) ] = self::element_label( (string) $element['cycling'] );
+		}
+		if ( isset( $element['yin'] ) ) {
+			$rows[ __( 'Polarity', 'astroway' ) ] = $element['yin'] ? __( 'Yin', 'astroway' ) : __( 'Yang', 'astroway' );
+		}
+		if ( ! empty( $data['pillar'] ) ) {
+			$rows[ __( 'Pillar', 'astroway' ) ] = (string) $data['pillar'];
+		}
+
+		return self::shell( 'chinese_zodiac', $lang, $inner . self::detail_list( $rows ) );
+	}
+
+	/** The twelve animals of the cycle. */
+	private static function animal_label( string $raw ): string {
+		$labels = [
+			'Rat'     => __( 'Rat', 'astroway' ),
+			'Ox'      => __( 'Ox', 'astroway' ),
+			'Tiger'   => __( 'Tiger', 'astroway' ),
+			'Rabbit'  => __( 'Rabbit', 'astroway' ),
+			'Dragon'  => __( 'Dragon', 'astroway' ),
+			'Snake'   => __( 'Snake', 'astroway' ),
+			'Horse'   => __( 'Horse', 'astroway' ),
+			'Goat'    => __( 'Goat', 'astroway' ),
+			'Monkey'  => __( 'Monkey', 'astroway' ),
+			'Rooster' => __( 'Rooster', 'astroway' ),
+			'Dog'     => __( 'Dog', 'astroway' ),
+			'Pig'     => __( 'Pig', 'astroway' ),
+		];
+		return $labels[ trim( $raw ) ] ?? $raw;
+	}
+
+	/** The five phases. Not the four Western elements: there is no Air here. */
+	private static function element_label( string $raw ): string {
+		$labels = [
+			'Wood'  => __( 'Wood', 'astroway' ),
+			'Fire'  => __( 'Fire', 'astroway' ),
+			'Earth' => __( 'Earth', 'astroway' ),
+			'Metal' => __( 'Metal', 'astroway' ),
+			'Water' => __( 'Water', 'astroway' ),
+		];
+		return $labels[ trim( $raw ) ] ?? $raw;
 	}
 
 	/**

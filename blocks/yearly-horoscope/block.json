@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/yearly-horoscope",
+	"title": "AstroWay: Yearly Horoscope",
+	"category": "widgets",
+	"description": "The year ahead for one zodiac sign.",
+	"textdomain": "astroway",
+	"icon": "calendar-alt",
+	"supports": {
+		"html": false,
+		"align": [ "center", "wide" ],
+		"customClassName": true
+	},
+	"usesContext": [ "astroway/sign", "astroway/lang" ],
+	"attributes": {
+		"sign": { "type": "string", "default": "" },
+		"date": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

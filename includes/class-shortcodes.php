@@ -38,6 +38,16 @@ class Shortcodes {
 		add_shortcode( 'astroway_moon_voc', self::gated( 'moon_voc', [ __CLASS__, 'render_moon_voc' ] ) );
 		add_shortcode( 'astroway_planetary_hours', self::gated( 'planetary_hours', [ __CLASS__, 'render_planetary_hours' ] ) );
 
+		// Signs rather than moments. Each also answers to the name the generated
+		// registry gave it in 1.2.0, so a page written then keeps working and
+		// gains the card; the generator skips both names.
+		add_shortcode( 'astroway_yearly_horoscope', self::gated( 'yearly_horoscope', [ __CLASS__, 'render_yearly_horoscope' ] ) );
+		add_shortcode( 'astroway_horoscope_yearly', self::gated( 'yearly_horoscope', [ __CLASS__, 'render_yearly_horoscope' ] ) );
+		add_shortcode( 'astroway_zodiac_compatibility', self::gated( 'zodiac_compatibility', [ __CLASS__, 'render_zodiac_compatibility' ] ) );
+		add_shortcode( 'astroway_horoscope_compatibility', self::gated( 'zodiac_compatibility', [ __CLASS__, 'render_zodiac_compatibility' ] ) );
+		add_shortcode( 'astroway_chinese_zodiac', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
+		add_shortcode( 'astroway_chinese_zodiac_animal', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
+
 		// Priority 10 lands after wpautop and shortcode_unautop, which core adds
 		// at 10 before this file ever runs, and before do_shortcode at 11. The
 		// shortcodes are still text at that point, which is the only moment the
@@ -165,7 +175,7 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_retrograde'
 		);
-		return Render::sky( 'astroway_retrograde', 'retrograde', $atts );
+		return Render::keyed( 'astroway_retrograde', 'retrograde', $atts );
 	}
 
 	/**
@@ -176,7 +186,7 @@ class Shortcodes {
 	 */
 	public static function render_mercury_retrograde( $atts ): string {
 		$atts = shortcode_atts( [ 'lang' => '' ], (array) $atts, 'astroway_mercury_retrograde' );
-		return Render::sky(
+		return Render::keyed(
 			'astroway_mercury_retrograde',
 			'retrograde',
 			[
@@ -189,7 +199,7 @@ class Shortcodes {
 	/** All eight planets that station, and what each is doing today. */
 	public static function render_retrogrades( $atts ): string {
 		$atts = shortcode_atts( [ 'lang' => '' ], (array) $atts, 'astroway_retrogrades' );
-		return Render::sky( 'astroway_retrogrades', 'retrogrades', $atts );
+		return Render::keyed( 'astroway_retrogrades', 'retrogrades', $atts );
 	}
 
 	/**
@@ -210,7 +220,7 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_moon_voc'
 		);
-		return Render::sky( 'astroway_moon_voc', 'moon_voc', $atts );
+		return Render::keyed( 'astroway_moon_voc', 'moon_voc', $atts );
 	}
 
 	/** The twenty-four planetary hours at a place. Same attributes as 1.2.0. */
@@ -226,7 +236,58 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_planetary_hours'
 		);
-		return Render::sky( 'astroway_planetary_hours', 'planetary_hours', $atts );
+		return Render::keyed( 'astroway_planetary_hours', 'planetary_hours', $atts );
+	}
+
+	/**
+	 * The year ahead for one sign.
+	 *
+	 * `language` is accepted beside `lang` because the generated shortcode
+	 * shipped in 1.2.0 spelled it the first way.
+	 */
+	public static function render_yearly_horoscope( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'sign'     => '',
+				'date'     => '',
+				'language' => '',
+				'lang'     => '',
+			],
+			(array) $atts,
+			'astroway_yearly_horoscope'
+		);
+		return Render::keyed( 'astroway_yearly_horoscope', 'yearly_horoscope', $atts );
+	}
+
+	/** How two signs read together. */
+	public static function render_zodiac_compatibility( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'sign1'    => '',
+				'sign2'    => '',
+				'language' => '',
+				'lang'     => '',
+			],
+			(array) $atts,
+			'astroway_zodiac_compatibility'
+		);
+		return Render::keyed( 'astroway_zodiac_compatibility', 'zodiac_compatibility', $atts );
+	}
+
+	/** The Chinese animal, element and pillar of a birth moment. */
+	public static function render_chinese_zodiac( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date'            => '',
+				'time'            => '',
+				'timezone_offset' => '',
+				'solar_year'      => '',
+				'lang'            => '',
+			],
+			(array) $atts,
+			'astroway_chinese_zodiac'
+		);
+		return Render::keyed( 'astroway_chinese_zodiac', 'chinese_zodiac', $atts );
 	}
 
 	public static function render_natal( $atts ): string {

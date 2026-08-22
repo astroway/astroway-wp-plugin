@@ -58,11 +58,6 @@ return [
 			'description' => 'Walk a date range and return the days the almanac endorses for one activity, each with the officer that decided it. Optionally drop the days that clash a person\'s animal. Range capped at 366 days and a longer one is refused, not truncated.',
 			'documented' => true,
 		],
-		'astroway_chinese_zodiac_animal' => [
-			'title' => 'Chinese Zodiac Animal',
-			'description' => 'Animal sign of the birth year, bounded by the exact Lichun instant, plus the full pillar (stem + branch + element). Pass time + timezoneOffset for births on the boundary day.',
-			'documented' => true,
-		],
 		'astroway_chinese_zodiac_compatibility' => [
 			'title' => 'Animal Compatibility',
 			'description' => 'Pair compatibility score (0-100) using San He trine + Liu Chong conflict-pair canon.',

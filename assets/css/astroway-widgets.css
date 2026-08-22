@@ -60,8 +60,7 @@
 @media (max-width: 480px) {
 	.astroway-embed {
 		--astroway-max-width: 100%;
-		margin-left: 0;
-		margin-right: 0;
+		margin-inline: 0;
 	}
 }
 
@@ -78,6 +77,9 @@
 	--astroway-card-muted: color-mix(in srgb, currentColor 62%, transparent);
 	--astroway-card-line: color-mix(in srgb, currentColor 18%, transparent);
 	--astroway-card-accent: currentColor;
+	--astroway-card-band: color-mix(in srgb, currentColor 5%, transparent);
+	--astroway-card-stripe: color-mix(in srgb, currentColor 2.5%, transparent);
+	--astroway-card-current: color-mix(in srgb, currentColor 11%, transparent);
 	--astroway-card-radius: 10px;
 	--astroway-card-padding: 1.25em 1.4em;
 	--astroway-card-max-width: 34em;
@@ -100,6 +102,9 @@
 	.astroway-card {
 		--astroway-card-muted: inherit;
 		--astroway-card-line: rgba(128, 128, 128, 0.32);
+		--astroway-card-band: rgba(128, 128, 128, 0.09);
+		--astroway-card-stripe: rgba(128, 128, 128, 0.045);
+		--astroway-card-current: rgba(128, 128, 128, 0.19);
 	}
 }
 
@@ -109,7 +114,9 @@
 	align-items: baseline;
 	justify-content: space-between;
 	gap: 0.25em 1em;
-	margin-bottom: 0.75em;
+	margin-block-end: 0.9em;
+	padding-block-end: 0.8em;
+	border-block-end: 1px solid var(--astroway-card-line);
 }
 
 .astroway-card__title {
@@ -224,40 +231,78 @@
 	min-height: 0;
 }
 
+/* A subtitle opens a section, and a section inside a card needs a line above it
+   or the card reads as one long column. Not after the header, which has its own. */
 .astroway-card__subtitle {
-	margin: 1.2em 0 0.5em;
+	margin-block: 1.4em 0.5em;
+	padding-block-start: 1em;
+	border-block-start: 1px solid var(--astroway-card-line);
 	font-size: 0.95em;
 	font-weight: 600;
 }
 
+.astroway-card__header + .astroway-card__subtitle,
+.astroway-card__subtitle:first-child {
+	margin-block-start: 0;
+	padding-block-start: 0;
+	border-block-start: 0;
+}
+
+/* One framed table rather than a stack of underlined rows. The frame is what
+   makes a table read as a block of its own inside the card, and the banded
+   header is what keeps the column names from reading as a first row of data.
+   Everything here is `start` and `block`/`inline` rather than left and bottom,
+   because the plugin ships Arabic and a table hard-aligned to the left is
+   wrong in it. */
+
 .astroway-card__placements {
-	width: 100%;
-	margin: 0.5em 0 0;
-	border-collapse: collapse;
+	inline-size: 100%;
+	margin-block-start: 0.6em;
+	border-collapse: separate;
+	border-spacing: 0;
+	overflow: hidden;
 	font-size: 0.92em;
+	border: 1px solid var(--astroway-card-line);
+	border-radius: calc(var(--astroway-card-radius) - 4px);
 }
 
 .astroway-card__placements caption {
-	margin-bottom: 0.4em;
+	margin-block-end: 0.4em;
 	font-size: 1.03em;
 	font-weight: 600;
-	text-align: left;
+	text-align: start;
+}
+
+.astroway-card__placements thead tr {
+	background: var(--astroway-card-band);
 }
 
 .astroway-card__placements th,
 .astroway-card__placements td {
-	padding: 0.3em 0.6em 0.3em 0;
-	text-align: left;
+	padding: 0.45em 0.7em;
+	text-align: start;
 	vertical-align: baseline;
-	border-bottom: 1px solid var(--astroway-card-line);
 }
 
 .astroway-card__placements th {
 	font-weight: 600;
+	font-size: 0.86em;
+	letter-spacing: 0.01em;
 	white-space: nowrap;
+	color: var(--astroway-card-muted);
+	border-block-end: 1px solid var(--astroway-card-line);
 }
 
-.astroway-card__placements td:last-child {
+/* Stripes rather than a rule per row: at twenty-four rows the rules become a
+   grid the eye has to read through, and the stripe does the same job quietly. */
+.astroway-card__placements tbody tr:nth-child(even) {
+	background: var(--astroway-card-stripe);
+}
+
+/* The muted last column belongs to the natal placements, where it holds the
+   house number beside a position. On the sky tables the last column is the
+   answer, and greying it out was a heuristic firing where it was never meant to. */
+.astroway-card--natal .astroway-card__placements td:last-child {
 	font-size: 0.88em;
 	color: var(--astroway-card-muted);
 }
@@ -279,7 +324,7 @@
 
 	.astroway-card__placements th,
 	.astroway-card__placements td {
-		padding-right: 0.4em;
+		padding-inline: 0.45em;
 	}
 }
 
@@ -363,11 +408,13 @@
 }
 
 /* The row the reader is inside: the current planetary hour, the void of course
-   window that is open. Marked with weight and a wash rather than a colour, so
-   it reads the same in a dark theme and to anyone who cannot see the wash. */
+   window that is open. Weight and a wash rather than a colour, so it reads the
+   same in a dark theme and to anyone who cannot see the wash.
+   The wash is four times the zebra stripe on purpose: at the same strength the
+   marked row landed on an even row and disappeared into the striping. */
 .astroway-card__row--current > td {
 	font-weight: 600;
-	background: rgba(128, 128, 128, 0.14);
+	background: var(--astroway-card-current);
 }
 
 /* "Yes, Mercury is retrograde" is the reason the widget is on the page; the
@@ -382,4 +429,101 @@
 .astroway-card--planetary-hours .astroway-card__placements td {
 	padding-top: 0.22em;
 	padding-bottom: 0.22em;
+}
+
+/* Sign cards: one is an essay, one is six facts. */
+
+.astroway-card--zodiac-compatibility {
+	--astroway-card-max-width: 44em;
+}
+
+.astroway-card--chinese-zodiac {
+	--astroway-card-max-width: 26em;
+}
+
+.astroway-card--chinese-zodiac .astroway-card__lead {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────────
+   The strip a section grows once the enhancement script runs. Everything here
+   is scoped to `--tabbed`, which only that script adds, so a section that never
+   gets the script keeps its plain stacked layout and none of this applies. */
+
+.astroway-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35em;
+	margin-block-end: 1em;
+	padding-block-end: 0.6em;
+	border-block-end: 1px solid var(--astroway-card-line, rgba(128, 128, 128, 0.32));
+}
+
+.astroway-tabs__tab {
+	appearance: none;
+	margin: 0;
+	padding: 0.45em 0.9em;
+	font: inherit;
+	font-size: 0.92em;
+	line-height: 1.3;
+	color: var(--astroway-card-muted, inherit);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	cursor: pointer;
+}
+
+.astroway-tabs__tab:hover {
+	color: inherit;
+	background: var(--astroway-card-stripe, rgba(128, 128, 128, 0.06));
+}
+
+/* Selected rather than active: aria-selected is the state that decides which
+   panel is shown, so the styling reads the same attribute rather than a class
+   that could drift away from it. */
+.astroway-tabs__tab[aria-selected="true"] {
+	color: inherit;
+	font-weight: 600;
+	background: var(--astroway-card-current, rgba(128, 128, 128, 0.14));
+	border-color: var(--astroway-card-line, rgba(128, 128, 128, 0.32));
+}
+
+.astroway-tabs__tab:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* A tabbed panel is the only card on screen, so the margin that separated it
+   from its neighbours is now a gap under the tab strip and nothing else. */
+.astroway-section--tabbed > .astroway-card {
+	margin-block-start: 0;
+}
+
+/* `hidden` is a UA-stylesheet rule, and ANY author rule outranks it. The cards
+   set `display: block` on themselves, so setting the attribute did nothing at
+   all: every panel stayed on screen under the tab strip. Caught by looking at
+   the page; the DOM reported exactly what it was asked to report. */
+.astroway-section--tabbed > [hidden] {
+	display: none;
+}
+
+/* Narrow screens: the strip scrolls sideways rather than wrapping into three
+   rows of buttons above a card. */
+@media (max-width: 480px) {
+	.astroway-tabs {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scrollbar-width: none;
+	}
+
+	.astroway-tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	.astroway-tabs__tab {
+		flex: 0 0 auto;
+	}
 }

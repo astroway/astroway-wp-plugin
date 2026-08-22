@@ -273,6 +273,31 @@
 				LANG_FIELD
 			]
 		},
+		'astroway/yearly-horoscope': {
+			panel:  __( 'Yearly horoscope', 'astroway' ),
+			fields: [
+				{ name: 'sign', type: 'select', label: __( 'Zodiac sign', 'astroway' ), options: SIGN_OPTIONS },
+				{ name: 'date', type: 'text', label: __( 'Any date inside the year (blank for this year)', 'astroway' ) },
+				LANG_FIELD
+			]
+		},
+		'astroway/zodiac-compatibility': {
+			panel:  __( 'Two signs', 'astroway' ),
+			fields: [
+				{ name: 'sign1', type: 'select', label: __( 'First sign', 'astroway' ), options: SIGN_OPTIONS },
+				{ name: 'sign2', type: 'select', label: __( 'Second sign', 'astroway' ), options: SIGN_OPTIONS },
+				LANG_FIELD
+			]
+		},
+		'astroway/chinese-zodiac': {
+			panel:  __( 'Chinese zodiac', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Birth date (YYYY-MM-DD)', 'astroway' ) },
+				{ name: 'time', type: 'text', label: __( 'Birth time (HH:MM, optional)', 'astroway' ) },
+				OFFSET_FIELD,
+				LANG_FIELD
+			]
+		},
 		'astroway/planetary-hours': {
 			panel:  __( 'Planetary hours', 'astroway' ),
 			fields: [
@@ -445,6 +470,17 @@
 							value:    props.attributes.lang || '',
 							options:  LANG_OPTIONS,
 							onChange: function ( value ) { props.setAttributes( { lang: value } ); }
+						} ),
+						el( SelectControl, {
+							key:      'layout',
+							label:    __( 'Layout on the page', 'astroway' ),
+							value:    props.attributes.layout || 'stack',
+							options:  [
+								{ label: __( 'One after another', 'astroway' ), value: 'stack' },
+								{ label: __( 'Tabs', 'astroway' ), value: 'tabs' }
+							],
+							help:     __( 'Tabs need JavaScript. Without it the cards stay stacked, so nothing is lost.', 'astroway' ),
+							onChange: function ( value ) { props.setAttributes( { layout: value } ); }
 						} )
 					)
 				),

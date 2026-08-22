@@ -11,9 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return [
-	'astroway_horoscope_compatibility' => [ '/horoscope/compatibility', 'POST', [ [ 'sign1', '', 's', 1 ], [ 'sign2', '', 's', 1 ], [ 'language', '', 's', 0 ], [ 'disclaimer_inline', '', 'b', 0 ], [ 'lang', '', 's', 4 ] ] ],
 	'astroway_horoscope_daily' => [ '/horoscope/daily', 'POST', [ [ 'sign', '', 's', 1 ], [ 'date', '', 's', 0 ], [ 'language', '', 's', 0 ], [ 'disclaimer_inline', '', 'b', 0 ], [ 'lang', '', 's', 4 ] ] ],
 	'astroway_horoscope_monthly' => [ '/horoscope/monthly', 'POST', [ [ 'sign', '', 's', 1 ], [ 'date', '', 's', 0 ], [ 'language', '', 's', 0 ], [ 'disclaimer_inline', '', 'b', 0 ], [ 'lang', '', 's', 4 ] ] ],
 	'astroway_horoscope_weekly' => [ '/horoscope/weekly', 'POST', [ [ 'sign', '', 's', 1 ], [ 'date', '', 's', 0 ], [ 'language', '', 's', 0 ], [ 'disclaimer_inline', '', 'b', 0 ], [ 'lang', '', 's', 4 ] ] ],
-	'astroway_horoscope_yearly' => [ '/horoscope/yearly', 'POST', [ [ 'sign', '', 's', 1 ], [ 'date', '', 's', 0 ], [ 'language', '', 's', 0 ], [ 'disclaimer_inline', '', 'b', 0 ], [ 'lang', '', 's', 4 ] ] ],
 ];

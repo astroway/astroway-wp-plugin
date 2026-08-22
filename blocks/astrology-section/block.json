@@ -9,12 +9,25 @@
 	"icon": "screenoptions",
 	"supports": {
 		"html": false,
-		"align": [ "wide", "full" ],
+		"align": [
+			"wide",
+			"full"
+		],
 		"customClassName": true
 	},
 	"attributes": {
-		"sign": { "type": "string", "default": "" },
-		"lang": { "type": "string", "default": "" }
+		"sign": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"layout": {
+			"type": "string",
+			"default": "stack"
+		}
 	},
 	"providesContext": {
 		"astroway/sign": "sign",

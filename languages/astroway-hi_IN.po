@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T12:56:45+00:00\n"
-"PO-Revision-Date: 2026-08-22 16:00+0300\n"
+"POT-Creation-Date: 2026-08-22T16:06:23+00:00\n"
+"PO-Revision-Date: 2026-08-22 19:12+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Hindi <translations@astroway.info>\n"
 "Language: hi_IN\n"
@@ -110,7 +110,7 @@ msgstr "बाध्य"
 msgid "Enter a valid API key first."
 msgstr "पहले एक मान्य एपीआई कुंजी दर्ज करें।"
 
-#: includes/class-admin.php:211 includes/views/admin-settings.php:260
+#: includes/class-admin.php:211 includes/views/admin-settings.php:261
 msgid "Network error"
 msgstr "नेटवर्क त्रुटि"
 
@@ -219,7 +219,7 @@ msgstr "डोमेन परिवर्तन विफल रहा। न�
 msgid "City lookup is busy, try again in a moment."
 msgstr "शहर खोज व्यस्त है, एक क्षण में पुनः प्रयास करें."
 
-#: includes/class-blocks.php:153
+#: includes/class-blocks.php:177
 msgid "AstroWay: full API"
 msgstr "AstroWay: पूर्ण API"
 
@@ -253,7 +253,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "चंद्रमा %1$s से %2$s तक निष्फल गति में है।"
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:1134
+#: includes/class-digest.php:248 includes/class-render.php:1155
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "अभी वक्री: %s।"
@@ -269,7 +269,7 @@ msgid "You are not allowed to do that."
 msgstr "आपको ऐसा करने की अनुमति नहीं है।"
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:315 includes/class-render.php:985
+#: includes/class-generated-registry.php:315 includes/class-render.php:994
 #, php-format
 msgid ""
 "%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
@@ -279,7 +279,7 @@ msgstr ""
 "प्रशासक इस नोट को देखेंगे।"
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:335 includes/class-render.php:997
+#: includes/class-generated-registry.php:335 includes/class-render.php:1006
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -288,7 +288,7 @@ msgstr ""
 "%1$s आवश्यक विशेषताओं की कमी है: %2$s. केवल प्रशासक इस नोट को देखेंगे।"
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:348 includes/class-render.php:1032
+#: includes/class-generated-registry.php:348 includes/class-render.php:1053
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
@@ -364,7 +364,7 @@ msgstr "नैटल चार्ट व्हील"
 msgid "Daily horoscope"
 msgstr "दैनिक होरोस्कोप"
 
-#: includes/class-public-client.php:140 includes/class-render.php:716
+#: includes/class-public-client.php:140 includes/class-render.php:722
 #: assets/js/astroway-blocks-editor.js:198
 msgid "Moon phase"
 msgstr "चंद्रमा का चरण"
@@ -402,7 +402,7 @@ msgstr "सिनास्ट्री संगतता"
 msgid "AstroWay widget"
 msgstr "अस्ट्रोवे विजेट"
 
-#: includes/class-render.php:94
+#: includes/class-render.php:97
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -411,7 +411,7 @@ msgstr ""
 "क्षितिज है, न कि कोई तिथि। केवल प्रशासक ही यह नोट देख सकते हैं।"
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:101
+#: includes/class-render.php:104
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
@@ -419,656 +419,662 @@ msgid ""
 msgstr ""
 "%s विजेट अभी लोड नहीं किया जा सका। केवल व्यवस्थापक ही यह नोट देख सकते हैं।"
 
-#: includes/class-render.php:162
+#: includes/class-render.php:165
 msgid "Rising sign"
 msgstr "लग्न राशि"
 
-#: includes/class-render.php:176
+#: includes/class-render.php:179
 msgid "Moon sign"
 msgstr "चन्द्र राशि"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
-#: includes/class-render.php:185
+#: includes/class-render.php:188
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:197
+#: includes/class-render.php:200
 msgid "Position"
 msgstr "स्थिति"
 
 #. translators: %d = house number
-#: includes/class-render.php:200
+#: includes/class-render.php:203
 msgid "House"
 msgstr "भाव"
 
 #. translators: %d = house number
-#: includes/class-render.php:200 includes/class-render.php:483
+#: includes/class-render.php:203 includes/class-render.php:486
 #, php-format
 msgid "House %d"
 msgstr "भाव %d"
 
-#: includes/class-render.php:208
+#: includes/class-render.php:211
 msgid "Chart ruler"
 msgstr "चार्ट रूलर"
 
-#: includes/class-render.php:211
+#: includes/class-render.php:214
 msgid "Ruler position"
 msgstr "स्थिति"
 
-#: includes/class-render.php:217 includes/class-render.php:470
+#: includes/class-render.php:220 includes/class-render.php:473
 msgid "Midheaven"
 msgstr "मध्य आकाश"
 
-#: includes/class-render.php:243
+#: includes/class-render.php:246
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:246
+#: includes/class-render.php:249
 #, php-format
 msgid "Human Design: %s"
 msgstr "मानव डिज़ाइन: %s"
 
-#: includes/class-render.php:257
+#: includes/class-render.php:260
 msgid "Strategy"
 msgstr "रणनीति"
 
-#: includes/class-render.php:260
+#: includes/class-render.php:263
 msgid "Authority"
 msgstr "अधिकार"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:267
+#: includes/class-render.php:270
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:272
+#: includes/class-render.php:275
 msgid "Profile"
 msgstr "प्रोफ़ाइल"
 
-#: includes/class-render.php:275
+#: includes/class-render.php:278
 msgid "Definition"
 msgstr "परिभाषा"
 
-#: includes/class-render.php:278
+#: includes/class-render.php:281
 msgid "Not-self theme"
 msgstr "अन्य-आत्म विषय"
 
-#: includes/class-render.php:282
+#: includes/class-render.php:285
 msgid "Incarnation cross"
 msgstr "अवतरण क्रॉस"
 
-#: includes/class-render.php:316
+#: includes/class-render.php:319
 msgid "Defined centres"
 msgstr "निर्धारित केन्द्र"
 
-#: includes/class-render.php:319
+#: includes/class-render.php:322
 msgid "Open centres"
 msgstr "अनिर्धारित केन्द्र"
 
-#: includes/class-render.php:321
+#: includes/class-render.php:324
 msgid "Centres"
 msgstr "केन्द्र"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:336
+#: includes/class-render.php:339
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d से %2$d, %3$s से %4$s"
 
-#: includes/class-render.php:347
+#: includes/class-render.php:350
 msgid "Channels"
 msgstr "चैनल"
 
-#: includes/class-render.php:352
+#: includes/class-render.php:355
 msgid "Generator"
 msgstr "जनरेटर"
 
-#: includes/class-render.php:353
+#: includes/class-render.php:356
 msgid "Manifesting Generator"
 msgstr "मैनिफेस्टिंग जनरेटर"
 
-#: includes/class-render.php:354
+#: includes/class-render.php:357
 msgid "Manifestor"
 msgstr "मैनिफेस्टर"
 
-#: includes/class-render.php:355
+#: includes/class-render.php:358
 msgid "Projector"
 msgstr "प्रोजेक्टर"
 
-#: includes/class-render.php:356
+#: includes/class-render.php:359
 msgid "Reflector"
 msgstr "रिफ्लेक्टर"
 
-#: includes/class-render.php:363
+#: includes/class-render.php:366
 msgid "Wait to respond"
 msgstr "जवाब देने के लिए प्रतीक्षा करें"
 
-#: includes/class-render.php:364
+#: includes/class-render.php:367
 msgid "Wait for the invitation"
 msgstr "आमंत्रण का इंतज़ार करें"
 
-#: includes/class-render.php:365 includes/class-render.php:366
+#: includes/class-render.php:368 includes/class-render.php:369
 msgid "Inform before acting"
 msgstr "कार्रवाई करने से पहले सूचित करें"
 
-#: includes/class-render.php:367
+#: includes/class-render.php:370
 msgid "Wait a lunar cycle"
 msgstr "एक चंद्र चक्र प्रतीक्षा करें"
 
-#: includes/class-render.php:368
+#: includes/class-render.php:371
 msgid "Respond, then inform"
 msgstr "प्रतिक्रिया दें, फिर सूचित करें"
 
-#: includes/class-render.php:375
+#: includes/class-render.php:378
 msgid "Emotional (Solar Plexus)"
 msgstr "भावनात्मक (सोलर प्लेक्सस)"
 
-#: includes/class-render.php:376 includes/class-render.php:427
+#: includes/class-render.php:379 includes/class-render.php:430
 msgid "Sacral"
 msgstr "सैक्रल"
 
-#: includes/class-render.php:377
+#: includes/class-render.php:380
 msgid "Splenic"
 msgstr "तिल्ली का"
 
-#: includes/class-render.php:378
+#: includes/class-render.php:381
 msgid "Ego (Heart)"
 msgstr "अहं (हृदय)"
 
-#: includes/class-render.php:379
+#: includes/class-render.php:382
 msgid "Self-projected"
 msgstr "स्व-परियोजित"
 
-#: includes/class-render.php:380
+#: includes/class-render.php:383
 msgid "Mental (environment)"
 msgstr "मानसिक (पर्यावरण)"
 
-#: includes/class-render.php:381 includes/class-render.php:382
+#: includes/class-render.php:384 includes/class-render.php:385
 msgid "Lunar cycle"
 msgstr "चंद्र चक्र"
 
-#: includes/class-render.php:389
+#: includes/class-render.php:392
 msgid "Single definition"
 msgstr "Single Definition"
 
-#: includes/class-render.php:390
+#: includes/class-render.php:393
 msgid "Split definition"
 msgstr "Split Definition"
 
-#: includes/class-render.php:391
+#: includes/class-render.php:394
 msgid "Triple split definition"
 msgstr "Triple Split Definition"
 
-#: includes/class-render.php:392
+#: includes/class-render.php:395
 msgid "Quadruple split definition"
 msgstr "Quadruple Split Definition"
 
-#: includes/class-render.php:393
+#: includes/class-render.php:396
 msgid "No definition"
 msgstr "No Definition"
 
-#: includes/class-render.php:400
+#: includes/class-render.php:403
 msgid "Frustration"
 msgstr "निराशा"
 
-#: includes/class-render.php:401
+#: includes/class-render.php:404
 msgid "Bitterness"
 msgstr "Bitter"
 
-#: includes/class-render.php:402
+#: includes/class-render.php:405
 msgid "Anger"
 msgstr "क्रोध"
 
-#: includes/class-render.php:403
+#: includes/class-render.php:406
 msgid "Disappointment"
 msgstr "निराशाजनक"
 
-#: includes/class-render.php:410
+#: includes/class-render.php:413
 msgid "Right Angle"
 msgstr "Right Angle"
 
-#: includes/class-render.php:411
+#: includes/class-render.php:414
 msgid "Left Angle"
 msgstr "Left Angle"
 
-#: includes/class-render.php:412
+#: includes/class-render.php:415
 msgid "Juxtaposition"
 msgstr "Juxtaposition"
 
-#: includes/class-render.php:420
+#: includes/class-render.php:423
 msgid "Head"
 msgstr "सिर"
 
-#: includes/class-render.php:421
+#: includes/class-render.php:424
 msgid "Ajna"
 msgstr "आज्ञा"
 
-#: includes/class-render.php:422
+#: includes/class-render.php:425
 msgid "Throat"
 msgstr "गला"
 
-#: includes/class-render.php:423
+#: includes/class-render.php:426
 msgid "G (identity)"
 msgstr "जी (पहचान)"
 
-#: includes/class-render.php:424
+#: includes/class-render.php:427
 msgid "Heart (ego)"
 msgstr "हृदय (अहं)"
 
-#: includes/class-render.php:425
+#: includes/class-render.php:428
 msgid "Solar Plexus"
 msgstr "सोलर प्लेक्सस"
 
-#: includes/class-render.php:426
+#: includes/class-render.php:429
 msgid "Spleen"
 msgstr "प्लीहा"
 
-#: includes/class-render.php:428
+#: includes/class-render.php:431
 msgid "Root"
 msgstr "रूट"
 
-#: includes/class-render.php:451
+#: includes/class-render.php:454
 msgid "Natal chart"
 msgstr "जन्म कुंडली"
 
 #. translators: %s = person's name
-#: includes/class-render.php:454
+#: includes/class-render.php:457
 #, php-format
 msgid "Natal chart: %s"
 msgstr "जन्म कुंडली: %s"
 
-#: includes/class-render.php:467
+#: includes/class-render.php:470
 msgid "Ascendant"
 msgstr "लग्न"
 
 #. translators: %d = house number
-#: includes/class-render.php:484
+#: includes/class-render.php:487
 msgid "retrograde"
 msgstr "वक्री"
 
-#: includes/class-render.php:487
+#: includes/class-render.php:490
 msgid "Placements"
 msgstr "स्थितियाँ"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:508
+#: includes/class-render.php:511
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:518
+#: includes/class-render.php:521
 msgid "Major aspects"
 msgstr "प्रमुख पहलू"
 
-#: includes/class-render.php:623
+#: includes/class-render.php:626
 msgid "New Moon"
 msgstr "न्यू मून"
 
-#: includes/class-render.php:624
+#: includes/class-render.php:627
 msgid "Waxing Crescent"
 msgstr "वैक्सिंग क्रेसेंट"
 
-#: includes/class-render.php:625
+#: includes/class-render.php:628
 msgid "First Quarter"
 msgstr "फर्स्ट क्वार्टर"
 
-#: includes/class-render.php:626
+#: includes/class-render.php:629
 msgid "Waxing Gibbous"
 msgstr "वैक्सिंग जिबोस"
 
-#: includes/class-render.php:627
+#: includes/class-render.php:630
 msgid "Full Moon"
 msgstr "फुल मून"
 
-#: includes/class-render.php:628
+#: includes/class-render.php:631
 msgid "Waning Gibbous"
 msgstr "वैनिंग जिबोस"
 
-#: includes/class-render.php:629
+#: includes/class-render.php:632
 msgid "Last Quarter"
 msgstr "लास्ट क्वार्टर"
 
-#: includes/class-render.php:630
+#: includes/class-render.php:633
 msgid "Waning Crescent"
 msgstr "वैनिंग क्रेसेंट"
 
-#: includes/class-render.php:637
+#: includes/class-render.php:640
 msgid "Sun"
 msgstr "सूर्य"
 
-#: includes/class-render.php:638
+#: includes/class-render.php:641
 msgid "Moon"
 msgstr "चंद्रमा"
 
-#: includes/class-render.php:639 assets/js/astroway-blocks-editor.js:131
+#: includes/class-render.php:642 assets/js/astroway-blocks-editor.js:131
 msgid "Mercury"
 msgstr "बुध"
 
-#: includes/class-render.php:640 assets/js/astroway-blocks-editor.js:132
+#: includes/class-render.php:643 assets/js/astroway-blocks-editor.js:132
 msgid "Venus"
 msgstr "शुक्र"
 
-#: includes/class-render.php:641 assets/js/astroway-blocks-editor.js:133
+#: includes/class-render.php:644 assets/js/astroway-blocks-editor.js:133
 msgid "Mars"
 msgstr "मंगल"
 
-#: includes/class-render.php:642 assets/js/astroway-blocks-editor.js:134
+#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:134
 msgid "Jupiter"
 msgstr "बृहस्पति"
 
-#: includes/class-render.php:643 assets/js/astroway-blocks-editor.js:135
+#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:135
 msgid "Saturn"
 msgstr "शनि"
 
-#: includes/class-render.php:644 assets/js/astroway-blocks-editor.js:136
+#: includes/class-render.php:647 assets/js/astroway-blocks-editor.js:136
 msgid "Uranus"
 msgstr "यूरेनस"
 
-#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:137
+#: includes/class-render.php:648 assets/js/astroway-blocks-editor.js:137
 msgid "Neptune"
 msgstr "नेपच्यून"
 
-#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:138
+#: includes/class-render.php:649 assets/js/astroway-blocks-editor.js:138
 msgid "Pluto"
 msgstr "प्लूटो"
 
-#: includes/class-render.php:647
+#: includes/class-render.php:650
 msgid "Chiron"
 msgstr "चिरॉन"
 
-#: includes/class-render.php:648 includes/class-render.php:655
-#: includes/class-render.php:656
+#: includes/class-render.php:651 includes/class-render.php:658
+#: includes/class-render.php:659
 msgid "Lilith"
 msgstr "लिलिथ"
 
-#: includes/class-render.php:649 includes/class-render.php:653
-#: includes/class-render.php:654
+#: includes/class-render.php:652 includes/class-render.php:656
+#: includes/class-render.php:657
 msgid "North Node"
 msgstr "उत्तर नोड"
 
-#: includes/class-render.php:650
+#: includes/class-render.php:653
 msgid "South Node"
 msgstr "दक्षिण नोड"
 
-#: includes/class-render.php:663
+#: includes/class-render.php:666
 msgid "conjunct"
 msgstr "युति"
 
-#: includes/class-render.php:664
+#: includes/class-render.php:667
 msgid "opposite"
 msgstr "विपरीत"
 
-#: includes/class-render.php:665
+#: includes/class-render.php:668
 msgid "trine"
 msgstr "त्रिकोण"
 
-#: includes/class-render.php:666
+#: includes/class-render.php:669
 msgid "square"
 msgstr "वर्ग"
 
-#: includes/class-render.php:667
+#: includes/class-render.php:670
 msgid "sextile"
 msgstr "षष्ठक"
 
-#: includes/class-render.php:699
+#: includes/class-render.php:705
 msgid "Illumination"
 msgstr "प्रदीप्ति"
 
-#: includes/class-render.php:702
+#: includes/class-render.php:708
 msgid "Age"
 msgstr "आयु"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:704
+#: includes/class-render.php:710
 #, php-format
 msgid "%s days"
 msgstr "%s दिन"
 
-#: includes/class-render.php:709
+#: includes/class-render.php:715
 msgid "Moon in"
 msgstr "चंद्रमा में"
 
-#: includes/class-render.php:712
+#: includes/class-render.php:718
 msgid "Sun in"
 msgstr "सूर्य में"
 
 #. translators: %s = tarot card name
-#: includes/class-render.php:744
+#: includes/class-render.php:750
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (उल्टा)"
 
-#: includes/class-render.php:750
+#: includes/class-render.php:756
 msgid "Card of the day"
 msgstr "दिन का कार्ड"
 
-#: includes/class-render.php:780 assets/js/astroway-blocks-editor.js:228
+#: includes/class-render.php:786 assets/js/astroway-blocks-editor.js:228
 msgid "Planet of the day"
 msgstr "दिन का ग्रह"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:812
+#: includes/class-render.php:818
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: सप्ताह का राशिफल"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:815
+#: includes/class-render.php:821
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: महीने का राशिफल"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:818
+#: includes/class-render.php:824
+#, php-format
+msgid "%s: horoscope for the year"
+msgstr "%s: वर्ष का राशिफल"
+
+#. translators: %s = zodiac sign name
+#: includes/class-render.php:827
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: आज का राशिफल"
 
-#: includes/class-render.php:825 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:834 assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "मेष"
 
-#: includes/class-render.php:826 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:835 assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "वृषभ"
 
-#: includes/class-render.php:827 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:836 assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "मिथुन"
 
-#: includes/class-render.php:828 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:837 assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "कर्क"
 
-#: includes/class-render.php:829 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:838 assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "सिंह"
 
-#: includes/class-render.php:830 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:839 assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "कन्या"
 
-#: includes/class-render.php:831 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:840 assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "तुला"
 
-#: includes/class-render.php:832 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:841 assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "वृश्चिक"
 
-#: includes/class-render.php:833 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:842 assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "धनु"
 
-#: includes/class-render.php:834 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:843 assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "मकर"
 
-#: includes/class-render.php:835 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:844 assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "कुम्भ"
 
-#: includes/class-render.php:836 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:845 assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "मीन"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1066
+#: includes/class-render.php:1087
 #, php-format
 msgid "Is %s retrograde?"
 msgstr "क्या %s वक्री है?"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1075
+#: includes/class-render.php:1096
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "हाँ, %s अभी वक्री है।"
 
-#: includes/class-render.php:1080
+#: includes/class-render.php:1101
 msgid "Retrograde since"
 msgstr "वक्री है तब से"
 
-#: includes/class-render.php:1081
+#: includes/class-render.php:1102
 msgid "Direct again on"
 msgstr "फिर से मार्गी होगा"
 
-#: includes/class-render.php:1082
+#: includes/class-render.php:1103
 msgid "Days left"
 msgstr "शेष दिन"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1088
+#: includes/class-render.php:1109
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "नहीं, %s अभी मार्गी है।"
 
-#: includes/class-render.php:1093
+#: includes/class-render.php:1114
 msgid "Next retrograde"
 msgstr "अगला वक्री"
 
-#: includes/class-render.php:1094 includes/class-render.php:1237
+#: includes/class-render.php:1115 includes/class-render.php:1258
 msgid "Ends"
 msgstr "समाप्ति"
 
-#: includes/class-render.php:1095
+#: includes/class-render.php:1116
 msgid "Days until"
 msgstr "तक शेष दिन"
 
-#: includes/class-render.php:1114
+#: includes/class-render.php:1135
 msgid "Retrograde"
 msgstr "वक्री"
 
-#: includes/class-render.php:1117 includes/class-render.php:1120
+#: includes/class-render.php:1138 includes/class-render.php:1141
 msgid "Direct"
 msgstr "मार्गी"
 
-#: includes/class-render.php:1131
+#: includes/class-render.php:1152
 msgid "Nothing is retrograde right now."
 msgstr "अभी कुछ भी वक्री नहीं है।"
 
-#: includes/class-render.php:1139 assets/js/astroway-blocks-editor.js:263
+#: includes/class-render.php:1160 assets/js/astroway-blocks-editor.js:263
 msgid "Retrograde planets"
 msgstr "वक्री ग्रह"
 
-#: includes/class-render.php:1143 assets/js/astroway-blocks-editor.js:258
+#: includes/class-render.php:1164 assets/js/astroway-blocks-editor.js:258
 msgid "Planet"
 msgstr "ग्रह"
 
-#: includes/class-render.php:1144 includes/views/admin-api-key.php:166
+#: includes/class-render.php:1165 includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr "स्थिति"
 
-#: includes/class-render.php:1148
+#: includes/class-render.php:1169
 msgid "Retrograde period"
 msgstr "वक्री अवधि"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:1202
+#: includes/class-render.php:1223
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "चंद्रमा %s तक निष्फल गति में है।"
 
 #. translators: %s = a date and time
-#: includes/class-render.php:1208
+#: includes/class-render.php:1229
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr "चंद्रमा निष्फल गति में नहीं है। अगली विंडो %s पर खुलती है।"
 
-#: includes/class-render.php:1212
+#: includes/class-render.php:1233
 msgid "The Moon is not void of course."
 msgstr "चंद्रमा निष्फल गति में नहीं है।"
 
-#: includes/class-render.php:1232 assets/js/astroway-blocks-editor.js:267
+#: includes/class-render.php:1253 assets/js/astroway-blocks-editor.js:267
 msgid "Void of course Moon"
 msgstr "निष्फल गति चंद्रमा"
 
-#: includes/class-render.php:1236
+#: includes/class-render.php:1257
 msgid "Starts"
 msgstr "प्रारंभ"
 
-#: includes/class-render.php:1238
+#: includes/class-render.php:1259
 msgid "Length"
 msgstr "अवधि"
 
-#: includes/class-render.php:1239
+#: includes/class-render.php:1260
 msgid "Last aspect"
 msgstr "अंतिम पहलू"
 
-#: includes/class-render.php:1240
+#: includes/class-render.php:1261
 msgid "Next sign"
 msgstr "अगली राशि"
 
-#: includes/class-render.php:1295
+#: includes/class-render.php:1316
 msgid "Night"
 msgstr "रात"
 
-#: includes/class-render.php:1295
+#: includes/class-render.php:1316
 msgid "Day"
 msgstr "दिन"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1310
+#: includes/class-render.php:1331
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "दिन का स्वामी %s है।"
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:1317
+#: includes/class-render.php:1338
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "%1$s का घंटा %2$s तक चलता है।"
 
-#: includes/class-render.php:1324 includes/class-render.php:1357
-#: assets/js/astroway-blocks-editor.js:277
+#: includes/class-render.php:1345 includes/class-render.php:1378
+#: assets/js/astroway-blocks-editor.js:302
 msgid "Planetary hours"
 msgstr "ग्रहों के घंटे"
 
-#: includes/class-render.php:1333
+#: includes/class-render.php:1354
 msgid "Hour"
 msgstr "घंटा"
 
-#: includes/class-render.php:1334
+#: includes/class-render.php:1355
 msgid "Ruler"
 msgstr "स्वामी"
 
-#: includes/class-render.php:1335
+#: includes/class-render.php:1356
 msgid "From"
 msgstr "से"
 
-#: includes/class-render.php:1336
+#: includes/class-render.php:1357
 msgid "To"
 msgstr "तक"
 
-#: includes/class-render.php:1337
+#: includes/class-render.php:1358
 msgid "Part of day"
 msgstr "दिन का भाग"
 
-#: includes/class-render.php:1362
+#: includes/class-render.php:1383
 msgid ""
 "The Sun does not set at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1076,7 +1082,7 @@ msgstr ""
 "इस अक्षांश पर इस तिथि को सूर्य अस्त नहीं होता है, इसलिए विभाजित करने के लिए "
 "कोई ग्रहों के घंटे नहीं हैं।"
 
-#: includes/class-render.php:1363
+#: includes/class-render.php:1384
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1084,38 +1090,140 @@ msgstr ""
 "इस अक्षांश पर इस तिथि को सूर्य उदय नहीं होता है, इसलिए विभाजित करने के लिए "
 "कोई ग्रहों के घंटे नहीं हैं।"
 
-#. translators: %d = number of minutes
+#. translators: 1: zodiac sign name, 2: zodiac sign name
+#: includes/class-render.php:1410
+#, php-format
+msgid "%1$s and %2$s"
+msgstr "%1$s और %2$s"
+
+#: includes/class-render.php:1437 assets/js/astroway-blocks-editor.js:293
+msgid "Chinese zodiac"
+msgstr "चीनी राशि चक्र"
+
+#: includes/class-render.php:1451
+msgid "Element"
+msgstr "तत्व"
+
+#: includes/class-render.php:1456
+msgid "Year element"
+msgstr "वर्ष का तत्व"
+
 #: includes/class-render.php:1459
+msgid "Polarity"
+msgstr "ध्रुवीयता"
+
+#: includes/class-render.php:1459
+msgid "Yin"
+msgstr "यिन"
+
+#: includes/class-render.php:1459
+msgid "Yang"
+msgstr "यांग"
+
+#: includes/class-render.php:1462
+msgid "Pillar"
+msgstr "स्तंभ"
+
+#: includes/class-render.php:1471
+msgid "Rat"
+msgstr "चूहा"
+
+#: includes/class-render.php:1472
+msgid "Ox"
+msgstr "बैल"
+
+#: includes/class-render.php:1473
+msgid "Tiger"
+msgstr "बाघ"
+
+#: includes/class-render.php:1474
+msgid "Rabbit"
+msgstr "खरगोश"
+
+#: includes/class-render.php:1475
+msgid "Dragon"
+msgstr "ड्रैगन"
+
+#: includes/class-render.php:1476
+msgid "Snake"
+msgstr "साँप"
+
+#: includes/class-render.php:1477
+msgid "Horse"
+msgstr "घोड़ा"
+
+#: includes/class-render.php:1478
+msgid "Goat"
+msgstr "बकरी"
+
+#: includes/class-render.php:1479
+msgid "Monkey"
+msgstr "बंदर"
+
+#: includes/class-render.php:1480
+msgid "Rooster"
+msgstr "मुर्गा"
+
+#: includes/class-render.php:1481
+msgid "Dog"
+msgstr "कुत्ता"
+
+#: includes/class-render.php:1482
+msgid "Pig"
+msgstr "सुअर"
+
+#: includes/class-render.php:1490
+msgid "Wood"
+msgstr "लकड़ी"
+
+#: includes/class-render.php:1491
+msgid "Fire"
+msgstr "आग"
+
+#: includes/class-render.php:1492
+msgid "Earth"
+msgstr "पृथ्वी"
+
+#: includes/class-render.php:1493
+msgid "Metal"
+msgstr "धातु"
+
+#: includes/class-render.php:1494
+msgid "Water"
+msgstr "पानी"
+
+#. translators: %d = number of minutes
+#: includes/class-render.php:1589
 #, php-format
 msgid "%d min"
 msgstr "%d मिनट"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:1465
+#: includes/class-render.php:1595
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d घंटे %2$02d मिनट"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:1789
+#: includes/class-render.php:1919
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d में से %2$d दिखा रहा है"
 
-#: includes/class-render.php:1840
+#: includes/class-render.php:1970
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "हाँ"
 
-#: includes/class-render.php:1840
+#: includes/class-render.php:1970
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "नहीं"
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:457
+#: includes/class-shortcodes.php:518
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -1168,13 +1276,13 @@ msgid "Copy a shortcode."
 msgstr "एक शॉर्टकोड कॉपी करें।"
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
-#: includes/views/admin-shortcodes.php:377
+#: includes/views/admin-shortcodes.php:411
 #: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "कॉपी करने के लिए क्लिक करें"
 
 #: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
-#: includes/views/admin-shortcodes.php:381
+#: includes/views/admin-shortcodes.php:415
 msgid "copy"
 msgstr "कॉपी करें"
 
@@ -1583,78 +1691,78 @@ msgstr "लोकेल"
 msgid "API host"
 msgstr "एपीआई होस्ट"
 
-#: includes/views/admin-settings.php:71
+#: includes/views/admin-settings.php:72
 msgid "Connection"
 msgstr "कनेक्शन"
 
-#: includes/views/admin-settings.php:72
+#: includes/views/admin-settings.php:73
 msgid "live ping · api.astroway.info"
 msgstr "लाइव पिंग · api.astroway.info"
 
-#: includes/views/admin-settings.php:77
+#: includes/views/admin-settings.php:78
 msgid "Test connection"
 msgstr "कनेक्शन टेस्ट करें"
 
 #. translators: %s = API health endpoint
-#: includes/views/admin-settings.php:85
+#: includes/views/admin-settings.php:86
 #, php-format
 msgid "Pings %s to confirm reachability from this server."
 msgstr "%s को पिंग किया जाता है ताकि सर्वर से पहुंच की पुष्टि हो सके।"
 
-#: includes/views/admin-settings.php:96
+#: includes/views/admin-settings.php:97
 msgid "Cache"
 msgstr "कैश"
 
-#: includes/views/admin-settings.php:97
+#: includes/views/admin-settings.php:98
 msgid "WP transients · prefix astroway_v1_"
 msgstr "WP ट्रांजिएंट्स · उपसर्ग astroway_v1_"
 
-#: includes/views/admin-settings.php:103
+#: includes/views/admin-settings.php:104
 msgid "items"
 msgstr "आइटम्स"
 
-#: includes/views/admin-settings.php:107
+#: includes/views/admin-settings.php:108
 msgid "cached size"
 msgstr "कैश्ड आकार"
 
-#: includes/views/admin-settings.php:110
+#: includes/views/admin-settings.php:111
 msgid "Purge all"
 msgstr "सभी हटाएं"
 
-#: includes/views/admin-settings.php:114
+#: includes/views/admin-settings.php:115
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
 msgstr ""
 "टीटीएल: चार्ट 1घंटा · चंद्रमा 24घंटे · संदर्भ डेटा 7दिन · कुंजी /me 30मिनट।"
 
-#: includes/views/admin-settings.php:122
+#: includes/views/admin-settings.php:123
 #: includes/views/partials/admin-sidebar.php:42
 #: assets/js/astroway-blocks-editor.js:181
 msgid "System"
 msgstr "सिस्टम"
 
-#: includes/views/admin-settings.php:123
+#: includes/views/admin-settings.php:124
 msgid "diagnostic info for support"
 msgstr "समर्थन के लिए डायग्नोस्टिक जानकारी"
 
-#: includes/views/admin-settings.php:141
+#: includes/views/admin-settings.php:142
 msgid "Copy diagnostic info"
 msgstr "डायग्नोस्टिक जानकारी कॉपी करें"
 
-#: includes/views/admin-settings.php:158
+#: includes/views/admin-settings.php:159
 msgid "Feature matrix"
 msgstr "विशेषता मैट्रिक्स"
 
 #. translators: %s = current tier
-#: includes/views/admin-settings.php:163
+#: includes/views/admin-settings.php:164
 #, php-format
 msgid "current tier: %s"
 msgstr "वर्तमान स्तर: %s"
 
-#: includes/views/admin-settings.php:173
+#: includes/views/admin-settings.php:174
 msgid "Feature"
 msgstr "विशेषता"
 
-#: includes/views/admin-settings.php:195
+#: includes/views/admin-settings.php:196
 msgid ""
 "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
@@ -1662,59 +1770,59 @@ msgstr ""
 "मैट्रिक्स को `astroway_tier_matrix` फ़िल्टर के माध्यम से फ़िल्टर किया जा "
 "सकता है, ताकि ऐडऑन अपनी खुद की सुविधाएँ जोड़ सकें।"
 
-#: includes/views/admin-settings.php:203
+#: includes/views/admin-settings.php:204
 msgid "Domain binding"
 msgstr "डोमेन बाइंडिंग"
 
 #. translators: %s = current domain
-#: includes/views/admin-settings.php:209
+#: includes/views/admin-settings.php:210
 #, php-format
 msgid "bound to: %s"
 msgstr "बाउंड: %s"
 
-#: includes/views/admin-settings.php:213
+#: includes/views/admin-settings.php:214
 msgid "no domain binding yet"
 msgstr "अब तक कोई डोमेन बाइंडिंग नहीं"
 
-#: includes/views/admin-settings.php:223
+#: includes/views/admin-settings.php:224
 msgid "Request rebind"
 msgstr "आवश्यक"
 
 #. translators: %s = api dashboard URL
-#: includes/views/admin-settings.php:231
+#: includes/views/admin-settings.php:232
 #, php-format
 msgid "Manual fallback: %s."
 msgstr "मैनुअल फॉलबैक: %s."
 
-#: includes/views/admin-settings.php:244
+#: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
 msgstr "पहले एक मान्य एपीआई कुंजी दर्ज करें।"
 
-#: includes/views/admin-settings.php:245
+#: includes/views/admin-settings.php:246
 msgid "Requesting…"
 msgstr "अनुरोध कर रहा है…"
 
-#: includes/views/admin-settings.php:255
+#: includes/views/admin-settings.php:256
 msgid "✓ requested"
 msgstr "✓ अनुरोध किया गया"
 
-#: includes/views/admin-settings.php:256
+#: includes/views/admin-settings.php:257
 msgid "failed"
 msgstr "विफल"
 
-#: includes/views/admin-settings.php:271
+#: includes/views/admin-settings.php:272
 msgid "Widget disclaimer"
 msgstr "विजेट अस्वीकरण"
 
-#: includes/views/admin-settings.php:272
+#: includes/views/admin-settings.php:273
 msgid "optional legal line in the widget footer"
 msgstr "विजेट फुटर में वैकल्पिक कानूनी पंक्ति"
 
-#: includes/views/admin-settings.php:280
+#: includes/views/admin-settings.php:281
 msgid "Show a disclaimer in embedded widgets"
 msgstr "एम्बेडेड विजेट्स में एक अस्वीकरण दिखाएं"
 
-#: includes/views/admin-settings.php:281
+#: includes/views/admin-settings.php:282
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
 "widget footer. Off by default, enable it if your jurisdiction or compliance "
@@ -1726,23 +1834,23 @@ msgstr ""
 "इसकी आवश्यकता हो तो इसे सक्षम करें। यह शब्द-रचना api.astroway.info द्वारा "
 "प्रस्तुत और स्थानीयकृत की जाती है।"
 
-#: includes/views/admin-settings.php:284
+#: includes/views/admin-settings.php:285
 msgid "Save disclaimer setting"
 msgstr "अस्वीकरण सेटिंग को सहेजें"
 
-#: includes/views/admin-settings.php:292
+#: includes/views/admin-settings.php:293
 msgid "Render mode"
 msgstr "रेंडर मोड"
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:294
 msgid "where widget content is drawn"
 msgstr "जहाँ विजेट सामग्री खींची जाती है"
 
-#: includes/views/admin-settings.php:301
+#: includes/views/admin-settings.php:302
 msgid "On this page (recommended)"
 msgstr "इस पृष्ठ पर (अनुशंसित)"
 
-#: includes/views/admin-settings.php:302
+#: includes/views/admin-settings.php:303
 msgid ""
 "Your server fetches the text and prints it into the page. Search engines can"
 " read it, your theme styles it, and it works without JavaScript. Answers are"
@@ -1754,11 +1862,11 @@ msgstr ""
 " करता है। उत्तर तब तक कैश किए जाते हैं जब तक वे बदलते नहीं हैं, इसलिए दैनिक "
 "राशिफल प्रति राशि एक दिन में एक बार प्राप्त किया जाता है।"
 
-#: includes/views/admin-settings.php:307
+#: includes/views/admin-settings.php:308
 msgid "In an iframe"
 msgstr "एक iframe में"
 
-#: includes/views/admin-settings.php:308
+#: includes/views/admin-settings.php:309
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
 "reaches your page source, so the content is not indexed and your theme "
@@ -1770,7 +1878,7 @@ msgstr ""
 "और आपकी थीम इसे स्टाइल नहीं कर सकती है। यदि आपका होस्ट आउटगोइंग अनुरोधों को "
 "ब्लॉक करता है, या दोनों की तुलना करने के लिए इसे चुनें।"
 
-#: includes/views/admin-settings.php:312
+#: includes/views/admin-settings.php:313
 msgid ""
 "Widgets without a page-side template, and any widget whose data cannot be "
 "fetched, fall back to the iframe on their own."
@@ -1778,19 +1886,19 @@ msgstr ""
 "पृष्ठ-साइड टेम्पलेट के बिना विजेट, और कोई भी विजेट जिसका डेटा प्राप्त नहीं "
 "किया जा सकता है, अपने आप iframe पर वापस आ जाते हैं।"
 
-#: includes/views/admin-settings.php:314
+#: includes/views/admin-settings.php:315
 msgid "Save render mode"
 msgstr "रेंडर मोड सहेजें"
 
-#: includes/views/admin-settings.php:322
+#: includes/views/admin-settings.php:323
 msgid "Daily transit alerts"
 msgstr "दैनिक गोचर अलर्ट"
 
-#: includes/views/admin-settings.php:323
+#: includes/views/admin-settings.php:324
 msgid "email on the days the sky does something"
 msgstr "उन दिनों ईमेल करें जब आकाश कुछ करता है"
 
-#: includes/views/admin-settings.php:330
+#: includes/views/admin-settings.php:331
 msgid ""
 "Transit alerts are part of the Pro plan. Everything else on this page works "
 "on any plan."
@@ -1798,20 +1906,20 @@ msgstr ""
 "ट्रांजिट अलर्ट प्रो प्लान का हिस्सा हैं। इस पृष्ठ पर बाकी सब कुछ किसी भी "
 "प्लान पर काम करता है।"
 
-#: includes/views/admin-settings.php:331
+#: includes/views/admin-settings.php:332
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
 msgstr ""
 "ट्रांजिट अलर्ट के लिए एक API कुंजी की आवश्यकता है। इसे 'शुरू करें' पृष्ठ पर "
 "पेस्ट करें।"
 
-#: includes/views/admin-settings.php:340
+#: includes/views/admin-settings.php:341
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr ""
 "एक दैनिक ईमेल भेजें जब कोई ग्रह स्टेशन करता है या चंद्रमा 'वॉइड ऑफ कोर्स' "
 "होता है"
 
-#: includes/views/admin-settings.php:341
+#: includes/views/admin-settings.php:342
 msgid ""
 "Nothing is sent on the quiet days. The mail that does go out carries the "
 "moon phase and the current retrogrades as context."
@@ -1819,11 +1927,11 @@ msgstr ""
 "शांत दिनों में कुछ भी नहीं भेजा जाता है। जो मेल भेजा जाता है उसमें चंद्रमा "
 "की कला और वर्तमान प्रतिगामी ग्रहों को संदर्भ के रूप में शामिल किया जाता है।"
 
-#: includes/views/admin-settings.php:346
+#: includes/views/admin-settings.php:347
 msgid "Hour to send, on your site clock"
 msgstr "भेजने का घंटा, आपकी साइट की घड़ी के अनुसार"
 
-#: includes/views/admin-settings.php:351
+#: includes/views/admin-settings.php:352
 msgid ""
 "WordPress runs scheduled jobs when someone visits the site, so the mail can "
 "be late on a quiet blog."
@@ -1831,23 +1939,23 @@ msgstr ""
 "जब कोई साइट पर आता है तो WordPress निर्धारित कार्य चलाता है, इसलिए एक शांत "
 "ब्लॉग पर मेल देर से आ सकता है।"
 
-#: includes/views/admin-settings.php:355
+#: includes/views/admin-settings.php:356
 msgid "Send to"
 msgstr "भेजें"
 
-#: includes/views/admin-settings.php:361
+#: includes/views/admin-settings.php:362
 msgid "Comma separated. Left empty, it goes to the site administrator."
 msgstr "अल्पविराम से अलग करें। खाली छोड़ने पर, यह साइट व्यवस्थापक को जाता है।"
 
-#: includes/views/admin-settings.php:364
+#: includes/views/admin-settings.php:365
 msgid "Save alert settings"
 msgstr "अलर्ट सेटिंग्स सहेजें"
 
-#: includes/views/admin-settings.php:370
+#: includes/views/admin-settings.php:371
 msgid "Send today's alert to me now"
 msgstr "आज का अलर्ट मुझे अभी भेजें"
 
-#: includes/views/admin-settings.php:371
+#: includes/views/admin-settings.php:372
 msgid "Goes to your own address, not to the list above."
 msgstr "आपके अपने पते पर जाता है, ऊपर दी गई सूची पर नहीं।"
 
@@ -1875,6 +1983,7 @@ msgstr "जन्म कुंडली: पहिया प्लस ग्र�
 #: includes/views/admin-shortcodes.php:148
 #: includes/views/admin-shortcodes.php:186
 #: includes/views/admin-shortcodes.php:227
+#: includes/views/admin-shortcodes.php:337
 msgid "Birth date in YYYY-MM-DD."
 msgstr "जन्म तिथि YYYY-MM-DD में।"
 
@@ -2311,6 +2420,7 @@ msgstr "HH:MM से शुरू करने का समय। डिफ़�
 
 #: includes/views/admin-shortcodes.php:291
 #: includes/views/admin-shortcodes.php:305
+#: includes/views/admin-shortcodes.php:339
 msgid "Hours from UTC. Defaults to the site timezone."
 msgstr "UTC से घंटों में। डिफ़ॉल्ट रूप से साइट के टाइमज़ोन के अनुसार।"
 
@@ -2333,24 +2443,80 @@ msgstr ""
 msgid "WGS-84 latitude. The hours are the day divided by this horizon."
 msgstr "WGS-84 अक्षांश। घंटे इस क्षितिज द्वारा दिन को विभाजित करते हैं।"
 
-#: includes/views/admin-shortcodes.php:324
+#: includes/views/admin-shortcodes.php:310
+msgid "Yearly Horoscope"
+msgstr "वार्षिक राशिफल"
+
+#: includes/views/admin-shortcodes.php:311
+msgid ""
+"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
+"the name it had as a generated shortcode."
+msgstr ""
+"एक राशि के लिए आगे का वर्ष। साथ ही [astroway_horoscope_yearly] के उत्तर, "
+"जिसका नाम उत्पन्न शॉर्टकोड के रूप में था।"
+
+#: includes/views/admin-shortcodes.php:315
+msgid "Zodiac sign in English, lowercase."
+msgstr "राशि चक्र का चिन्ह अंग्रेज़ी में, छोटे अक्षरों में।"
+
+#: includes/views/admin-shortcodes.php:316
+msgid "Any date inside the year. Defaults to this year."
+msgstr "वर्ष के भीतर कोई भी तिथि। डिफ़ॉल्ट रूप से इस वर्ष।"
+
+#: includes/views/admin-shortcodes.php:321
+msgid "Zodiac Compatibility"
+msgstr "राशि संगतता"
+
+#: includes/views/admin-shortcodes.php:322
+msgid ""
+"How two signs read together. Prose, not a percentage: the endpoint returns "
+"no score and inventing one would be a number with no calculation behind it."
+msgstr ""
+"दो राशियों का एक साथ पढ़ना। गद्य रूप में, प्रतिशत नहीं: एंडपॉइंट कोई स्कोर "
+"नहीं देता और एक बनाना बिना गणना के संख्या होगा।"
+
+#: includes/views/admin-shortcodes.php:326
+msgid "First sign in English, lowercase."
+msgstr "पहला चिन्ह अंग्रेज़ी में, छोटे अक्षरों में।"
+
+#: includes/views/admin-shortcodes.php:327
+msgid "Second sign in English, lowercase."
+msgstr "दूसरा चिन्ह अंग्रेज़ी में, छोटे अक्षरों में।"
+
+#: includes/views/admin-shortcodes.php:332
+msgid "Chinese Zodiac"
+msgstr "चीनी राशि चक्र"
+
+#: includes/views/admin-shortcodes.php:333
+msgid ""
+"The animal of a birth year with its element, polarity and pillar. A birth "
+"time sharpens the answer at the turn of the year."
+msgstr ""
+"जन्म वर्ष का पशु, उसके तत्व, ध्रुवीयता और स्तंभ के साथ। जन्म समय उत्तर को "
+"वर्ष के मोड़ पर स्पष्ट करता है।"
+
+#: includes/views/admin-shortcodes.php:338
+msgid "Birth time in HH:MM."
+msgstr "जन्म समय HH:MM में।"
+
+#: includes/views/admin-shortcodes.php:358
 msgid "Find your coordinates and timezone"
 msgstr "अपने निर्देशांक और समय क्षेत्र खोजें"
 
-#: includes/views/admin-shortcodes.php:325
+#: includes/views/admin-shortcodes.php:359
 msgid "city → lat · lon · IANA tz"
 msgstr "शहर → अक्षांश · देशांतर · IANA समय क्षेत्र"
 
-#: includes/views/admin-shortcodes.php:332
+#: includes/views/admin-shortcodes.php:366
 msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
 msgstr "एक शहर का नाम टाइप करें, उदाहरण के लिए कीव, बर्लिन या साओ पाउलो"
 
-#: includes/views/admin-shortcodes.php:336
+#: includes/views/admin-shortcodes.php:370
 msgid "Search"
 msgstr "खोजें"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:343
+#: includes/views/admin-shortcodes.php:377
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -2358,46 +2524,46 @@ msgstr ""
 "शहर का चयन करें जो मानों को शॉर्टकोड में कॉपी करने के लिए मेल खाता है। "
 "संदर्भ: %s।"
 
-#: includes/views/admin-shortcodes.php:344
+#: includes/views/admin-shortcodes.php:378
 msgid "IANA timezone list"
 msgstr "IANA समय क्षेत्र सूची"
 
-#: includes/views/admin-shortcodes.php:353
+#: includes/views/admin-shortcodes.php:387
 msgid "Filter shortcodes"
 msgstr "शॉर्टकोड फ़िल्टर करें"
 
 #. translators: %d is the number of shortcodes
-#: includes/views/admin-shortcodes.php:357
+#: includes/views/admin-shortcodes.php:391
 #, php-format
 msgid "Filter %d shortcodes: name, tag or what it does"
 msgstr "%d शॉर्टकोड्स को फ़िल्टर करें: नाम, टैग या यह क्या करता है"
 
-#: includes/views/admin-shortcodes.php:389
+#: includes/views/admin-shortcodes.php:423
 msgid "Parameter"
 msgstr "पैरामीटर"
 
-#: includes/views/admin-shortcodes.php:390
+#: includes/views/admin-shortcodes.php:424
 msgid "Type"
 msgstr "प्रकार"
 
-#: includes/views/admin-shortcodes.php:391
+#: includes/views/admin-shortcodes.php:425
 msgid "Required"
 msgstr "आवश्यक"
 
-#: includes/views/admin-shortcodes.php:392
+#: includes/views/admin-shortcodes.php:426
 msgid "Description"
 msgstr "विवरण"
 
-#: includes/views/admin-shortcodes.php:405
+#: includes/views/admin-shortcodes.php:439
 msgid "required"
 msgstr "आवश्यक"
 
-#: includes/views/admin-shortcodes.php:407
+#: includes/views/admin-shortcodes.php:441
 msgid "optional"
 msgstr "वैकल्पिक"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:430
+#: includes/views/admin-shortcodes.php:464
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "गुटेनबर्ग ब्लॉक \"%s\" के रूप में भी उपलब्ध।"
@@ -2560,14 +2726,14 @@ msgstr "समय (HH:MM)"
 #: assets/js/astroway-blocks-editor.js:70
 #: assets/js/astroway-blocks-editor.js:96
 #: assets/js/astroway-blocks-editor.js:105
-#: assets/js/astroway-blocks-editor.js:280
+#: assets/js/astroway-blocks-editor.js:305
 msgid "Latitude (-90 to 90)"
 msgstr "अक्षांश (-90 से 90)"
 
 #: assets/js/astroway-blocks-editor.js:71
 #: assets/js/astroway-blocks-editor.js:97
 #: assets/js/astroway-blocks-editor.js:106
-#: assets/js/astroway-blocks-editor.js:281
+#: assets/js/astroway-blocks-editor.js:306
 msgid "Longitude (-180 to 180)"
 msgstr "देशांतर (-180 से 180)"
 
@@ -2615,7 +2781,7 @@ msgstr "समय क्षेत्र (यूरोप/कीव, +05:30, य�
 #: assets/js/astroway-blocks-editor.js:167
 #: assets/js/astroway-blocks-editor.js:200
 #: assets/js/astroway-blocks-editor.js:230
-#: assets/js/astroway-blocks-editor.js:279
+#: assets/js/astroway-blocks-editor.js:304
 msgid "Date (leave blank for today)"
 msgstr "दिनांक (आज के लिए खाली छोड़ें)"
 
@@ -2696,6 +2862,7 @@ msgstr "दो विषय"
 #: assets/js/astroway-blocks-editor.js:214
 #: assets/js/astroway-blocks-editor.js:222
 #: assets/js/astroway-blocks-editor.js:241
+#: assets/js/astroway-blocks-editor.js:279
 msgid "Zodiac sign"
 msgstr "राशि चिन्ह"
 
@@ -2752,17 +2919,64 @@ msgstr "शुरू करने का समय (HH:MM, आधी रात �
 msgid "Days to look ahead (1 to 30, default 7)"
 msgstr "आगे देखने के दिन (1 से 30, डिफ़ॉल्ट 7)"
 
-#: assets/js/astroway-blocks-editor.js:434
+#: assets/js/astroway-blocks-editor.js:277
+msgid "Yearly horoscope"
+msgstr "वार्षिक राशिफल"
+
+#: assets/js/astroway-blocks-editor.js:280
+msgid "Any date inside the year (blank for this year)"
+msgstr "वर्ष के भीतर कोई भी तिथि (इस वर्ष के लिए खाली छोड़ें)"
+
+#: assets/js/astroway-blocks-editor.js:285
+msgid "Two signs"
+msgstr "दो चिन्ह"
+
+#: assets/js/astroway-blocks-editor.js:287
+msgid "First sign"
+msgstr "पहला चिन्ह"
+
+#: assets/js/astroway-blocks-editor.js:288
+msgid "Second sign"
+msgstr "दूसरा चिन्ह"
+
+#: assets/js/astroway-blocks-editor.js:295
+msgid "Birth date (YYYY-MM-DD)"
+msgstr "जन्म तिथि (YYYY-MM-DD)"
+
+#: assets/js/astroway-blocks-editor.js:296
+msgid "Birth time (HH:MM, optional)"
+msgstr "जन्म समय (HH:MM, वैकल्पिक)"
+
+#: assets/js/astroway-blocks-editor.js:459
 msgid "Section"
 msgstr "अनुभाग"
 
-#: assets/js/astroway-blocks-editor.js:437
+#: assets/js/astroway-blocks-editor.js:462
 msgid "Zodiac sign for blocks inside"
 msgstr "अंदर के ब्लॉकों के लिए राशि चिह्न"
 
-#: assets/js/astroway-blocks-editor.js:444
+#: assets/js/astroway-blocks-editor.js:469
 msgid "Language for blocks inside"
 msgstr "अंदर के ब्लॉकों के लिए भाषा"
+
+#: assets/js/astroway-blocks-editor.js:476
+msgid "Layout on the page"
+msgstr "पृष्ठ पर लेआउट"
+
+#: assets/js/astroway-blocks-editor.js:479
+msgid "One after another"
+msgstr "एक के बाद एक"
+
+#: assets/js/astroway-blocks-editor.js:480
+msgid "Tabs"
+msgstr "टैब्स"
+
+#: assets/js/astroway-blocks-editor.js:482
+msgid ""
+"Tabs need JavaScript. Without it the cards stay stacked, so nothing is lost."
+msgstr ""
+"टैब्स को JavaScript की आवश्यकता है। बिना इसके कार्ड्स स्टैक्ड रहेंगे, इसलिए "
+"कुछ नहीं खोता।"
 
 #: blocks/astrology-section/block.json
 msgid "AstroWay: Astrology Section"
@@ -2780,6 +2994,14 @@ msgstr "अस्ट्रोवे: ह्यूमन डिज़ाइन �
 #: blocks/bodygraph/block.json
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "टाइप, प्रोफाइल और द्वारों के साथ ह्यूमन डिज़ाइन बॉडीग्राफ।"
+
+#: blocks/chinese-zodiac/block.json
+msgid "AstroWay: Chinese Zodiac"
+msgstr "AstroWay: चीनी राशि चक्र"
+
+#: blocks/chinese-zodiac/block.json
+msgid "The Chinese animal, element and pillar of a birth date."
+msgstr "जन्म तिथि का चीनी पशु, तत्व और स्तंभ।"
 
 #: blocks/daily-horoscope/block.json
 msgid "AstroWay: Daily Horoscope"
@@ -3002,3 +3224,19 @@ msgid ""
 msgstr ""
 "वर्तमान सप्ताह का राशिफल, सोमवार से आरंभ होकर, पृष्ठ पर पाठ के रूप में "
 "प्रस्तुत।"
+
+#: blocks/yearly-horoscope/block.json
+msgid "AstroWay: Yearly Horoscope"
+msgstr "AstroWay: वार्षिक राशिफल"
+
+#: blocks/yearly-horoscope/block.json
+msgid "The year ahead for one zodiac sign."
+msgstr "एक राशि चिह्न के लिए आगे का वर्ष।"
+
+#: blocks/zodiac-compatibility/block.json
+msgid "AstroWay: Zodiac Compatibility"
+msgstr "AstroWay: राशि संगतता"
+
+#: blocks/zodiac-compatibility/block.json
+msgid "How two zodiac signs read together."
+msgstr "दो राशि चिह्न एक साथ कैसे पढ़ते हैं।"
