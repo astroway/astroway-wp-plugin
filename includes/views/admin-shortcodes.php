@@ -381,6 +381,8 @@ $astroway_cards = [
 			</article>
 		<?php endforeach; ?>
 
+		<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-generated-coverage.php'; ?>
+
 	</main>
 
 	<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-sidebar.php'; ?>

@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
-"PO-Revision-Date: 2026-08-22 02:16+0300\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
+"PO-Revision-Date: 2026-08-22 03:06+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Ukrainian <translations@astroway.info>\n"
 "Language: uk\n"
@@ -221,11 +221,42 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "Пошук міста зараз перевантажений, спробуйте за хвилину."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+msgid "AstroWay: full API"
+msgstr "AstroWay: повний API"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"%s потрібен ключ API: вставте його в AstroWay, API Key. Цю примітку бачать "
+"лише адміністратори."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s відсутні обов'язкові атрибути: %2$s. Цю примітку бачать лише "
+"адміністратори."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"%s не вдалося завантажити зараз. Цю примітку бачать лише адміністратори."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "AstroWay активний"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -238,20 +269,20 @@ msgstr ""
 "кожного відвідувача. Для вищих лімітів та Pro функцій отримайте безкоштовний"
 " ключ API."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Отримати безкоштовний API ключ"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Відкрити налаштування"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -259,15 +290,15 @@ msgstr ""
 "Короткий відгук на wordpress.org допоможе іншим власникам сайтів дізнатися "
 "про цей плагін, а нам показати, над чим працювати далі."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Залишити відгук"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Цей сервер вичерпав свою квоту на анонімний доступ до AstroWay:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -845,6 +876,24 @@ msgstr "Водолій"
 msgid "Pisces"
 msgstr "Риби"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "Показано %1$d з %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "так"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "ні"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -898,6 +947,7 @@ msgstr "Скопіюйте шорткод."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Натисніть, щоб скопіювати"
 
@@ -2003,16 +2053,6 @@ msgstr "Оновити кінцеву точку"
 msgid "Library loaded"
 msgstr "Бібліотека завантажена"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "так"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "ні"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "API ключ"
@@ -2040,6 +2080,22 @@ msgstr "Сторінки плагіна"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Документація"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Решта API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d більше шорткодів у %2$d сімействах, згенерованих зі специфікації API. "
+"Кожен потребує ключа API. Віджети вище створені вручну та краще читаються; "
+"ці охоплюють все інше, що може обчислити API."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2288,15 +2344,15 @@ msgstr "Хронологія транзитів Місяця"
 msgid "Day the seven start from (blank for today)"
 msgstr "Сьомий день починається з (сьогодні порожньо)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Розділ"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Знак зодіаку для блоків всередині"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Мова для блоків всередині"
 

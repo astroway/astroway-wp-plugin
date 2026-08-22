@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
-"PO-Revision-Date: 2026-08-22 02:17+0300\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
+"PO-Revision-Date: 2026-08-22 03:14+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Indonesian <translations@astroway.info>\n"
 "Language: id_ID\n"
@@ -220,11 +220,43 @@ msgstr "Perubahan domain gagal. Silakan gunakan tautan dasbor di bawah ini."
 msgid "City lookup is busy, try again in a moment."
 msgstr "Pencarian kota sedang sibuk, coba lagi dalam beberapa saat."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+msgid "AstroWay: full API"
+msgstr "AstroWay: API lengkap"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"%s memerlukan kunci API: tempelkan satu di AstroWay, Kunci API. Hanya "
+"administrator yang melihat catatan ini."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s tidak memiliki atribut yang diperlukan: %2$s. Hanya administrator yang "
+"melihat catatan ini."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"%s tidak dapat dimuat saat ini. Hanya administrator yang melihat catatan "
+"ini."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "AstroWay aktif"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -237,20 +269,20 @@ msgstr ""
 "menggunakan kuota 30 permintaan per pengunjung. Untuk batas yang lebih "
 "tinggi dan fitur Pro, dapatkan kunci API gratis."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Dapatkan kunci API gratis"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Buka Pengaturan"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -259,15 +291,15 @@ msgstr ""
 " ini, sekaligus memberi masukan kepada kami tentang fitur apa yang sebaiknya"
 " kami kembangkan selanjutnya."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Berikan ulasan"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Server ini telah menghabiskan kuota AstroWay anonimnya:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -846,6 +878,24 @@ msgstr "Aquarius"
 msgid "Pisces"
 msgstr "Pisces"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "Menampilkan %1$d dari %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "ya"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "tidak"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -901,6 +951,7 @@ msgstr "Salin kode pendek."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Klik untuk menyalin"
 
@@ -2013,16 +2064,6 @@ msgstr "Perbarui titik akhir"
 msgid "Library loaded"
 msgstr "Perpustakaan telah dimuat"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "ya"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "tidak"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "Kunci API"
@@ -2050,6 +2091,22 @@ msgstr "Halaman plugin"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Dokumen"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Sisa API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d shortcode lebih di %2$d keluarga, dibuat dari spesifikasi API. Masing-"
+"masing memerlukan kunci API. Widget di atas dibangun manual dan lebih mudah "
+"dibaca; ini mencakup semua yang lain yang dapat dihitung API."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2297,15 +2354,15 @@ msgstr "Jadwal transit Bulan"
 msgid "Day the seven start from (blank for today)"
 msgstr "Hari ketujuh dimulai dari (kosong untuk hari ini)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Bagian"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Tanda zodiak untuk blok di dalamnya"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Bahasa untuk blok di dalamnya"
 

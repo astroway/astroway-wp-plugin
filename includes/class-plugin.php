@@ -72,6 +72,9 @@ class Plugin {
 		do_action( 'astroway_init' );
 
 		Shortcodes::register();
+		// After the hand-written ones, so a generated name can never take the
+		// place of a purpose-built card.
+		GeneratedRegistry::register();
 		Blocks::register();
 		Admin::register();
 		// Guard later-version dependencies: a partial ZIP missing the Updater

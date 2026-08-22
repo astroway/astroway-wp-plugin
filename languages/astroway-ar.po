@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
 "PO-Revision-Date: 2026-08-22 02:17+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Arabic <translations@astroway.info>\n"
@@ -220,11 +220,39 @@ msgstr "فشل تغيير النطاق. استخدم رابط لوحة التح�
 msgid "City lookup is busy, try again in a moment."
 msgstr "بحث المدينة مشغول, حاول مرة أخرى بعد لحظة."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+#, fuzzy
+msgid "AstroWay: full API"
+msgstr "أسترو واي: طور القمر"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, fuzzy, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr "تعذر تحميل الـ %s widget الآن. يرى المسؤولون فقط هذه الملاحظة."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, fuzzy, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s يفتقر إلى السمات المطلوبة: %2$s. فقط المسؤولون يرون هذه الملاحظة."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, fuzzy, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr "تعذر تحميل الـ %s widget الآن. يرى المسؤولون فقط هذه الملاحظة."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "أسترو واي نشط"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -236,20 +264,20 @@ msgstr ""
 "تستخدم كل زائر 30. للحصول على حدود أعلى وميزات Pro ، احصل على مفتاح API "
 "مجاني."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "الحصول على مفتاح API مجاني"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "فتح الإعدادات"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "أسترو واي"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -257,15 +285,15 @@ msgstr ""
 "تساعد المراجعة القصيرة على موقع wordpress.org أصحاب المواقع الآخرين على "
 "اكتشاف المكون الإضافي، وتُعلِمنا بما يجب أن نطوره بعد ذلك."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "اترك تعليقًا"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "لقد استنفد هذا الخادم حصته المخصصة لـ AstroWay للمستخدمين المجهولين:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -840,6 +868,24 @@ msgstr "الدلو"
 msgid "Pisces"
 msgstr "الحوت"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, fuzzy, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "%1$d من %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "نعم"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "لا"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -895,6 +941,7 @@ msgstr "انسخ الرمز المختصر."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "انقر للنسخ"
 
@@ -1984,16 +2031,6 @@ msgstr "تحديث نقطة النهاية"
 msgid "Library loaded"
 msgstr "تم تحميل المكتبة"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "نعم"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "لا"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "مفتاح API"
@@ -2021,6 +2058,22 @@ msgstr "صفحات البرنامج المساعد"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "الوثائق"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "باقي الـ API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d من shortcodes إضافية عبر %2$d عائلات، تم إنشاؤها من مواصفات api. كل "
+"واحد يحتاج إلى مفتاح API. الأدوات أعلاه مصنوعة يدوياً وتقرأ بشكل أفضل؛ هذه "
+"تغطي كل ما تبقى يمكن لـ api حسابه."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2268,65 +2321,89 @@ msgstr "جدول زمني لمرور القمر"
 msgid "Day the seven start from (blank for today)"
 msgstr "اليوم السابع يبدأ من (فراغ اليوم)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "القسم"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "برج zodiak للكتل الداخلية"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "اللغة للكتل الداخلية"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Astrology Section"
 msgstr "AstroWay: قسم التنجيم"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Sets one zodiac sign for every AstroWay block placed inside it."
 msgstr "يحدد برج zodiak واحدًا لكل كتلة AstroWay توضع داخله."
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
 msgstr "أسترو واي: التصميم البشري للجسم"
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "رسم التصميم البشري مع النوع والملف الشخصي والبوابات."
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
 msgstr "أسترو واي: الأبراج اليومية"
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "نص الأبراج اليومية لبرج معين."
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Tarot"
 msgstr "أسترو واي: التاروت اليومي"
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "سحب بطاقة التاروت اليومية مع التفسير."
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Vedic Kundli"
 msgstr "إعدادات أسترو واي"
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Mini Birth Chart"
 msgstr "AstroWay: مخطط الميلاد المصغّر"
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
 " responsive iframe."
@@ -2335,10 +2412,14 @@ msgstr ""
 "بواسطة api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Forecast"
 msgstr "AstroWay: التوقعات الشهرية"
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
@@ -2347,64 +2428,92 @@ msgstr ""
 "من خلال إطار iframe متجاوب."
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Horoscope"
 msgstr "AstroWay: الأبراج الشهرية"
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current month, anchored to the 1st, rendered into the page"
 " as text."
 msgstr "برج الشهر الحالي، الذي يبدأ من الأول، معروض على الصفحة في شكل نص."
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Phase"
 msgstr "أسترو واي: طور القمر"
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "طور القمر الحالي مع نسبة الإضاءة."
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Sign"
 msgstr "AstroWay: برج القمر"
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr "برج القمر ودرجته ومنزله من خريطة الميلاد."
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Natal Chart"
 msgstr "أسترو واي: خريطة الميلاد"
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Numerology"
 msgstr "أسترو واي: طور القمر"
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Panchang"
 msgstr "أسترو واي: التاروت اليومي"
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Planet of the Day"
 msgstr "AstroWay: كوكب اليوم"
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
@@ -2413,10 +2522,14 @@ msgstr ""
 " الصفحة."
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Rising Sign"
 msgstr "AstroWay: برج الطلوع"
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The rising sign with its chart ruler. Needs coordinates: the ascendant is "
 "the horizon at a place."
@@ -2425,20 +2538,28 @@ msgstr ""
 "معين."
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
 msgstr "أسترو واي: خريطة الميلاد"
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Synastry compatibility score and top inter-aspects for two birth charts, "
 "served by api.astroway.info as a responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Transit Timeline"
 msgstr "AstroWay: الجدول الزمني لمرور القمر"
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The next seven days of Moon ingresses, served by api.astroway.info as a "
 "responsive iframe."
@@ -2447,20 +2568,28 @@ msgstr ""
 " إطار iframe متجاوب."
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Transit Sky"
 msgstr "أسترو واي: خريطة الميلاد"
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
 msgstr "عجلة خريطة الميلاد المقدمة من api.astroway.info كإطار iframe متجاوب."
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Weekly Horoscope"
 msgstr "AstroWay: الأبراج الأسبوعية"
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current week, anchored to Monday, rendered into the page "
 "as text."

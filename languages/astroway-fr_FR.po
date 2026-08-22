@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
-"PO-Revision-Date: 2026-08-22 02:17+0300\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
+"PO-Revision-Date: 2026-08-22 03:10+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: French <translations@astroway.info>\n"
 "Language: fr_FR\n"
@@ -222,11 +222,43 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "La recherche de ville est occupée, réessayez dans un moment."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+msgid "AstroWay: full API"
+msgstr "AstroWay: API complète"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"%s a besoin d'une clé API : collez-en une dans AstroWay, Clé API. Seuls les "
+"administrateurs voient cette note."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s manque des attributs requis : %2$s. Seuls les administrateurs voient "
+"cette note."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"%s n'a pas pu être chargé pour le moment. Seuls les administrateurs voient "
+"cette note."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "AstroWay est actif"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -240,20 +272,20 @@ msgstr ""
 "Pour bénéficier de limites plus élevées et des fonctionnalités Pro, "
 "procurez-vous une clé API gratuite."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Obtenez une clé API gratuite"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Ouvrir les paramètres"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -262,16 +294,16 @@ msgstr ""
 "découvrir le plugin et nous donne des idées pour nos prochains "
 "développements."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Laisser un avis"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr ""
 "Ce serveur a épuisé son quota AstroWay pour les utilisateurs anonymes :"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -850,6 +882,24 @@ msgstr "Verseau"
 msgid "Pisces"
 msgstr "Poissons"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "Affichage de %1$d sur %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "oui"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "non"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -906,6 +956,7 @@ msgstr "Copiez un shortcode."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Cliquez pour copier"
 
@@ -2032,16 +2083,6 @@ msgstr "Mettre à jour le point de terminaison"
 msgid "Library loaded"
 msgstr "Bibliothèque chargée"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "oui"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "non"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "Clé API"
@@ -2069,6 +2110,23 @@ msgstr "Pages du plugin"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Docs"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Le reste de l'API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d shortcodes supplémentaires dans %2$d familles, générés à partir de la "
+"spécification api. Chacun nécessite une clé API. Les widgets ci-dessus sont "
+"fabriqués manuellement et sont plus lisibles ; ceux-ci couvrent tout le "
+"reste que l'api peut calculer."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2316,15 +2374,15 @@ msgstr "Chronologie des transits lunaires"
 msgid "Day the seven start from (blank for today)"
 msgstr "Jour 7 : départ à (à compléter pour aujourd'hui)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Section"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Signe du zodiaque associé aux blocages intérieurs"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Langage utilisé pour les blocs à l'intérieur"
 

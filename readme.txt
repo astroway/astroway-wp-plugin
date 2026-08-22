@@ -4,11 +4,11 @@ Tags: astrology, birth chart, natal chart, horoscope, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Put horoscopes and birth charts on your pages as real text search engines can read. Shortcodes and blocks, no account and no API key needed.
+Put horoscopes and birth charts on your pages as real text search engines can read. 700 shortcodes and blocks, no account needed to start.
 
 == Description ==
 
@@ -29,6 +29,10 @@ AstroWay → Shortcodes in your admin lists every shortcode with its parameters 
 = What renders into the page =
 
 Ten widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), planet of the day, the natal chart, the Human Design bodygraph, the moon sign and the rising sign. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The one exception is the natal chart's wheel, which stays a drawing produced by the API and therefore keeps a palette of its own; `theme="light"` or `theme="console"` on the shortcode matches it to your design. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+
+= Seven hundred more, for when you need them =
+
+Ten widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for nearly every endpoint the API has: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; the free tier covers 10,000 calls a month.
 
 = One sign for a whole section =
 
@@ -130,6 +134,12 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.2.0 =
+* New: a shortcode and a Gutenberg block for nearly every endpoint the API has, 682 of them across 49 families, generated from the API specification instead of written by hand. Vedic, numerology, tarot, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary and more. They need an API key; the ten hand-built widgets still need nothing.
+* New: AstroWay → Shortcodes lists them by family, each with a copy button, and the filter box searches all seven hundred.
+* New: the generated blocks live in their own category in the inserter, so the hand-built ones stay where they were.
+* Efficiency: a page pays for the endpoints it uses. The generated blocks are not registered on the front end at all; each renders on demand when it appears in the content.
 
 = 1.1.0 =
 * New: Human Design is rendered into the page. Type, strategy, authority, profile, definition, incarnation cross, the defined and open centres and the channels are now text your visitors can read and search engines can index, in place of the frame that held the same facts where neither could reach them.

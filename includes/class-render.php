@@ -949,4 +949,353 @@ class Render {
 			? number_format_i18n( $value, $decimals )
 			: number_format( $value, $decimals );
 	}
+	/**
+	 * Render an answer whose shape we were not told in advance.
+	 *
+	 * Used by the generated shortcodes: nearly seven hundred endpoints, each
+	 * with its own response, none of them worth a hand-written template until it
+	 * proves popular. What they have in common is JSON built out of four things,
+	 * and each gets the presentation it deserves:
+	 *
+	 *   scalars                 a definition list
+	 *   uniform object lists    a table, columns taken from the first row
+	 *   nested objects          a subsection under a heading
+	 *   long prose              a paragraph
+	 *
+	 * The rules are about shape, not about field names. A heuristic keyed on
+	 * names ("call the field named `meaning` the lede") reads well on the
+	 * endpoints it was written against and mislabels the rest, and there is no
+	 * way to check seven hundred of them by eye.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param string $tag  Shortcode tag, used for the CSS hook only.
+	 * @param array  $data Decoded `data` from the api.
+	 * @param string $lang Language the answer was asked in.
+	 */
+	public static function generic( string $tag, array $data, string $lang ): string {
+		self::$generic_lang = $lang;
+		$body               = self::generic_body( $data, 0 );
+		if ( '' === $body ) {
+			return '';
+		}
+		$slug = str_replace( '_', '-', preg_replace( '/^astroway_/', '', $tag ) );
+		return sprintf(
+			'<div class="astroway-card astroway-card--generic astroway-card--%s" lang="%s">%s</div>',
+			esc_attr( $slug ),
+			esc_attr( $lang ),
+			$body
+		);
+	}
+
+	/**
+	 * Language the current generic render was asked in.
+	 *
+	 * Held here rather than threaded through six recursive methods that have no
+	 * other use for it. Safe because a render is synchronous and never nests:
+	 * one shortcode finishes before the next begins.
+	 */
+	private static string $generic_lang = 'en';
+
+	/** Deepest nesting rendered before the rest is folded away. */
+	private const GENERIC_MAX_DEPTH = 3;
+
+	/** Rows of a generated table beyond which the rest is not worth printing. */
+	private const GENERIC_MAX_ROWS = 60;
+
+	private static function generic_body( array $data, int $depth ): string {
+		$scalars = [];
+		$blocks  = '';
+
+		foreach ( self::fold_localised( $data ) as $key => $value ) {
+			$label = self::humanise( (string) $key );
+
+			if ( is_scalar( $value ) || null === $value ) {
+				$text = self::scalar_text( $value );
+				if ( '' === $text ) {
+					continue;
+				}
+				// A sentence in a definition list is unreadable; it wants to be
+				// a paragraph. The cutoff is length, not the field's name.
+				if ( strlen( $text ) > 120 ) {
+					$blocks .= self::generic_prose( $label, $text, $depth );
+				} else {
+					$scalars[ $label ] = $text;
+				}
+				continue;
+			}
+
+			if ( is_array( $value ) && [] === $value ) {
+				continue;
+			}
+
+			if ( is_array( $value ) && self::is_list( $value ) ) {
+				$blocks .= self::generic_list( $label, $value, $depth );
+				continue;
+			}
+
+			if ( is_array( $value ) ) {
+				$blocks .= self::generic_section( $label, $value, $depth );
+			}
+		}
+
+		return self::detail_list( $scalars ) . $blocks;
+	}
+
+	private static function generic_prose( string $label, string $text, int $depth ): string {
+		return self::generic_heading( $label, $depth )
+			. '<div class="astroway-card__body">' . self::paragraphs( $text ) . '</div>';
+	}
+
+	/** A list: of scalars, of uniform objects, or of something else. */
+	private static function generic_list( string $label, array $values, int $depth ): string {
+		$scalar_only = true;
+		foreach ( $values as $v ) {
+			if ( ! is_scalar( $v ) && null !== $v ) {
+				$scalar_only = false;
+				break;
+			}
+		}
+
+		if ( $scalar_only ) {
+			$items = '';
+			foreach ( $values as $v ) {
+				$text = self::scalar_text( $v );
+				if ( '' !== $text ) {
+					$items .= '<li>' . esc_html( $text ) . '</li>';
+				}
+			}
+			return '' === $items
+				? ''
+				: self::generic_heading( $label, $depth ) . '<ul class="astroway-card__themes">' . $items . '</ul>';
+		}
+
+		$table = self::generic_table( $values );
+		if ( '' !== $table ) {
+			return self::generic_heading( $label, $depth ) . $table;
+		}
+
+		// Ragged list of objects: each entry becomes its own small section.
+		if ( $depth >= self::GENERIC_MAX_DEPTH ) {
+			return '';
+		}
+		$out = self::generic_heading( $label, $depth );
+		foreach ( array_slice( $values, 0, self::GENERIC_MAX_ROWS ) as $i => $v ) {
+			if ( is_array( $v ) ) {
+				$out .= self::generic_body( $v, $depth + 1 );
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Whether an array is a plain list.
+	 *
+	 * Not `array_is_list()`: that is PHP 8.1, and WordPress only polyfills it
+	 * from 6.5. This plugin supports PHP 7.4 and WordPress 6.3, where calling it
+	 * is a fatal error rather than a wrong answer.
+	 */
+	private static function is_list( array $value ): bool {
+		$i = 0;
+		foreach ( $value as $key => $unused ) {
+			if ( $key !== $i ) {
+				return false;
+			}
+			++$i;
+		}
+		return true;
+	}
+
+	/**
+	 * Collapse `name`, `nameRu`, `nameUk` down to the one the reader asked for.
+	 *
+	 * Several endpoints ship translations beside the canonical value rather than
+	 * instead of it, and a table that prints all of them is three columns of the
+	 * same word. The suffix has to be a known language, otherwise `startDeg` and
+	 * `endDeg` would read as a "start" field localised into Deg.
+	 *
+	 * @param array $row Associative row.
+	 * @return array Same row, with localised siblings folded into their base.
+	 */
+	private static function fold_localised( array $row ): array {
+		$lang    = strtolower( substr( self::$generic_lang, 0, 2 ) );
+		$dropped = [];
+		$chosen  = [];
+
+		foreach ( array_keys( $row ) as $key ) {
+			$key = (string) $key;
+			if ( ! preg_match( '/^([a-z][A-Za-z0-9]*?)([A-Z][a-z])$/', $key, $m ) ) {
+				continue;
+			}
+			$base   = $m[1];
+			$suffix = strtolower( $m[2] );
+			if ( ! isset( $row[ $base ] ) || ! in_array( $suffix, Plugin::SUPPORTED_LANGS, true ) ) {
+				continue;
+			}
+			$dropped[] = $key;
+			if ( $suffix === $lang && is_scalar( $row[ $key ] ) && '' !== trim( (string) $row[ $key ] ) ) {
+				$chosen[ $base ] = $row[ $key ];
+			}
+		}
+
+		if ( empty( $dropped ) ) {
+			return $row;
+		}
+
+		$out = [];
+		foreach ( $row as $key => $value ) {
+			if ( in_array( (string) $key, $dropped, true ) ) {
+				continue;
+			}
+			$out[ $key ] = $chosen[ $key ] ?? $value;
+		}
+		return $out;
+	}
+
+	/**
+	 * One row with its nested objects folded in as `parent.child` columns.
+	 *
+	 * Only one level deep, and only scalars: deeper than that a table stops
+	 * being readable, and the section renderer handles it better.
+	 */
+	private static function flatten_row( array $row ): array {
+		$out = [];
+		foreach ( self::fold_localised( $row ) as $key => $value ) {
+			if ( is_scalar( $value ) || null === $value ) {
+				$out[ (string) $key ] = $value;
+				continue;
+			}
+			if ( is_array( $value ) && ! self::is_list( $value ) ) {
+				foreach ( self::fold_localised( $value ) as $sub_key => $sub ) {
+					if ( is_scalar( $sub ) || null === $sub ) {
+						$out[ $key . '.' . $sub_key ] = $sub;
+					}
+				}
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * A table, when every row is an object sharing the same columns.
+	 *
+	 * Rows are flattened one level first. Without that the most useful column is
+	 * routinely the one that disappears: `/nakshatras` returns a planet per row
+	 * with the nakshatra itself as a nested object, so a scalar-only table lists
+	 * longitudes and pada numbers and omits the thing the endpoint is named
+	 * after.
+	 *
+	 * Returns '' when the rows disagree about their shape, because a table with
+	 * half its cells empty is worse than the sections it replaced.
+	 */
+	private static function generic_table( array $rows ): string {
+		$flat    = [];
+		$columns = null;
+		foreach ( $rows as $row ) {
+			if ( ! is_array( $row ) || self::is_list( $row ) ) {
+				return '';
+			}
+			$flat_row = self::flatten_row( $row );
+			if ( empty( $flat_row ) ) {
+				return '';
+			}
+			$keys = array_keys( $flat_row );
+			if ( null === $columns ) {
+				$columns = $keys;
+			} elseif ( $columns !== $keys ) {
+				return '';
+			}
+			$flat[] = $flat_row;
+		}
+		if ( empty( $columns ) ) {
+			return '';
+		}
+		$rows = $flat;
+
+		$head = '';
+		foreach ( $columns as $c ) {
+			$head .= '<th scope="col">' . esc_html( self::humanise( $c ) ) . '</th>';
+		}
+
+		$body  = '';
+		$shown = 0;
+		foreach ( $rows as $row ) {
+			if ( $shown >= self::GENERIC_MAX_ROWS ) {
+				break;
+			}
+			$cells = '';
+			foreach ( $columns as $c ) {
+				$cells .= '<td>' . esc_html( self::scalar_text( $row[ $c ] ?? '' ) ) . '</td>';
+			}
+			$body .= '<tr>' . $cells . '</tr>';
+			++$shown;
+		}
+
+		$note = count( $rows ) > $shown
+			? '<caption>' . esc_html(
+				sprintf(
+					/* translators: 1: rows shown, 2: rows in total */
+					__( 'Showing %1$d of %2$d', 'astroway' ),
+					$shown,
+					count( $rows )
+				)
+			) . '</caption>'
+			: '';
+
+		// Wrapped because a generated table has as many columns as the endpoint
+		// has fields, and thirteen of them will not fit a phone or a sidebar.
+		// The page itself must never scroll sideways; the table may.
+		return '<div class="astroway-card__scroll"><table class="astroway-card__placements">' . $note
+			. '<thead><tr>' . $head . '</tr></thead><tbody>' . $body . '</tbody></table></div>';
+	}
+
+	/** A nested object: a subsection, or a folded one once it gets deep. */
+	private static function generic_section( string $label, array $value, int $depth ): string {
+		if ( $depth >= self::GENERIC_MAX_DEPTH ) {
+			$inner = self::generic_body( $value, $depth + 1 );
+			return '' === $inner
+				? ''
+				: '<details class="astroway-card__more"><summary>' . esc_html( $label ) . '</summary>' . $inner . '</details>';
+		}
+		$inner = self::generic_body( $value, $depth + 1 );
+		return '' === $inner ? '' : self::generic_heading( $label, $depth ) . $inner;
+	}
+
+	private static function generic_heading( string $label, int $depth ): string {
+		$tag = $depth > 0 ? 'h5' : 'h4';
+		return sprintf( '<%1$s class="astroway-card__subtitle">%2$s</%1$s>', $tag, esc_html( $label ) );
+	}
+
+	/**
+	 * `siderealLongitude` and `year_pillar` both become "Sidereal longitude"
+	 * and "Year pillar". Field names are the only labels the api gives us.
+	 */
+	private static function humanise( string $key ): string {
+		$key   = (string) preg_replace( '/(?<!^)(?=[A-Z][a-z])/', ' ', $key );
+		$key   = str_replace( [ '_', '-', '.' ], ' ', $key );
+		$key   = trim( (string) preg_replace( '/\s+/', ' ', $key ) );
+		$words = [];
+		foreach ( explode( ' ', $key ) as $word ) {
+			// An all-caps run is an abbreviation the api chose (ID, MC, UTC) and
+			// lowercasing it would read as a typo; anything else is a word.
+			$words[] = ( strtoupper( $word ) === $word ) ? $word : strtolower( $word );
+		}
+		$key = implode( ' ', $words );
+		return '' === $key ? $key : ucfirst( $key );
+	}
+
+	private static function scalar_text( $value ): string {
+		if ( is_bool( $value ) ) {
+			return $value ? __( 'yes', 'astroway' ) : __( 'no', 'astroway' );
+		}
+		if ( null === $value ) {
+			return '';
+		}
+		if ( is_float( $value ) ) {
+			// Ephemeris numbers arrive with fifteen decimals; two is what a
+			// reader can use and what a degree is quoted to anywhere else here.
+			return self::number( $value, 2 );
+		}
+		return trim( (string) $value );
+	}
 }

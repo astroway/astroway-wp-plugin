@@ -124,6 +124,28 @@ class Blocks {
 
 	public static function register(): void {
 		add_action( 'init', [ __CLASS__, 'register_assets_and_blocks' ] );
+		add_filter( 'block_categories_all', [ __CLASS__, 'add_category' ] );
+	}
+
+	/**
+	 * A category of its own for the generated blocks.
+	 *
+	 * There are seven hundred of them against nineteen hand-built ones, and in
+	 * one list the nineteen would be unfindable. The hand-built ones stay under
+	 * Widgets where they have always been.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param array $categories Registered block categories.
+	 */
+	public static function add_category( $categories ) {
+		$categories   = is_array( $categories ) ? $categories : [];
+		$categories[] = [
+			'slug'  => 'astroway-generated',
+			'title' => __( 'AstroWay: full API', 'astroway' ),
+			'icon'  => null,
+		];
+		return $categories;
 	}
 
 	public static function register_assets_and_blocks(): void {

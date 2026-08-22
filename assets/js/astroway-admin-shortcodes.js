@@ -50,7 +50,7 @@
 		   side, so it searches the translated title and description too. */
 		var filter = document.getElementById( 'aw-sc-filter' );
 		var count  = document.getElementById( 'aw-sc-filter-count' );
-		var cards  = [].slice.call( document.querySelectorAll( '.aw-card[data-search]' ) );
+		var cards  = [].slice.call( document.querySelectorAll( '[data-search]' ) );
 
 		if ( filter && cards.length ) {
 			filter.addEventListener( 'input', function () {
@@ -60,6 +60,18 @@
 					var hit = ! q || card.getAttribute( 'data-search' ).indexOf( q ) !== -1;
 					card.hidden = ! hit;
 					if ( hit ) shown++;
+				} );
+				/* A generated row lives inside a collapsed family. Searching has
+				   to open the ones that hold a match and hide the ones that hold
+				   none, otherwise the count reports hits nobody can see. */
+				[].slice.call( document.querySelectorAll( '.aw-generated-family' ) ).forEach( function ( family ) {
+					var visible = family.querySelector( '.aw-generated-row:not([hidden])' );
+					family.hidden = q ? ! visible : false;
+					if ( q && visible ) {
+						family.open = true;
+					} else if ( ! q ) {
+						family.open = false;
+					}
 				} );
 				if ( ! count ) return;
 				if ( ! q ) {

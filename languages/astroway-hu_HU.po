@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
 "PO-Revision-Date: 2026-08-22 02:17+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Hungarian <translations@astroway.info>\n"
@@ -222,11 +222,44 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "A városkeresés jelenleg foglalt, próbálja újra egy pillanat múlva."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+#, fuzzy
+msgid "AstroWay: full API"
+msgstr "AstroWay: Holdfázis"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, fuzzy, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"A(z) %s widgetet most nem sikerült betölteni. Ezt a megjegyzést csak az "
+"adminisztrátorok látják."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, fuzzy, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s hiányzó kötelező attribútumokkal rendelkezik: %2$s. Ezt a megjegyzést "
+"csak a rendszergazdák látják."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, fuzzy, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"A(z) %s widgetet most nem sikerült betölteni. Ezt a megjegyzést csak az "
+"adminisztrátorok látják."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "Az AstroWay aktív"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -240,20 +273,20 @@ msgstr ""
 "magasabb korlátokra és Pro funkciókra van szükséged, igényelj ingyenes API-"
 "kulcsot."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Ingyenes API-kulcs"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Beállítások megnyitása"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -262,15 +295,15 @@ msgstr ""
 " felfedezni a bővítményt, és útmutatást ad nekünk, hogy mit fejlesszünk ki "
 "legközelebb."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Írj véleményt!"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Ez a szerver kimerítette az AstroWay névtelen kvótáját:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -850,6 +883,24 @@ msgstr "Vízöntő"
 msgid "Pisces"
 msgstr "Halak"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, fuzzy, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "%1$d a %2$d-ből"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "igen"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "nem"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -905,6 +956,7 @@ msgstr "Másoljon be egy rövidkódot."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Másolás gombra kattintva"
 
@@ -2013,16 +2065,6 @@ msgstr "Végpont frissítése"
 msgid "Library loaded"
 msgstr "A könyvtár betöltődött"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "igen"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "nem"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "API-kulcs"
@@ -2050,6 +2092,22 @@ msgstr "Bővítmény oldalak"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Dokumentáció"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Az API többi része"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d több shortcode %2$d családban, generated from the api specification. "
+"Mindeniknek szüksége van egy API kulcsra. A fenti widgetok kézzel készültek "
+"és jobban olvashatók; ezek lefedik mindent, amit az api tud kiszámítani."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2297,57 +2355,77 @@ msgstr "hold átmeneti idővonal"
 msgid "Day the seven start from (blank for today)"
 msgstr "A hetedik nap kezdete (ma üres)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Szakasz"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Zodiákus jegy a blokkokon belül"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Nyelv a blokkokon belül"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Astrology Section"
 msgstr "AstroWay: Asztrológiai Szakasz"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Sets one zodiac sign for every AstroWay block placed inside it."
 msgstr ""
 "Minden AstroWay blokk számára beállít egy zodiákus jelet, amely a blokkon "
 "belülre kerül."
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
 msgstr "AstroWay: Human Design Testgrafikon"
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "Human Design testgrafikon típussal, profillal és kapukkal."
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
 msgstr "AstroWay: Napi Horoszkóp"
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "Napi horoszkóp szöveg egy zodiákus jegyhez."
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Tarot"
 msgstr "AstroWay: Napi Tarot"
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Napi egykártyás Tarot-húzás értelmezéssel."
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Vedic Kundli"
 msgstr "AstroWay beállítások"
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
@@ -2356,10 +2434,14 @@ msgstr ""
 "ként."
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Mini Birth Chart"
 msgstr "AstroWay: Mini Születési Horoszkóp"
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
 " responsive iframe."
@@ -2368,10 +2450,14 @@ msgstr ""
 "az api.astroway.info szolgáltat reszponzív iframe-ként."
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Forecast"
 msgstr "AstroWay: Havi előrejelzés"
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
@@ -2380,10 +2466,14 @@ msgstr ""
 " egy reszponzív iframe-ként működött."
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Horoscope"
 msgstr "AstroWay: Havi horoszkóp"
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current month, anchored to the 1st, rendered into the page"
 " as text."
@@ -2392,36 +2482,52 @@ msgstr ""
 " megjelenítve az oldalon."
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Phase"
 msgstr "AstroWay: Holdfázis"
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "Jelenlegi holdfázis fényesség százalékkal."
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Sign"
 msgstr "AstroWay: Holdjegy"
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr "A hold jegyének, fokának és háza a születési térképből."
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Natal Chart"
 msgstr "AstroWay: Natal Chart"
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "Natal chart kerék, melyet az api.astroway.info szolgál ki reszponzív iframe-"
 "ként."
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Numerology"
 msgstr "AstroWay: Holdfázis"
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
@@ -2430,10 +2536,14 @@ msgstr ""
 "ként."
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Panchang"
 msgstr "AstroWay: Napi Tarot"
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
@@ -2442,10 +2552,14 @@ msgstr ""
 "ként."
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Planet of the Day"
 msgstr "AstroWay: A nap bolygója"
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
@@ -2454,10 +2568,14 @@ msgstr ""
 "oldalon ábrázolva."
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Rising Sign"
 msgstr "AstroWay: Ascendens"
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The rising sign with its chart ruler. Needs coordinates: the ascendant is "
 "the horizon at a place."
@@ -2466,10 +2584,14 @@ msgstr ""
 " horizont egy adott helyen."
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
 msgstr "AstroWay: Natal Chart"
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Synastry compatibility score and top inter-aspects for two birth charts, "
 "served by api.astroway.info as a responsive iframe."
@@ -2478,10 +2600,14 @@ msgstr ""
 "ként."
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Transit Timeline"
 msgstr "AstroWay: Hold Átmeneti Idővonal"
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The next seven days of Moon ingresses, served by api.astroway.info as a "
 "responsive iframe."
@@ -2490,10 +2616,14 @@ msgstr ""
 "reszponzív iframe-ként."
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Transit Sky"
 msgstr "AstroWay: Natal Chart"
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
@@ -2502,10 +2632,14 @@ msgstr ""
 "ként."
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Weekly Horoscope"
 msgstr "AstroWay: Heti horoszkóp"
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current week, anchored to Monday, rendered into the page "
 "as text."

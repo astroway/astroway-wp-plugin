@@ -316,6 +316,59 @@
 		} );
 	} );
 
+	// The generated blocks: roughly seven hundred endpoints the plugin covers
+	// without a hand-built card for each. PHP registers them and inlines the list
+	// (name, title, fields) before this script; here they get the same preview and
+	// the same inspector as everything else, built from their attribute names.
+	// A required field is marked, because the preview is a note about the missing
+	// attribute until it is filled and that should not read as a fault.
+	( window.astrowayGeneratedBlocks || [] ).forEach( function ( entry ) {
+		var name   = entry[ 0 ];
+		var title  = entry[ 1 ];
+		var fields = entry[ 2 ] || [];
+
+		if ( wp.blocks.getBlockType( name ) ) {
+			return;
+		}
+
+		wp.blocks.registerBlockType( name, {
+			edit: function Edit( props ) {
+				var blockProps = useBlockProps();
+				var controls   = fields.map( function ( field ) {
+					var attr = field[ 0 ];
+					return el( TextControl, {
+						key:      attr,
+						label:    field[ 1 ] ? attr + ' *' : attr,
+						value:    props.attributes[ attr ] || '',
+						onChange: function ( value ) {
+							var update = {};
+							update[ attr ] = value;
+							props.setAttributes( update );
+						}
+					} );
+				} );
+				controls.push( buildControl( LANG_FIELD, props.attributes, props.setAttributes ) );
+
+				return el(
+					Fragment,
+					null,
+					el( InspectorControls, null,
+						el( PanelBody, { title: title, initialOpen: true }, controls )
+					),
+					el( 'div', blockProps,
+						el( Disabled, null,
+							el( ServerSideRender, {
+								block:      name,
+								attributes: props.attributes
+							} )
+						)
+					)
+				);
+			},
+			save: function () { return null; }
+		} );
+	} );
+
 	// The container is the one block that is not server-rendered in the editor:
 	// it holds other blocks, so it shows them, and the sign it sets reaches them
 	// through block context rather than through a preview request.

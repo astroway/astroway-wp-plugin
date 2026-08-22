@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
-"PO-Revision-Date: 2026-08-22 02:17+0300\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
+"PO-Revision-Date: 2026-08-22 03:12+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Japanese <translations@astroway.info>\n"
 "Language: ja\n"
@@ -215,11 +215,38 @@ msgstr "ドメインの変更に失敗しました。以下のダッシュボー
 msgid "City lookup is busy, try again in a moment."
 msgstr "都市の検索は現在混雑しています。しばらくしてからもう一度お試しください。"
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+msgid "AstroWay: full API"
+msgstr "AstroWay：APIの全機能"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"%s には API キーが必要です。AstroWay の「API キー」欄に API キーを入力してください。この注意書きは管理者のみが確認できます。"
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr "%1$s には、必須属性である %2$s がありません。この注意書きは管理者のみが確認できます。"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr "%s を読み込むことができませんでした。このメッセージは管理者のみが表示されます。"
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "アストロウェイは有効です"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -228,20 +255,20 @@ msgid ""
 msgstr ""
 "ショートコードはAPIキーがなくても動作します。サーバーがページ内にレンダリングするウィジェットは、サイト全体の「1時間あたり300リクエスト」という制限にカウントされます。一方、フレームにフォールバックするウィジェットは、訪問者1人あたり「30リクエスト」の制限にカウントされます。制限の引き上げやPro機能をご利用になる場合は、無料のAPIキーを取得してください。"
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "無料 API キーを取得"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "設定を開く"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "アストロウェイ"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -249,15 +276,15 @@ msgstr ""
 "wordpress.org "
 "に短いレビューを投稿していただければ、他のサイト運営者がこのプラグインを見つける助けになるだけでなく、私たちが次にどのような機能を開発すべきかを知る手掛かりにもなります。"
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "レビューを投稿する"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "このサーバーのAstroWayの匿名利用枠が上限に達しました："
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -828,6 +855,24 @@ msgstr "水瓶座"
 msgid "Pisces"
 msgstr "魚座"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "%1$d件中 %2$d件を表示中"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "はい"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "いいえ"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -879,6 +924,7 @@ msgstr "ショートコードをコピーしてください。"
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "コピーするにはクリック"
 
@@ -1907,16 +1953,6 @@ msgstr "エンドポイントの更新"
 msgid "Library loaded"
 msgstr "ライブラリが読み込まれました"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "はい"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "いいえ"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "API キー"
@@ -1944,6 +1980,20 @@ msgstr "プラグインページ"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "ドキュメント"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "APIのその他の部分"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"API仕様から生成された、%2$dつのファミリーにわたる%1$d個のショートコード。それぞれにAPIキーが必要です。上記のウィジェットは手作業で作成されており、読みやすくなっています。これらは、APIが計算できるその他のすべての項目を網羅しています。"
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2191,15 +2241,15 @@ msgstr "月の通過のタイムライン"
 msgid "Day the seven start from (blank for today)"
 msgstr "7日目は（今日は空欄）から始まる"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "セクション"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "内部ブロック用の星座サイン"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "内部ブロック用の言語"
 

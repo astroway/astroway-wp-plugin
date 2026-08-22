@@ -83,6 +83,34 @@ class ApiClient {
 		return $resp;
 	}
 
+	/**
+	 * One call to any endpoint, for the generated shortcode registry.
+	 *
+	 * The registry knows 682 endpoints and needs no method of its own for each;
+	 * what it needs is the transport, the headers and the error shape that the
+	 * hand-written calls above already agree on.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param string $method GET or POST.
+	 * @param string $path   Path under /v1, with a leading slash.
+	 * @param array  $params Query for GET, JSON body for POST.
+	 */
+	public function call( string $method, string $path, array $params = [] ): array {
+		if ( 'POST' !== strtoupper( $method ) ) {
+			return $this->get( $path, $params );
+		}
+		$response = wp_remote_post(
+			$this->base . $path,
+			[
+				'timeout' => 10,
+				'headers' => $this->headers() + [ 'Content-Type' => 'application/json' ],
+				'body'    => (string) wp_json_encode( $params ),
+			]
+		);
+		return $this->normalize( $response );
+	}
+
 	private function get( string $path, array $params = [] ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {

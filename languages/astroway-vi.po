@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
 "PO-Revision-Date: 2026-08-22 02:17+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Vietnamese <translations@astroway.info>\n"
@@ -221,11 +221,44 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "Tra cứu thành phố đang bận, vui lòng thử lại sau một lúc."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+#, fuzzy
+msgid "AstroWay: full API"
+msgstr "AstroWay: Pha Mặt Trăng"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, fuzzy, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"Tiện ích %s không thể tải ngay bây giờ. Chỉ quản trị viên mới thấy ghi chú "
+"này."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, fuzzy, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"%1$s thiếu thuộc tính bắt buộc: %2$s. Chỉ các quản trị viên mới thấy lưu ý "
+"này."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, fuzzy, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"Tiện ích %s không thể tải ngay bây giờ. Chỉ quản trị viên mới thấy ghi chú "
+"này."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "AstroWay đang hoạt động"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -238,20 +271,20 @@ msgstr ""
 "truy cập. Để có giới hạn cao hơn và tính năng Pro, hãy lấy một khóa API miễn"
 " phí."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Lấy khóa API miễn phí"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Mở Cài đặt"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -259,15 +292,15 @@ msgstr ""
 "Một đánh giá ngắn trên wordpress.org giúp các chủ sở hữu trang web khác khám"
 " phá plugin và cho chúng tôi biết phải xây dựng gì tiếp theo."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Để lại đánh giá"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Machine này đã sử dụng hết hạn ngạch AstroWay ẩn danh:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -844,6 +877,24 @@ msgstr "Bảo Bình"
 msgid "Pisces"
 msgstr "Song Ngư"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, fuzzy, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "%1$d trong tổng số %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "có"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "không"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -899,6 +950,7 @@ msgstr "Sao chép mã ngắn."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Nhấp để sao chép"
 
@@ -2012,16 +2064,6 @@ msgstr "Điểm cuối cập nhật"
 msgid "Library loaded"
 msgstr "Thư viện đã tải"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "có"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "không"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "Khóa API"
@@ -2049,6 +2091,22 @@ msgstr "Trang plugin"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Tài liệu"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Phần còn lại của API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d shortcode thêm trên %2$d họ, được tạo từ tài liệu api specification. "
+"Mỗi cái đều cần một khóa API. Các widget ở trên được xây dựng thủ công và "
+"đọc tốt hơn; chúng bao gồm mọi thứ còn lại mà api có thể tính toán."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2296,55 +2354,75 @@ msgstr "dòng thời gian chuyển động mặt trăng"
 msgid "Day the seven start from (blank for today)"
 msgstr "Ngày thứ bảy bắt đầu từ (chỗ trống dành cho hôm nay)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Phần"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Cung hoàng đạo cho các khối bên trong"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Ngôn ngữ cho các khối bên trong"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Astrology Section"
 msgstr "AstroWay: Phần Chiêm tinh"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Sets one zodiac sign for every AstroWay block placed inside it."
 msgstr "Đặt một cung hoàng đạo cho mọi khối AstroWay được đặt bên trong nó."
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
 msgstr "AstroWay: Biểu đồ Thiết kế Con người"
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "Biểu đồ Thiết kế Con người với loại, hồ sơ và cổng."
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
 msgstr "AstroWay: Tử vi Hàng ngày"
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "Văn bản tử vi hàng ngày cho một cung hoàng đạo."
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Tarot"
 msgstr "AstroWay: Tarot Hàng ngày"
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Rút một lá Tarot hàng ngày kèm giải thích."
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Vedic Kundli"
 msgstr "Cài đặt AstroWay"
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
@@ -2353,10 +2431,14 @@ msgstr ""
 "đáp ứng."
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Mini Birth Chart"
 msgstr "AstroWay: Biểu đồ Sinh Mini"
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
 " responsive iframe."
@@ -2365,10 +2447,14 @@ msgstr ""
 "api.astroway.info cung cấp dưới dạng iframe thích ứng."
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Forecast"
 msgstr "AstroWay: Dự báo hàng tháng"
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
@@ -2377,10 +2463,14 @@ msgstr ""
 "riêng, được hiển thị dưới dạng iframe tương tác."
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Horoscope"
 msgstr "AstroWay: Tử vi hàng tháng"
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current month, anchored to the 1st, rendered into the page"
 " as text."
@@ -2389,36 +2479,52 @@ msgstr ""
 "bản trên trang."
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Phase"
 msgstr "AstroWay: Pha Mặt Trăng"
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "Pha mặt trăng hiện tại với phần trăm chiếu sáng."
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Sign"
 msgstr "AstroWay: Cung Mặt Trăng"
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr "Cung, độ và nhà của Mặt Trăng trong biểu đồ sinh."
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Natal Chart"
 msgstr "AstroWay: Biểu đồ Cung"
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "Bánh xe biểu đồ cung được cung cấp bởi api.astroway.info dưới dạng iframe "
 "đáp ứng."
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Numerology"
 msgstr "AstroWay: Pha Mặt Trăng"
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
@@ -2427,10 +2533,14 @@ msgstr ""
 "đáp ứng."
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Panchang"
 msgstr "AstroWay: Tarot Hàng ngày"
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
@@ -2439,10 +2549,14 @@ msgstr ""
 "đáp ứng."
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Planet of the Day"
 msgstr "AstroWay: Hành tinh của ngày hôm nay"
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
@@ -2451,10 +2565,14 @@ msgstr ""
 "và các chủ đề liên quan, được thể hiện trên trang."
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Rising Sign"
 msgstr "AstroWay: Cung mọc"
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The rising sign with its chart ruler. Needs coordinates: the ascendant is "
 "the horizon at a place."
@@ -2463,10 +2581,14 @@ msgstr ""
 "chân trời tại một địa điểm."
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
 msgstr "AstroWay: Biểu đồ Cung"
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Synastry compatibility score and top inter-aspects for two birth charts, "
 "served by api.astroway.info as a responsive iframe."
@@ -2475,10 +2597,14 @@ msgstr ""
 "đáp ứng."
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Transit Timeline"
 msgstr "AstroWay: Dòng thời gian Chuyển động Mặt Trăng"
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The next seven days of Moon ingresses, served by api.astroway.info as a "
 "responsive iframe."
@@ -2487,10 +2613,14 @@ msgstr ""
 "dưới dạng iframe thích ứng."
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Transit Sky"
 msgstr "AstroWay: Biểu đồ Cung"
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
@@ -2499,10 +2629,14 @@ msgstr ""
 "đáp ứng."
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Weekly Horoscope"
 msgstr "AstroWay: Tử vi hàng tuần"
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current week, anchored to Monday, rendered into the page "
 "as text."

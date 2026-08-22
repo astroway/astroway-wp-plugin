@@ -320,3 +320,34 @@
 	flex-direction: column;
 	gap: 1.25em;
 }
+
+/* Generated cards: shapes we did not choose, so the layout has to survive
+   anything from three fields to a thirteen-column table. */
+
+.astroway-card--generic {
+	--astroway-card-max-width: 44em;
+}
+
+.astroway-card__scroll {
+	max-width: 100%;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+}
+
+.astroway-card__scroll .astroway-card__placements {
+	min-width: max-content;
+}
+
+.astroway-card--generic .astroway-card__subtitle {
+	margin-top: 1.4em;
+}
+
+.astroway-card--generic .astroway-card__more {
+	margin-top: 0.8em;
+	font-size: 0.95em;
+}
+
+.astroway-card--generic .astroway-card__more summary {
+	cursor: pointer;
+	color: var(--astroway-card-muted);
+}

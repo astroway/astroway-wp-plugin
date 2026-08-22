@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-21T23:16:09+00:00\n"
+"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
 "PO-Revision-Date: 2026-08-22 02:17+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Greek <translations@astroway.info>\n"
@@ -223,11 +223,44 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "Η αναζήτηση πόλης είναι απασχολημένη, δοκιμάστε ξανά σε λίγο."
 
-#: includes/class-plugin.php:175
+#: includes/class-blocks.php:145
+#, fuzzy
+msgid "AstroWay: full API"
+msgstr "AstroWay: Φάση Σελήνης"
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:307
+#, fuzzy, php-format
+msgid ""
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
+msgstr ""
+"Το %s widget δεν μπόρεσε να φορτωθεί αυτή τη στιγμή. Μόνο οι διαχειριστές "
+"βλέπουν αυτή τη σημείωση."
+
+#. translators: 1: shortcode tag, 2: comma-separated attribute names
+#: includes/class-generated-registry.php:327
+#, fuzzy, php-format
+msgid ""
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
+msgstr ""
+"Το %1$s λείπουν απαιτούμενα χαρακτηριστικά: %2$s. Μόνο οι διαχειριστές "
+"βλέπουν αυτή τη σημείωση."
+
+#. translators: %s = shortcode tag
+#: includes/class-generated-registry.php:340
+#, fuzzy, php-format
+msgid "%s could not be loaded just now. Only administrators see this note."
+msgstr ""
+"Το %s widget δεν μπόρεσε να φορτωθεί αυτή τη στιγμή. Μόνο οι διαχειριστές "
+"βλέπουν αυτή τη σημείωση."
+
+#: includes/class-plugin.php:178
 msgid "AstroWay is active"
 msgstr "Το AstroWay είναι ενεργό"
 
-#: includes/class-plugin.php:176
+#: includes/class-plugin.php:179
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -241,20 +274,20 @@ msgstr ""
 " υψηλότερα όρια και λειτουργίες της έκδοσης Pro, αποκτήστε ένα δωρεάν κλειδί"
 " API."
 
-#: includes/class-plugin.php:180 includes/class-plugin.php:325
+#: includes/class-plugin.php:183 includes/class-plugin.php:328
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Λήψη δωρεάν κλειδιού API"
 
-#: includes/class-plugin.php:183
+#: includes/class-plugin.php:186
 msgid "Open Settings"
 msgstr "Άνοιγμα ρυθμίσεων"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:258
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:259
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -263,16 +296,16 @@ msgstr ""
 "να ανακαλύψουν το πρόσθετο και μας δίνει ιδέες για το τι να δημιουργήσουμε "
 "στη συνέχεια."
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:263
 msgid "Leave a review"
 msgstr "Αφήστε μια κριτική"
 
-#: includes/class-plugin.php:323
+#: includes/class-plugin.php:326
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr ""
 "Αυτός ο διακομιστής έχει εξαντλήσει το όριο ανώνυμης πρόσβασης στο AstroWay:"
 
-#: includes/class-plugin.php:324
+#: includes/class-plugin.php:327
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -852,6 +885,24 @@ msgstr "Υδροχόος"
 msgid "Pisces"
 msgstr "Ιχθύες"
 
+#. translators: 1: rows shown, 2: rows in total
+#: includes/class-render.php:1220
+#, fuzzy, php-format
+msgid "Showing %1$d of %2$d"
+msgstr "%1$d από %2$d"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "yes"
+msgstr "ναι"
+
+#: includes/class-render.php:1271
+#: includes/views/partials/admin-channel-b-status.php:47
+#: includes/views/partials/admin-channel-b-status.php:51
+msgid "no"
+msgstr "όχι"
+
 #. translators: %s = shortcode name
 #: includes/class-shortcodes.php:371
 #, php-format
@@ -907,6 +958,7 @@ msgstr "Αντιγράψτε έναν σύντομο κωδικό."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
 #: includes/views/admin-shortcodes.php:321
+#: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Κλικ για αντιγραφή"
 
@@ -2034,16 +2086,6 @@ msgstr "Ενημέρωση τελικού σημείου"
 msgid "Library loaded"
 msgstr "Η βιβλιοθήκη φορτώθηκε"
 
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "yes"
-msgstr "ναι"
-
-#: includes/views/partials/admin-channel-b-status.php:47
-#: includes/views/partials/admin-channel-b-status.php:51
-msgid "no"
-msgstr "όχι"
-
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
 msgstr "Κλειδί API"
@@ -2071,6 +2113,23 @@ msgstr "Σελίδες πρόσθετου"
 #: includes/views/partials/admin-footer-nav.php:35
 msgid "Docs"
 msgstr "Έγγραφα"
+
+#: includes/views/partials/admin-generated-coverage.php:34
+msgid "The rest of the API"
+msgstr "Το υπόλοιπο της API"
+
+#. translators: 1: number of shortcodes, 2: number of families
+#: includes/views/partials/admin-generated-coverage.php:39
+#, php-format
+msgid ""
+"%1$d more shortcodes across %2$d families, generated from the api "
+"specification. Each one needs an API key. The widgets above are hand-built "
+"and read better; these cover everything else the api can calculate."
+msgstr ""
+"%1$d περισσότερες shortcodes σε %2$d οικογένειες, που δημιουργήθηκαν από την"
+" προδιαγραφή του api. Κάθε μία χρειάζεται ένα κλειδί API. Τα εργαλεία "
+"παραπάνω είναι χειροποίητα και διαβάζονται καλύτερα; αυτά καλύπτουν όλο το "
+"υπόλοιπο που το api μπορεί να υπολογίσει."
 
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
@@ -2318,55 +2377,75 @@ msgstr "χρονοδιάγραμμα διαδρομής σελήνης"
 msgid "Day the seven start from (blank for today)"
 msgstr "Ημέρα από την οποία ξεκινά η έβδομη (κενό για σήμερα)"
 
-#: assets/js/astroway-blocks-editor.js:335
+#: assets/js/astroway-blocks-editor.js:388
 msgid "Section"
 msgstr "Ενότητα"
 
-#: assets/js/astroway-blocks-editor.js:338
+#: assets/js/astroway-blocks-editor.js:391
 msgid "Zodiac sign for blocks inside"
 msgstr "Ζώδιο για τα μπλοκ μέσα"
 
-#: assets/js/astroway-blocks-editor.js:345
+#: assets/js/astroway-blocks-editor.js:398
 msgid "Language for blocks inside"
 msgstr "Γλώσσα για τα μπλοκ μέσα"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Astrology Section"
 msgstr "AstroWay: Ενότητα Αστρολογίας"
 
 #: blocks/astrology-section/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Sets one zodiac sign for every AstroWay block placed inside it."
 msgstr "Ορίζει ένα ζώδιο για κάθε μπλοκ AstroWay που τοποθετείται μέσα του."
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Human Design Bodygraph"
 msgstr "AstroWay: Human Design Bodygraph"
 
 #: blocks/bodygraph/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "Human Design bodygraph με τύπο, προφίλ και πύλες."
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Horoscope"
 msgstr "AstroWay: Ωροσκόπος Ημέρας"
 
 #: blocks/daily-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "Κείμενο ωροσκόπου ημέρας για ένα ζώδιο."
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Tarot"
 msgstr "AstroWay: Κάρτα Ταρό Ημέρας"
 
 #: blocks/daily-tarot/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Μοναδική κάρτα Ταρό ημέρας με ερμηνεία."
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Vedic Kundli"
 msgstr "Ρυθμίσεις AstroWay"
 
 #: blocks/kundli/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
@@ -2375,10 +2454,14 @@ msgstr ""
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Mini Birth Chart"
 msgstr "AstroWay: Μικρό Γεννητικός Χάρτης"
 
 #: blocks/mini-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
 " responsive iframe."
@@ -2387,10 +2470,14 @@ msgstr ""
 "παρέχεται από το api.astroway.info ως iframe με προσαρμοστική εμφάνιση."
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Forecast"
 msgstr "AstroWay: Μηνιαία πρόβλεψη"
 
 #: blocks/monthly-forecast/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
@@ -2399,10 +2486,14 @@ msgstr ""
 "εβδομάδα, παρουσιάζονταν μέσα σε ένα ανταποκρινόμενο iframe."
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Monthly Horoscope"
 msgstr "AstroWay: Μηνιαίο Ωροσκόπιο"
 
 #: blocks/monthly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current month, anchored to the 1st, rendered into the page"
 " as text."
@@ -2411,37 +2502,53 @@ msgstr ""
 "εμφανίζεται στη σελίδα ως κείμενο."
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Phase"
 msgstr "AstroWay: Φάση Σελήνης"
 
 #: blocks/moon-phase/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "Τρέχουσα φάση Σελήνης με ποσοστό φωτισμού."
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Sign"
 msgstr "AstroWay: Σημάδι Σελήνης"
 
 #: blocks/moon-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr ""
 "Το σημάδι, η μοίρα και ο οίκος της Σελήνης από ένα ωροσκόπιο γέννησης."
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Natal Chart"
 msgstr "AstroWay: Χάρτης Γεννήσεων"
 
 #: blocks/natal-chart/block.json
+#, fuzzy
+msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Numerology"
 msgstr "AstroWay: Φάση Σελήνης"
 
 #: blocks/numerology/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
@@ -2450,10 +2557,14 @@ msgstr ""
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Daily Panchang"
 msgstr "AstroWay: Κάρτα Ταρό Ημέρας"
 
 #: blocks/panchang/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
@@ -2462,10 +2573,14 @@ msgstr ""
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Planet of the Day"
 msgstr "AstroWay: Ο πλανήτης της ημέρας"
 
 #: blocks/planet-of-day/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
@@ -2475,10 +2590,14 @@ msgstr ""
 "σελίδα."
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Rising Sign"
 msgstr "AstroWay: Ανατέλλον Σημάδι"
 
 #: blocks/rising-sign/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The rising sign with its chart ruler. Needs coordinates: the ascendant is "
 "the horizon at a place."
@@ -2487,10 +2606,14 @@ msgstr ""
 " ο ορίζοντας είναι η γραμμή του ορίζοντα σε ένα μέρος."
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Synastry Compatibility"
 msgstr "AstroWay: Χάρτης Γεννήσεων"
 
 #: blocks/synastry/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Synastry compatibility score and top inter-aspects for two birth charts, "
 "served by api.astroway.info as a responsive iframe."
@@ -2499,10 +2622,14 @@ msgstr ""
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Moon Transit Timeline"
 msgstr "AstroWay: Χρονοδιάγραμμα Διαδρομής Σελήνης"
 
 #: blocks/transit-timeline/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "The next seven days of Moon ingresses, served by api.astroway.info as a "
 "responsive iframe."
@@ -2511,10 +2638,14 @@ msgstr ""
 "το api.astroway.info ως ανταποκρινόμενο iframe."
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Transit Sky"
 msgstr "AstroWay: Χάρτης Γεννήσεων"
 
 #: blocks/transit/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
@@ -2523,10 +2654,14 @@ msgstr ""
 "προσαρμοσμένο στις οθόνες."
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block title"
 msgid "AstroWay: Weekly Horoscope"
 msgstr "AstroWay: Εβδομαδιαίο Ωροσκόπιο"
 
 #: blocks/weekly-horoscope/block.json
+#, fuzzy
+msgctxt "block description"
 msgid ""
 "Horoscope for the current week, anchored to Monday, rendered into the page "
 "as text."
