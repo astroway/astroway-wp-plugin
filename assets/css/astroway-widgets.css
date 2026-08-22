@@ -387,16 +387,6 @@
 	margin-top: 1.4em;
 }
 
-.astroway-card--generic .astroway-card__more {
-	margin-top: 0.8em;
-	font-size: 0.95em;
-}
-
-.astroway-card--generic .astroway-card__more summary {
-	cursor: pointer;
-	color: var(--astroway-card-muted);
-}
-
 /* Sky cards: what the sky is doing right now. Each is a short answer over a
    table, and in two of them exactly one row is the answer. */
 
@@ -526,4 +516,69 @@
 	.astroway-tabs__tab {
 		flex: 0 0 auto;
 	}
+}
+
+/* Synastry: one number, then the aspects that produced it. */
+
+.astroway-card--synastry {
+	--astroway-card-max-width: 42em;
+}
+
+.astroway-card__score {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.15em 0.6em;
+	margin: 0 0 0.5em;
+}
+
+.astroway-card__score-value {
+	font-size: 2.4em;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--astroway-card-accent);
+}
+
+/* The per cent sign is a unit, not part of the figure, and at the size of the
+   figure it shouts. */
+.astroway-card__score-value span {
+	font-size: 0.45em;
+	font-weight: 600;
+	margin-inline-start: 0.1em;
+}
+
+.astroway-card__score-label {
+	font-size: 1.05em;
+	font-weight: 600;
+}
+
+/* The bar is the figure above drawn again, nothing more, which is why it is
+   hidden from assistive technology rather than labelled. */
+.astroway-card__meter {
+	block-size: 6px;
+	margin-block-end: 1em;
+	border-radius: 999px;
+	/* The line tint, not the band tint. At 5% the empty half of the bar was
+	   invisible and the filled half read as an underline that stopped early. */
+	background: var(--astroway-card-line);
+	overflow: hidden;
+}
+
+.astroway-card__meter > span {
+	display: block;
+	block-size: 100%;
+	border-radius: inherit;
+	background: var(--astroway-card-accent);
+}
+
+/* Every card that folds detail away uses the same summary, so the styling that
+   was scoped to the generic renderer moves out to all of them. */
+.astroway-card__more {
+	margin-block-start: 0.9em;
+	font-size: 0.95em;
+}
+
+.astroway-card__more summary {
+	cursor: pointer;
+	color: var(--astroway-card-muted);
 }

@@ -110,17 +110,23 @@
 	];
 
 	// Synastry — two subjects (A and B) flattened into one block.
+	// The names head the two columns of the aspect table and never leave the
+	// server: "Moon conjunct Mercury" says nothing about whose Moon, and in
+	// synastry that is the whole of the meaning.
 	var SYNASTRY_FIELDS = [
+		{ name: 'name_a', type: 'text', label: __( 'Person A: name (for the table heading)', 'astroway' ) },
 		{ name: 'date_a', type: 'text', label: __( 'Person A: date (YYYY-MM-DD)', 'astroway' ) },
-		{ name: 'time_a', type: 'text', label: __( 'Person A: time (HH:MM)', 'astroway' ) },
+		{ name: 'time_a', type: 'text', label: __( 'Person A: time (HH:MM, blank if unknown)', 'astroway' ) },
 		{ name: 'lat_a',  type: 'text', label: __( 'Person A: latitude', 'astroway' ) },
 		{ name: 'lon_a',  type: 'text', label: __( 'Person A: longitude', 'astroway' ) },
 		{ name: 'tz_a',   type: 'text', label: __( 'Person A: timezone', 'astroway' ) },
+		{ name: 'name_b', type: 'text', label: __( 'Person B: name (for the table heading)', 'astroway' ) },
 		{ name: 'date_b', type: 'text', label: __( 'Person B: date (YYYY-MM-DD)', 'astroway' ) },
-		{ name: 'time_b', type: 'text', label: __( 'Person B: time (HH:MM)', 'astroway' ) },
+		{ name: 'time_b', type: 'text', label: __( 'Person B: time (HH:MM, blank if unknown)', 'astroway' ) },
 		{ name: 'lat_b',  type: 'text', label: __( 'Person B: latitude', 'astroway' ) },
 		{ name: 'lon_b',  type: 'text', label: __( 'Person B: longitude', 'astroway' ) },
 		{ name: 'tz_b',   type: 'text', label: __( 'Person B: timezone', 'astroway' ) },
+		{ name: 'aspects', type: 'text', label: __( 'How many aspects to show (6 by default)', 'astroway' ) },
 		THEME_FIELD,
 		LANG_FIELD
 	];

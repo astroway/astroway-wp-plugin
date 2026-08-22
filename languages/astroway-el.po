@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T16:06:23+00:00\n"
-"PO-Revision-Date: 2026-08-22 19:26+0300\n"
+"POT-Creation-Date: 2026-08-22T21:33:33+00:00\n"
+"PO-Revision-Date: 2026-08-23 00:39+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Greek <translations@astroway.info>\n"
 "Language: el\n"
@@ -259,7 +259,7 @@ msgstr ""
 "Η Σελήνη βρίσκεται σε κατάσταση «άκυρης πορείας» από τις %1$s έως τις %2$s."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:1155
+#: includes/class-digest.php:248 includes/class-render.php:1158
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "Αυτή τη στιγμή βρίσκεται σε ανάδρομη πορεία: %s."
@@ -275,7 +275,7 @@ msgid "You are not allowed to do that."
 msgstr "Δεν επιτρέπεται να το κάνεις αυτό."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:315 includes/class-render.php:994
+#: includes/class-generated-registry.php:315 includes/class-render.php:997
 #, php-format
 msgid ""
 "%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
@@ -285,7 +285,7 @@ msgstr ""
 "βλέπουν αυτή τη σημείωση."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:335 includes/class-render.php:1006
+#: includes/class-generated-registry.php:335 includes/class-render.php:1009
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -295,7 +295,7 @@ msgstr ""
 "βλέπουν αυτή τη σημείωση."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:348 includes/class-render.php:1053
+#: includes/class-generated-registry.php:348 includes/class-render.php:1056
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
@@ -372,12 +372,12 @@ msgid "Natal chart wheel"
 msgstr "Ρόδα χάρτη γεννήσεων"
 
 #: includes/class-public-client.php:139
-#: assets/js/astroway-blocks-editor.js:191
+#: assets/js/astroway-blocks-editor.js:197
 msgid "Daily horoscope"
 msgstr "Ωροσκόπος ημέρας"
 
-#: includes/class-public-client.php:140 includes/class-render.php:722
-#: assets/js/astroway-blocks-editor.js:198
+#: includes/class-public-client.php:140 includes/class-render.php:725
+#: assets/js/astroway-blocks-editor.js:204
 msgid "Moon phase"
 msgstr "Φάση Σελήνης"
 
@@ -414,7 +414,7 @@ msgstr "Συμβατότητα σύναστρίας"
 msgid "AstroWay widget"
 msgstr "Widget AstroWay"
 
-#: includes/class-render.php:97
+#: includes/class-render.php:98
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -424,7 +424,7 @@ msgstr ""
 "διαχειριστές."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:104
+#: includes/class-render.php:105
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
@@ -433,664 +433,664 @@ msgstr ""
 "Το %s widget δεν μπόρεσε να φορτωθεί αυτή τη στιγμή. Μόνο οι διαχειριστές "
 "βλέπουν αυτή τη σημείωση."
 
-#: includes/class-render.php:165
+#: includes/class-render.php:168
 msgid "Rising sign"
 msgstr "Ανατέλλων ζώδιος"
 
-#: includes/class-render.php:179
+#: includes/class-render.php:182
 msgid "Moon sign"
 msgstr "Σελήνη"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
-#: includes/class-render.php:188
+#: includes/class-render.php:191
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:200
+#: includes/class-render.php:203
 msgid "Position"
 msgstr "Θέση"
 
 #. translators: %d = house number
-#: includes/class-render.php:203
+#: includes/class-render.php:206
 msgid "House"
 msgstr "Οίκος"
 
 #. translators: %d = house number
-#: includes/class-render.php:203 includes/class-render.php:486
+#: includes/class-render.php:206 includes/class-render.php:489
 #, php-format
 msgid "House %d"
 msgstr "Οίκος %d"
 
-#: includes/class-render.php:211
+#: includes/class-render.php:214
 msgid "Chart ruler"
 msgstr "Κύριος του Ωροσκόπου"
 
-#: includes/class-render.php:214
+#: includes/class-render.php:217
 msgid "Ruler position"
 msgstr "Θέση κυβερνήτη"
 
-#: includes/class-render.php:220 includes/class-render.php:473
+#: includes/class-render.php:223 includes/class-render.php:476
 msgid "Midheaven"
 msgstr "Μέση Ουρανός"
 
-#: includes/class-render.php:246
+#: includes/class-render.php:249
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:249
+#: includes/class-render.php:252
 #, php-format
 msgid "Human Design: %s"
 msgstr "Human Design: %s"
 
-#: includes/class-render.php:260
+#: includes/class-render.php:263
 msgid "Strategy"
 msgstr "Στρατηγική"
 
-#: includes/class-render.php:263
+#: includes/class-render.php:266
 msgid "Authority"
 msgstr "Εξουσία"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:270
+#: includes/class-render.php:273
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:275
+#: includes/class-render.php:278
 msgid "Profile"
 msgstr "Προφίλ"
 
-#: includes/class-render.php:278
+#: includes/class-render.php:281
 msgid "Definition"
 msgstr "Ορισμός"
 
-#: includes/class-render.php:281
+#: includes/class-render.php:284
 msgid "Not-self theme"
 msgstr "Θέμα μη-εαυτού"
 
-#: includes/class-render.php:285
+#: includes/class-render.php:288
 msgid "Incarnation cross"
 msgstr "Σταυρός ενσάρκωσης"
 
-#: includes/class-render.php:319
+#: includes/class-render.php:322
 msgid "Defined centres"
 msgstr "Ορισμένα κέντρα"
 
-#: includes/class-render.php:322
+#: includes/class-render.php:325
 msgid "Open centres"
 msgstr "Ανοιχτά κέντρα"
 
-#: includes/class-render.php:324
+#: includes/class-render.php:327
 msgid "Centres"
 msgstr "Κέντρα"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:339
+#: includes/class-render.php:342
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s έως %4$s"
 
-#: includes/class-render.php:350
+#: includes/class-render.php:353
 msgid "Channels"
 msgstr "Κανάλια"
 
-#: includes/class-render.php:355
+#: includes/class-render.php:358
 msgid "Generator"
 msgstr "Generator"
 
-#: includes/class-render.php:356
+#: includes/class-render.php:359
 msgid "Manifesting Generator"
 msgstr "Manifesting Generator"
 
-#: includes/class-render.php:357
+#: includes/class-render.php:360
 msgid "Manifestor"
 msgstr "Manifestor"
 
-#: includes/class-render.php:358
+#: includes/class-render.php:361
 msgid "Projector"
 msgstr "Projector"
 
-#: includes/class-render.php:359
+#: includes/class-render.php:362
 msgid "Reflector"
 msgstr "Reflector"
 
-#: includes/class-render.php:366
+#: includes/class-render.php:369
 msgid "Wait to respond"
 msgstr "Περιμένετε να απαντήσετε"
 
-#: includes/class-render.php:367
+#: includes/class-render.php:370
 msgid "Wait for the invitation"
 msgstr "Περιμένετε την πρόσκληση"
 
-#: includes/class-render.php:368 includes/class-render.php:369
+#: includes/class-render.php:371 includes/class-render.php:372
 msgid "Inform before acting"
 msgstr "Ενημερώστε πριν δράσετε"
 
-#: includes/class-render.php:370
+#: includes/class-render.php:373
 msgid "Wait a lunar cycle"
 msgstr "Περιμένετε έναν σεληνιακό κύκλο"
 
-#: includes/class-render.php:371
+#: includes/class-render.php:374
 msgid "Respond, then inform"
 msgstr "Απαντήστε, μετά ενημερώστε"
 
-#: includes/class-render.php:378
+#: includes/class-render.php:381
 msgid "Emotional (Solar Plexus)"
 msgstr "Συναισθηματικό (Ηλιακός Πλέγματος)"
 
-#: includes/class-render.php:379 includes/class-render.php:430
+#: includes/class-render.php:382 includes/class-render.php:433
 msgid "Sacral"
 msgstr "Ιερό"
 
-#: includes/class-render.php:380
+#: includes/class-render.php:383
 msgid "Splenic"
 msgstr "Σπλήνας"
 
-#: includes/class-render.php:381
+#: includes/class-render.php:384
 msgid "Ego (Heart)"
 msgstr "Εγώ (Καρδιά)"
 
-#: includes/class-render.php:382
+#: includes/class-render.php:385
 msgid "Self-projected"
 msgstr "Αυτοπροβολή"
 
-#: includes/class-render.php:383
+#: includes/class-render.php:386
 msgid "Mental (environment)"
 msgstr "Πνευματικό (περιβάλλον)"
 
-#: includes/class-render.php:384 includes/class-render.php:385
+#: includes/class-render.php:387 includes/class-render.php:388
 msgid "Lunar cycle"
 msgstr "Σεληνιακός κύκλος"
 
-#: includes/class-render.php:392
+#: includes/class-render.php:395
 msgid "Single definition"
 msgstr "Μονοπλήρης Ορισμός"
 
-#: includes/class-render.php:393
+#: includes/class-render.php:396
 msgid "Split definition"
 msgstr "Διπλή Ορισμός"
 
-#: includes/class-render.php:394
+#: includes/class-render.php:397
 msgid "Triple split definition"
 msgstr "Τριπλή Διπλή Ορισμός"
 
-#: includes/class-render.php:395
+#: includes/class-render.php:398
 msgid "Quadruple split definition"
 msgstr "Τετραπλή Διπλή Ορισμός"
 
-#: includes/class-render.php:396
+#: includes/class-render.php:399
 msgid "No definition"
 msgstr "Χωρίς Ορισμό"
 
-#: includes/class-render.php:403
+#: includes/class-render.php:406
 msgid "Frustration"
 msgstr "Εξαγωγή"
 
-#: includes/class-render.php:404
+#: includes/class-render.php:407
 msgid "Bitterness"
 msgstr "Πικρία"
 
-#: includes/class-render.php:405
+#: includes/class-render.php:408
 msgid "Anger"
 msgstr "Όργη"
 
-#: includes/class-render.php:406
+#: includes/class-render.php:409
 msgid "Disappointment"
 msgstr "Απογοήτευση"
 
-#: includes/class-render.php:413
+#: includes/class-render.php:416
 msgid "Right Angle"
 msgstr "Δεξιός Γωνίας"
 
-#: includes/class-render.php:414
+#: includes/class-render.php:417
 msgid "Left Angle"
 msgstr "Αριστερός Γωνίας"
 
-#: includes/class-render.php:415
+#: includes/class-render.php:418
 msgid "Juxtaposition"
 msgstr "Παραθεση"
 
-#: includes/class-render.php:423
+#: includes/class-render.php:426
 msgid "Head"
 msgstr "Κεφάλι"
 
-#: includes/class-render.php:424
+#: includes/class-render.php:427
 msgid "Ajna"
 msgstr "Άτζνα"
 
-#: includes/class-render.php:425
+#: includes/class-render.php:428
 msgid "Throat"
 msgstr "Λαιμός"
 
-#: includes/class-render.php:426
+#: includes/class-render.php:429
 msgid "G (identity)"
 msgstr "G (ταυτότητα)"
 
-#: includes/class-render.php:427
+#: includes/class-render.php:430
 msgid "Heart (ego)"
 msgstr "Καρδιά (εγώ)"
 
-#: includes/class-render.php:428
+#: includes/class-render.php:431
 msgid "Solar Plexus"
 msgstr "Ηλιακό πλέγμα"
 
-#: includes/class-render.php:429
+#: includes/class-render.php:432
 msgid "Spleen"
 msgstr "Σπλήνα"
 
-#: includes/class-render.php:431
+#: includes/class-render.php:434
 msgid "Root"
 msgstr "Ρίζα"
 
-#: includes/class-render.php:454
+#: includes/class-render.php:457
 msgid "Natal chart"
 msgstr "Γενέθλιος χάρτης"
 
 #. translators: %s = person's name
-#: includes/class-render.php:457
+#: includes/class-render.php:460
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Γενέθλιος χάρτης: %s"
 
-#: includes/class-render.php:470
+#: includes/class-render.php:473
 msgid "Ascendant"
 msgstr "Ωροσκόπος"
 
 #. translators: %d = house number
-#: includes/class-render.php:487
+#: includes/class-render.php:490
 msgid "retrograde"
 msgstr "ανάδρομος"
 
-#: includes/class-render.php:490
+#: includes/class-render.php:493
 msgid "Placements"
 msgstr "Θέσεις"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:511
+#: includes/class-render.php:514
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:521
+#: includes/class-render.php:524
 msgid "Major aspects"
 msgstr "Κύριες όψεις"
 
-#: includes/class-render.php:626
+#: includes/class-render.php:629
 msgid "New Moon"
 msgstr "Νέα Σελήνη"
 
-#: includes/class-render.php:627
+#: includes/class-render.php:630
 msgid "Waxing Crescent"
 msgstr "Ημισέληνος που αυξάνεται"
 
-#: includes/class-render.php:628
+#: includes/class-render.php:631
 msgid "First Quarter"
 msgstr "Πρώτο τρίμηνο"
 
-#: includes/class-render.php:629
+#: includes/class-render.php:632
 msgid "Waxing Gibbous"
 msgstr "Ημισέληνος σε φάση πλήρωσης"
 
-#: includes/class-render.php:630
+#: includes/class-render.php:633
 msgid "Full Moon"
 msgstr "Πανσέληνος"
 
-#: includes/class-render.php:631
+#: includes/class-render.php:634
 msgid "Waning Gibbous"
 msgstr "Φθίνουσα ημισέληνος"
 
-#: includes/class-render.php:632
+#: includes/class-render.php:635
 msgid "Last Quarter"
 msgstr "Τελευταίο τρίμηνο"
 
-#: includes/class-render.php:633
+#: includes/class-render.php:636
 msgid "Waning Crescent"
 msgstr "Φθίνουσα ημισέληνος"
 
-#: includes/class-render.php:640
+#: includes/class-render.php:643
 msgid "Sun"
 msgstr "Ήλιος"
 
-#: includes/class-render.php:641
+#: includes/class-render.php:644
 msgid "Moon"
 msgstr "Σελήνη"
 
-#: includes/class-render.php:642 assets/js/astroway-blocks-editor.js:131
+#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:137
 msgid "Mercury"
 msgstr "Ερμής"
 
-#: includes/class-render.php:643 assets/js/astroway-blocks-editor.js:132
+#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:138
 msgid "Venus"
 msgstr "Αφροδίτη"
 
-#: includes/class-render.php:644 assets/js/astroway-blocks-editor.js:133
+#: includes/class-render.php:647 assets/js/astroway-blocks-editor.js:139
 msgid "Mars"
 msgstr "Άρης"
 
-#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:134
+#: includes/class-render.php:648 assets/js/astroway-blocks-editor.js:140
 msgid "Jupiter"
 msgstr "Δίας"
 
-#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:135
+#: includes/class-render.php:649 assets/js/astroway-blocks-editor.js:141
 msgid "Saturn"
 msgstr "Κρόνος"
 
-#: includes/class-render.php:647 assets/js/astroway-blocks-editor.js:136
+#: includes/class-render.php:650 assets/js/astroway-blocks-editor.js:142
 msgid "Uranus"
 msgstr "Ουρανός"
 
-#: includes/class-render.php:648 assets/js/astroway-blocks-editor.js:137
+#: includes/class-render.php:651 assets/js/astroway-blocks-editor.js:143
 msgid "Neptune"
 msgstr "Ποσειδώνας"
 
-#: includes/class-render.php:649 assets/js/astroway-blocks-editor.js:138
+#: includes/class-render.php:652 assets/js/astroway-blocks-editor.js:144
 msgid "Pluto"
 msgstr "Πλούτωνας"
 
-#: includes/class-render.php:650
+#: includes/class-render.php:653
 msgid "Chiron"
 msgstr "Χείρωνας"
 
-#: includes/class-render.php:651 includes/class-render.php:658
-#: includes/class-render.php:659
+#: includes/class-render.php:654 includes/class-render.php:661
+#: includes/class-render.php:662
 msgid "Lilith"
 msgstr "Λίλιθ"
 
-#: includes/class-render.php:652 includes/class-render.php:656
-#: includes/class-render.php:657
+#: includes/class-render.php:655 includes/class-render.php:659
+#: includes/class-render.php:660
 msgid "North Node"
 msgstr "Βόρειος Δεσμός"
 
-#: includes/class-render.php:653
+#: includes/class-render.php:656
 msgid "South Node"
 msgstr "Νότιος Δεσμός"
 
-#: includes/class-render.php:666
+#: includes/class-render.php:669
 msgid "conjunct"
 msgstr "σύνοδος"
 
-#: includes/class-render.php:667
+#: includes/class-render.php:670
 msgid "opposite"
 msgstr "αντίθεση"
 
-#: includes/class-render.php:668
+#: includes/class-render.php:671
 msgid "trine"
 msgstr "τρίγωνο"
 
-#: includes/class-render.php:669
+#: includes/class-render.php:672
 msgid "square"
 msgstr "τετράγωνο"
 
-#: includes/class-render.php:670
+#: includes/class-render.php:673
 msgid "sextile"
 msgstr "εξάγωνο"
 
-#: includes/class-render.php:705
+#: includes/class-render.php:708
 msgid "Illumination"
 msgstr "Φωτισμός"
 
-#: includes/class-render.php:708
+#: includes/class-render.php:711
 msgid "Age"
 msgstr "Ηλικία"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:710
+#: includes/class-render.php:713
 #, php-format
 msgid "%s days"
 msgstr "%s ημέρες"
 
-#: includes/class-render.php:715
+#: includes/class-render.php:718
 msgid "Moon in"
 msgstr "Σελήνη σε"
 
-#: includes/class-render.php:718
+#: includes/class-render.php:721
 msgid "Sun in"
 msgstr "Ήλιος σε"
 
 #. translators: %s = tarot card name
-#: includes/class-render.php:750
+#: includes/class-render.php:753
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (ανεστραμμένο)"
 
-#: includes/class-render.php:756
+#: includes/class-render.php:759
 msgid "Card of the day"
 msgstr "Κάρτα της ημέρας"
 
-#: includes/class-render.php:786 assets/js/astroway-blocks-editor.js:228
+#: includes/class-render.php:789 assets/js/astroway-blocks-editor.js:234
 msgid "Planet of the day"
 msgstr "Πλανήτης της ημέρας"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:818
+#: includes/class-render.php:821
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: ωροσκόπιο για την εβδομάδα"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:821
+#: includes/class-render.php:824
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: ωροσκόπιο για τον μήνα"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:824
+#: includes/class-render.php:827
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: ωροσκόπιο για το έτος"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:827
+#: includes/class-render.php:830
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: ωροσκόπιο για σήμερα"
 
-#: includes/class-render.php:834 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:837 assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Κριός"
 
-#: includes/class-render.php:835 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:838 assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Ταύρος"
 
-#: includes/class-render.php:836 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:839 assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Δίδυμοι"
 
-#: includes/class-render.php:837 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:840 assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Καρκίνος"
 
-#: includes/class-render.php:838 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:841 assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Λέων"
 
-#: includes/class-render.php:839 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:842 assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Παρθένος"
 
-#: includes/class-render.php:840 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:843 assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Ζυγός"
 
-#: includes/class-render.php:841 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:844 assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Σκορπιός"
 
-#: includes/class-render.php:842 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:845 assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Τοξότης"
 
-#: includes/class-render.php:843 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:846 assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Αιγόκερως"
 
-#: includes/class-render.php:844 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:847 assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Υδροχόος"
 
-#: includes/class-render.php:845 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:848 assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Ιχθύες"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1087
+#: includes/class-render.php:1090
 #, php-format
 msgid "Is %s retrograde?"
 msgstr "Το %s είναι σε ανάδρομη πορεία;"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1096
+#: includes/class-render.php:1099
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "Ναι, το %s βρίσκεται σε ανάδρομη πορεία αυτή τη στιγμή."
 
-#: includes/class-render.php:1101
+#: includes/class-render.php:1104
 msgid "Retrograde since"
 msgstr "Ανάδρομος από"
 
-#: includes/class-render.php:1102
+#: includes/class-render.php:1105
 msgid "Direct again on"
 msgstr "Συνέχεια εδώ"
 
-#: includes/class-render.php:1103
+#: includes/class-render.php:1106
 msgid "Days left"
 msgstr "Απομένουν ημέρες"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1109
+#: includes/class-render.php:1112
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "Όχι, το %s είναι άμεσο αυτή τη στιγμή."
 
-#: includes/class-render.php:1114
+#: includes/class-render.php:1117
 msgid "Next retrograde"
 msgstr "Επόμενη ανάδρομη κίνηση"
 
-#: includes/class-render.php:1115 includes/class-render.php:1258
+#: includes/class-render.php:1118 includes/class-render.php:1261
 msgid "Ends"
 msgstr "Τέλος"
 
-#: includes/class-render.php:1116
+#: includes/class-render.php:1119
 msgid "Days until"
 msgstr "Ημέρες μέχρι"
 
-#: includes/class-render.php:1135
+#: includes/class-render.php:1138
 msgid "Retrograde"
 msgstr "Ανάδρομος"
 
-#: includes/class-render.php:1138 includes/class-render.php:1141
+#: includes/class-render.php:1141 includes/class-render.php:1144
 msgid "Direct"
 msgstr "Ορθόδρομος"
 
-#: includes/class-render.php:1152
+#: includes/class-render.php:1155
 msgid "Nothing is retrograde right now."
 msgstr "Αυτή τη στιγμή δεν υπάρχει κανένα πλανήτη σε ανάδρομη πορεία."
 
-#: includes/class-render.php:1160 assets/js/astroway-blocks-editor.js:263
+#: includes/class-render.php:1163 assets/js/astroway-blocks-editor.js:269
 msgid "Retrograde planets"
 msgstr "Πλανήτες σε ανάδρομη κίνηση"
 
-#: includes/class-render.php:1164 assets/js/astroway-blocks-editor.js:258
+#: includes/class-render.php:1167 assets/js/astroway-blocks-editor.js:264
 msgid "Planet"
 msgstr "Πλανήτης"
 
-#: includes/class-render.php:1165 includes/views/admin-api-key.php:166
+#: includes/class-render.php:1168 includes/views/admin-api-key.php:166
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: includes/class-render.php:1169
+#: includes/class-render.php:1172
 msgid "Retrograde period"
 msgstr "Περίοδος ανάδρομης κίνησης"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:1223
+#: includes/class-render.php:1226
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "Η Σελήνη βρίσκεται σε κατάσταση «άκυρης πορείας» μέχρι τις %s."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:1229
+#: includes/class-render.php:1232
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr ""
 "Η Σελήνη δεν βρίσκεται σε κατάσταση «void of course». Το επόμενο παράθυρο "
 "ανοίγει στις %s."
 
-#: includes/class-render.php:1233
+#: includes/class-render.php:1236
 msgid "The Moon is not void of course."
 msgstr "Η Σελήνη δεν βρίσκεται σε κατάσταση «κενής πορείας»."
 
-#: includes/class-render.php:1253 assets/js/astroway-blocks-editor.js:267
+#: includes/class-render.php:1256 assets/js/astroway-blocks-editor.js:273
 msgid "Void of course Moon"
 msgstr "Σελήνη χωρίς πορεία"
 
-#: includes/class-render.php:1257
+#: includes/class-render.php:1260
 msgid "Starts"
 msgstr "Ξεκινά"
 
-#: includes/class-render.php:1259
+#: includes/class-render.php:1262
 msgid "Length"
 msgstr "Διάρκεια"
 
-#: includes/class-render.php:1260
+#: includes/class-render.php:1263
 msgid "Last aspect"
 msgstr "Τελευταία πτυχή"
 
-#: includes/class-render.php:1261
+#: includes/class-render.php:1264
 msgid "Next sign"
 msgstr "Επόμενο ζώδιο"
 
-#: includes/class-render.php:1316
+#: includes/class-render.php:1323
 msgid "Night"
 msgstr "Νύχτα"
 
-#: includes/class-render.php:1316
+#: includes/class-render.php:1323
 msgid "Day"
 msgstr "Ημέρα"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1331
+#: includes/class-render.php:1338
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "Η μέρα κυριαρχείται από το %s."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:1338
+#: includes/class-render.php:1345
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "Η ώρα %1$s διαρκεί μέχρι τις %2$s."
 
-#: includes/class-render.php:1345 includes/class-render.php:1378
-#: assets/js/astroway-blocks-editor.js:302
+#: includes/class-render.php:1352 includes/class-render.php:1387
+#: assets/js/astroway-blocks-editor.js:308
 msgid "Planetary hours"
 msgstr "Πλανητικές ώρες"
 
-#: includes/class-render.php:1354
+#: includes/class-render.php:1361
 msgid "Hour"
 msgstr "Ώρα"
 
-#: includes/class-render.php:1355
+#: includes/class-render.php:1362
 msgid "Ruler"
 msgstr "Κύριος"
 
-#: includes/class-render.php:1356
+#: includes/class-render.php:1363
 msgid "From"
 msgstr "Από"
 
-#: includes/class-render.php:1357
+#: includes/class-render.php:1364
 msgid "To"
 msgstr "Προς"
 
-#: includes/class-render.php:1358
+#: includes/class-render.php:1365
 msgid "Part of day"
 msgstr "Μέρος της ημέρας"
 
-#: includes/class-render.php:1383
+#: includes/class-render.php:1392
 msgid ""
 "The Sun does not set at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1098,7 +1098,7 @@ msgstr ""
 "Ο Ήλιος δεν δύει σε αυτό το γεωγραφικό πλάτος αυτή την ημερομηνία, οπότε δεν"
 " υπάρχουν πλανητικές ώρες για να χωριστούν."
 
-#: includes/class-render.php:1384
+#: includes/class-render.php:1393
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1106,133 +1106,193 @@ msgstr ""
 "Ο Ήλιος δεν ανατέλλει σε αυτό το γεωγραφικό πλάτος την συγκεκριμένη "
 "ημερομηνία, οπότε δεν υπάρχουν πλανητικές ώρες για να χωριστούν."
 
+#: includes/class-render.php:1423
+msgid "First chart"
+msgstr "Πρώτο ωροσκόπιο"
+
+#: includes/class-render.php:1424
+msgid "Second chart"
+msgstr "Δεύτερο ωροσκόπιο"
+
+#: includes/class-render.php:1427
+msgid "Compatibility"
+msgstr "Συμβατότητα"
+
+#. translators: %d = how many aspects the two charts make between them
+#: includes/class-render.php:1440
+#, php-format
+msgid "Aspects between the two charts: %d"
+msgstr "Όψεις ανάμεσα στα δύο ωροσκόπια: %d"
+
+#: includes/class-render.php:1449
+msgid "Closest aspects"
+msgstr "Στενότερες όψεις"
+
+#. translators: %d = the full number of aspects between the two charts
+#: includes/class-render.php:1463
+#, php-format
+msgid "Show all aspects (%d)"
+msgstr "Εμφάνιση όλων των όψεων (%d)"
+
+#: includes/class-render.php:1500
+msgid "Separating"
+msgstr "Απομακρύνεται"
+
+#: includes/class-render.php:1500
+msgid "Applying"
+msgstr "Πλησιάζει"
+
+#: includes/class-render.php:1520
+msgid "Aspect"
+msgstr "Όψη"
+
+#: includes/class-render.php:1522
+msgid "Orb"
+msgstr "Ορβ"
+
+#: includes/class-render.php:1523
+msgid "Trend"
+msgstr "Τάση"
+
+#: includes/class-render.php:1566
+msgid "Harmonious"
+msgstr "Εναρμονισμένη"
+
+#: includes/class-render.php:1567
+msgid "Balanced"
+msgstr "Ισορροπημένη"
+
+#: includes/class-render.php:1568
+msgid "Mixed"
+msgstr "Μικτή"
+
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:1410
+#: includes/class-render.php:1600
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s και %2$s"
 
-#: includes/class-render.php:1437 assets/js/astroway-blocks-editor.js:293
+#: includes/class-render.php:1627 assets/js/astroway-blocks-editor.js:299
 msgid "Chinese zodiac"
 msgstr "Κινέζικος ζωδιακός κύκλος"
 
-#: includes/class-render.php:1451
+#: includes/class-render.php:1641
 msgid "Element"
 msgstr "Στοιχείο"
 
-#: includes/class-render.php:1456
+#: includes/class-render.php:1646
 msgid "Year element"
 msgstr "Στοιχείο έτους"
 
-#: includes/class-render.php:1459
+#: includes/class-render.php:1649
 msgid "Polarity"
 msgstr "Πολικότητα"
 
-#: includes/class-render.php:1459
+#: includes/class-render.php:1649
 msgid "Yin"
 msgstr "Γιν"
 
-#: includes/class-render.php:1459
+#: includes/class-render.php:1649
 msgid "Yang"
 msgstr "Γιανγκ"
 
-#: includes/class-render.php:1462
+#: includes/class-render.php:1652
 msgid "Pillar"
 msgstr "Στήλη"
 
-#: includes/class-render.php:1471
+#: includes/class-render.php:1661
 msgid "Rat"
 msgstr "Αρουραίος"
 
-#: includes/class-render.php:1472
+#: includes/class-render.php:1662
 msgid "Ox"
 msgstr "Βόδι"
 
-#: includes/class-render.php:1473
+#: includes/class-render.php:1663
 msgid "Tiger"
 msgstr "Τίγρης"
 
-#: includes/class-render.php:1474
+#: includes/class-render.php:1664
 msgid "Rabbit"
 msgstr "Κουνέλι"
 
-#: includes/class-render.php:1475
+#: includes/class-render.php:1665
 msgid "Dragon"
 msgstr "Δράκος"
 
-#: includes/class-render.php:1476
+#: includes/class-render.php:1666
 msgid "Snake"
 msgstr "Φίδι"
 
-#: includes/class-render.php:1477
+#: includes/class-render.php:1667
 msgid "Horse"
 msgstr "Άλογο"
 
-#: includes/class-render.php:1478
+#: includes/class-render.php:1668
 msgid "Goat"
 msgstr "Κατσίκα"
 
-#: includes/class-render.php:1479
+#: includes/class-render.php:1669
 msgid "Monkey"
 msgstr "Μαϊμού"
 
-#: includes/class-render.php:1480
+#: includes/class-render.php:1670
 msgid "Rooster"
 msgstr "Κόκορας"
 
-#: includes/class-render.php:1481
+#: includes/class-render.php:1671
 msgid "Dog"
 msgstr "Σκύλος"
 
-#: includes/class-render.php:1482
+#: includes/class-render.php:1672
 msgid "Pig"
 msgstr "Χοίρος"
 
-#: includes/class-render.php:1490
+#: includes/class-render.php:1680
 msgid "Wood"
 msgstr "Ξύλο"
 
-#: includes/class-render.php:1491
+#: includes/class-render.php:1681
 msgid "Fire"
 msgstr "Φωτιά"
 
-#: includes/class-render.php:1492
+#: includes/class-render.php:1682
 msgid "Earth"
 msgstr "Γη"
 
-#: includes/class-render.php:1493
+#: includes/class-render.php:1683
 msgid "Metal"
 msgstr "Μέταλλο"
 
-#: includes/class-render.php:1494
+#: includes/class-render.php:1684
 msgid "Water"
 msgstr "Νερό"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:1589
+#: includes/class-render.php:1779
 #, php-format
 msgid "%d min"
 msgstr "%d λεπτά"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:1595
+#: includes/class-render.php:1785
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d ώρες %2$02d λεπτά"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:1919
+#: includes/class-render.php:2109
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d από %2$d"
 
-#: includes/class-render.php:1970
+#: includes/class-render.php:2160
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "ναι"
 
-#: includes/class-render.php:1970
+#: includes/class-render.php:2160
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
@@ -1292,13 +1352,13 @@ msgid "Copy a shortcode."
 msgstr "Αντιγράψτε έναν σύντομο κωδικό."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
-#: includes/views/admin-shortcodes.php:411
+#: includes/views/admin-shortcodes.php:414
 #: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Κλικ για αντιγραφή"
 
 #: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
-#: includes/views/admin-shortcodes.php:415
+#: includes/views/admin-shortcodes.php:418
 msgid "copy"
 msgstr "αντίγραφο"
 
@@ -1767,7 +1827,7 @@ msgstr ""
 
 #: includes/views/admin-settings.php:123
 #: includes/views/partials/admin-sidebar.php:42
-#: assets/js/astroway-blocks-editor.js:181
+#: assets/js/astroway-blocks-editor.js:187
 msgid "System"
 msgstr "Σύστημα"
 
@@ -2023,7 +2083,7 @@ msgstr ""
 #: includes/views/admin-shortcodes.php:148
 #: includes/views/admin-shortcodes.php:186
 #: includes/views/admin-shortcodes.php:227
-#: includes/views/admin-shortcodes.php:337
+#: includes/views/admin-shortcodes.php:340
 msgid "Birth date in YYYY-MM-DD."
 msgstr "Ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
 
@@ -2138,7 +2198,7 @@ msgstr ""
 #: includes/views/admin-shortcodes.php:83
 #: includes/views/admin-shortcodes.php:201
 #: includes/views/admin-shortcodes.php:212
-#: includes/views/admin-shortcodes.php:304
+#: includes/views/admin-shortcodes.php:307
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "Υπέρβαση ημερομηνίας σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ. Προεπιλογή σήμερα."
 
@@ -2175,7 +2235,7 @@ msgstr "Γεωγραφικό πλάτος WGS-84."
 #: includes/views/admin-shortcodes.php:151
 #: includes/views/admin-shortcodes.php:189
 #: includes/views/admin-shortcodes.php:214
-#: includes/views/admin-shortcodes.php:303
+#: includes/views/admin-shortcodes.php:306
 msgid "WGS-84 longitude."
 msgstr "Γεωγραφικό μήκος WGS-84."
 
@@ -2271,7 +2331,7 @@ msgstr ""
 #: includes/views/admin-shortcodes.php:202
 #: includes/views/admin-shortcodes.php:216
 #: includes/views/admin-shortcodes.php:229
-#: includes/views/admin-shortcodes.php:249
+#: includes/views/admin-shortcodes.php:252
 msgid "dark (default), light or console."
 msgstr "σκοτεινό (προεπιλογή), ανοιχτό ή κονσόλα."
 
@@ -2334,7 +2394,7 @@ msgstr ""
 "έναν τόπο. Φορτώνεται σε ένα πλαίσιο."
 
 #: includes/views/admin-shortcodes.php:221
-#: assets/js/astroway-blocks-editor.js:177
+#: assets/js/astroway-blocks-editor.js:183
 msgid "Numerology"
 msgstr "Αριθμολογία"
 
@@ -2361,19 +2421,23 @@ msgstr "Συμβατότητα σύναστρίας"
 
 #: includes/views/admin-shortcodes.php:235
 msgid ""
-"Compatibility score and top inter-aspects for two birth charts. Loads in a "
-"frame."
+"Compatibility score and the cross-aspects behind it, for two birth charts. "
+"Rendered into the page; no key needed."
 msgstr ""
-"Δείκτης συμβατότητας και κορυφαίες διασταυρώσεις για δύο γενέθλια χάρτες. "
-"Εμφανίζεται σε πλαίσιο."
+"Βαθμολογία συμβατότητας και οι διαπαντοχρονογραφίες πίσω από αυτή, για δύο "
+"ωροσκόπια γεννήσεων. Αποδίδεται στη σελίδα· δεν χρειάζεται κλειδί."
 
 #: includes/views/admin-shortcodes.php:239
 msgid "First person: birth date in YYYY-MM-DD."
 msgstr "Πρώτο πρόσωπο: ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
 
 #: includes/views/admin-shortcodes.php:240
-msgid "First person: birth time in HH:MM."
-msgstr "Πρώτο πρόσωπο: ώρα γέννησης σε ώρες και λεπτά."
+msgid ""
+"First person: birth time in HH:MM. Leave it out and the time is declared "
+"unknown rather than guessed."
+msgstr ""
+"Πρώτο άτομο: ώρα γεννήσεων σε HH:MM. Αφήστε το κενό και η ώρα δηλώνεται "
+"άγνωστη αντί να υποτεθεί."
 
 #: includes/views/admin-shortcodes.php:241
 msgid "First person: latitude."
@@ -2388,30 +2452,48 @@ msgid "First person: IANA timezone."
 msgstr "Πρώτο πρόσωπο: Ζώνη ώρας IANA."
 
 #: includes/views/admin-shortcodes.php:244
+msgid "First person: name for the table heading. Stays on your server."
+msgstr ""
+"Πρώτο άτομο: όνομα για την επικεφαλίδα του πίνακα. Παραμένει στον διακομιστή"
+" σας."
+
+#: includes/views/admin-shortcodes.php:245
 msgid "Second person: birth date in YYYY-MM-DD."
 msgstr "Δεύτερο πρόσωπο: ημερομηνία γέννησης σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ."
 
-#: includes/views/admin-shortcodes.php:245
-msgid "Second person: birth time in HH:MM."
-msgstr "Δεύτερο άτομο: ώρα γέννησης σε ώρες και λεπτά."
-
 #: includes/views/admin-shortcodes.php:246
+msgid "Second person: birth time in HH:MM. Optional in the same way."
+msgstr "Δεύτερο άτομο: ώρα γεννήσεων σε HH:MM. Προαιρετικό με τον ίδιο τρόπο."
+
+#: includes/views/admin-shortcodes.php:247
 msgid "Second person: latitude."
 msgstr "Δεύτερο πρόσωπο: γεωγραφικό πλάτος."
 
-#: includes/views/admin-shortcodes.php:247
+#: includes/views/admin-shortcodes.php:248
 msgid "Second person: longitude."
 msgstr "Δεύτερο πρόσωπο: γεωγραφικό μήκος."
 
-#: includes/views/admin-shortcodes.php:248
+#: includes/views/admin-shortcodes.php:249
 msgid "Second person: IANA timezone."
 msgstr "Δεύτερο πρόσωπο: Ζώνη ώρας IANA."
 
-#: includes/views/admin-shortcodes.php:254
+#: includes/views/admin-shortcodes.php:250
+msgid "Second person: name for the table heading."
+msgstr "Δεύτερο άτομο: όνομα για την επικεφαλίδα του πίνακα."
+
+#: includes/views/admin-shortcodes.php:251
+msgid ""
+"How many aspects the table holds, 1 to 20. Six by default, which is what the"
+" frame version showed."
+msgstr ""
+"Πόσες συνδέσεις περιέχει ο πίνακας, 1 έως 20. Έξι κατά προεπιλογή, που είναι"
+" αυτό που έδειχνε η έκδοση πλαισίου."
+
+#: includes/views/admin-shortcodes.php:257
 msgid "Mercury Retrograde"
 msgstr "Αντίστροφη Κίνηση του Ερμή"
 
-#: includes/views/admin-shortcodes.php:255
+#: includes/views/admin-shortcodes.php:258
 msgid ""
 "Whether Mercury is retrograde right now, since when, and until when. Use "
 "[astroway_retrograde planet=\"venus\"] for any of the other seven that "
@@ -2421,29 +2503,29 @@ msgstr ""
 "Χρησιμοποιήστε [astroway_retrograde planet=\"venus\"] για οποιοδήποτε από τα"
 " άλλα επτά που σταθμεύουν."
 
-#: includes/views/admin-shortcodes.php:259
-#: includes/views/admin-shortcodes.php:279
+#: includes/views/admin-shortcodes.php:262
+#: includes/views/admin-shortcodes.php:282
 msgid "Language code. Defaults to the site locale."
 msgstr "Κωδικός γλώσσας. Προεπιλογές στο τοπικό locale του site."
 
-#: includes/views/admin-shortcodes.php:264
+#: includes/views/admin-shortcodes.php:267
 msgid "Retrograde Status"
 msgstr "Κατάσταση Αντίστροφης Κίνησης"
 
-#: includes/views/admin-shortcodes.php:265
+#: includes/views/admin-shortcodes.php:268
 msgid "The same card for any planet that stations."
 msgstr "Η ίδια κάρτα για οποιοδήποτε πλανήτη που σταθμεύει."
 
-#: includes/views/admin-shortcodes.php:269
+#: includes/views/admin-shortcodes.php:272
 msgid ""
 "mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
 msgstr "ερμής (προεπιλογή), αφροδίτη, άρης, διασ, κρόνος, ουρανός, πλούτωνας."
 
-#: includes/views/admin-shortcodes.php:274
+#: includes/views/admin-shortcodes.php:277
 msgid "Retrograde Planets"
 msgstr "Πλανήτες Αντίστροφης Κίνησης"
 
-#: includes/views/admin-shortcodes.php:275
+#: includes/views/admin-shortcodes.php:278
 msgid ""
 "All eight planets that station, each with its status today and the dates of "
 "the retrograde it is in or heading for."
@@ -2451,11 +2533,11 @@ msgstr ""
 "Όλοι οι οκτώ πλανήτες που σταθμεύουν, каждый με την κατάσταση του σήμερα και"
 " τις ημερομηνίες της αντίστροφης κίνησης που βρίσκεται ή προορίζεται."
 
-#: includes/views/admin-shortcodes.php:284
+#: includes/views/admin-shortcodes.php:287
 msgid "Void of Course Moon"
 msgstr "Σελήνη Χωρίς Πορεία"
 
-#: includes/views/admin-shortcodes.php:285
+#: includes/views/admin-shortcodes.php:288
 msgid ""
 "Whether the Moon is void of course now, and the windows around it with their"
 " last aspect and next sign."
@@ -2463,31 +2545,31 @@ msgstr ""
 "Εάν η Σελήνη είναι χωρίς πορεία τώρα, και τα παράθυρα γύρω της με την "
 "τελευταία της πτυχή και την επόμενη σημασία."
 
-#: includes/views/admin-shortcodes.php:289
+#: includes/views/admin-shortcodes.php:292
 msgid "Day to start from in YYYY-MM-DD. Defaults to today."
 msgstr ""
 "Ημέρα να ξεκινήσει από σε μορφή YYYY-MM-DD. Προεπιλογές στην σημερινή "
 "ημερομηνία."
 
-#: includes/views/admin-shortcodes.php:290
+#: includes/views/admin-shortcodes.php:293
 msgid "Time to start from in HH:MM. Defaults to midnight."
 msgstr "Ώρα να ξεκινήσει από σε μορφή HH:MM. Προεπιλογές στη μεσάνυχτα."
 
-#: includes/views/admin-shortcodes.php:291
-#: includes/views/admin-shortcodes.php:305
-#: includes/views/admin-shortcodes.php:339
+#: includes/views/admin-shortcodes.php:294
+#: includes/views/admin-shortcodes.php:308
+#: includes/views/admin-shortcodes.php:342
 msgid "Hours from UTC. Defaults to the site timezone."
 msgstr "Ωρες από το UTC. Προεπιλογές στο τοπικό χρονοδιάγραμμα του site."
 
-#: includes/views/admin-shortcodes.php:292
+#: includes/views/admin-shortcodes.php:295
 msgid "How far ahead to look, 1 to 30. Defaults to 7."
 msgstr "Πόσο μακριά να κοιτάξει, 1 έως 30. Προεπιλογές στις 7."
 
-#: includes/views/admin-shortcodes.php:297
+#: includes/views/admin-shortcodes.php:300
 msgid "Planetary Hours"
 msgstr "Πλανητικές Ώρες"
 
-#: includes/views/admin-shortcodes.php:298
+#: includes/views/admin-shortcodes.php:301
 msgid ""
 "The twenty-four planetary hours of a day at one place, with the hour the "
 "reader is in marked."
@@ -2495,17 +2577,17 @@ msgstr ""
 "Οι είκοσι τέσσερις πλανητικές ώρες της ημέρας σε ένα μέρος, με την ώρα που ο"
 " αναγνώστης βρίσκεται σημαδεμένη."
 
-#: includes/views/admin-shortcodes.php:302
+#: includes/views/admin-shortcodes.php:305
 msgid "WGS-84 latitude. The hours are the day divided by this horizon."
 msgstr ""
 "Γεωγραφικό πλάτος WGS-84. Οι ώρες είναι η ημέρα διαιρεμένη με αυτό το "
 "ορίζοντα."
 
-#: includes/views/admin-shortcodes.php:310
+#: includes/views/admin-shortcodes.php:313
 msgid "Yearly Horoscope"
 msgstr "Ετήσιο Ωροσκόπιο"
 
-#: includes/views/admin-shortcodes.php:311
+#: includes/views/admin-shortcodes.php:314
 msgid ""
 "The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
 "the name it had as a generated shortcode."
@@ -2514,21 +2596,21 @@ msgstr ""
 "[astroway_horoscope_yearly], το όνομα που είχε ως αυτόματα δημιουργημένος "
 "σύντομος κωδικός."
 
-#: includes/views/admin-shortcodes.php:315
+#: includes/views/admin-shortcodes.php:318
 msgid "Zodiac sign in English, lowercase."
 msgstr "Ζώδιο στα αγγλικά, με μικρά γράμματα."
 
-#: includes/views/admin-shortcodes.php:316
+#: includes/views/admin-shortcodes.php:319
 msgid "Any date inside the year. Defaults to this year."
 msgstr ""
 "Οποιαδήποτε ημερομηνία εντός του έτους. Η προεπιλεγμένη τιμή είναι το τρέχον"
 " έτος."
 
-#: includes/views/admin-shortcodes.php:321
+#: includes/views/admin-shortcodes.php:324
 msgid "Zodiac Compatibility"
 msgstr "Συμβατότητα των ζωδίων"
 
-#: includes/views/admin-shortcodes.php:322
+#: includes/views/admin-shortcodes.php:325
 msgid ""
 "How two signs read together. Prose, not a percentage: the endpoint returns "
 "no score and inventing one would be a number with no calculation behind it."
@@ -2537,19 +2619,19 @@ msgstr ""
 "για ποσοστό: το τελικό αποτέλεσμα δεν δίνει καμία βαθμολογία και η επινόηση "
 "μιας τέτοιας θα ήταν ένας αριθμός χωρίς κανένα υποκείμενο υπολογισμό."
 
-#: includes/views/admin-shortcodes.php:326
+#: includes/views/admin-shortcodes.php:329
 msgid "First sign in English, lowercase."
 msgstr "Πρώτα γράψτε στα αγγλικά, με μικρά γράμματα."
 
-#: includes/views/admin-shortcodes.php:327
+#: includes/views/admin-shortcodes.php:330
 msgid "Second sign in English, lowercase."
 msgstr "Δεύτερη πινακίδα στα αγγλικά, με μικρά γράμματα."
 
-#: includes/views/admin-shortcodes.php:332
+#: includes/views/admin-shortcodes.php:335
 msgid "Chinese Zodiac"
 msgstr "Κινέζικος Ζωδιακός Κύκλος"
 
-#: includes/views/admin-shortcodes.php:333
+#: includes/views/admin-shortcodes.php:336
 msgid ""
 "The animal of a birth year with its element, polarity and pillar. A birth "
 "time sharpens the answer at the turn of the year."
@@ -2558,28 +2640,28 @@ msgstr ""
 "πυλώνα του. Η ώρα γέννησης προσδίδει μεγαλύτερη ακρίβεια στην απάντηση κατά "
 "τη μετάβαση από το ένα έτος στο άλλο."
 
-#: includes/views/admin-shortcodes.php:338
+#: includes/views/admin-shortcodes.php:341
 msgid "Birth time in HH:MM."
 msgstr "Ώρα γέννησης σε ώρες και λεπτά."
 
-#: includes/views/admin-shortcodes.php:358
+#: includes/views/admin-shortcodes.php:361
 msgid "Find your coordinates and timezone"
 msgstr "Βρείτε τις συντεταγμένες και τη ζώνη ώρας σας"
 
-#: includes/views/admin-shortcodes.php:359
+#: includes/views/admin-shortcodes.php:362
 msgid "city → lat · lon · IANA tz"
 msgstr "πόλη → lat · lon · IANA tz"
 
-#: includes/views/admin-shortcodes.php:366
+#: includes/views/admin-shortcodes.php:369
 msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
 msgstr "Γράψτε το όνομα μιας πόλης, για παράδειγμα Kyiv, Berlin ή São Paulo"
 
-#: includes/views/admin-shortcodes.php:370
+#: includes/views/admin-shortcodes.php:373
 msgid "Search"
 msgstr "Αναζήτηση"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:377
+#: includes/views/admin-shortcodes.php:380
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -2587,46 +2669,46 @@ msgstr ""
 "Επιλέξτε την αντίστοιχη πόλη για να αντιγράψετε τις τιμές στο shortcode. "
 "Αναφορά: %s."
 
-#: includes/views/admin-shortcodes.php:378
+#: includes/views/admin-shortcodes.php:381
 msgid "IANA timezone list"
 msgstr "Λίστα ζωνών IANA"
 
-#: includes/views/admin-shortcodes.php:387
+#: includes/views/admin-shortcodes.php:390
 msgid "Filter shortcodes"
 msgstr "Φίλτρο συντομογραφιών"
 
 #. translators: %d is the number of shortcodes
-#: includes/views/admin-shortcodes.php:391
+#: includes/views/admin-shortcodes.php:394
 #, php-format
 msgid "Filter %d shortcodes: name, tag or what it does"
 msgstr "Φιλτράρισμα %d συντομογραφιών: όνομα, ετικέτα ή λειτουργία"
 
-#: includes/views/admin-shortcodes.php:423
+#: includes/views/admin-shortcodes.php:426
 msgid "Parameter"
 msgstr "Παράμετρος"
 
-#: includes/views/admin-shortcodes.php:424
+#: includes/views/admin-shortcodes.php:427
 msgid "Type"
 msgstr "Τύπος"
 
-#: includes/views/admin-shortcodes.php:425
+#: includes/views/admin-shortcodes.php:428
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: includes/views/admin-shortcodes.php:426
+#: includes/views/admin-shortcodes.php:429
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: includes/views/admin-shortcodes.php:439
+#: includes/views/admin-shortcodes.php:442
 msgid "required"
 msgstr "απαιτούμενο"
 
-#: includes/views/admin-shortcodes.php:441
+#: includes/views/admin-shortcodes.php:444
 msgid "optional"
 msgstr "προαιρετικό"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:464
+#: includes/views/admin-shortcodes.php:467
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Επίσης διαθέσιμο ως μπλοκ Gutenberg \"%s\"."
@@ -2791,14 +2873,14 @@ msgstr "Ώρα (HH:MM)"
 #: assets/js/astroway-blocks-editor.js:70
 #: assets/js/astroway-blocks-editor.js:96
 #: assets/js/astroway-blocks-editor.js:105
-#: assets/js/astroway-blocks-editor.js:305
+#: assets/js/astroway-blocks-editor.js:311
 msgid "Latitude (-90 to 90)"
 msgstr "Γεωγραφικό πλάτος (-90 έως 90)"
 
 #: assets/js/astroway-blocks-editor.js:71
 #: assets/js/astroway-blocks-editor.js:97
 #: assets/js/astroway-blocks-editor.js:106
-#: assets/js/astroway-blocks-editor.js:306
+#: assets/js/astroway-blocks-editor.js:312
 msgid "Longitude (-180 to 180)"
 msgstr "Γεωγραφικό μήκος (-180 έως 180)"
 
@@ -2843,202 +2925,214 @@ msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
 msgstr "Ζώνη ώρας (Ευρώπη/Κίεβο ή +03:00)"
 
 #: assets/js/astroway-blocks-editor.js:104
-#: assets/js/astroway-blocks-editor.js:167
-#: assets/js/astroway-blocks-editor.js:200
-#: assets/js/astroway-blocks-editor.js:230
-#: assets/js/astroway-blocks-editor.js:304
+#: assets/js/astroway-blocks-editor.js:173
+#: assets/js/astroway-blocks-editor.js:206
+#: assets/js/astroway-blocks-editor.js:236
+#: assets/js/astroway-blocks-editor.js:310
 msgid "Date (leave blank for today)"
 msgstr "Ημερομηνία (αφήστε κενό για σήμερα)"
 
-#: assets/js/astroway-blocks-editor.js:114
+#: assets/js/astroway-blocks-editor.js:117
+msgid "Person A: name (for the table heading)"
+msgstr "Άτομο Α: όνομα (για την επικεφαλίδα του πίνακα)"
+
+#: assets/js/astroway-blocks-editor.js:118
 msgid "Person A: date (YYYY-MM-DD)"
 msgstr "Πρόσωπο Α: ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)"
 
-#: assets/js/astroway-blocks-editor.js:115
-msgid "Person A: time (HH:MM)"
-msgstr "Πρόσωπο Α: ώρα (ΩΩ:ΛΛ)"
+#: assets/js/astroway-blocks-editor.js:119
+msgid "Person A: time (HH:MM, blank if unknown)"
+msgstr "Άτομο Α: ώρα (HH:MM, κενό αν άγνωστη)"
 
-#: assets/js/astroway-blocks-editor.js:116
+#: assets/js/astroway-blocks-editor.js:120
 msgid "Person A: latitude"
 msgstr "Πρόσωπο Α: γεωγραφικό πλάτος"
 
-#: assets/js/astroway-blocks-editor.js:117
+#: assets/js/astroway-blocks-editor.js:121
 msgid "Person A: longitude"
 msgstr "Πρόσωπο Α: γεωγραφικό μήκος"
 
-#: assets/js/astroway-blocks-editor.js:118
+#: assets/js/astroway-blocks-editor.js:122
 msgid "Person A: timezone"
 msgstr "Πρόσωπο Α: ζώνη ώρας"
 
-#: assets/js/astroway-blocks-editor.js:119
+#: assets/js/astroway-blocks-editor.js:123
+msgid "Person B: name (for the table heading)"
+msgstr "Άτομο Β: όνομα (για την επικεφαλίδα του πίνακα)"
+
+#: assets/js/astroway-blocks-editor.js:124
 msgid "Person B: date (YYYY-MM-DD)"
 msgstr "Πρόσωπο Β: ημερομηνία (ΕΕΕΕ-ΜΜ-ΗΗ)"
 
-#: assets/js/astroway-blocks-editor.js:120
-msgid "Person B: time (HH:MM)"
-msgstr "Πρόσωπο Β: ώρα (ΩΩ:ΛΛ)"
+#: assets/js/astroway-blocks-editor.js:125
+msgid "Person B: time (HH:MM, blank if unknown)"
+msgstr "Άτομο Β: ώρα (HH:MM, κενό αν άγνωστη)"
 
-#: assets/js/astroway-blocks-editor.js:121
+#: assets/js/astroway-blocks-editor.js:126
 msgid "Person B: latitude"
 msgstr "Πρόσωπο Β: γεωγραφικό πλάτος"
 
-#: assets/js/astroway-blocks-editor.js:122
+#: assets/js/astroway-blocks-editor.js:127
 msgid "Person B: longitude"
 msgstr "Πρόσωπο Β: γεωγραφικό μήκος"
 
-#: assets/js/astroway-blocks-editor.js:123
+#: assets/js/astroway-blocks-editor.js:128
 msgid "Person B: timezone"
 msgstr "Πρόσωπο Β: ζώνη ώρας"
 
-#: assets/js/astroway-blocks-editor.js:141
+#: assets/js/astroway-blocks-editor.js:129
+msgid "How many aspects to show (6 by default)"
+msgstr "Πόσες συνδέσεις να εμφανίζονται (6 κατά προεπιλογή)"
+
+#: assets/js/astroway-blocks-editor.js:147
 msgid "UTC offset in hours (blank for the site default)"
 msgstr ""
 "Διαφορά ώρας από το UTC σε ώρες (αφήστε κενό για την προεπιλεγμένη ρύθμιση "
 "της τοποθεσίας)"
 
-#: assets/js/astroway-blocks-editor.js:145
-#: assets/js/astroway-blocks-editor.js:149
-#: assets/js/astroway-blocks-editor.js:153
-#: assets/js/astroway-blocks-editor.js:157
-#: assets/js/astroway-blocks-editor.js:161
-#: assets/js/astroway-blocks-editor.js:235
+#: assets/js/astroway-blocks-editor.js:151
+#: assets/js/astroway-blocks-editor.js:155
+#: assets/js/astroway-blocks-editor.js:159
+#: assets/js/astroway-blocks-editor.js:163
+#: assets/js/astroway-blocks-editor.js:167
+#: assets/js/astroway-blocks-editor.js:241
 msgid "Birth data"
 msgstr "Δεδομένα γέννησης"
 
-#: assets/js/astroway-blocks-editor.js:165
+#: assets/js/astroway-blocks-editor.js:171
 msgid "Transit date"
 msgstr "Ημερομηνία διαμετακόμισης"
 
-#: assets/js/astroway-blocks-editor.js:173
+#: assets/js/astroway-blocks-editor.js:179
 msgid "Panchang"
 msgstr "Αποθήκευση αλλαγών"
 
-#: assets/js/astroway-blocks-editor.js:179
+#: assets/js/astroway-blocks-editor.js:185
 msgid "Full name"
 msgstr "Πλήρες όνομα"
 
-#: assets/js/astroway-blocks-editor.js:180
+#: assets/js/astroway-blocks-editor.js:186
 msgid "Date of birth (YYYY-MM-DD)"
 msgstr "Ημερομηνία (YYYY-MM-DD)"
 
-#: assets/js/astroway-blocks-editor.js:187
+#: assets/js/astroway-blocks-editor.js:193
 msgid "Two subjects"
 msgstr "Δύο θέματα"
 
-#: assets/js/astroway-blocks-editor.js:193
-#: assets/js/astroway-blocks-editor.js:214
-#: assets/js/astroway-blocks-editor.js:222
-#: assets/js/astroway-blocks-editor.js:241
-#: assets/js/astroway-blocks-editor.js:279
+#: assets/js/astroway-blocks-editor.js:199
+#: assets/js/astroway-blocks-editor.js:220
+#: assets/js/astroway-blocks-editor.js:228
+#: assets/js/astroway-blocks-editor.js:247
+#: assets/js/astroway-blocks-editor.js:285
 msgid "Zodiac sign"
 msgstr "Ζώδιο"
 
-#: assets/js/astroway-blocks-editor.js:205
+#: assets/js/astroway-blocks-editor.js:211
 msgid "Daily Tarot"
 msgstr "Καθημερινή ταρώ"
 
-#: assets/js/astroway-blocks-editor.js:207
+#: assets/js/astroway-blocks-editor.js:213
 msgid "Deck"
 msgstr "Κατάστρωμα"
 
-#: assets/js/astroway-blocks-editor.js:212
+#: assets/js/astroway-blocks-editor.js:218
 msgid "Weekly horoscope"
 msgstr "Εβδομαδιαίο ωροσκόπιο"
 
-#: assets/js/astroway-blocks-editor.js:215
+#: assets/js/astroway-blocks-editor.js:221
 msgid "Any date inside the week (blank for this week)"
 msgstr "Οποιαδήποτε ημερομηνία της εβδομάδας (κενό για αυτή την εβδομάδα)"
 
-#: assets/js/astroway-blocks-editor.js:220
+#: assets/js/astroway-blocks-editor.js:226
 msgid "Monthly horoscope"
 msgstr "Μηνιαίο ωροσκόπιο"
 
-#: assets/js/astroway-blocks-editor.js:223
-#: assets/js/astroway-blocks-editor.js:242
+#: assets/js/astroway-blocks-editor.js:229
+#: assets/js/astroway-blocks-editor.js:248
 msgid "Any date inside the month (blank for this month)"
 msgstr "Οποιαδήποτε ημερομηνία του μήνα (κενό για τον τρέχοντα μήνα)"
 
-#: assets/js/astroway-blocks-editor.js:239
+#: assets/js/astroway-blocks-editor.js:245
 msgid "Monthly forecast"
 msgstr "Μηνιαία πρόβλεψη"
 
-#: assets/js/astroway-blocks-editor.js:248
+#: assets/js/astroway-blocks-editor.js:254
 msgid "Moon transit timeline"
 msgstr "χρονοδιάγραμμα διαδρομής σελήνης"
 
-#: assets/js/astroway-blocks-editor.js:250
+#: assets/js/astroway-blocks-editor.js:256
 msgid "Day the seven start from (blank for today)"
 msgstr "Ημέρα από την οποία ξεκινά η έβδομη (κενό για σήμερα)"
 
-#: assets/js/astroway-blocks-editor.js:256
+#: assets/js/astroway-blocks-editor.js:262
 msgid "Retrograde status"
 msgstr "Κατάσταση ανάδρομης κίνησης"
 
-#: assets/js/astroway-blocks-editor.js:269
+#: assets/js/astroway-blocks-editor.js:275
 msgid "Day to start from (blank for today)"
 msgstr "Ημέρα έναρξης (κενό για σήμερα)"
 
-#: assets/js/astroway-blocks-editor.js:270
+#: assets/js/astroway-blocks-editor.js:276
 msgid "Time to start from (HH:MM, blank for midnight)"
 msgstr "Ώρα έναρξης (ΩΩ:ΛΛ, κενό για τα μεσάνυχτα)"
 
-#: assets/js/astroway-blocks-editor.js:272
+#: assets/js/astroway-blocks-editor.js:278
 msgid "Days to look ahead (1 to 30, default 7)"
 msgstr "Ημέρες που θα ληφθούν υπόψη (1 έως 30, προεπιλογή 7)"
 
-#: assets/js/astroway-blocks-editor.js:277
+#: assets/js/astroway-blocks-editor.js:283
 msgid "Yearly horoscope"
 msgstr "Ετήσιο ωροσκόπιο"
 
-#: assets/js/astroway-blocks-editor.js:280
+#: assets/js/astroway-blocks-editor.js:286
 msgid "Any date inside the year (blank for this year)"
 msgstr "Οποιαδήποτε ημερομηνία εντός του έτους (κενό για το τρέχον έτος)"
 
-#: assets/js/astroway-blocks-editor.js:285
+#: assets/js/astroway-blocks-editor.js:291
 msgid "Two signs"
 msgstr "Δύο πινακίδες"
 
-#: assets/js/astroway-blocks-editor.js:287
+#: assets/js/astroway-blocks-editor.js:293
 msgid "First sign"
 msgstr "Πρώτο σημάδι"
 
-#: assets/js/astroway-blocks-editor.js:288
+#: assets/js/astroway-blocks-editor.js:294
 msgid "Second sign"
 msgstr "Δεύτερο σημάδι"
 
-#: assets/js/astroway-blocks-editor.js:295
+#: assets/js/astroway-blocks-editor.js:301
 msgid "Birth date (YYYY-MM-DD)"
 msgstr "Ημερομηνία γέννησης (ΕΕΕΕ-ΜΜ-ΗΗ)"
 
-#: assets/js/astroway-blocks-editor.js:296
+#: assets/js/astroway-blocks-editor.js:302
 msgid "Birth time (HH:MM, optional)"
 msgstr "Ώρα γέννησης (ΩΩ:ΛΛ, προαιρετικά)"
 
-#: assets/js/astroway-blocks-editor.js:459
+#: assets/js/astroway-blocks-editor.js:465
 msgid "Section"
 msgstr "Ενότητα"
 
-#: assets/js/astroway-blocks-editor.js:462
+#: assets/js/astroway-blocks-editor.js:468
 msgid "Zodiac sign for blocks inside"
 msgstr "Ζώδιο για τα μπλοκ μέσα"
 
-#: assets/js/astroway-blocks-editor.js:469
+#: assets/js/astroway-blocks-editor.js:475
 msgid "Language for blocks inside"
 msgstr "Γλώσσα για τα μπλοκ μέσα"
 
-#: assets/js/astroway-blocks-editor.js:476
+#: assets/js/astroway-blocks-editor.js:482
 msgid "Layout on the page"
 msgstr "Διάταξη στη σελίδα"
 
-#: assets/js/astroway-blocks-editor.js:479
+#: assets/js/astroway-blocks-editor.js:485
 msgid "One after another"
 msgstr "Το ένα μετά το άλλο"
 
-#: assets/js/astroway-blocks-editor.js:480
+#: assets/js/astroway-blocks-editor.js:486
 msgid "Tabs"
 msgstr "Καρτέλες"
 
-#: assets/js/astroway-blocks-editor.js:482
+#: assets/js/astroway-blocks-editor.js:488
 msgid ""
 "Tabs need JavaScript. Without it the cards stay stacked, so nothing is lost."
 msgstr ""
@@ -3257,11 +3351,12 @@ msgstr "AstroWay: Χάρτης Γεννήσεων"
 
 #: blocks/synastry/block.json
 msgid ""
-"Synastry compatibility score and top inter-aspects for two birth charts, "
-"served by api.astroway.info as a responsive iframe."
+"Compatibility score and the cross-aspects behind it for two birth charts, "
+"rendered into the page by api.astroway.info. No key needed."
 msgstr ""
-"Ρόδα χάρτη γεννήσεων που παρέχεται από api.astroway.info ως iframe "
-"προσαρμοσμένο στις οθόνες."
+"Βαθμολογία συμβατότητας και οι διαπαντοχρονογραφίες πίσω από αυτή για δύο "
+"ωροσκόπια γεννήσεων, αποδίδονται στη σελίδα από το api.astroway.info. Δεν "
+"χρειάζεται κλειδί."
 
 #: blocks/transit-timeline/block.json
 msgid "AstroWay: Moon Transit Timeline"

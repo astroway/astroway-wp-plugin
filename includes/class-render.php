@@ -41,6 +41,7 @@ class Render {
 		'yearly_horoscope'     => [ 'astroway-horoscope-card', 'horoscope' ],
 		'zodiac_compatibility' => [ 'astroway-compat-card', 'zodiac-compatibility' ],
 		'chinese_zodiac'       => [ 'astroway-chinese-card', 'chinese-zodiac' ],
+		'synastry'             => [ 'astroway-synastry-card', 'synastry' ],
 	];
 
 	/**
@@ -141,6 +142,8 @@ class Render {
 				return self::placement_card( 'rising_sign', $data, $lang, $params );
 			case 'bodygraph':
 				return self::bodygraph_card( $data, $lang, $params );
+			case 'synastry':
+				return self::synastry_card( $data, $lang, $params );
 		}
 		return '';
 	}
@@ -1391,6 +1394,187 @@ class Render {
 		) . '</p>';
 
 		return self::shell( 'planetary_hours', $lang, $inner );
+	}
+
+	/**
+	 * Two birth charts read against each other: a score and the aspects behind it.
+	 *
+	 * Which aspects. The api sorts all of them by orb and says the first six are
+	 * the six its own embed draws. Checked against both on the same pair on
+	 * 2026-08-23, and they are not: the raw first six included Chiron opposite
+	 * Neptune and the Node conjunct Lilith, and the embed showed neither. It
+	 * filters to the ten classical bodies first, and filtering the same way here
+	 * reproduces its six exactly. So that is what the table holds, and the whole
+	 * matrix, points included, sits one click away.
+	 *
+	 * Names are the author's and never leave the server. The route takes a name
+	 * per chart and does nothing with it, so sending them would only split the
+	 * cache between two authors who wrote the same pair of birth moments.
+	 */
+	private static function synastry_card( array $data, string $lang, array $params ): string {
+		$aspects = isset( $data['aspects'] ) && is_array( $data['aspects'] ) ? $data['aspects'] : [];
+		$score   = isset( $data['score'] ) && is_numeric( $data['score'] ) ? (int) round( (float) $data['score'] ) : null;
+		if ( null === $score && empty( $aspects ) ) {
+			return '';
+		}
+
+		$first  = trim( (string) ( $params['name_a'] ?? '' ) );
+		$second = trim( (string) ( $params['name_b'] ?? '' ) );
+		$first  = '' === $first ? __( 'First chart', 'astroway' ) : $first;
+		$second = '' === $second ? __( 'Second chart', 'astroway' ) : $second;
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Compatibility', 'astroway' ) . '</h3>';
+		$inner .= '</header>';
+		$inner .= self::score_block( $score, (string) ( $data['label'] ?? '' ) );
+
+		// Phrased as a label with a figure rather than a sentence that agrees with
+		// it. The plugin ships twenty locales and has never carried a msgid_plural;
+		// the first one would go through a translation pipeline that has never
+		// produced a msgstr[2], which is a poor place to find out.
+		$total = isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects );
+		if ( $total > 0 ) {
+			$inner .= '<div class="astroway-card__body"><p>' . esc_html(
+				sprintf(
+					/* translators: %d = how many aspects the two charts make between them */
+					__( 'Aspects between the two charts: %d', 'astroway' ),
+					$total
+				)
+			) . '</p></div>';
+		}
+
+		$wanted = self::aspect_count( $params );
+		$close  = self::aspect_rows( self::classical_only( $aspects ), $wanted );
+		if ( ! empty( $close ) ) {
+			$inner .= '<h4 class="astroway-card__subtitle">' . esc_html__( 'Closest aspects', 'astroway' ) . '</h4>';
+			$inner .= self::aspect_grid( $first, $second, $close );
+		}
+
+		if ( count( $aspects ) > count( $close ) ) {
+			// Two wordings were wrong before this one. "Points included" collides
+			// with the word for a score in half the target languages, and there is
+			// a score printed directly above. "Show all %d aspects" then put the
+			// number next to the noun, which four Slavic locales must decline: for
+			// 45 the plural is aspektów, not aspekty. The count in brackets agrees
+			// with nothing, so it is right for every language and every number.
+			$inner .= '<details class="astroway-card__more"><summary>' . esc_html(
+				sprintf(
+					/* translators: %d = the full number of aspects between the two charts */
+					__( 'Show all aspects (%d)', 'astroway' ),
+					count( $aspects )
+				)
+			) . '</summary>' . self::aspect_grid( $first, $second, self::aspect_rows( $aspects, 0 ) ) . '</details>';
+		}
+
+		return self::shell( 'synastry', $lang, $inner );
+	}
+
+	/** The ten bodies the embed counts as planets, in the order the api sends them. */
+	private static function classical_only( array $aspects ): array {
+		$bodies = [ 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto' ];
+		return array_values(
+			array_filter(
+				$aspects,
+				static function ( $aspect ) use ( $bodies ) {
+					return is_array( $aspect )
+						&& in_array( (string) ( $aspect['planetA'] ?? '' ), $bodies, true )
+						&& in_array( (string) ( $aspect['planetB'] ?? '' ), $bodies, true );
+				}
+			)
+		);
+	}
+
+	/** Table rows out of aspect payloads. A count of zero means all of them. */
+	private static function aspect_rows( array $aspects, int $limit ): array {
+		$rows = [];
+		foreach ( $aspects as $aspect ) {
+			if ( ! is_array( $aspect ) ) {
+				continue;
+			}
+			$rows[] = [
+				'cells' => [
+					self::planet_label( (string) ( $aspect['planetA'] ?? '' ) ),
+					self::aspect_label( (string) ( $aspect['aspect'] ?? '' ) ),
+					self::planet_label( (string) ( $aspect['planetB'] ?? '' ) ),
+					sprintf( '%.1f°', (float) ( $aspect['orb'] ?? 0 ) ),
+					empty( $aspect['applying'] ) ? __( 'Separating', 'astroway' ) : __( 'Applying', 'astroway' ),
+				],
+			];
+			if ( $limit > 0 && count( $rows ) >= $limit ) {
+				break;
+			}
+		}
+		return $rows;
+	}
+
+	/**
+	 * The aspect table, headed by whose planet is in which column.
+	 *
+	 * Without the two names it is unreadable: "Moon conjunct Mercury" says
+	 * nothing about whose Moon, and in synastry that is the entire meaning.
+	 */
+	private static function aspect_grid( string $first, string $second, array $rows ): string {
+		return self::sky_table(
+			[
+				$first,
+				__( 'Aspect', 'astroway' ),
+				$second,
+				__( 'Orb', 'astroway' ),
+				__( 'Trend', 'astroway' ),
+			],
+			$rows
+		);
+	}
+
+	/**
+	 * The score, as a figure and as a bar.
+	 *
+	 * The bar carries aria-hidden: it is the number that was just written out in
+	 * words, drawn again, and a screen reader announcing it twice would be
+	 * repeating itself rather than adding anything.
+	 */
+	private static function score_block( ?int $score, string $label ): string {
+		if ( null === $score ) {
+			return '';
+		}
+		$score = max( 0, min( 100, $score ) );
+		$named = self::compat_label( $label );
+
+		$html  = '<p class="astroway-card__score">';
+		$html .= '<strong class="astroway-card__score-value">' . esc_html( (string) $score ) . '<span>%</span></strong>';
+		if ( '' !== $named ) {
+			$html .= '<span class="astroway-card__score-label">' . esc_html( $named ) . '</span>';
+		}
+		$html .= '</p>';
+
+		return $html . sprintf(
+			'<div class="astroway-card__meter" aria-hidden="true"><span style="inline-size:%d%%"></span></div>',
+			$score
+		);
+	}
+
+	/**
+	 * The word the api puts on a score.
+	 *
+	 * The vocabulary is not in the spec. Thirteen live pairs spread from 37 to 92
+	 * returned three words and no fourth, so those three are translated and
+	 * anything else is printed as it arrived: an English word in a German card
+	 * is poor, an empty space where the verdict should be is worse.
+	 */
+	private static function compat_label( string $raw ): string {
+		$labels = [
+			'harmonious' => __( 'Harmonious', 'astroway' ),
+			'balanced'   => __( 'Balanced', 'astroway' ),
+			'mixed'      => __( 'Mixed', 'astroway' ),
+		];
+		$key    = strtolower( trim( $raw ) );
+		return $labels[ $key ] ?? ucfirst( $key );
+	}
+
+	/** How many rows the author asked for, between one and twenty. Six by default. */
+	private static function aspect_count( array $params ): int {
+		$raw = (int) ( $params['aspects'] ?? 0 );
+		return $raw > 0 ? min( 20, $raw ) : 6;
 	}
 
 	/**

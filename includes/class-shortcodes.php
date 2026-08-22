@@ -730,24 +730,36 @@ class Shortcodes {
 	}
 
 	/**
-	 * Synastry compatibility — two subjects, flat _a/_b params in one GET URL.
-	 * api needs both dates or it returns an error card.
+	 * Two charts read against each other: a score and the aspects behind it.
+	 *
+	 * The last of the widgets to get a server render, and the only one that was
+	 * held up by the api rather than by us: reading two people's charts without
+	 * a key had no route until /v1/public/synastry landed on 2026-08-23.
+	 *
+	 * `name_a` and `name_b` are new and label the two columns of the table. They
+	 * are the one thing on this card that stays on this server: the route takes
+	 * a name and ignores it, so sending them would buy nothing and split the
+	 * cache. Both dates are still required; a missing birth time is declared
+	 * unknown rather than guessed at noon.
 	 */
 	public static function render_synastry( $atts ): string {
 		$atts   = shortcode_atts(
 			[
-				'date_a' => '',
-				'time_a' => '',
-				'lat_a'  => '',
-				'lon_a'  => '',
-				'tz_a'   => '',
-				'date_b' => '',
-				'time_b' => '',
-				'lat_b'  => '',
-				'lon_b'  => '',
-				'tz_b'   => '',
-				'theme'  => '',
-				'lang'   => '',
+				'date_a'  => '',
+				'time_a'  => '',
+				'lat_a'   => '',
+				'lon_a'   => '',
+				'tz_a'    => '',
+				'name_a'  => '',
+				'date_b'  => '',
+				'time_b'  => '',
+				'lat_b'   => '',
+				'lon_b'   => '',
+				'tz_b'    => '',
+				'name_b'  => '',
+				'aspects' => '',
+				'theme'   => '',
+				'lang'    => '',
 			],
 			(array) $atts,
 			'astroway_synastry'
@@ -756,21 +768,24 @@ class Shortcodes {
 		$time_a = self::sanitize_time( $atts['time_a'] );
 		$date_b = self::sanitize_date( $atts['date_b'] );
 		$time_b = self::sanitize_time( $atts['time_b'] );
-		return PublicClient::embed_iframe(
+		return Render::widget(
 			'synastry',
 			[
-				'date_a' => $date_a,
-				'time_a' => $time_a,
-				'lat_a'  => self::sanitize_coord( $atts['lat_a'], -90, 90 ),
-				'lng_a'  => self::sanitize_coord( $atts['lon_a'], -180, 180 ),
-				'tz_a'   => self::tz_offset_hours( $atts['tz_a'], $date_a, $time_a ),
-				'date_b' => $date_b,
-				'time_b' => $time_b,
-				'lat_b'  => self::sanitize_coord( $atts['lat_b'], -90, 90 ),
-				'lng_b'  => self::sanitize_coord( $atts['lon_b'], -180, 180 ),
-				'tz_b'   => self::tz_offset_hours( $atts['tz_b'], $date_b, $time_b ),
-				'theme'  => self::sanitize_theme( $atts['theme'] ),
-				'lang'   => self::resolve_lang( $atts['lang'] ),
+				'date_a'  => $date_a,
+				'time_a'  => $time_a,
+				'lat_a'   => self::sanitize_coord( $atts['lat_a'], -90, 90 ),
+				'lng_a'   => self::sanitize_coord( $atts['lon_a'], -180, 180 ),
+				'tz_a'    => self::tz_offset_hours( $atts['tz_a'], $date_a, $time_a ),
+				'name_a'  => sanitize_text_field( $atts['name_a'] ),
+				'date_b'  => $date_b,
+				'time_b'  => $time_b,
+				'lat_b'   => self::sanitize_coord( $atts['lat_b'], -90, 90 ),
+				'lng_b'   => self::sanitize_coord( $atts['lon_b'], -180, 180 ),
+				'tz_b'    => self::tz_offset_hours( $atts['tz_b'], $date_b, $time_b ),
+				'name_b'  => sanitize_text_field( $atts['name_b'] ),
+				'aspects' => (int) $atts['aspects'],
+				'theme'   => self::sanitize_theme( $atts['theme'] ),
+				'lang'    => self::resolve_lang( $atts['lang'] ),
 			]
 		);
 	}

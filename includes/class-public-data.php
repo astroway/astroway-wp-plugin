@@ -72,11 +72,16 @@ class PublicData {
 			'params'    => [ 'sign', 'date' ],
 			'required'  => [ 'sign' ],
 		],
+		// No `lang`: the route does not read it. Confirmed by the api side on
+		// 2026-08-22 and by asking for en, de and uk on the same day, which
+		// returned the identical English card. Sending it anyway split the cache
+		// twenty-one ways and turned one call a day into up to twenty-one.
 		'tarot_daily'       => [
 			'path'      => '/public/tarot/daily',
 			'freshness' => 'day',
 			'params'    => [ 'date' ],
 			'required'  => [],
+			'lang'      => false,
 		],
 		'moon_phase'        => [
 			'path'      => '/public/moon-phase',
@@ -120,6 +125,20 @@ class PublicData {
 			// A rising sign is the horizon at a place and a minute; without
 			// coordinates it would be the horizon of the Atlantic at Greenwich.
 			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+		],
+		// Two charts at once, and the only route that costs three units of the
+		// hourly bucket rather than one, because it computes both charts and the
+		// matrix between them. Cached as `static` like the single chart: two
+		// birth moments do not stop aspecting each other.
+		'synastry'          => [
+			'path'      => '/public/synastry',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'charts' ],
+			// A date each. Time may be unknown on either side and coordinates
+			// are not read at all, see chart_of_pair().
+			'required'  => [ 'date_a', 'date_b' ],
 			'lang'      => false,
 		],
 		// Human Design carries no `localized` object, so its closed sets (type,
@@ -241,6 +260,10 @@ class PublicData {
 			return self::chart_payload( $params, $config['required'] );
 		}
 
+		if ( in_array( 'charts', $config['params'], true ) ) {
+			return self::chart_pair_payload( $params, $config['required'] );
+		}
+
 		foreach ( $config['params'] as $name ) {
 			$raw = isset( $params[ $name ] ) ? (string) $params[ $name ] : '';
 			switch ( $name ) {
@@ -313,6 +336,66 @@ class PublicData {
 			'longitude'      => (float) ( $params['lng'] ?? 0 ),
 			'timezoneOffset' => (float) ( $params['tz'] ?? 0 ),
 		];
+	}
+
+	/**
+	 * Body for POST /public/synastry: one chart per partner, flat `_a`/`_b`
+	 * attributes on the shortcode folded into the two objects the route wants.
+	 *
+	 * Null when either date is missing, because a synastry of one person is not
+	 * a reduced answer, it is a different question.
+	 */
+	private static function chart_pair_payload( array $params, array $required ): ?array {
+		foreach ( $required as $name ) {
+			if ( '' === self::sanitize_date( (string) ( $params[ $name ] ?? '' ) ) ) {
+				return null;
+			}
+		}
+
+		return [
+			'chart1' => self::chart_of_pair( $params, 'a' ),
+			'chart2' => self::chart_of_pair( $params, 'b' ),
+		];
+	}
+
+	/**
+	 * One partner's half of the pair.
+	 *
+	 * An unknown birth time is declared rather than guessed. The route supports
+	 * it, and cross-aspects survive it because they run planet to planet: what
+	 * an unknown time costs is the houses and the angles, and this answer
+	 * carries neither. Defaulting to noon instead would move the Moon by up to
+	 * six degrees and quietly invent an aspect.
+	 *
+	 * Coordinates default to zero and that is safe here, unlike the natal card
+	 * where the same default answers for the Gulf of Guinea. Checked against the
+	 * live route on 2026-08-23: the same two birth moments at Kyiv and Paris and
+	 * at 0,0 return byte-identical aspects, the same score and the same count,
+	 * because the answer holds no houses and planetary longitudes are geocentric.
+	 * Whatever the author did give is still sent, so the day the route grows a
+	 * house overlay it will get the places it needs.
+	 */
+	private static function chart_of_pair( array $params, string $side ): array {
+		$date = self::sanitize_date( (string) ( $params[ 'date_' . $side ] ?? '' ) );
+		$time = trim( (string) ( $params[ 'time_' . $side ] ?? '' ) );
+		if ( preg_match( '/^\d{2}:\d{2}$/', $time ) ) {
+			$time .= ':00';
+		}
+
+		$chart = [
+			'date'           => $date,
+			'latitude'       => (float) ( $params[ 'lat_' . $side ] ?? 0 ),
+			'longitude'      => (float) ( $params[ 'lng_' . $side ] ?? 0 ),
+			'timezoneOffset' => (float) ( $params[ 'tz_' . $side ] ?? 0 ),
+		];
+
+		if ( preg_match( '/^\d{2}:\d{2}:\d{2}$/', $time ) ) {
+			$chart['time'] = $time;
+		} else {
+			$chart['timeUnknown'] = true;
+		}
+
+		return $chart;
 	}
 
 	/** YYYY-MM-DD that is also a real calendar date, or '' when it is neither. */
