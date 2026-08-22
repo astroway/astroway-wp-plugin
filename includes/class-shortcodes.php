@@ -823,9 +823,25 @@ class Shortcodes {
 		return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ? $value : '';
 	}
 
+	/**
+	 * A time of day, normalised to two digits for the hour.
+	 *
+	 * A single-digit hour used to be dropped, and that was survivable while an
+	 * unusable time only meant the iframe. Since 1.5.0 the synastry card reads a
+	 * missing time as "unknown" and answers for a different chart, so `9:15`
+	 * would quietly return a different score from `09:15` with nothing on the
+	 * page to say why. Accepting it is also simply what an author means.
+	 */
 	public static function sanitize_time( $value ): string {
 		$value = trim( (string) $value );
-		return preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', $value ) ? $value : '';
+		if ( ! preg_match( '/^(\d{1,2}):(\d{2})(:(\d{2}))?$/', $value, $m ) ) {
+			return '';
+		}
+		$hour = (int) $m[1];
+		if ( $hour > 23 || (int) $m[2] > 59 || ( isset( $m[4] ) && (int) $m[4] > 59 ) ) {
+			return '';
+		}
+		return sprintf( '%02d:%s', $hour, $m[2] ) . ( isset( $m[3] ) ? $m[3] : '' );
 	}
 
 	public static function sanitize_coord( $value, float $min, float $max ): string {

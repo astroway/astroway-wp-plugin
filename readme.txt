@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -155,12 +155,8 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
-= 1.5.0 =
-* New: the synastry widget is rendered by your server into the page instead of loading in a frame, and still needs no key. The score, the word the API puts on it, and the aspects behind it as a table headed by the two names.
-* New: `name_a` and `name_b` head the two columns. "Moon conjunct Mercury" says nothing until you know whose Moon. The names stay on your server; the API is not told them.
-* New: `aspects="12"` shows more rows, up to twenty. Six by default, which is what the frame showed. The whole grid, points included, is behind a click either way.
-* Better: a birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect. The score and the cross-aspects survive it.
-* Efficiency: the answer is cached for a month, the way a birth chart is. One synastry counts as three requests of the hourly allowance, because it is two charts and the grid between them.
+= 1.5.1 =
+* Fix: a birth time written with a single-digit hour, like 9:15, was silently ignored. On the synastry widget that meant the time was treated as unknown and the score was calculated for a different chart. Times like 24:00 and 09:60 were also being accepted and sent on as real.
 
 = 1.2.0 =
 * New: a shortcode and a Gutenberg block for nearly every endpoint the API has, 682 of them across 49 families, generated from the API specification instead of written by hand. Vedic, numerology, tarot, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary and more. They need an API key; the ten hand-built widgets still need nothing.
