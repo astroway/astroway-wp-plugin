@@ -34,6 +34,10 @@ class Render {
 		'moon_sign'         => [ 'astroway-sign-card', 'moon-sign' ],
 		'rising_sign'       => [ 'astroway-sign-card', 'rising-sign' ],
 		'bodygraph'         => [ 'astroway-bodygraph-card', 'bodygraph' ],
+		'retrograde'        => [ 'astroway-retrograde-card', 'retrograde' ],
+		'retrogrades'       => [ 'astroway-retrograde-card', 'retrogrades' ],
+		'moon_voc'          => [ 'astroway-voc-card', 'moon-voc' ],
+		'planetary_hours'   => [ 'astroway-hours-card', 'planetary-hours' ],
 	];
 
 	/**
@@ -614,7 +618,7 @@ class Render {
 	 * that carry no `localized` object: cached ones, and anything the api has not
 	 * translated yet.
 	 */
-	private static function phase_label( string $raw ): string {
+	public static function phase_label( string $raw ): string {
 		$labels = [
 			'new moon'        => __( 'New Moon', 'astroway' ),
 			'waxing crescent' => __( 'Waxing Crescent', 'astroway' ),
@@ -628,7 +632,7 @@ class Render {
 		return $labels[ strtolower( trim( $raw ) ) ] ?? $raw;
 	}
 
-	private static function planet_label( string $raw ): string {
+	public static function planet_label( string $raw ): string {
 		$labels = [
 			'Sun'         => __( 'Sun', 'astroway' ),
 			'Moon'        => __( 'Moon', 'astroway' ),
@@ -949,6 +953,559 @@ class Render {
 			? number_format_i18n( $value, $decimals )
 			: number_format( $value, $decimals );
 	}
+	/*
+	 * ---------------------------------------------------------------------
+	 * The sky right now: retrogrades, void of course Moon, planetary hours.
+	 * ---------------------------------------------------------------------
+	 */
+
+	/**
+	 * A card describing the current sky, or a note saying why there is none.
+	 *
+	 * The mirror of widget() for the keyed half of the api, differing in two
+	 * ways. None of these endpoints has an embed route, so there is no iframe to
+	 * degrade to and a failure means a note for the administrator and nothing
+	 * for the visitor. And the reading is worked out here rather than stored:
+	 * the payload says when Mercury stations, and whether that has happened yet
+	 * is a question about the current second, not about the cached answer.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param string   $tag    Shortcode tag, used in the administrator notes.
+	 * @param string   $widget retrograde, retrogrades, moon_voc or planetary_hours.
+	 * @param array    $params Attributes, already sanitised by the caller.
+	 * @param int|null $now    The moment to answer about. Overridable so a test
+	 *                         can ask about a station it knows the date of.
+	 */
+	public static function sky( string $tag, string $widget, array $params, ?int $now = null ): string {
+		if ( ! ( new ApiClient() )->has_key() ) {
+			return self::admin_note(
+				sprintf(
+					/* translators: %s = shortcode tag */
+					__( '%s needs an API key: paste one in AstroWay, API Key. Only administrators see this note.', 'astroway' ),
+					'[' . $tag . ']'
+				)
+			);
+		}
+
+		// Refusing is not the same as failing, and telling an editor "try again"
+		// would send them looking for a fault that is not there.
+		if ( 'planetary_hours' === $widget && ! Sky::has_coordinates( $params ) ) {
+			return self::admin_note(
+				sprintf(
+					/* translators: 1: shortcode tag, 2: comma-separated attribute names */
+					__( '%1$s is missing required attributes: %2$s. Only administrators see this note.', 'astroway' ),
+					'[' . $tag . ']',
+					'latitude, longitude'
+				)
+			);
+		}
+
+		$now    = null === $now ? time() : $now;
+		$lang   = Plugin::resolve_lang( $params['lang'] ?? '' );
+		$markup = '';
+
+		switch ( $widget ) {
+			case 'retrograde':
+			case 'retrogrades':
+				$data = Sky::retrogrades( $now );
+				if ( is_array( $data ) ) {
+					$markup = 'retrograde' === $widget
+						? self::retrograde_card( $data, $lang, $params, $now )
+						: self::retrograde_board( $data, $lang, $now );
+				}
+				break;
+			case 'moon_voc':
+				$data   = Sky::moon_voc( $params, $now );
+				$markup = is_array( $data ) ? self::moon_voc_card( $data, $lang, $params, $now ) : '';
+				break;
+			case 'planetary_hours':
+				$data   = Sky::planetary_hours( $params, $now );
+				$markup = is_array( $data ) ? self::planetary_hours_card( $data, $lang, $params, $now ) : '';
+				break;
+		}
+
+		if ( '' === $markup ) {
+			return self::admin_note(
+				sprintf(
+					/* translators: %s = shortcode tag */
+					__( '%s could not be loaded just now. Only administrators see this note.', 'astroway' ),
+					'[' . $tag . ']'
+				)
+			);
+		}
+		return $markup;
+	}
+
+	/**
+	 * Whether one planet is retrograde, and when that changes.
+	 *
+	 * The question the internet asks about Mercury, and the one this plugin has
+	 * had no answer for. The same card answers it for the other seven that
+	 * station, which is why the tag carries a planet attribute and the famous
+	 * one has an alias of its own.
+	 */
+	private static function retrograde_card( array $data, string $lang, array $params, int $now ): string {
+		$slug = strtolower( trim( (string) ( $params['planet'] ?? '' ) ) );
+		if ( ! isset( Sky::PLANETS[ $slug ] ) ) {
+			$slug = 'mercury';
+		}
+		$name   = self::planet_label( ucfirst( $slug ) );
+		$offset = Sky::offset( '', $now );
+
+		list( $current, $next ) = Sky::state_at( Sky::periods_of( $data, Sky::PLANETS[ $slug ] ), $now );
+
+		if ( null === $current && null === $next ) {
+			return '';
+		}
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html(
+			sprintf(
+				/* translators: %s = planet name */
+				__( 'Is %s retrograde?', 'astroway' ),
+				$name
+			)
+		) . '</h3></header>';
+
+		if ( null !== $current ) {
+			$inner .= '<p class="astroway-card__lead astroway-card__lead--yes">' . esc_html(
+				sprintf(
+					/* translators: %s = planet name */
+					__( 'Yes, %s is retrograde right now.', 'astroway' ),
+					$name
+				)
+			) . '</p>';
+			$rows = [
+				__( 'Retrograde since', 'astroway' ) => self::sky_date( $current['start'], $offset ),
+				__( 'Direct again on', 'astroway' )  => self::sky_date( $current['end'], $offset ),
+				__( 'Days left', 'astroway' )        => self::days_between( $now, $current['end'] ),
+			];
+		} else {
+			$inner .= '<p class="astroway-card__lead astroway-card__lead--no">' . esc_html(
+				sprintf(
+					/* translators: %s = planet name */
+					__( 'No, %s is direct right now.', 'astroway' ),
+					$name
+				)
+			) . '</p>';
+			$rows = [
+				__( 'Next retrograde', 'astroway' ) => self::sky_date( $next['start'], $offset ),
+				__( 'Ends', 'astroway' )            => self::sky_date( $next['end'], $offset ),
+				__( 'Days until', 'astroway' )      => self::days_between( $now, $next['start'] ),
+			];
+		}
+
+		return self::shell( 'retrograde', $lang, $inner . self::detail_list( $rows ) );
+	}
+
+	/** Every planet that stations, and what each is doing today. */
+	private static function retrograde_board( array $data, string $lang, int $now ): string {
+		$offset    = Sky::offset( '', $now );
+		$rows      = [];
+		$backwards = [];
+
+		foreach ( Sky::PLANETS as $slug => $planet_id ) {
+			$name                   = self::planet_label( ucfirst( $slug ) );
+			list( $current, $next ) = Sky::state_at( Sky::periods_of( $data, $planet_id ), $now );
+
+			if ( null !== $current ) {
+				$backwards[] = $name;
+				$status      = __( 'Retrograde', 'astroway' );
+				$dates       = self::sky_range( $current['start'], $current['end'], $offset );
+			} elseif ( null !== $next ) {
+				$status = __( 'Direct', 'astroway' );
+				$dates  = self::sky_range( $next['start'], $next['end'], $offset );
+			} else {
+				$status = __( 'Direct', 'astroway' );
+				$dates  = '';
+			}
+
+			$rows[] = [
+				'cells'   => [ $name, $status, $dates ],
+				'current' => null !== $current,
+			];
+		}
+
+		$lead = empty( $backwards )
+			? __( 'Nothing is retrograde right now.', 'astroway' )
+			: sprintf(
+				/* translators: %s = comma-separated list of planet names */
+				__( 'Retrograde right now: %s.', 'astroway' ),
+				implode( ', ', $backwards )
+			);
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Retrograde planets', 'astroway' ) . '</h3></header>';
+		$inner .= '<p class="astroway-card__lead">' . esc_html( $lead ) . '</p>';
+		$inner .= self::sky_table(
+			[
+				__( 'Planet', 'astroway' ),
+				__( 'Status', 'astroway' ),
+				// Named for what the dates are, not for where they sit: on a
+				// direct planet the row shows the retrograde still to come, and
+				// a column headed "Period" would read as the direct one.
+				__( 'Retrograde period', 'astroway' ),
+			],
+			$rows
+		);
+
+		return self::shell( 'retrogrades', $lang, $inner );
+	}
+
+	/**
+	 * Whether the Moon is void of course, and the windows around now.
+	 *
+	 * The api returns the windows and no opinion about which one contains this
+	 * second, which is the right division of labour: the answer is cached and
+	 * the second is not.
+	 */
+	private static function moon_voc_card( array $data, string $lang, array $params, int $now ): string {
+		$offset  = Sky::offset( $params['timezone_offset'] ?? '', $now );
+		$windows = [];
+
+		foreach ( ( isset( $data['periods'] ) && is_array( $data['periods'] ) ? $data['periods'] : [] ) as $period ) {
+			if ( ! is_array( $period ) ) {
+				continue;
+			}
+			$start = strtotime( (string) ( $period['startDate'] ?? '' ) );
+			$end   = strtotime( (string) ( $period['endDate'] ?? '' ) );
+			if ( false === $start || false === $end ) {
+				continue;
+			}
+			$windows[] = [
+				'start'  => $start,
+				'end'    => $end,
+				'hours'  => (float) ( $period['durationHours'] ?? 0 ),
+				'aspect' => is_array( $period['lastAspect'] ?? null ) ? $period['lastAspect'] : [],
+				'sign'   => isset( $period['nextSignIndex'] ) ? (int) $period['nextSignIndex'] : -1,
+			];
+		}
+
+		if ( empty( $windows ) ) {
+			return '';
+		}
+
+		$open = null;
+		$next = null;
+		foreach ( $windows as $window ) {
+			if ( $window['start'] <= $now && $now <= $window['end'] ) {
+				$open = $window;
+			} elseif ( $window['start'] > $now && null === $next ) {
+				$next = $window;
+			}
+		}
+
+		if ( null !== $open ) {
+			$lead = sprintf(
+				/* translators: %s = a time of day */
+				__( 'The Moon is void of course until %s.', 'astroway' ),
+				self::sky_time( $open['end'], $offset )
+			);
+		} elseif ( null !== $next ) {
+			$lead = sprintf(
+				/* translators: %s = a date and time */
+				__( 'The Moon is not void of course. The next window opens %s.', 'astroway' ),
+				self::sky_moment( $next['start'], $offset )
+			);
+		} else {
+			$lead = __( 'The Moon is not void of course.', 'astroway' );
+		}
+
+		$rows = [];
+		foreach ( $windows as $window ) {
+			$rows[] = [
+				'cells'   => [
+					self::sky_moment( $window['start'], $offset ),
+					self::sky_moment( $window['end'], $offset ),
+					self::duration_label( $window['hours'] ),
+					self::last_aspect_label( $window['aspect'] ),
+					$window['sign'] >= 0 && $window['sign'] < 12
+						? self::sign_label( self::sign_of( $window['sign'] * 30.0 ) )
+						: '',
+				],
+				'current' => null !== $open && $window['start'] === $open['start'],
+			];
+		}
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Void of course Moon', 'astroway' ) . '</h3></header>';
+		$inner .= '<p class="astroway-card__lead">' . esc_html( $lead ) . '</p>';
+		$inner .= self::sky_table(
+			[
+				__( 'Starts', 'astroway' ),
+				__( 'Ends', 'astroway' ),
+				__( 'Length', 'astroway' ),
+				__( 'Last aspect', 'astroway' ),
+				__( 'Next sign', 'astroway' ),
+			],
+			$rows
+		);
+
+		return self::shell( 'moon_voc', $lang, $inner );
+	}
+
+	/**
+	 * The twenty-four planetary hours of a day, with the one we are in marked.
+	 *
+	 * The current hour is worked out here rather than read off the payload. The
+	 * api will mark it, but only when the caller sends `atLocalHour`, and doing
+	 * that would put the clock inside the cache key: one entry per hour per
+	 * place instead of one per day, and the entry stale the moment the hour
+	 * turned. The table keeps for the day, so the marking cannot.
+	 *
+	 * Order matters below. A polar day answers with an empty `hours`, so the
+	 * state has to be read before the emptiness is judged, or the card silently
+	 * renders nothing on exactly the dates it has something to explain.
+	 */
+	private static function planetary_hours_card( array $data, string $lang, array $params, int $now ): string {
+		$date  = (string) ( $data['date'] ?? '' );
+		$polar = (string) ( $data['sunTimes']['polarState'] ?? 'normal' );
+		if ( '' !== $polar && 'normal' !== $polar ) {
+			return self::polar_card( $date, $polar, $lang );
+		}
+
+		$hours = isset( $data['hours'] ) && is_array( $data['hours'] ) ? $data['hours'] : [];
+		if ( empty( $hours ) ) {
+			return '';
+		}
+
+		$offset   = Sky::offset( $params['timezone_offset'] ?? '', $now );
+		$elapsed  = Sky::hour_of_day( $date, $offset, $now );
+		$midnight = strtotime( $date . ' 00:00:00 UTC' );
+		$midnight = false === $midnight ? $now : $midnight - (int) round( $offset * HOUR_IN_SECONDS );
+
+		$rows    = [];
+		$running = null;
+		foreach ( $hours as $hour ) {
+			if ( ! is_array( $hour ) ) {
+				continue;
+			}
+			$from    = (float) ( $hour['startHour'] ?? 0 );
+			$to      = (float) ( $hour['endHour'] ?? 0 );
+			$planet  = self::planet_label( (string) ( $hour['planetName'] ?? '' ) );
+			$is_now  = null !== $elapsed && $elapsed >= $from && $elapsed < $to;
+			$running = $is_now ? [
+				'planet' => $planet,
+				'to'     => $to,
+			] : $running;
+
+			$rows[] = [
+				'cells'   => [
+					(string) ( $hour['number'] ?? '' ),
+					$planet,
+					self::sky_time( $midnight + (int) round( $from * HOUR_IN_SECONDS ), $offset ),
+					self::sky_time( $midnight + (int) round( $to * HOUR_IN_SECONDS ), $offset ),
+					empty( $hour['isDaytime'] ) ? __( 'Night', 'astroway' ) : __( 'Day', 'astroway' ),
+				],
+				'current' => $is_now,
+			];
+		}
+
+		if ( empty( $rows ) ) {
+			return '';
+		}
+
+		$ruler = self::planet_label( (string) ( $data['dayRulerPlanetName'] ?? '' ) );
+		$lead  = '' === $ruler
+			? ''
+			: sprintf(
+				/* translators: %s = planet name */
+				__( 'The day is ruled by %s.', 'astroway' ),
+				$ruler
+			);
+
+		if ( null !== $running ) {
+			$lead .= ( '' === $lead ? '' : ' ' ) . sprintf(
+				/* translators: 1: planet name, 2: a time of day */
+				__( 'The hour of %1$s runs until %2$s.', 'astroway' ),
+				$running['planet'],
+				self::sky_time( $midnight + (int) round( $running['to'] * HOUR_IN_SECONDS ), $offset )
+			);
+		}
+
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Planetary hours', 'astroway' ) . '</h3>';
+		$inner .= self::date_line( $date );
+		$inner .= '</header>';
+		if ( '' !== $lead ) {
+			$inner .= '<p class="astroway-card__lead">' . esc_html( $lead ) . '</p>';
+		}
+
+		$inner .= self::sky_table(
+			[
+				__( 'Hour', 'astroway' ),
+				__( 'Ruler', 'astroway' ),
+				__( 'From', 'astroway' ),
+				__( 'To', 'astroway' ),
+				__( 'Part of day', 'astroway' ),
+			],
+			$rows
+		);
+
+		return self::shell( 'planetary_hours', $lang, $inner );
+	}
+
+	/**
+	 * What to say where the Sun neither rises nor sets.
+	 *
+	 * A planetary hour is a twelfth of the daylight, so above the Arctic circle
+	 * in June there are no daylight hours to divide and in December there are no
+	 * night ones. The api says so in `polarState` and sends an empty `hours`.
+	 *
+	 * Its own `warning` is a serviceable English sentence, and it is deliberately
+	 * not printed: it names the Sun's altitude in degrees, which answers a
+	 * question the reader did not ask, and it is the one string on this card that
+	 * no locale could translate.
+	 */
+	private static function polar_card( string $date, string $state, string $lang ): string {
+		$inner  = '<header class="astroway-card__header">';
+		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Planetary hours', 'astroway' ) . '</h3>';
+		$inner .= self::date_line( $date );
+		$inner .= '</header>';
+		$inner .= '<p class="astroway-card__lead astroway-card__lead--no">' . esc_html(
+			'polar-day' === $state
+				? __( 'The Sun does not set at this latitude on this date, so there are no planetary hours to divide.', 'astroway' )
+				: __( 'The Sun does not rise at this latitude on this date, so there are no planetary hours to divide.', 'astroway' )
+		) . '</p>';
+
+		return self::shell( 'planetary_hours', $lang, $inner );
+	}
+
+	/**
+	 * A table for the sky cards.
+	 *
+	 * Rows carry a `current` flag rather than a class name so the decision about
+	 * what "now" looks like stays in the stylesheet. Wrapped in a scroller for
+	 * the same reason the generic renderer wraps its tables: five columns on a
+	 * 360px screen is wider than the screen, and a card that pushes the page
+	 * sideways is worse than one that scrolls inside itself.
+	 *
+	 * @param array $head Column labels.
+	 * @param array $rows Each `[ 'cells' => list<string>, 'current' => bool ]`.
+	 */
+	private static function sky_table( array $head, array $rows ): string {
+		if ( empty( $rows ) ) {
+			return '';
+		}
+
+		$html = '<div class="astroway-card__scroll"><table class="astroway-card__placements"><thead><tr>';
+		foreach ( $head as $label ) {
+			$html .= '<th scope="col">' . esc_html( (string) $label ) . '</th>';
+		}
+		$html .= '</tr></thead><tbody>';
+
+		foreach ( $rows as $row ) {
+			$current = ! empty( $row['current'] );
+			$html   .= $current
+				? '<tr class="astroway-card__row--current" aria-current="true">'
+				: '<tr>';
+			foreach ( (array) ( $row['cells'] ?? [] ) as $cell ) {
+				$html .= '<td>' . esc_html( (string) $cell ) . '</td>';
+			}
+			$html .= '</tr>';
+		}
+
+		return $html . '</tbody></table></div>';
+	}
+
+	/**
+	 * The offset the reader is being answered in, as a zone wp_date understands.
+	 *
+	 * Not the site's zone: an author may pin `timezone_offset` on the shortcode,
+	 * and the hours were then computed for that horizon, so printing them in the
+	 * site's own zone would move every one of them.
+	 */
+	private static function sky_zone( float $offset ): \DateTimeZone {
+		$minutes = (int) round( $offset * 60 );
+		$sign    = $minutes < 0 ? '-' : '+';
+		$minutes = abs( $minutes );
+		return new \DateTimeZone( sprintf( '%s%02d:%02d', $sign, intdiv( $minutes, 60 ), $minutes % 60 ) );
+	}
+
+	/** A date in the reader's own offset, in the format and language of the site. */
+	private static function sky_date( int $utc, float $offset ): string {
+		return (string) wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $utc, self::sky_zone( $offset ) );
+	}
+
+	/** A time of day in the reader's own offset. */
+	private static function sky_time( int $utc, float $offset ): string {
+		return (string) wp_date( (string) get_option( 'time_format', 'H:i' ), $utc, self::sky_zone( $offset ) );
+	}
+
+	/** Date and time together, for a moment that may not be today. */
+	private static function sky_moment( int $utc, float $offset ): string {
+		return self::sky_date( $utc, $offset ) . ', ' . self::sky_time( $utc, $offset );
+	}
+
+	/** Two dates as one range, collapsed when both fall on the same day. */
+	private static function sky_range( int $from, int $to, float $offset ): string {
+		$start = self::sky_date( $from, $offset );
+		$end   = self::sky_date( $to, $offset );
+		return $start === $end ? $start : $start . ' – ' . $end;
+	}
+
+	/** Whole days between two moments, rounded up, never negative. */
+	private static function days_between( int $from, int $to ): string {
+		return self::number( (float) max( 0, (int) ceil( ( $to - $from ) / DAY_IN_SECONDS ) ), 0 );
+	}
+
+	/**
+	 * A length in hours as hours and minutes.
+	 *
+	 * Void of course windows run from half a minute to two days, so printing
+	 * "0.48 hours" for one and "20.64 hours" for the next is a worse answer than
+	 * either deserves.
+	 */
+	private static function duration_label( float $hours ): string {
+		$minutes = (int) round( $hours * 60 );
+		if ( $minutes < 60 ) {
+			return sprintf(
+				/* translators: %d = number of minutes */
+				__( '%d min', 'astroway' ),
+				$minutes
+			);
+		}
+		return sprintf(
+			/* translators: 1: whole hours, 2: minutes within the hour */
+			__( '%1$d h %2$02d min', 'astroway' ),
+			intdiv( $minutes, 60 ),
+			$minutes % 60
+		);
+	}
+
+	/**
+	 * "trine Mercury": the Moon's last aspect before the window opened.
+	 *
+	 * The aspect first, the planet second, because the subject is the Moon and
+	 * it is not named: written the other way round the cell reads "Mercury
+	 * trine" and leaves the reader looking for what Mercury is trine to.
+	 */
+	private static function last_aspect_label( array $aspect ): string {
+		$planet = self::planet_by_id( isset( $aspect['planetId'] ) ? (int) $aspect['planetId'] : -1 );
+		$name   = self::aspect_label( (string) ( $aspect['aspectName'] ?? '' ) );
+		if ( '' === $planet ) {
+			return $name;
+		}
+		// Both halves are already translated and the join is a space. Given to
+		// gettext it would be a msgid of two placeholders and nothing else,
+		// which a machine translator has no way to improve and every way to
+		// damage.
+		return $name . ' ' . $planet;
+	}
+
+	/**
+	 * Planet name for the numeric identifier the api uses.
+	 *
+	 * Only the void of course payload needs this: everywhere else the api sends
+	 * the name beside the number, and this is the one place it sends the number
+	 * alone.
+	 */
+	private static function planet_by_id( int $id ): string {
+		$names = [ 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto' ];
+		return isset( $names[ $id ] ) ? self::planet_label( $names[ $id ] ) : '';
+	}
+
 	/**
 	 * Render an answer whose shape we were not told in advance.
 	 *

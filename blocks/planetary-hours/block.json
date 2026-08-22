@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/planetary-hours",
+	"title": "AstroWay: Planetary Hours",
+	"category": "widgets",
+	"description": "The twenty-four planetary hours of a day at one place, with the current one marked.",
+	"textdomain": "astroway",
+	"icon": "clock",
+	"supports": {
+		"html": false,
+		"align": [ "center", "wide" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"latitude": { "type": "string", "default": "" },
+		"longitude": { "type": "string", "default": "" },
+		"timezone_offset": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

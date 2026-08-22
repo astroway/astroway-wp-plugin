@@ -249,6 +249,62 @@ $astroway_cards = [
 			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
 		],
 	],
+	[
+		'tag'         => 'astroway_mercury_retrograde',
+		'title'       => __( 'Mercury Retrograde', 'astroway' ),
+		'description' => __( 'Whether Mercury is retrograde right now, since when, and until when. Use [astroway_retrograde planet="venus"] for any of the other seven that station.', 'astroway' ),
+		'example'     => '[astroway_mercury_retrograde]',
+		'block'       => 'astroway/retrograde',
+		'params'      => [
+			[ 'lang', 'string', false, __( 'Language code. Defaults to the site locale.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_retrograde',
+		'title'       => __( 'Retrograde Status', 'astroway' ),
+		'description' => __( 'The same card for any planet that stations.', 'astroway' ),
+		'example'     => '[astroway_retrograde planet="saturn"]',
+		'block'       => 'astroway/retrograde',
+		'params'      => [
+			[ 'planet', 'string', false, __( 'mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_retrogrades',
+		'title'       => __( 'Retrograde Planets', 'astroway' ),
+		'description' => __( 'All eight planets that station, each with its status today and the dates of the retrograde it is in or heading for.', 'astroway' ),
+		'example'     => '[astroway_retrogrades]',
+		'block'       => 'astroway/retrogrades',
+		'params'      => [
+			[ 'lang', 'string', false, __( 'Language code. Defaults to the site locale.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_moon_voc',
+		'title'       => __( 'Void of Course Moon', 'astroway' ),
+		'description' => __( 'Whether the Moon is void of course now, and the windows around it with their last aspect and next sign.', 'astroway' ),
+		'example'     => '[astroway_moon_voc]',
+		'block'       => 'astroway/moon-voc',
+		'params'      => [
+			[ 'date', 'string', false, __( 'Day to start from in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
+			[ 'time', 'string', false, __( 'Time to start from in HH:MM. Defaults to midnight.', 'astroway' ) ],
+			[ 'timezone_offset', 'float', false, __( 'Hours from UTC. Defaults to the site timezone.', 'astroway' ) ],
+			[ 'range_days', 'int', false, __( 'How far ahead to look, 1 to 30. Defaults to 7.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_planetary_hours',
+		'title'       => __( 'Planetary Hours', 'astroway' ),
+		'description' => __( 'The twenty-four planetary hours of a day at one place, with the hour the reader is in marked.', 'astroway' ),
+		'example'     => '[astroway_planetary_hours latitude="50.45" longitude="30.52"]',
+		'block'       => 'astroway/planetary-hours',
+		'params'      => [
+			[ 'latitude', 'float', true, __( 'WGS-84 latitude. The hours are the day divided by this horizon.', 'astroway' ) ],
+			[ 'longitude', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
+			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
+			[ 'timezone_offset', 'float', false, __( 'Hours from UTC. Defaults to the site timezone.', 'astroway' ) ],
+		],
+	],
 ];
 ?>
 <div class="wrap aw-app">

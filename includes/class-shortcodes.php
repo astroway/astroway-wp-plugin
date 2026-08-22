@@ -29,6 +29,15 @@ class Shortcodes {
 		add_shortcode( 'astroway_monthly_forecast', self::gated( 'monthly_forecast', [ __CLASS__, 'render_monthly_forecast' ] ) );
 		add_shortcode( 'astroway_transit_timeline', self::gated( 'transit_timeline', [ __CLASS__, 'render_transit_timeline' ] ) );
 
+		// The sky right now. Two of these names were answered by the generated
+		// registry since 1.2.0; they keep their attributes exactly and gain a
+		// card, and the registry steps aside for any name already taken.
+		add_shortcode( 'astroway_retrograde', self::gated( 'retrograde', [ __CLASS__, 'render_retrograde' ] ) );
+		add_shortcode( 'astroway_mercury_retrograde', self::gated( 'retrograde', [ __CLASS__, 'render_mercury_retrograde' ] ) );
+		add_shortcode( 'astroway_retrogrades', self::gated( 'retrogrades', [ __CLASS__, 'render_retrogrades' ] ) );
+		add_shortcode( 'astroway_moon_voc', self::gated( 'moon_voc', [ __CLASS__, 'render_moon_voc' ] ) );
+		add_shortcode( 'astroway_planetary_hours', self::gated( 'planetary_hours', [ __CLASS__, 'render_planetary_hours' ] ) );
+
 		// Priority 10 lands after wpautop and shortcode_unautop, which core adds
 		// at 10 before this file ever runs, and before do_shortcode at 11. The
 		// shortcodes are still text at that point, which is the only moment the
@@ -141,6 +150,83 @@ class Shortcodes {
 			}
 			return call_user_func( $callback, $atts );
 		};
+	}
+
+	/**
+	 * Whether one planet is retrograde. Mercury unless told otherwise, because
+	 * that is the one people ask about.
+	 */
+	public static function render_retrograde( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'planet' => 'mercury',
+				'lang'   => '',
+			],
+			(array) $atts,
+			'astroway_retrograde'
+		);
+		return Render::sky( 'astroway_retrograde', 'retrograde', $atts );
+	}
+
+	/**
+	 * The same card with the planet fixed.
+	 *
+	 * It exists because "mercury retrograde" is the phrase, and a tag that says
+	 * mercury while rendering Venus would be a lie in the page source.
+	 */
+	public static function render_mercury_retrograde( $atts ): string {
+		$atts = shortcode_atts( [ 'lang' => '' ], (array) $atts, 'astroway_mercury_retrograde' );
+		return Render::sky(
+			'astroway_mercury_retrograde',
+			'retrograde',
+			[
+				'planet' => 'mercury',
+				'lang'   => $atts['lang'],
+			]
+		);
+	}
+
+	/** All eight planets that station, and what each is doing today. */
+	public static function render_retrogrades( $atts ): string {
+		$atts = shortcode_atts( [ 'lang' => '' ], (array) $atts, 'astroway_retrogrades' );
+		return Render::sky( 'astroway_retrogrades', 'retrogrades', $atts );
+	}
+
+	/**
+	 * Void of course Moon windows.
+	 *
+	 * Attribute names are the ones the generated shortcode shipped with in
+	 * 1.2.0, so a page written against that release keeps working.
+	 */
+	public static function render_moon_voc( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date'            => '',
+				'time'            => '',
+				'timezone_offset' => '',
+				'range_days'      => '',
+				'lang'            => '',
+			],
+			(array) $atts,
+			'astroway_moon_voc'
+		);
+		return Render::sky( 'astroway_moon_voc', 'moon_voc', $atts );
+	}
+
+	/** The twenty-four planetary hours at a place. Same attributes as 1.2.0. */
+	public static function render_planetary_hours( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date'            => '',
+				'latitude'        => '',
+				'longitude'       => '',
+				'timezone_offset' => '',
+				'lang'            => '',
+			],
+			(array) $atts,
+			'astroway_planetary_hours'
+		);
+		return Render::sky( 'astroway_planetary_hours', 'planetary_hours', $atts );
 	}
 
 	public static function render_natal( $atts ): string {

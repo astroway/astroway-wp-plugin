@@ -58,19 +58,9 @@ return [
 			'description' => 'Calculate all aspects the Moon makes within a date range (applying and separating), useful for electional and horary work.',
 			'documented' => true,
 		],
-		'astroway_moon_voc' => [
-			'title' => 'Moon Void-of-Course',
-			'description' => 'Find Moon void-of-course periods within a date range. The Moon is VOC from its last aspect until it enters the next sign.',
-			'documented' => true,
-		],
 		'astroway_planetary_cycles' => [
 			'title' => 'Planetary Cycles',
 			'description' => 'Find all conjunctions between two planets within a date range, defining the start of a new synodic cycle.',
-			'documented' => true,
-		],
-		'astroway_planetary_hours' => [
-			'title' => 'Planetary Hours',
-			'description' => 'Calculate Chaldean planetary hours for a given date and location, starting from sunrise.',
 			'documented' => true,
 		],
 		'astroway_planetary_phases' => [

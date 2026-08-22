@@ -316,7 +316,12 @@
 	min-height: 36px;
 }
 
-.aw-app .aw-btn-gold {
+/* Each variant repeats the element selectors the base rule uses. Without them
+   `.aw-app button.aw-btn` outranks `.aw-app .aw-btn-gold` on background and
+   border, and every <button> carrying a variant renders as bare text. */
+.aw-app .aw-btn-gold,
+.aw-app button.aw-btn-gold,
+.aw-app input.aw-btn-gold {
 	background: var(--aw-gold);
 	color: #1a1612;
 	border-color: var(--aw-gold-deep);
@@ -324,7 +329,11 @@
 }
 
 .aw-app .aw-btn-gold:hover,
-.aw-app .aw-btn-gold:focus {
+.aw-app .aw-btn-gold:focus,
+.aw-app button.aw-btn-gold:hover,
+.aw-app button.aw-btn-gold:focus,
+.aw-app input.aw-btn-gold:hover,
+.aw-app input.aw-btn-gold:focus {
 	background: var(--aw-gold-glow);
 	color: #1a1612;
 	border-color: var(--aw-gold-deep);
@@ -333,6 +342,7 @@
 }
 
 .aw-app .aw-btn-primary,
+.aw-app button.aw-btn-primary,
 .aw-app input[type="submit"].aw-btn-primary {
 	background: var(--aw-ink);
 	color: var(--aw-paper);
@@ -340,13 +350,16 @@
 }
 
 .aw-app .aw-btn-primary:hover,
+.aw-app button.aw-btn-primary:hover,
 .aw-app input[type="submit"].aw-btn-primary:hover {
 	background: #2c2820;
 	color: #fff;
 	border-color: #2c2820;
 }
 
-.aw-app .aw-btn-ghost {
+.aw-app .aw-btn-ghost,
+.aw-app button.aw-btn-ghost,
+.aw-app input.aw-btn-ghost {
 	border-color: var(--aw-ink-mute);
 	color: var(--aw-ink);
 	background: #fff;
@@ -354,7 +367,11 @@
 }
 
 .aw-app .aw-btn-ghost:hover,
-.aw-app .aw-btn-ghost:focus {
+.aw-app .aw-btn-ghost:focus,
+.aw-app button.aw-btn-ghost:hover,
+.aw-app button.aw-btn-ghost:focus,
+.aw-app input.aw-btn-ghost:hover,
+.aw-app input.aw-btn-ghost:focus {
 	border-color: var(--aw-gold-deep);
 	color: var(--aw-gold-deep);
 	background: #fff;
@@ -363,7 +380,9 @@
 }
 
 /* Dark hero override — both CTAs must read on cosmic background */
-.aw-app .aw-hero .aw-btn-ghost {
+.aw-app .aw-hero .aw-btn-ghost,
+.aw-app .aw-hero button.aw-btn-ghost,
+.aw-app .aw-hero input.aw-btn-ghost {
 	border-color: rgba(255, 255, 255, 0.35);
 	background: rgba(255, 255, 255, 0.06);
 	color: var(--aw-cosmos-text);

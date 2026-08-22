@@ -111,6 +111,44 @@ class ApiClient {
 		return $this->normalize( $response );
 	}
 
+	/**
+	 * A call whose answer is remembered, and whose failure is remembered too.
+	 *
+	 * The second half is the half worth having. Without it an exhausted quota
+	 * turns every page render into another request, which is exactly what keeps
+	 * the quota exhausted instead of letting it recover.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param string $method GET or POST.
+	 * @param string $path   Path under /v1, with a leading slash.
+	 * @param array  $params Query for GET, JSON body for POST.
+	 * @param int    $ttl    Seconds the answer stays true.
+	 * @param string $prefix Cache key prefix, so two callers asking the same
+	 *                       question with different lifetimes do not share one entry.
+	 * @return array|null The payload under `data`, or null when the call failed.
+	 */
+	public function cached_call( string $method, string $path, array $params, int $ttl, string $prefix = 'api_' ): ?array {
+		$key    = $prefix . md5( $path . '|' . strtoupper( $method ) . '|' . (string) wp_json_encode( $params ) );
+		$cached = Cache::get( $key );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+		if ( false !== Cache::get( $key . '_neg' ) ) {
+			return null;
+		}
+
+		$response = $this->call( $method, $path, $params );
+		$payload  = $response['data']['data'] ?? null;
+		if ( 200 !== (int) ( $response['status'] ?? 0 ) || ! is_array( $payload ) ) {
+			Cache::set( $key . '_neg', 'fail', PublicData::NEGATIVE_TTL );
+			return null;
+		}
+
+		Cache::set( $key, $payload, $ttl );
+		return $payload;
+	}
+
 	private function get( string $path, array $params = [] ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {

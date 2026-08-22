@@ -83,6 +83,9 @@ class Plugin {
 		if ( class_exists( __NAMESPACE__ . '\\Updater' ) ) {
 			Updater::boot();
 		}
+		if ( class_exists( __NAMESPACE__ . '\\Digest' ) ) {
+			Digest::register();
+		}
 
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
 		add_action( 'enqueue_block_assets', [ __CLASS__, 'enqueue_editor_canvas' ] );
@@ -359,5 +362,10 @@ class Plugin {
 
 	public static function deactivate(): void {
 		// Per-user dismiss flag intentionally kept across deactivation cycles.
+		// The digest tick is not: a deactivated plugin that keeps a cron entry
+		// leaves WordPress firing an action nothing listens to.
+		if ( class_exists( __NAMESPACE__ . '\\Digest' ) ) {
+			wp_clear_scheduled_hook( Digest::EVENT );
+		}
 	}
 }

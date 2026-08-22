@@ -137,6 +137,12 @@ class Admin {
 			$existing['widget_disclaimer'] = empty( $input['widget_disclaimer'] ) ? 0 : 1;
 		}
 
+		if ( isset( $input['digest_submitted'] ) && class_exists( __NAMESPACE__ . '\\Digest' ) ) {
+			$existing['digest_enabled']    = empty( $input['digest_enabled'] ) ? 0 : 1;
+			$existing['digest_hour']       = max( 0, min( 23, (int) ( $input['digest_hour'] ?? Digest::DEFAULT_HOUR ) ) );
+			$existing['digest_recipients'] = Digest::sanitize_recipients( (string) ( $input['digest_recipients'] ?? '' ) );
+		}
+
 		return $existing;
 	}
 

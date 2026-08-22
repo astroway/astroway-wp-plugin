@@ -351,3 +351,35 @@
 	cursor: pointer;
 	color: var(--astroway-card-muted);
 }
+
+/* Sky cards: what the sky is doing right now. Each is a short answer over a
+   table, and in two of them exactly one row is the answer. */
+
+.astroway-card--retrograde,
+.astroway-card--retrogrades,
+.astroway-card--moon-voc,
+.astroway-card--planetary-hours {
+	--astroway-card-max-width: 42em;
+}
+
+/* The row the reader is inside: the current planetary hour, the void of course
+   window that is open. Marked with weight and a wash rather than a colour, so
+   it reads the same in a dark theme and to anyone who cannot see the wash. */
+.astroway-card__row--current > td {
+	font-weight: 600;
+	background: rgba(128, 128, 128, 0.14);
+}
+
+/* "Yes, Mercury is retrograde" is the reason the widget is on the page; the
+   other answer is the quiet one. */
+.astroway-card__lead--no {
+	color: var(--astroway-card-muted);
+	font-weight: 500;
+}
+
+/* Twenty-four rows of two words each: the hour table can afford to be tighter
+   than the placements it borrows its styling from. */
+.astroway-card--planetary-hours .astroway-card__placements td {
+	padding-top: 0.22em;
+	padding-bottom: 0.22em;
+}

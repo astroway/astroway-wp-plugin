@@ -125,6 +125,21 @@
 		LANG_FIELD
 	];
 
+	// The eight bodies that station. The Sun and the Moon never do, so they are
+	// absent rather than present and always answering "no".
+	var PLANET_OPTIONS = [
+		{ label: __( 'Mercury', 'astroway' ), value: 'mercury' },
+		{ label: __( 'Venus', 'astroway' ),   value: 'venus' },
+		{ label: __( 'Mars', 'astroway' ),    value: 'mars' },
+		{ label: __( 'Jupiter', 'astroway' ), value: 'jupiter' },
+		{ label: __( 'Saturn', 'astroway' ),  value: 'saturn' },
+		{ label: __( 'Uranus', 'astroway' ),  value: 'uranus' },
+		{ label: __( 'Neptune', 'astroway' ), value: 'neptune' },
+		{ label: __( 'Pluto', 'astroway' ),   value: 'pluto' }
+	];
+
+	var OFFSET_FIELD = { name: 'timezone_offset', type: 'text', label: __( 'UTC offset in hours (blank for the site default)', 'astroway' ) };
+
 	var BLOCKS = {
 		'astroway/natal-chart': {
 			panel:  __( 'Birth data', 'astroway' ),
@@ -234,6 +249,37 @@
 			fields: [
 				{ name: 'date', type: 'text', label: __( 'Day the seven start from (blank for today)', 'astroway' ) },
 				THEME_FIELD,
+				LANG_FIELD
+			]
+		},
+		'astroway/retrograde': {
+			panel:  __( 'Retrograde status', 'astroway' ),
+			fields: [
+				{ name: 'planet', type: 'select', label: __( 'Planet', 'astroway' ), options: PLANET_OPTIONS },
+				LANG_FIELD
+			]
+		},
+		'astroway/retrogrades': {
+			panel:  __( 'Retrograde planets', 'astroway' ),
+			fields: [ LANG_FIELD ]
+		},
+		'astroway/moon-voc': {
+			panel:  __( 'Void of course Moon', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Day to start from (blank for today)', 'astroway' ) },
+				{ name: 'time', type: 'text', label: __( 'Time to start from (HH:MM, blank for midnight)', 'astroway' ) },
+				OFFSET_FIELD,
+				{ name: 'range_days', type: 'text', label: __( 'Days to look ahead (1 to 30, default 7)', 'astroway' ) },
+				LANG_FIELD
+			]
+		},
+		'astroway/planetary-hours': {
+			panel:  __( 'Planetary hours', 'astroway' ),
+			fields: [
+				{ name: 'date', type: 'text', label: __( 'Date (leave blank for today)', 'astroway' ) },
+				{ name: 'latitude', type: 'text', label: __( 'Latitude (-90 to 90)', 'astroway' ) },
+				{ name: 'longitude', type: 'text', label: __( 'Longitude (-180 to 180)', 'astroway' ) },
+				OFFSET_FIELD,
 				LANG_FIELD
 			]
 		}

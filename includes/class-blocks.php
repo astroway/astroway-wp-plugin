@@ -29,6 +29,10 @@ class Blocks {
 			'transit-timeline'  => [ Shortcodes::class, 'render_transit_timeline' ],
 			'moon-sign'         => [ Shortcodes::class, 'render_moon_sign' ],
 			'rising-sign'       => [ Shortcodes::class, 'render_rising_sign' ],
+			'retrograde'        => [ Shortcodes::class, 'render_retrograde' ],
+			'retrogrades'       => [ Shortcodes::class, 'render_retrogrades' ],
+			'moon-voc'          => [ Shortcodes::class, 'render_moon_voc' ],
+			'planetary-hours'   => [ Shortcodes::class, 'render_planetary_hours' ],
 			'astrology-section' => [ __CLASS__, 'render_section' ],
 		];
 	}
@@ -79,6 +83,10 @@ class Blocks {
 			'transit-timeline'  => 'transit_timeline',
 			'moon-sign'         => 'moon_sign',
 			'rising-sign'       => 'rising_sign',
+			'retrograde'        => 'retrograde',
+			'retrogrades'       => 'retrogrades',
+			'moon-voc'          => 'moon_voc',
+			'planetary-hours'   => 'planetary_hours',
 		];
 		return $map[ $slug ] ?? $slug;
 	}

@@ -29,6 +29,16 @@ if ( '' !== (string) ( $astroway_opts['api_key'] ?? '' ) ) {
 	$astroway_current_domain = (string) ( $astroway_me['data']['data']['domain'] ?? '' );
 }
 
+// The "send one now" button comes back here with what happened.
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read only, to pick which sentence to print after the redirect.
+$astroway_digest_result = isset( $_GET['astroway_digest'] ) ? sanitize_key( wp_unslash( $_GET['astroway_digest'] ) ) : '';
+$astroway_digest_notice = [
+	'sent'        => __( 'Sent. Check your inbox.', 'astroway' ),
+	'empty'       => __( 'Nothing to report today, so no mail would have gone out.', 'astroway' ),
+	'failed'      => __( 'WordPress could not send the mail. Check your site\'s mail setup.', 'astroway' ),
+	'unavailable' => __( 'Transit alerts are not available on this site.', 'astroway' ),
+][ $astroway_digest_result ] ?? '';
+
 $astroway_diag = [
 	[ __( 'Plugin', 'astroway' ), ASTROWAY_WP_PLUGIN_VERSION ],
 	[ __( 'WordPress', 'astroway' ), get_bloginfo( 'version' ) . ( is_multisite() ? ' (multisite)' : '' ) ],
@@ -50,6 +60,11 @@ $astroway_diag = [
 	<div class="aw-grid">
 
 	<main class="aw-main">
+
+		<?php if ( '' !== $astroway_digest_notice ) : ?>
+			<?php // The astroway- class matters: the admin stylesheet hides every notice inside .aw-app that does not carry one. ?>
+			<div class="notice notice-info astroway-digest-notice"><p><?php echo esc_html( $astroway_digest_notice ); ?></p></div>
+		<?php endif; ?>
 
 		<article class="aw-panel" data-num="01">
 			<header class="aw-panel-head">
@@ -267,7 +282,7 @@ $astroway_diag = [
 							<span class="aw-hint"><?php esc_html_e( 'Appends a short "informational, not professional advice" line to the widget footer. Off by default, enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info.', 'astroway' ); ?></span>
 						</span>
 					</label>
-					<?php submit_button( __( 'Save disclaimer setting', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+					<?php submit_button( __( 'Save disclaimer setting', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
 				</form>
 			</div>
 		</article>
@@ -297,8 +312,66 @@ $astroway_diag = [
 					<p class="aw-hint" style="margin-top:10px">
 						<?php esc_html_e( 'Widgets without a page-side template, and any widget whose data cannot be fetched, fall back to the iframe on their own.', 'astroway' ); ?>
 					</p>
-					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn', 'submit', false ); ?>
+					<?php submit_button( __( 'Save render mode', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
 				</form>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="08">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">08</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Daily transit alerts', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'email on the days the sky does something', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<?php if ( ! \AstroWay\WPPlugin\Digest::available() ) : ?>
+					<p class="aw-hint">
+						<?php
+						echo ( new \AstroWay\WPPlugin\ApiClient() )->has_key()
+							? esc_html__( 'Transit alerts are part of the Pro plan. Everything else on this page works on any plan.', 'astroway' )
+							: esc_html__( 'Transit alerts need an API key. Paste one on the Getting started page.', 'astroway' );
+						?>
+					</p>
+				<?php else : ?>
+					<form method="post" action="options.php">
+						<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+						<input type="hidden" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[digest_submitted]" value="1">
+						<label style="display:flex;gap:8px;align-items:flex-start;margin-bottom:12px">
+							<input type="checkbox" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[digest_enabled]" value="1" <?php checked( ! empty( $astroway_opts['digest_enabled'] ) ); ?>>
+							<span><strong><?php esc_html_e( 'Send a daily email when a planet stations or the Moon goes void of course', 'astroway' ); ?></strong><br>
+								<span class="aw-hint"><?php esc_html_e( 'Nothing is sent on the quiet days. The mail that does go out carries the moon phase and the current retrogrades as context.', 'astroway' ); ?></span>
+							</span>
+						</label>
+
+						<p style="margin:0 0 10px">
+							<label for="aw-digest-hour"><strong><?php esc_html_e( 'Hour to send, on your site clock', 'astroway' ); ?></strong></label><br>
+							<input type="number" min="0" max="23" step="1" id="aw-digest-hour"
+								name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[digest_hour]"
+								value="<?php echo esc_attr( (string) \AstroWay\WPPlugin\Digest::hour() ); ?>"
+								style="width:80px;padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px">
+							<span class="aw-hint"><?php esc_html_e( 'WordPress runs scheduled jobs when someone visits the site, so the mail can be late on a quiet blog.', 'astroway' ); ?></span>
+						</p>
+
+						<p style="margin:0 0 10px">
+							<label for="aw-digest-to"><strong><?php esc_html_e( 'Send to', 'astroway' ); ?></strong></label><br>
+							<input type="text" id="aw-digest-to"
+								name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[digest_recipients]"
+								value="<?php echo esc_attr( (string) ( $astroway_opts['digest_recipients'] ?? '' ) ); ?>"
+								placeholder="<?php echo esc_attr( (string) get_option( 'admin_email', '' ) ); ?>"
+								style="width:100%;max-width:420px;padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px">
+							<br><span class="aw-hint"><?php esc_html_e( 'Comma separated. Left empty, it goes to the site administrator.', 'astroway' ); ?></span>
+						</p>
+
+						<?php submit_button( __( 'Save alert settings', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
+					</form>
+
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" style="margin-top:12px">
+						<?php wp_nonce_field( 'astroway_digest_test' ); ?>
+						<input type="hidden" name="action" value="astroway_digest_test">
+						<button type="submit" class="aw-btn aw-btn-ghost"><?php esc_html_e( 'Send today\'s alert to me now', 'astroway' ); ?></button>
+						<span class="aw-hint"><?php esc_html_e( 'Goes to your own address, not to the list above.', 'astroway' ); ?></span>
+					</form>
+				<?php endif; ?>
 			</div>
 		</article>
 

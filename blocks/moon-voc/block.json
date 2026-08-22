@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/moon-voc",
+	"title": "AstroWay: Void of Course Moon",
+	"category": "widgets",
+	"description": "Whether the Moon is void of course, and the windows around now.",
+	"textdomain": "astroway",
+	"icon": "clock",
+	"supports": {
+		"html": false,
+		"align": [ "center", "wide" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": { "type": "string", "default": "" },
+		"time": { "type": "string", "default": "" },
+		"timezone_offset": { "type": "string", "default": "" },
+		"range_days": { "type": "string", "default": "" },
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

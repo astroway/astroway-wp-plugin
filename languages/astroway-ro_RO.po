@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T00:06:27+00:00\n"
-"PO-Revision-Date: 2026-08-22 03:16+0300\n"
+"POT-Creation-Date: 2026-08-22T12:56:45+00:00\n"
+"PO-Revision-Date: 2026-08-22 16:04+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Romanian <translations@astroway.info>\n"
 "Language: ro_RO\n"
@@ -55,7 +55,7 @@ msgstr "Noțiuni introductive"
 msgid "AstroWay Settings"
 msgstr "Setări AstroWay"
 
-#: includes/class-admin.php:55 includes/class-admin.php:155
+#: includes/class-admin.php:55 includes/class-admin.php:161
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -79,108 +79,108 @@ msgstr ""
 "Cheia API trebuie să înceapă cu \"aw_\" și să conțină doar litere, cifre și "
 "underscore-uri."
 
-#: includes/class-admin.php:160
+#: includes/class-admin.php:166
 msgid "Get API Key"
 msgstr "Obține Cheia API"
 
-#: includes/class-admin.php:198
+#: includes/class-admin.php:204
 msgid "Verifying…"
 msgstr "Verificare…"
 
-#: includes/class-admin.php:199
+#: includes/class-admin.php:205
 msgid "limited info"
 msgstr "informații limitate"
 
-#: includes/class-admin.php:200 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:206 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:201
+#: includes/class-admin.php:207
 msgid "Used"
 msgstr "Utilizat"
 
-#: includes/class-admin.php:202
+#: includes/class-admin.php:208
 msgid "Rate"
 msgstr "Rată"
 
-#: includes/class-admin.php:203
+#: includes/class-admin.php:209
 msgid "Bound to"
 msgstr "Legat de"
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:210
 msgid "Enter a valid API key first."
 msgstr "Introdu mai întâi o cheie API validă."
 
-#: includes/class-admin.php:205 includes/views/admin-settings.php:246
+#: includes/class-admin.php:211 includes/views/admin-settings.php:260
 msgid "Network error"
 msgstr "Eroare de rețea"
 
-#: includes/class-admin.php:206
+#: includes/class-admin.php:212
 msgid "Key verified."
 msgstr "Cheia a fost verificată."
 
-#: includes/class-admin.php:207 includes/class-admin.php:230
-#: includes/class-admin.php:249
+#: includes/class-admin.php:213 includes/class-admin.php:236
+#: includes/class-admin.php:255
 msgid "copied!"
 msgstr "copiat!"
 
-#: includes/class-admin.php:225
+#: includes/class-admin.php:231
 msgid "Pinging…"
 msgstr "Ping…"
 
-#: includes/class-admin.php:226
+#: includes/class-admin.php:232
 msgid "API is healthy"
 msgstr "API-ul este sănătos"
 
-#: includes/class-admin.php:227
+#: includes/class-admin.php:233
 msgid "API unreachable"
 msgstr "API-ul este inaccesibil"
 
-#: includes/class-admin.php:228
+#: includes/class-admin.php:234
 msgid "Purge all cached data?"
 msgstr "Vrei să ștergi toate datele cache?"
 
-#: includes/class-admin.php:229
+#: includes/class-admin.php:235
 msgid "Cache cleared:"
 msgstr "Cache șters:"
 
-#: includes/class-admin.php:250
+#: includes/class-admin.php:256
 msgid "Searching…"
 msgstr "Căutare…"
 
-#: includes/class-admin.php:251
+#: includes/class-admin.php:257
 msgid "No cities found."
 msgstr "Niciun oraș găsit."
 
-#: includes/class-admin.php:252
+#: includes/class-admin.php:258
 msgid "Search error. Try again."
 msgstr "Eroare la căutare. Încearcă din nou."
 
-#: includes/class-admin.php:253
+#: includes/class-admin.php:259
 msgid "Type at least 2 characters."
 msgstr "Scrie cel puțin 2 caractere."
 
-#: includes/class-admin.php:254
+#: includes/class-admin.php:260
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Alege un oraș pentru a completa lat / lon / tz"
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:256
+#: includes/class-admin.php:262
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d din %2$d"
 
-#: includes/class-admin.php:257
+#: includes/class-admin.php:263
 msgid "No shortcode matches."
 msgstr "Nu s-a găsit niciun shortcode corespunzător."
 
-#: includes/class-admin.php:266 includes/class-admin.php:282
-#: includes/class-admin.php:291
+#: includes/class-admin.php:272 includes/class-admin.php:288
+#: includes/class-admin.php:297
 msgid "Unauthorized."
 msgstr "Neautorizat."
 
-#: includes/class-admin.php:304
+#: includes/class-admin.php:310
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -190,7 +190,7 @@ msgstr ""
 "dreptul la 300 de solicitări pe oră, iar widgeturile care utilizează un "
 "cadru consumă câte 30 din cota fiecărui vizitator."
 
-#: includes/class-admin.php:312
+#: includes/class-admin.php:318
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -199,35 +199,79 @@ msgstr ""
 " cheie validă sau ștergeți conținutul câmpului pentru a activa modul anonim."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:315
+#: includes/class-admin.php:321
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Nu s-a putut verifica cheia (HTTP %d)."
 
-#: includes/class-admin.php:355
+#: includes/class-admin.php:361
 msgid "API key required."
 msgstr "Cheia API configurată"
 
-#: includes/class-admin.php:359
+#: includes/class-admin.php:365
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Introduceți un domeniu valid (de exemplu, example.com)."
 
-#: includes/class-admin.php:386
+#: includes/class-admin.php:392
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Schimbarea domeniului a eșuat. Utilizați linkul către panoul de control de "
 "mai jos."
 
-#: includes/class-admin.php:439
+#: includes/class-admin.php:445
 msgid "City lookup is busy, try again in a moment."
 msgstr "Căutarea orașului este ocupată, încercați din nou într-un moment."
 
-#: includes/class-blocks.php:145
+#: includes/class-blocks.php:153
 msgid "AstroWay: full API"
 msgstr "AstroWay: API complet"
 
+#. translators: %s = a date
+#: includes/class-digest.php:144
+#, php-format
+msgid "sky notes for %s"
+msgstr "note de cer pentru %s"
+
+#: includes/class-digest.php:154
+msgid "Sent by the AstroWay plugin. Turn it off under AstroWay, Settings."
+msgstr "Trimis de pluginul AstroWay. Dezactivează-l în AstroWay, Setări."
+
+#. translators: 1: planet name, 2: a time of day
+#: includes/class-digest.php:195
+#, php-format
+msgid "%1$s turns retrograde today at %2$s."
+msgstr "%1$s intră în retrograd astăzi la %2$s."
+
+#. translators: 1: planet name, 2: a time of day
+#: includes/class-digest.php:201
+#, php-format
+msgid "%1$s turns direct today at %2$s."
+msgstr "%1$s devine direct astăzi la %2$s."
+
+#. translators: 1: a time of day, 2: a time of day
+#: includes/class-digest.php:230
+#, php-format
+msgid "The Moon is void of course from %1$s to %2$s."
+msgstr "Luna este void of course de la %1$s la %2$s."
+
+#. translators: %s = comma-separated list of planet names
+#: includes/class-digest.php:248 includes/class-render.php:1134
+#, php-format
+msgid "Retrograde right now: %s."
+msgstr "Retrograd în acest moment: %s."
+
+#. translators: 1: moon phase name, 2: percentage of the disc lit
+#: includes/class-digest.php:264
+#, php-format
+msgid "Moon: %1$s, %2$s%% lit."
+msgstr "Lună: %1$s, %2$s%% luminată."
+
+#: includes/class-digest.php:302
+msgid "You are not allowed to do that."
+msgstr "Nu ai permisiunea să faci asta."
+
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:307
+#: includes/class-generated-registry.php:315 includes/class-render.php:985
 #, php-format
 msgid ""
 "%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
@@ -237,7 +281,7 @@ msgstr ""
 "administratorii ved această notă."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:327
+#: includes/class-generated-registry.php:335 includes/class-render.php:997
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -247,18 +291,18 @@ msgstr ""
 "notă."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:340
+#: includes/class-generated-registry.php:348 includes/class-render.php:1032
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
 "%s nu a putut fi încărcat în acest moment. Doar administratorii ved această "
 "notă."
 
-#: includes/class-plugin.php:178
+#: includes/class-plugin.php:181
 msgid "AstroWay is active"
 msgstr "AstroWay este activ"
 
-#: includes/class-plugin.php:179
+#: includes/class-plugin.php:182
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -271,20 +315,20 @@ msgstr ""
 "individuală de 30 de solicitări a fiecărui vizitator. Pentru limite mai mari"
 " și funcții Pro, obține o cheie API gratuită."
 
-#: includes/class-plugin.php:183 includes/class-plugin.php:328
+#: includes/class-plugin.php:186 includes/class-plugin.php:331
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Obține cheie API gratuită"
 
-#: includes/class-plugin.php:186
+#: includes/class-plugin.php:189
 msgid "Open Settings"
 msgstr "Deschide Setările"
 
-#: includes/class-plugin.php:258
+#: includes/class-plugin.php:261
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:259
+#: includes/class-plugin.php:262
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -293,15 +337,15 @@ msgstr ""
 "să descopere pluginul și ne oferă indicii despre ce să dezvoltăm în "
 "continuare."
 
-#: includes/class-plugin.php:263
+#: includes/class-plugin.php:266
 msgid "Leave a review"
 msgstr "Lasă o recenzie"
 
-#: includes/class-plugin.php:326
+#: includes/class-plugin.php:329
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Acest server și-a epuizat cota de acces anonim la AstroWay:"
 
-#: includes/class-plugin.php:327
+#: includes/class-plugin.php:330
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -321,12 +365,12 @@ msgid "Natal chart wheel"
 msgstr "Roata graficului natal"
 
 #: includes/class-public-client.php:139
-#: assets/js/astroway-blocks-editor.js:176
+#: assets/js/astroway-blocks-editor.js:191
 msgid "Daily horoscope"
 msgstr "Horoscop zilnic"
 
-#: includes/class-public-client.php:140 includes/class-render.php:712
-#: assets/js/astroway-blocks-editor.js:183
+#: includes/class-public-client.php:140 includes/class-render.php:716
+#: assets/js/astroway-blocks-editor.js:198
 msgid "Moon phase"
 msgstr "Faza lunii"
 
@@ -363,7 +407,7 @@ msgstr "Compatibilitatea sinastrică"
 msgid "AstroWay widget"
 msgstr "Widget AstroWay"
 
-#: includes/class-render.php:90
+#: includes/class-render.php:94
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -372,7 +416,7 @@ msgstr ""
 "într-un loc, nu o dată. Doar administratorii văd această notă."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:97
+#: includes/class-render.php:101
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
@@ -381,524 +425,703 @@ msgstr ""
 "Widgetul %s nu a putut fi încărcat chiar acum. Doar administratorii văd "
 "această notă."
 
-#: includes/class-render.php:158
+#: includes/class-render.php:162
 msgid "Rising sign"
 msgstr "ascendent"
 
-#: includes/class-render.php:172
+#: includes/class-render.php:176
 msgid "Moon sign"
 msgstr "semn lunar"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
-#: includes/class-render.php:181
+#: includes/class-render.php:185
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:193
+#: includes/class-render.php:197
 msgid "Position"
 msgstr "poziție"
 
 #. translators: %d = house number
-#: includes/class-render.php:196
+#: includes/class-render.php:200
 msgid "House"
 msgstr "casă"
 
 #. translators: %d = house number
-#: includes/class-render.php:196 includes/class-render.php:479
+#: includes/class-render.php:200 includes/class-render.php:483
 #, php-format
 msgid "House %d"
 msgstr "Casa %d"
 
-#: includes/class-render.php:204
+#: includes/class-render.php:208
 msgid "Chart ruler"
 msgstr "Stăpânul hărții"
 
-#: includes/class-render.php:207
+#: includes/class-render.php:211
 msgid "Ruler position"
 msgstr "poziție a stăpânului"
 
-#: includes/class-render.php:213 includes/class-render.php:466
+#: includes/class-render.php:217 includes/class-render.php:470
 msgid "Midheaven"
 msgstr "Medium Coeli"
 
-#: includes/class-render.php:239
+#: includes/class-render.php:243
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:242
+#: includes/class-render.php:246
 #, php-format
 msgid "Human Design: %s"
 msgstr "Human Design: %s"
 
-#: includes/class-render.php:253
+#: includes/class-render.php:257
 msgid "Strategy"
 msgstr "Strategie"
 
-#: includes/class-render.php:256
+#: includes/class-render.php:260
 msgid "Authority"
 msgstr "Autoritate"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:263
+#: includes/class-render.php:267
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:268
+#: includes/class-render.php:272
 msgid "Profile"
 msgstr "Profil"
 
-#: includes/class-render.php:271
+#: includes/class-render.php:275
 msgid "Definition"
 msgstr "Definiție"
 
-#: includes/class-render.php:274
+#: includes/class-render.php:278
 msgid "Not-self theme"
 msgstr "tema ne-sine"
 
-#: includes/class-render.php:278
+#: includes/class-render.php:282
 msgid "Incarnation cross"
 msgstr "cruce de incarnare"
 
-#: includes/class-render.php:312
+#: includes/class-render.php:316
 msgid "Defined centres"
 msgstr "centre definite"
 
-#: includes/class-render.php:315
+#: includes/class-render.php:319
 msgid "Open centres"
 msgstr "centre deschise"
 
-#: includes/class-render.php:317
+#: includes/class-render.php:321
 msgid "Centres"
 msgstr "centre"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:332
+#: includes/class-render.php:336
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s la %4$s"
 
-#: includes/class-render.php:343
+#: includes/class-render.php:347
 msgid "Channels"
 msgstr "canale"
 
-#: includes/class-render.php:348
+#: includes/class-render.php:352
 msgid "Generator"
 msgstr "Generator"
 
-#: includes/class-render.php:349
+#: includes/class-render.php:353
 msgid "Manifesting Generator"
 msgstr "Manifesting Generator"
 
-#: includes/class-render.php:350
+#: includes/class-render.php:354
 msgid "Manifestor"
 msgstr "Manifestor"
 
-#: includes/class-render.php:351
+#: includes/class-render.php:355
 msgid "Projector"
 msgstr "Projector"
 
-#: includes/class-render.php:352
+#: includes/class-render.php:356
 msgid "Reflector"
 msgstr "Reflector"
 
-#: includes/class-render.php:359
+#: includes/class-render.php:363
 msgid "Wait to respond"
 msgstr "Așteaptă să răspundă"
 
-#: includes/class-render.php:360
+#: includes/class-render.php:364
 msgid "Wait for the invitation"
 msgstr "Așteaptă invitația"
 
-#: includes/class-render.php:361 includes/class-render.php:362
+#: includes/class-render.php:365 includes/class-render.php:366
 msgid "Inform before acting"
 msgstr "Informează înainte de a acționa"
 
-#: includes/class-render.php:363
+#: includes/class-render.php:367
 msgid "Wait a lunar cycle"
 msgstr "Așteaptă un ciclu lunar"
 
-#: includes/class-render.php:364
+#: includes/class-render.php:368
 msgid "Respond, then inform"
 msgstr "Răspunde, apoi informează"
 
-#: includes/class-render.php:371
+#: includes/class-render.php:375
 msgid "Emotional (Solar Plexus)"
 msgstr "Emotional (Plexus solar)"
 
-#: includes/class-render.php:372 includes/class-render.php:423
+#: includes/class-render.php:376 includes/class-render.php:427
 msgid "Sacral"
 msgstr "Sacral"
 
-#: includes/class-render.php:373
+#: includes/class-render.php:377
 msgid "Splenic"
 msgstr "Splenic"
 
-#: includes/class-render.php:374
+#: includes/class-render.php:378
 msgid "Ego (Heart)"
 msgstr "Ego (Inima)"
 
-#: includes/class-render.php:375
+#: includes/class-render.php:379
 msgid "Self-projected"
 msgstr "Auto-proiectat"
 
-#: includes/class-render.php:376
+#: includes/class-render.php:380
 msgid "Mental (environment)"
 msgstr "Mental (mediu)"
 
-#: includes/class-render.php:377 includes/class-render.php:378
+#: includes/class-render.php:381 includes/class-render.php:382
 msgid "Lunar cycle"
 msgstr "Ciclu lunar"
 
-#: includes/class-render.php:385
+#: includes/class-render.php:389
 msgid "Single definition"
 msgstr "Definiție unică"
 
-#: includes/class-render.php:386
+#: includes/class-render.php:390
 msgid "Split definition"
 msgstr "Definiție divizată"
 
-#: includes/class-render.php:387
+#: includes/class-render.php:391
 msgid "Triple split definition"
 msgstr "Definiție triplu divizată"
 
-#: includes/class-render.php:388
+#: includes/class-render.php:392
 msgid "Quadruple split definition"
 msgstr "Definiție cvadruplu divizată"
 
-#: includes/class-render.php:389
+#: includes/class-render.php:393
 msgid "No definition"
 msgstr "Fără definiție"
 
-#: includes/class-render.php:396
+#: includes/class-render.php:400
 msgid "Frustration"
 msgstr "Frustrare"
 
-#: includes/class-render.php:397
+#: includes/class-render.php:401
 msgid "Bitterness"
 msgstr "Amar"
 
-#: includes/class-render.php:398
+#: includes/class-render.php:402
 msgid "Anger"
 msgstr "Mânie"
 
-#: includes/class-render.php:399
+#: includes/class-render.php:403
 msgid "Disappointment"
 msgstr "Dezamăgire"
 
-#: includes/class-render.php:406
+#: includes/class-render.php:410
 msgid "Right Angle"
 msgstr "Unghi drept"
 
-#: includes/class-render.php:407
+#: includes/class-render.php:411
 msgid "Left Angle"
 msgstr "Unghi stâng"
 
-#: includes/class-render.php:408
+#: includes/class-render.php:412
 msgid "Juxtaposition"
 msgstr "Juxtapunere"
 
-#: includes/class-render.php:416
+#: includes/class-render.php:420
 msgid "Head"
 msgstr "Cap"
 
-#: includes/class-render.php:417
+#: includes/class-render.php:421
 msgid "Ajna"
 msgstr "Ajna"
 
-#: includes/class-render.php:418
+#: includes/class-render.php:422
 msgid "Throat"
 msgstr "Gât"
 
-#: includes/class-render.php:419
+#: includes/class-render.php:423
 msgid "G (identity)"
 msgstr "G (identitate)"
 
-#: includes/class-render.php:420
+#: includes/class-render.php:424
 msgid "Heart (ego)"
 msgstr "Inimă (ego)"
 
-#: includes/class-render.php:421
+#: includes/class-render.php:425
 msgid "Solar Plexus"
 msgstr "Plex solar"
 
-#: includes/class-render.php:422
+#: includes/class-render.php:426
 msgid "Spleen"
 msgstr "Splină"
 
-#: includes/class-render.php:424
+#: includes/class-render.php:428
 msgid "Root"
 msgstr "Rădăcină"
 
-#: includes/class-render.php:447
+#: includes/class-render.php:451
 msgid "Natal chart"
 msgstr "Hartă natală"
 
 #. translators: %s = person's name
-#: includes/class-render.php:450
+#: includes/class-render.php:454
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Hartă natală: %s"
 
-#: includes/class-render.php:463
+#: includes/class-render.php:467
 msgid "Ascendant"
 msgstr "Ascendent"
 
 #. translators: %d = house number
-#: includes/class-render.php:480
+#: includes/class-render.php:484
 msgid "retrograde"
 msgstr "retrograd"
 
-#: includes/class-render.php:483
+#: includes/class-render.php:487
 msgid "Placements"
 msgstr "Poziții"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:504
+#: includes/class-render.php:508
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:514
+#: includes/class-render.php:518
 msgid "Major aspects"
 msgstr "Aspecte majore"
 
-#: includes/class-render.php:619
+#: includes/class-render.php:623
 msgid "New Moon"
 msgstr "Lună Nouă"
 
-#: includes/class-render.php:620
+#: includes/class-render.php:624
 msgid "Waxing Crescent"
 msgstr "Semilună în creștere"
 
-#: includes/class-render.php:621
+#: includes/class-render.php:625
 msgid "First Quarter"
 msgstr "Primul pătrar"
 
-#: includes/class-render.php:622
+#: includes/class-render.php:626
 msgid "Waxing Gibbous"
 msgstr "Lună în creștere"
 
-#: includes/class-render.php:623
+#: includes/class-render.php:627
 msgid "Full Moon"
 msgstr "Lună Plină"
 
-#: includes/class-render.php:624
+#: includes/class-render.php:628
 msgid "Waning Gibbous"
 msgstr "Lună în descreștere"
 
-#: includes/class-render.php:625
+#: includes/class-render.php:629
 msgid "Last Quarter"
 msgstr "Ultimul pătrar"
 
-#: includes/class-render.php:626
+#: includes/class-render.php:630
 msgid "Waning Crescent"
 msgstr "Semilună în descreștere"
 
-#: includes/class-render.php:633
+#: includes/class-render.php:637
 msgid "Sun"
 msgstr "Soare"
 
-#: includes/class-render.php:634
+#: includes/class-render.php:638
 msgid "Moon"
 msgstr "Lună"
 
-#: includes/class-render.php:635
+#: includes/class-render.php:639 assets/js/astroway-blocks-editor.js:131
 msgid "Mercury"
 msgstr "Mercur"
 
-#: includes/class-render.php:636
+#: includes/class-render.php:640 assets/js/astroway-blocks-editor.js:132
 msgid "Venus"
 msgstr "Venus"
 
-#: includes/class-render.php:637
+#: includes/class-render.php:641 assets/js/astroway-blocks-editor.js:133
 msgid "Mars"
 msgstr "Marte"
 
-#: includes/class-render.php:638
+#: includes/class-render.php:642 assets/js/astroway-blocks-editor.js:134
 msgid "Jupiter"
 msgstr "Jupiter"
 
-#: includes/class-render.php:639
+#: includes/class-render.php:643 assets/js/astroway-blocks-editor.js:135
 msgid "Saturn"
 msgstr "Saturn"
 
-#: includes/class-render.php:640
+#: includes/class-render.php:644 assets/js/astroway-blocks-editor.js:136
 msgid "Uranus"
 msgstr "Uranus"
 
-#: includes/class-render.php:641
+#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:137
 msgid "Neptune"
 msgstr "Neptun"
 
-#: includes/class-render.php:642
+#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:138
 msgid "Pluto"
 msgstr "Pluto"
 
-#: includes/class-render.php:643
+#: includes/class-render.php:647
 msgid "Chiron"
 msgstr "Chiron"
 
-#: includes/class-render.php:644 includes/class-render.php:651
-#: includes/class-render.php:652
+#: includes/class-render.php:648 includes/class-render.php:655
+#: includes/class-render.php:656
 msgid "Lilith"
 msgstr "Lilith"
 
-#: includes/class-render.php:645 includes/class-render.php:649
-#: includes/class-render.php:650
+#: includes/class-render.php:649 includes/class-render.php:653
+#: includes/class-render.php:654
 msgid "North Node"
 msgstr "Nodul Nord"
 
-#: includes/class-render.php:646
+#: includes/class-render.php:650
 msgid "South Node"
 msgstr "Nodul Sud"
 
-#: includes/class-render.php:659
+#: includes/class-render.php:663
 msgid "conjunct"
 msgstr "conjuncție"
 
-#: includes/class-render.php:660
+#: includes/class-render.php:664
 msgid "opposite"
 msgstr "opoziție"
 
-#: includes/class-render.php:661
+#: includes/class-render.php:665
 msgid "trine"
 msgstr "trigon"
 
-#: includes/class-render.php:662
+#: includes/class-render.php:666
 msgid "square"
 msgstr "cuadratură"
 
-#: includes/class-render.php:663
+#: includes/class-render.php:667
 msgid "sextile"
 msgstr "sextil"
 
-#: includes/class-render.php:695
+#: includes/class-render.php:699
 msgid "Illumination"
 msgstr "Iluminare"
 
-#: includes/class-render.php:698
+#: includes/class-render.php:702
 msgid "Age"
 msgstr "Vârstă"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:700
+#: includes/class-render.php:704
 #, php-format
 msgid "%s days"
 msgstr "%s zile"
 
-#: includes/class-render.php:705
+#: includes/class-render.php:709
 msgid "Moon in"
 msgstr "Lună în semnul"
 
-#: includes/class-render.php:708
+#: includes/class-render.php:712
 msgid "Sun in"
 msgstr "Soare în semnul"
 
 #. translators: %s = tarot card name
-#: includes/class-render.php:740
+#: includes/class-render.php:744
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (inversat)"
 
-#: includes/class-render.php:746
+#: includes/class-render.php:750
 msgid "Card of the day"
 msgstr "Cartea zilei"
 
-#: includes/class-render.php:776 assets/js/astroway-blocks-editor.js:213
+#: includes/class-render.php:780 assets/js/astroway-blocks-editor.js:228
 msgid "Planet of the day"
 msgstr "Planeta zilei"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:808
+#: includes/class-render.php:812
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: horoscop pentru săptămână"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:811
+#: includes/class-render.php:815
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: horoscop pentru lună"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:814
+#: includes/class-render.php:818
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: horoscop pentru azi"
 
-#: includes/class-render.php:821 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:825 assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Berbec"
 
-#: includes/class-render.php:822 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:826 assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Taur"
 
-#: includes/class-render.php:823 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:827 assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Gemeni"
 
-#: includes/class-render.php:824 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:828 assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Rac"
 
-#: includes/class-render.php:825 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:829 assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Leu"
 
-#: includes/class-render.php:826 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:830 assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Fecioară"
 
-#: includes/class-render.php:827 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:831 assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Balanță"
 
-#: includes/class-render.php:828 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:832 assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Scorpion"
 
-#: includes/class-render.php:829 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:833 assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Săgetător"
 
-#: includes/class-render.php:830 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:834 assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Capricorn"
 
-#: includes/class-render.php:831 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:835 assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Vărsător"
 
-#: includes/class-render.php:832 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:836 assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Pești"
 
+#. translators: %s = planet name
+#: includes/class-render.php:1066
+#, php-format
+msgid "Is %s retrograde?"
+msgstr "Este %s în retrograd?"
+
+#. translators: %s = planet name
+#: includes/class-render.php:1075
+#, php-format
+msgid "Yes, %s is retrograde right now."
+msgstr "Da, %s este în retrograd în acest moment."
+
+#: includes/class-render.php:1080
+msgid "Retrograde since"
+msgstr "Retrograd din"
+
+#: includes/class-render.php:1081
+msgid "Direct again on"
+msgstr "Direct din nou pe"
+
+#: includes/class-render.php:1082
+msgid "Days left"
+msgstr "Zile rămase"
+
+#. translators: %s = planet name
+#: includes/class-render.php:1088
+#, php-format
+msgid "No, %s is direct right now."
+msgstr "Nu, %s este direct în acest moment."
+
+#: includes/class-render.php:1093
+msgid "Next retrograde"
+msgstr "Următorul retrograd"
+
+#: includes/class-render.php:1094 includes/class-render.php:1237
+msgid "Ends"
+msgstr "Se termină"
+
+#: includes/class-render.php:1095
+msgid "Days until"
+msgstr "Zile până la"
+
+#: includes/class-render.php:1114
+msgid "Retrograde"
+msgstr "Retrograd"
+
+#: includes/class-render.php:1117 includes/class-render.php:1120
+msgid "Direct"
+msgstr "Direct"
+
+#: includes/class-render.php:1131
+msgid "Nothing is retrograde right now."
+msgstr "Nimic nu este în retrograd în acest moment."
+
+#: includes/class-render.php:1139 assets/js/astroway-blocks-editor.js:263
+msgid "Retrograde planets"
+msgstr "Planete în retrograd"
+
+#: includes/class-render.php:1143 assets/js/astroway-blocks-editor.js:258
+msgid "Planet"
+msgstr "Planetă"
+
+#: includes/class-render.php:1144 includes/views/admin-api-key.php:166
+msgid "Status"
+msgstr "Stare"
+
+#: includes/class-render.php:1148
+msgid "Retrograde period"
+msgstr "Perioada de retrograd"
+
+#. translators: %s = a time of day
+#: includes/class-render.php:1202
+#, php-format
+msgid "The Moon is void of course until %s."
+msgstr "Luna este void of course până la %s."
+
+#. translators: %s = a date and time
+#: includes/class-render.php:1208
+#, php-format
+msgid "The Moon is not void of course. The next window opens %s."
+msgstr "Luna nu este void of course. Următoarea fereastră se deschide %s."
+
+#: includes/class-render.php:1212
+msgid "The Moon is not void of course."
+msgstr "Luna nu este void of course."
+
+#: includes/class-render.php:1232 assets/js/astroway-blocks-editor.js:267
+msgid "Void of course Moon"
+msgstr "Lună fără curs"
+
+#: includes/class-render.php:1236
+msgid "Starts"
+msgstr "Începe"
+
+#: includes/class-render.php:1238
+msgid "Length"
+msgstr "Durată"
+
+#: includes/class-render.php:1239
+msgid "Last aspect"
+msgstr "Ultimul aspect"
+
+#: includes/class-render.php:1240
+msgid "Next sign"
+msgstr "Următoarea zodie"
+
+#: includes/class-render.php:1295
+msgid "Night"
+msgstr "Noapte"
+
+#: includes/class-render.php:1295
+msgid "Day"
+msgstr "Zi"
+
+#. translators: %s = planet name
+#: includes/class-render.php:1310
+#, php-format
+msgid "The day is ruled by %s."
+msgstr "Ziua este guvernată de %s."
+
+#. translators: 1: planet name, 2: a time of day
+#: includes/class-render.php:1317
+#, php-format
+msgid "The hour of %1$s runs until %2$s."
+msgstr "Ora %1$s durează până la %2$s."
+
+#: includes/class-render.php:1324 includes/class-render.php:1357
+#: assets/js/astroway-blocks-editor.js:277
+msgid "Planetary hours"
+msgstr "Ore planetare"
+
+#: includes/class-render.php:1333
+msgid "Hour"
+msgstr "Oră"
+
+#: includes/class-render.php:1334
+msgid "Ruler"
+msgstr "Guvernator"
+
+#: includes/class-render.php:1335
+msgid "From"
+msgstr "De la"
+
+#: includes/class-render.php:1336
+msgid "To"
+msgstr "Până la"
+
+#: includes/class-render.php:1337
+msgid "Part of day"
+msgstr "Partea zilei"
+
+#: includes/class-render.php:1362
+msgid ""
+"The Sun does not set at this latitude on this date, so there are no "
+"planetary hours to divide."
+msgstr ""
+"Soarele nu apune la această latitudine în această dată, deci nu există ore "
+"planetare de împărțit."
+
+#: includes/class-render.php:1363
+msgid ""
+"The Sun does not rise at this latitude on this date, so there are no "
+"planetary hours to divide."
+msgstr ""
+"Soarele nu răsare la această latitudine în această dată, deci nu există ore "
+"planetare de împărțit."
+
+#. translators: %d = number of minutes
+#: includes/class-render.php:1459
+#, php-format
+msgid "%d min"
+msgstr "%d min"
+
+#. translators: 1: whole hours, 2: minutes within the hour
+#: includes/class-render.php:1465
+#, php-format
+msgid "%1$d h %2$02d min"
+msgstr "%1$d h %2$02d min"
+
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:1220
+#: includes/class-render.php:1789
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "Se afișează %1$d din %2$d"
 
-#: includes/class-render.php:1271
+#: includes/class-render.php:1840
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "da"
 
-#: includes/class-render.php:1271
+#: includes/class-render.php:1840
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "nu"
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:371
+#: includes/class-shortcodes.php:457
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -952,13 +1175,13 @@ msgid "Copy a shortcode."
 msgstr "Copiați un cod scurt."
 
 #: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
-#: includes/views/admin-shortcodes.php:321
+#: includes/views/admin-shortcodes.php:377
 #: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Click pentru a copia"
 
 #: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
-#: includes/views/admin-shortcodes.php:325
+#: includes/views/admin-shortcodes.php:381
 msgid "copy"
 msgstr "copiază"
 
@@ -1038,10 +1261,6 @@ msgstr ""
 #: includes/views/admin-api-key.php:151
 msgid "Save changes"
 msgstr "Salvează modificările"
-
-#: includes/views/admin-api-key.php:166
-msgid "Status"
-msgstr "Stare"
 
 #: includes/views/admin-api-key.php:171
 msgid "live · key authenticated"
@@ -1305,130 +1524,148 @@ msgstr ""
 msgid "Connection, cache, diagnostics."
 msgstr "Conexiune, cache, diagnostice."
 
-#: includes/views/admin-settings.php:33
+#: includes/views/admin-settings.php:36
+msgid "Sent. Check your inbox."
+msgstr "Trimis. Verifică-ți inbox-ul."
+
+#: includes/views/admin-settings.php:37
+msgid "Nothing to report today, so no mail would have gone out."
+msgstr "Nimic de raportat astăzi, deci nu s-a trimis niciun e-mail."
+
+#: includes/views/admin-settings.php:38
+msgid "WordPress could not send the mail. Check your site's mail setup."
+msgstr ""
+"WordPress nu a putut trimite e-mailul. Verifică setările de mail ale site-"
+"ului."
+
+#: includes/views/admin-settings.php:39
+msgid "Transit alerts are not available on this site."
+msgstr "Alertele de tranzit nu sunt disponibile pe acest site."
+
+#: includes/views/admin-settings.php:43
 #: includes/views/partials/admin-sidebar.php:44
 msgid "Plugin"
 msgstr "Plugin"
 
-#: includes/views/admin-settings.php:34
+#: includes/views/admin-settings.php:44
 #: includes/views/partials/admin-sidebar.php:46
 msgid "WordPress"
 msgstr "WordPress"
 
-#: includes/views/admin-settings.php:35
+#: includes/views/admin-settings.php:45
 #: includes/views/partials/admin-sidebar.php:48
 msgid "PHP"
 msgstr "PHP"
 
-#: includes/views/admin-settings.php:36
+#: includes/views/admin-settings.php:46
 msgid "WP_DEBUG"
 msgstr "WP_DEBUG"
 
-#: includes/views/admin-settings.php:36
+#: includes/views/admin-settings.php:46
 msgid "on"
 msgstr "activat"
 
-#: includes/views/admin-settings.php:36
+#: includes/views/admin-settings.php:46
 msgid "off"
 msgstr "dezactivat"
 
-#: includes/views/admin-settings.php:37
+#: includes/views/admin-settings.php:47
 msgid "Active theme"
 msgstr "Temă activă"
 
-#: includes/views/admin-settings.php:38
+#: includes/views/admin-settings.php:48
 msgid "wp_remote_post"
 msgstr "wp_remote_post"
 
-#: includes/views/admin-settings.php:38
+#: includes/views/admin-settings.php:48
 msgid "available"
 msgstr "disponibil"
 
-#: includes/views/admin-settings.php:38
+#: includes/views/admin-settings.php:48
 msgid "missing"
 msgstr "lipsă"
 
-#: includes/views/admin-settings.php:39
+#: includes/views/admin-settings.php:49
 msgid "Locale"
 msgstr "Locale"
 
-#: includes/views/admin-settings.php:40
+#: includes/views/admin-settings.php:50
 #: includes/views/partials/admin-sidebar.php:50
 msgid "API host"
 msgstr "Gazdă API"
 
-#: includes/views/admin-settings.php:57
+#: includes/views/admin-settings.php:71
 msgid "Connection"
 msgstr "Conexiune"
 
-#: includes/views/admin-settings.php:58
+#: includes/views/admin-settings.php:72
 msgid "live ping · api.astroway.info"
 msgstr "ping live · api.astroway.info"
 
-#: includes/views/admin-settings.php:63
+#: includes/views/admin-settings.php:77
 msgid "Test connection"
 msgstr "Testează conexiunea"
 
 #. translators: %s = API health endpoint
-#: includes/views/admin-settings.php:71
+#: includes/views/admin-settings.php:85
 #, php-format
 msgid "Pings %s to confirm reachability from this server."
 msgstr "Pingează %s pentru a confirma accesibilitatea de pe acest server."
 
-#: includes/views/admin-settings.php:82
+#: includes/views/admin-settings.php:96
 msgid "Cache"
 msgstr "Cache"
 
-#: includes/views/admin-settings.php:83
+#: includes/views/admin-settings.php:97
 msgid "WP transients · prefix astroway_v1_"
 msgstr "WP transiente · prefix astroway_v1_"
 
-#: includes/views/admin-settings.php:89
+#: includes/views/admin-settings.php:103
 msgid "items"
 msgstr "articole"
 
-#: includes/views/admin-settings.php:93
+#: includes/views/admin-settings.php:107
 msgid "cached size"
 msgstr "dimensiune cache"
 
-#: includes/views/admin-settings.php:96
+#: includes/views/admin-settings.php:110
 msgid "Purge all"
 msgstr "Șterge tot"
 
-#: includes/views/admin-settings.php:100
+#: includes/views/admin-settings.php:114
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
 msgstr ""
 "TTL-uri: grafice 1h · lună 24h · date de referință 7d · cheie /me 30 min."
 
-#: includes/views/admin-settings.php:108
+#: includes/views/admin-settings.php:122
 #: includes/views/partials/admin-sidebar.php:42
-#: assets/js/astroway-blocks-editor.js:166
+#: assets/js/astroway-blocks-editor.js:181
 msgid "System"
 msgstr "Sistem"
 
-#: includes/views/admin-settings.php:109
+#: includes/views/admin-settings.php:123
 msgid "diagnostic info for support"
 msgstr "informații de diagnostic pentru suport"
 
-#: includes/views/admin-settings.php:127
+#: includes/views/admin-settings.php:141
 msgid "Copy diagnostic info"
 msgstr "Copiază informațiile de diagnostic"
 
-#: includes/views/admin-settings.php:144
+#: includes/views/admin-settings.php:158
 msgid "Feature matrix"
 msgstr "Tabelul caracteristicilor"
 
 #. translators: %s = current tier
-#: includes/views/admin-settings.php:149
+#: includes/views/admin-settings.php:163
 #, php-format
 msgid "current tier: %s"
 msgstr "nivelul actual: %s"
 
-#: includes/views/admin-settings.php:159
+#: includes/views/admin-settings.php:173
 msgid "Feature"
 msgstr "Caracteristică"
 
-#: includes/views/admin-settings.php:181
+#: includes/views/admin-settings.php:195
 msgid ""
 "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
@@ -1436,60 +1673,60 @@ msgstr ""
 "Matrix poate fi filtrat prin intermediul filtrului `astroway_tier_matrix`, "
 "astfel încât extensiile să poată adăuga propriile funcționalități."
 
-#: includes/views/admin-settings.php:189
+#: includes/views/admin-settings.php:203
 msgid "Domain binding"
 msgstr "Asocierea domeniului"
 
 #. translators: %s = current domain
-#: includes/views/admin-settings.php:195
+#: includes/views/admin-settings.php:209
 #, php-format
 msgid "bound to: %s"
 msgstr "legat de: %s"
 
-#: includes/views/admin-settings.php:199
+#: includes/views/admin-settings.php:213
 msgid "no domain binding yet"
 msgstr "nu există încă nicio asociere de domeniu"
 
-#: includes/views/admin-settings.php:209
+#: includes/views/admin-settings.php:223
 msgid "Request rebind"
 msgstr "Necesar"
 
 #. translators: %s = api dashboard URL
-#: includes/views/admin-settings.php:217
+#: includes/views/admin-settings.php:231
 #, php-format
 msgid "Manual fallback: %s."
 msgstr "Opțiune manuală de rezervă: %s."
 
-#: includes/views/admin-settings.php:230
+#: includes/views/admin-settings.php:244
 msgid "Enter a domain first."
 msgstr "Introdu mai întâi o cheie API validă."
 
-#: includes/views/admin-settings.php:231
+#: includes/views/admin-settings.php:245
 msgid "Requesting…"
 msgstr "Se solicită…"
 
-#: includes/views/admin-settings.php:241
+#: includes/views/admin-settings.php:255
 msgid "✓ requested"
 msgstr "✓ solicitat"
 
-#: includes/views/admin-settings.php:242
+#: includes/views/admin-settings.php:256
 msgid "failed"
 msgstr "eșuat"
 
-#: includes/views/admin-settings.php:257
+#: includes/views/admin-settings.php:271
 msgid "Widget disclaimer"
 msgstr "Declarație de exonerare de răspundere privind widget-urile"
 
-#: includes/views/admin-settings.php:258
+#: includes/views/admin-settings.php:272
 msgid "optional legal line in the widget footer"
 msgstr "text juridic opțional în subsolul widgetului"
 
-#: includes/views/admin-settings.php:266
+#: includes/views/admin-settings.php:280
 msgid "Show a disclaimer in embedded widgets"
 msgstr ""
 "Afișează o mențiune de exonerare de răspundere în widgeturile încorporate"
 
-#: includes/views/admin-settings.php:267
+#: includes/views/admin-settings.php:281
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
 "widget footer. Off by default, enable it if your jurisdiction or compliance "
@@ -1501,23 +1738,23 @@ msgstr ""
 "dacă jurisdicția ta sau politica de conformitate o impun. Textul este "
 "generat și localizat de api.astroway.info."
 
-#: includes/views/admin-settings.php:270
+#: includes/views/admin-settings.php:284
 msgid "Save disclaimer setting"
 msgstr "Salvează setările privind declarația de exonerare de răspundere"
 
-#: includes/views/admin-settings.php:278
+#: includes/views/admin-settings.php:292
 msgid "Render mode"
 msgstr "Mod de redare"
 
-#: includes/views/admin-settings.php:279
+#: includes/views/admin-settings.php:293
 msgid "where widget content is drawn"
 msgstr "unde este afișat conținutul widget-ului"
 
-#: includes/views/admin-settings.php:287
+#: includes/views/admin-settings.php:301
 msgid "On this page (recommended)"
 msgstr "Pe această pagină (recomandat)"
 
-#: includes/views/admin-settings.php:288
+#: includes/views/admin-settings.php:302
 msgid ""
 "Your server fetches the text and prints it into the page. Search engines can"
 " read it, your theme styles it, and it works without JavaScript. Answers are"
@@ -1529,11 +1766,11 @@ msgstr ""
 "Răspunsurile sunt stocate în cache până la modificare, astfel încât un "
 "horoscop zilnic este preluat o dată pe zi pentru fiecare semn."
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:307
 msgid "In an iframe"
 msgstr "Într-un iframe"
 
-#: includes/views/admin-settings.php:294
+#: includes/views/admin-settings.php:308
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
 "reaches your page source, so the content is not indexed and your theme "
@@ -1545,7 +1782,7 @@ msgstr ""
 "este indexat și tema dvs. nu îl poate stiliza. Alegeți această opțiune dacă "
 "gazda dvs. blochează cererile externe sau pentru a le compara pe cele două."
 
-#: includes/views/admin-settings.php:298
+#: includes/views/admin-settings.php:312
 msgid ""
 "Widgets without a page-side template, and any widget whose data cannot be "
 "fetched, fall back to the iframe on their own."
@@ -1553,9 +1790,79 @@ msgstr ""
 "Widget-urile fără un șablon pe partea de pagină și orice widget ale cărui "
 "date nu pot fi preluate, revin automat la iframe."
 
-#: includes/views/admin-settings.php:300
+#: includes/views/admin-settings.php:314
 msgid "Save render mode"
 msgstr "Salvează modul de randare"
+
+#: includes/views/admin-settings.php:322
+msgid "Daily transit alerts"
+msgstr "Alerte de tranzit zilnice"
+
+#: includes/views/admin-settings.php:323
+msgid "email on the days the sky does something"
+msgstr "email în zilele în care cerul face ceva"
+
+#: includes/views/admin-settings.php:330
+msgid ""
+"Transit alerts are part of the Pro plan. Everything else on this page works "
+"on any plan."
+msgstr ""
+"Alertele de tranzit fac parte din planul Pro. Tot restul de pe această "
+"pagină funcționează în orice plan."
+
+#: includes/views/admin-settings.php:331
+msgid "Transit alerts need an API key. Paste one on the Getting started page."
+msgstr ""
+"Alertele de tranzit necesită o cheie API. Lipește una pe pagina Getting "
+"started."
+
+#: includes/views/admin-settings.php:340
+msgid ""
+"Send a daily email when a planet stations or the Moon goes void of course"
+msgstr ""
+"Trimite un email zilnic când o planetă staționează sau Luna devine void of "
+"course"
+
+#: includes/views/admin-settings.php:341
+msgid ""
+"Nothing is sent on the quiet days. The mail that does go out carries the "
+"moon phase and the current retrogrades as context."
+msgstr ""
+"Nu se trimite nimic în zilele liniștite. Emailul care este trimis conține "
+"faza lunii și retrogradele curente ca context."
+
+#: includes/views/admin-settings.php:346
+msgid "Hour to send, on your site clock"
+msgstr "Ora la care se trimite, conform ceasului site-ului tău"
+
+#: includes/views/admin-settings.php:351
+msgid ""
+"WordPress runs scheduled jobs when someone visits the site, so the mail can "
+"be late on a quiet blog."
+msgstr ""
+"WordPress rulează sarcini programate când cineva vizitează site-ul, așa că "
+"emailul poate întârzia pe un blog liniștit."
+
+#: includes/views/admin-settings.php:355
+msgid "Send to"
+msgstr "Trimite către"
+
+#: includes/views/admin-settings.php:361
+msgid "Comma separated. Left empty, it goes to the site administrator."
+msgstr ""
+"Separate prin virgulă. Lăsat gol, se trimite administratorului site-ului."
+
+#: includes/views/admin-settings.php:364
+msgid "Save alert settings"
+msgstr "Salvează setările de alertă"
+
+#: includes/views/admin-settings.php:370
+msgid "Send today's alert to me now"
+msgstr "Trimite acum alerta de astăzi către mine"
+
+#: includes/views/admin-settings.php:371
+msgid "Goes to your own address, not to the list above."
+msgstr "Se trimite la adresa ta, nu la lista de mai sus."
 
 #: includes/views/admin-shortcodes.php:15
 msgid ""
@@ -1693,6 +2000,7 @@ msgstr ""
 #: includes/views/admin-shortcodes.php:83
 #: includes/views/admin-shortcodes.php:201
 #: includes/views/admin-shortcodes.php:212
+#: includes/views/admin-shortcodes.php:304
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "Suprascrie data în YYYY-MM-DD. Implicit este astăzi."
 
@@ -1729,6 +2037,7 @@ msgstr "Latitudine WGS-84."
 #: includes/views/admin-shortcodes.php:151
 #: includes/views/admin-shortcodes.php:189
 #: includes/views/admin-shortcodes.php:214
+#: includes/views/admin-shortcodes.php:303
 msgid "WGS-84 longitude."
 msgstr "Longitudine WGS-84."
 
@@ -1888,7 +2197,7 @@ msgstr ""
 "Se încarcă într-un cadru."
 
 #: includes/views/admin-shortcodes.php:221
-#: assets/js/astroway-blocks-editor.js:162
+#: assets/js/astroway-blocks-editor.js:177
 msgid "Numerology"
 msgstr "Numerologie"
 
@@ -1961,24 +2270,118 @@ msgstr "A doua persoană: longitudine."
 msgid "Second person: IANA timezone."
 msgstr "Persoana a doua: fusul orar IANA."
 
-#: includes/views/admin-shortcodes.php:268
+#: includes/views/admin-shortcodes.php:254
+msgid "Mercury Retrograde"
+msgstr "Mercur Retrograd"
+
+#: includes/views/admin-shortcodes.php:255
+msgid ""
+"Whether Mercury is retrograde right now, since when, and until when. Use "
+"[astroway_retrograde planet=\"venus\"] for any of the other seven that "
+"station."
+msgstr ""
+"Indică dacă Mercur este retrograd în acest moment, de când și până când. "
+"Utilizați [astroway_retrograde planet=\"venus\"] pentru oricare dintre "
+"celelalte șapte planete care staționează."
+
+#: includes/views/admin-shortcodes.php:259
+#: includes/views/admin-shortcodes.php:279
+msgid "Language code. Defaults to the site locale."
+msgstr "Codul limbii. Implicit setează la limba site-ului."
+
+#: includes/views/admin-shortcodes.php:264
+msgid "Retrograde Status"
+msgstr "Stare Retrogradă"
+
+#: includes/views/admin-shortcodes.php:265
+msgid "The same card for any planet that stations."
+msgstr "Aceeași cartelă pentru orice planetă care staționează."
+
+#: includes/views/admin-shortcodes.php:269
+msgid ""
+"mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
+msgstr ""
+"mercur (implicit), venus, mars, jupiter, saturn, uranus, neptune sau pluto."
+
+#: includes/views/admin-shortcodes.php:274
+msgid "Retrograde Planets"
+msgstr "Planete Retrograde"
+
+#: includes/views/admin-shortcodes.php:275
+msgid ""
+"All eight planets that station, each with its status today and the dates of "
+"the retrograde it is in or heading for."
+msgstr ""
+"Toate cele opt planete care staționează, fiecare cu starea sa de azi și "
+"datele retrogradării în care se află sau se îndreaptă spre."
+
+#: includes/views/admin-shortcodes.php:284
+msgid "Void of Course Moon"
+msgstr "Lună fără Curs"
+
+#: includes/views/admin-shortcodes.php:285
+msgid ""
+"Whether the Moon is void of course now, and the windows around it with their"
+" last aspect and next sign."
+msgstr ""
+"Indică dacă Luna este fără curs în acest moment și ferestrele din jurul său "
+"cu ultimul aspect și următoarea sa semn."
+
+#: includes/views/admin-shortcodes.php:289
+msgid "Day to start from in YYYY-MM-DD. Defaults to today."
+msgstr ""
+"Ziua de la care să începeți în format YYYY-MM-DD. Implicit setează la ziua "
+"de azi."
+
+#: includes/views/admin-shortcodes.php:290
+msgid "Time to start from in HH:MM. Defaults to midnight."
+msgstr ""
+"Ora de la care să începeți în format HH:MM. Implicit setează la miezul "
+"nopții."
+
+#: includes/views/admin-shortcodes.php:291
+#: includes/views/admin-shortcodes.php:305
+msgid "Hours from UTC. Defaults to the site timezone."
+msgstr "Ore de la UTC. Implicit setează la fusul orar al site-ului."
+
+#: includes/views/admin-shortcodes.php:292
+msgid "How far ahead to look, 1 to 30. Defaults to 7."
+msgstr "Cât de departe să căutați înainte, 1 la 30. Implicit setează la 7."
+
+#: includes/views/admin-shortcodes.php:297
+msgid "Planetary Hours"
+msgstr "Ore Planetare"
+
+#: includes/views/admin-shortcodes.php:298
+msgid ""
+"The twenty-four planetary hours of a day at one place, with the hour the "
+"reader is in marked."
+msgstr ""
+"Cele douăzeci și patru de ore planetare ale unei zile într-un singur loc, cu"
+" ora în care se află cititorul marcată."
+
+#: includes/views/admin-shortcodes.php:302
+msgid "WGS-84 latitude. The hours are the day divided by this horizon."
+msgstr "Latitudine WGS-84. Orele sunt ziua împărțită de acest orizont."
+
+#: includes/views/admin-shortcodes.php:324
 msgid "Find your coordinates and timezone"
 msgstr "Găsește-ți coordonatele și fusul orar"
 
-#: includes/views/admin-shortcodes.php:269
+#: includes/views/admin-shortcodes.php:325
 msgid "city → lat · lon · IANA tz"
 msgstr "oraș → lat · lon · tz IANA"
 
-#: includes/views/admin-shortcodes.php:276
+#: includes/views/admin-shortcodes.php:332
 msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
 msgstr "Introduceți numele unui oraș, de exemplu Kyiv, Berlin sau São Paulo"
 
-#: includes/views/admin-shortcodes.php:280
+#: includes/views/admin-shortcodes.php:336
 msgid "Search"
 msgstr "Caută"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:287
+#: includes/views/admin-shortcodes.php:343
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
@@ -1986,46 +2389,46 @@ msgstr ""
 "Alege orașul corespunzător pentru a copia valorile în shortcode. Referință: "
 "%s."
 
-#: includes/views/admin-shortcodes.php:288
+#: includes/views/admin-shortcodes.php:344
 msgid "IANA timezone list"
 msgstr "lista fusurilor orare IANA"
 
-#: includes/views/admin-shortcodes.php:297
+#: includes/views/admin-shortcodes.php:353
 msgid "Filter shortcodes"
 msgstr "Coduri scurte pentru filtre"
 
 #. translators: %d is the number of shortcodes
-#: includes/views/admin-shortcodes.php:301
+#: includes/views/admin-shortcodes.php:357
 #, php-format
 msgid "Filter %d shortcodes: name, tag or what it does"
 msgstr "Filtrează %d coduri scurte: nume, etichetă sau funcție"
 
-#: includes/views/admin-shortcodes.php:333
+#: includes/views/admin-shortcodes.php:389
 msgid "Parameter"
 msgstr "Parametru"
 
-#: includes/views/admin-shortcodes.php:334
+#: includes/views/admin-shortcodes.php:390
 msgid "Type"
 msgstr "Tip"
 
-#: includes/views/admin-shortcodes.php:335
+#: includes/views/admin-shortcodes.php:391
 msgid "Required"
 msgstr "Necesar"
 
-#: includes/views/admin-shortcodes.php:336
+#: includes/views/admin-shortcodes.php:392
 msgid "Description"
 msgstr "Descriere"
 
-#: includes/views/admin-shortcodes.php:349
+#: includes/views/admin-shortcodes.php:405
 msgid "required"
 msgstr "necesar"
 
-#: includes/views/admin-shortcodes.php:351
+#: includes/views/admin-shortcodes.php:407
 msgid "optional"
 msgstr "opțional"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:374
+#: includes/views/admin-shortcodes.php:430
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "De asemenea, disponibil ca bloc Gutenberg \"%s\"."
@@ -2189,12 +2592,14 @@ msgstr "Ora (HH:MM)"
 #: assets/js/astroway-blocks-editor.js:70
 #: assets/js/astroway-blocks-editor.js:96
 #: assets/js/astroway-blocks-editor.js:105
+#: assets/js/astroway-blocks-editor.js:280
 msgid "Latitude (-90 to 90)"
 msgstr "Latitudine (de la -90 la 90)"
 
 #: assets/js/astroway-blocks-editor.js:71
 #: assets/js/astroway-blocks-editor.js:97
 #: assets/js/astroway-blocks-editor.js:106
+#: assets/js/astroway-blocks-editor.js:281
 msgid "Longitude (-180 to 180)"
 msgstr "Longitudine (de la -180 la 180)"
 
@@ -2239,9 +2644,10 @@ msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
 msgstr "Zona orară (Europa/Kyiv sau +03:00)"
 
 #: assets/js/astroway-blocks-editor.js:104
-#: assets/js/astroway-blocks-editor.js:152
-#: assets/js/astroway-blocks-editor.js:185
-#: assets/js/astroway-blocks-editor.js:215
+#: assets/js/astroway-blocks-editor.js:167
+#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:230
+#: assets/js/astroway-blocks-editor.js:279
 msgid "Date (leave blank for today)"
 msgstr "Data (lăsați în alb pentru astăzi)"
 
@@ -2285,90 +2691,111 @@ msgstr "Persoana B: longitudine"
 msgid "Person B: timezone"
 msgstr "Persoana B: fus orar"
 
-#: assets/js/astroway-blocks-editor.js:130
-#: assets/js/astroway-blocks-editor.js:134
-#: assets/js/astroway-blocks-editor.js:138
-#: assets/js/astroway-blocks-editor.js:142
-#: assets/js/astroway-blocks-editor.js:146
-#: assets/js/astroway-blocks-editor.js:220
+#: assets/js/astroway-blocks-editor.js:141
+msgid "UTC offset in hours (blank for the site default)"
+msgstr ""
+"Compensare UTC în ore (lăsat gol pentru valoarea implicită a site-ului)"
+
+#: assets/js/astroway-blocks-editor.js:145
+#: assets/js/astroway-blocks-editor.js:149
+#: assets/js/astroway-blocks-editor.js:153
+#: assets/js/astroway-blocks-editor.js:157
+#: assets/js/astroway-blocks-editor.js:161
+#: assets/js/astroway-blocks-editor.js:235
 msgid "Birth data"
 msgstr "Date de naștere"
 
-#: assets/js/astroway-blocks-editor.js:150
+#: assets/js/astroway-blocks-editor.js:165
 msgid "Transit date"
 msgstr "Data tranzitului"
 
-#: assets/js/astroway-blocks-editor.js:158
+#: assets/js/astroway-blocks-editor.js:173
 msgid "Panchang"
 msgstr "Salvează modificările"
 
-#: assets/js/astroway-blocks-editor.js:164
+#: assets/js/astroway-blocks-editor.js:179
 msgid "Full name"
 msgstr "Numele complet"
 
-#: assets/js/astroway-blocks-editor.js:165
+#: assets/js/astroway-blocks-editor.js:180
 msgid "Date of birth (YYYY-MM-DD)"
 msgstr "Data (AAAA-MM-DD)"
 
-#: assets/js/astroway-blocks-editor.js:172
+#: assets/js/astroway-blocks-editor.js:187
 msgid "Two subjects"
 msgstr "Două subiecte"
 
-#: assets/js/astroway-blocks-editor.js:178
-#: assets/js/astroway-blocks-editor.js:199
-#: assets/js/astroway-blocks-editor.js:207
-#: assets/js/astroway-blocks-editor.js:226
+#: assets/js/astroway-blocks-editor.js:193
+#: assets/js/astroway-blocks-editor.js:214
+#: assets/js/astroway-blocks-editor.js:222
+#: assets/js/astroway-blocks-editor.js:241
 msgid "Zodiac sign"
 msgstr "Semn zodiacal"
 
-#: assets/js/astroway-blocks-editor.js:190
+#: assets/js/astroway-blocks-editor.js:205
 msgid "Daily Tarot"
 msgstr "Tarotul zilnic"
 
-#: assets/js/astroway-blocks-editor.js:192
+#: assets/js/astroway-blocks-editor.js:207
 msgid "Deck"
 msgstr "Punte"
 
-#: assets/js/astroway-blocks-editor.js:197
+#: assets/js/astroway-blocks-editor.js:212
 msgid "Weekly horoscope"
 msgstr "Horoscopul săptămânal"
 
-#: assets/js/astroway-blocks-editor.js:200
+#: assets/js/astroway-blocks-editor.js:215
 msgid "Any date inside the week (blank for this week)"
 msgstr ""
 "Orice dată din săptămână (lăsați necompletat pentru săptămâna aceasta)"
 
-#: assets/js/astroway-blocks-editor.js:205
+#: assets/js/astroway-blocks-editor.js:220
 msgid "Monthly horoscope"
 msgstr "Horoscopul lunar"
 
-#: assets/js/astroway-blocks-editor.js:208
-#: assets/js/astroway-blocks-editor.js:227
+#: assets/js/astroway-blocks-editor.js:223
+#: assets/js/astroway-blocks-editor.js:242
 msgid "Any date inside the month (blank for this month)"
 msgstr ""
 "Orice dată din luna respectivă (se lasă necompletat pentru luna curentă)"
 
-#: assets/js/astroway-blocks-editor.js:224
+#: assets/js/astroway-blocks-editor.js:239
 msgid "Monthly forecast"
 msgstr "Previziuni lunare"
 
-#: assets/js/astroway-blocks-editor.js:233
+#: assets/js/astroway-blocks-editor.js:248
 msgid "Moon transit timeline"
 msgstr "Cronologia tranzitului Lunii"
 
-#: assets/js/astroway-blocks-editor.js:235
+#: assets/js/astroway-blocks-editor.js:250
 msgid "Day the seven start from (blank for today)"
 msgstr "Ziua a șaptea începe de la (lăsat în alb pentru astăzi)"
 
-#: assets/js/astroway-blocks-editor.js:388
+#: assets/js/astroway-blocks-editor.js:256
+msgid "Retrograde status"
+msgstr "Stare retrogradă"
+
+#: assets/js/astroway-blocks-editor.js:269
+msgid "Day to start from (blank for today)"
+msgstr "Zi de început (lăsat gol pentru astăzi)"
+
+#: assets/js/astroway-blocks-editor.js:270
+msgid "Time to start from (HH:MM, blank for midnight)"
+msgstr "Oră de început (HH:MM, lăsat gol pentru miezul nopții)"
+
+#: assets/js/astroway-blocks-editor.js:272
+msgid "Days to look ahead (1 to 30, default 7)"
+msgstr "Zile în avans (1 până la 30, implicit 7)"
+
+#: assets/js/astroway-blocks-editor.js:434
 msgid "Section"
 msgstr "Secțiune"
 
-#: assets/js/astroway-blocks-editor.js:391
+#: assets/js/astroway-blocks-editor.js:437
 msgid "Zodiac sign for blocks inside"
 msgstr "Semn zodiacal pentru blocurile din interior"
 
-#: assets/js/astroway-blocks-editor.js:398
+#: assets/js/astroway-blocks-editor.js:444
 msgid "Language for blocks inside"
 msgstr "Limba pentru blocurile din interior"
 
@@ -2469,6 +2896,16 @@ msgstr "AstroWay: Semnul Lunii"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr "Semnul, gradul și casa Lunii dintr-o hartă de naștere."
 
+#: blocks/moon-voc/block.json
+msgid "AstroWay: Void of Course Moon"
+msgstr "AstroWay: Luna Void of Course"
+
+#: blocks/moon-voc/block.json
+msgid "Whether the Moon is void of course, and the windows around now."
+msgstr ""
+"Indică dacă Luna este void of course și ferestrele din jurul momentului "
+"curent."
+
 #: blocks/natal-chart/block.json
 msgid "AstroWay: Natal Chart"
 msgstr "AstroWay: Grafica Natală"
@@ -2511,6 +2948,35 @@ msgid ""
 msgstr ""
 "Planeta tradițională care guvernează ziua săptămânii, împreună cu simbolul "
 "și temele sale, redate pe pagină."
+
+#: blocks/planetary-hours/block.json
+msgid "AstroWay: Planetary Hours"
+msgstr "AstroWay: Ore planetare"
+
+#: blocks/planetary-hours/block.json
+msgid ""
+"The twenty-four planetary hours of a day at one place, with the current one "
+"marked."
+msgstr ""
+"Cele douăzeci și patru de ore planetare ale unei zile într-un singur loc, cu"
+" ora curentă marcată."
+
+#: blocks/retrograde/block.json
+msgid "AstroWay: Retrograde Status"
+msgstr "AstroWay: Stare retrogradă"
+
+#: blocks/retrograde/block.json
+msgid "Whether one planet is retrograde right now, and when that changes."
+msgstr ""
+"Indică dacă o planetă este retrogradă în acest moment și când se schimbă."
+
+#: blocks/retrogrades/block.json
+msgid "AstroWay: Retrograde Planets"
+msgstr "AstroWay: Planete retrograde"
+
+#: blocks/retrogrades/block.json
+msgid "All eight planets that station, and what each is doing today."
+msgstr "Toate cele opt planete care staționează și ce face fiecare astăzi."
 
 #: blocks/rising-sign/block.json
 msgid "AstroWay: Rising Sign"

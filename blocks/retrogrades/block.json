@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/retrogrades",
+	"title": "AstroWay: Retrograde Planets",
+	"category": "widgets",
+	"description": "All eight planets that station, and what each is doing today.",
+	"textdomain": "astroway",
+	"icon": "list-view",
+	"supports": {
+		"html": false,
+		"align": [ "center", "wide" ],
+		"customClassName": true
+	},
+	"attributes": {
+		"lang": { "type": "string", "default": "" }
+	},
+	"editorScript": "astroway-blocks-editor"
+}

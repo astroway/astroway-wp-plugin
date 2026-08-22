@@ -427,24 +427,13 @@ class GeneratedRegistry {
 	 * exhausted quota is not turned into a stampede by the next page view.
 	 */
 	private static function fetch( string $path, string $method, array $params ): ?array {
-		$key    = 'gen_' . md5( $path . '|' . $method . '|' . (string) wp_json_encode( $params ) );
-		$cached = Cache::get( $key );
-		if ( is_array( $cached ) ) {
-			return $cached;
-		}
-		if ( false !== Cache::get( $key . '_neg' ) ) {
-			return null;
-		}
-
-		$response = ( new ApiClient() )->call( $method, $path, $params );
-		$payload  = $response['data']['data'] ?? null;
-		if ( 200 !== (int) ( $response['status'] ?? 0 ) || ! is_array( $payload ) ) {
-			Cache::set( $key . '_neg', 'fail', PublicData::NEGATIVE_TTL );
-			return null;
-		}
-
-		Cache::set( $key, $payload, PublicData::ttl_for( self::freshness( $path, $params ) ) );
-		return $payload;
+		return ( new ApiClient() )->cached_call(
+			$method,
+			$path,
+			$params,
+			PublicData::ttl_for( self::freshness( $path, $params ) ),
+			'gen_'
+		);
 	}
 
 	/**
