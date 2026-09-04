@@ -343,10 +343,14 @@ class Admin {
 	}
 
 	/**
-	 * POST {new_domain} to api.astroway.info to request rebinding the
-	 * configured key to a different domain. Surfaces api response verbatim;
-	 * if the endpoint returns 404, the api hasn't shipped it yet — the
-	 * dashboard link below the button is the manual fallback.
+	 * POST {new_domain} to api.astroway.info to rebind the configured key to a
+	 * different domain. The rebind is applied immediately, not queued for
+	 * approval; api rate-limits repeat changes per calendar month and emails
+	 * the account owner. The dashboard link below the button stays as the
+	 * fallback for a key this site does not hold.
+	 *
+	 * The path carries /me/ and there is no variant without it. Shipped with
+	 * the wrong path in 0.8.3, so every click answered 404 until 1.5.2.
 	 *
 	 * @since 0.8.3
 	 */
@@ -366,7 +370,7 @@ class Admin {
 		}
 
 		$res = wp_remote_post(
-			ASTROWAY_API_BASE . '/auth/keys/domain-change',
+			ASTROWAY_API_BASE . '/auth/keys/me/domain-change',
 			[
 				'timeout' => 6,
 				'headers' => [
@@ -384,12 +388,22 @@ class Admin {
 		$body = json_decode( wp_remote_retrieve_body( $res ), true );
 		if ( 200 === $code ) {
 			Cache::delete( 'keys_me_' . md5( $key ) );
-			wp_send_json_success( $body );
+			wp_send_json_success(
+				[
+					'domain'    => $body['data']['domain'] ?? $new_domain,
+					'unchanged' => ! empty( $body['data']['unchanged'] ),
+				]
+			);
 		}
+		// api wraps failures as { error: { code, message } }; reading the outer
+		// key handed an array to the view, which printed [object Object].
+		$message = is_array( $body['error'] ?? null )
+			? (string) ( $body['error']['message'] ?? '' )
+			: (string) ( $body['error'] ?? '' );
 		wp_send_json_error(
 			[
 				'status'  => $code,
-				'message' => $body['error'] ?? __( 'Domain change failed. Use the dashboard link below.', 'astroway' ),
+				'message' => '' !== $message ? $message : __( 'Domain change failed. Use the dashboard link below.', 'astroway' ),
 			]
 		);
 	}

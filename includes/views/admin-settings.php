@@ -221,7 +221,7 @@ $astroway_diag = [
 					<input type="text" id="aw-new-domain" placeholder="example.com" class="aw-input"
 						style="padding:6px 10px;border:1px solid #d9d3c2;border-radius:4px;font-size:14px;width:240px">
 					<button type="button" class="aw-btn aw-btn-ghost" id="aw-domain-change-btn">
-						<?php esc_html_e( 'Request rebind', 'astroway' ); ?>
+						<?php esc_html_e( 'Rebind key', 'astroway' ); ?>
 					</button>
 					<span id="aw-domain-change-result" class="aw-test-result"></span>
 				</div>
@@ -229,7 +229,7 @@ $astroway_diag = [
 					<?php
 					printf(
 						/* translators: %s = api dashboard URL */
-						esc_html__( 'Manual fallback: %s.', 'astroway' ),
+						esc_html__( 'Applies immediately. Limited to a few changes per month; the account owner is emailed. Manage keys at %s.', 'astroway' ),
 						'<a href="https://api.astroway.info/dashboard/account" target="_blank" rel="noopener">api.astroway.info/dashboard/account</a>'
 					);
 					?>
@@ -243,7 +243,7 @@ $astroway_diag = [
 						var out = document.getElementById('aw-domain-change-result');
 						var d = (input.value || '').trim();
 						if (!d) { out.textContent = '<?php echo esc_js( __( 'Enter a domain first.', 'astroway' ) ); ?>'; return; }
-						btn.disabled = true; out.textContent = '<?php echo esc_js( __( 'Requesting…', 'astroway' ) ); ?>';
+						btn.disabled = true; out.textContent = '<?php echo esc_js( __( 'Rebinding…', 'astroway' ) ); ?>';
 						var fd = new FormData();
 						fd.append('action', 'astroway_domain_change');
 						fd.append('nonce', astrowayAdmin.nonce);
@@ -252,9 +252,14 @@ $astroway_diag = [
 							.then(function(r){ return r.json(); })
 							.then(function(j){
 								btn.disabled = false;
-								out.textContent = j.success
-									? '<?php echo esc_js( __( '✓ requested', 'astroway' ) ); ?>'
-									: '✗ ' + (j.data && j.data.message ? j.data.message : '<?php echo esc_js( __( 'failed', 'astroway' ) ); ?>');
+								if (!j.success) {
+									out.textContent = '✗ ' + (j.data && j.data.message ? j.data.message : '<?php echo esc_js( __( 'failed', 'astroway' ) ); ?>');
+									return;
+								}
+								var bound = (j.data && j.data.domain) ? j.data.domain : d;
+								out.textContent = (j.data && j.data.unchanged)
+									? '<?php echo esc_js( __( '✓ already bound to', 'astroway' ) ); ?>' + ' ' + bound
+									: '<?php echo esc_js( __( '✓ now bound to', 'astroway' ) ); ?>' + ' ' + bound;
 							})
 							.catch(function(){
 								btn.disabled = false;

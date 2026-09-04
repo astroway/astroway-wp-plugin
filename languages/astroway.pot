@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-22T21:33:33+00:00\n"
+"POT-Creation-Date: 2026-09-04T22:02:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: astroway\n"
@@ -107,7 +107,7 @@ msgid "Enter a valid API key first."
 msgstr ""
 
 #: includes/class-admin.php:211
-#: includes/views/admin-settings.php:261
+#: includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr ""
 
@@ -191,19 +191,19 @@ msgstr ""
 msgid "Could not verify the key (HTTP %d)."
 msgstr ""
 
-#: includes/class-admin.php:361
+#: includes/class-admin.php:365
 msgid "API key required."
 msgstr ""
 
-#: includes/class-admin.php:365
+#: includes/class-admin.php:369
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr ""
 
-#: includes/class-admin.php:392
+#: includes/class-admin.php:406
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 
-#: includes/class-admin.php:445
+#: includes/class-admin.php:459
 msgid "City lookup is busy, try again in a moment."
 msgstr ""
 
@@ -1748,13 +1748,13 @@ msgid "no domain binding yet"
 msgstr ""
 
 #: includes/views/admin-settings.php:224
-msgid "Request rebind"
+msgid "Rebind key"
 msgstr ""
 
 #. translators: %s = api dashboard URL
 #: includes/views/admin-settings.php:232
 #, php-format
-msgid "Manual fallback: %s."
+msgid "Applies immediately. Limited to a few changes per month; the account owner is emailed. Manage keys at %s."
 msgstr ""
 
 #: includes/views/admin-settings.php:245
@@ -1762,118 +1762,122 @@ msgid "Enter a domain first."
 msgstr ""
 
 #: includes/views/admin-settings.php:246
-msgid "Requesting…"
+msgid "Rebinding…"
 msgstr ""
 
 #: includes/views/admin-settings.php:256
-msgid "✓ requested"
-msgstr ""
-
-#: includes/views/admin-settings.php:257
 msgid "failed"
 msgstr ""
 
-#: includes/views/admin-settings.php:272
+#: includes/views/admin-settings.php:261
+msgid "✓ already bound to"
+msgstr ""
+
+#: includes/views/admin-settings.php:262
+msgid "✓ now bound to"
+msgstr ""
+
+#: includes/views/admin-settings.php:277
 msgid "Widget disclaimer"
 msgstr ""
 
-#: includes/views/admin-settings.php:273
+#: includes/views/admin-settings.php:278
 msgid "optional legal line in the widget footer"
 msgstr ""
 
-#: includes/views/admin-settings.php:281
+#: includes/views/admin-settings.php:286
 msgid "Show a disclaimer in embedded widgets"
 msgstr ""
 
-#: includes/views/admin-settings.php:282
+#: includes/views/admin-settings.php:287
 msgid "Appends a short \"informational, not professional advice\" line to the widget footer. Off by default, enable it if your jurisdiction or compliance policy requires it. The wording is rendered and localized by api.astroway.info."
 msgstr ""
 
-#: includes/views/admin-settings.php:285
+#: includes/views/admin-settings.php:290
 msgid "Save disclaimer setting"
 msgstr ""
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:298
 msgid "Render mode"
 msgstr ""
 
-#: includes/views/admin-settings.php:294
+#: includes/views/admin-settings.php:299
 msgid "where widget content is drawn"
 msgstr ""
 
-#: includes/views/admin-settings.php:302
+#: includes/views/admin-settings.php:307
 msgid "On this page (recommended)"
 msgstr ""
 
-#: includes/views/admin-settings.php:303
+#: includes/views/admin-settings.php:308
 msgid "Your server fetches the text and prints it into the page. Search engines can read it, your theme styles it, and it works without JavaScript. Answers are cached until they change, so a daily horoscope is fetched once a day per sign."
 msgstr ""
 
-#: includes/views/admin-settings.php:308
+#: includes/views/admin-settings.php:313
 msgid "In an iframe"
 msgstr ""
 
-#: includes/views/admin-settings.php:309
+#: includes/views/admin-settings.php:314
 msgid "Each visitor's browser loads the widget from api.astroway.info. Nothing reaches your page source, so the content is not indexed and your theme cannot style it. Choose this if your host blocks outgoing requests, or to compare the two."
 msgstr ""
 
-#: includes/views/admin-settings.php:313
+#: includes/views/admin-settings.php:318
 msgid "Widgets without a page-side template, and any widget whose data cannot be fetched, fall back to the iframe on their own."
 msgstr ""
 
-#: includes/views/admin-settings.php:315
+#: includes/views/admin-settings.php:320
 msgid "Save render mode"
 msgstr ""
 
-#: includes/views/admin-settings.php:323
+#: includes/views/admin-settings.php:328
 msgid "Daily transit alerts"
 msgstr ""
 
-#: includes/views/admin-settings.php:324
+#: includes/views/admin-settings.php:329
 msgid "email on the days the sky does something"
 msgstr ""
 
-#: includes/views/admin-settings.php:331
+#: includes/views/admin-settings.php:336
 msgid "Transit alerts are part of the Pro plan. Everything else on this page works on any plan."
 msgstr ""
 
-#: includes/views/admin-settings.php:332
+#: includes/views/admin-settings.php:337
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
 msgstr ""
 
-#: includes/views/admin-settings.php:341
+#: includes/views/admin-settings.php:346
 msgid "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr ""
 
-#: includes/views/admin-settings.php:342
+#: includes/views/admin-settings.php:347
 msgid "Nothing is sent on the quiet days. The mail that does go out carries the moon phase and the current retrogrades as context."
 msgstr ""
 
-#: includes/views/admin-settings.php:347
+#: includes/views/admin-settings.php:352
 msgid "Hour to send, on your site clock"
 msgstr ""
 
-#: includes/views/admin-settings.php:352
+#: includes/views/admin-settings.php:357
 msgid "WordPress runs scheduled jobs when someone visits the site, so the mail can be late on a quiet blog."
 msgstr ""
 
-#: includes/views/admin-settings.php:356
+#: includes/views/admin-settings.php:361
 msgid "Send to"
 msgstr ""
 
-#: includes/views/admin-settings.php:362
+#: includes/views/admin-settings.php:367
 msgid "Comma separated. Left empty, it goes to the site administrator."
 msgstr ""
 
-#: includes/views/admin-settings.php:365
+#: includes/views/admin-settings.php:370
 msgid "Save alert settings"
 msgstr ""
 
-#: includes/views/admin-settings.php:371
+#: includes/views/admin-settings.php:376
 msgid "Send today's alert to me now"
 msgstr ""
 
-#: includes/views/admin-settings.php:372
+#: includes/views/admin-settings.php:377
 msgid "Goes to your own address, not to the list above."
 msgstr ""
 

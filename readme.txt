@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -155,8 +155,40 @@ This plugin stores the following on the WordPress site:
 
 == Changelog ==
 
+= 1.5.2 =
+* Fix: the "Rebind key" button on the Domain binding panel never worked. It posted to an address the API does not answer on, so every attempt failed, and the reason came back as unreadable text instead of a message. Rebinding a key to a new site URL works now, and the result names the domain the key ended up on.
+* Note: a rebind takes effect at once rather than waiting for approval. The API limits how often a key may move and emails the account owner each time.
+* Housekeeping: the changelog below had lost its entries for 0.5.6, 0.5.7, 0.5.8, 0.7.5, 1.3.0, 1.4.0 and 1.5.0. All seven are restored.
+
 = 1.5.1 =
 * Fix: a birth time written with a single-digit hour, like 9:15, was silently ignored. On the synastry widget that meant the time was treated as unknown and the score was calculated for a different chart. Times like 24:00 and 09:60 were also being accepted and sent on as real.
+
+= 1.5.0 =
+* New: the synastry widget is rendered by your server into the page instead of loading in a frame, and still needs no key. The score, the word the API puts on it, and the aspects behind it as a table headed by the two names.
+* New: `name_a` and `name_b` head the two columns. "Moon conjunct Mercury" says nothing until you know whose Moon. The names stay on your server; the API is not told them.
+* New: `aspects="12"` shows more rows, up to twenty. Six by default, which is what the frame showed. The whole grid, points included, is behind a click either way.
+* Better: a birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect. The score and the cross-aspects survive it.
+* Efficiency: the answer is cached for a month, the way a birth chart is. One synastry counts as three requests of the hourly allowance, because it is two charts and the grid between them.
+
+= 1.4.0 =
+* New: `[astroway_yearly_horoscope sign="leo"]`, the year ahead for one sign.
+* New: `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]`, how two signs read together. Prose rather than a percentage: the API returns no score, and a number with no calculation behind it is worse than no number.
+* New: `[astroway_chinese_zodiac date="1990-05-15"]`, the animal of a birth year with its element, polarity and pillar.
+* New: tabs. Put several AstroWay blocks inside an Astrology Section and set its layout to Tabs. Your server still renders every card into the page; a 3 KB script folds the stack into a tab strip with arrow-key navigation, and with JavaScript off the page is the stack it always was.
+* Better: cards now separate. A rule under every header, a rule above every section, and one framed table with a banded header row and striped body in place of an underline per row.
+* Better: the row you are in, the current planetary hour or the open void of course window, is marked strongly enough to see when it lands on a striped row.
+* Better: tables and field lists follow the reading direction, which matters in Arabic and Hebrew.
+* Compatibility: the three endpoints above keep the shortcode and block names they had as generated ones in 1.2.0, so pages written then keep working and get the new card.
+
+= 1.3.0 =
+* New: is Mercury retrograde? `[astroway_mercury_retrograde]` answers yes or no with the dates of the retrograde it is in or heading for, and a countdown. `[astroway_retrograde planet="saturn"]` does the same for any of the eight planets that station.
+* New: `[astroway_retrogrades]` puts all eight in one table, with the ones running backwards marked.
+* New: `[astroway_moon_voc]` says whether the Moon is void of course right now and lists the windows around it, each with its last aspect and the sign the Moon enters next.
+* New: `[astroway_planetary_hours latitude="50.45" longitude="30.52"]` prints the twenty-four planetary hours of the day with the hour you are in marked.
+* New: daily transit alerts. Your site emails you on the days a planet stations or the Moon goes void of course, and stays quiet otherwise. AstroWay → Settings, Pro plan.
+* Better: `[astroway_moon_voc]` and `[astroway_planetary_hours]` existed as generated shortcodes in 1.2.0 and printed a generic table. Same names, same attributes, purpose-built cards.
+* Correct: every date and time in these cards is printed on your site's clock rather than in UTC. Saturn turns direct at 23:31 on 10 December, which is the 11th anywhere east of Greenwich.
+* Efficiency: the single-planet card and the whole board ask the same question, so a page carrying both spends one request, and the answer is cached for a month while the reading is worked out fresh on every page view.
 
 = 1.2.0 =
 * New: a shortcode and a Gutenberg block for nearly every endpoint the API has, 682 of them across 49 families, generated from the API specification instead of written by hand. Vedic, numerology, tarot, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary and more. They need an API key; the ten hand-built widgets still need nothing.
@@ -284,6 +316,9 @@ This plugin stores the following on the WordPress site:
 * New Settings panel "Render mode" with radio toggle: Auto (default) / Force iframe / Force client. Stored in OPTION_KEY['render_mode']. RendererDecisions wiring lands when native client widgets ship in v1.1+.
 * First piece of admin enhancements stack (v0.8.0-v0.8.3).
 
+= 0.7.5 =
+* Per-shortcode tier guards: each core `astroway_*` shortcode is now wrapped with `Tier::can( $feature )`. Locked shortcodes render an inline "Pro feature" CTA. Behavior matches v0.7.2 block-side gating - v1 shortcodes remain anonymous-accessible.
+
 = 0.7.4 =
 * New `Tier::render_upgrade_cta( $feature )` returns a styled CTA panel with feature label + upgrade button linking to api.astroway.info/dashboard/upgrade. Filterable via `astroway_upgrade_cta_html` for theme/addon customization.
 * Block + shortcode guards (v0.7.2/v0.7.3) refactored to call the helper. Closes the v0.7.x tier-gating stack and pre-v1.0 blocker B3.
@@ -323,6 +358,17 @@ This plugin stores the following on the WordPress site:
 = 0.6.0 =
 * New action: `astroway_init` fires early in plugin boot, signalling addons that core classes are loaded and they can hook into upcoming registration actions.
 * First atomic piece of the Addon Hooks API (v0.6.0-v0.6.5). Unlocks third-party addon ecosystem.
+
+= 0.5.8 =
+* Follow-up hotfix on v0.5.7: also guards require_once for class-updater.php and class_exists() checks around Updater::boot() / Elementor\Loader::boot(). All forward-version dependencies in the main plugin file and Plugin::boot() now degrade gracefully if the corresponding includes/ files aren't bundled in the current ZIP.
+
+= 0.5.7 =
+* Hotfix on top of v0.5.6: the main plugin file required class-tier.php / class-addon-api.php / elementor.php unconditionally, but those classes only ship in later versions and were missing from the v0.5.6 ZIP - every page load fatal-erred. Those three require_once calls are now guarded by file_exists() so older ZIPs load cleanly. Also wraps Tier::current() in class_exists() for the same reason.
+* No behavior change for v0.5.6 features (review prompt + anonymous rate-limit guard) - they keep working as designed.
+
+= 0.5.6 =
+* Added a one-time review prompt in WP admin shown 14 days after activation, dismissible per-user.
+* Anonymous rate-limit guard: when the api responds that the public 30/h-per-IP limit is exhausted, the plugin now skips rendering the iframe (no more raw JSON error visible to visitors) and surfaces a one-time admin notice pointing the site owner at a free API key. Paid tiers and any configured API key skip the probe entirely. The probe itself is cached for 5 minutes in a transient so it adds at most one extra api hit per site every five minutes.
 
 = 0.5.5 =
 * Admin: new "Update channel" panel on the API Key page shows current channel (A/B), whether PUC library is loaded, whether an API key is set, and last update check timestamp.
