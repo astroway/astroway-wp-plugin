@@ -112,6 +112,18 @@ class Admin {
 				if ( class_exists( __NAMESPACE__ . '\\Tier' ) ) {
 					Tier::flush();
 				}
+			} elseif ( 0 === strpos( $key, 'pk_' ) ) {
+				/* Публикуемый ключ (pk_live_, pk_test_) рассчитан на страницу и
+				   принимается API только с проверяемым Origin или Referer. Этот
+				   плагин зовёт API с сервера, где заголовка происхождения нет,
+				   поэтому такой ключ получил бы ORIGIN_REQUIRED на каждом
+				   вызове. Отдельная ветка нужна, чтобы человек не искал опечатку
+				   в правильно скопированном ключе. */
+				add_settings_error(
+					self::PAGE_API_KEY,
+					'publishable_key',
+					__( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, where such a key is refused. Use a secret key that starts with "aw_".', 'astroway' )
+				);
 			} else {
 				add_settings_error(
 					self::PAGE_API_KEY,
@@ -208,6 +220,7 @@ class Admin {
 						'rateLimit'    => __( 'Rate', 'astroway' ),
 						'domain'       => __( 'Bound to', 'astroway' ),
 						'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
+						'browserKey'   => __( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, where such a key is refused. Use a secret key that starts with "aw_".', 'astroway' ),
 						'networkError' => __( 'Network error', 'astroway' ),
 						'keyValid'     => __( 'Key verified.', 'astroway' ),
 						'copied'       => __( 'copied!', 'astroway' ),

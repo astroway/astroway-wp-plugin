@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -154,6 +154,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.5.3 =
+* Fix: a publishable key, the kind that starts with pk_live_ or pk_test_, could not be saved, and the reason given was that a key must start with "aw_". On a key copied correctly that reads like a typo. Such a key is now recognised and refused with the real reason: it is meant to sit in page source and the API accepts it only from a browser on one of its allowed origins, while this plugin calls the API from your server. Secret keys are unaffected.
 
 = 1.5.2 =
 * Fix: the "Rebind key" button on the Domain binding panel never worked. It posted to an address the API does not answer on, so every attempt failed, and the reason came back as unreadable text instead of a message. Rebinding a key to a new site URL works now, and the result names the domain the key ended up on.

@@ -53,6 +53,11 @@
 		$( '#aw-verify-key' ).on( 'click', function () {
 			var $status = $( '#aw-key-status' );
 			var key     = ( $( '#aw-api-key' ).val() || '' ).trim();
+			// Отдельная ветка: браузерный ключ скопирован верно, он просто не того класса.
+			if ( key.indexOf( 'pk_' ) === 0 ) {
+				show( $status, '<p>' + escapeHtml( i18n.browserKey || 'Publishable key' ) + '</p>', 'error' );
+				return;
+			}
 			if ( ! key || key.indexOf( 'aw_' ) !== 0 ) {
 				show( $status, '<p>' + escapeHtml( i18n.invalidKey || 'Invalid key' ) + '</p>', 'error' );
 				return;
