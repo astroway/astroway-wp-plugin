@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T21:33:33+00:00\n"
-"PO-Revision-Date: 2026-08-23 00:35+0300\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
+"POT-Creation-Date: 2026-09-18T09:56:07+00:00\n"
+"PO-Revision-Date: 2026-09-18 13:02+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Korean <translations@astroway.info>\n"
 "Language: ko_KR\n"
@@ -54,7 +54,7 @@ msgstr "시작하기"
 msgid "AstroWay Settings"
 msgstr "AstroWay 설정"
 
-#: includes/class-admin.php:55 includes/class-admin.php:161
+#: includes/class-admin.php:55 includes/class-admin.php:179
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -70,114 +70,123 @@ msgstr "AstroWay_shortcode"
 msgid "Shortcodes"
 msgstr "shortcode"
 
-#: includes/class-admin.php:119
+#: includes/class-admin.php:107
+msgid ""
+"This is a publishable key for browsers (pk_). The plugin calls the API from "
+"your server, so it needs a secret key that starts with \"aw_\". Both keys "
+"are on your dashboard at api.astroway.info/dashboard/."
+msgstr ""
+"이 키는 브라우저용 공개 키(pk_)입니다. 플러그인은 사용자의 서버에서 API를 호출하므로, “aw_”로 시작하는 비밀 키가 "
+"필요합니다. 두 키 모두 api.astroway.info/dashboard/의 대시보드에서 확인할 수 있습니다."
+
+#: includes/class-admin.php:137
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
 msgstr "API 키는 \"aw_\"로 시작해야 하며 문자, 숫자, 밑줄만 포함할 수 있습니다."
 
-#: includes/class-admin.php:166
+#: includes/class-admin.php:184
 msgid "Get API Key"
 msgstr "API 키 받기"
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:222
 msgid "Verifying…"
 msgstr "검증 중…"
 
-#: includes/class-admin.php:205
+#: includes/class-admin.php:223
 msgid "limited info"
 msgstr "제한된 정보"
 
-#: includes/class-admin.php:206 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:224 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "플랜"
 
-#: includes/class-admin.php:207
+#: includes/class-admin.php:225
 msgid "Used"
 msgstr "사용됨"
 
-#: includes/class-admin.php:208
+#: includes/class-admin.php:226
 msgid "Rate"
 msgstr "요금"
 
-#: includes/class-admin.php:209
+#: includes/class-admin.php:227
 msgid "Bound to"
 msgstr "바인딩"
 
-#: includes/class-admin.php:210
+#: includes/class-admin.php:228
 msgid "Enter a valid API key first."
 msgstr "유효한 API 키를 먼저 입력하세요."
 
-#: includes/class-admin.php:211 includes/views/admin-settings.php:261
+#: includes/class-admin.php:230 includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr "네트워크 오류"
 
-#: includes/class-admin.php:212
+#: includes/class-admin.php:231
 msgid "Key verified."
 msgstr "키가 확인되었습니다."
 
-#: includes/class-admin.php:213 includes/class-admin.php:236
-#: includes/class-admin.php:255
+#: includes/class-admin.php:232 includes/class-admin.php:255
+#: includes/class-admin.php:274
 msgid "copied!"
 msgstr "복사됨!"
 
-#: includes/class-admin.php:231
+#: includes/class-admin.php:250
 msgid "Pinging…"
 msgstr "핑 중…"
 
-#: includes/class-admin.php:232
+#: includes/class-admin.php:251
 msgid "API is healthy"
 msgstr "API가 정상입니다"
 
-#: includes/class-admin.php:233
+#: includes/class-admin.php:252
 msgid "API unreachable"
 msgstr "API에 접근할 수 없음"
 
-#: includes/class-admin.php:234
+#: includes/class-admin.php:253
 msgid "Purge all cached data?"
 msgstr "모든 캐시 데이터를 지우시겠습니까?"
 
-#: includes/class-admin.php:235
+#: includes/class-admin.php:254
 msgid "Cache cleared:"
 msgstr "캐시 지움:"
 
-#: includes/class-admin.php:256
+#: includes/class-admin.php:275
 msgid "Searching…"
 msgstr "검색 중…"
 
-#: includes/class-admin.php:257
+#: includes/class-admin.php:276
 msgid "No cities found."
 msgstr "도시를 찾을 수 없습니다."
 
-#: includes/class-admin.php:258
+#: includes/class-admin.php:277
 msgid "Search error. Try again."
 msgstr "검색 오류. 다시 시도하세요."
 
-#: includes/class-admin.php:259
+#: includes/class-admin.php:278
 msgid "Type at least 2 characters."
 msgstr "최소 2자를 입력하세요."
 
-#: includes/class-admin.php:260
+#: includes/class-admin.php:279
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "위도 / 경도 / 시간대를 채우기 위해 도시를 선택하세요."
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:262
+#: includes/class-admin.php:281
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d 중 %2$d"
 
-#: includes/class-admin.php:263
+#: includes/class-admin.php:282
 msgid "No shortcode matches."
 msgstr "일치하는 숏코드가 없습니다."
 
-#: includes/class-admin.php:272 includes/class-admin.php:288
-#: includes/class-admin.php:297
+#: includes/class-admin.php:291 includes/class-admin.php:307
+#: includes/class-admin.php:316
 msgid "Unauthorized."
 msgstr "권한 없음."
 
-#: includes/class-admin.php:310
+#: includes/class-admin.php:329
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -186,7 +195,7 @@ msgstr ""
 "API 키가 없습니다. 플러그인은 익명 모드로 실행됩니다. 이 사이트는 시간당 300회의 요청이 허용되며, 프레임으로 전환되는 위젯은 "
 "방문자 한 명당 30회의 요청 한도를 각각 사용합니다."
 
-#: includes/class-admin.php:318
+#: includes/class-admin.php:337
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -195,24 +204,24 @@ msgstr ""
 "지우십시오."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:321
+#: includes/class-admin.php:340
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "키를 확인할 수 없습니다 (HTTP %d)."
 
-#: includes/class-admin.php:361
+#: includes/class-admin.php:384
 msgid "API key required."
 msgstr "API 키 구성됨"
 
-#: includes/class-admin.php:365
+#: includes/class-admin.php:388
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "유효한 도메인을 입력하십시오 (예: example.com)."
 
-#: includes/class-admin.php:392
+#: includes/class-admin.php:425
 msgid "Domain change failed. Use the dashboard link below."
 msgstr "도메인 변경에 실패했습니다. 아래 대시보드 링크를 사용하십시오."
 
-#: includes/class-admin.php:445
+#: includes/class-admin.php:478
 msgid "City lookup is busy, try again in a moment."
 msgstr "도시 조회가 바쁩니다, 잠시 후 다시 시도해 주세요."
 
@@ -1805,44 +1814,50 @@ msgid "no domain binding yet"
 msgstr "아직 도메인 바인딩 없음"
 
 #: includes/views/admin-settings.php:224
-msgid "Request rebind"
-msgstr "필수"
+msgid "Rebind key"
+msgstr "키 재연결"
 
 #. translators: %s = api dashboard URL
 #: includes/views/admin-settings.php:232
 #, php-format
-msgid "Manual fallback: %s."
-msgstr "수동 대체: %s."
+msgid ""
+"Applies immediately. Limited to a few changes per month; the account owner "
+"is emailed. Manage keys at %s."
+msgstr "즉시 적용됩니다. 월별 변경 횟수는 제한되며, 계정 소유자에게 이메일로 알림이 전송됩니다. %s에서 키를 관리하세요."
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
 msgstr "유효한 API 키를 먼저 입력하세요."
 
 #: includes/views/admin-settings.php:246
-msgid "Requesting…"
-msgstr "요청 중…"
+msgid "Rebinding…"
+msgstr "재연결 중…"
 
 #: includes/views/admin-settings.php:256
-msgid "✓ requested"
-msgstr "✓ 요청됨"
-
-#: includes/views/admin-settings.php:257
 msgid "failed"
 msgstr "실패"
 
-#: includes/views/admin-settings.php:272
+#: includes/views/admin-settings.php:261
+msgid "✓ already bound to"
+msgstr "✓ 이미 연결됨:"
+
+#: includes/views/admin-settings.php:262
+msgid "✓ now bound to"
+msgstr "✓ 이제 연결됨:"
+
+#: includes/views/admin-settings.php:277
 msgid "Widget disclaimer"
 msgstr "위젯 면책 조항"
 
-#: includes/views/admin-settings.php:273
+#: includes/views/admin-settings.php:278
 msgid "optional legal line in the widget footer"
 msgstr "위젯 푸터의 선택적 법적 문구"
 
-#: includes/views/admin-settings.php:281
+#: includes/views/admin-settings.php:286
 msgid "Show a disclaimer in embedded widgets"
 msgstr "임베디드 위젯에 면책 조항 표시"
 
-#: includes/views/admin-settings.php:282
+#: includes/views/admin-settings.php:287
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
 "widget footer. Off by default, enable it if your jurisdiction or compliance "
@@ -1852,23 +1867,23 @@ msgstr ""
 "위젯 하단에 “전문적인 조언이 아닌 정보 제공용”이라는 짧은 문구를 추가합니다. 기본적으로 비활성화되어 있으며, 해당 관할권이나 규정 "
 "준수 정책에서 요구하는 경우 이 기능을 활성화하십시오. 문구 내용은 api.astroway.info에서 렌더링 및 현지화됩니다."
 
-#: includes/views/admin-settings.php:285
+#: includes/views/admin-settings.php:290
 msgid "Save disclaimer setting"
 msgstr "면책 조항 설정 저장"
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:298
 msgid "Render mode"
 msgstr "렌더링 모드"
 
-#: includes/views/admin-settings.php:294
+#: includes/views/admin-settings.php:299
 msgid "where widget content is drawn"
 msgstr "위젯 콘텐츠가 그려지는 위치"
 
-#: includes/views/admin-settings.php:302
+#: includes/views/admin-settings.php:307
 msgid "On this page (recommended)"
 msgstr "이 페이지에서 (권장)"
 
-#: includes/views/admin-settings.php:303
+#: includes/views/admin-settings.php:308
 msgid ""
 "Your server fetches the text and prints it into the page. Search engines can"
 " read it, your theme styles it, and it works without JavaScript. Answers are"
@@ -1878,11 +1893,11 @@ msgstr ""
 "서버가 텍스트를 가져와 페이지에 출력합니다. 검색 엔진이 읽을 수 있고, 테마가 스타일을 적용하며, JavaScript 없이 작동합니다."
 " 답변은 변경될 때까지 캐시되므로, 일일 운세는 별자리당 하루에 한 번 가져옵니다."
 
-#: includes/views/admin-settings.php:308
+#: includes/views/admin-settings.php:313
 msgid "In an iframe"
 msgstr "iframe 내에서"
 
-#: includes/views/admin-settings.php:309
+#: includes/views/admin-settings.php:314
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
 "reaches your page source, so the content is not indexed and your theme "
@@ -1892,73 +1907,73 @@ msgstr ""
 "각 방문자의 브라우저가 api.astroway.info에서 위젯을 로드합니다. 페이지 소스에 아무것도 도달하지 않으므로 콘텐츠가 색인되지"
 " 않으며 테마가 스타일을 적용할 수 없습니다. 호스트가 외부 요청을 차단하거나 두 가지를 비교하려는 경우 이 옵션을 선택하세요."
 
-#: includes/views/admin-settings.php:313
+#: includes/views/admin-settings.php:318
 msgid ""
 "Widgets without a page-side template, and any widget whose data cannot be "
 "fetched, fall back to the iframe on their own."
 msgstr "페이지 측 템플릿이 없는 위젯과 데이터를 가져올 수 없는 모든 위젯은 자동으로 iframe으로 대체됩니다."
 
-#: includes/views/admin-settings.php:315
+#: includes/views/admin-settings.php:320
 msgid "Save render mode"
 msgstr "렌더링 모드 저장"
 
-#: includes/views/admin-settings.php:323
+#: includes/views/admin-settings.php:328
 msgid "Daily transit alerts"
 msgstr "일일 트랜싯 알림"
 
-#: includes/views/admin-settings.php:324
+#: includes/views/admin-settings.php:329
 msgid "email on the days the sky does something"
 msgstr "하늘에 변화가 있는 날 이메일"
 
-#: includes/views/admin-settings.php:331
+#: includes/views/admin-settings.php:336
 msgid ""
 "Transit alerts are part of the Pro plan. Everything else on this page works "
 "on any plan."
 msgstr "트랜짓 알림은 Pro 플랜의 일부입니다. 이 페이지의 다른 모든 기능은 모든 플랜에서 작동합니다."
 
-#: includes/views/admin-settings.php:332
+#: includes/views/admin-settings.php:337
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
 msgstr "트랜짓 알림에는 API 키가 필요합니다. 시작하기 페이지에 붙여넣으세요."
 
-#: includes/views/admin-settings.php:341
+#: includes/views/admin-settings.php:346
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr "행성이 스테이션하거나 달이 보이드 오브 코스가 될 때 매일 이메일 전송"
 
-#: includes/views/admin-settings.php:342
+#: includes/views/admin-settings.php:347
 msgid ""
 "Nothing is sent on the quiet days. The mail that does go out carries the "
 "moon phase and the current retrogrades as context."
 msgstr "조용한 날에는 아무것도 전송되지 않습니다. 전송되는 메일에는 달의 위상과 현재 역행 상태가 맥락으로 포함됩니다."
 
-#: includes/views/admin-settings.php:347
+#: includes/views/admin-settings.php:352
 msgid "Hour to send, on your site clock"
 msgstr "전송 시간 (사이트 시계 기준)"
 
-#: includes/views/admin-settings.php:352
+#: includes/views/admin-settings.php:357
 msgid ""
 "WordPress runs scheduled jobs when someone visits the site, so the mail can "
 "be late on a quiet blog."
 msgstr ""
 "WordPress는 누군가 사이트를 방문할 때 예약된 작업을 실행하므로, 방문이 적은 블로그에서는 메일이 늦어질 수 있습니다."
 
-#: includes/views/admin-settings.php:356
+#: includes/views/admin-settings.php:361
 msgid "Send to"
 msgstr "전송 대상"
 
-#: includes/views/admin-settings.php:362
+#: includes/views/admin-settings.php:367
 msgid "Comma separated. Left empty, it goes to the site administrator."
 msgstr "쉼표로 구분. 비워두면 사이트 관리자에게 전송됩니다."
 
-#: includes/views/admin-settings.php:365
+#: includes/views/admin-settings.php:370
 msgid "Save alert settings"
 msgstr "알림 설정 저장"
 
-#: includes/views/admin-settings.php:371
+#: includes/views/admin-settings.php:376
 msgid "Send today's alert to me now"
 msgstr "오늘 알림을 지금 나에게 전송"
 
-#: includes/views/admin-settings.php:372
+#: includes/views/admin-settings.php:377
 msgid "Goes to your own address, not to the list above."
 msgstr "위 목록이 아닌 귀하의 주소로 전송됩니다."
 

@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T21:33:33+00:00\n"
-"PO-Revision-Date: 2026-08-23 00:34+0300\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
+"POT-Creation-Date: 2026-09-18T09:56:07+00:00\n"
+"PO-Revision-Date: 2026-09-18 12:59+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Russian <translations@astroway.info>\n"
 "Language: ru_RU\n"
@@ -54,7 +54,7 @@ msgstr "Начало работы"
 msgid "AstroWay Settings"
 msgstr "Настройки AstroWay"
 
-#: includes/class-admin.php:55 includes/class-admin.php:161
+#: includes/class-admin.php:55 includes/class-admin.php:179
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -70,7 +70,18 @@ msgstr "Шорткоды AstroWay"
 msgid "Shortcodes"
 msgstr "Шорткоды"
 
-#: includes/class-admin.php:119
+#: includes/class-admin.php:107
+msgid ""
+"This is a publishable key for browsers (pk_). The plugin calls the API from "
+"your server, so it needs a secret key that starts with \"aw_\". Both keys "
+"are on your dashboard at api.astroway.info/dashboard/."
+msgstr ""
+"Это ключ для публикации в браузерах (pk_). Плагин обращается к API с вашего "
+"сервера, поэтому ему требуется секретный ключ, начинающийся с «aw_». Оба "
+"ключа находятся на вашей панели управления по адресу "
+"api.astroway.info/dashboard/."
+
+#: includes/class-admin.php:137
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -78,108 +89,108 @@ msgstr ""
 "Ключ API должен начинаться с \"aw_\" и содержать только буквы, цифры и "
 "подчеркивания."
 
-#: includes/class-admin.php:166
+#: includes/class-admin.php:184
 msgid "Get API Key"
 msgstr "Получить ключ API"
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:222
 msgid "Verifying…"
 msgstr "Проверка…"
 
-#: includes/class-admin.php:205
+#: includes/class-admin.php:223
 msgid "limited info"
 msgstr "ограниченная информация"
 
-#: includes/class-admin.php:206 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:224 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "План"
 
-#: includes/class-admin.php:207
+#: includes/class-admin.php:225
 msgid "Used"
 msgstr "Использовано"
 
-#: includes/class-admin.php:208
+#: includes/class-admin.php:226
 msgid "Rate"
 msgstr "Тариф"
 
-#: includes/class-admin.php:209
+#: includes/class-admin.php:227
 msgid "Bound to"
 msgstr "Привязано к"
 
-#: includes/class-admin.php:210
+#: includes/class-admin.php:228
 msgid "Enter a valid API key first."
 msgstr "Введите действительный ключ API сначала."
 
-#: includes/class-admin.php:211 includes/views/admin-settings.php:261
+#: includes/class-admin.php:230 includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr "Ошибка сети"
 
-#: includes/class-admin.php:212
+#: includes/class-admin.php:231
 msgid "Key verified."
 msgstr "Ключ проверен."
 
-#: includes/class-admin.php:213 includes/class-admin.php:236
-#: includes/class-admin.php:255
+#: includes/class-admin.php:232 includes/class-admin.php:255
+#: includes/class-admin.php:274
 msgid "copied!"
 msgstr "скопировано!"
 
-#: includes/class-admin.php:231
+#: includes/class-admin.php:250
 msgid "Pinging…"
 msgstr "Пинг…"
 
-#: includes/class-admin.php:232
+#: includes/class-admin.php:251
 msgid "API is healthy"
 msgstr "API работает исправно"
 
-#: includes/class-admin.php:233
+#: includes/class-admin.php:252
 msgid "API unreachable"
 msgstr "API недоступен"
 
-#: includes/class-admin.php:234
+#: includes/class-admin.php:253
 msgid "Purge all cached data?"
 msgstr "Очистить все закешированные данные?"
 
-#: includes/class-admin.php:235
+#: includes/class-admin.php:254
 msgid "Cache cleared:"
 msgstr "Очищено кеша:"
 
-#: includes/class-admin.php:256
+#: includes/class-admin.php:275
 msgid "Searching…"
 msgstr "Поиск…"
 
-#: includes/class-admin.php:257
+#: includes/class-admin.php:276
 msgid "No cities found."
 msgstr "Города не найдены."
 
-#: includes/class-admin.php:258
+#: includes/class-admin.php:277
 msgid "Search error. Try again."
 msgstr "Ошибка поиска. Попробуйте снова."
 
-#: includes/class-admin.php:259
+#: includes/class-admin.php:278
 msgid "Type at least 2 characters."
 msgstr "Введите как минимум 2 символа."
 
-#: includes/class-admin.php:260
+#: includes/class-admin.php:279
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Выберите город, чтобы заполнить широту / долготу / часовой пояс"
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:262
+#: includes/class-admin.php:281
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d из %2$d"
 
-#: includes/class-admin.php:263
+#: includes/class-admin.php:282
 msgid "No shortcode matches."
 msgstr "Нет соответствующих шорткодов."
 
-#: includes/class-admin.php:272 includes/class-admin.php:288
-#: includes/class-admin.php:297
+#: includes/class-admin.php:291 includes/class-admin.php:307
+#: includes/class-admin.php:316
 msgid "Unauthorized."
 msgstr "Нет доступа."
 
-#: includes/class-admin.php:310
+#: includes/class-admin.php:329
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -189,7 +200,7 @@ msgstr ""
 "установлен лимит в 300 запросов в час, а виджеты, использующие фреймы, "
 "расходуют по 30 запросов из лимита каждого посетителя."
 
-#: includes/class-admin.php:318
+#: includes/class-admin.php:337
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -198,25 +209,25 @@ msgstr ""
 "ключ заново или очистите поле, чтобы перейти в анонимный режим."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:321
+#: includes/class-admin.php:340
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Не удалось проверить ключ (HTTP %d)."
 
-#: includes/class-admin.php:361
+#: includes/class-admin.php:384
 msgid "API key required."
 msgstr "Настроен ключ API"
 
-#: includes/class-admin.php:365
+#: includes/class-admin.php:388
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Введите действительный домен (например, example.com)."
 
-#: includes/class-admin.php:392
+#: includes/class-admin.php:425
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Смена домена не удалась. Воспользуйтесь ссылкой на панель управления ниже."
 
-#: includes/class-admin.php:445
+#: includes/class-admin.php:478
 msgid "City lookup is busy, try again in a moment."
 msgstr "Поиск города сейчас перегружен, попробуйте через минуту."
 
@@ -1853,44 +1864,53 @@ msgid "no domain binding yet"
 msgstr "домен ещё не привязан"
 
 #: includes/views/admin-settings.php:224
-msgid "Request rebind"
-msgstr "Обязательный"
+msgid "Rebind key"
+msgstr "Перепривязать ключ"
 
 #. translators: %s = api dashboard URL
 #: includes/views/admin-settings.php:232
 #, php-format
-msgid "Manual fallback: %s."
-msgstr "Резервный вариант при отсутствии автоматической настройки: %s."
+msgid ""
+"Applies immediately. Limited to a few changes per month; the account owner "
+"is emailed. Manage keys at %s."
+msgstr ""
+"Вступает в силу немедленно. Количество изменений ограничено несколькими в "
+"месяц; владельцу учетной записи отправляется уведомление по электронной "
+"почте. Управление ключами осуществляется на сайте %s."
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
 msgstr "Введите действительный ключ API сначала."
 
 #: includes/views/admin-settings.php:246
-msgid "Requesting…"
-msgstr "Запрос выполняется…"
+msgid "Rebinding…"
+msgstr "Перепривязка…"
 
 #: includes/views/admin-settings.php:256
-msgid "✓ requested"
-msgstr "✓ запрошено"
-
-#: includes/views/admin-settings.php:257
 msgid "failed"
 msgstr "не удалось"
 
-#: includes/views/admin-settings.php:272
+#: includes/views/admin-settings.php:261
+msgid "✓ already bound to"
+msgstr "✓ уже привязан к"
+
+#: includes/views/admin-settings.php:262
+msgid "✓ now bound to"
+msgstr "✓ теперь привязан к"
+
+#: includes/views/admin-settings.php:277
 msgid "Widget disclaimer"
 msgstr "Отказ от ответственности в отношении виджетов"
 
-#: includes/views/admin-settings.php:273
+#: includes/views/admin-settings.php:278
 msgid "optional legal line in the widget footer"
 msgstr "дополнительная юридическая информация в нижнем колонтитуле виджета"
 
-#: includes/views/admin-settings.php:281
+#: includes/views/admin-settings.php:286
 msgid "Show a disclaimer in embedded widgets"
 msgstr "Отображать предупреждение в встроенных виджетах"
 
-#: includes/views/admin-settings.php:282
+#: includes/views/admin-settings.php:287
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
 "widget footer. Off by default, enable it if your jurisdiction or compliance "
@@ -1903,23 +1923,23 @@ msgstr ""
 " нормативных требований. Текст отображается и локализуется с помощью "
 "api.astroway.info."
 
-#: includes/views/admin-settings.php:285
+#: includes/views/admin-settings.php:290
 msgid "Save disclaimer setting"
 msgstr "Сохранить настройки отказа от ответственности"
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:298
 msgid "Render mode"
 msgstr "Режим рендеринга"
 
-#: includes/views/admin-settings.php:294
+#: includes/views/admin-settings.php:299
 msgid "where widget content is drawn"
 msgstr "где отображается содержимое виджета"
 
-#: includes/views/admin-settings.php:302
+#: includes/views/admin-settings.php:307
 msgid "On this page (recommended)"
 msgstr "На этой странице (рекомендуется)"
 
-#: includes/views/admin-settings.php:303
+#: includes/views/admin-settings.php:308
 msgid ""
 "Your server fetches the text and prints it into the page. Search engines can"
 " read it, your theme styles it, and it works without JavaScript. Answers are"
@@ -1931,11 +1951,11 @@ msgstr ""
 "кэшируются до тех пор, пока они не изменятся, поэтому ежедневный гороскоп "
 "извлекается один раз в день для каждого знака."
 
-#: includes/views/admin-settings.php:308
+#: includes/views/admin-settings.php:313
 msgid "In an iframe"
 msgstr "В iframe"
 
-#: includes/views/admin-settings.php:309
+#: includes/views/admin-settings.php:314
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
 "reaches your page source, so the content is not indexed and your theme "
@@ -1947,7 +1967,7 @@ msgstr ""
 "ваша тема не может его стилизовать. Выберите этот вариант, если ваш хостинг "
 "блокирует исходящие запросы, или чтобы сравнить два варианта."
 
-#: includes/views/admin-settings.php:313
+#: includes/views/admin-settings.php:318
 msgid ""
 "Widgets without a page-side template, and any widget whose data cannot be "
 "fetched, fall back to the iframe on their own."
@@ -1955,19 +1975,19 @@ msgstr ""
 "Виджеты без шаблона на стороне страницы, а также любые виджеты, данные "
 "которых не могут быть получены, автоматически переключаются на iframe."
 
-#: includes/views/admin-settings.php:315
+#: includes/views/admin-settings.php:320
 msgid "Save render mode"
 msgstr "Сохранить режим рендеринга"
 
-#: includes/views/admin-settings.php:323
+#: includes/views/admin-settings.php:328
 msgid "Daily transit alerts"
 msgstr "Ежедневные оповещения о транзитах"
 
-#: includes/views/admin-settings.php:324
+#: includes/views/admin-settings.php:329
 msgid "email on the days the sky does something"
 msgstr "электронное письмо в дни, когда небо что-то делает"
 
-#: includes/views/admin-settings.php:331
+#: includes/views/admin-settings.php:336
 msgid ""
 "Transit alerts are part of the Pro plan. Everything else on this page works "
 "on any plan."
@@ -1975,20 +1995,20 @@ msgstr ""
 "Оповещения о транзитах являются частью плана Pro. Всё остальное на этой "
 "странице работает на любом плане."
 
-#: includes/views/admin-settings.php:332
+#: includes/views/admin-settings.php:337
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
 msgstr ""
 "Оповещения о транзитах требуют ключ API. Вставьте его на странице «Начало "
 "работы»."
 
-#: includes/views/admin-settings.php:341
+#: includes/views/admin-settings.php:346
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr ""
 "Отправлять ежедневное электронное письмо, когда планета становится "
 "стационарной или Луна становится без курса"
 
-#: includes/views/admin-settings.php:342
+#: includes/views/admin-settings.php:347
 msgid ""
 "Nothing is sent on the quiet days. The mail that does go out carries the "
 "moon phase and the current retrogrades as context."
@@ -1996,11 +2016,11 @@ msgstr ""
 "В тихие дни ничего не отправляется. Письмо, которое отправляется, содержит "
 "фазу Луны и текущие ретрограды в качестве контекста."
 
-#: includes/views/admin-settings.php:347
+#: includes/views/admin-settings.php:352
 msgid "Hour to send, on your site clock"
 msgstr "Час отправки, по часам вашего сайта"
 
-#: includes/views/admin-settings.php:352
+#: includes/views/admin-settings.php:357
 msgid ""
 "WordPress runs scheduled jobs when someone visits the site, so the mail can "
 "be late on a quiet blog."
@@ -2008,24 +2028,24 @@ msgstr ""
 "WordPress запускает запланированные задания, когда кто-то посещает сайт, "
 "поэтому письмо может прийти с опозданием на неактивном блоге."
 
-#: includes/views/admin-settings.php:356
+#: includes/views/admin-settings.php:361
 msgid "Send to"
 msgstr "Отправить на"
 
-#: includes/views/admin-settings.php:362
+#: includes/views/admin-settings.php:367
 msgid "Comma separated. Left empty, it goes to the site administrator."
 msgstr ""
 "Через запятую. Если оставить пустым, отправляется администратору сайта."
 
-#: includes/views/admin-settings.php:365
+#: includes/views/admin-settings.php:370
 msgid "Save alert settings"
 msgstr "Сохранить настройки оповещений"
 
-#: includes/views/admin-settings.php:371
+#: includes/views/admin-settings.php:376
 msgid "Send today's alert to me now"
 msgstr "Отправить сегодняшнее оповещение мне сейчас"
 
-#: includes/views/admin-settings.php:372
+#: includes/views/admin-settings.php:377
 msgid "Goes to your own address, not to the list above."
 msgstr "Отправляется на ваш собственный адрес, а не в список выше."
 

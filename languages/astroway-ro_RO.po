@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-08-22T21:33:33+00:00\n"
-"PO-Revision-Date: 2026-08-23 00:38+0300\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
+"POT-Creation-Date: 2026-09-18T09:56:07+00:00\n"
+"PO-Revision-Date: 2026-09-18 13:02+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Romanian <translations@astroway.info>\n"
 "Language: ro_RO\n"
@@ -55,7 +55,7 @@ msgstr "Noțiuni introductive"
 msgid "AstroWay Settings"
 msgstr "Setări AstroWay"
 
-#: includes/class-admin.php:55 includes/class-admin.php:161
+#: includes/class-admin.php:55 includes/class-admin.php:179
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -71,7 +71,18 @@ msgstr "Shortcode-uri AstroWay"
 msgid "Shortcodes"
 msgstr "Shortcode-uri"
 
-#: includes/class-admin.php:119
+#: includes/class-admin.php:107
+msgid ""
+"This is a publishable key for browsers (pk_). The plugin calls the API from "
+"your server, so it needs a secret key that starts with \"aw_\". Both keys "
+"are on your dashboard at api.astroway.info/dashboard/."
+msgstr ""
+"Aceasta este o cheie de publicare pentru browsere (pk_). Pluginul accesează "
+"API-ul de pe serverul tău, așa că are nevoie de o cheie secretă care începe "
+"cu „aw_”. Ambele chei se găsesc în panoul tău de control la adresa "
+"api.astroway.info/dashboard/."
+
+#: includes/class-admin.php:137
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -79,108 +90,108 @@ msgstr ""
 "Cheia API trebuie să înceapă cu \"aw_\" și să conțină doar litere, cifre și "
 "underscore-uri."
 
-#: includes/class-admin.php:166
+#: includes/class-admin.php:184
 msgid "Get API Key"
 msgstr "Obține Cheia API"
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:222
 msgid "Verifying…"
 msgstr "Verificare…"
 
-#: includes/class-admin.php:205
+#: includes/class-admin.php:223
 msgid "limited info"
 msgstr "informații limitate"
 
-#: includes/class-admin.php:206 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:224 includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:207
+#: includes/class-admin.php:225
 msgid "Used"
 msgstr "Utilizat"
 
-#: includes/class-admin.php:208
+#: includes/class-admin.php:226
 msgid "Rate"
 msgstr "Rată"
 
-#: includes/class-admin.php:209
+#: includes/class-admin.php:227
 msgid "Bound to"
 msgstr "Legat de"
 
-#: includes/class-admin.php:210
+#: includes/class-admin.php:228
 msgid "Enter a valid API key first."
 msgstr "Introdu mai întâi o cheie API validă."
 
-#: includes/class-admin.php:211 includes/views/admin-settings.php:261
+#: includes/class-admin.php:230 includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr "Eroare de rețea"
 
-#: includes/class-admin.php:212
+#: includes/class-admin.php:231
 msgid "Key verified."
 msgstr "Cheia a fost verificată."
 
-#: includes/class-admin.php:213 includes/class-admin.php:236
-#: includes/class-admin.php:255
+#: includes/class-admin.php:232 includes/class-admin.php:255
+#: includes/class-admin.php:274
 msgid "copied!"
 msgstr "copiat!"
 
-#: includes/class-admin.php:231
+#: includes/class-admin.php:250
 msgid "Pinging…"
 msgstr "Ping…"
 
-#: includes/class-admin.php:232
+#: includes/class-admin.php:251
 msgid "API is healthy"
 msgstr "API-ul este sănătos"
 
-#: includes/class-admin.php:233
+#: includes/class-admin.php:252
 msgid "API unreachable"
 msgstr "API-ul este inaccesibil"
 
-#: includes/class-admin.php:234
+#: includes/class-admin.php:253
 msgid "Purge all cached data?"
 msgstr "Vrei să ștergi toate datele cache?"
 
-#: includes/class-admin.php:235
+#: includes/class-admin.php:254
 msgid "Cache cleared:"
 msgstr "Cache șters:"
 
-#: includes/class-admin.php:256
+#: includes/class-admin.php:275
 msgid "Searching…"
 msgstr "Căutare…"
 
-#: includes/class-admin.php:257
+#: includes/class-admin.php:276
 msgid "No cities found."
 msgstr "Niciun oraș găsit."
 
-#: includes/class-admin.php:258
+#: includes/class-admin.php:277
 msgid "Search error. Try again."
 msgstr "Eroare la căutare. Încearcă din nou."
 
-#: includes/class-admin.php:259
+#: includes/class-admin.php:278
 msgid "Type at least 2 characters."
 msgstr "Scrie cel puțin 2 caractere."
 
-#: includes/class-admin.php:260
+#: includes/class-admin.php:279
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Alege un oraș pentru a completa lat / lon / tz"
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:262
+#: includes/class-admin.php:281
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d din %2$d"
 
-#: includes/class-admin.php:263
+#: includes/class-admin.php:282
 msgid "No shortcode matches."
 msgstr "Nu s-a găsit niciun shortcode corespunzător."
 
-#: includes/class-admin.php:272 includes/class-admin.php:288
-#: includes/class-admin.php:297
+#: includes/class-admin.php:291 includes/class-admin.php:307
+#: includes/class-admin.php:316
 msgid "Unauthorized."
 msgstr "Neautorizat."
 
-#: includes/class-admin.php:310
+#: includes/class-admin.php:329
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -190,7 +201,7 @@ msgstr ""
 "dreptul la 300 de solicitări pe oră, iar widgeturile care utilizează un "
 "cadru consumă câte 30 din cota fiecărui vizitator."
 
-#: includes/class-admin.php:318
+#: includes/class-admin.php:337
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -199,26 +210,26 @@ msgstr ""
 " cheie validă sau ștergeți conținutul câmpului pentru a activa modul anonim."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:321
+#: includes/class-admin.php:340
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "Nu s-a putut verifica cheia (HTTP %d)."
 
-#: includes/class-admin.php:361
+#: includes/class-admin.php:384
 msgid "API key required."
 msgstr "Cheia API configurată"
 
-#: includes/class-admin.php:365
+#: includes/class-admin.php:388
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Introduceți un domeniu valid (de exemplu, example.com)."
 
-#: includes/class-admin.php:392
+#: includes/class-admin.php:425
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Schimbarea domeniului a eșuat. Utilizați linkul către panoul de control de "
 "mai jos."
 
-#: includes/class-admin.php:445
+#: includes/class-admin.php:478
 msgid "City lookup is busy, try again in a moment."
 msgstr "Căutarea orașului este ocupată, încercați din nou într-un moment."
 
@@ -1856,45 +1867,53 @@ msgid "no domain binding yet"
 msgstr "nu există încă nicio asociere de domeniu"
 
 #: includes/views/admin-settings.php:224
-msgid "Request rebind"
-msgstr "Necesar"
+msgid "Rebind key"
+msgstr "Reasociază cheia"
 
 #. translators: %s = api dashboard URL
 #: includes/views/admin-settings.php:232
 #, php-format
-msgid "Manual fallback: %s."
-msgstr "Opțiune manuală de rezervă: %s."
+msgid ""
+"Applies immediately. Limited to a few changes per month; the account owner "
+"is emailed. Manage keys at %s."
+msgstr ""
+"Se aplică imediat. Se limitează la câteva modificări pe lună; titularul "
+"contului este notificat prin e-mail. Gestionați cheile la %s."
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
 msgstr "Introdu mai întâi o cheie API validă."
 
 #: includes/views/admin-settings.php:246
-msgid "Requesting…"
-msgstr "Se solicită…"
+msgid "Rebinding…"
+msgstr "Se reasociază…"
 
 #: includes/views/admin-settings.php:256
-msgid "✓ requested"
-msgstr "✓ solicitat"
-
-#: includes/views/admin-settings.php:257
 msgid "failed"
 msgstr "eșuat"
 
-#: includes/views/admin-settings.php:272
+#: includes/views/admin-settings.php:261
+msgid "✓ already bound to"
+msgstr "✓ deja asociată cu"
+
+#: includes/views/admin-settings.php:262
+msgid "✓ now bound to"
+msgstr "✓ acum asociată cu"
+
+#: includes/views/admin-settings.php:277
 msgid "Widget disclaimer"
 msgstr "Declarație de exonerare de răspundere privind widget-urile"
 
-#: includes/views/admin-settings.php:273
+#: includes/views/admin-settings.php:278
 msgid "optional legal line in the widget footer"
 msgstr "text juridic opțional în subsolul widgetului"
 
-#: includes/views/admin-settings.php:281
+#: includes/views/admin-settings.php:286
 msgid "Show a disclaimer in embedded widgets"
 msgstr ""
 "Afișează o mențiune de exonerare de răspundere în widgeturile încorporate"
 
-#: includes/views/admin-settings.php:282
+#: includes/views/admin-settings.php:287
 msgid ""
 "Appends a short \"informational, not professional advice\" line to the "
 "widget footer. Off by default, enable it if your jurisdiction or compliance "
@@ -1906,23 +1925,23 @@ msgstr ""
 "dacă jurisdicția ta sau politica de conformitate o impun. Textul este "
 "generat și localizat de api.astroway.info."
 
-#: includes/views/admin-settings.php:285
+#: includes/views/admin-settings.php:290
 msgid "Save disclaimer setting"
 msgstr "Salvează setările privind declarația de exonerare de răspundere"
 
-#: includes/views/admin-settings.php:293
+#: includes/views/admin-settings.php:298
 msgid "Render mode"
 msgstr "Mod de redare"
 
-#: includes/views/admin-settings.php:294
+#: includes/views/admin-settings.php:299
 msgid "where widget content is drawn"
 msgstr "unde este afișat conținutul widget-ului"
 
-#: includes/views/admin-settings.php:302
+#: includes/views/admin-settings.php:307
 msgid "On this page (recommended)"
 msgstr "Pe această pagină (recomandat)"
 
-#: includes/views/admin-settings.php:303
+#: includes/views/admin-settings.php:308
 msgid ""
 "Your server fetches the text and prints it into the page. Search engines can"
 " read it, your theme styles it, and it works without JavaScript. Answers are"
@@ -1934,11 +1953,11 @@ msgstr ""
 "Răspunsurile sunt stocate în cache până la modificare, astfel încât un "
 "horoscop zilnic este preluat o dată pe zi pentru fiecare semn."
 
-#: includes/views/admin-settings.php:308
+#: includes/views/admin-settings.php:313
 msgid "In an iframe"
 msgstr "Într-un iframe"
 
-#: includes/views/admin-settings.php:309
+#: includes/views/admin-settings.php:314
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
 "reaches your page source, so the content is not indexed and your theme "
@@ -1950,7 +1969,7 @@ msgstr ""
 "este indexat și tema dvs. nu îl poate stiliza. Alegeți această opțiune dacă "
 "gazda dvs. blochează cererile externe sau pentru a le compara pe cele două."
 
-#: includes/views/admin-settings.php:313
+#: includes/views/admin-settings.php:318
 msgid ""
 "Widgets without a page-side template, and any widget whose data cannot be "
 "fetched, fall back to the iframe on their own."
@@ -1958,19 +1977,19 @@ msgstr ""
 "Widget-urile fără un șablon pe partea de pagină și orice widget ale cărui "
 "date nu pot fi preluate, revin automat la iframe."
 
-#: includes/views/admin-settings.php:315
+#: includes/views/admin-settings.php:320
 msgid "Save render mode"
 msgstr "Salvează modul de randare"
 
-#: includes/views/admin-settings.php:323
+#: includes/views/admin-settings.php:328
 msgid "Daily transit alerts"
 msgstr "Alerte de tranzit zilnice"
 
-#: includes/views/admin-settings.php:324
+#: includes/views/admin-settings.php:329
 msgid "email on the days the sky does something"
 msgstr "email în zilele în care cerul face ceva"
 
-#: includes/views/admin-settings.php:331
+#: includes/views/admin-settings.php:336
 msgid ""
 "Transit alerts are part of the Pro plan. Everything else on this page works "
 "on any plan."
@@ -1978,20 +1997,20 @@ msgstr ""
 "Alertele de tranzit fac parte din planul Pro. Tot restul de pe această "
 "pagină funcționează în orice plan."
 
-#: includes/views/admin-settings.php:332
+#: includes/views/admin-settings.php:337
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
 msgstr ""
 "Alertele de tranzit necesită o cheie API. Lipește una pe pagina Getting "
 "started."
 
-#: includes/views/admin-settings.php:341
+#: includes/views/admin-settings.php:346
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr ""
 "Trimite un email zilnic când o planetă staționează sau Luna devine void of "
 "course"
 
-#: includes/views/admin-settings.php:342
+#: includes/views/admin-settings.php:347
 msgid ""
 "Nothing is sent on the quiet days. The mail that does go out carries the "
 "moon phase and the current retrogrades as context."
@@ -1999,11 +2018,11 @@ msgstr ""
 "Nu se trimite nimic în zilele liniștite. Emailul care este trimis conține "
 "faza lunii și retrogradele curente ca context."
 
-#: includes/views/admin-settings.php:347
+#: includes/views/admin-settings.php:352
 msgid "Hour to send, on your site clock"
 msgstr "Ora la care se trimite, conform ceasului site-ului tău"
 
-#: includes/views/admin-settings.php:352
+#: includes/views/admin-settings.php:357
 msgid ""
 "WordPress runs scheduled jobs when someone visits the site, so the mail can "
 "be late on a quiet blog."
@@ -2011,24 +2030,24 @@ msgstr ""
 "WordPress rulează sarcini programate când cineva vizitează site-ul, așa că "
 "emailul poate întârzia pe un blog liniștit."
 
-#: includes/views/admin-settings.php:356
+#: includes/views/admin-settings.php:361
 msgid "Send to"
 msgstr "Trimite către"
 
-#: includes/views/admin-settings.php:362
+#: includes/views/admin-settings.php:367
 msgid "Comma separated. Left empty, it goes to the site administrator."
 msgstr ""
 "Separate prin virgulă. Lăsat gol, se trimite administratorului site-ului."
 
-#: includes/views/admin-settings.php:365
+#: includes/views/admin-settings.php:370
 msgid "Save alert settings"
 msgstr "Salvează setările de alertă"
 
-#: includes/views/admin-settings.php:371
+#: includes/views/admin-settings.php:376
 msgid "Send today's alert to me now"
 msgstr "Trimite acum alerta de astăzi către mine"
 
-#: includes/views/admin-settings.php:372
+#: includes/views/admin-settings.php:377
 msgid "Goes to your own address, not to the list above."
 msgstr "Se trimite la adresa ta, nu la lista de mai sus."
 

@@ -2,14 +2,14 @@
 # This file is distributed under the MIT.
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.2.0\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-04T22:02:10+00:00\n"
+"POT-Creation-Date: 2026-09-18T09:56:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: astroway\n"
@@ -52,7 +52,7 @@ msgid "AstroWay Settings"
 msgstr ""
 
 #: includes/class-admin.php:55
-#: includes/class-admin.php:161
+#: includes/class-admin.php:179
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
@@ -69,141 +69,145 @@ msgstr ""
 msgid "Shortcodes"
 msgstr ""
 
-#: includes/class-admin.php:119
+#: includes/class-admin.php:107
+msgid "This is a publishable key for browsers (pk_). The plugin calls the API from your server, so it needs a secret key that starts with \"aw_\". Both keys are on your dashboard at api.astroway.info/dashboard/."
+msgstr ""
+
+#: includes/class-admin.php:137
 msgid "API key must start with \"aw_\" and contain only letters, digits, and underscores."
 msgstr ""
 
-#: includes/class-admin.php:166
+#: includes/class-admin.php:184
 msgid "Get API Key"
 msgstr ""
 
-#: includes/class-admin.php:204
+#: includes/class-admin.php:222
 msgid "Verifying…"
 msgstr ""
 
-#: includes/class-admin.php:205
+#: includes/class-admin.php:223
 msgid "limited info"
 msgstr ""
 
-#: includes/class-admin.php:206
+#: includes/class-admin.php:224
 #: includes/views/admin-api-key.php:201
 msgid "Plan"
 msgstr ""
 
-#: includes/class-admin.php:207
+#: includes/class-admin.php:225
 msgid "Used"
 msgstr ""
 
-#: includes/class-admin.php:208
+#: includes/class-admin.php:226
 msgid "Rate"
 msgstr ""
 
-#: includes/class-admin.php:209
+#: includes/class-admin.php:227
 msgid "Bound to"
 msgstr ""
 
-#: includes/class-admin.php:210
+#: includes/class-admin.php:228
 msgid "Enter a valid API key first."
 msgstr ""
 
-#: includes/class-admin.php:211
+#: includes/class-admin.php:230
 #: includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr ""
 
-#: includes/class-admin.php:212
+#: includes/class-admin.php:231
 msgid "Key verified."
 msgstr ""
 
-#: includes/class-admin.php:213
-#: includes/class-admin.php:236
+#: includes/class-admin.php:232
 #: includes/class-admin.php:255
+#: includes/class-admin.php:274
 msgid "copied!"
 msgstr ""
 
-#: includes/class-admin.php:231
+#: includes/class-admin.php:250
 msgid "Pinging…"
 msgstr ""
 
-#: includes/class-admin.php:232
+#: includes/class-admin.php:251
 msgid "API is healthy"
 msgstr ""
 
-#: includes/class-admin.php:233
+#: includes/class-admin.php:252
 msgid "API unreachable"
 msgstr ""
 
-#: includes/class-admin.php:234
+#: includes/class-admin.php:253
 msgid "Purge all cached data?"
 msgstr ""
 
-#: includes/class-admin.php:235
+#: includes/class-admin.php:254
 msgid "Cache cleared:"
 msgstr ""
 
-#: includes/class-admin.php:256
+#: includes/class-admin.php:275
 msgid "Searching…"
 msgstr ""
 
-#: includes/class-admin.php:257
+#: includes/class-admin.php:276
 msgid "No cities found."
 msgstr ""
 
-#: includes/class-admin.php:258
+#: includes/class-admin.php:277
 msgid "Search error. Try again."
 msgstr ""
 
-#: includes/class-admin.php:259
+#: includes/class-admin.php:278
 msgid "Type at least 2 characters."
 msgstr ""
 
-#: includes/class-admin.php:260
+#: includes/class-admin.php:279
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr ""
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number of shortcodes
-#: includes/class-admin.php:262
+#: includes/class-admin.php:281
 #, php-format
 msgid "%1$d of %2$d"
 msgstr ""
 
-#: includes/class-admin.php:263
+#: includes/class-admin.php:282
 msgid "No shortcode matches."
 msgstr ""
 
-#: includes/class-admin.php:272
-#: includes/class-admin.php:288
-#: includes/class-admin.php:297
+#: includes/class-admin.php:291
+#: includes/class-admin.php:307
+#: includes/class-admin.php:316
 msgid "Unauthorized."
 msgstr ""
 
-#: includes/class-admin.php:310
+#: includes/class-admin.php:329
 msgid "No API key. The plugin runs in anonymous mode: this site is allowed 300 requests an hour, and widgets that fall back to a frame use each visitor's own 30."
 msgstr ""
 
-#: includes/class-admin.php:318
+#: includes/class-admin.php:337
 msgid "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear the field for anonymous mode."
 msgstr ""
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:321
+#: includes/class-admin.php:340
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr ""
 
-#: includes/class-admin.php:365
+#: includes/class-admin.php:384
 msgid "API key required."
 msgstr ""
 
-#: includes/class-admin.php:369
+#: includes/class-admin.php:388
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr ""
 
-#: includes/class-admin.php:406
+#: includes/class-admin.php:425
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 
-#: includes/class-admin.php:459
+#: includes/class-admin.php:478
 msgid "City lookup is busy, try again in a moment."
 msgstr ""
 

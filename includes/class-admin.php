@@ -95,6 +95,18 @@ class Admin {
 	 */
 	public const RENDER_MODES = [ 'auto', 'iframe' ];
 
+	/**
+	 * Публикуемый ключ (pk_live_, pk_test_) рассчитан на страницу и принимается
+	 * API только с проверяемым Origin или Referer. Этот плагин зовёт API с
+	 * сервера, где заголовка происхождения нет, поэтому такой ключ получил бы
+	 * ORIGIN_REQUIRED на каждом вызове. Отдельное сообщение нужно, чтобы человек
+	 * не искал опечатку в правильно скопированном ключе. Одно место на обе
+	 * поверхности: сохранение формы и кнопку проверки.
+	 */
+	private static function publishable_key_message(): string {
+		return __( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, so it needs a secret key that starts with "aw_". Both keys are on your dashboard at api.astroway.info/dashboard/.', 'astroway' );
+	}
+
 	public static function sanitize_settings( $input ): array {
 		$existing = (array) get_option( self::OPTION_KEY, [] );
 
@@ -113,16 +125,10 @@ class Admin {
 					Tier::flush();
 				}
 			} elseif ( 0 === strpos( $key, 'pk_' ) ) {
-				/* Публикуемый ключ (pk_live_, pk_test_) рассчитан на страницу и
-				   принимается API только с проверяемым Origin или Referer. Этот
-				   плагин зовёт API с сервера, где заголовка происхождения нет,
-				   поэтому такой ключ получил бы ORIGIN_REQUIRED на каждом
-				   вызове. Отдельная ветка нужна, чтобы человек не искал опечатку
-				   в правильно скопированном ключе. */
 				add_settings_error(
 					self::PAGE_API_KEY,
 					'publishable_key',
-					__( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, where such a key is refused. Use a secret key that starts with "aw_".', 'astroway' )
+					self::publishable_key_message()
 				);
 			} else {
 				add_settings_error(
@@ -220,7 +226,7 @@ class Admin {
 						'rateLimit'    => __( 'Rate', 'astroway' ),
 						'domain'       => __( 'Bound to', 'astroway' ),
 						'invalidKey'   => __( 'Enter a valid API key first.', 'astroway' ),
-						'browserKey'   => __( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, where such a key is refused. Use a secret key that starts with "aw_".', 'astroway' ),
+						'browserKey'   => self::publishable_key_message(),
 						'networkError' => __( 'Network error', 'astroway' ),
 						'keyValid'     => __( 'Key verified.', 'astroway' ),
 						'copied'       => __( 'copied!', 'astroway' ),

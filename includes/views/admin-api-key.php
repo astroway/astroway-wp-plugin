@@ -26,6 +26,12 @@ $astroway_more_shortcodes = [
 ];
 $astroway_shortcodes_url  = admin_url( 'admin.php?page=' . \AstroWay\WPPlugin\Admin::PAGE_SHORTCODES );
 
+// sanitize_settings() refuses a key through add_settings_error, and options.php
+// leaves that in a transient for the page it redirects back to. Nothing here
+// read it, so a refused key looked like nothing had happened: the field simply
+// showed the previous value again.
+$astroway_key_errors = get_settings_errors( $astroway_page_slug );
+
 // Status panel state machine — derived from $status_data (passed from render_api_key_page).
 $astroway_status_state   = 'none';     // none | valid | suspended | revoked | invalid_key | api_down
 $astroway_status_payload = [];
@@ -146,7 +152,15 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 				<p class="aw-hint">
 					<?php esc_html_e( 'Paste a key from api.astroway.info/dashboard, or leave the field empty. Every widget renders without one. If you do save a key, your server offers it on the calls behind the page-rendered widgets, so a paid plan counts them against its own allowance rather than the one this site shares with every other anonymous caller. Saving a key also adds the status panel below, and the key itself is what you use when you call the API from your own code.', 'astroway' ); ?>
 				</p>
-				<div id="aw-key-status" class="aw-result" style="display:none;"></div>
+				<?php if ( ! empty( $astroway_key_errors ) ) : ?>
+					<div id="aw-key-status" class="aw-result is-error">
+						<?php foreach ( $astroway_key_errors as $astroway_key_error ) : ?>
+							<p><?php echo esc_html( $astroway_key_error['message'] ); ?></p>
+						<?php endforeach; ?>
+					</div>
+				<?php else : ?>
+					<div id="aw-key-status" class="aw-result" style="display:none;"></div>
+				<?php endif; ?>
 				<div class="aw-panel-actions">
 					<?php submit_button( __( 'Save changes', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
 				</div>
