@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -154,6 +154,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.5.5 =
+* Change: the message about a publishable key now points at api.astroway.info/dashboard/keys, the page that lists your keys, rather than the dashboard front page. Translated in all 20 bundled languages.
 
 = 1.5.4 =
 * Change: the refusal shown for a publishable key now also says where the right one is. Both keys, the publishable and the secret, are listed on your dashboard at api.astroway.info/dashboard/.

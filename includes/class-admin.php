@@ -104,7 +104,7 @@ class Admin {
 	 * поверхности: сохранение формы и кнопку проверки.
 	 */
 	private static function publishable_key_message(): string {
-		return __( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, so it needs a secret key that starts with "aw_". Both keys are on your dashboard at api.astroway.info/dashboard/.', 'astroway' );
+		return __( 'This is a publishable key for browsers (pk_). The plugin calls the API from your server, so it needs a secret key that starts with "aw_". Both keys are on your dashboard at api.astroway.info/dashboard/keys.', 'astroway' );
 	}
 
 	public static function sanitize_settings( $input ): array {

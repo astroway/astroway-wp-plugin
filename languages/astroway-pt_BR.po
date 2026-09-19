@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.4\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
-"POT-Creation-Date: 2026-09-18T09:56:07+00:00\n"
-"PO-Revision-Date: 2026-09-18 13:01+0300\n"
+"POT-Creation-Date: 2026-09-19T20:56:33+00:00\n"
+"PO-Revision-Date: 2026-09-19 23:59+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Brazilian Portuguese <translations@astroway.info>\n"
 "Language: pt_BR\n"
@@ -65,7 +65,7 @@ msgstr "Configurações"
 msgid "AstroWay Shortcodes"
 msgstr "Shortcodes do AstroWay"
 
-#: includes/class-admin.php:63 includes/views/admin-api-key.php:116
+#: includes/class-admin.php:63 includes/views/admin-api-key.php:122
 #: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
@@ -75,12 +75,12 @@ msgstr "Shortcodes"
 msgid ""
 "This is a publishable key for browsers (pk_). The plugin calls the API from "
 "your server, so it needs a secret key that starts with \"aw_\". Both keys "
-"are on your dashboard at api.astroway.info/dashboard/."
+"are on your dashboard at api.astroway.info/dashboard/keys."
 msgstr ""
-"Esta é uma chave de publicação para navegadores (pk_). O plugin acessa a API"
-" do seu servidor, por isso precisa de uma chave secreta que comece com "
+"Esta é uma chave de publicação para navegadores (pk_). O plug-in acessa a "
+"API do seu servidor, por isso precisa de uma chave secreta que comece com "
 "“aw_”. Ambas as chaves estão disponíveis no seu painel de controle em "
-"api.astroway.info/dashboard/."
+"api.astroway.info/dashboard/keys."
 
 #: includes/class-admin.php:137
 msgid ""
@@ -102,7 +102,7 @@ msgstr "Verificando…"
 msgid "limited info"
 msgstr "informações limitadas"
 
-#: includes/class-admin.php:224 includes/views/admin-api-key.php:201
+#: includes/class-admin.php:224 includes/views/admin-api-key.php:215
 msgid "Plan"
 msgstr "Plano"
 
@@ -999,7 +999,7 @@ msgstr "Planetas retrógrados"
 msgid "Planet"
 msgstr "Planeta"
 
-#: includes/class-render.php:1168 includes/views/admin-api-key.php:166
+#: includes/class-render.php:1168 includes/views/admin-api-key.php:180
 msgid "Status"
 msgstr "Status"
 
@@ -1336,34 +1336,34 @@ msgstr "Fase da Lua desta noite. Não requer nenhum parâmetro."
 msgid "A birth chart: date, time and place."
 msgstr "Um mapa astral: data, hora e local."
 
-#: includes/views/admin-api-key.php:67
+#: includes/views/admin-api-key.php:73
 msgid "Your first widget"
 msgstr "Seu primeiro widget"
 
-#: includes/views/admin-api-key.php:68
+#: includes/views/admin-api-key.php:74
 msgid "copy · paste · open the page"
 msgstr "copiar · colar · abrir a página"
 
-#: includes/views/admin-api-key.php:73
+#: includes/views/admin-api-key.php:79
 msgid "Copy a shortcode."
 msgstr "Copie um código de atalho."
 
-#: includes/views/admin-api-key.php:77 includes/views/admin-api-key.php:101
+#: includes/views/admin-api-key.php:83 includes/views/admin-api-key.php:107
 #: includes/views/admin-shortcodes.php:414
 #: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Clique para copiar"
 
-#: includes/views/admin-api-key.php:81 includes/views/admin-api-key.php:105
+#: includes/views/admin-api-key.php:87 includes/views/admin-api-key.php:111
 #: includes/views/admin-shortcodes.php:418
 msgid "copy"
 msgstr "copiar"
 
-#: includes/views/admin-api-key.php:86
+#: includes/views/admin-api-key.php:92
 msgid "Paste it into any post or page."
 msgstr "Cole isso em qualquer postagem ou página."
 
-#: includes/views/admin-api-key.php:87
+#: includes/views/admin-api-key.php:93
 msgid ""
 "In the block editor you can type /astroway instead and pick the block: the "
 "preview shows the finished card, not a placeholder."
@@ -1371,11 +1371,11 @@ msgstr ""
 "No editor de blocos, você pode digitar /astroway e selecionar o bloco: a "
 "visualização mostra o cartão finalizado, e não um espaço reservado."
 
-#: includes/views/admin-api-key.php:90
+#: includes/views/admin-api-key.php:96
 msgid "Open the page."
 msgstr "Abra a página."
 
-#: includes/views/admin-api-key.php:91
+#: includes/views/admin-api-key.php:97
 msgid ""
 "The reading is already in the HTML, in your theme's fonts and colours. "
 "Nothing below this panel is required to make it work."
@@ -1383,12 +1383,12 @@ msgstr ""
 "O texto já está no HTML, nas fontes e cores do seu tema. Nada abaixo deste "
 "painel é necessário para que ele funcione."
 
-#: includes/views/admin-api-key.php:96
+#: includes/views/admin-api-key.php:102
 msgid "Two more to try:"
 msgstr "Mais duas para experimentar:"
 
 #. translators: %s is a link to the plugin's Shortcodes admin page
-#: includes/views/admin-api-key.php:115
+#: includes/views/admin-api-key.php:121
 #, php-format
 msgid ""
 "All 16 shortcodes with their parameters, plus a city search that fills in "
@@ -1397,23 +1397,23 @@ msgstr ""
 "Todos os 16 códigos de atalho com seus parâmetros, além de uma pesquisa por "
 "cidade que preenche as coordenadas e o fuso horário: %s."
 
-#: includes/views/admin-api-key.php:127
+#: includes/views/admin-api-key.php:133
 msgid "Your API key"
 msgstr "Sua chave da API"
 
-#: includes/views/admin-api-key.php:128
+#: includes/views/admin-api-key.php:134
 msgid "optional · paste · verify · save"
 msgstr "opcional · colar · verificar · salvar"
 
-#: includes/views/admin-api-key.php:132
+#: includes/views/admin-api-key.php:138
 msgid "Paste your key"
 msgstr "Cole sua chave"
 
-#: includes/views/admin-api-key.php:143
+#: includes/views/admin-api-key.php:149
 msgid "Verify"
 msgstr "Verificar"
 
-#: includes/views/admin-api-key.php:147
+#: includes/views/admin-api-key.php:153
 msgid ""
 "Paste a key from api.astroway.info/dashboard, or leave the field empty. "
 "Every widget renders without one. If you do save a key, your server offers "
@@ -1431,72 +1431,72 @@ msgstr ""
 "status abaixo, e a própria chave é o que você usa ao chamar a API a partir "
 "do seu próprio código."
 
-#: includes/views/admin-api-key.php:151
+#: includes/views/admin-api-key.php:165
 msgid "Save changes"
 msgstr "Salvar alterações"
 
-#: includes/views/admin-api-key.php:171
+#: includes/views/admin-api-key.php:185
 msgid "live · key authenticated"
 msgstr "Autenticado"
 
-#: includes/views/admin-api-key.php:174
+#: includes/views/admin-api-key.php:188
 msgid "suspended, contact support"
 msgstr "suspenso, entre em contato com o suporte"
 
-#: includes/views/admin-api-key.php:177
+#: includes/views/admin-api-key.php:191
 msgid "revoked, re-issue key"
 msgstr "revogar, reemitir chave"
 
-#: includes/views/admin-api-key.php:180
+#: includes/views/admin-api-key.php:194
 msgid "invalid key"
 msgstr "Chave paga."
 
-#: includes/views/admin-api-key.php:183
+#: includes/views/admin-api-key.php:197
 msgid "unreachable, check connection"
 msgstr "inacessível, verifique a conexão"
 
-#: includes/views/admin-api-key.php:194
+#: includes/views/admin-api-key.php:208
 msgid "Key"
 msgstr "Chave da API"
 
-#: includes/views/admin-api-key.php:208
+#: includes/views/admin-api-key.php:222
 msgid "Credits"
 msgstr "Créditos / mês"
 
-#: includes/views/admin-api-key.php:227
+#: includes/views/admin-api-key.php:241
 msgid "Period ends"
 msgstr "Fim do período"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:234
+#: includes/views/admin-api-key.php:248
 #, php-format
 msgid "in %s"
 msgstr "em %s"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:235
+#: includes/views/admin-api-key.php:249
 msgid "expired"
 msgstr "Obrigatório"
 
-#: includes/views/admin-api-key.php:248
+#: includes/views/admin-api-key.php:262
 msgid "Domain"
 msgstr "Domínio"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:257
+#: includes/views/admin-api-key.php:271
 #, php-format
 msgid "bound %s ago"
 msgstr "vinculado há %s"
 
-#: includes/views/admin-api-key.php:264
+#: includes/views/admin-api-key.php:278
 msgid "not bound: the first request binds this site"
 msgstr "não vinculado: a primeira solicitação vincula este site"
 
-#: includes/views/admin-api-key.php:271
+#: includes/views/admin-api-key.php:285
 msgid "Source"
 msgstr "Recursos"
 
-#: includes/views/admin-api-key.php:278
+#: includes/views/admin-api-key.php:292
 msgid ""
 "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
 "and credits shown via legacy fallback."
@@ -1505,7 +1505,7 @@ msgstr ""
 "/v1/auth/keys/me. O plano e os créditos são exibidos por meio do mecanismo "
 "de fallback legado."
 
-#: includes/views/admin-api-key.php:281
+#: includes/views/admin-api-key.php:295
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -1513,7 +1513,7 @@ msgstr ""
 "Cole uma chave de api.astroway.info/dashboard. Deixe em branco para reverter"
 " para o modo Anônimo."
 
-#: includes/views/admin-api-key.php:283
+#: includes/views/admin-api-key.php:297
 msgid ""
 "Could not reach api.astroway.info. Network or upstream issue, try again in a"
 " moment."
@@ -1521,111 +1521,111 @@ msgstr ""
 "Não foi possível acessar api.astroway.info. Problema de rede ou do provedor;"
 " tente novamente daqui a pouco."
 
-#: includes/views/admin-api-key.php:292
+#: includes/views/admin-api-key.php:306
 msgid "What a key adds"
 msgstr "O que uma chave acrescenta"
 
-#: includes/views/admin-api-key.php:293
+#: includes/views/admin-api-key.php:307
 msgid "3 tiers compared"
 msgstr "3 níveis comparados"
 
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:315
 msgid "Anonymous"
 msgstr "Anônimo"
 
-#: includes/views/admin-api-key.php:302
+#: includes/views/admin-api-key.php:316
 msgid "no setup"
 msgstr "nenhuma configuração"
 
-#: includes/views/admin-api-key.php:305
+#: includes/views/admin-api-key.php:319
 msgid "Free key"
 msgstr "Chave gratuita"
 
-#: includes/views/admin-api-key.php:306
+#: includes/views/admin-api-key.php:320
 msgid "signup"
 msgstr "cadastro"
 
-#: includes/views/admin-api-key.php:309
+#: includes/views/admin-api-key.php:323
 msgid "Paid"
 msgstr "Pago"
 
-#: includes/views/admin-api-key.php:310
+#: includes/views/admin-api-key.php:324
 msgid "from $5/mo"
 msgstr "a partir de $5/mês"
 
-#: includes/views/admin-api-key.php:316
+#: includes/views/admin-api-key.php:330
 msgid "Widgets in this plugin"
 msgstr "Widgets neste plugin"
 
-#: includes/views/admin-api-key.php:317 includes/views/admin-api-key.php:318
-#: includes/views/admin-api-key.php:319
+#: includes/views/admin-api-key.php:331 includes/views/admin-api-key.php:332
+#: includes/views/admin-api-key.php:333
 msgid "all of them"
 msgstr "todos eles"
 
-#: includes/views/admin-api-key.php:322
+#: includes/views/admin-api-key.php:336
 msgid "API requests / month"
 msgstr "Solicitações de API por mês"
 
-#: includes/views/admin-api-key.php:323 includes/views/admin-api-key.php:329
-#: includes/views/admin-api-key.php:335 includes/views/admin-api-key.php:341
-#: includes/views/admin-api-key.php:342 includes/views/admin-api-key.php:347
-#: includes/views/admin-api-key.php:353 includes/views/admin-api-key.php:354
+#: includes/views/admin-api-key.php:337 includes/views/admin-api-key.php:343
+#: includes/views/admin-api-key.php:349 includes/views/admin-api-key.php:355
+#: includes/views/admin-api-key.php:356 includes/views/admin-api-key.php:361
+#: includes/views/admin-api-key.php:367 includes/views/admin-api-key.php:368
 msgid "none"
 msgstr "nenhum"
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:338
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:325
+#: includes/views/admin-api-key.php:339
 msgid "50K to 3.5M"
 msgstr "50 mil a 3,5 milhões"
 
-#: includes/views/admin-api-key.php:328
+#: includes/views/admin-api-key.php:342
 msgid "Rate limit, keyed endpoints"
 msgstr "Limite de taxa, pontos de extremidade com chave"
 
-#: includes/views/admin-api-key.php:330
+#: includes/views/admin-api-key.php:344
 msgid "~60 requests/min"
 msgstr "~60 solicitações/min"
 
-#: includes/views/admin-api-key.php:331
+#: includes/views/admin-api-key.php:345
 msgid "30 to 1000 requests/min"
 msgstr "30 a 1.000 solicitações/min"
 
-#: includes/views/admin-api-key.php:334
+#: includes/views/admin-api-key.php:348
 msgid "Dashboard, usage history"
 msgstr "Painel, histórico de uso"
 
-#: includes/views/admin-api-key.php:336 includes/views/admin-api-key.php:337
-#: includes/views/admin-api-key.php:343 includes/views/admin-api-key.php:355
+#: includes/views/admin-api-key.php:350 includes/views/admin-api-key.php:351
+#: includes/views/admin-api-key.php:357 includes/views/admin-api-key.php:369
 msgid "included"
 msgstr "incluído"
 
-#: includes/views/admin-api-key.php:340
+#: includes/views/admin-api-key.php:354
 msgid "AI interpretations"
 msgstr "Interpretações de IA"
 
-#: includes/views/admin-api-key.php:346
+#: includes/views/admin-api-key.php:360
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Suporte"
 
-#: includes/views/admin-api-key.php:348
+#: includes/views/admin-api-key.php:362
 msgid "community"
 msgstr "comunidade"
 
-#: includes/views/admin-api-key.php:349
+#: includes/views/admin-api-key.php:363
 msgid "priority"
 msgstr "prioritário"
 
-#: includes/views/admin-api-key.php:352
+#: includes/views/admin-api-key.php:366
 msgid "Spend cap"
 msgstr "Limite de gastos"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:363
+#: includes/views/admin-api-key.php:377
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
@@ -1636,15 +1636,15 @@ msgstr ""
 " a partir do seu próprio código. Os widgets nas suas páginas não são "
 "afetados por nada disso. Preços canônicos → %s"
 
-#: includes/views/admin-api-key.php:374
+#: includes/views/admin-api-key.php:388
 msgid "How it works"
 msgstr "Como funciona"
 
-#: includes/views/admin-api-key.php:378
+#: includes/views/admin-api-key.php:392
 msgid "On your pages."
 msgstr "Nas suas páginas."
 
-#: includes/views/admin-api-key.php:379
+#: includes/views/admin-api-key.php:393
 msgid ""
 "Your server renders seven widgets into the page, counted against this site's"
 " allowance of 300 requests an hour, or against your own plan when a paid key"
@@ -1659,11 +1659,11 @@ msgstr ""
 "d’água “Powered by AstroWay”: um frame é buscado pelo navegador do "
 "visitante, onde não há espaço para sua chave."
 
-#: includes/views/admin-api-key.php:382
+#: includes/views/admin-api-key.php:396
 msgid "Free key."
 msgstr "Chave gratuita."
 
-#: includes/views/admin-api-key.php:383
+#: includes/views/admin-api-key.php:397
 msgid ""
 "A personal bucket of 10,000 calls a month for code you write yourself, plus "
 "a dashboard with activity history. It does not change what the shortcodes "
@@ -1675,11 +1675,11 @@ msgstr ""
 "que os códigos de atalho exibem, e a marca d’água nos widgets emoldurados "
 "permanece: a chave não faz parte do endereço do quadro."
 
-#: includes/views/admin-api-key.php:386
+#: includes/views/admin-api-key.php:400
 msgid "Paid key."
 msgstr "Chave paga."
 
-#: includes/views/admin-api-key.php:387
+#: includes/views/admin-api-key.php:401
 msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
