@@ -42,8 +42,7 @@ class Updater {
 		// Inject saved API key as ?key= on every update check request.
 		$puc->addQueryArgFilter(
 			static function ( $args ) {
-				$opts = (array) get_option( Admin::OPTION_KEY, [] );
-				$key  = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
+				$key = Key::current();
 				if ( '' !== $key ) {
 					$args['key'] = $key;
 				}
@@ -81,9 +80,7 @@ class Updater {
 	 */
 	public static function get_status(): array {
 		$active     = class_exists( PucFactory::class );
-		$opts       = (array) get_option( Admin::OPTION_KEY, [] );
-		$key        = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
-		$has_key    = '' !== $key;
+		$has_key    = '' !== Key::current();
 		$channel    = ( $active && self::channel_b_eligible() ) ? 'B' : 'A';
 		$last_check = null;
 		// PUC v5 stores last check time in `external_updates-<slug>` site option.

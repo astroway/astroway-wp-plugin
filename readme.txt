@@ -1,14 +1,14 @@
 === AstroWay – Astrology, Birth Chart & Horoscope Widgets ===
 Contributors: astrowayteam
-Tags: astrology, birth chart, horoscope, mercury retrograde, tarot
+Tags: astrology, birth chart, horoscope, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Put horoscopes and birth charts on your pages as real text search engines can read. 700 shortcodes and blocks, no account needed to start.
+Horoscope, birth chart, moon and tarot widgets that print as real text in your theme. Eleven need no API key; 680 more run on a free one.
 
 == Description ==
 
@@ -32,19 +32,19 @@ Eleven widgets are rendered by your own server directly into the page: daily, we
 
 = What the sky is doing right now =
 
-Four cards answer the questions people search for rather than calculate: is Mercury retrograde, what else is retrograde, is the Moon void of course, and which planetary hour is it. `[astroway_mercury_retrograde]` prints yes or no, the dates of the retrograde it is in or heading for, and how many days are left. `[astroway_retrogrades]` does the same for all eight planets that station, as one table. `[astroway_moon_voc]` lists the void windows with their last aspect and next sign. `[astroway_planetary_hours latitude="50.45" longitude="30.52"]` prints the twenty-four hours of the day with the one you are in marked. Station and window times are printed on your site's clock, not in UTC, which matters more often than it sounds: Saturn turns direct at 23:31 UTC on 10 December, and that is the 11th anywhere east of Greenwich. These four need an API key, like the seven hundred below.
+Four cards answer the questions people search for rather than calculate: is Mercury retrograde, what else is retrograde, is the Moon void of course, and which planetary hour is it. `[astroway_mercury_retrograde]` prints yes or no, the dates of the retrograde it is in or heading for, and how many days are left. `[astroway_retrogrades]` does the same for all eight planets that station, as one table. `[astroway_moon_voc]` lists the void windows with their last aspect and next sign. `[astroway_planetary_hours latitude="50.45" longitude="30.52"]` prints the twenty-four hours of the day with the one you are in marked. Station and window times are printed on your site's clock, not in UTC, which matters more often than it sounds: Saturn turns direct at 23:31 UTC on 10 December, and that is the 11th anywhere east of Greenwich. These four need an API key, like the 680 below.
 
-= Seven hundred more, for when you need them =
+= 680 more, for when you need them =
 
-Eleven widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for 680 more endpoints: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; the free tier covers 10,000 calls a month.
+Eleven widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for 680 more endpoints: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; a free key comes with 10,000 credits a month, and most calls cost 10 or 20 of them.
 
 = The year, two signs, and the Chinese animal =
 
-`[astroway_yearly_horoscope sign="leo"]` prints the year ahead. `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]` prints how two signs read together, as prose rather than as a percentage: the API returns no score, and a number with no calculation behind it is worse than no number. `[astroway_chinese_zodiac date="1990-05-15"]` prints the animal of a birth year with its element, polarity and pillar.
+Three cards read the signs themselves. The yearly horoscope, `[astroway_yearly_horoscope sign="leo"]`, prints the year ahead. `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]` prints how two signs read together, as prose rather than as a percentage: the API returns no score, and a number with no calculation behind it is worse than no number. `[astroway_chinese_zodiac date="1990-05-15"]` prints the animal of a birth year with its element, polarity and pillar.
 
 = Two charts, read against each other =
 
-`[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]` prints the compatibility score, the word the API puts on it, and the aspects behind it as a table headed by the two names, because "Moon conjunct Mercury" says nothing until you know whose Moon. The six closest are shown and the whole grid, points included, is one click away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as three requests of the hourly allowance, because it is two charts and the grid between them.
+The synastry card, `[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]`, prints the compatibility score, the word the API puts on it, and the aspects behind it as a table headed by the two names, because "Moon conjunct Mercury" says nothing until you know whose Moon. The six closest are shown and the whole grid, points included, is one click away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as three requests of the hourly allowance, because it is two charts and the grid between them.
 
 = Tabs, without the JavaScript =
 
@@ -60,7 +60,7 @@ The Astrology Section block sets a zodiac sign once and every AstroWay block ins
 
 = What still loads in a frame =
 
-Widgets that have no page-side template yet, and any widget whose data cannot be fetched at that moment, fall back to an embedded frame loaded by the visitor's own browser (30 requests/hour per visitor IP). Eleven widgets need no key of any kind, and that is where most sites stop. The four that read the current sky need one, as do the generated shortcodes behind them: the free tier gives 10,000 calls a month and paid plans raise the limits further. The daily transit alert email is the only thing in the plugin that asks for a paid plan.
+Widgets that have no page-side template yet, and any widget whose data cannot be fetched at that moment, fall back to an embedded frame loaded by the visitor's own browser (30 requests/hour per visitor IP). Eleven widgets need no key of any kind, and that is where most sites stop. The four that read the current sky need one, as do the generated shortcodes behind them: a free key gives 10,000 credits a month, most calls cost 10 or 20, and paid plans raise the limits further. The daily transit alert email is the only thing in the plugin that asks for a paid plan.
 
 Under the hood the widgets are powered by api.astroway.info, with 700+ endpoints covering Western, Vedic, Hellenistic, Chinese and Mayan astrology, Tarot (Rider-Waite, Marseille, Lenormand), Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil), Human Design and AI horoscopes.
 
@@ -80,11 +80,11 @@ Optional: AstroWay → API Key, to paste a key from api.astroway.info. Every wid
 
 = Is AstroWay free? Are there any hidden costs? =
 
-Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The eleven widgets your server renders into the page draw on the anonymous per-site allowance of 300 requests an hour (a synastry, being two charts and the grid between them, counts as three of those), and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. A free API key (still no card) gives you 10,000 calls a month against api.astroway.info, which is what the retrograde, void of course and planetary hour cards spend, along with the seven hundred generated shortcodes. Paid plans raise that further. The daily transit alert email is the only feature here that asks for a paid plan.
+Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The eleven widgets your server renders into the page draw on the anonymous per-site allowance of 300 requests an hour (a synastry, being two charts and the grid between them, counts as three of those), and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. A free API key (still no card) gives you 10,000 credits a month against api.astroway.info, and most calls cost 10 or 20 credits; which is what the retrograde, void of course and planetary hour cards spend, along with the 680 generated shortcodes. Paid plans raise that further. The daily transit alert email is the only feature here that asks for a paid plan.
 
 = How do I add a horoscope or birth chart to WordPress? =
 
-Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Each of them is a Gutenberg block as well: type `/astroway` in the editor and pick one. Settings → AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
+Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Each of them is a Gutenberg block as well: type `/astroway` in the editor and pick one. AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
 
 = Can I see a chart without installing the plugin? =
 
@@ -96,7 +96,7 @@ No. The plugin works without a key. Page-rendered widgets then run on the anonym
 
 = Will the widgets show up in Google? =
 
-The ten page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. Settings → AstroWay → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
+The eleven page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. AstroWay → Settings → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
 
 = What data is sent to api.astroway.info? =
 
@@ -121,7 +121,7 @@ For plugin issues: file an issue at https://github.com/astroway/astroway-wp-plug
 3. The weekly horoscope keeps its shape. The API answers in Markdown, and the day-by-day notes and life areas arrive as real lists rather than a wall of prose.
 4. The same three cards on a light background and on a dark one. Nothing was configured between the two: the cards borrow the colour of the text around them.
 5. Every widget is also a block. What the editor previews is the finished card, not a placeholder, and the zodiac sign and language are ordinary Inspector controls.
-6. Settings → AstroWay → Shortcodes. Every shortcode with its parameters and a copy button, plus a city search that fills in coordinates and timezone for you.
+6. The Shortcodes page in the AstroWay menu: every shortcode with its parameters and a copy button, plus a city search that fills in coordinates and timezone for you.
 
 == External services ==
 
@@ -154,6 +154,18 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 1.5.6 =
+* Fix: a visitor who ran out of the per-IP allowance of a framed widget saw a card telling them to get an API key. The frame now folds away for visitors, and only administrators see a note saying why.
+* Fix: framed widgets (the natal wheel, numerology, kundli, panchang and transits) are light by default, no wider than your content column, and as tall as their content. `theme="dark"` still gives the dark version.
+* Fix: the generated shortcodes answer in your site's language, or in the one set with `lang`. Before, they answered in Ukrainian on sites in other languages.
+* Fix: a natal chart given coordinates but no `tz` was calculated in UTC. It now uses the timezone of the place; the moon sign, rising sign and bodygraph cards do the same.
+* Fix: tables no longer run past the card on narrow screens, and a table that scrolls shows that it does.
+* Fix: tab labels in an Astrology Section start with a capital letter.
+* Change: the widget stylesheet loads only on pages that show a widget. A theme that prints a widget from a template can load it in the head with the `astroway_load_styles` filter.
+* Change: the API key is stored encrypted and shown masked, and it can be set in wp-config.php with `define( 'ASTROWAY_API_KEY', '...' );`.
+* Change: blocks have their own AstroWay category in the inserter, and the generated ones are marked "(API)".
+* New: deleting the plugin removes its settings and cached data.
 
 = 1.5.5 =
 * Change: the message about a publishable key now points at api.astroway.info/dashboard/keys, the page that lists your keys, rather than the dashboard front page. Translated in all 20 bundled languages.
@@ -463,6 +475,9 @@ This plugin stores the following on the WordPress site:
 * Initial scaffold (pre-release). Plugin header + PSR-4 autoload + activation hooks. No shortcodes yet, first functional release planned as 0.1.0.
 
 == Upgrade Notice ==
+
+= 1.5.6 =
+The API key is now stored encrypted. If you ever go back to 1.5.5 or earlier, paste the key again. Framed widgets turn light by default; add theme="dark" to keep them dark.
 
 = 1.0.4 =
 Block previews in the editor pick up the plugin stylesheet again. Nothing changes on the published page.

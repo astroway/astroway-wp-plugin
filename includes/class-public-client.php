@@ -21,6 +21,13 @@ class PublicClient {
 			}
 		);
 
+		// Light unless the author asked otherwise. The frame cannot read the
+		// page's colours, and the api's own default is a dark card, which sat
+		// as a black slab on the light themes most sites use.
+		if ( in_array( 'theme', $config['params'], true ) && empty( $filtered['theme'] ) ) {
+			$filtered['theme'] = 'light';
+		}
+
 		// Opt-in legal disclaimer in the widget footer (Settings → AstroWay).
 		// The api renders it when disclaimer=1; off by default to protect conversion.
 		$opts = (array) get_option( Admin::OPTION_KEY, [] );
@@ -58,11 +65,27 @@ class PublicClient {
 			esc_attr( self::iframe_title( $widget ) )
 		);
 
+		Plugin::use_styles();
+		Plugin::use_embed_script();
+
 		return sprintf(
-			'<div class="astroway-embed astroway-embed--%s">%s</div>',
+			'<div class="astroway-embed astroway-embed--%s">%s%s</div>',
 			esc_attr( $widget_slug ),
-			$iframe
+			$iframe,
+			self::limit_note()
 		);
+	}
+
+	/**
+	 * What an administrator sees in place of a frame that hit the visitor
+	 * limit. Hidden until the embed script reveals it; visitors get no note in
+	 * the markup at all, and their frame simply folds away.
+	 */
+	private static function limit_note(): string {
+		if ( ! function_exists( 'current_user_can' ) || ! current_user_can( 'manage_options' ) ) {
+			return '';
+		}
+		return '<p class="astroway-embed__note" hidden>' . esc_html__( 'This widget reached the free limit for one visitor (30 requests an hour from one IP address), so visitors on that connection see nothing here until the hour resets. Only administrators see this note.', 'astroway' ) . '</p>';
 	}
 
 	/**

@@ -12,8 +12,7 @@ class ApiClient {
 
 	public function __construct( ?string $api_key = null ) {
 		if ( null === $api_key ) {
-			$opts    = (array) get_option( Admin::OPTION_KEY, [] );
-			$api_key = (string) ( $opts['api_key'] ?? '' );
+			$api_key = Key::current();
 		}
 		$this->api_key = trim( $api_key );
 		$this->base    = rtrim( ASTROWAY_API_BASE, '/' );
@@ -95,16 +94,19 @@ class ApiClient {
 	 * @param string $method GET or POST.
 	 * @param string $path   Path under /v1, with a leading slash.
 	 * @param array  $params Query for GET, JSON body for POST.
+	 * @param string $lang   Language of the answer, sent as Accept-Language.
+	 *                       The api reads that header on GET and POST alike and
+	 *                       answers in Ukrainian, its source language, without it.
 	 */
-	public function call( string $method, string $path, array $params = [] ): array {
+	public function call( string $method, string $path, array $params = [], string $lang = '' ): array {
 		if ( 'POST' !== strtoupper( $method ) ) {
-			return $this->get( $path, $params );
+			return $this->get( $path, $params, $lang );
 		}
 		$response = wp_remote_post(
 			$this->base . $path,
 			[
 				'timeout' => 10,
-				'headers' => $this->headers() + [ 'Content-Type' => 'application/json' ],
+				'headers' => $this->headers( $lang ) + [ 'Content-Type' => 'application/json' ],
 				'body'    => (string) wp_json_encode( $params ),
 			]
 		);
@@ -126,10 +128,13 @@ class ApiClient {
 	 * @param int    $ttl    Seconds the answer stays true.
 	 * @param string $prefix Cache key prefix, so two callers asking the same
 	 *                       question with different lifetimes do not share one entry.
+	 * @param string $lang   Language of the answer; part of the cache key.
 	 * @return array|null The payload under `data`, or null when the call failed.
 	 */
-	public function cached_call( string $method, string $path, array $params, int $ttl, string $prefix = 'api_' ): ?array {
-		$key    = $prefix . md5( $path . '|' . strtoupper( $method ) . '|' . (string) wp_json_encode( $params ) );
+	public function cached_call( string $method, string $path, array $params, int $ttl, string $prefix = 'api_', string $lang = '' ): ?array {
+		// Without a language the key is the one 1.5.5 wrote, so an upgrade does
+		// not throw away every cached answer at once.
+		$key    = $prefix . md5( $path . '|' . strtoupper( $method ) . '|' . (string) wp_json_encode( $params ) . ( '' !== $lang ? '|' . $lang : '' ) );
 		$cached = Cache::get( $key );
 		if ( is_array( $cached ) ) {
 			return $cached;
@@ -138,7 +143,7 @@ class ApiClient {
 			return null;
 		}
 
-		$response = $this->call( $method, $path, $params );
+		$response = $this->call( $method, $path, $params, $lang );
 		$payload  = $response['data']['data'] ?? null;
 		if ( 200 !== (int) ( $response['status'] ?? 0 ) || ! is_array( $payload ) ) {
 			Cache::set( $key . '_neg', 'fail', PublicData::NEGATIVE_TTL );
@@ -149,7 +154,7 @@ class ApiClient {
 		return $payload;
 	}
 
-	private function get( string $path, array $params = [] ): array {
+	private function get( string $path, array $params = [], string $lang = '' ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {
 			$url = add_query_arg( $params, $url );
@@ -158,19 +163,24 @@ class ApiClient {
 			$url,
 			[
 				'timeout' => 5,
-				'headers' => $this->headers(),
+				'headers' => $this->headers( $lang ),
 			]
 		);
 		return $this->normalize( $response );
 	}
 
-	private function headers(): array {
+	private function headers( string $lang = '' ): array {
 		$headers = [
 			'Accept'              => 'application/json',
 			'X-AstroWay-Site-URL' => home_url(),
 		];
 		if ( $this->has_key() ) {
 			$headers['X-Api-Key'] = $this->api_key;
+		}
+		// A header rather than ?lang=: a GET route that validates its query
+		// strictly would refuse a parameter it does not declare.
+		if ( '' !== $lang ) {
+			$headers['Accept-Language'] = $lang;
 		}
 		return $headers;
 	}

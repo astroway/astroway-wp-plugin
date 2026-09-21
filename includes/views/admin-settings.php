@@ -23,7 +23,7 @@ $astroway_tier_columns = [ 'anonymous', 'free', 'indie', 'starter', 'pro', 'busi
 
 // Current domain binding (from cached /me response if api key is set).
 $astroway_current_domain = '';
-if ( '' !== (string) ( $astroway_opts['api_key'] ?? '' ) ) {
+if ( '' !== \AstroWay\WPPlugin\Key::current() ) {
 	$astroway_client         = new \AstroWay\WPPlugin\ApiClient();
 	$astroway_me             = $astroway_client->get_keys_me();
 	$astroway_current_domain = (string) ( $astroway_me['data']['data']['domain'] ?? '' );

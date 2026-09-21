@@ -20,7 +20,7 @@
 	 * boundary, and nothing is left empty, so a mixed section keeps its titles
 	 * whole.
 	 */
-	function shorten( labels ) {
+	function shorten( labels, locale ) {
 		if ( labels.length < 2 || labels.some( function ( label ) { return ! label; } ) ) {
 			return labels;
 		}
@@ -43,7 +43,25 @@
 		}
 
 		var trimmed = labels.map( function ( label ) { return label.slice( cut ).trim(); } );
-		return trimmed.some( function ( label ) { return ! label; } ) ? labels : trimmed;
+		return trimmed.some( function ( label ) { return ! label; } ) ? labels : trimmed.map( function ( label ) {
+			return capitalise( label, locale );
+		} );
+	}
+
+	/**
+	 * What is left after the cut starts mid-sentence ("today", "the week"), and
+	 * a tab reads as a label, so its first letter goes up. In the page's own
+	 * language: Turkish "i" becomes "İ", and scripts without case stay as they are.
+	 */
+	function capitalise( label, locale ) {
+		var first = Array.from( label )[ 0 ];
+		var upper;
+		try {
+			upper = first.toLocaleUpperCase( locale || undefined );
+		} catch ( e ) {
+			upper = first.toUpperCase();
+		}
+		return upper + label.slice( first.length );
 	}
 
 	var sections = document.querySelectorAll( '.astroway-section[data-astroway-tabs]' );
@@ -66,10 +84,11 @@
 		list.className = 'astroway-tabs';
 		list.setAttribute( 'role', 'tablist' );
 
+		var locale = panels[ 0 ].getAttribute( 'lang' ) || document.documentElement.lang || '';
 		var labels = shorten( panels.map( function ( panel ) {
 			var heading = panel.querySelector( '.astroway-card__title' );
 			return heading ? heading.textContent.trim() : '';
-		} ) );
+		} ), locale );
 
 		var tabs = panels.map( function ( panel, i ) {
 			var tabId = 'astroway-tab-' + index + '-' + i;

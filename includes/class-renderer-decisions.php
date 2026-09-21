@@ -25,11 +25,14 @@ class RendererDecisions {
 
 	private static function widgets_default(): array {
 		return [
+			// Heights are the fallback for a page without the embed script, which
+			// otherwise sizes each frame to what it reports. Set to the content at
+			// the full 460px width, so nothing is cut: 520 cut the wheel's last 17px.
 			'natal'            => [
 				'embed_path'   => 'wheel',
 				'iframe_attrs' => [
 					'width'  => '460',
-					'height' => '520',
+					'height' => '540',
 				],
 				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang', 'theme' ],
 			],
@@ -39,7 +42,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '320',
 				],
-				'params'       => [ 'sign', 'lang' ],
+				'params'       => [ 'sign', 'lang', 'theme' ],
 			],
 			// Registered so "In an iframe" does not simply delete this widget from
 			// the page. Weekly and monthly horoscope get no entry on purpose: the
@@ -51,7 +54,7 @@ class RendererDecisions {
 					'width'  => '320',
 					'height' => '320',
 				],
-				'params'       => [ 'date', 'lang' ],
+				'params'       => [ 'date', 'lang', 'theme' ],
 			],
 			'moon_phase'       => [
 				'embed_path'   => 'moon-phase',
@@ -59,7 +62,7 @@ class RendererDecisions {
 					'width'  => '320',
 					'height' => '320',
 				],
-				'params'       => [ 'date', 'lang' ],
+				'params'       => [ 'date', 'lang', 'theme' ],
 			],
 			'bodygraph'        => [
 				'embed_path'   => 'bodygraph',
@@ -67,7 +70,7 @@ class RendererDecisions {
 					'width'  => '460',
 					'height' => '620',
 				],
-				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang' ],
+				'params'       => [ 'date', 'time', 'lat', 'lng', 'name', 'tz', 'lang', 'theme' ],
 			],
 			'tarot_daily'      => [
 				'embed_path'   => 'daily-tarot',
@@ -75,7 +78,7 @@ class RendererDecisions {
 					'width'  => '320',
 					'height' => '480',
 				],
-				'params'       => [ 'deck', 'lang' ],
+				'params'       => [ 'deck', 'lang', 'theme' ],
 			],
 			// today_in_sky and fortune_cookie are intentionally absent: api-calc
 			// has no /v1/embed/today-in-sky or /v1/embed/fortune-cookie route, so
@@ -85,7 +88,7 @@ class RendererDecisions {
 				'embed_path'   => 'kundli',
 				'iframe_attrs' => [
 					'width'  => '460',
-					'height' => '520',
+					'height' => '530',
 				],
 				'params'       => [ 'date', 'time', 'lat', 'lng', 'tz', 'theme', 'lang' ],
 			],

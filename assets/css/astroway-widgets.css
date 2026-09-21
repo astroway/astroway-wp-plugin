@@ -1,21 +1,35 @@
 /* AstroWay widget styles. Theme-overridable via CSS custom properties on .astroway-embed. */
 
+/* The frame's own width, not the page's. Every embed page draws a card at most
+   460px wide, so a wrapper at 100% of a block theme's full-width content area
+   (1340px at 1440) was a 1340px frame with the card on its left, and it
+   overrode the theme's own column width while doing it. */
 .astroway-embed {
 	--astroway-bg: transparent;
 	--astroway-border: 0;
 	--astroway-border-radius: 8px;
-	--astroway-max-width: 100%;
+	--astroway-max-width: 460px;
 	--astroway-margin: 1em auto;
 	--astroway-min-height: 240px;
 
 	background: var(--astroway-bg);
 	border: var(--astroway-border);
 	border-radius: var(--astroway-border-radius);
-	max-width: var(--astroway-max-width);
+	max-width: min(var(--astroway-max-width), 100%);
 	margin: var(--astroway-margin);
 	overflow: hidden;
 	line-height: 0;
 	min-height: var(--astroway-min-height);
+}
+
+/* The embed script folds a frame away for a visitor whose quota is spent. */
+.astroway-embed[hidden] {
+	display: none;
+}
+
+/* Height reported by the frame itself, so the reserve is no longer needed. */
+.astroway-embed--fit {
+	--astroway-min-height: 0;
 }
 
 .astroway-embed__iframe {
@@ -32,6 +46,7 @@
 
 .astroway-embed--unavailable {
 	--astroway-min-height: 0;
+	--astroway-max-width: var(--wp--style--global--content-size, 100%);
 
 	line-height: 1.5;
 	padding: 0.9em 1.1em;
@@ -57,6 +72,10 @@
 	--astroway-max-width: 320px;
 }
 
+.astroway-embed--mini-chart {
+	--astroway-max-width: 300px;
+}
+
 @media (max-width: 480px) {
 	.astroway-embed {
 		--astroway-max-width: 100%;
@@ -80,6 +99,7 @@
 	--astroway-card-band: color-mix(in srgb, currentColor 5%, transparent);
 	--astroway-card-stripe: color-mix(in srgb, currentColor 2.5%, transparent);
 	--astroway-card-current: color-mix(in srgb, currentColor 11%, transparent);
+	--astroway-card-surface: var(--wp--preset--color--base, Canvas);
 	--astroway-card-radius: 10px;
 	--astroway-card-padding: 1.25em 1.4em;
 	--astroway-card-max-width: 34em;
@@ -87,7 +107,10 @@
 
 	display: block;
 	box-sizing: border-box;
-	max-width: var(--astroway-card-max-width);
+	/* Never wider than the theme's content column: a block theme sets that
+	   width on the direct children of the post, and a plain max-width here
+	   overrode it, so a 42em card stood out past the column at 1440px. */
+	max-width: min(var(--astroway-card-max-width), var(--wp--style--global--content-size, 100%), 100%);
 	margin: var(--astroway-card-margin);
 	padding: var(--astroway-card-padding);
 	background: var(--astroway-card-bg);
@@ -290,19 +313,32 @@
 	letter-spacing: 0.01em;
 	white-space: nowrap;
 	color: var(--astroway-card-muted);
+}
+
+.astroway-card__placements thead th {
 	border-block-end: 1px solid var(--astroway-card-line);
 }
 
 /* Stripes rather than a rule per row: at twenty-four rows the rules become a
-   grid the eye has to read through, and the stripe does the same job quietly. */
+   grid the eye has to read through, and the stripe does the same job quietly.
+   On the row, not the cells: the tint mixes currentColor, and the muted cells
+   would each mix a lighter one. The row header gets no rule of its own either,
+   see thead th above: a rule under each planet name and none under the data
+   cells made the name column read as a white strip beside a grey row. */
 .astroway-card__placements tbody tr:nth-child(even) {
 	background: var(--astroway-card-stripe);
+}
+
+/* Short values that read wrong broken in two, like "House 9". */
+.astroway-card__nowrap {
+	white-space: nowrap;
 }
 
 /* The muted last column belongs to the natal placements, where it holds the
    house number beside a position. On the sky tables the last column is the
    answer, and greying it out was a heuristic firing where it was never meant to. */
-.astroway-card--natal .astroway-card__placements td:last-child {
+.astroway-card--natal .astroway-card__placements td:last-child,
+.astroway-card--natal .astroway-card__placements .astroway-card__nowrap {
 	font-size: 0.88em;
 	color: var(--astroway-card-muted);
 }
@@ -324,7 +360,13 @@
 
 	.astroway-card__placements th,
 	.astroway-card__placements td {
-		padding-inline: 0.45em;
+		padding-inline: 0.35em;
+	}
+
+	/* A hair smaller so the four natal columns fit a 375px phone whole; below
+	   that the table scrolls, with the edge shadow saying so. */
+	.astroway-card--natal .astroway-card__placements {
+		font-size: 0.82em;
 	}
 }
 
@@ -373,14 +415,43 @@
 	--astroway-card-max-width: 44em;
 }
 
+/* A shadow at whichever edge still hides columns, CSS only. The two covers
+   scroll with the table (local) and sit over the two shadows fixed to the
+   box (scroll), so a shadow shows only while there is more to that side. The
+   covers have to be opaque, hence the surface colour: the theme's base colour
+   where a block theme defines one, the page canvas otherwise. A theme that
+   gives the card its own background sets --astroway-card-surface to match. */
 .astroway-card__scroll {
+	--astroway-card-shade: color-mix(in srgb, currentColor 30%, transparent);
+
 	max-width: 100%;
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
+	background:
+		linear-gradient(to right, var(--astroway-card-surface) 30%, transparent) left center / 2.5em 100% no-repeat local,
+		linear-gradient(to left, var(--astroway-card-surface) 30%, transparent) right center / 2.5em 100% no-repeat local,
+		radial-gradient(farthest-side at 0 50%, var(--astroway-card-shade), transparent) left center / 1.1em 100% no-repeat scroll,
+		radial-gradient(farthest-side at 100% 50%, var(--astroway-card-shade), transparent) right center / 1.1em 100% no-repeat scroll;
+}
+
+@supports not (color: color-mix(in srgb, currentColor 50%, transparent)) {
+	.astroway-card__scroll {
+		--astroway-card-shade: rgba(128, 128, 128, 0.35);
+	}
 }
 
 .astroway-card__scroll .astroway-card__placements {
 	min-width: max-content;
+}
+
+/* The natal table wraps its positions rather than scrolling at every width:
+   it only scrolls when even the shortest layout does not fit, at 320px. */
+.astroway-card--natal .astroway-card__scroll .astroway-card__placements {
+	min-width: 0;
+}
+
+.astroway-card--natal .astroway-card__placements tbody th {
+	white-space: normal;
 }
 
 .astroway-card--generic .astroway-card__subtitle {
@@ -402,9 +473,12 @@
    same in a dark theme and to anyone who cannot see the wash.
    The wash is four times the zebra stripe on purpose: at the same strength the
    marked row landed on an even row and disappeared into the striping. */
-.astroway-card__row--current > td {
-	font-weight: 600;
+.astroway-card__placements tbody tr.astroway-card__row--current {
 	background: var(--astroway-card-current);
+}
+
+.astroway-card__row--current > * {
+	font-weight: 600;
 }
 
 /* "Yes, Mercury is retrograde" is the reason the widget is on the page; the

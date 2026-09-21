@@ -32,6 +32,12 @@ $astroway_shortcodes_url  = admin_url( 'admin.php?page=' . \AstroWay\WPPlugin\Ad
 // showed the previous value again.
 $astroway_key_errors = get_settings_errors( $astroway_page_slug );
 
+// The key itself never goes back into the page: a mask when it is saved, a
+// read-only mask when wp-config.php supplies it.
+$astroway_key_from_constant = \AstroWay\WPPlugin\Key::from_constant();
+$astroway_key_lost          = \AstroWay\WPPlugin\Key::is_lost();
+$astroway_saved_mask        = ( ! $astroway_key_from_constant && '' !== $api_key ) ? \AstroWay\WPPlugin\Key::mask( $api_key ) : '';
+
 // Status panel state machine — derived from $status_data (passed from render_api_key_page).
 $astroway_status_state   = 'none';     // none | valid | suspended | revoked | invalid_key | api_down
 $astroway_status_payload = [];
@@ -118,7 +124,7 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 					<?php
 					printf(
 						/* translators: %s is a link to the plugin's Shortcodes admin page */
-						esc_html__( 'All 16 shortcodes with their parameters, plus a city search that fills in coordinates and timezone: %s.', 'astroway' ),
+						esc_html__( 'Every shortcode with its parameters, plus a city search that fills in coordinates and timezone: %s.', 'astroway' ),
 						'<a href="' . esc_url( $astroway_shortcodes_url ) . '">' . esc_html__( 'Shortcodes', 'astroway' ) . '</a>'
 					);
 					?>
@@ -135,23 +141,68 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 			</header>
 			<form method="post" action="options.php" class="aw-panel-body">
 				<?php settings_fields( $astroway_page_slug ); ?>
-				<label for="aw-api-key" class="aw-label"><?php esc_html_e( 'Paste your key', 'astroway' ); ?></label>
-				<div class="aw-field-row">
-					<input type="text"
-						id="aw-api-key"
-						name="<?php echo esc_attr( $astroway_option_key ); ?>[api_key]"
-						value="<?php echo esc_attr( $api_key ); ?>"
-						class="aw-input aw-input-mono"
-						placeholder="aw_live_…  or  aw_test_…"
-						autocomplete="off"
-						spellcheck="false" />
-					<button type="button" class="aw-btn aw-btn-ghost" id="aw-verify-key">
-						<?php esc_html_e( 'Verify', 'astroway' ); ?>
-					</button>
-				</div>
+				<?php if ( $astroway_key_from_constant ) : ?>
+					<p class="aw-label"><?php esc_html_e( 'Your key', 'astroway' ); ?></p>
+					<div class="aw-field-row">
+						<code class="aw-input aw-input-mono aw-key-mask"><?php echo esc_html( \AstroWay\WPPlugin\Key::mask( $api_key ) ); ?></code>
+						<button type="button" class="aw-btn aw-btn-ghost" id="aw-verify-key">
+							<?php esc_html_e( 'Verify', 'astroway' ); ?>
+						</button>
+					</div>
+					<p class="aw-hint">
+						<?php
+						printf(
+							/* translators: %s = the constant name, ASTROWAY_API_KEY */
+							esc_html__( 'Set in wp-config.php as %s. To change or remove it, edit that file.', 'astroway' ),
+							'<code>ASTROWAY_API_KEY</code>'
+						);
+						?>
+					</p>
+				<?php else : ?>
+					<?php if ( '' !== $astroway_saved_mask ) : ?>
+						<p class="aw-label"><?php esc_html_e( 'Saved key', 'astroway' ); ?> <code class="aw-key-mask"><?php echo esc_html( $astroway_saved_mask ); ?></code></p>
+					<?php elseif ( $astroway_key_lost ) : ?>
+						<div class="aw-result is-error">
+							<p><?php esc_html_e( 'The saved key can no longer be read: the security keys in wp-config.php have changed since it was saved. Widgets keep working without it. Paste the key again to restore it.', 'astroway' ); ?></p>
+						</div>
+					<?php endif; ?>
+					<label for="aw-api-key" class="aw-label"><?php echo '' !== $astroway_saved_mask ? esc_html__( 'Replace it with a new key', 'astroway' ) : esc_html__( 'Paste your key', 'astroway' ); ?></label>
+					<div class="aw-field-row">
+						<?php // Rendered empty on purpose: the saved key never goes back into the page, and an empty field keeps it. ?>
+						<input type="password"
+							id="aw-api-key"
+							name="<?php echo esc_attr( $astroway_option_key ); ?>[api_key]"
+							value=""
+							class="aw-input aw-input-mono"
+							placeholder="<?php echo '' !== $astroway_saved_mask ? esc_attr__( 'Leave empty to keep the saved key', 'astroway' ) : 'aw_live_…  or  aw_test_…'; ?>"
+							autocomplete="new-password"
+							spellcheck="false" />
+						<button type="button" class="aw-btn aw-btn-ghost" id="aw-verify-key">
+							<?php esc_html_e( 'Verify', 'astroway' ); ?>
+						</button>
+					</div>
+					<?php if ( '' !== $astroway_saved_mask || $astroway_key_lost ) : ?>
+						<label class="aw-hint aw-key-remove">
+							<input type="checkbox" name="<?php echo esc_attr( $astroway_option_key ); ?>[api_key_remove]" value="1" />
+							<?php esc_html_e( 'Remove the saved key', 'astroway' ); ?>
+						</label>
+					<?php endif; ?>
+				<?php endif; ?>
+				<?php // Корень дашборда здесь остаётся сознательно: точный адрес нужен там, где человек застрял, а у абзаца перевод на 20 языков. Меняя абзац по другой причине, поставить /dashboard/keys заодно (согласовано с api 19.09.2026). ?>
+				<?php if ( ! $astroway_key_from_constant ) : ?>
 				<p class="aw-hint">
 					<?php esc_html_e( 'Paste a key from api.astroway.info/dashboard, or leave the field empty. Every widget renders without one. If you do save a key, your server offers it on the calls behind the page-rendered widgets, so a paid plan counts them against its own allowance rather than the one this site shares with every other anonymous caller. Saving a key also adds the status panel below, and the key itself is what you use when you call the API from your own code.', 'astroway' ); ?>
 				</p>
+				<p class="aw-hint aw-key-tip">
+					<?php
+					printf(
+						/* translators: %s = the constant name, ASTROWAY_API_KEY */
+						esc_html__( 'Prefer to keep it out of the database? Define %s in wp-config.php and it takes the place of this field.', 'astroway' ),
+						'<code>ASTROWAY_API_KEY</code>'
+					);
+					?>
+				</p>
+				<?php endif; ?>
 				<?php if ( ! empty( $astroway_key_errors ) ) : ?>
 					<div id="aw-key-status" class="aw-result is-error">
 						<?php foreach ( $astroway_key_errors as $astroway_key_error ) : ?>
@@ -161,9 +212,11 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 				<?php else : ?>
 					<div id="aw-key-status" class="aw-result" style="display:none;"></div>
 				<?php endif; ?>
+				<?php if ( ! $astroway_key_from_constant ) : ?>
 				<div class="aw-panel-actions">
 					<?php submit_button( __( 'Save changes', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
 				</div>
+				<?php endif; ?>
 			</form>
 		</article>
 
@@ -390,7 +443,7 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 			<div class="aw-panel-body aw-how">
 				<p>
 					<strong><?php esc_html_e( 'On your pages.', 'astroway' ); ?></strong>
-					<?php esc_html_e( 'Your server renders seven widgets into the page, counted against this site\'s allowance of 300 requests an hour, or against your own plan when a paid key is saved above. The rest load in a frame against each visitor\'s own 30, and those carry the "Powered by AstroWay" watermark: a frame is fetched by the visitor\'s browser, which is no place for your key.', 'astroway' ); ?>
+					<?php esc_html_e( 'Your server renders most widgets into the page, counted against this site\'s allowance of 300 requests an hour, or against your own plan when a paid key is saved above. The rest load in a frame against each visitor\'s own 30, and those carry the "Powered by AstroWay" watermark: a frame is fetched by the visitor\'s browser, which is no place for your key.', 'astroway' ); ?>
 				</p>
 				<p>
 					<strong><?php esc_html_e( 'Free key.', 'astroway' ); ?></strong>

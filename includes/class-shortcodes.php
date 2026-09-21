@@ -308,13 +308,31 @@ class Shortcodes {
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
 		// The wheel is a picture drawn by the api and cannot read the page it lands
-		// on, so its palette has to be declared. Left empty it keeps the api default
-		// the widget has always used, which is why upgrading changes no colours.
+		// on, so its palette has to be declared. Left empty it is light, see
+		// PublicClient::embed_url().
 		$theme = self::sanitize_theme( $atts['theme'] );
 		if ( '' !== $theme ) {
 			$params['theme'] = $theme;
 		}
-		return Render::widget( 'natal', $params );
+		return self::utc_note( $params ) . Render::widget( 'natal', $params );
+	}
+
+	/**
+	 * An administrator's note when the birth time will be read as UTC.
+	 *
+	 * With coordinates the zone is looked up from the place, see
+	 * PublicData::chart_payload(). Without them, or with the widget set to
+	 * render in a frame that never asks, there is nothing to look it up from,
+	 * and a chart for the wrong hour looks exactly like a right one.
+	 */
+	private static function utc_note( array $params ): string {
+		$placed = '' !== $params['lat'] && '' !== $params['lng'];
+		if ( '' !== $params['tz'] || ( $placed && 'iframe' !== Render::mode() ) ) {
+			return '';
+		}
+		return Render::admin_note(
+			__( '[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a zone name such as tz="Europe/Kyiv", or hours from UTC such as tz="+3". Only administrators see this note.', 'astroway' )
+		);
 	}
 
 	public static function render_daily_horoscope( $atts ): string {
@@ -886,7 +904,7 @@ class Shortcodes {
 
 	public static function sanitize_theme( $value ): string {
 		$theme = strtolower( trim( (string) $value ) );
-		// Empty falls through — api defaults to dark.
+		// Empty falls through to light, see PublicClient::embed_url().
 		return in_array( $theme, [ 'dark', 'light', 'console' ], true ) ? $theme : '';
 	}
 

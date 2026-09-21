@@ -57,6 +57,7 @@ class Blocks {
 		if ( '' === trim( $content ) ) {
 			return '';
 		}
+		Plugin::use_styles();
 		$sign  = Shortcodes::sanitize_sign( $atts['sign'] ?? '' );
 		$class = 'astroway-section';
 		if ( '' !== $sign ) {
@@ -160,11 +161,11 @@ class Blocks {
 	}
 
 	/**
-	 * A category of its own for the generated blocks.
+	 * Two categories: the hand-built cards, and the generated blocks.
 	 *
-	 * There are seven hundred of them against nineteen hand-built ones, and in
-	 * one list the nineteen would be unfindable. The hand-built ones stay under
-	 * Widgets where they have always been.
+	 * There are seven hundred generated blocks against twenty-six hand-built
+	 * ones, and in one list the hand-built would be unfindable. Until 1.5.6 the
+	 * hand-built ones sat in core's Widgets, among everything else there.
 	 *
 	 * @since 1.2.0
 	 *
@@ -172,6 +173,11 @@ class Blocks {
 	 */
 	public static function add_category( $categories ) {
 		$categories   = is_array( $categories ) ? $categories : [];
+		$categories[] = [
+			'slug'  => 'astroway',
+			'title' => __( 'AstroWay', 'astroway' ),
+			'icon'  => null,
+		];
 		$categories[] = [
 			'slug'  => 'astroway-generated',
 			'title' => __( 'AstroWay: full API', 'astroway' ),

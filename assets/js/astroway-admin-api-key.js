@@ -58,7 +58,12 @@
 				show( $status, '<p>' + escapeHtml( i18n.browserKey || 'Publishable key' ) + '</p>', 'error' );
 				return;
 			}
-			if ( ! key || key.indexOf( 'aw_' ) !== 0 ) {
+			// An empty field checks the saved key, which the page no longer shows.
+			if ( key && key.indexOf( 'aw_' ) !== 0 ) {
+				show( $status, '<p>' + escapeHtml( i18n.invalidKey || 'Invalid key' ) + '</p>', 'error' );
+				return;
+			}
+			if ( ! key && ! cfg.hasKey ) {
 				show( $status, '<p>' + escapeHtml( i18n.invalidKey || 'Invalid key' ) + '</p>', 'error' );
 				return;
 			}
@@ -66,7 +71,8 @@
 
 			$.post( window.ajaxurl, {
 				action: 'astroway_verify_key',
-				nonce:  cfg.nonce
+				nonce:  cfg.nonce,
+				key:    key
 			} ).done( function ( resp ) {
 				if ( ! resp || ! resp.success ) {
 					var msg = ( resp && resp.data && resp.data.message ) || ( i18n.networkError || 'Error' );

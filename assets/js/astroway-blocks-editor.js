@@ -75,7 +75,7 @@
 	];
 
 	var THEME_OPTIONS = [
-		{ label: __( 'Default (dark)', 'astroway' ),         value: '' },
+		{ label: __( 'Default (light)', 'astroway' ),        value: '' },
 		{ label: __( 'Dark', 'astroway' ),                   value: 'dark' },
 		{ label: __( 'Light', 'astroway' ),                  value: 'light' },
 		{ label: __( 'Console (green on black)', 'astroway' ), value: 'console' }

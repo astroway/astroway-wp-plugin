@@ -18,6 +18,9 @@ class Admin {
 	public static function register(): void {
 		add_action( 'admin_menu', [ __CLASS__, 'register_menu' ] );
 		add_action( 'admin_init', [ __CLASS__, 'register_settings' ] );
+		// After the setting is registered, so the reseal goes through the same
+		// sanitize callback as a save from the form.
+		add_action( 'admin_init', [ Key::class, 'migrate' ], 20 );
 		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_admin_assets' ] );
 		add_action( 'wp_ajax_astroway_verify_key', [ __CLASS__, 'ajax_verify_key' ] );
 		add_action( 'wp_ajax_astroway_ping_health', [ __CLASS__, 'ajax_ping_health' ] );
@@ -110,20 +113,29 @@ class Admin {
 	public static function sanitize_settings( $input ): array {
 		$existing = (array) get_option( self::OPTION_KEY, [] );
 
-		if ( isset( $input['api_key'] ) ) {
-			$key = trim( (string) $input['api_key'] );
-			if ( '' === $key || preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $key ) ) {
-				$existing['api_key'] = $key;
+		// A key set in wp-config.php owns the field: the form does not render
+		// it, and nothing posted here may shadow the constant with a stale copy.
+		if ( Key::from_constant() ) {
+			unset( $input['api_key'], $input['api_key_remove'] );
+		}
+
+		// The field is rendered empty so the key never reaches the page. Empty
+		// therefore means "keep", and removing the key takes its own checkbox.
+		$key = isset( $input['api_key'] ) ? trim( (string) $input['api_key'] ) : '';
+		if ( ! empty( $input['api_key_remove'] ) ) {
+			$existing['api_key'] = '';
+			self::forget_plan();
+		} elseif ( Key::is_sealed( $key ) ) {
+			// Already sealed: update_option() runs this callback twice when the
+			// option is first created, and code that saves the whole array hands
+			// the stored value straight back in.
+			$existing['api_key'] = $key;
+		} elseif ( '' !== $key ) {
+			if ( preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $key ) ) {
+				$existing['api_key'] = Key::seal( $key );
 				// Invalidate any cached /me payload for the previous key
-				if ( '' !== $key ) {
-					Cache::delete( 'keys_me_' . md5( $key ) );
-				}
-				// And the plan resolved earlier in this same request, which was
-				// the old key's. Without it the status panel rendered right
-				// after saving reports the plan that was just replaced.
-				if ( class_exists( __NAMESPACE__ . '\\Tier' ) ) {
-					Tier::flush();
-				}
+				Cache::delete( 'keys_me_' . md5( $key ) );
+				self::forget_plan();
 			} elseif ( 0 === strpos( $key, 'pk_' ) ) {
 				add_settings_error(
 					self::PAGE_API_KEY,
@@ -162,6 +174,17 @@ class Admin {
 		}
 
 		return $existing;
+	}
+
+	/**
+	 * The plan resolved earlier in this same request was the old key's. Without
+	 * this the status panel rendered right after saving reports the plan that
+	 * was just replaced.
+	 */
+	private static function forget_plan(): void {
+		if ( class_exists( __NAMESPACE__ . '\\Tier' ) ) {
+			Tier::flush();
+		}
 	}
 
 	// phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound -- WP option-get convention.
@@ -217,8 +240,9 @@ class Admin {
 				'astroway-admin-api-key',
 				'astrowayAdmin',
 				[
-					'nonce' => wp_create_nonce( 'astroway_admin' ),
-					'i18n'  => [
+					'nonce'  => wp_create_nonce( 'astroway_admin' ),
+					'hasKey' => '' !== Key::current(),
+					'i18n'   => [
 						'verifying'    => __( 'Verifying…', 'astroway' ),
 						'fallback'     => __( 'limited info', 'astroway' ),
 						'plan'         => __( 'Plan', 'astroway' ),
@@ -290,7 +314,7 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'Unauthorized.', 'astroway' ) );
 		}
-		$api_key = (string) self::get( 'api_key', '' );
+		$api_key = Key::current();
 
 		// Pre-fetch /v1/auth/keys/me for the Status panel — uses TTL_KEYS_ME transient cache (30min).
 		$status_data = null;
@@ -306,7 +330,7 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'Unauthorized.', 'astroway' ) );
 		}
-		$api_key = (string) self::get( 'api_key', '' );
+		$api_key = Key::current();
 		$stats   = Cache::stats();
 		require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/admin-settings.php';
 	}
@@ -315,7 +339,7 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'Unauthorized.', 'astroway' ) );
 		}
-		$api_key = (string) self::get( 'api_key', '' );
+		$api_key = Key::current();
 		require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/admin-shortcodes.php';
 	}
 
@@ -324,7 +348,11 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( null, 403 );
 		}
-		$client = new ApiClient();
+		// A key typed into the field is checked before it is saved; with the
+		// field left empty the saved one is. Before 1.5.6 the saved key was
+		// always the one checked, so a freshly pasted key "verified" as the old.
+		$typed  = isset( $_POST['key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['key'] ) ) ) : '';
+		$client = ( '' !== $typed && ! Key::from_constant() && preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $typed ) ) ? new ApiClient( $typed ) : new ApiClient();
 		if ( ! $client->has_key() ) {
 			wp_send_json_error( [ 'message' => __( 'No API key. The plugin runs in anonymous mode: this site is allowed 300 requests an hour, and widgets that fall back to a frame use each visitor\'s own 30.', 'astroway' ) ] );
 		}
@@ -378,8 +406,7 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( null, 403 );
 		}
-		$opts = (array) get_option( self::OPTION_KEY, [] );
-		$key  = isset( $opts['api_key'] ) ? trim( (string) $opts['api_key'] ) : '';
+		$key = Key::current();
 		if ( '' === $key ) {
 			wp_send_json_error( [ 'message' => __( 'API key required.', 'astroway' ) ] );
 		}

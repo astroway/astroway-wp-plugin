@@ -28,7 +28,7 @@ $astroway_cards = [
 			[ 'lon', 'float', true, __( 'WGS-84 longitude (e.g. 30.52).', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone (e.g. Europe/Kyiv).', 'astroway' ) ],
 			[ 'name', 'string', false, __( 'Display name on the chart.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'Palette of the wheel drawing: dark (default), light or console. The text beside it follows your theme on its own; the wheel is an image and cannot, so set this to match.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'Palette of the wheel drawing: light (default), dark or console. The text beside it follows your theme on its own; the wheel is an image and cannot, so set this to match.', 'astroway' ) ],
 		],
 	],
 	[
@@ -150,7 +150,7 @@ $astroway_cards = [
 			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -162,7 +162,7 @@ $astroway_cards = [
 		'params'      => [
 			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
 			[ 'date', 'string', false, __( 'Any date inside the month you want. Defaults to today.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -173,7 +173,7 @@ $astroway_cards = [
 		'block'       => 'astroway/transit-timeline',
 		'params'      => [
 			[ 'date', 'string', false, __( 'Day the seven start from. Defaults to today.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -188,7 +188,7 @@ $astroway_cards = [
 			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -199,7 +199,7 @@ $astroway_cards = [
 		'block'       => 'astroway/transit',
 		'params'      => [
 			[ 'date', 'string', false, __( 'Override date in YYYY-MM-DD. Defaults to today.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -213,7 +213,7 @@ $astroway_cards = [
 			[ 'lat', 'float', true, __( 'WGS-84 latitude.', 'astroway' ) ],
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -226,7 +226,7 @@ $astroway_cards = [
 			[ 'name', 'string', true, __( 'Full birth name. The letters are what the numbers are built from.', 'astroway' ) ],
 			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
 			[ 'system', 'string', false, __( 'pythagorean (default), chaldean, kabbalistic or tamil.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[
@@ -249,7 +249,7 @@ $astroway_cards = [
 			[ 'tz_b', 'string', false, __( 'Second person: IANA timezone.', 'astroway' ) ],
 			[ 'name_b', 'string', false, __( 'Second person: name for the table heading.', 'astroway' ) ],
 			[ 'aspects', 'int', false, __( 'How many aspects the table holds, 1 to 20. Six by default, which is what the frame version showed.', 'astroway' ) ],
-			[ 'theme', 'string', false, __( 'dark (default), light or console.', 'astroway' ) ],
+			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
 		],
 	],
 	[

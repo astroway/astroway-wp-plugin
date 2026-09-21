@@ -511,6 +511,22 @@
 	letter-spacing: 0.06em;
 }
 
+/* A key is case-sensitive, so the label's capitals must not reach the mask. */
+.aw-key-mask {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.aw-key-remove {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.aw-key-remove input {
+	margin: 0;
+}
+
 .aw-field-row {
 	display: flex;
 	gap: 10px;

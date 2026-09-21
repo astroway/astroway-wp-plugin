@@ -73,7 +73,7 @@ class Render {
 	 * server-side, which keeps a stored `client` from an older build (a mode that
 	 * never worked, see plan item 3.4) from silently disabling the widgets.
 	 */
-	private static function mode(): string {
+	public static function mode(): string {
 		if ( ! class_exists( __NAMESPACE__ . '\\Admin' ) ) {
 			return 'auto';
 		}
@@ -116,6 +116,7 @@ class Render {
 		if ( ! function_exists( 'current_user_can' ) || ! current_user_can( 'manage_options' ) ) {
 			return '';
 		}
+		Plugin::use_styles();
 		return sprintf(
 			'<div class="astroway-embed astroway-embed--unavailable"><p>%s</p></div>',
 			esc_html( $text )
@@ -465,8 +466,14 @@ class Render {
 		$inner .= self::date_line( (string) ( $params['date'] ?? '' ) );
 		$inner .= '</header>';
 
-		// The wheel, unchanged from what the shortcode rendered before.
-		$inner .= PublicClient::embed_iframe( 'natal', $params );
+		// The wheel reads a numeric tz only. When the zone was left to the api,
+		// hand the wheel the offset the api settled on, or the picture and the
+		// table below it would describe two different moments.
+		$wheel = $params;
+		if ( '' === trim( (string) ( $params['tz'] ?? '' ) ) && is_numeric( $data['input']['timezoneOffset'] ?? null ) ) {
+			$wheel['tz'] = (string) (float) $data['input']['timezoneOffset'];
+		}
+		$inner .= PublicClient::embed_iframe( 'natal', $wheel );
 
 		$angles = [];
 		if ( isset( $houses['ascendant'] ) ) {
@@ -486,11 +493,14 @@ class Render {
 			$house = self::house_of( $lon, $cusps );
 			$rows .= '<tr><th scope="row">' . esc_html( self::planet_label( (string) ( $planet['name'] ?? '' ) ) ) . '</th>';
 			$rows .= '<td>' . esc_html( self::position_label( $lon ) ) . '</td>';
-			$rows .= '<td>' . ( null === $house ? '' : esc_html( sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house ) ) ) . '</td>';
+			$rows .= '<td class="astroway-card__nowrap">' . ( null === $house ? '' : esc_html( sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house ) ) ) . '</td>';
 			$rows .= '<td>' . ( empty( $planet['isRetrograde'] ) ? '' : esc_html__( 'retrograde', 'astroway' ) ) . '</td></tr>';
 		}
+		// In a scroller like every other table: at 320 px four columns do not
+		// fit a card, and a table pushing past the card's border is worse than
+		// one that scrolls inside it.
 		if ( '' !== $rows ) {
-			$inner .= '<table class="astroway-card__placements"><caption>' . esc_html__( 'Placements', 'astroway' ) . '</caption><tbody>' . $rows . '</tbody></table>';
+			$inner .= '<div class="astroway-card__scroll"><table class="astroway-card__placements"><caption>' . esc_html__( 'Placements', 'astroway' ) . '</caption><tbody>' . $rows . '</tbody></table></div>';
 		}
 
 		$inner .= self::aspect_list( $data['aspects'] ?? [] );
@@ -804,6 +814,7 @@ class Render {
 	}
 
 	private static function shell( string $widget, string $lang, string $inner ): string {
+		Plugin::use_styles();
 		list( $tag, $modifier ) = self::CARDS[ $widget ];
 		return sprintf(
 			'<%1$s class="astroway-card astroway-card--%2$s" lang="%3$s">%4$s</%1$s>',
@@ -1850,6 +1861,7 @@ class Render {
 		if ( '' === $body ) {
 			return '';
 		}
+		Plugin::use_styles();
 		$slug = str_replace( '_', '-', preg_replace( '/^astroway_/', '', $tag ) );
 		return sprintf(
 			'<div class="astroway-card astroway-card--generic astroway-card--%s" lang="%s">%s</div>',

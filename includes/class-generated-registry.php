@@ -126,8 +126,10 @@ class GeneratedRegistry {
 				$block,
 				[
 					'api_version'     => 3,
-					'title'           => self::title( $tag ),
+					'title'           => self::block_title( $tag ),
 					'category'        => 'astroway-generated',
+					'icon'            => self::family_icon( $family ),
+					'keywords'        => self::keywords( $family ),
 					'attributes'      => $attributes,
 					'render_callback' => static function ( $atts ) use ( $tag ) {
 						return self::render( (array) $atts, '', $tag );
@@ -138,6 +140,81 @@ class GeneratedRegistry {
 		}
 
 		self::hand_to_editor( $for_editor );
+	}
+
+	/**
+	 * Title in the inserter, marked as the raw API.
+	 *
+	 * Seven hundred blocks named "Natal Chart" or "Daily Horoscope" buried the
+	 * hand-built card of the same name: a search for "natal" put ours eleventh.
+	 * With the mark, a hand-built card and its generated twin read as two
+	 * different things, and the hand-built one, registered first, ranks first.
+	 *
+	 * @since 1.5.6
+	 */
+	public static function block_title( string $tag ): string {
+		/* translators: %s = title of a generated block, e.g. "Natal Chart" */
+		return sprintf( __( '%s (API)', 'astroway' ), self::title( $tag ) );
+	}
+
+	/**
+	 * A dashicon per family, so a search result shows what kind of block it is
+	 * rather than seven hundred copies of the same placeholder.
+	 *
+	 * @since 1.5.6
+	 */
+	public static function family_icon( string $family ): string {
+		$prefixes = [
+			'ai-'           => 'format-chat',
+			'numerology-'   => 'editor-ol',
+			'tarot-'        => 'index-card',
+			'hellenistic-'  => 'book-alt',
+			'bazi-'         => 'grid-view',
+			'chinese-'      => 'grid-view',
+			'zi-wei-'       => 'grid-view',
+			'human-design'  => 'universal-access-alt',
+			'astro-geo'     => 'location-alt',
+			'aspects-'      => 'networking',
+			'calendar-'     => 'calendar-alt',
+			'mayan-'        => 'calendar',
+			'horoscope'     => 'star-half',
+			'zodiac-signs'  => 'star-half',
+			'vedic'         => 'art',
+			'financial-'    => 'chart-line',
+			'business-'     => 'chart-bar',
+			'prognostics'   => 'chart-area',
+			'specialized-'  => 'chart-pie',
+			'visualization' => 'format-image',
+			'comparisons'   => 'groups',
+			'family-'       => 'groups',
+			'pet-'          => 'pets',
+			'wellness'      => 'heart',
+			'reference'     => 'book',
+			'reports'       => 'media-document',
+			'kabbalah'      => 'visibility',
+			'esoteric'      => 'visibility',
+			'horary'        => 'editor-help',
+			'i-ching'       => 'menu',
+			'elder-futhark' => 'editor-textcolor',
+			'geomancy'      => 'marker',
+			'palmistry'     => 'admin-users',
+			'dignities-'    => 'awards',
+			'destiny-'      => 'editor-table',
+			'cosmobiology-' => 'image-filter',
+			'evolutionary-' => 'admin-users',
+			'modern-'       => 'admin-users',
+		];
+		foreach ( $prefixes as $prefix => $icon ) {
+			if ( 0 === strpos( $family, $prefix ) ) {
+				return $icon;
+			}
+		}
+		return 'star-filled';
+	}
+
+	/** Search words for a generated block: the brand, and its family. */
+	private static function keywords( string $family ): array {
+		return [ 'astroway', 'api', str_replace( '-', ' ', $family ) ];
 	}
 
 	/**
@@ -339,8 +416,9 @@ class GeneratedRegistry {
 			);
 		}
 
+		$lang    = Plugin::resolve_lang( (string) $given['lang'] );
 		$request = self::build_request( $path, $attr_spec, $given );
-		$data    = self::fetch( $request['path'], $method, $request['params'] );
+		$data    = self::fetch( $request['path'], $method, $request['params'], $lang );
 		if ( null === $data ) {
 			return Render::admin_note(
 				sprintf(
@@ -351,7 +429,7 @@ class GeneratedRegistry {
 			);
 		}
 
-		return Render::generic( (string) $tag, $data, Plugin::resolve_lang( (string) $given['lang'] ) );
+		return Render::generic( (string) $tag, $data, $lang );
 	}
 
 	/** Required attributes the author left empty, by attribute name. */
@@ -378,7 +456,9 @@ class GeneratedRegistry {
 		foreach ( $attr_spec as $spec ) {
 			$name  = $spec[ self::A_ATTR ];
 			$value = trim( (string) ( $given[ $name ] ?? '' ) );
-			if ( '' === $value ) {
+			// The language travels as a header on every call, see fetch(); in a
+			// POST body the api never read it.
+			if ( '' === $value || 'lang' === $name ) {
 				continue;
 			}
 			$field = '' !== $spec[ self::A_FIELD ] ? $spec[ self::A_FIELD ] : $name;
@@ -425,14 +505,19 @@ class GeneratedRegistry {
 	 * Cached the way PublicData caches: by what the answer depends on rather
 	 * than for a flat hour, and a failure remembered for a minute so an
 	 * exhausted quota is not turned into a stampede by the next page view.
+	 *
+	 * The language goes with every call, not only to the few endpoints whose
+	 * spec lists it: names of animals, elements and pillars come back localised
+	 * from routes that declare no language at all.
 	 */
-	private static function fetch( string $path, string $method, array $params ): ?array {
+	private static function fetch( string $path, string $method, array $params, string $lang ): ?array {
 		return ( new ApiClient() )->cached_call(
 			$method,
 			$path,
 			$params,
 			PublicData::ttl_for( self::freshness( $path, $params ) ),
-			'gen_'
+			'gen_',
+			$lang
 		);
 	}
 

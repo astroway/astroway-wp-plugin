@@ -87,23 +87,147 @@ class Plugin {
 			Digest::register();
 		}
 
+		add_action( 'init', [ __CLASS__, 'register_frontend_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
 		add_action( 'enqueue_block_assets', [ __CLASS__, 'enqueue_editor_canvas' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_activation_notice' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_review_prompt' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_rate_limit_notice' ] );
+		add_action( 'admin_notices', [ __CLASS__, 'maybe_key_lost_notice' ] );
 		add_action( 'wp_ajax_astroway_dismiss_activation_notice', [ __CLASS__, 'dismiss_activation_notice' ] );
 		add_action( 'wp_ajax_astroway_dismiss_review_prompt', [ __CLASS__, 'dismiss_review_prompt' ] );
 		add_action( 'wp_ajax_astroway_dismiss_rate_limit_notice', [ __CLASS__, 'dismiss_rate_limit_notice' ] );
 	}
 
-	public static function enqueue_frontend(): void {
-		wp_enqueue_style(
-			'astroway-widgets',
+	public const STYLE_HANDLE = 'astroway-widgets';
+	public const EMBED_HANDLE = 'astroway-embed';
+
+	/**
+	 * Shortcodes and blocks that always draw a frame, whatever the render mode.
+	 * Pages carrying one get the frame listener in the head, see enqueue_frontend().
+	 */
+	private const FRAMED_TAGS = 'natal|kundli|transit|transit_timeline|panchang|numerology|mini_chart|monthly_forecast';
+
+	/**
+	 * Registered for everyone, enqueued only where a widget renders. Before
+	 * 1.5.6 the stylesheet was on every page of every site with the plugin
+	 * active, widget or not.
+	 */
+	public static function register_frontend_assets(): void {
+		wp_register_style(
+			self::STYLE_HANDLE,
 			ASTROWAY_WP_PLUGIN_URL . 'assets/css/astroway-widgets.css',
 			[],
 			ASTROWAY_WP_PLUGIN_VERSION
 		);
+		wp_register_script(
+			self::EMBED_HANDLE,
+			ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-embed.js',
+			[],
+			ASTROWAY_WP_PLUGIN_VERSION,
+			[
+				'strategy'  => 'defer',
+				'in_footer' => false,
+			]
+		);
+		// Kept inline and ahead of the file: a frame served from the browser
+		// cache can post its height before a deferred script has run, and a
+		// message nobody listens for is gone.
+		wp_add_inline_script(
+			self::EMBED_HANDLE,
+			'window.astrowayEmbedQueue=[];window.addEventListener("message",function(e){var q=window.astrowayEmbedQueue;if(q&&e.data&&"astroway-embed"===e.data.source){q.push(e);}});',
+			'before'
+		);
+	}
+
+	/** Asked for by a render that ran before wp_enqueue_scripts. */
+	private static bool $wants_styles = false;
+	private static bool $wants_embed  = false;
+
+	/**
+	 * Called by every render path.
+	 *
+	 * A block theme renders the page before wp_head. Enqueued right there, the
+	 * sheet would print ahead of the theme's global styles and lose every tie
+	 * to them, the card margins among them, so it is only noted and enqueued
+	 * in enqueue_frontend(), in the place it has always printed. A classic
+	 * theme renders after wp_head, and WordPress prints the late sheet in the
+	 * footer.
+	 */
+	public static function use_styles(): void {
+		if ( function_exists( 'did_action' ) && ! did_action( 'wp_enqueue_scripts' ) ) {
+			self::$wants_styles = true;
+			return;
+		}
+		if ( function_exists( 'wp_enqueue_style' ) ) {
+			wp_enqueue_style( self::STYLE_HANDLE );
+		}
+	}
+
+	/** Called wherever a frame is rendered. Same timing as use_styles(). */
+	public static function use_embed_script(): void {
+		if ( function_exists( 'did_action' ) && ! did_action( 'wp_enqueue_scripts' ) ) {
+			self::$wants_embed = true;
+			return;
+		}
+		if ( function_exists( 'wp_enqueue_script' ) ) {
+			wp_enqueue_script( self::EMBED_HANDLE );
+		}
+	}
+
+	/**
+	 * Early enqueue, so a classic theme gets the stylesheet in the head and the
+	 * page does not flash unstyled cards. Only for a single post or page whose
+	 * content can be read before rendering; widgets anywhere else (a sidebar, a
+	 * template part, an archive) are still covered by the enqueue at render.
+	 */
+	public static function enqueue_frontend(): void {
+		$styles = self::$wants_styles;
+		$embed  = self::$wants_embed;
+
+		$post = is_singular() ? get_queried_object() : null;
+		if ( $post instanceof \WP_Post ) {
+			$content = (string) $post->post_content;
+			// Elementor keeps the page in post meta, and the addon's widgets are
+			// named astroway-*; a shortcode typed into its text widget lands there too.
+			$elementor = (string) get_post_meta( $post->ID, '_elementor_data', true );
+			$styles    = $styles || self::content_has_widget( $content ) || 1 === preg_match( '/"widgetType":\s*"astroway-/', $elementor ) || false !== strpos( $elementor, '[astroway_' );
+			$embed     = $embed || self::content_has_frame( $content ) || 1 === preg_match( '/"widgetType":\s*"astroway-natal"/', $elementor );
+		}
+
+		/**
+		 * Whether to load the widget stylesheet in the head of this page.
+		 *
+		 * A widget found in the post content loads it here. A theme template or
+		 * a sidebar that calls do_shortcode() is invisible at this point, and the
+		 * stylesheet then arrives with the footer, after the card has painted
+		 * unstyled. Return true for such pages.
+		 *
+		 * @since 1.5.6
+		 *
+		 * @param bool $styles Whether the page content carries one of our widgets.
+		 */
+		$styles = (bool) apply_filters( 'astroway_load_styles', $styles );
+
+		if ( $styles ) {
+			wp_enqueue_style( self::STYLE_HANDLE );
+		}
+		if ( $embed ) {
+			wp_enqueue_script( self::EMBED_HANDLE );
+		}
+	}
+
+	/** Whether content carries any shortcode or block of ours, the generated ones included. */
+	public static function content_has_widget( string $content ): bool {
+		return false !== strpos( $content, '[astroway_' ) || false !== strpos( $content, '<!-- wp:astroway/' );
+	}
+
+	/** Whether content carries a widget that always renders a frame. */
+	public static function content_has_frame( string $content ): bool {
+		$tags   = self::FRAMED_TAGS;
+		$blocks = str_replace( [ '_', 'natal' ], [ '-', 'natal-chart' ], $tags );
+		return 1 === preg_match( '/\[astroway_(?:' . $tags . ')[\s\]]/', $content )
+			|| 1 === preg_match( '#<!-- wp:astroway/(?:' . $blocks . ')[\s/]#', $content );
 	}
 
 	/**
@@ -116,7 +240,10 @@ class Plugin {
 		if ( ! is_admin() ) {
 			return;
 		}
-		self::enqueue_frontend();
+		if ( ! wp_style_is( self::STYLE_HANDLE, 'registered' ) ) {
+			self::register_frontend_assets();
+		}
+		wp_enqueue_style( self::STYLE_HANDLE );
 	}
 
 	/**
@@ -343,6 +470,28 @@ class Plugin {
 			</script>
 		</div>
 		<?php
+	}
+
+	/**
+	 * The saved key was sealed under salts this site no longer has. The plugin
+	 * carries on without it, which is exactly why it has to be said: nothing on
+	 * the front end breaks loudly enough for anyone to notice otherwise.
+	 */
+	public static function maybe_key_lost_notice(): void {
+		if ( ! current_user_can( 'manage_options' ) || ! self::is_own_screen( true ) || ! Key::is_lost() ) {
+			return;
+		}
+		// The key page says it in the key panel itself, where the fix is.
+		$screen = get_current_screen();
+		if ( $screen instanceof \WP_Screen && 'toplevel_page_' . Admin::PAGE_API_KEY === $screen->id ) {
+			return;
+		}
+		printf(
+			'<div class="notice notice-warning"><p>%s <a href="%s">%s</a></p></div>',
+			esc_html__( 'AstroWay can no longer read the saved API key: the security keys in wp-config.php have changed since it was saved. Widgets keep working without it.', 'astroway' ),
+			esc_url( admin_url( 'admin.php?page=' . Admin::PAGE_API_KEY ) ),
+			esc_html__( 'Paste the key again', 'astroway' )
+		);
 	}
 
 	public static function dismiss_rate_limit_notice(): void {

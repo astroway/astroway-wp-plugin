@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-staging\n"
-"POT-Creation-Date: 2026-09-19T20:56:33+00:00\n"
-"PO-Revision-Date: 2026-09-20 00:00+0300\n"
+"POT-Creation-Date: 2026-09-21T11:36:18+00:00\n"
+"PO-Revision-Date: 2026-09-21 14:37+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Dutch <translations@astroway.info>\n"
 "Language: nl_NL\n"
@@ -36,8 +36,8 @@ msgstr ""
 "api.astroway.info."
 
 #. Author of the plugin
-#: astroway-wp-plugin.php includes/class-admin.php:34
-#: includes/class-admin.php:35
+#: astroway-wp-plugin.php includes/class-admin.php:37
+#: includes/class-admin.php:38 includes/class-blocks.php:178
 msgid "AstroWay"
 msgstr "AstroWay"
 
@@ -46,32 +46,32 @@ msgstr "AstroWay"
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
 
-#: includes/class-admin.php:46 includes/class-admin.php:47
+#: includes/class-admin.php:49 includes/class-admin.php:50
 #: includes/views/admin-api-key.php:18
 msgid "Getting started"
 msgstr "Aan de slag"
 
-#: includes/class-admin.php:54
+#: includes/class-admin.php:57
 msgid "AstroWay Settings"
 msgstr "AstroWay-instellingen"
 
-#: includes/class-admin.php:55 includes/class-admin.php:179
+#: includes/class-admin.php:58 includes/class-admin.php:202
 #: includes/views/admin-settings.php:16
 #: includes/views/partials/admin-footer-nav.php:14
 msgid "Settings"
 msgstr "Instellingen"
 
-#: includes/class-admin.php:62
+#: includes/class-admin.php:65
 msgid "AstroWay Shortcodes"
 msgstr "AstroWay Shortcodes"
 
-#: includes/class-admin.php:63 includes/views/admin-api-key.php:122
+#: includes/class-admin.php:66 includes/views/admin-api-key.php:128
 #: includes/views/admin-shortcodes.php:14
 #: includes/views/partials/admin-footer-nav.php:15
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: includes/class-admin.php:107
+#: includes/class-admin.php:110
 msgid ""
 "This is a publishable key for browsers (pk_). The plugin calls the API from "
 "your server, so it needs a secret key that starts with \"aw_\". Both keys "
@@ -82,7 +82,7 @@ msgstr ""
 "\"aw_\". Beide sleutels vind je op je dashboard op "
 "api.astroway.info/dashboard/keys."
 
-#: includes/class-admin.php:137
+#: includes/class-admin.php:149
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
@@ -90,108 +90,108 @@ msgstr ""
 "De API-sleutel moet beginnen met \"aw_\" en alleen letters, cijfers en "
 "underscores bevatten."
 
-#: includes/class-admin.php:184
+#: includes/class-admin.php:207
 msgid "Get API Key"
 msgstr "Haal API-sleutel op"
 
-#: includes/class-admin.php:222
+#: includes/class-admin.php:246
 msgid "Verifying…"
 msgstr "Bezig met verifiëren…"
 
-#: includes/class-admin.php:223
+#: includes/class-admin.php:247
 msgid "limited info"
 msgstr "beperkte info"
 
-#: includes/class-admin.php:224 includes/views/admin-api-key.php:215
+#: includes/class-admin.php:248 includes/views/admin-api-key.php:268
 msgid "Plan"
 msgstr "Plan"
 
-#: includes/class-admin.php:225
+#: includes/class-admin.php:249
 msgid "Used"
 msgstr "Gebruikt"
 
-#: includes/class-admin.php:226
+#: includes/class-admin.php:250
 msgid "Rate"
 msgstr "Tarief"
 
-#: includes/class-admin.php:227
+#: includes/class-admin.php:251
 msgid "Bound to"
 msgstr "Gekoppeld aan"
 
-#: includes/class-admin.php:228
+#: includes/class-admin.php:252
 msgid "Enter a valid API key first."
 msgstr "Voer eerst een geldige API-sleutel in."
 
-#: includes/class-admin.php:230 includes/views/admin-settings.php:266
+#: includes/class-admin.php:254 includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr "Netwerkfout"
 
-#: includes/class-admin.php:231
+#: includes/class-admin.php:255
 msgid "Key verified."
 msgstr "Sleutel geverifieerd."
 
-#: includes/class-admin.php:232 includes/class-admin.php:255
-#: includes/class-admin.php:274
+#: includes/class-admin.php:256 includes/class-admin.php:279
+#: includes/class-admin.php:298
 msgid "copied!"
 msgstr "gekopieerd!"
 
-#: includes/class-admin.php:250
+#: includes/class-admin.php:274
 msgid "Pinging…"
 msgstr "Pingen…"
 
-#: includes/class-admin.php:251
+#: includes/class-admin.php:275
 msgid "API is healthy"
 msgstr "API is bereikbaar"
 
-#: includes/class-admin.php:252
+#: includes/class-admin.php:276
 msgid "API unreachable"
 msgstr "API niet bereikbaar"
 
-#: includes/class-admin.php:253
+#: includes/class-admin.php:277
 msgid "Purge all cached data?"
 msgstr "Alle cached data wissen?"
 
-#: includes/class-admin.php:254
+#: includes/class-admin.php:278
 msgid "Cache cleared:"
 msgstr "Cache gewist:"
 
-#: includes/class-admin.php:275
+#: includes/class-admin.php:299
 msgid "Searching…"
 msgstr "Zoeken…"
 
-#: includes/class-admin.php:276
+#: includes/class-admin.php:300
 msgid "No cities found."
 msgstr "Geen steden gevonden."
 
-#: includes/class-admin.php:277
+#: includes/class-admin.php:301
 msgid "Search error. Try again."
 msgstr "Zoekfout. Probeer het opnieuw."
 
-#: includes/class-admin.php:278
+#: includes/class-admin.php:302
 msgid "Type at least 2 characters."
 msgstr "Typ minstens 2 tekens."
 
-#: includes/class-admin.php:279
+#: includes/class-admin.php:303
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Kies een stad om lat / lon / tz in te vullen"
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:281
+#: includes/class-admin.php:305
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d van %2$d"
 
-#: includes/class-admin.php:282
+#: includes/class-admin.php:306
 msgid "No shortcode matches."
 msgstr "Er is geen overeenkomende shortcode gevonden."
 
-#: includes/class-admin.php:291 includes/class-admin.php:307
-#: includes/class-admin.php:316
+#: includes/class-admin.php:315 includes/class-admin.php:331
+#: includes/class-admin.php:340
 msgid "Unauthorized."
 msgstr "Niet geautoriseerd."
 
-#: includes/class-admin.php:329
+#: includes/class-admin.php:357
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -201,7 +201,7 @@ msgstr ""
 "verzoeken per uur versturen, en widgets die terugvallen op een frame "
 "verbruiken 30 van de eigen limiet van elke bezoeker."
 
-#: includes/class-admin.php:337
+#: includes/class-admin.php:365
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -210,30 +210,30 @@ msgstr ""
 "sleutel opnieuw of wis het veld om in de anonieme modus te gaan."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:340
+#: includes/class-admin.php:368
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "De sleutel kon niet worden geverifieerd (HTTP %d)."
 
-#: includes/class-admin.php:384
+#: includes/class-admin.php:411
 msgid "API key required."
 msgstr "API-sleutel geconfigureerd"
 
-#: includes/class-admin.php:388
+#: includes/class-admin.php:415
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "Voer een geldig domein in (bijv. example.com)."
 
-#: includes/class-admin.php:425
+#: includes/class-admin.php:452
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Het wijzigen van het domein is mislukt. Gebruik de onderstaande link naar "
 "het dashboard."
 
-#: includes/class-admin.php:478
+#: includes/class-admin.php:505
 msgid "City lookup is busy, try again in a moment."
 msgstr "Stad opzoeken is druk, probeer het over een moment opnieuw."
 
-#: includes/class-blocks.php:177
+#: includes/class-blocks.php:183
 msgid "AstroWay: full API"
 msgstr "AstroWay: volledige API"
 
@@ -268,7 +268,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "De Maan is van koers van %1$s tot %2$s."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:1158
+#: includes/class-digest.php:248 includes/class-render.php:1169
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "Retrograde op dit moment: %s."
@@ -283,8 +283,14 @@ msgstr "Maan: %1$s, %2$s%% verlicht."
 msgid "You are not allowed to do that."
 msgstr "U hebt geen toestemming om dat te doen."
 
+#. translators: %s = title of a generated block, e.g. "Natal Chart"
+#: includes/class-generated-registry.php:157
+#, php-format
+msgid "%s (API)"
+msgstr "%s (API)"
+
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:315 includes/class-render.php:997
+#: includes/class-generated-registry.php:392 includes/class-render.php:1008
 #, php-format
 msgid ""
 "%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
@@ -294,7 +300,7 @@ msgstr ""
 " beheerders zien deze melding."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:335 includes/class-render.php:1009
+#: includes/class-generated-registry.php:412 includes/class-render.php:1020
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -303,18 +309,18 @@ msgstr ""
 "%1$s mist vereiste attributen: %2$s. Alleen beheerders zien deze melding."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:348 includes/class-render.php:1056
+#: includes/class-generated-registry.php:426 includes/class-render.php:1067
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
 "%s kon op dit moment niet worden geladen. Alleen beheerders zien deze "
 "melding."
 
-#: includes/class-plugin.php:181
+#: includes/class-plugin.php:294
 msgid "AstroWay is active"
 msgstr "AstroWay is actief"
 
-#: includes/class-plugin.php:182
+#: includes/class-plugin.php:295
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -327,20 +333,20 @@ msgstr ""
 "limiet van 30 verzoeken per bezoeker. Voor hogere limieten en Pro-functies "
 "kun je een gratis API-sleutel aanvragen."
 
-#: includes/class-plugin.php:186 includes/class-plugin.php:331
+#: includes/class-plugin.php:299 includes/class-plugin.php:444
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Haal gratis API-sleutel op"
 
-#: includes/class-plugin.php:189
+#: includes/class-plugin.php:302
 msgid "Open Settings"
 msgstr "Open instellingen"
 
-#: includes/class-plugin.php:261
+#: includes/class-plugin.php:374
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:262
+#: includes/class-plugin.php:375
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -348,15 +354,15 @@ msgstr ""
 "Een korte recensie op wordpress.org helpt andere websitebeheerders de plug-"
 "in te ontdekken en geeft ons ideeën voor onze volgende ontwikkelingen."
 
-#: includes/class-plugin.php:266
+#: includes/class-plugin.php:379
 msgid "Leave a review"
 msgstr "Schrijf een recensie"
 
-#: includes/class-plugin.php:329
+#: includes/class-plugin.php:442
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Deze server heeft zijn anonieme AstroWay-quotum opgebruikt:"
 
-#: includes/class-plugin.php:330
+#: includes/class-plugin.php:443
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -372,50 +378,73 @@ msgstr ""
 "gratis API-sleutel toe om de limiet op te heffen en 10.000 credits per maand"
 " plus 60 verzoeken per minuut te krijgen."
 
-#: includes/class-public-client.php:138
+#: includes/class-plugin.php:477
+msgid ""
+"AstroWay can no longer read the saved API key: the security keys in wp-"
+"config.php have changed since it was saved. Widgets keep working without it."
+msgstr ""
+"AstroWay kan de opgeslagen API-sleutel niet meer lezen: de "
+"beveiligingssleutels in wp-config.php zijn gewijzigd sinds ze werden "
+"opgeslagen. Widgets blijven zonder deze sleutel gewoon werken."
+
+#: includes/class-plugin.php:479
+msgid "Paste the key again"
+msgstr "Plak de sleutel nogmaals"
+
+#: includes/class-public-client.php:88
+msgid ""
+"This widget reached the free limit for one visitor (30 requests an hour from"
+" one IP address), so visitors on that connection see nothing here until the "
+"hour resets. Only administrators see this note."
+msgstr ""
+"Deze widget heeft de gratis limiet voor één bezoeker bereikt (30 verzoeken "
+"per uur vanaf één IP-adres), dus bezoekers via die verbinding zien hier "
+"niets totdat het uur is verstreken. Alleen beheerders zien deze opmerking."
+
+#: includes/class-public-client.php:161
 msgid "Natal chart wheel"
 msgstr "Natal chart-wiel"
 
-#: includes/class-public-client.php:139
+#: includes/class-public-client.php:162
 #: assets/js/astroway-blocks-editor.js:197
 msgid "Daily horoscope"
 msgstr "Dagelijkse horoscoop"
 
-#: includes/class-public-client.php:140 includes/class-render.php:725
+#: includes/class-public-client.php:163 includes/class-render.php:735
 #: assets/js/astroway-blocks-editor.js:204
 msgid "Moon phase"
 msgstr "Maanfase"
 
-#: includes/class-public-client.php:141
+#: includes/class-public-client.php:164
 msgid "Human Design bodygraph"
 msgstr "Human Design-bodygrafiek"
 
-#: includes/class-public-client.php:142
+#: includes/class-public-client.php:165
 msgid "Daily Tarot card"
 msgstr "Dagelijkse Tarotkaart"
 
-#: includes/class-public-client.php:143
+#: includes/class-public-client.php:166
 msgid "Vedic kundli chart"
 msgstr "Vedische horoscoopkaart"
 
-#: includes/class-public-client.php:144
+#: includes/class-public-client.php:167
 msgid "Transit sky snapshot"
 msgstr "Momentopname van de transithemel"
 
-#: includes/class-public-client.php:145
+#: includes/class-public-client.php:168
 #: includes/views/admin-shortcodes.php:207
 msgid "Daily Panchang"
 msgstr "Dagelijkse Tarotkaart"
 
-#: includes/class-public-client.php:146
+#: includes/class-public-client.php:169
 msgid "Numerology core numbers"
 msgstr "Kerncijfers in de numerologie"
 
-#: includes/class-public-client.php:147
+#: includes/class-public-client.php:170
 msgid "Synastry compatibility"
 msgstr "Synastrische compatibiliteit"
 
-#: includes/class-public-client.php:149
+#: includes/class-public-client.php:172
 msgid "AstroWay widget"
 msgstr "AstroWay-widget"
 
@@ -438,662 +467,662 @@ msgstr ""
 "De %s widget kon zojuist niet worden geladen. Alleen beheerders zien deze "
 "notitie."
 
-#: includes/class-render.php:168
+#: includes/class-render.php:169
 msgid "Rising sign"
 msgstr "Opkomend teken"
 
-#: includes/class-render.php:182
+#: includes/class-render.php:183
 msgid "Moon sign"
 msgstr "Maanteken"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
-#: includes/class-render.php:191
+#: includes/class-render.php:192
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:203
+#: includes/class-render.php:204
 msgid "Position"
 msgstr "Positie"
 
 #. translators: %d = house number
-#: includes/class-render.php:206
+#: includes/class-render.php:207
 msgid "House"
 msgstr "Huis"
 
 #. translators: %d = house number
-#: includes/class-render.php:206 includes/class-render.php:489
+#: includes/class-render.php:207 includes/class-render.php:496
 #, php-format
 msgid "House %d"
 msgstr "Huis %d"
 
-#: includes/class-render.php:214
+#: includes/class-render.php:215
 msgid "Chart ruler"
 msgstr "Ascendantheerser"
 
-#: includes/class-render.php:217
+#: includes/class-render.php:218
 msgid "Ruler position"
 msgstr "Rulerpositie"
 
-#: includes/class-render.php:223 includes/class-render.php:476
+#: includes/class-render.php:224 includes/class-render.php:483
 msgid "Midheaven"
 msgstr "Midhemel"
 
-#: includes/class-render.php:249
+#: includes/class-render.php:250
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:252
+#: includes/class-render.php:253
 #, php-format
 msgid "Human Design: %s"
 msgstr "Human Design: %s"
 
-#: includes/class-render.php:263
+#: includes/class-render.php:264
 msgid "Strategy"
 msgstr "Strategie"
 
-#: includes/class-render.php:266
+#: includes/class-render.php:267
 msgid "Authority"
 msgstr "Autoriteit"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:273
+#: includes/class-render.php:274
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:278
+#: includes/class-render.php:279
 msgid "Profile"
 msgstr "Profiel"
 
-#: includes/class-render.php:281
+#: includes/class-render.php:282
 msgid "Definition"
 msgstr "Definitie"
 
-#: includes/class-render.php:284
+#: includes/class-render.php:285
 msgid "Not-self theme"
 msgstr "Niet-zelfthema"
 
-#: includes/class-render.php:288
+#: includes/class-render.php:289
 msgid "Incarnation cross"
 msgstr "Incarneringskruis"
 
-#: includes/class-render.php:322
+#: includes/class-render.php:323
 msgid "Defined centres"
 msgstr "Gedefinieerde centra"
 
-#: includes/class-render.php:325
+#: includes/class-render.php:326
 msgid "Open centres"
 msgstr "Ongedefinieerde centra"
 
-#: includes/class-render.php:327
+#: includes/class-render.php:328
 msgid "Centres"
 msgstr "Centra"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:342
+#: includes/class-render.php:343
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s to %4$s"
 
-#: includes/class-render.php:353
+#: includes/class-render.php:354
 msgid "Channels"
 msgstr "Kanalen"
 
-#: includes/class-render.php:358
+#: includes/class-render.php:359
 msgid "Generator"
 msgstr "Generator"
 
-#: includes/class-render.php:359
+#: includes/class-render.php:360
 msgid "Manifesting Generator"
 msgstr "Manifesting Generator"
 
-#: includes/class-render.php:360
+#: includes/class-render.php:361
 msgid "Manifestor"
 msgstr "Manifestor"
 
-#: includes/class-render.php:361
+#: includes/class-render.php:362
 msgid "Projector"
 msgstr "Projector"
 
-#: includes/class-render.php:362
+#: includes/class-render.php:363
 msgid "Reflector"
 msgstr "Reflector"
 
-#: includes/class-render.php:369
+#: includes/class-render.php:370
 msgid "Wait to respond"
 msgstr "Wachten om te reageren"
 
-#: includes/class-render.php:370
+#: includes/class-render.php:371
 msgid "Wait for the invitation"
 msgstr "Wachten op de uitnodiging"
 
-#: includes/class-render.php:371 includes/class-render.php:372
+#: includes/class-render.php:372 includes/class-render.php:373
 msgid "Inform before acting"
 msgstr "Informeer voordat je handelt"
 
-#: includes/class-render.php:373
+#: includes/class-render.php:374
 msgid "Wait a lunar cycle"
 msgstr "Wacht een maancyclus"
 
-#: includes/class-render.php:374
+#: includes/class-render.php:375
 msgid "Respond, then inform"
 msgstr "Reageer, daarna informeer"
 
-#: includes/class-render.php:381
+#: includes/class-render.php:382
 msgid "Emotional (Solar Plexus)"
 msgstr "Emotioneel (Solar Plexus)"
 
-#: includes/class-render.php:382 includes/class-render.php:433
+#: includes/class-render.php:383 includes/class-render.php:434
 msgid "Sacral"
 msgstr "Sacraal"
 
-#: includes/class-render.php:383
+#: includes/class-render.php:384
 msgid "Splenic"
 msgstr "Spleen"
 
-#: includes/class-render.php:384
+#: includes/class-render.php:385
 msgid "Ego (Heart)"
 msgstr "Ego (Hart)"
 
-#: includes/class-render.php:385
+#: includes/class-render.php:386
 msgid "Self-projected"
 msgstr "Zelf-geprojecteerd"
 
-#: includes/class-render.php:386
+#: includes/class-render.php:387
 msgid "Mental (environment)"
 msgstr "Mentaal (omgeving)"
 
-#: includes/class-render.php:387 includes/class-render.php:388
+#: includes/class-render.php:388 includes/class-render.php:389
 msgid "Lunar cycle"
 msgstr "Maancyclus"
 
-#: includes/class-render.php:395
+#: includes/class-render.php:396
 msgid "Single definition"
 msgstr "Enkele definitie"
 
-#: includes/class-render.php:396
+#: includes/class-render.php:397
 msgid "Split definition"
 msgstr "Gespaltene definitie"
 
-#: includes/class-render.php:397
+#: includes/class-render.php:398
 msgid "Triple split definition"
 msgstr "Drieledige definitie"
 
-#: includes/class-render.php:398
+#: includes/class-render.php:399
 msgid "Quadruple split definition"
 msgstr "Vierledige definitie"
 
-#: includes/class-render.php:399
+#: includes/class-render.php:400
 msgid "No definition"
 msgstr "Geen definitie"
 
-#: includes/class-render.php:406
+#: includes/class-render.php:407
 msgid "Frustration"
 msgstr "Frustratie"
 
-#: includes/class-render.php:407
+#: includes/class-render.php:408
 msgid "Bitterness"
 msgstr "Verbittering"
 
-#: includes/class-render.php:408
+#: includes/class-render.php:409
 msgid "Anger"
 msgstr "Woede"
 
-#: includes/class-render.php:409
+#: includes/class-render.php:410
 msgid "Disappointment"
 msgstr "Teleurstelling"
 
-#: includes/class-render.php:416
+#: includes/class-render.php:417
 msgid "Right Angle"
 msgstr "Rechter Hoek"
 
-#: includes/class-render.php:417
+#: includes/class-render.php:418
 msgid "Left Angle"
 msgstr "Linker Hoek"
 
-#: includes/class-render.php:418
+#: includes/class-render.php:419
 msgid "Juxtaposition"
 msgstr "Juxtapositie"
 
-#: includes/class-render.php:426
+#: includes/class-render.php:427
 msgid "Head"
 msgstr "Hoofd"
 
-#: includes/class-render.php:427
+#: includes/class-render.php:428
 msgid "Ajna"
 msgstr "Ajna"
 
-#: includes/class-render.php:428
+#: includes/class-render.php:429
 msgid "Throat"
 msgstr "Keel"
 
-#: includes/class-render.php:429
+#: includes/class-render.php:430
 msgid "G (identity)"
 msgstr "G (identiteit)"
 
-#: includes/class-render.php:430
+#: includes/class-render.php:431
 msgid "Heart (ego)"
 msgstr "Hart (ego)"
 
-#: includes/class-render.php:431
+#: includes/class-render.php:432
 msgid "Solar Plexus"
 msgstr "Zonnevlecht"
 
-#: includes/class-render.php:432
+#: includes/class-render.php:433
 msgid "Spleen"
 msgstr "Milt"
 
-#: includes/class-render.php:434
+#: includes/class-render.php:435
 msgid "Root"
 msgstr "Wortel"
 
-#: includes/class-render.php:457
+#: includes/class-render.php:458
 msgid "Natal chart"
 msgstr "Geboortehoroscoop"
 
 #. translators: %s = person's name
-#: includes/class-render.php:460
+#: includes/class-render.php:461
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Geboortehoroscoop: %s"
 
-#: includes/class-render.php:473
+#: includes/class-render.php:480
 msgid "Ascendant"
 msgstr "Ascendant"
 
 #. translators: %d = house number
-#: includes/class-render.php:490
+#: includes/class-render.php:497
 msgid "retrograde"
 msgstr "retrograde"
 
-#: includes/class-render.php:493
+#: includes/class-render.php:503
 msgid "Placements"
 msgstr "Plaatsingen"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:514
+#: includes/class-render.php:524
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:524
+#: includes/class-render.php:534
 msgid "Major aspects"
 msgstr "Hoofdaspecten"
 
-#: includes/class-render.php:629
+#: includes/class-render.php:639
 msgid "New Moon"
 msgstr "Nieuwe maan"
 
-#: includes/class-render.php:630
+#: includes/class-render.php:640
 msgid "Waxing Crescent"
 msgstr "Wassende maansikkel"
 
-#: includes/class-render.php:631
+#: includes/class-render.php:641
 msgid "First Quarter"
 msgstr "Eerste kwartier"
 
-#: includes/class-render.php:632
+#: includes/class-render.php:642
 msgid "Waxing Gibbous"
 msgstr "Wassende maan"
 
-#: includes/class-render.php:633
+#: includes/class-render.php:643
 msgid "Full Moon"
 msgstr "Volle maan"
 
-#: includes/class-render.php:634
+#: includes/class-render.php:644
 msgid "Waning Gibbous"
 msgstr "Afnemende maan"
 
-#: includes/class-render.php:635
+#: includes/class-render.php:645
 msgid "Last Quarter"
 msgstr "Laatste kwartier"
 
-#: includes/class-render.php:636
+#: includes/class-render.php:646
 msgid "Waning Crescent"
 msgstr "Afnemende maansikkel"
 
-#: includes/class-render.php:643
+#: includes/class-render.php:653
 msgid "Sun"
 msgstr "Zon"
 
-#: includes/class-render.php:644
+#: includes/class-render.php:654
 msgid "Moon"
 msgstr "Maan"
 
-#: includes/class-render.php:645 assets/js/astroway-blocks-editor.js:137
+#: includes/class-render.php:655 assets/js/astroway-blocks-editor.js:137
 msgid "Mercury"
 msgstr "Mercurius"
 
-#: includes/class-render.php:646 assets/js/astroway-blocks-editor.js:138
+#: includes/class-render.php:656 assets/js/astroway-blocks-editor.js:138
 msgid "Venus"
 msgstr "Venus"
 
-#: includes/class-render.php:647 assets/js/astroway-blocks-editor.js:139
+#: includes/class-render.php:657 assets/js/astroway-blocks-editor.js:139
 msgid "Mars"
 msgstr "Mars"
 
-#: includes/class-render.php:648 assets/js/astroway-blocks-editor.js:140
+#: includes/class-render.php:658 assets/js/astroway-blocks-editor.js:140
 msgid "Jupiter"
 msgstr "Jupiter"
 
-#: includes/class-render.php:649 assets/js/astroway-blocks-editor.js:141
+#: includes/class-render.php:659 assets/js/astroway-blocks-editor.js:141
 msgid "Saturn"
 msgstr "Saturnus"
 
-#: includes/class-render.php:650 assets/js/astroway-blocks-editor.js:142
+#: includes/class-render.php:660 assets/js/astroway-blocks-editor.js:142
 msgid "Uranus"
 msgstr "Uranus"
 
-#: includes/class-render.php:651 assets/js/astroway-blocks-editor.js:143
+#: includes/class-render.php:661 assets/js/astroway-blocks-editor.js:143
 msgid "Neptune"
 msgstr "Neptunus"
 
-#: includes/class-render.php:652 assets/js/astroway-blocks-editor.js:144
+#: includes/class-render.php:662 assets/js/astroway-blocks-editor.js:144
 msgid "Pluto"
 msgstr "Pluto"
 
-#: includes/class-render.php:653
+#: includes/class-render.php:663
 msgid "Chiron"
 msgstr "Chiron"
 
-#: includes/class-render.php:654 includes/class-render.php:661
-#: includes/class-render.php:662
+#: includes/class-render.php:664 includes/class-render.php:671
+#: includes/class-render.php:672
 msgid "Lilith"
 msgstr "Lilith"
 
-#: includes/class-render.php:655 includes/class-render.php:659
-#: includes/class-render.php:660
+#: includes/class-render.php:665 includes/class-render.php:669
+#: includes/class-render.php:670
 msgid "North Node"
 msgstr "Noordelijke Maansknoop"
 
-#: includes/class-render.php:656
+#: includes/class-render.php:666
 msgid "South Node"
 msgstr "Zuidelijke Maansknoop"
 
-#: includes/class-render.php:669
+#: includes/class-render.php:679
 msgid "conjunct"
 msgstr "conjunctie"
 
-#: includes/class-render.php:670
+#: includes/class-render.php:680
 msgid "opposite"
 msgstr "oppositie"
 
-#: includes/class-render.php:671
+#: includes/class-render.php:681
 msgid "trine"
 msgstr "driehoek"
 
-#: includes/class-render.php:672
+#: includes/class-render.php:682
 msgid "square"
 msgstr "vierkant"
 
-#: includes/class-render.php:673
+#: includes/class-render.php:683
 msgid "sextile"
 msgstr "sextiel"
 
-#: includes/class-render.php:708
+#: includes/class-render.php:718
 msgid "Illumination"
 msgstr "Verlichting"
 
-#: includes/class-render.php:711
+#: includes/class-render.php:721
 msgid "Age"
 msgstr "Leeftijd"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:713
+#: includes/class-render.php:723
 #, php-format
 msgid "%s days"
 msgstr "%s dagen"
 
-#: includes/class-render.php:718
+#: includes/class-render.php:728
 msgid "Moon in"
 msgstr "Maan in"
 
-#: includes/class-render.php:721
+#: includes/class-render.php:731
 msgid "Sun in"
 msgstr "Zon in"
 
 #. translators: %s = tarot card name
-#: includes/class-render.php:753
+#: includes/class-render.php:763
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (omgekeerd)"
 
-#: includes/class-render.php:759
+#: includes/class-render.php:769
 msgid "Card of the day"
 msgstr "Kaart van de dag"
 
-#: includes/class-render.php:789 assets/js/astroway-blocks-editor.js:234
+#: includes/class-render.php:799 assets/js/astroway-blocks-editor.js:234
 msgid "Planet of the day"
 msgstr "Planeet van de dag"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:821
+#: includes/class-render.php:832
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: horoscoop voor de week"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:824
+#: includes/class-render.php:835
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: horoscoop voor de maand"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:827
+#: includes/class-render.php:838
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: jaarhoroscoop"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:830
+#: includes/class-render.php:841
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: horoscoop voor vandaag"
 
-#: includes/class-render.php:837 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:848 assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Ram"
 
-#: includes/class-render.php:838 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:849 assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Stier"
 
-#: includes/class-render.php:839 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:850 assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Tweelingen"
 
-#: includes/class-render.php:840 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:851 assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Kreeft"
 
-#: includes/class-render.php:841 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:852 assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Leeuw"
 
-#: includes/class-render.php:842 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:853 assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Maagd"
 
-#: includes/class-render.php:843 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:854 assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Weegschaal"
 
-#: includes/class-render.php:844 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:855 assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Schorpioen"
 
-#: includes/class-render.php:845 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:856 assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Boogschutter"
 
-#: includes/class-render.php:846 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:857 assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Steenbok"
 
-#: includes/class-render.php:847 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:858 assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Waterman"
 
-#: includes/class-render.php:848 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:859 assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Vissen"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1090
+#: includes/class-render.php:1101
 #, php-format
 msgid "Is %s retrograde?"
 msgstr "Is %s retrograde?"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1099
+#: includes/class-render.php:1110
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "Ja, %s is op dit moment retrograde."
 
-#: includes/class-render.php:1104
+#: includes/class-render.php:1115
 msgid "Retrograde since"
 msgstr "Retrograde sinds"
 
-#: includes/class-render.php:1105
+#: includes/class-render.php:1116
 msgid "Direct again on"
 msgstr "Weer direct op"
 
-#: includes/class-render.php:1106
+#: includes/class-render.php:1117
 msgid "Days left"
 msgstr "Dagen over"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1112
+#: includes/class-render.php:1123
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "Nee, %s is op dit moment direct."
 
-#: includes/class-render.php:1117
+#: includes/class-render.php:1128
 msgid "Next retrograde"
 msgstr "Volgende retrograde"
 
-#: includes/class-render.php:1118 includes/class-render.php:1261
+#: includes/class-render.php:1129 includes/class-render.php:1272
 msgid "Ends"
 msgstr "Eindigt"
 
-#: includes/class-render.php:1119
+#: includes/class-render.php:1130
 msgid "Days until"
 msgstr "Dagen tot"
 
-#: includes/class-render.php:1138
+#: includes/class-render.php:1149
 msgid "Retrograde"
 msgstr "Retrograde"
 
-#: includes/class-render.php:1141 includes/class-render.php:1144
+#: includes/class-render.php:1152 includes/class-render.php:1155
 msgid "Direct"
 msgstr "Direct"
 
-#: includes/class-render.php:1155
+#: includes/class-render.php:1166
 msgid "Nothing is retrograde right now."
 msgstr "Niets is op dit moment retrograde."
 
-#: includes/class-render.php:1163 assets/js/astroway-blocks-editor.js:269
+#: includes/class-render.php:1174 assets/js/astroway-blocks-editor.js:269
 msgid "Retrograde planets"
 msgstr "Retrograde planeten"
 
-#: includes/class-render.php:1167 assets/js/astroway-blocks-editor.js:264
+#: includes/class-render.php:1178 assets/js/astroway-blocks-editor.js:264
 msgid "Planet"
 msgstr "Planeet"
 
-#: includes/class-render.php:1168 includes/views/admin-api-key.php:180
+#: includes/class-render.php:1179 includes/views/admin-api-key.php:233
 msgid "Status"
 msgstr "Status"
 
-#: includes/class-render.php:1172
+#: includes/class-render.php:1183
 msgid "Retrograde period"
 msgstr "Retrograde periode"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:1226
+#: includes/class-render.php:1237
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "De Maan is van koers tot %s."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:1232
+#: includes/class-render.php:1243
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr "De Maan is niet van koers. Het volgende venster opent %s."
 
-#: includes/class-render.php:1236
+#: includes/class-render.php:1247
 msgid "The Moon is not void of course."
 msgstr "De Maan is niet van koers."
 
-#: includes/class-render.php:1256 assets/js/astroway-blocks-editor.js:273
+#: includes/class-render.php:1267 assets/js/astroway-blocks-editor.js:273
 msgid "Void of course Moon"
 msgstr "Maan zonder koers"
 
-#: includes/class-render.php:1260
+#: includes/class-render.php:1271
 msgid "Starts"
 msgstr "Begint"
 
-#: includes/class-render.php:1262
+#: includes/class-render.php:1273
 msgid "Length"
 msgstr "Duur"
 
-#: includes/class-render.php:1263
+#: includes/class-render.php:1274
 msgid "Last aspect"
 msgstr "Laatste aspect"
 
-#: includes/class-render.php:1264
+#: includes/class-render.php:1275
 msgid "Next sign"
 msgstr "Volgend teken"
 
-#: includes/class-render.php:1323
+#: includes/class-render.php:1334
 msgid "Night"
 msgstr "Nacht"
 
-#: includes/class-render.php:1323
+#: includes/class-render.php:1334
 msgid "Day"
 msgstr "Dag"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1338
+#: includes/class-render.php:1349
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "De dag wordt geregeerd door %s."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:1345
+#: includes/class-render.php:1356
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "Het uur van %1$s loopt tot %2$s."
 
-#: includes/class-render.php:1352 includes/class-render.php:1387
+#: includes/class-render.php:1363 includes/class-render.php:1398
 #: assets/js/astroway-blocks-editor.js:308
 msgid "Planetary hours"
 msgstr "Planetaire uren"
 
-#: includes/class-render.php:1361
+#: includes/class-render.php:1372
 msgid "Hour"
 msgstr "Uur"
 
-#: includes/class-render.php:1362
+#: includes/class-render.php:1373
 msgid "Ruler"
 msgstr "Heerser"
 
-#: includes/class-render.php:1363
+#: includes/class-render.php:1374
 msgid "From"
 msgstr "Van"
 
-#: includes/class-render.php:1364
+#: includes/class-render.php:1375
 msgid "To"
 msgstr "Tot"
 
-#: includes/class-render.php:1365
+#: includes/class-render.php:1376
 msgid "Part of day"
 msgstr "Deel van de dag"
 
-#: includes/class-render.php:1392
+#: includes/class-render.php:1403
 msgid ""
 "The Sun does not set at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1101,7 +1130,7 @@ msgstr ""
 "De Zon gaat niet onder op deze breedtegraad op deze datum, dus zijn er geen "
 "planetaire uren om te verdelen."
 
-#: includes/class-render.php:1393
+#: includes/class-render.php:1404
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1109,200 +1138,211 @@ msgstr ""
 "De Zon gaat niet op op deze breedtegraad op deze datum, dus zijn er geen "
 "planetaire uren om te verdelen."
 
-#: includes/class-render.php:1423
+#: includes/class-render.php:1434
 msgid "First chart"
 msgstr "Eerste horoscoop"
 
-#: includes/class-render.php:1424
+#: includes/class-render.php:1435
 msgid "Second chart"
 msgstr "Tweede horoscoop"
 
-#: includes/class-render.php:1427
+#: includes/class-render.php:1438
 msgid "Compatibility"
 msgstr "Compatibiliteit"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:1440
+#: includes/class-render.php:1451
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr "Aspecten tussen de twee horoscopen: %d"
 
-#: includes/class-render.php:1449
+#: includes/class-render.php:1460
 msgid "Closest aspects"
 msgstr "Dichtste aspecten"
 
 #. translators: %d = the full number of aspects between the two charts
-#: includes/class-render.php:1463
+#: includes/class-render.php:1474
 #, php-format
 msgid "Show all aspects (%d)"
 msgstr "Toon alle aspecten (%d)"
 
-#: includes/class-render.php:1500
+#: includes/class-render.php:1511
 msgid "Separating"
 msgstr "Aflopend"
 
-#: includes/class-render.php:1500
+#: includes/class-render.php:1511
 msgid "Applying"
 msgstr "Aanlopend"
 
-#: includes/class-render.php:1520
+#: includes/class-render.php:1531
 msgid "Aspect"
 msgstr "Aspect"
 
-#: includes/class-render.php:1522
+#: includes/class-render.php:1533
 msgid "Orb"
 msgstr "Orb"
 
-#: includes/class-render.php:1523
+#: includes/class-render.php:1534
 msgid "Trend"
 msgstr "Trend"
 
-#: includes/class-render.php:1566
+#: includes/class-render.php:1577
 msgid "Harmonious"
 msgstr "Harmonieus"
 
-#: includes/class-render.php:1567
+#: includes/class-render.php:1578
 msgid "Balanced"
 msgstr "In balans"
 
-#: includes/class-render.php:1568
+#: includes/class-render.php:1579
 msgid "Mixed"
 msgstr "Gemengd"
 
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:1600
+#: includes/class-render.php:1611
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s en %2$s"
 
-#: includes/class-render.php:1627 assets/js/astroway-blocks-editor.js:299
+#: includes/class-render.php:1638 assets/js/astroway-blocks-editor.js:299
 msgid "Chinese zodiac"
 msgstr "Chinese dierenriem"
 
-#: includes/class-render.php:1641
+#: includes/class-render.php:1652
 msgid "Element"
 msgstr "Element"
 
-#: includes/class-render.php:1646
+#: includes/class-render.php:1657
 msgid "Year element"
 msgstr "Jaarelement"
 
-#: includes/class-render.php:1649
+#: includes/class-render.php:1660
 msgid "Polarity"
 msgstr "Polariteit"
 
-#: includes/class-render.php:1649
+#: includes/class-render.php:1660
 msgid "Yin"
 msgstr "Yin"
 
-#: includes/class-render.php:1649
+#: includes/class-render.php:1660
 msgid "Yang"
 msgstr "Yang"
 
-#: includes/class-render.php:1652
+#: includes/class-render.php:1663
 msgid "Pillar"
 msgstr "Pilaar"
 
-#: includes/class-render.php:1661
+#: includes/class-render.php:1672
 msgid "Rat"
 msgstr "Rat"
 
-#: includes/class-render.php:1662
+#: includes/class-render.php:1673
 msgid "Ox"
 msgstr "Os"
 
-#: includes/class-render.php:1663
+#: includes/class-render.php:1674
 msgid "Tiger"
 msgstr "Tijger"
 
-#: includes/class-render.php:1664
+#: includes/class-render.php:1675
 msgid "Rabbit"
 msgstr "Konijn"
 
-#: includes/class-render.php:1665
+#: includes/class-render.php:1676
 msgid "Dragon"
 msgstr "Draak"
 
-#: includes/class-render.php:1666
+#: includes/class-render.php:1677
 msgid "Snake"
 msgstr "Slang"
 
-#: includes/class-render.php:1667
+#: includes/class-render.php:1678
 msgid "Horse"
 msgstr "Paard"
 
-#: includes/class-render.php:1668
+#: includes/class-render.php:1679
 msgid "Goat"
 msgstr "Geit"
 
-#: includes/class-render.php:1669
+#: includes/class-render.php:1680
 msgid "Monkey"
 msgstr "Aap"
 
-#: includes/class-render.php:1670
+#: includes/class-render.php:1681
 msgid "Rooster"
 msgstr "Haan"
 
-#: includes/class-render.php:1671
+#: includes/class-render.php:1682
 msgid "Dog"
 msgstr "Hond"
 
-#: includes/class-render.php:1672
+#: includes/class-render.php:1683
 msgid "Pig"
 msgstr "Varken"
 
-#: includes/class-render.php:1680
+#: includes/class-render.php:1691
 msgid "Wood"
 msgstr "Hout"
 
-#: includes/class-render.php:1681
+#: includes/class-render.php:1692
 msgid "Fire"
 msgstr "Brand"
 
-#: includes/class-render.php:1682
+#: includes/class-render.php:1693
 msgid "Earth"
 msgstr "Aarde"
 
-#: includes/class-render.php:1683
+#: includes/class-render.php:1694
 msgid "Metal"
 msgstr "Metaal"
 
-#: includes/class-render.php:1684
+#: includes/class-render.php:1695
 msgid "Water"
 msgstr "Water"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:1779
+#: includes/class-render.php:1790
 #, php-format
 msgid "%d min"
 msgstr "%d min"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:1785
+#: includes/class-render.php:1796
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d u %2$02d min"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:2109
+#: includes/class-render.php:2121
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "Weergeven %1$d van %2$d"
 
-#: includes/class-render.php:2160
+#: includes/class-render.php:2172
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "ja"
 
-#: includes/class-render.php:2160
+#: includes/class-render.php:2172
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "nee"
 
+#: includes/class-shortcodes.php:334
+msgid ""
+"[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a "
+"zone name such as tz=\"Europe/Kyiv\", or hours from UTC such as tz=\"+3\". "
+"Only administrators see this note."
+msgstr ""
+"[astroway_natal] heeft geen bruikbare tz, dus de geboortetijd wordt "
+"geïnterpreteerd als UTC. Voeg een tijdzonenaam toe, zoals "
+"tz=\"Europe/Kyiv\", of uren ten opzichte van UTC, zoals tz=\"+3\". Alleen "
+"beheerders zien deze opmerking."
+
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:518
+#: includes/class-shortcodes.php:536
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -1344,34 +1384,34 @@ msgstr ""
 msgid "A birth chart: date, time and place."
 msgstr "Een geboortehoroscoop: datum, tijd en plaats."
 
-#: includes/views/admin-api-key.php:73
+#: includes/views/admin-api-key.php:79
 msgid "Your first widget"
 msgstr "Je eerste widget"
 
-#: includes/views/admin-api-key.php:74
+#: includes/views/admin-api-key.php:80
 msgid "copy · paste · open the page"
 msgstr "kopiëren · plakken · de pagina openen"
 
-#: includes/views/admin-api-key.php:79
+#: includes/views/admin-api-key.php:85
 msgid "Copy a shortcode."
 msgstr "Kopieer een shortcode."
 
-#: includes/views/admin-api-key.php:83 includes/views/admin-api-key.php:107
+#: includes/views/admin-api-key.php:89 includes/views/admin-api-key.php:113
 #: includes/views/admin-shortcodes.php:414
 #: includes/views/partials/admin-generated-coverage.php:60
 msgid "Click to copy"
 msgstr "Klik om te kopiëren"
 
-#: includes/views/admin-api-key.php:87 includes/views/admin-api-key.php:111
+#: includes/views/admin-api-key.php:93 includes/views/admin-api-key.php:117
 #: includes/views/admin-shortcodes.php:418
 msgid "copy"
 msgstr "kopiëren"
 
-#: includes/views/admin-api-key.php:92
+#: includes/views/admin-api-key.php:98
 msgid "Paste it into any post or page."
 msgstr "Plak het in een willekeurig bericht of op een willekeurige pagina."
 
-#: includes/views/admin-api-key.php:93
+#: includes/views/admin-api-key.php:99
 msgid ""
 "In the block editor you can type /astroway instead and pick the block: the "
 "preview shows the finished card, not a placeholder."
@@ -1380,11 +1420,11 @@ msgstr ""
 "selecteren: in het voorbeeld wordt de voltooide kaart weergegeven, geen "
 "tijdelijke afbeelding."
 
-#: includes/views/admin-api-key.php:96
+#: includes/views/admin-api-key.php:102
 msgid "Open the page."
 msgstr "Open de pagina."
 
-#: includes/views/admin-api-key.php:97
+#: includes/views/admin-api-key.php:103
 msgid ""
 "The reading is already in the HTML, in your theme's fonts and colours. "
 "Nothing below this panel is required to make it work."
@@ -1392,37 +1432,75 @@ msgstr ""
 "De tekst staat al in de HTML, in de lettertypen en kleuren van je thema. Er "
 "is niets onder dit paneel nodig om het te laten werken."
 
-#: includes/views/admin-api-key.php:102
+#: includes/views/admin-api-key.php:108
 msgid "Two more to try:"
 msgstr "Nog twee om te proberen:"
 
 #. translators: %s is a link to the plugin's Shortcodes admin page
-#: includes/views/admin-api-key.php:121
+#: includes/views/admin-api-key.php:127
 #, php-format
 msgid ""
-"All 16 shortcodes with their parameters, plus a city search that fills in "
+"Every shortcode with its parameters, plus a city search that fills in "
 "coordinates and timezone: %s."
 msgstr ""
-"Alle 16 shortcodes met hun parameters, plus een zoekfunctie voor steden die "
-"de coördinaten en tijdzone invult: %s."
+"Elke shortcode met zijn parameters, plus een zoekfunctie voor steden die "
+"coördinaten en tijdzone invult: %s."
 
-#: includes/views/admin-api-key.php:133
+#: includes/views/admin-api-key.php:139
 msgid "Your API key"
 msgstr "Jouw API-sleutel"
 
-#: includes/views/admin-api-key.php:134
+#: includes/views/admin-api-key.php:140
 msgid "optional · paste · verify · save"
 msgstr "optioneel · plakken · controleren · opslaan"
 
-#: includes/views/admin-api-key.php:138
-msgid "Paste your key"
-msgstr "Plak je sleutel"
+#: includes/views/admin-api-key.php:145
+msgid "Your key"
+msgstr "Uw sleutel"
 
-#: includes/views/admin-api-key.php:149
+#: includes/views/admin-api-key.php:149 includes/views/admin-api-key.php:181
 msgid "Verify"
 msgstr "Verifiëren"
 
-#: includes/views/admin-api-key.php:153
+#. translators: %s = the constant name, ASTROWAY_API_KEY
+#: includes/views/admin-api-key.php:156
+#, php-format
+msgid "Set in wp-config.php as %s. To change or remove it, edit that file."
+msgstr ""
+"In wp-config.php ingesteld als %s. Om dit te wijzigen of te verwijderen, "
+"bewerk je dat bestand."
+
+#: includes/views/admin-api-key.php:163
+msgid "Saved key"
+msgstr "Opgeslagen sleutel"
+
+#: includes/views/admin-api-key.php:166
+msgid ""
+"The saved key can no longer be read: the security keys in wp-config.php have"
+" changed since it was saved. Widgets keep working without it. Paste the key "
+"again to restore it."
+msgstr ""
+"De opgeslagen sleutel kan niet meer worden gelezen: de beveiligingssleutels "
+"in wp-config.php zijn gewijzigd sinds het opslaan ervan. Widgets blijven ook"
+" zonder deze sleutel werken. Plak de sleutel opnieuw om deze te herstellen."
+
+#: includes/views/admin-api-key.php:169
+msgid "Replace it with a new key"
+msgstr "Vervangen door een nieuwe sleutel"
+
+#: includes/views/admin-api-key.php:169
+msgid "Paste your key"
+msgstr "Plak je sleutel"
+
+#: includes/views/admin-api-key.php:177
+msgid "Leave empty to keep the saved key"
+msgstr "Laat leeg om de opgeslagen sleutel te behouden"
+
+#: includes/views/admin-api-key.php:187
+msgid "Remove the saved key"
+msgstr "Opgeslagen sleutel verwijderen"
+
+#: includes/views/admin-api-key.php:194
 msgid ""
 "Paste a key from api.astroway.info/dashboard, or leave the field empty. "
 "Every widget renders without one. If you do save a key, your server offers "
@@ -1440,72 +1518,82 @@ msgstr ""
 "slaan, wordt ook het statuspaneel hieronder toegevoegd, en de sleutel zelf "
 "gebruik je wanneer je de API vanuit je eigen code aanroept."
 
-#: includes/views/admin-api-key.php:165
+#. translators: %s = the constant name, ASTROWAY_API_KEY
+#: includes/views/admin-api-key.php:200
+#, php-format
+msgid ""
+"Prefer to keep it out of the database? Define %s in wp-config.php and it "
+"takes the place of this field."
+msgstr ""
+"Wil je het liever uit de database houden? Definieer dan %s in wp-config.php "
+"en dit veld wordt vervangen."
+
+#: includes/views/admin-api-key.php:217
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
 
-#: includes/views/admin-api-key.php:185
+#: includes/views/admin-api-key.php:238
 msgid "live · key authenticated"
 msgstr "Geauthenticeerd"
 
-#: includes/views/admin-api-key.php:188
+#: includes/views/admin-api-key.php:241
 msgid "suspended, contact support"
 msgstr "opgeschort, neem contact op met de klantenservice"
 
-#: includes/views/admin-api-key.php:191
+#: includes/views/admin-api-key.php:244
 msgid "revoked, re-issue key"
 msgstr "ingetrokken, sleutel opnieuw genereren"
 
-#: includes/views/admin-api-key.php:194
+#: includes/views/admin-api-key.php:247
 msgid "invalid key"
 msgstr "Betaalde sleutel."
 
-#: includes/views/admin-api-key.php:197
+#: includes/views/admin-api-key.php:250
 msgid "unreachable, check connection"
 msgstr "niet bereikbaar, controleer de verbinding"
 
-#: includes/views/admin-api-key.php:208
+#: includes/views/admin-api-key.php:261
 msgid "Key"
 msgstr "API-sleutel"
 
-#: includes/views/admin-api-key.php:222
+#: includes/views/admin-api-key.php:275
 msgid "Credits"
 msgstr "Credits / maand"
 
-#: includes/views/admin-api-key.php:241
+#: includes/views/admin-api-key.php:294
 msgid "Period ends"
 msgstr "De periode loopt af"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:248
+#: includes/views/admin-api-key.php:301
 #, php-format
 msgid "in %s"
 msgstr "in %s"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:249
+#: includes/views/admin-api-key.php:302
 msgid "expired"
 msgstr "Verplicht"
 
-#: includes/views/admin-api-key.php:262
+#: includes/views/admin-api-key.php:315
 msgid "Domain"
 msgstr "Domein"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:271
+#: includes/views/admin-api-key.php:324
 #, php-format
 msgid "bound %s ago"
 msgstr "gebonden %s geleden"
 
-#: includes/views/admin-api-key.php:278
+#: includes/views/admin-api-key.php:331
 msgid "not bound: the first request binds this site"
 msgstr "niet gekoppeld: bij het eerste verzoek wordt deze site gekoppeld"
 
-#: includes/views/admin-api-key.php:285
+#: includes/views/admin-api-key.php:338
 msgid "Source"
 msgstr "Hulpmiddelen"
 
-#: includes/views/admin-api-key.php:292
+#: includes/views/admin-api-key.php:345
 msgid ""
 "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
 "and credits shown via legacy fallback."
@@ -1514,7 +1602,7 @@ msgstr ""
 "niet aan. Het abonnement en het tegoed worden weergegeven via de oude "
 "fallback-oplossing."
 
-#: includes/views/admin-api-key.php:295
+#: includes/views/admin-api-key.php:348
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -1522,7 +1610,7 @@ msgstr ""
 "Plak een sleutel van api.astroway.info/dashboard. Laat leeg om terug te "
 "keren naar anonieme modus."
 
-#: includes/views/admin-api-key.php:297
+#: includes/views/admin-api-key.php:350
 msgid ""
 "Could not reach api.astroway.info. Network or upstream issue, try again in a"
 " moment."
@@ -1530,111 +1618,111 @@ msgstr ""
 "api.astroway.info kon niet worden bereikt. Er is een netwerk- of upstream-"
 "probleem. Probeer het straks nog eens."
 
-#: includes/views/admin-api-key.php:306
+#: includes/views/admin-api-key.php:359
 msgid "What a key adds"
 msgstr "Wat een sleutel toevoegt"
 
-#: includes/views/admin-api-key.php:307
+#: includes/views/admin-api-key.php:360
 msgid "3 tiers compared"
 msgstr "3 niveaus vergeleken"
 
-#: includes/views/admin-api-key.php:315
+#: includes/views/admin-api-key.php:368
 msgid "Anonymous"
 msgstr "Anoniem"
 
-#: includes/views/admin-api-key.php:316
+#: includes/views/admin-api-key.php:369
 msgid "no setup"
 msgstr "geen setup"
 
-#: includes/views/admin-api-key.php:319
+#: includes/views/admin-api-key.php:372
 msgid "Free key"
 msgstr "Gratis sleutel"
 
-#: includes/views/admin-api-key.php:320
+#: includes/views/admin-api-key.php:373
 msgid "signup"
 msgstr "registreren"
 
-#: includes/views/admin-api-key.php:323
+#: includes/views/admin-api-key.php:376
 msgid "Paid"
 msgstr "Betaald"
 
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:377
 msgid "from $5/mo"
 msgstr "vanaf €5/maand"
 
-#: includes/views/admin-api-key.php:330
+#: includes/views/admin-api-key.php:383
 msgid "Widgets in this plugin"
 msgstr "Widgets in deze plug-in"
 
-#: includes/views/admin-api-key.php:331 includes/views/admin-api-key.php:332
-#: includes/views/admin-api-key.php:333
+#: includes/views/admin-api-key.php:384 includes/views/admin-api-key.php:385
+#: includes/views/admin-api-key.php:386
 msgid "all of them"
 msgstr "allemaal"
 
-#: includes/views/admin-api-key.php:336
+#: includes/views/admin-api-key.php:389
 msgid "API requests / month"
 msgstr "API-verzoeken per maand"
 
-#: includes/views/admin-api-key.php:337 includes/views/admin-api-key.php:343
-#: includes/views/admin-api-key.php:349 includes/views/admin-api-key.php:355
-#: includes/views/admin-api-key.php:356 includes/views/admin-api-key.php:361
-#: includes/views/admin-api-key.php:367 includes/views/admin-api-key.php:368
+#: includes/views/admin-api-key.php:390 includes/views/admin-api-key.php:396
+#: includes/views/admin-api-key.php:402 includes/views/admin-api-key.php:408
+#: includes/views/admin-api-key.php:409 includes/views/admin-api-key.php:414
+#: includes/views/admin-api-key.php:420 includes/views/admin-api-key.php:421
 msgid "none"
 msgstr "geen"
 
-#: includes/views/admin-api-key.php:338
+#: includes/views/admin-api-key.php:391
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:339
+#: includes/views/admin-api-key.php:392
 msgid "50K to 3.5M"
 msgstr "50.000 tot 3,5 miljoen"
 
-#: includes/views/admin-api-key.php:342
+#: includes/views/admin-api-key.php:395
 msgid "Rate limit, keyed endpoints"
 msgstr "Rate limit, endpoints met sleutel"
 
-#: includes/views/admin-api-key.php:344
+#: includes/views/admin-api-key.php:397
 msgid "~60 requests/min"
 msgstr "~60 verzoeken/min"
 
-#: includes/views/admin-api-key.php:345
+#: includes/views/admin-api-key.php:398
 msgid "30 to 1000 requests/min"
 msgstr "30 tot 1000 verzoeken per minuut"
 
-#: includes/views/admin-api-key.php:348
+#: includes/views/admin-api-key.php:401
 msgid "Dashboard, usage history"
 msgstr "Dashboard, gebruiksgeschiedenis"
 
-#: includes/views/admin-api-key.php:350 includes/views/admin-api-key.php:351
-#: includes/views/admin-api-key.php:357 includes/views/admin-api-key.php:369
+#: includes/views/admin-api-key.php:403 includes/views/admin-api-key.php:404
+#: includes/views/admin-api-key.php:410 includes/views/admin-api-key.php:422
 msgid "included"
 msgstr "inbegrepen"
 
-#: includes/views/admin-api-key.php:354
+#: includes/views/admin-api-key.php:407
 msgid "AI interpretations"
 msgstr "AI-interpretaties"
 
-#: includes/views/admin-api-key.php:360
+#: includes/views/admin-api-key.php:413
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Ondersteuning"
 
-#: includes/views/admin-api-key.php:362
+#: includes/views/admin-api-key.php:415
 msgid "community"
 msgstr "community"
 
-#: includes/views/admin-api-key.php:363
+#: includes/views/admin-api-key.php:416
 msgid "priority"
 msgstr "prioriteit"
 
-#: includes/views/admin-api-key.php:366
+#: includes/views/admin-api-key.php:419
 msgid "Spend cap"
 msgstr "Uitgavenlimiet"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:377
+#: includes/views/admin-api-key.php:430
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
@@ -1645,35 +1733,34 @@ msgstr ""
 "vanuit je eigen code. De widgets op je pagina’s worden hierdoor op geen "
 "enkele manier beïnvloed. Standaardprijzen → %s"
 
-#: includes/views/admin-api-key.php:388
+#: includes/views/admin-api-key.php:441
 msgid "How it works"
 msgstr "Hoe het werkt"
 
-#: includes/views/admin-api-key.php:392
+#: includes/views/admin-api-key.php:445
 msgid "On your pages."
 msgstr "Op je pagina's."
 
-#: includes/views/admin-api-key.php:393
+#: includes/views/admin-api-key.php:446
 msgid ""
-"Your server renders seven widgets into the page, counted against this site's"
-" allowance of 300 requests an hour, or against your own plan when a paid key"
-" is saved above. The rest load in a frame against each visitor's own 30, and"
-" those carry the \"Powered by AstroWay\" watermark: a frame is fetched by "
-"the visitor's browser, which is no place for your key."
+"Your server renders most widgets into the page, counted against this site's "
+"allowance of 300 requests an hour, or against your own plan when a paid key "
+"is saved above. The rest load in a frame against each visitor's own 30, and "
+"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the"
+" visitor's browser, which is no place for your key."
 msgstr ""
-"Je server voegt zeven widgets toe aan de pagina; deze worden in mindering "
-"gebracht op de limiet van 300 verzoeken per uur voor deze site, of op je "
-"eigen abonnement wanneer hierboven een betaalde sleutel is opgeslagen. De "
-"rest wordt geladen in een frame, wat wordt afgetrokken van de 30 verzoeken "
-"per bezoeker, en die zijn voorzien van het watermerk \"Powered by "
-"AstroWay\": een frame wordt opgehaald door de browser van de bezoeker, waar "
-"dus geen ruimte is voor uw sleutel."
+"Je server geeft de meeste widgets weer op de pagina; dit telt mee voor de "
+"limiet van deze site van 300 verzoeken per uur, of voor je eigen abonnement "
+"wanneer hierboven een betaalde sleutel is opgeslagen. De rest wordt in een "
+"frame geladen, wat ten laste komt van de 30 verzoeken per bezoeker, en deze "
+"bevatten het watermerk 'Powered by AstroWay': een frame wordt opgehaald door"
+" de browser van de bezoeker, waar geen plaats is voor uw sleutel."
 
-#: includes/views/admin-api-key.php:396
+#: includes/views/admin-api-key.php:449
 msgid "Free key."
 msgstr "Gratis sleutel."
 
-#: includes/views/admin-api-key.php:397
+#: includes/views/admin-api-key.php:450
 msgid ""
 "A personal bucket of 10,000 calls a month for code you write yourself, plus "
 "a dashboard with activity history. It does not change what the shortcodes "
@@ -1686,11 +1773,11 @@ msgstr ""
 "widgets met een kader blijft zichtbaar: de sleutel maakt geen deel uit van "
 "het adres van het kader."
 
-#: includes/views/admin-api-key.php:400
+#: includes/views/admin-api-key.php:453
 msgid "Paid key."
 msgstr "Betaalde sleutel."
 
-#: includes/views/admin-api-key.php:401
+#: includes/views/admin-api-key.php:454
 msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
@@ -2116,13 +2203,13 @@ msgstr "Weergavenaam op de chart."
 
 #: includes/views/admin-shortcodes.php:31
 msgid ""
-"Palette of the wheel drawing: dark (default), light or console. The text "
+"Palette of the wheel drawing: light (default), dark or console. The text "
 "beside it follows your theme on its own; the wheel is an image and cannot, "
 "so set this to match."
 msgstr ""
-"Palet van het wiel-tekening: donker (standaard), licht of console. De tekst "
-"ernaast volgt uw thema op zichzelf; het wiel is een afbeelding en kan niet, "
-"dus stel dit in om overeen te komen."
+"Kleurenpalet van de wieltekening: licht (standaard), donker of console. De "
+"tekst ernaast past zich automatisch aan je thema aan; het wiel is een "
+"afbeelding en kan dat niet, dus stel dit zo in dat het overeenkomt."
 
 #: includes/views/admin-shortcodes.php:36
 msgid "Daily Horoscope"
@@ -2327,8 +2414,8 @@ msgstr ""
 #: includes/views/admin-shortcodes.php:216
 #: includes/views/admin-shortcodes.php:229
 #: includes/views/admin-shortcodes.php:252
-msgid "dark (default), light or console."
-msgstr "donker (standaard), licht of console."
+msgid "light (default), dark or console."
+msgstr "licht (standaard), donker of console."
 
 #: includes/views/admin-shortcodes.php:158
 msgid "Monthly Forecast"
@@ -2879,8 +2966,8 @@ msgid "Timezone (Europe/Kyiv or +03:00)"
 msgstr "Tijdzone (Europa/Kyiv of +03:00)"
 
 #: assets/js/astroway-blocks-editor.js:78
-msgid "Default (dark)"
-msgstr "Standaard (donker)"
+msgid "Default (light)"
+msgstr "Standaard (licht)"
 
 #: assets/js/astroway-blocks-editor.js:79
 msgid "Dark"
@@ -3124,52 +3211,170 @@ msgstr ""
 "opgestapeld, zodat er niets verloren gaat."
 
 #: blocks/astrology-section/block.json
-msgid "AstroWay: Astrology Section"
-msgstr "AstroWay: Astrologie sectie"
+msgctxt "block title"
+msgid "Astrology Section (AstroWay)"
+msgstr "Astrologie sectie (AstroWay)"
 
 #: blocks/astrology-section/block.json
+msgctxt "block keyword"
+msgid "section"
+msgstr ""
+
+#: blocks/astrology-section/block.json
+msgctxt "block keyword"
+msgid "tabs"
+msgstr ""
+
+#: blocks/astrology-section/block.json blocks/chinese-zodiac/block.json
+#: blocks/daily-horoscope/block.json blocks/monthly-horoscope/block.json
+#: blocks/weekly-horoscope/block.json blocks/yearly-horoscope/block.json
+#: blocks/zodiac-compatibility/block.json
+msgctxt "block keyword"
+msgid "zodiac"
+msgstr ""
+
+#: blocks/astrology-section/block.json blocks/daily-horoscope/block.json
+#: blocks/monthly-forecast/block.json blocks/monthly-horoscope/block.json
+#: blocks/weekly-horoscope/block.json blocks/yearly-horoscope/block.json
+msgctxt "block keyword"
+msgid "horoscope"
+msgstr ""
+
+#: blocks/astrology-section/block.json blocks/bodygraph/block.json
+#: blocks/chinese-zodiac/block.json blocks/daily-horoscope/block.json
+#: blocks/daily-tarot/block.json blocks/kundli/block.json
+#: blocks/mini-chart/block.json blocks/monthly-forecast/block.json
+#: blocks/monthly-horoscope/block.json blocks/moon-phase/block.json
+#: blocks/moon-sign/block.json blocks/moon-voc/block.json
+#: blocks/natal-chart/block.json blocks/numerology/block.json
+#: blocks/panchang/block.json blocks/planet-of-day/block.json
+#: blocks/planetary-hours/block.json blocks/retrograde/block.json
+#: blocks/retrogrades/block.json blocks/rising-sign/block.json
+#: blocks/synastry/block.json blocks/transit-timeline/block.json
+#: blocks/transit/block.json blocks/weekly-horoscope/block.json
+#: blocks/yearly-horoscope/block.json blocks/zodiac-compatibility/block.json
+msgctxt "block keyword"
+msgid "astroway"
+msgstr ""
+
+#: blocks/astrology-section/block.json
+msgctxt "block description"
 msgid "Sets one zodiac sign for every AstroWay block placed inside it."
 msgstr ""
 "Stelt één dierenriemteken in voor elke AstroWay-blok die erin geplaatst "
 "wordt."
 
 #: blocks/bodygraph/block.json
-msgid "AstroWay: Human Design Bodygraph"
-msgstr "AstroWay: Human Design Bodygraph"
+msgctxt "block title"
+msgid "Human Design Bodygraph (AstroWay)"
+msgstr "Human Design Bodygraph (AstroWay)"
 
 #: blocks/bodygraph/block.json
+msgctxt "block keyword"
+msgid "human design"
+msgstr ""
+
+#: blocks/bodygraph/block.json
+msgctxt "block keyword"
+msgid "bodygraph"
+msgstr ""
+
+#: blocks/bodygraph/block.json blocks/kundli/block.json
+#: blocks/mini-chart/block.json blocks/moon-sign/block.json
+#: blocks/natal-chart/block.json blocks/rising-sign/block.json
+#: blocks/synastry/block.json
+msgctxt "block keyword"
+msgid "natal"
+msgstr ""
+
+#: blocks/bodygraph/block.json
+msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
 msgstr "Human Design-bodygrafiek met type, profiel en poorten."
 
 #: blocks/chinese-zodiac/block.json
-msgid "AstroWay: Chinese Zodiac"
-msgstr "AstroWay: Chinese dierenriem"
+msgctxt "block title"
+msgid "Chinese Zodiac (AstroWay)"
+msgstr "Chinese dierenriem (AstroWay)"
 
 #: blocks/chinese-zodiac/block.json
+msgctxt "block keyword"
+msgid "chinese"
+msgstr ""
+
+#: blocks/chinese-zodiac/block.json
+msgctxt "block keyword"
+msgid "animal"
+msgstr ""
+
+#: blocks/chinese-zodiac/block.json
+msgctxt "block description"
 msgid "The Chinese animal, element and pillar of a birth date."
 msgstr "Het Chinese dier, het element en de pilaar van een geboortedatum."
 
 #: blocks/daily-horoscope/block.json
-msgid "AstroWay: Daily Horoscope"
-msgstr "AstroWay: Dagelijkse Horoscoop"
+msgctxt "block title"
+msgid "Horoscope for Today (AstroWay)"
+msgstr "Horoscoop voor vandaag (AstroWay)"
+
+#: blocks/daily-horoscope/block.json blocks/daily-tarot/block.json
+#: blocks/planet-of-day/block.json
+msgctxt "block keyword"
+msgid "daily"
+msgstr ""
 
 #: blocks/daily-horoscope/block.json
+msgctxt "block keyword"
+msgid "today"
+msgstr ""
+
+#: blocks/daily-horoscope/block.json
+msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
 msgstr "Dagelijkse horoscooptekst voor een sterrenbeeld."
 
 #: blocks/daily-tarot/block.json
-msgid "AstroWay: Daily Tarot"
-msgstr "AstroWay: Dagelijkse Tarot"
+msgctxt "block title"
+msgid "Tarot Card of the Day (AstroWay)"
+msgstr "Tarotkaart van de dag (AstroWay)"
 
 #: blocks/daily-tarot/block.json
+msgctxt "block keyword"
+msgid "tarot"
+msgstr ""
+
+#: blocks/daily-tarot/block.json
+msgctxt "block keyword"
+msgid "card"
+msgstr ""
+
+#: blocks/daily-tarot/block.json
+msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Enkele kaart dagelijkse Tarot-trek met interpretatie."
 
 #: blocks/kundli/block.json
-msgid "AstroWay: Vedic Kundli"
-msgstr "AstroWay-instellingen"
+msgctxt "block title"
+msgid "Vedic Kundli (AstroWay)"
+msgstr "AstroWay-instellingen (AstroWay)"
 
 #: blocks/kundli/block.json
+msgctxt "block keyword"
+msgid "kundli"
+msgstr ""
+
+#: blocks/kundli/block.json blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "vedic"
+msgstr ""
+
+#: blocks/kundli/block.json
+msgctxt "block keyword"
+msgid "jyotish"
+msgstr ""
+
+#: blocks/kundli/block.json
+msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
@@ -3177,10 +3382,27 @@ msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
 #: blocks/mini-chart/block.json
-msgid "AstroWay: Mini Birth Chart"
-msgstr "AstroWay: Mini-geboortehoroscoop"
+msgctxt "block title"
+msgid "Mini Birth Chart (AstroWay)"
+msgstr "Mini-geboortehoroscoop (AstroWay)"
+
+#: blocks/mini-chart/block.json blocks/natal-chart/block.json
+msgctxt "block keyword"
+msgid "birth chart"
+msgstr ""
+
+#: blocks/mini-chart/block.json blocks/natal-chart/block.json
+msgctxt "block keyword"
+msgid "wheel"
+msgstr ""
 
 #: blocks/mini-chart/block.json
+msgctxt "block keyword"
+msgid "sidebar"
+msgstr ""
+
+#: blocks/mini-chart/block.json
+msgctxt "block description"
 msgid ""
 "The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
 " responsive iframe."
@@ -3189,10 +3411,22 @@ msgstr ""
 "api.astroway.info als een responsief iframe aangeboden."
 
 #: blocks/monthly-forecast/block.json
-msgid "AstroWay: Monthly Forecast"
-msgstr "AstroWay: Maandelijkse voorspelling"
+msgctxt "block title"
+msgid "Monthly Forecast (AstroWay)"
+msgstr "Maandelijkse voorspelling (AstroWay)"
 
 #: blocks/monthly-forecast/block.json
+msgctxt "block keyword"
+msgid "forecast"
+msgstr ""
+
+#: blocks/monthly-forecast/block.json
+msgctxt "block keyword"
+msgid "month"
+msgstr ""
+
+#: blocks/monthly-forecast/block.json
+msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
@@ -3201,10 +3435,17 @@ msgstr ""
 "week een eigen thema had; dit werd weergegeven via een responsief iframe."
 
 #: blocks/monthly-horoscope/block.json
-msgid "AstroWay: Monthly Horoscope"
-msgstr "AstroWay: Maandhoroscoop"
+msgctxt "block title"
+msgid "Horoscope for the Month (AstroWay)"
+msgstr "Horoscoop voor de maand (AstroWay)"
 
 #: blocks/monthly-horoscope/block.json
+msgctxt "block keyword"
+msgid "monthly"
+msgstr ""
+
+#: blocks/monthly-horoscope/block.json
+msgctxt "block description"
 msgid ""
 "Horoscope for the current month, anchored to the 1st, rendered into the page"
 " as text."
@@ -3213,43 +3454,104 @@ msgstr ""
 "tekst op de pagina."
 
 #: blocks/moon-phase/block.json
-msgid "AstroWay: Moon Phase"
-msgstr "AstroWay: Maanfase"
+msgctxt "block title"
+msgid "Moon Phase (AstroWay)"
+msgstr "Maanfase (AstroWay)"
+
+#: blocks/moon-phase/block.json blocks/moon-sign/block.json
+#: blocks/moon-voc/block.json blocks/transit-timeline/block.json
+msgctxt "block keyword"
+msgid "moon"
+msgstr ""
 
 #: blocks/moon-phase/block.json
+msgctxt "block keyword"
+msgid "lunar"
+msgstr ""
+
+#: blocks/moon-phase/block.json
+msgctxt "block keyword"
+msgid "phase"
+msgstr ""
+
+#: blocks/moon-phase/block.json
+msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
 msgstr "Huidige maanfase met verlichtingspercentage."
 
 #: blocks/moon-sign/block.json
-msgid "AstroWay: Moon Sign"
-msgstr "AstroWay: Maanstand"
+msgctxt "block title"
+msgid "Moon Sign (AstroWay)"
+msgstr "Maanstand (AstroWay)"
 
 #: blocks/moon-sign/block.json
+msgctxt "block keyword"
+msgid "sign"
+msgstr ""
+
+#: blocks/moon-sign/block.json
+msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
 msgstr "Het teken, de graad en het huis van de Maan uit een geboortekaart."
 
 #: blocks/moon-voc/block.json
-msgid "AstroWay: Void of Course Moon"
-msgstr "AstroWay: Void of Course Maan"
+msgctxt "block title"
+msgid "Void of Course Moon (AstroWay)"
+msgstr "Void of Course Maan (AstroWay)"
 
 #: blocks/moon-voc/block.json
+msgctxt "block keyword"
+msgid "void of course"
+msgstr ""
+
+#: blocks/moon-voc/block.json
+msgctxt "block keyword"
+msgid "voc"
+msgstr ""
+
+#: blocks/moon-voc/block.json
+msgctxt "block description"
 msgid "Whether the Moon is void of course, and the windows around now."
 msgstr "Of de Maan void of course is, en de vensters rondom nu."
 
 #: blocks/natal-chart/block.json
-msgid "AstroWay: Natal Chart"
-msgstr "AstroWay: Natal Chart"
+msgctxt "block title"
+msgid "Natal Chart (AstroWay)"
+msgstr "Natal Chart (AstroWay)"
 
 #: blocks/natal-chart/block.json
+msgctxt "block keyword"
+msgid "astrology"
+msgstr ""
+
+#: blocks/natal-chart/block.json
+msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
 #: blocks/numerology/block.json
-msgid "AstroWay: Numerology"
-msgstr "AstroWay: Maanfase"
+msgctxt "block title"
+msgid "Numerology (AstroWay)"
+msgstr "Maanfase (AstroWay)"
 
 #: blocks/numerology/block.json
+msgctxt "block keyword"
+msgid "numerology"
+msgstr ""
+
+#: blocks/numerology/block.json
+msgctxt "block keyword"
+msgid "life path"
+msgstr ""
+
+#: blocks/numerology/block.json
+msgctxt "block keyword"
+msgid "numbers"
+msgstr ""
+
+#: blocks/numerology/block.json
+msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
@@ -3257,10 +3559,27 @@ msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
 #: blocks/panchang/block.json
-msgid "AstroWay: Daily Panchang"
-msgstr "AstroWay: Dagelijkse Tarot"
+msgctxt "block title"
+msgid "Daily Panchang (AstroWay)"
+msgstr "Dagelijkse Tarot (AstroWay)"
 
 #: blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "panchang"
+msgstr ""
+
+#: blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "tithi"
+msgstr ""
+
+#: blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "nakshatra"
+msgstr ""
+
+#: blocks/panchang/block.json
+msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
@@ -3268,10 +3587,18 @@ msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
 #: blocks/planet-of-day/block.json
-msgid "AstroWay: Planet of the Day"
-msgstr "AstroWay: Planeet van de dag"
+msgctxt "block title"
+msgid "Planet of the Day (AstroWay)"
+msgstr "Planeet van de dag (AstroWay)"
+
+#: blocks/planet-of-day/block.json blocks/planetary-hours/block.json
+#: blocks/retrograde/block.json
+msgctxt "block keyword"
+msgid "planet"
+msgstr ""
 
 #: blocks/planet-of-day/block.json
+msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
@@ -3280,10 +3607,22 @@ msgstr ""
 "symbool en de bijbehorende thema’s, weergegeven op de pagina."
 
 #: blocks/planetary-hours/block.json
-msgid "AstroWay: Planetary Hours"
-msgstr "AstroWay: Planetaire Uren"
+msgctxt "block title"
+msgid "Planetary Hours (AstroWay)"
+msgstr "Planetaire Uren (AstroWay)"
 
 #: blocks/planetary-hours/block.json
+msgctxt "block keyword"
+msgid "planetary hours"
+msgstr ""
+
+#: blocks/planetary-hours/block.json
+msgctxt "block keyword"
+msgid "hours"
+msgstr ""
+
+#: blocks/planetary-hours/block.json
+msgctxt "block description"
 msgid ""
 "The twenty-four planetary hours of a day at one place, with the current one "
 "marked."
@@ -3292,26 +3631,57 @@ msgstr ""
 "gemarkeerd."
 
 #: blocks/retrograde/block.json
-msgid "AstroWay: Retrograde Status"
-msgstr "AstroWay: Retrograde Status"
+msgctxt "block title"
+msgid "Retrograde Status (AstroWay)"
+msgstr "Retrograde Status (AstroWay)"
+
+#: blocks/retrograde/block.json blocks/retrogrades/block.json
+msgctxt "block keyword"
+msgid "retrograde"
+msgstr ""
 
 #: blocks/retrograde/block.json
+msgctxt "block keyword"
+msgid "mercury"
+msgstr ""
+
+#: blocks/retrograde/block.json
+msgctxt "block description"
 msgid "Whether one planet is retrograde right now, and when that changes."
 msgstr "Of een planeet nu retrograde is, en wanneer dat verandert."
 
 #: blocks/retrogrades/block.json
-msgid "AstroWay: Retrograde Planets"
-msgstr "AstroWay: Retrograde Planeten"
+msgctxt "block title"
+msgid "Retrograde Planets (AstroWay)"
+msgstr "Retrograde Planeten (AstroWay)"
+
+#: blocks/retrogrades/block.json blocks/transit/block.json
+msgctxt "block keyword"
+msgid "planets"
+msgstr ""
 
 #: blocks/retrogrades/block.json
+msgctxt "block description"
 msgid "All eight planets that station, and what each is doing today."
 msgstr "Alle acht planeten die stationair worden, en wat elk vandaag doet."
 
 #: blocks/rising-sign/block.json
-msgid "AstroWay: Rising Sign"
-msgstr "AstroWay: Opkomend teken"
+msgctxt "block title"
+msgid "Rising Sign (AstroWay)"
+msgstr "Opkomend teken (AstroWay)"
 
 #: blocks/rising-sign/block.json
+msgctxt "block keyword"
+msgid "rising"
+msgstr ""
+
+#: blocks/rising-sign/block.json
+msgctxt "block keyword"
+msgid "ascendant"
+msgstr ""
+
+#: blocks/rising-sign/block.json
+msgctxt "block description"
 msgid ""
 "The rising sign with its chart ruler. Needs coordinates: the ascendant is "
 "the horizon at a place."
@@ -3320,10 +3690,27 @@ msgstr ""
 "ascendant is de horizon op een plek."
 
 #: blocks/synastry/block.json
-msgid "AstroWay: Synastry Compatibility"
-msgstr "AstroWay: Natal Chart"
+msgctxt "block title"
+msgid "Synastry Compatibility (AstroWay)"
+msgstr "Natal Chart (AstroWay)"
 
 #: blocks/synastry/block.json
+msgctxt "block keyword"
+msgid "synastry"
+msgstr ""
+
+#: blocks/synastry/block.json blocks/zodiac-compatibility/block.json
+msgctxt "block keyword"
+msgid "compatibility"
+msgstr ""
+
+#: blocks/synastry/block.json blocks/zodiac-compatibility/block.json
+msgctxt "block keyword"
+msgid "love"
+msgstr ""
+
+#: blocks/synastry/block.json
+msgctxt "block description"
 msgid ""
 "Compatibility score and the cross-aspects behind it for two birth charts, "
 "rendered into the page by api.astroway.info. No key needed."
@@ -3333,10 +3720,22 @@ msgstr ""
 "sleutel nodig."
 
 #: blocks/transit-timeline/block.json
-msgid "AstroWay: Moon Transit Timeline"
-msgstr "AstroWay: Tijdlijn van maantransieten"
+msgctxt "block title"
+msgid "Moon Transit Timeline (AstroWay)"
+msgstr "Tijdlijn van maantransieten (AstroWay)"
+
+#: blocks/transit-timeline/block.json blocks/transit/block.json
+msgctxt "block keyword"
+msgid "transit"
+msgstr ""
 
 #: blocks/transit-timeline/block.json
+msgctxt "block keyword"
+msgid "week"
+msgstr ""
+
+#: blocks/transit-timeline/block.json
+msgctxt "block description"
 msgid ""
 "The next seven days of Moon ingresses, served by api.astroway.info as a "
 "responsive iframe."
@@ -3345,10 +3744,17 @@ msgstr ""
 "api.astroway.info als een responsief iframe."
 
 #: blocks/transit/block.json
-msgid "AstroWay: Transit Sky"
-msgstr "AstroWay: Natal Chart"
+msgctxt "block title"
+msgid "Transit Sky (AstroWay)"
+msgstr "Natal Chart (AstroWay)"
 
 #: blocks/transit/block.json
+msgctxt "block keyword"
+msgid "sky"
+msgstr ""
+
+#: blocks/transit/block.json
+msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
@@ -3356,10 +3762,17 @@ msgstr ""
 "Natal chart-wiel geleverd door api.astroway.info als een responsieve iframe."
 
 #: blocks/weekly-horoscope/block.json
-msgid "AstroWay: Weekly Horoscope"
-msgstr "AstroWay: Wekelijkse horoscoop"
+msgctxt "block title"
+msgid "Horoscope for the Week (AstroWay)"
+msgstr "Horoscoop voor de week (AstroWay)"
 
 #: blocks/weekly-horoscope/block.json
+msgctxt "block keyword"
+msgid "weekly"
+msgstr ""
+
+#: blocks/weekly-horoscope/block.json
+msgctxt "block description"
 msgid ""
 "Horoscope for the current week, anchored to Monday, rendered into the page "
 "as text."
@@ -3368,17 +3781,31 @@ msgstr ""
 " de pagina als tekst."
 
 #: blocks/yearly-horoscope/block.json
-msgid "AstroWay: Yearly Horoscope"
-msgstr "AstroWay: Jaarhoroscoop"
+msgctxt "block title"
+msgid "Horoscope for the Year (AstroWay)"
+msgstr "Jaarhoroscoop (AstroWay)"
 
 #: blocks/yearly-horoscope/block.json
+msgctxt "block keyword"
+msgid "yearly"
+msgstr ""
+
+#: blocks/yearly-horoscope/block.json
+msgctxt "block description"
 msgid "The year ahead for one zodiac sign."
 msgstr "Het komende jaar voor één sterrenbeeld."
 
 #: blocks/zodiac-compatibility/block.json
-msgid "AstroWay: Zodiac Compatibility"
-msgstr "AstroWay: Compatibiliteit tussen sterrenbeelden"
+msgctxt "block title"
+msgid "Zodiac Compatibility (AstroWay)"
+msgstr "Compatibiliteit tussen sterrenbeelden (AstroWay)"
 
 #: blocks/zodiac-compatibility/block.json
+msgctxt "block keyword"
+msgid "signs"
+msgstr ""
+
+#: blocks/zodiac-compatibility/block.json
+msgctxt "block description"
 msgid "How two zodiac signs read together."
 msgstr "Hoe twee sterrenbeelden bij elkaar passen."

@@ -329,13 +329,24 @@ class PublicData {
 			}
 		}
 
-		return [
-			'date'           => $date,
-			'time'           => $time,
-			'latitude'       => (float) ( $params['lat'] ?? 0 ),
-			'longitude'      => (float) ( $params['lng'] ?? 0 ),
-			'timezoneOffset' => (float) ( $params['tz'] ?? 0 ),
+		$payload = [
+			'date'      => $date,
+			'time'      => $time,
+			'latitude'  => (float) ( $params['lat'] ?? 0 ),
+			'longitude' => (float) ( $params['lng'] ?? 0 ),
 		];
+
+		// No zone given but a place is: the api looks the zone up from the
+		// coordinates and applies the offset its clocks kept on that date,
+		// summer time included. Before, the time went out as UTC under a 200.
+		// An explicit tz, including "0", is sent as it was.
+		if ( '' === trim( (string) ( $params['tz'] ?? '' ) ) && '' !== $have['latitude'] && '' !== $have['longitude'] ) {
+			$payload['timezone'] = 'auto';
+		} else {
+			$payload['timezoneOffset'] = (float) ( $params['tz'] ?? 0 );
+		}
+
+		return $payload;
 	}
 
 	/**
