@@ -28,11 +28,16 @@
 		"layout": {
 			"type": "string",
 			"default": "stack"
+		},
+		"look": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"providesContext": {
 		"astroway/sign": "sign",
-		"astroway/lang": "lang"
+		"astroway/lang": "lang",
+		"astroway/look": "look"
 	},
 	"editorScript": "astroway-blocks-editor"
 }

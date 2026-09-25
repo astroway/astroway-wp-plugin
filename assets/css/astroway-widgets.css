@@ -83,558 +83,2152 @@
 	}
 }
 
+
 /* ── Server-rendered cards ───────────────────────────────────────────────────
-   These hold real text in the page DOM, so unlike the iframe they inherit the
-   theme's font and colour by default. Every value is a custom property a theme
-   can override; the defaults deliberately borrow currentColor rather than
-   picking a palette, so a card looks native in a light and a dark theme alike
-   without either side knowing about the other. */
+   Real text in the page DOM, in the theme's font. No @layer: a layered rule
+   loses to every unlayered theme rule, even `button {}`, so every rule here
+   hangs off the card root instead. Public API for themes: the --astroway-*
+   properties below, set on .astroway-card. */
 
-.astroway-card {
-	--astroway-card-bg: transparent;
-	--astroway-card-fg: inherit;
-	--astroway-card-muted: color-mix(in srgb, currentColor 62%, transparent);
-	--astroway-card-line: color-mix(in srgb, currentColor 18%, transparent);
-	--astroway-card-accent: currentColor;
-	--astroway-card-band: color-mix(in srgb, currentColor 5%, transparent);
-	--astroway-card-stripe: color-mix(in srgb, currentColor 2.5%, transparent);
-	--astroway-card-current: color-mix(in srgb, currentColor 11%, transparent);
-	--astroway-card-surface: var(--wp--preset--color--base, Canvas);
-	--astroway-card-radius: 10px;
-	--astroway-card-padding: 1.25em 1.4em;
-	--astroway-card-max-width: 34em;
-	--astroway-card-margin: 1.5em 0;
-
-	display: block;
-	box-sizing: border-box;
-	/* Never wider than the theme's content column: a block theme sets that
-	   width on the direct children of the post, and a plain max-width here
-	   overrode it, so a 42em card stood out past the column at 1440px. */
-	max-width: min(var(--astroway-card-max-width), var(--wp--style--global--content-size, 100%), 100%);
-	margin: var(--astroway-card-margin);
-	padding: var(--astroway-card-padding);
-	background: var(--astroway-card-bg);
-	color: var(--astroway-card-fg);
-	border: 1px solid var(--astroway-card-line);
-	border-radius: var(--astroway-card-radius);
+/* Tokens. Instrument is the default look: lapis and gilt, as on astronomical
+   clocks. Neutrals are the theme's own text colour at lower strengths. */
+.astroway-card,
+.astroway-section {
+	--astroway-muted: var(--astroway-card-muted, color-mix(in oklab, currentColor 62%, transparent));
+	--astroway-line: var(--astroway-card-line, color-mix(in oklab, currentColor 14%, transparent));
+	--astroway-line-strong: color-mix(in oklab, currentColor 30%, transparent);
+	--astroway-tint: color-mix(in oklab, currentColor 4%, transparent);
+	--astroway-accent: #2b4ea6;
+	--astroway-gilt: #86620f;
+	--astroway-tens: #b1261d;
+	--astroway-harm: var(--astroway-accent);
+	--astroway-accent-tint: color-mix(in oklab, var(--astroway-accent) 10%, transparent);
+	--astroway-surface: var(--astroway-card-bg, transparent);
+	--astroway-radius: var(--astroway-card-radius, 16px);
+	--astroway-radius-inner: 10px;
 }
 
-/* Older engines without color-mix fall back to a flat tint rather than an
-   invisible border. */
-@supports not (color: color-mix(in srgb, currentColor 50%, transparent)) {
-	.astroway-card {
-		--astroway-card-muted: inherit;
-		--astroway-card-line: rgba(128, 128, 128, 0.32);
-		--astroway-card-band: rgba(128, 128, 128, 0.09);
-		--astroway-card-stripe: rgba(128, 128, 128, 0.045);
-		--astroway-card-current: rgba(128, 128, 128, 0.19);
+/* The theme's text colour says whether the background is dark: lighter than
+   0.6 in OKLCH means a dark page, or a dark section inside a light one, and
+   the accents switch to their light forms. No script, no measuring. */
+@supports (color: oklch(from currentColor l c h)) {
+	.astroway-card,
+	.astroway-section {
+		--astroway-accent: oklch(from currentColor calc(0.45 + 0.355 * clamp(0, (l - 0.6) * 50, 1)) calc(0.148 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(264.7 + 7.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
+		--astroway-gilt: oklch(from currentColor calc(0.52 + 0.302 * clamp(0, (l - 0.6) * 50, 1)) calc(0.102 + 0.009 * clamp(0, (l - 0.6) * 50, 1)) calc(81.9 + 6.8 * clamp(0, (l - 0.6) * 50, 1)) / 1);
+		--astroway-tens: oklch(from currentColor calc(0.498 + 0.284 * clamp(0, (l - 0.6) * 50, 1)) calc(0.177 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(29 - 2.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
 	}
 }
 
-.astroway-card__header {
+/* Browsers without relative colours: a site can ask for the dark forms. */
+.astroway-card[data-astroway-scheme="dark"],
+.astroway-section[data-astroway-scheme="dark"] {
+	--astroway-accent: #a9bcff;
+	--astroway-gilt: #e2c16c;
+	--astroway-tens: #ff978c;
+}
+
+/* Native: no colour of its own. Meaning is carried by stroke and shape. */
+.astroway-card[data-astroway-look="native"],
+.astroway-section[data-astroway-look="native"] {
+	--astroway-accent: currentColor;
+	--astroway-gilt: currentColor;
+	--astroway-tens: currentColor;
+	--astroway-harm: currentColor;
+	--astroway-accent-tint: color-mix(in oklab, currentColor 8%, transparent);
+}
+
+/* Night sky: its own surface, the same on any site. Only the card takes it;
+   a section's tab strip sits on the page, not on the night. */
+.astroway-card[data-astroway-look="night"] {
+	--astroway-muted: rgba(235, 232, 255, 0.66);
+	--astroway-line: rgba(232, 203, 132, 0.2);
+	--astroway-line-strong: rgba(232, 203, 132, 0.42);
+	--astroway-tint: rgba(255, 255, 255, 0.035);
+	--astroway-accent: #e8c878;
+	--astroway-gilt: #e8c878;
+	--astroway-harm: #8fd4ff;
+	--astroway-tens: #ff9d8e;
+	--astroway-accent-tint: rgba(232, 200, 120, 0.14);
+	/* Stars only in the margin: inside the text one reads as a full stop. */
+	--astroway-surface:
+		radial-gradient(1.2px 1.2px at 1.6% 14%, rgba(255, 255, 255, 0.7), transparent 60%),
+		radial-gradient(1px 1px at 98.4% 7%, rgba(255, 255, 255, 0.55), transparent 60%),
+		radial-gradient(1.4px 1.4px at 98.2% 58%, rgba(255, 236, 190, 0.65), transparent 60%),
+		radial-gradient(1px 1px at 1.4% 71%, rgba(255, 255, 255, 0.45), transparent 60%),
+		radial-gradient(1px 1px at 61% 0.9%, rgba(255, 255, 255, 0.45), transparent 60%),
+		radial-gradient(1.2px 1.2px at 27% 99.2%, rgba(255, 255, 255, 0.5), transparent 60%),
+		linear-gradient(160deg, #141a46 0%, #0d1130 55%, #0a0d24 100%);
+
+	color: #ebe8ff;
+	border-color: rgba(232, 203, 132, 0.3);
+}
+
+/* Old engines without color-mix: flat greys rather than invisible lines. */
+@supports not (color: color-mix(in srgb, currentColor 50%, transparent)) {
+	.astroway-card,
+	.astroway-section {
+		--astroway-muted: inherit;
+		--astroway-line: rgba(128, 128, 128, 0.32);
+		--astroway-line-strong: rgba(128, 128, 128, 0.5);
+		--astroway-tint: rgba(128, 128, 128, 0.08);
+		--astroway-accent-tint: rgba(43, 78, 166, 0.1);
+	}
+}
+
+/* ── Base ── */
+
+.astroway-card {
+	container-type: inline-size;
+	display: block;
+	box-sizing: border-box;
+	inline-size: 100%;
+	/* Never wider than the theme's content column. */
+	max-inline-size: min(var(--astroway-card-max-width, 44em), var(--wp--style--global--content-size, 100%), 100%);
+	margin: var(--astroway-card-margin, 1.5em 0);
+	padding: var(--astroway-card-padding, clamp(16px, 4%, 26px));
+	background: var(--astroway-surface);
+	border: 1px solid var(--astroway-line);
+	border-radius: var(--astroway-radius);
+	line-height: 1.55;
+	text-align: start;
+	overflow-wrap: break-word;
+	/* Core Columns sets word-break: break-word, which splits words anywhere. */
+	word-break: normal;
+}
+
+.astroway-card *,
+.astroway-card *::before,
+.astroway-card *::after {
+	box-sizing: border-box;
+}
+
+.astroway-card :focus-visible {
+	outline: 2px solid var(--astroway-accent);
+	outline-offset: 2px;
+}
+
+/* Themes outline every :focus, a mouse click included (Twenty Twenty-Five
+   does); the ring is for the keyboard. */
+.astroway-card :focus:not(:focus-visible),
+.astroway-section :focus:not(:focus-visible) {
+	outline: none;
+}
+
+.astroway-sr {
+	position: absolute !important;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Glyphs are SVG, never Unicode: iOS turns the zodiac into emoji. The box
+   is 1.24em tall with the baseline where the text's is, see tools/glyphs. */
+.astroway-card .astroway-glyph {
+	display: inline-block;
+	inline-size: auto;
+	block-size: 1.24em;
+	max-inline-size: none;
+	vertical-align: -0.263em;
+	fill: currentColor;
+	overflow: visible;
+}
+
+.astroway-card .astroway-defs {
+	position: absolute;
+	inline-size: 0;
+	block-size: 0;
+	overflow: hidden;
+}
+
+/* Theme button styles leak into anything that is a <button> or an <a>;
+   everything a theme usually sets is reset for the controls here. */
+.astroway-card :is(.astroway-tabs__tab, .astroway-chip, .astroway-iconbtn, .astroway-signs__sign),
+.astroway-section :is(.astroway-tabs__tab) {
+	appearance: none;
+	margin: 0;
+	font: inherit;
+	letter-spacing: normal;
+	text-transform: none;
+	text-decoration: none;
+	text-shadow: none;
+	box-shadow: none;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	min-inline-size: 0;
+	inline-size: auto;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ── Header: medallion, title, meta, actions ── */
+
+/* Every card closes its header with the same rule. Three of them ran the
+   heading straight into the content while their neighbours had a line, and
+   side by side that read as two different components. */
+.astroway-card .astroway-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 14px;
+	margin: 0;
+	padding: 0 0 12px;
+	border: 0;
+	border-block-end: 1px solid var(--astroway-line);
+}
+
+/* The title keeps at least 9em; below that the arrows move under it. */
+.astroway-card .astroway-card__heading {
+	flex: 1 1 9em;
+	min-inline-size: 0;
+}
+
+.astroway-card .astroway-card__title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.14em;
+	font-weight: 600;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-transform: none;
+	text-wrap: balance;
+	color: inherit;
+}
+
+/* A row, not a paragraph: the meta line carries a badge beside the date on
+   the retrograde card, and inline boxes with their own line-height overlapped
+   the time when the line wrapped. */
+.astroway-card .astroway-card__meta {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
-	justify-content: space-between;
-	gap: 0.25em 1em;
-	margin-block-end: 0.9em;
-	padding-block-end: 0.8em;
-	border-block-end: 1px solid var(--astroway-card-line);
+	gap: 2px 1.1em;
+	margin: 1px 0 0;
+	font-size: 0.86em;
+	color: var(--astroway-muted);
+	overflow-x: clip;
 }
 
-.astroway-card__title {
+/* The dot hangs into the gap before the date; when the date wraps to a line of
+   its own, the dot lands left of the meta box and is clipped, not orphaned. */
+.astroway-card .astroway-card__when {
+	margin-inline-start: -1.1em;
+}
+
+.astroway-card .astroway-card__when > [aria-hidden] {
+	display: inline-block;
+	inline-size: 1.1em;
+	text-align: center;
+}
+
+.astroway-card .astroway-card__meta > .astroway-badge {
+	margin-inline-start: 0;
+}
+
+.astroway-card .astroway-card__actions {
+	display: flex;
+	gap: 4px;
+	flex: none;
+	margin-inline-start: auto;
+}
+
+.astroway-card .astroway-medal {
+	flex: none;
+	inline-size: 50px;
+	block-size: 50px;
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-medal svg {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	max-inline-size: none;
+}
+
+@container (max-width: 340px) {
+	.astroway-card .astroway-medal {
+		inline-size: 40px;
+		block-size: 40px;
+	}
+
+	/* The arrows drop to their own row rather than the medallion vanishing:
+	   hiding it left the first card on a phone looking like a cut-down version
+	   of the nine below it. */
+	.astroway-card .astroway-card__header:has(> .astroway-card__actions) .astroway-card__heading {
+		flex: 1 1 60%;
+	}
+
+	.astroway-card .astroway-card__header:has(> .astroway-card__actions) .astroway-card__actions {
+		margin-inline-start: auto;
+	}
+}
+
+.astroway-medal__ring {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1;
+}
+
+.astroway-medal__ring2,
+.astroway-medal__tick {
+	fill: none;
+	stroke: var(--astroway-line-strong);
+	stroke-width: 1;
+}
+
+.astroway-medal__glyph {
+	fill: currentColor;
+}
+
+/* ── Icon button (date navigation) ── */
+
+.astroway-card .astroway-iconbtn {
+	display: grid;
+	place-items: center;
+	inline-size: 44px;
+	block-size: 44px;
+	padding: 0;
+	border: 1px solid var(--astroway-line);
+	border-radius: var(--astroway-radius-inner);
+}
+
+.astroway-card .astroway-iconbtn:hover {
+	background: var(--astroway-tint);
+}
+
+.astroway-card .astroway-iconbtn.is-disabled {
+	opacity: 0.4;
+	cursor: default;
+	pointer-events: none;
+}
+
+.astroway-card .astroway-iconbtn svg {
+	inline-size: 16px;
+	block-size: 16px;
+}
+
+.astroway-card .astroway-iconbtn:dir(rtl) svg {
+	transform: scaleX(-1);
+}
+
+/* ── Facts: the big three, or label and value rows ── */
+
+.astroway-card .astroway-facts {
+	display: grid;
+	margin: 16px 0 0;
+	padding: 0;
+}
+
+.astroway-card .astroway-facts dt {
 	margin: 0;
-	font-size: 1.05em;
+	font-size: 0.78em;
+	font-weight: 400;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-facts dd {
+	margin: 0;
+	font-weight: 600;
 	line-height: 1.3;
 }
 
-.astroway-card__meta {
-	font-size: 0.85em;
-	color: var(--astroway-card-muted);
+.astroway-card .astroway-facts .astroway-glyph {
+	color: var(--astroway-accent);
 }
 
-.astroway-card__lead {
-	margin: 0 0 0.5em;
-	font-size: 1.25em;
-	font-weight: 600;
-	line-height: 1.25;
-	color: var(--astroway-card-accent);
+.astroway-facts__sub {
+	font-size: 0.8em;
+	font-weight: 400;
+	color: var(--astroway-muted);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
 }
 
-.astroway-card__glyph {
-	font-size: 1.15em;
-	line-height: 1;
+.astroway-card .astroway-facts--trio {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	border-block: 1px solid var(--astroway-line);
 }
 
-.astroway-card__body {
-	margin: 0;
+/* The same inset on both sides of every cell: with padding only after the
+   divider the three texts sat at uneven steps across the row. */
+.astroway-facts--trio .astroway-facts__item {
+	min-inline-size: 0;
+	padding-block: 10px 11px;
+	padding-inline: 0 12px;
 }
 
-.astroway-card__body p {
-	margin: 0 0 0.85em;
+.astroway-facts--trio .astroway-facts__item + .astroway-facts__item {
+	border-inline-start: 1px solid var(--astroway-line);
+	padding-inline-start: 12px;
 }
 
-.astroway-card__body p:last-child {
-	margin-bottom: 0;
+/* The glyph belongs to the word it marks: on a narrow cell it dropped to a
+   line of its own in one column and stayed inline in the other two, which
+   made the middle cell a line taller than its neighbours. */
+.astroway-card .astroway-facts--trio dd > .astroway-glyph {
+	flex: none;
 }
 
-.astroway-card__keywords {
-	margin: 0 0 0.75em;
-	font-size: 0.9em;
-	color: var(--astroway-card-muted);
-}
-
-.astroway-card__details {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 0.35em 1em;
-	margin: 0;
-}
-
-.astroway-card__details dt {
-	font-size: 0.9em;
-	color: var(--astroway-card-muted);
-}
-
-.astroway-card__details dd {
-	margin: 0;
-	font-size: 0.95em;
-}
-
-.astroway-card__themes {
+.astroway-card .astroway-facts--trio dd {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.4em;
-	margin: 0;
-	padding: 0;
-	list-style: none;
+	align-items: baseline;
+	gap: 0 0.28em;
+	font-size: 0.96em;
 }
 
-.astroway-card__themes li {
-	padding: 0.15em 0.6em;
-	font-size: 0.85em;
-	border: 1px solid var(--astroway-card-line);
-	border-radius: 999px;
+/* The degree on a line of its own, always: three equal cells, one baseline. */
+.astroway-facts--trio .astroway-facts__sub {
+	flex-basis: 100%;
 }
 
-.astroway-card__note {
-	margin-top: 1em;
-	padding-top: 0.75em;
-	border-top: 1px solid var(--astroway-card-line);
-	font-size: 0.8em;
-	line-height: 1.45;
-	color: var(--astroway-card-muted);
+/* The label takes what it needs up to two fifths, and the value keeps the
+   rest: with `auto` a two-word label squeezed "October 24, 2026" into two
+   lines and left the year alone on the second. */
+.astroway-card .astroway-facts--list {
+	grid-template-columns: minmax(min-content, 0.4fr) minmax(0, 1fr);
+	gap: 0;
 }
 
-@media (max-width: 480px) {
-	.astroway-card {
-		--astroway-card-padding: 1em;
-		--astroway-card-max-width: 100%;
-	}
+/* The rule belongs to the row, not to its two cells: a muted label would
+   draw its half of the line in its own, lighter colour. */
+.astroway-card .astroway-facts--list .astroway-facts__item {
+	display: grid;
+	grid-column: 1 / -1;
+	grid-template-columns: subgrid;
+	border-block-end: 1px solid var(--astroway-line);
+}
 
-	.astroway-card__details {
+.astroway-card .astroway-facts--list .astroway-facts__item:last-child {
+	border-block-end: 0;
+}
+
+.astroway-card .astroway-facts--list dt,
+.astroway-card .astroway-facts--list dd {
+	padding-block: 7px;
+}
+
+.astroway-card .astroway-facts--list dt {
+	padding-inline-end: 16px;
+	font-size: 0.9em;
+}
+
+.astroway-card .astroway-facts--list dd {
+	font-weight: 500;
+	text-align: end;
+	font-variant-numeric: tabular-nums;
+}
+
+@container (max-width: 280px) {
+	.astroway-card .astroway-facts--list {
 		grid-template-columns: 1fr;
-		gap: 0.1em;
 	}
 
-	.astroway-card__details dd {
-		margin-bottom: 0.5em;
+	.astroway-card .astroway-facts--list dt {
+		padding-block-end: 0;
+	}
+
+	.astroway-card .astroway-facts--list dd {
+		padding-block-start: 0;
+		text-align: start;
+	}
+
+}
+
+/* Three narrow columns leave "Ascendant" no room: the trio becomes rows. In em,
+   because the word grows with the theme's type while pixels stay put. */
+@container (max-width: 18.5em) {
+	.astroway-card .astroway-facts--trio {
+		grid-template-columns: 1fr;
+	}
+
+	.astroway-facts--trio .astroway-facts__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 12px;
+		padding-block: 8px;
+		padding-inline-end: 0;
+	}
+
+	.astroway-facts--trio .astroway-facts__item + .astroway-facts__item {
+		border-inline-start: 0;
+		border-block-start: 1px solid var(--astroway-line);
+		padding-inline-start: 0;
+	}
+
+	.astroway-card .astroway-facts--trio dd {
+		justify-content: flex-end;
+		text-align: end;
 	}
 }
 
-/* Natal card: the wheel keeps its own sizing, the text below it is a table so a
-   screen reader can navigate it by row and column. */
+/* ── Tabs. Without JS every panel shows, under its own heading. ── */
 
-.astroway-card--natal {
-	--astroway-card-max-width: 40em;
+.astroway-card .astroway-tabs {
+	margin-block-start: 14px;
 }
 
-.astroway-card--natal .astroway-embed {
-	margin: 0 0 1em;
-	min-height: 0;
+.astroway-tabs__list {
+	display: none;
+	gap: 2px;
+	border-block-end: 1px solid var(--astroway-line);
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scrollbar-width: none;
 }
 
-/* A subtitle opens a section, and a section inside a card needs a line above it
-   or the card reads as one long column. Not after the header, which has its own. */
-.astroway-card__subtitle {
-	margin-block: 1.4em 0.5em;
-	padding-block-start: 1em;
-	border-block-start: 1px solid var(--astroway-card-line);
-	font-size: 0.95em;
+.astroway-tabs__list::-webkit-scrollbar {
+	display: none;
+}
+
+.astroway-js .astroway-tabs__list {
+	display: flex;
+}
+
+.astroway-card .astroway-tabs__tab,
+.astroway-section .astroway-tabs__tab {
+	flex: none;
+	min-block-size: 44px;
+	padding: 9px 12px;
+	border: 0;
+	border-block-end: 2px solid transparent;
+	border-radius: 0;
+	margin-block-end: -1px;
+	font-size: 0.94em;
+	line-height: 1.3;
+	white-space: nowrap;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-tabs__tab:hover,
+.astroway-section .astroway-tabs__tab:hover {
+	color: inherit;
+}
+
+.astroway-card .astroway-tabs__tab[aria-selected="true"],
+.astroway-section .astroway-tabs__tab[aria-selected="true"] {
+	color: inherit;
 	font-weight: 600;
+	border-block-end-color: var(--astroway-accent);
 }
 
-.astroway-card__header + .astroway-card__subtitle,
-.astroway-card__subtitle:first-child {
-	margin-block-start: 0;
+.astroway-card .astroway-tabs__tab:focus-visible,
+.astroway-section .astroway-tabs__tab:focus-visible {
+	outline: 2px solid var(--astroway-accent);
+	outline-offset: -3px;
+	border-radius: 8px;
+}
+
+/* A narrow card wraps its tabs: scrolled away, the fourth tab was invisible. */
+@container (max-width: 420px) {
+	.astroway-card .astroway-tabs__list {
+		flex-wrap: wrap;
+		overflow: visible;
+	}
+
+	/* Wrapped, an underline on the selected tab sits on the first row while the
+	   strip's own line closes the second: two rules at two heights, and the
+	   upper one stops reading as "this tab". The selected one is a chip here,
+	   so the strip keeps exactly one line. */
+	.astroway-card .astroway-tabs__tab {
+		padding-inline: 10px;
+		border-block-end-color: transparent;
+	}
+
+	.astroway-card .astroway-tabs__tab[aria-selected="true"] {
+		border-start-start-radius: 6px;
+		border-start-end-radius: 6px;
+		background: var(--astroway-accent-tint);
+		color: var(--astroway-accent);
+	}
+}
+
+.astroway-tabs__count {
+	margin-inline-start: 0.3em;
+	font-weight: 400;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Muted only beside a selected label: an unselected tab is muted already. */
+[aria-selected="true"] > .astroway-tabs__count {
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-tabs__panel {
+	padding-block-start: 14px;
+}
+
+.astroway-card .astroway-tabs__heading {
+	margin: 18px 0 4px;
+	font-size: 0.98em;
+	font-weight: 600;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.astroway-js .astroway-tabs__heading {
+	display: none;
+}
+
+.astroway-js .astroway-tabs__panel:not(.is-selected) {
+	display: none;
+}
+
+/* ── Section inside a card ── */
+
+.astroway-card .astroway-card__section {
+	margin-block-start: 18px;
+	padding-block-start: 14px;
+	border-block-start: 1px solid var(--astroway-line);
+}
+
+/* The header already draws the line; a second one right under it reads as a gap. */
+.astroway-card .astroway-card__header + .astroway-card__section {
+	margin-block-start: 14px;
 	padding-block-start: 0;
 	border-block-start: 0;
 }
 
-/* One framed table rather than a stack of underlined rows. The frame is what
-   makes a table read as a block of its own inside the card, and the banded
-   header is what keeps the column names from reading as a first row of data.
-   Everything here is `start` and `block`/`inline` rather than left and bottom,
-   because the plugin ships Arabic and a table hard-aligned to the left is
-   wrong in it. */
-
-.astroway-card__placements {
-	inline-size: 100%;
-	margin-block-start: 0.6em;
-	border-collapse: separate;
-	border-spacing: 0;
-	overflow: hidden;
-	font-size: 0.92em;
-	border: 1px solid var(--astroway-card-line);
-	border-radius: calc(var(--astroway-card-radius) - 4px);
+.astroway-card .astroway-card__subtitle {
+	margin: 0 0 4px;
+	padding: 0;
+	border: 0;
+	font-size: 1.04em;
+	font-weight: 650;
+	line-height: 1.35;
+	letter-spacing: normal;
+	text-transform: none;
 }
 
-.astroway-card__placements caption {
-	margin-block-end: 0.4em;
-	font-size: 1.03em;
-	font-weight: 600;
-	text-align: start;
-}
-
-.astroway-card__placements thead tr {
-	background: var(--astroway-card-band);
-}
-
-.astroway-card__placements th,
-.astroway-card__placements td {
-	padding: 0.45em 0.7em;
-	text-align: start;
-	vertical-align: baseline;
-}
-
-.astroway-card__placements th {
-	font-weight: 600;
-	font-size: 0.86em;
-	letter-spacing: 0.01em;
-	white-space: nowrap;
-	color: var(--astroway-card-muted);
-}
-
-.astroway-card__placements thead th {
-	border-block-end: 1px solid var(--astroway-card-line);
-}
-
-/* Stripes rather than a rule per row: at twenty-four rows the rules become a
-   grid the eye has to read through, and the stripe does the same job quietly.
-   On the row, not the cells: the tint mixes currentColor, and the muted cells
-   would each mix a lighter one. The row header gets no rule of its own either,
-   see thead th above: a rule under each planet name and none under the data
-   cells made the name column read as a white strip beside a grey row. */
-.astroway-card__placements tbody tr:nth-child(even) {
-	background: var(--astroway-card-stripe);
-}
-
-/* Short values that read wrong broken in two, like "House 9". */
-.astroway-card__nowrap {
-	white-space: nowrap;
-}
-
-/* The muted last column belongs to the natal placements, where it holds the
-   house number beside a position. On the sky tables the last column is the
-   answer, and greying it out was a heuristic firing where it was never meant to. */
-.astroway-card--natal .astroway-card__placements td:last-child,
-.astroway-card--natal .astroway-card__placements .astroway-card__nowrap {
+.astroway-card .astroway-card__intro {
+	margin: 0 0 10px;
 	font-size: 0.88em;
-	color: var(--astroway-card-muted);
+	color: var(--astroway-muted);
 }
 
-.astroway-card__aspects {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.3em 0.9em;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	font-size: 0.9em;
+/* ── Accordion: one open at a time via the name attribute ── */
+
+.astroway-card .astroway-acc {
+	margin-block-start: 10px;
+	border-block-start: 1px solid var(--astroway-line);
 }
 
-@media (max-width: 480px) {
-	.astroway-card__placements {
-		font-size: 0.86em;
-	}
-
-	.astroway-card__placements th,
-	.astroway-card__placements td {
-		padding-inline: 0.35em;
-	}
-
-	/* A hair smaller so the four natal columns fit a 375px phone whole; below
-	   that the table scrolls, with the edge shadow saying so. */
-	.astroway-card--natal .astroway-card__placements {
-		font-size: 0.82em;
-	}
-}
-
-/* Bodygraph card: all text, no drawing to make room for. */
-
-.astroway-card--bodygraph {
-	--astroway-card-max-width: 40em;
-}
-
-.astroway-card__channels {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.3em 0.9em;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	font-size: 0.9em;
-}
-
-/* A single placement: one answer, so the sign itself carries the card. */
-
-.astroway-card--moon-sign,
-.astroway-card--rising-sign {
-	--astroway-card-max-width: 26em;
-}
-
-.astroway-card--moon-sign .astroway-card__lead,
-.astroway-card--rising-sign .astroway-card__lead {
-	font-size: 1.5em;
-	line-height: 1.2;
-}
-
-/* The section only groups: it sets the sign for the blocks inside and stays out
-   of the way of whatever layout the theme gives them. */
-
-.astroway-section {
-	display: flex;
-	flex-direction: column;
-	gap: 1.25em;
-}
-
-/* Generated cards: shapes we did not choose, so the layout has to survive
-   anything from three fields to a thirteen-column table. */
-
-.astroway-card--generic {
-	--astroway-card-max-width: 44em;
-}
-
-/* A shadow at whichever edge still hides columns, CSS only. The two covers
-   scroll with the table (local) and sit over the two shadows fixed to the
-   box (scroll), so a shadow shows only while there is more to that side. The
-   covers have to be opaque, hence the surface colour: the theme's base colour
-   where a block theme defines one, the page canvas otherwise. A theme that
-   gives the card its own background sets --astroway-card-surface to match. */
-.astroway-card__scroll {
-	--astroway-card-shade: color-mix(in srgb, currentColor 30%, transparent);
-
-	max-width: 100%;
-	overflow-x: auto;
-	overscroll-behavior-x: contain;
-	background:
-		linear-gradient(to right, var(--astroway-card-surface) 30%, transparent) left center / 2.5em 100% no-repeat local,
-		linear-gradient(to left, var(--astroway-card-surface) 30%, transparent) right center / 2.5em 100% no-repeat local,
-		radial-gradient(farthest-side at 0 50%, var(--astroway-card-shade), transparent) left center / 1.1em 100% no-repeat scroll,
-		radial-gradient(farthest-side at 100% 50%, var(--astroway-card-shade), transparent) right center / 1.1em 100% no-repeat scroll;
-}
-
-@supports not (color: color-mix(in srgb, currentColor 50%, transparent)) {
-	.astroway-card__scroll {
-		--astroway-card-shade: rgba(128, 128, 128, 0.35);
-	}
-}
-
-.astroway-card__scroll .astroway-card__placements {
-	min-width: max-content;
-}
-
-/* The natal table wraps its positions rather than scrolling at every width:
-   it only scrolls when even the shortest layout does not fit, at 320px. */
-.astroway-card--natal .astroway-card__scroll .astroway-card__placements {
-	min-width: 0;
-}
-
-.astroway-card--natal .astroway-card__placements tbody th {
-	white-space: normal;
-}
-
-.astroway-card--generic .astroway-card__subtitle {
-	margin-top: 1.4em;
-}
-
-/* Sky cards: what the sky is doing right now. Each is a short answer over a
-   table, and in two of them exactly one row is the answer. */
-
-.astroway-card--retrograde,
-.astroway-card--retrogrades,
-.astroway-card--moon-voc,
-.astroway-card--planetary-hours {
-	--astroway-card-max-width: 42em;
-}
-
-/* The row the reader is inside: the current planetary hour, the void of course
-   window that is open. Weight and a wash rather than a colour, so it reads the
-   same in a dark theme and to anyone who cannot see the wash.
-   The wash is four times the zebra stripe on purpose: at the same strength the
-   marked row landed on an even row and disappeared into the striping. */
-.astroway-card__placements tbody tr.astroway-card__row--current {
-	background: var(--astroway-card-current);
-}
-
-.astroway-card__row--current > * {
-	font-weight: 600;
-}
-
-/* "Yes, Mercury is retrograde" is the reason the widget is on the page; the
-   other answer is the quiet one. */
-.astroway-card__lead--no {
-	color: var(--astroway-card-muted);
-	font-weight: 500;
-}
-
-/* Twenty-four rows of two words each: the hour table can afford to be tighter
-   than the placements it borrows its styling from. */
-.astroway-card--planetary-hours .astroway-card__placements td {
-	padding-top: 0.22em;
-	padding-bottom: 0.22em;
-}
-
-/* Sign cards: one is an essay, one is six facts. */
-
-.astroway-card--zodiac-compatibility {
-	--astroway-card-max-width: 44em;
-}
-
-.astroway-card--chinese-zodiac {
-	--astroway-card-max-width: 26em;
-}
-
-.astroway-card--chinese-zodiac .astroway-card__lead {
-	display: flex;
-	align-items: center;
-	gap: 0.4em;
-}
-
-/* ── Tabs ────────────────────────────────────────────────────────────────────
-   The strip a section grows once the enhancement script runs. Everything here
-   is scoped to `--tabbed`, which only that script adds, so a section that never
-   gets the script keeps its plain stacked layout and none of this applies. */
-
-.astroway-tabs {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.35em;
-	margin-block-end: 1em;
-	padding-block-end: 0.6em;
-	border-block-end: 1px solid var(--astroway-card-line, rgba(128, 128, 128, 0.32));
-}
-
-.astroway-tabs__tab {
-	appearance: none;
-	margin: 0;
-	padding: 0.45em 0.9em;
-	font: inherit;
-	font-size: 0.92em;
-	line-height: 1.3;
-	color: var(--astroway-card-muted, inherit);
-	background: transparent;
-	border: 1px solid transparent;
-	border-radius: 999px;
-	cursor: pointer;
-}
-
-.astroway-tabs__tab:hover {
-	color: inherit;
-	background: var(--astroway-card-stripe, rgba(128, 128, 128, 0.06));
-}
-
-/* Selected rather than active: aria-selected is the state that decides which
-   panel is shown, so the styling reads the same attribute rather than a class
-   that could drift away from it. */
-.astroway-tabs__tab[aria-selected="true"] {
-	color: inherit;
-	font-weight: 600;
-	background: var(--astroway-card-current, rgba(128, 128, 128, 0.14));
-	border-color: var(--astroway-card-line, rgba(128, 128, 128, 0.32));
-}
-
-.astroway-tabs__tab:focus-visible {
-	outline: 2px solid currentColor;
-	outline-offset: 2px;
-}
-
-/* A tabbed panel is the only card on screen, so the margin that separated it
-   from its neighbours is now a gap under the tab strip and nothing else. */
-.astroway-section--tabbed > .astroway-card {
-	margin-block-start: 0;
-}
-
-/* `hidden` is a UA-stylesheet rule, and ANY author rule outranks it. The cards
-   set `display: block` on themselves, so setting the attribute did nothing at
-   all: every panel stayed on screen under the tab strip. Caught by looking at
-   the page; the DOM reported exactly what it was asked to report. */
-.astroway-section--tabbed > [hidden] {
+.astroway-card .astroway-acc__item[hidden] {
 	display: none;
 }
 
-/* Narrow screens: the strip scrolls sideways rather than wrapping into three
-   rows of buttons above a card. */
-@media (max-width: 480px) {
-	.astroway-tabs {
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		overscroll-behavior-x: contain;
-		scrollbar-width: none;
+.astroway-card .astroway-acc__item {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-block-end: 1px solid var(--astroway-line);
+}
+
+.astroway-card .astroway-acc__summary {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-block-size: 48px;
+	padding: 6px 2px;
+	list-style: none;
+	cursor: pointer;
+	font-weight: 400;
+}
+
+.astroway-card .astroway-acc__summary::-webkit-details-marker {
+	display: none;
+}
+
+.astroway-card .astroway-acc__summary::marker {
+	content: "";
+}
+
+.astroway-acc__icon {
+	inline-size: 1.3em;
+	text-align: center;
+	color: var(--astroway-accent);
+	flex: none;
+}
+
+.astroway-acc__title {
+	font-weight: 500;
+}
+
+.astroway-acc__meta {
+	margin-inline-start: auto;
+	white-space: nowrap;
+	font-size: 0.84em;
+	color: var(--astroway-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.astroway-card .astroway-acc__chevron {
+	flex: none;
+	inline-size: 14px;
+	block-size: 14px;
+	color: var(--astroway-muted);
+	transition: transform 0.2s;
+}
+
+.astroway-acc__item[open] > .astroway-acc__summary .astroway-acc__chevron {
+	transform: rotate(180deg);
+}
+
+.astroway-card .astroway-acc__body {
+	padding: 0 2px 12px;
+}
+
+/* ── Aspect rows and marks. Harmony is a circle and a solid line, tension a
+   square and a dashed one: readable without colour. ── */
+
+.astroway-card .astroway-aspects {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.astroway-card .astroway-aspects li {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	gap: 10px;
+	align-items: center;
+	margin: 0;
+	padding: 6px 2px;
+	padding-inline-start: 34px;
+	font-size: 0.9em;
+}
+
+.astroway-card .astroway-aspects li[hidden] {
+	display: none;
+}
+
+@container (max-width: 340px) {
+	.astroway-card .astroway-aspects li {
+		padding-inline-start: 2px;
+	}
+}
+
+.astroway-aspects__orb {
+	color: var(--astroway-muted);
+	font-variant-numeric: tabular-nums;
+	font-size: 0.92em;
+	text-align: end;
+}
+
+.astroway-mark {
+	display: inline-grid;
+	place-items: center;
+	inline-size: 1.5em;
+	block-size: 1.5em;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px var(--astroway-line-strong);
+	font-size: 0.95em;
+	line-height: 1;
+}
+
+.astroway-mark--h {
+	color: var(--astroway-harm);
+	box-shadow: inset 0 0 0 1px var(--astroway-harm);
+}
+
+.astroway-mark--t {
+	color: var(--astroway-tens);
+	box-shadow: inset 0 0 0 1px var(--astroway-tens);
+	border-radius: 3px;
+}
+
+.astroway-card .astroway-mark .astroway-glyph {
+	block-size: 1.1em;
+	vertical-align: 0;
+}
+
+/* ── Chips: filters. They only work with JS, so they only show with it. ── */
+
+.astroway-card .astroway-chips {
+	display: none;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 12px 0 0;
+}
+
+.astroway-js .astroway-card .astroway-chips {
+	display: flex;
+}
+
+.astroway-card .astroway-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-block-size: 36px;
+	padding: 5px 12px;
+	border: 1px solid var(--astroway-line);
+	border-radius: 999px;
+	font-size: 0.82em;
+	line-height: 1.2;
+}
+
+.astroway-card .astroway-chip[aria-pressed="true"] {
+	background: var(--astroway-accent-tint);
+	border-color: var(--astroway-accent);
+	font-weight: 600;
+}
+
+.astroway-chip__count {
+	color: var(--astroway-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.astroway-card .astroway-line {
+	inline-size: 22px;
+	block-size: 8px;
+	flex: none;
+}
+
+/* ── Legend ── */
+
+.astroway-card .astroway-legend {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 6px 16px;
+	margin: 8px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.8em;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-legend li {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+}
+
+.astroway-line--h {
+	stroke: var(--astroway-harm);
+	stroke-width: 1.6;
+}
+
+.astroway-line--t {
+	stroke: var(--astroway-tens);
+	stroke-width: 1.6;
+	stroke-dasharray: 5 3.5;
+}
+
+/* ── Badge ── */
+
+.astroway-badge {
+	display: inline;
+	margin-inline-start: 6px;
+	font-size: 0.78em;
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--astroway-accent);
+	white-space: nowrap;
+}
+
+.astroway-badge--tens {
+	color: var(--astroway-tens);
+}
+
+.astroway-badge--muted {
+	color: var(--astroway-muted);
+	font-weight: 500;
+}
+
+/* ── Table. A scroller when it cannot fit; JS marks the side with more. ── */
+
+.astroway-card .astroway-scroll {
+	max-inline-size: 100%;
+	margin: 0;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+}
+
+.astroway-scroll[data-astroway-more="end"] {
+	mask-image: linear-gradient(to left, transparent, #000 2.5em);
+}
+
+.astroway-scroll[data-astroway-more="start"] {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em);
+}
+
+.astroway-scroll[data-astroway-more="both"] {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em, #000 calc(100% - 2.5em), transparent);
+}
+
+.astroway-scroll[data-astroway-more="end"]:dir(rtl) {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em);
+}
+
+.astroway-scroll[data-astroway-more="start"]:dir(rtl) {
+	mask-image: linear-gradient(to left, transparent, #000 2.5em);
+}
+
+.astroway-card .astroway-table {
+	inline-size: 100%;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 0.9em;
+	font-family: inherit;
+	color: inherit;
+	font-variant-numeric: tabular-nums;
+	background: none;
+}
+
+.astroway-card .astroway-table caption {
+	margin: 0;
+	padding: 0 0 6px;
+	font-size: 0.86em;
+	font-weight: 400;
+	text-align: start;
+	color: var(--astroway-muted);
+	caption-side: top;
+}
+
+.astroway-card .astroway-table :is(th, td) {
+	padding: 8px 8px 8px 0;
+	padding-inline: 0 8px;
+	border: 0;
+	border-block-end: 1px solid var(--astroway-line);
+	background: none;
+	font-size: 1em;
+	font-weight: 400;
+	text-align: start;
+	vertical-align: baseline;
+	color: inherit;
+	/* The card's break-word lets a column shrink below its longest word; a table wraps at spaces. */
+	overflow-wrap: normal;
+}
+
+.astroway-card .astroway-table thead th {
+	padding-block: 6px;
+	font-size: 0.9em;
+	font-weight: 500;
+	color: var(--astroway-muted);
+	white-space: nowrap;
+}
+
+.astroway-card .astroway-table tr {
+	background: none;
+}
+
+.astroway-card .astroway-table :is(th, td):last-child {
+	padding-inline-end: 0;
+}
+
+.astroway-card .astroway-table .astroway-num {
+	text-align: end;
+}
+
+/* One rule per row, and none under the last: the section below brings its own. */
+.astroway-card .astroway-table tbody tr:last-child > * {
+	border-block-end: 0;
+}
+
+.astroway-card .astroway-table .astroway-glyph {
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-table tr.is-current > * {
+	background: var(--astroway-accent-tint);
+	font-weight: 600;
+}
+
+.astroway-card .astroway-table tr.is-current > :first-child {
+	padding-inline-start: 6px;
+}
+
+.astroway-card .astroway-table tr.is-angle th {
+	color: var(--astroway-gilt);
+	font-weight: 700;
+}
+
+.astroway-nowrap,
+.astroway-named {
+	white-space: nowrap;
+}
+
+/* Retrograde: the glyph in the tension colour, its word for screen readers. */
+.astroway-card .astroway-rx {
+	margin-inline-start: 0.2em;
+	color: var(--astroway-tens);
+	font-size: 0.86em;
+}
+
+/* A stacking table turns each row into a small card on a narrow column. The
+   column names move into each cell, so the head row goes: `overflow` does not
+   apply to a row group, and a visually hidden one still painted over row one.
+
+   Each cell is its own label-and-value line. The row used to be a two column
+   grid, which works for two cells and collapses for three: the second column
+   fell to min-content and, with break-word on the card, printed one letter per
+   line. The retrograde board is eight rows of three cells, and on a phone it
+   ran to four screens of ladders. */
+@container (max-width: 400px) {
+	.astroway-card .astroway-table--stack,
+	.astroway-card .astroway-table--stack tbody {
+		display: block;
 	}
 
-	.astroway-tabs::-webkit-scrollbar {
+	.astroway-card .astroway-table--stack thead {
 		display: none;
 	}
 
-	.astroway-tabs__tab {
-		flex: 0 0 auto;
+	.astroway-card .astroway-table--stack tr {
+		display: block;
+		padding-block: 8px;
+		border-block-end: 1px solid var(--astroway-line);
+	}
+
+	.astroway-card .astroway-table--stack :is(th, td) {
+		padding: 0;
+		border: 0;
+		text-align: start;
+	}
+
+	.astroway-card .astroway-table--stack tbody th {
+		display: block;
+		margin-block-end: 2px;
+		font-weight: 600;
+	}
+
+	.astroway-card .astroway-table--stack td {
+		display: grid;
+		grid-template-columns: minmax(0, 11ch) minmax(0, 1fr);
+		gap: 0 10px;
+		padding-block: 1px;
+	}
+
+	/* A cell with nothing in it says nothing: the empty motion column of a
+	   placement should not print its own name eight times down the card. */
+	.astroway-card .astroway-table--stack td:empty {
+		display: none;
+	}
+
+	.astroway-card .astroway-table--stack td::before {
+		content: attr(data-label);
+		color: var(--astroway-muted);
+		font-size: 0.9em;
+	}
+
+	/* The row is one block here, so the mark belongs to the row and not to
+	   each cell: painting the cells left white gaps between them. */
+	.astroway-card .astroway-table--stack tr.is-current {
+		padding-inline: 6px;
+		background: var(--astroway-accent-tint);
+	}
+
+	.astroway-card .astroway-table--stack tr.is-current > * {
+		background: none;
 	}
 }
 
-/* Synastry: one number, then the aspects that produced it. */
+/* ── Matrix: elements by modality ── */
 
-.astroway-card--synastry {
-	--astroway-card-max-width: 42em;
+.astroway-card .astroway-matrix__word {
+	display: inline-block;
+	margin-inline: 1px;
+	font-size: 0.88em;
+	font-weight: 600;
+	color: var(--astroway-muted);
 }
 
-.astroway-card__score {
+
+.astroway-card .astroway-matrix {
+	inline-size: 100%;
+	min-inline-size: 280px;
+	margin: 0;
+	border-collapse: collapse;
+	table-layout: fixed;
+	font-size: 0.86em;
+	font-family: inherit;
+	color: inherit;
+	background: none;
+}
+
+.astroway-card .astroway-matrix th {
+	padding: 6px 2px;
+	border: 0;
+	background: none;
+	font-size: 0.9em;
+	font-weight: 500;
+	text-align: center;
+	color: var(--astroway-muted);
+	/* A fixed layout squeezes the columns; a word never breaks inside. */
+	overflow-wrap: normal;
+}
+
+.astroway-card .astroway-matrix thead td {
+	inline-size: 23%;
+}
+
+.astroway-card .astroway-matrix thead th:last-child {
+	inline-size: 17%;
+}
+
+.astroway-card .astroway-matrix th[scope="row"] {
+	padding-inline-start: 0;
+	text-align: start;
+}
+
+@container (max-width: 360px) {
+	.astroway-card .astroway-matrix th {
+		font-size: 0.78em;
+	}
+}
+
+.astroway-card .astroway-matrix thead td {
+	border: 0;
+}
+
+.astroway-card .astroway-matrix td {
+	block-size: 38px;
+	padding: 6px 4px;
+	border: 1px solid var(--astroway-line);
+	background: none;
+	text-align: center;
+	color: inherit;
+}
+
+.astroway-card .astroway-matrix tbody td {
+	font-size: 1.12em;
+}
+
+.astroway-card .astroway-matrix td .astroway-glyph + .astroway-glyph {
+	margin-inline-start: 0.12em;
+}
+
+.astroway-card .astroway-matrix .astroway-matrix__total {
+	font-size: 1em;
+}
+
+/* The row header is muted already; muting the total again would compound. */
+.astroway-card .astroway-matrix__n {
+	display: none;
+	margin-inline-start: 0.2em;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Narrow: the totals column goes and each row names its own total. */
+@container (max-width: 320px) {
+	.astroway-card .astroway-matrix {
+		min-inline-size: 0;
+	}
+
+	.astroway-card .astroway-matrix :is(thead th:last-child, .astroway-matrix__total) {
+		display: none;
+	}
+
+	.astroway-card .astroway-matrix__n {
+		display: inline;
+	}
+
+	.astroway-card .astroway-matrix th[scope="row"] {
+		inline-size: 30%;
+	}
+}
+
+.astroway-card .astroway-matrix .astroway-matrix__total {
+	font-variant-numeric: tabular-nums;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-matrix .is-dominant {
+	color: inherit;
+	font-weight: 700;
+}
+
+.astroway-card .astroway-matrix td.is-dominant {
+	background: var(--astroway-accent-tint);
+}
+
+/* ── Aspect grid: the staircase, planets along both edges ── */
+
+.astroway-card .astroway-grid {
+	margin: 4px auto 0;
+	border: 0;
+	border-collapse: collapse;
+	background: none;
+	font-size: 1em;
+	color: inherit;
+}
+
+.astroway-card .astroway-grid :is(th, td) {
+	inline-size: 30px;
+	block-size: 30px;
+	min-inline-size: 30px;
+	padding: 0;
+	border: 0;
+	background: none;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: 400;
+	color: inherit;
+}
+
+.astroway-card .astroway-grid td {
+	border: 1px solid var(--astroway-line);
+}
+
+.astroway-card .astroway-grid tr:last-child td {
+	border: 0;
+}
+
+.astroway-card .astroway-grid th .astroway-glyph {
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-grid .astroway-mark {
+	inline-size: 1.35em;
+	block-size: 1.35em;
+	font-size: 0.9em;
+}
+
+/* ── Score: one figure, its meaning, and the same figure as a bar ── */
+
+.astroway-card .astroway-score {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: 4px 16px;
+	margin: 16px 0 0;
+}
+
+.astroway-card .astroway-score__value {
+	margin: 0;
+	font-size: 2.6em;
+	font-weight: 700;
+	line-height: 1.15;
+	color: var(--astroway-accent);
+	font-variant-numeric: tabular-nums;
+}
+
+.astroway-score__value span {
+	font-size: 0.45em;
+	font-weight: 600;
+	margin-inline-start: 0.08em;
+}
+
+.astroway-card .astroway-score__label {
+	margin: 0;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.astroway-card .astroway-score .astroway-meter {
+	grid-column: 1 / -1;
+	margin-block-start: 8px;
+}
+
+@container (max-width: 280px) {
+	.astroway-card .astroway-score {
+		grid-template-columns: 1fr;
+	}
+}
+
+.astroway-meter {
+	display: block;
+	block-size: 6px;
+	border-radius: 999px;
+	background: var(--astroway-line);
+	overflow: hidden;
+}
+
+.astroway-meter > span {
+	display: block;
+	block-size: 100%;
+	border-radius: inherit;
+	background: var(--astroway-accent);
+}
+
+.astroway-card .astroway-ring {
+	position: relative;
+	inline-size: 96px;
+	block-size: 96px;
+	flex: none;
+}
+
+.astroway-card .astroway-ring svg {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	transform: rotate(-90deg);
+}
+
+.astroway-ring__track {
+	fill: none;
+	stroke: var(--astroway-line);
+	stroke-width: 6;
+}
+
+.astroway-ring__bar {
+	fill: none;
+	stroke: var(--astroway-accent);
+	stroke-width: 6;
+	stroke-linecap: round;
+}
+
+.astroway-card .astroway-ring__value {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	margin: 0;
+	font-size: 1.6em;
+	font-weight: 700;
+	color: var(--astroway-accent);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Rows of bars: compatibility by sphere. */
+.astroway-card .astroway-bars {
+	display: grid;
+	grid-template-columns: minmax(0, auto) minmax(40px, 1fr) auto;
+	align-items: center;
+	gap: 10px 12px;
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.92em;
+}
+
+.astroway-card .astroway-bars li {
+	display: contents;
+}
+
+.astroway-bars__value {
+	font-variant-numeric: tabular-nums;
+	color: var(--astroway-muted);
+	text-align: end;
+}
+
+/* ── Timeline: dates on a rail, the past quieter, today marked ── */
+
+.astroway-card .astroway-timeline {
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.astroway-card .astroway-timeline__item {
+	position: relative;
+	display: grid;
+	grid-template-columns: 64px minmax(0, 1fr);
+	gap: 16px;
+	margin: 0;
+	padding: 0 0 14px;
+}
+
+/* The rail and the dot share one centre, 76.5px from the start edge. */
+.astroway-timeline__item::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 76px;
+	inset-block: calc(0.45em + 13px) -0.1em;
+	inline-size: 1px;
+	background: var(--astroway-line);
+}
+
+.astroway-timeline__item:last-child::before {
+	display: none;
+}
+
+.astroway-card .astroway-timeline__date {
+	font-size: 0.84em;
+	color: var(--astroway-muted);
+	font-variant-numeric: tabular-nums;
+	text-align: end;
+	padding-block-start: 0.1em;
+}
+
+.astroway-card .astroway-timeline__date b {
+	display: block;
+	font-size: 1.25em;
+	font-weight: 600;
+	line-height: 1.1;
+	color: inherit;
+}
+
+.astroway-card .astroway-timeline__body {
+	position: relative;
+	padding-inline-start: 13px;
+	font-size: 0.93em;
+}
+
+.astroway-timeline__body::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: -8px;
+	inset-block-start: 0.45em;
+	inline-size: 9px;
+	block-size: 9px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1.5px var(--astroway-accent);
+}
+
+.astroway-card .astroway-timeline__title {
+	margin: 0;
+	font-weight: 600;
+}
+
+.astroway-card .astroway-timeline__title .astroway-glyph {
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-timeline__body p {
+	margin: 0;
+}
+
+/* The past is quieter by colour, not opacity: opacity on top of the muted
+   date took it under AA contrast. Once, on the body: muted is a share of the
+   current colour, so muting a child of a muted element compounds it. */
+.astroway-card .astroway-timeline__item.is-past .astroway-timeline__body {
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-timeline__item.is-past .astroway-glyph {
+	color: inherit;
+}
+
+.astroway-timeline__item.is-past .astroway-timeline__body::before {
+	box-shadow: inset 0 0 0 1.5px var(--astroway-line-strong);
+}
+
+.astroway-timeline__item.is-now .astroway-timeline__body::before {
+	background: var(--astroway-accent);
+}
+
+/* ── Natal wheel. Sizes are wheel units: the SVG scales as a whole. ── */
+
+.astroway-card .astroway-wheel {
+	position: relative;
+	max-inline-size: 520px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.astroway-card .astroway-wheel__svg {
+	display: block;
+	inline-size: 100%;
+	block-size: auto;
+	max-inline-size: none;
+	overflow: visible;
+}
+
+.astroway-wheel__band {
+	fill: var(--astroway-tint);
+}
+
+.astroway-wheel__circle,
+.astroway-wheel__ticks {
+	fill: none;
+	stroke: var(--astroway-line-strong);
+	stroke-width: 1;
+}
+
+.astroway-wheel__ticks {
+	stroke-width: 0.8;
+}
+
+.astroway-wheel__div {
+	stroke: var(--astroway-line-strong);
+	stroke-width: 1;
+}
+
+.astroway-wheel__cusp {
+	stroke: var(--astroway-line);
+	stroke-width: 1;
+}
+
+.astroway-wheel__angle {
+	stroke: var(--astroway-gilt);
+	stroke-width: 1.6;
+}
+
+.astroway-wheel__mark {
+	stroke: var(--astroway-accent);
+	stroke-width: 1.5;
+}
+
+.astroway-wheel__lead {
+	stroke: var(--astroway-line-strong);
+	stroke-width: 0.8;
+}
+
+.astroway-card .astroway-wheel__asp {
+	fill: none;
+	stroke-width: 1.25;
+}
+
+.astroway-wheel__hit {
+	fill: transparent;
+}
+
+/* Each glyph sits in a group translated to its point, so 0 0 is its centre. */
+.astroway-wheel__sign,
+.astroway-wheel__glyph,
+.astroway-wheel__rx {
+	transform-box: view-box;
+	transform-origin: 0 0;
+}
+
+.astroway-wheel__sign {
+	fill: currentColor;
+	opacity: 0.85;
+}
+
+.astroway-wheel__glyph {
+	fill: currentColor;
+}
+
+.astroway-wheel__rx {
+	fill: var(--astroway-tens);
+}
+
+.astroway-card .astroway-wheel text {
+	dominant-baseline: central;
+	font-variant-numeric: tabular-nums;
+}
+
+.astroway-card :is(.astroway-wheel__hnum, .astroway-wheel__deg) {
+	text-anchor: middle;
+}
+
+.astroway-card .astroway-wheel__hnum {
+	fill: var(--astroway-muted);
+	font-size: 11px;
+}
+
+.astroway-card .astroway-wheel__alabel {
+	fill: var(--astroway-gilt);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+
+.astroway-card .astroway-wheel__deg {
+	fill: var(--astroway-muted);
+	font-size: 11px;
+}
+
+/* Pointer or focus on a planet: its aspects stay, the rest steps back. */
+.astroway-card .astroway-wheel__planet {
+	outline: none;
+}
+
+.astroway-card .astroway-wheel.is-live .astroway-wheel__planet {
+	cursor: pointer;
+}
+
+.astroway-wheel__planet:focus-visible .astroway-wheel__hit {
+	stroke: var(--astroway-accent);
+	stroke-width: 1.5;
+}
+
+.astroway-wheel.is-focus .astroway-wheel__asp {
+	opacity: 0.12;
+}
+
+.astroway-card .astroway-wheel.is-focus .astroway-wheel__asp.is-on {
+	opacity: 1;
+	stroke-width: 2;
+}
+
+.astroway-wheel.is-focus .astroway-wheel__planet {
+	opacity: 0.35;
+}
+
+.astroway-wheel.is-focus .astroway-wheel__planet.is-on {
+	opacity: 1;
+}
+
+.astroway-wheel__planet.is-current .astroway-wheel__glyph {
+	fill: var(--astroway-accent);
+}
+
+/* The tooltip is the page's text colour turned into a background. */
+.astroway-card .astroway-wheel__tip {
+	position: absolute;
+	z-index: 2;
+	padding: 6px 10px;
+	border-radius: 9px;
+	background: #15171c;
+	font-size: 0.8em;
+	line-height: 1.35;
+	white-space: nowrap;
+	pointer-events: none;
+	transform: translate(-50%, calc(-100% - 10px));
+}
+
+.astroway-card .astroway-wheel__tip > span {
+	color: #fff;
+}
+
+@supports (color: oklch(from currentColor l c h)) {
+	.astroway-card .astroway-wheel__tip {
+		background: currentColor;
+	}
+
+	.astroway-card .astroway-wheel__tip > span {
+		color: oklch(from currentColor calc(0.98 - 0.83 * clamp(0, (l - 0.6) * 50, 1)) 0 0);
+	}
+}
+
+.astroway-card[data-astroway-look="night"] .astroway-wheel__tip {
+	background: #e8c878;
+}
+
+.astroway-card[data-astroway-look="night"] .astroway-wheel__tip > span {
+	color: #0d1130;
+}
+
+.astroway-card .astroway-wheel__tip[hidden] {
+	display: none;
+}
+
+/* The one movement on the page: the aspects draw in once, on arrival. */
+@media (prefers-reduced-motion: no-preference) {
+	.astroway-wheel__aspects {
+		animation: astroway-draw 0.9s ease-out 0.15s both;
+	}
+
+	@keyframes astroway-draw {
+		from {
+			opacity: 0;
+		}
+	}
+}
+
+/* Full size the wheel is 520px, a wheel unit is 1.02px and the 11-unit
+   labels are 11.2px. Any narrower and the table takes degrees, houses and
+   retrogrades, while signs, planets and angles grow; below 380px they grow
+   again, for about half a pixel a unit on a 320px phone. Nothing on the
+   wheel is set under 11px at any width. */
+@container (max-width: 520px) {
+	.astroway-card .astroway-wheel {
+		margin-inline: -12px;
+	}
+
+	.astroway-card :is(.astroway-wheel__deg, .astroway-wheel__hnum, .astroway-wheel__rx) {
+		display: none;
+	}
+
+	.astroway-card .astroway-wheel__alabel {
+		font-size: 17px;
+		letter-spacing: 0;
+	}
+
+	.astroway-wheel__sign {
+		transform: scale(1.2);
+	}
+
+	.astroway-wheel__glyph {
+		transform: scale(1.1);
+	}
+}
+
+@container (max-width: 380px) {
+	.astroway-card .astroway-wheel__alabel {
+		font-size: 23px;
+	}
+
+	.astroway-wheel__sign {
+		transform: scale(1.45);
+	}
+
+	.astroway-wheel__glyph {
+		transform: scale(1.25);
+	}
+}
+
+/* ── Sky strip: what the sky is doing today, in one line ── */
+
+.astroway-card .astroway-sky {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 18px;
+	margin: 0;
+	padding: 10px 12px;
+	list-style: none;
+	border-radius: 12px;
+	background: var(--astroway-tint);
+	font-size: 0.88em;
+}
+
+.astroway-card .astroway-sky li {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+
+.astroway-card .astroway-sky .astroway-glyph {
+	color: var(--astroway-accent);
+	block-size: 1.45em;
+}
+
+/* One slot per icon, so the texts start on one line whatever the icon. */
+.astroway-card .astroway-sky__icon {
+	display: inline-grid;
+	place-items: center;
+	flex: none;
+	inline-size: 24px;
+	block-size: 24px;
+}
+
+.astroway-card .astroway-moon {
+	inline-size: 24px;
+	block-size: 24px;
+	flex: none;
+}
+
+/* The moon card shows the drawing itself, not an icon beside a line of text. */
+.astroway-card .astroway-card__moon {
+	display: grid;
+	justify-items: center;
+	margin: 18px 0 4px;
+}
+
+.astroway-card .astroway-card__moon .astroway-moon {
+	inline-size: clamp(88px, 34%, 132px);
+	block-size: auto;
+}
+
+/* The lit limb is the bright one in every look. It used to take the gilt
+   token, which on a light page is #86620f: darker than the shadow beside it,
+   so a Moon at 89 % read as an eclipse. */
+.astroway-moon__dark {
+	fill: var(--astroway-line-strong);
+}
+
+.astroway-moon__lit {
+	fill: #f5e6bb;
+	stroke: var(--astroway-line-strong);
+	stroke-width: 0.5;
+}
+
+.astroway-card[data-astroway-look="night"] .astroway-moon__lit {
+	fill: #f3e2b3;
+}
+
+/* ── Sign picker: links, so it works without JS ── */
+
+.astroway-card .astroway-signs {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 4px;
+	margin: 14px 0 0;
+}
+
+@container (min-width: 520px) {
+	.astroway-card .astroway-signs {
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+}
+
+.astroway-card .astroway-signs__sign {
+	display: grid;
+	place-items: center;
+	min-block-size: 44px;
+	padding: 0;
+	border: 1px solid var(--astroway-line);
+	border-radius: var(--astroway-radius-inner);
+	font-size: 1.15em;
+}
+
+@container (max-width: 300px) {
+	.astroway-card .astroway-signs {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.astroway-card .astroway-signs__sign:hover {
+	background: var(--astroway-tint);
+}
+
+.astroway-card .astroway-signs__sign[aria-current] {
+	border-color: var(--astroway-accent);
+	background: var(--astroway-accent-tint);
+	color: var(--astroway-accent);
+}
+
+/* ── Prose ── */
+
+.astroway-card .astroway-prose {
+	max-inline-size: 66ch;
+}
+
+.astroway-card .astroway-prose p {
+	margin: 12px 0 0;
+}
+
+.astroway-card .astroway-prose .astroway-lead {
+	font-size: 1.06em;
+	margin-block-start: 14px;
+}
+
+.astroway-card .astroway-prose :is(h4, h5) {
+	margin: 18px 0 6px;
+	font-size: 0.98em;
+	font-weight: 600;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.astroway-card .astroway-prose ul {
+	display: grid;
+	gap: 8px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* The marker sits out of flow: a list item holds arbitrary inline markup, and
+   every inline child of a grid item would claim a column of its own. */
+.astroway-card .astroway-prose ul > li {
+	position: relative;
+	margin: 0;
+	padding-inline-start: 28px;
+	font-size: 0.95em;
+}
+
+.astroway-card .astroway-prose ul > li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 5px;
+	inset-block-start: 0.55em;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 2px;
+	background: var(--astroway-accent);
+	transform: rotate(45deg);
+}
+
+/* ── Callout ── */
+
+.astroway-card .astroway-callout {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 10px;
+	align-items: start;
+	margin: 14px 0 0;
+	padding: 10px 14px;
+	border-radius: 12px;
+	/* The bar stays a straight bar: rounded with the corner it tapered to points. */
+	border-start-start-radius: 0;
+	border-end-start-radius: 0;
+	border-inline-start: 3px solid var(--astroway-accent);
+	background: var(--astroway-accent-tint);
+	font-size: 0.92em;
+}
+
+.astroway-card .astroway-icon {
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	margin-block-start: 0.2em;
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-callout--tens .astroway-icon {
+	color: var(--astroway-tens);
+}
+
+.astroway-card .astroway-state__title .astroway-icon {
+	margin: 0 0.35em 0 0;
+	vertical-align: -0.15em;
+	color: var(--astroway-tens);
+}
+
+.astroway-card .astroway-callout--tens {
+	border-inline-start-color: var(--astroway-tens);
+	background: color-mix(in oklab, var(--astroway-tens) 9%, transparent);
+}
+
+.astroway-card .astroway-callout p {
+	margin: 0;
+}
+
+/* ── States: empty, error, loading ── */
+
+.astroway-card .astroway-state {
+	margin: 14px 0 0;
+	padding: 22px 16px;
+	border: 1px dashed var(--astroway-line-strong);
+	border-radius: 12px;
+	text-align: center;
+}
+
+.astroway-card .astroway-state__title {
+	margin: 0;
+	font-weight: 600;
+}
+
+.astroway-card .astroway-state p {
+	margin: 4px 0 0;
+	font-size: 0.9em;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-state a {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 44px;
+	margin-block-start: 12px;
+	padding: 0 18px;
+	border: 1px solid var(--astroway-accent);
+	border-radius: 999px;
+	color: var(--astroway-accent);
+	font-size: 0.92em;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.astroway-card .astroway-state a:hover {
+	background: var(--astroway-accent-tint);
+}
+
+.astroway-card .astroway-state--error {
+	border-style: solid;
+	border-color: color-mix(in oklab, var(--astroway-tens) 45%, transparent);
+}
+
+.astroway-card .astroway-skeleton {
+	display: grid;
+	gap: 10px;
+	margin: 14px 0 0;
+}
+
+.astroway-skeleton__line {
+	display: block;
+	block-size: 0.9em;
+	inline-size: var(--astroway-w, 100%);
+	border-radius: 6px;
+	background: var(--astroway-tint);
+	background: color-mix(in oklab, currentColor 8%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.astroway-skeleton__line {
+		animation: astroway-pulse 1.4s ease-in-out infinite;
+	}
+
+	@keyframes astroway-pulse {
+		50% {
+			opacity: 0.45;
+		}
+	}
+}
+
+/* ── Footnote ── */
+
+.astroway-card .astroway-card__note {
+	margin: 16px 0 0;
+	padding: 0;
+	border: 0;
+	font-size: 0.78em;
+	line-height: 1.45;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-card__note small {
+	font-size: inherit;
+}
+
+/* ── Parts the 1.x cards still print, in the new tokens ── */
+
+.astroway-card .astroway-card__lead {
+	margin: 12px 0 0;
+	font-size: 1.25em;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--astroway-accent);
+}
+
+.astroway-card .astroway-card__lead--no {
+	color: var(--astroway-muted);
+	font-weight: 500;
+}
+
+.astroway-card .astroway-card__glyph {
+	font-size: 1.15em;
+	line-height: 1;
+}
+
+.astroway-card .astroway-card__body {
+	margin: 12px 0 0;
+	max-inline-size: 66ch;
+}
+
+.astroway-card .astroway-card__body p {
+	margin: 0 0 0.85em;
+}
+
+.astroway-card .astroway-card__body p:last-child {
+	margin-block-end: 0;
+}
+
+.astroway-card .astroway-card__keywords {
+	margin: 6px 0 0;
+	font-size: 0.9em;
+	color: var(--astroway-muted);
+}
+
+.astroway-card :is(.astroway-card__themes, .astroway-card__aspects, .astroway-card__channels) {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9em;
+}
+
+.astroway-card .astroway-card__themes li {
+	margin: 0;
+	padding: 3px 11px;
+	border: 1px solid var(--astroway-line);
+	border-radius: 999px;
+	font-size: 0.94em;
+}
+
+.astroway-card .astroway-card__aspects li,
+.astroway-card .astroway-card__channels li {
+	margin: 0;
+	margin-inline-end: 10px;
+}
+
+.astroway-card .astroway-card__header + .astroway-card__subtitle,
+.astroway-card .astroway-card__subtitle:first-child {
+	margin-block-start: 14px;
+}
+
+.astroway-card > .astroway-card__subtitle {
+	margin-block-start: 18px;
+	padding-block-start: 14px;
+	border-block-start: 1px solid var(--astroway-line);
+}
+
+.astroway-card > .astroway-card__header + .astroway-card__subtitle {
+	margin-block-start: 14px;
+	padding-block-start: 0;
+	border-block-start: 0;
+}
+
+.astroway-card .astroway-card__scroll {
+	max-inline-size: 100%;
+	margin-block-start: 12px;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+}
+
+.astroway-card .astroway-card__placements {
+	inline-size: 100%;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	font-size: 0.9em;
+	font-family: inherit;
+	color: inherit;
+	font-variant-numeric: tabular-nums;
+	background: none;
+}
+
+.astroway-card .astroway-card__scroll .astroway-card__placements {
+	min-inline-size: max-content;
+}
+
+.astroway-card .astroway-card__placements caption {
+	margin: 0;
+	padding: 0 0 6px;
+	font-size: 0.86em;
+	font-weight: 400;
+	text-align: start;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-card__placements :is(th, td) {
+	padding: 8px 0;
+	padding-inline-end: 8px;
+	border: 0;
+	border-block-end: 1px solid var(--astroway-line);
+	background: none;
+	font-size: 1em;
+	font-weight: 400;
+	text-align: start;
+	vertical-align: baseline;
+	color: inherit;
+}
+
+.astroway-card .astroway-card__placements thead th {
+	padding-block: 6px;
+	font-size: 0.9em;
+	font-weight: 500;
+	color: var(--astroway-muted);
+	white-space: nowrap;
+}
+
+.astroway-card .astroway-card__placements tr {
+	background: none;
+}
+
+.astroway-card .astroway-card__placements tr.astroway-card__row--current > * {
+	background: var(--astroway-accent-tint);
+	font-weight: 600;
+}
+
+.astroway-card .astroway-card__nowrap {
+	white-space: nowrap;
+}
+
+.astroway-card--natal .astroway-card__scroll .astroway-card__placements {
+	min-inline-size: 0;
+}
+
+.astroway-card--natal .astroway-embed {
+	margin: 12px 0 0;
+	min-height: 0;
+}
+
+.astroway-card .astroway-card__score {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
 	gap: 0.15em 0.6em;
-	margin: 0 0 0.5em;
+	margin: 12px 0 0;
 }
 
-.astroway-card__score-value {
+.astroway-card .astroway-card__score-value {
 	font-size: 2.4em;
 	font-weight: 700;
 	line-height: 1;
-	color: var(--astroway-card-accent);
+	color: var(--astroway-accent);
 }
 
-/* The per cent sign is a unit, not part of the figure, and at the size of the
-   figure it shouts. */
 .astroway-card__score-value span {
 	font-size: 0.45em;
 	font-weight: 600;
 	margin-inline-start: 0.1em;
 }
 
-.astroway-card__score-label {
+.astroway-card .astroway-card__score-label {
 	font-size: 1.05em;
 	font-weight: 600;
 }
 
-/* The bar is the figure above drawn again, nothing more, which is why it is
-   hidden from assistive technology rather than labelled. */
-.astroway-card__meter {
+.astroway-card .astroway-card__meter {
 	block-size: 6px;
-	margin-block-end: 1em;
+	margin-block: 8px 0;
 	border-radius: 999px;
-	/* The line tint, not the band tint. At 5% the empty half of the bar was
-	   invisible and the filled half read as an underline that stopped early. */
-	background: var(--astroway-card-line);
+	background: var(--astroway-line);
 	overflow: hidden;
 }
 
@@ -642,17 +2236,41 @@
 	display: block;
 	block-size: 100%;
 	border-radius: inherit;
-	background: var(--astroway-card-accent);
+	background: var(--astroway-accent);
 }
 
-/* Every card that folds detail away uses the same summary, so the styling that
-   was scoped to the generic renderer moves out to all of them. */
-.astroway-card__more {
-	margin-block-start: 0.9em;
+.astroway-card .astroway-card__more {
+	margin-block-start: 12px;
 	font-size: 0.95em;
 }
 
-.astroway-card__more summary {
+.astroway-card .astroway-card__more summary {
+	min-block-size: 44px;
+	display: flex;
+	align-items: center;
 	cursor: pointer;
-	color: var(--astroway-card-muted);
+	color: var(--astroway-muted);
+}
+
+/* ── Section: several cards, tabbed by the script ── */
+
+.astroway-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25em;
+}
+
+.astroway-section > .astroway-tabs__list {
+	display: flex;
+	margin-block-end: -0.25em;
+}
+
+.astroway-section--tabbed > .astroway-card {
+	margin-block-start: 0;
+}
+
+/* `hidden` is a UA rule, and any author rule outranks it: the cards set
+   `display: block` on themselves, so the attribute alone did nothing. */
+.astroway-section--tabbed > [hidden] {
+	display: none;
 }

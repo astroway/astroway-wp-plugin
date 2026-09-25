@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$astroway_dashboard_url = 'https://api.astroway.info/dashboard?source=wp_plugin';
-$astroway_docs_url      = 'https://api.astroway.info/docs';
+$astroway_dashboard_url = \AstroWay\WPPlugin\Plugin::api_url( '/dashboard', [ 'source' => 'wp_plugin' ] );
+$astroway_docs_url      = \AstroWay\WPPlugin\Plugin::api_url( '/docs/' );
 $astroway_github_url    = 'https://github.com/astroway/astroway-wp-plugin';
 $astroway_support_url   = 'https://astroway.info/support';
 $astroway_api_host      = wp_parse_url( ASTROWAY_API_BASE, PHP_URL_HOST );

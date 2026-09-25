@@ -230,7 +230,7 @@ $astroway_diag = [
 					printf(
 						/* translators: %s = api dashboard URL */
 						esc_html__( 'Applies immediately. Limited to a few changes per month; the account owner is emailed. Manage keys at %s.', 'astroway' ),
-						'<a href="https://api.astroway.info/dashboard/account" target="_blank" rel="noopener">api.astroway.info/dashboard/account</a>'
+						'<a href="' . esc_url( \AstroWay\WPPlugin\Plugin::api_url( '/dashboard/account' ) ) . '" target="_blank" rel="noopener">api.astroway.info/dashboard/account</a>'
 					);
 					?>
 				</p>
@@ -295,6 +295,74 @@ $astroway_diag = [
 		<article class="aw-panel" data-num="07">
 			<header class="aw-panel-head">
 				<span class="aw-panel-num" aria-hidden="true">07</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Widget style', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'how every card on the site looks', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<?php
+					$astroway_look  = in_array( $astroway_opts['look'] ?? '', \AstroWay\WPPlugin\UI::LOOKS, true ) ? $astroway_opts['look'] : 'instrument';
+					$astroway_looks = [
+						'instrument' => [ __( 'Instrument', 'astroway' ), __( 'Lapis and gilt on your theme\'s own background, like the face of an astronomical clock. Light and dark themes both work.', 'astroway' ) ],
+						'night'      => [ __( 'Night sky', 'astroway' ), __( 'A deep blue card with stars and gold, the same on any site. Best on dark or photo-heavy themes.', 'astroway' ) ],
+						'native'     => [ __( 'Theme colours', 'astroway' ), __( 'No colour of its own: everything is drawn in your theme\'s text colour.', 'astroway' ) ],
+					];
+					?>
+					<div class="aw-looks">
+						<?php foreach ( $astroway_looks as $astroway_value => $astroway_text ) : ?>
+							<label class="aw-look">
+								<span class="aw-look-head">
+									<input type="radio" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[look]" value="<?php echo esc_attr( $astroway_value ); ?>" <?php checked( $astroway_value, $astroway_look ); ?>>
+									<strong><?php echo esc_html( $astroway_text[0] ); ?></strong>
+								</span>
+								<span class="aw-hint"><?php echo esc_html( $astroway_text[1] ); ?></span>
+								<?php
+								$astroway_preview = \AstroWay\WPPlugin\UI::card(
+									'astroway-horoscope-card',
+									'horoscope',
+									\AstroWay\WPPlugin\UI::header(
+										[
+											'title'     => __( 'Leo', 'astroway' ),
+											'medal'     => 'leo',
+											'meta_html' => esc_html__( 'Horoscope for today', 'astroway' ),
+										]
+									) . \AstroWay\WPPlugin\UI::facts(
+										[
+											[
+												'label' => __( 'Sun', 'astroway' ),
+												'glyph' => 'virgo',
+												'value' => __( 'Virgo', 'astroway' ),
+											],
+											[
+												'label' => __( 'Moon', 'astroway' ),
+												'glyph' => 'capricorn',
+												'value' => __( 'Capricorn', 'astroway' ),
+											],
+										],
+										'trio'
+									),
+									[ 'look' => $astroway_value ]
+								);
+								echo $astroway_preview; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- UI escapes every value it prints.
+								?>
+							</label>
+						<?php endforeach; ?>
+					</div>
+					<p class="aw-hint">
+						<?php
+						/* translators: 1: example shortcode attribute, 2: block settings panel name */
+						printf( esc_html__( 'One widget can look different from the rest: add %1$s to its shortcode, or pick a style in the block\'s %2$s.', 'astroway' ), '<code>look="night"</code>', esc_html__( 'settings', 'astroway' ) );
+						?>
+					</p>
+					<?php submit_button( __( 'Save widget style', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
+				</form>
+			</div>
+		</article>
+
+		<article class="aw-panel" data-num="08">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">08</span>
 				<h2 class="aw-panel-title"><?php esc_html_e( 'Render mode', 'astroway' ); ?></h2>
 				<span class="aw-panel-hint"><?php esc_html_e( 'where widget content is drawn', 'astroway' ); ?></span>
 			</header>
@@ -322,9 +390,9 @@ $astroway_diag = [
 			</div>
 		</article>
 
-		<article class="aw-panel" data-num="08">
+		<article class="aw-panel" data-num="09">
 			<header class="aw-panel-head">
-				<span class="aw-panel-num" aria-hidden="true">08</span>
+				<span class="aw-panel-num" aria-hidden="true">09</span>
 				<h2 class="aw-panel-title"><?php esc_html_e( 'Daily transit alerts', 'astroway' ); ?></h2>
 				<span class="aw-panel-hint"><?php esc_html_e( 'email on the days the sky does something', 'astroway' ); ?></span>
 			</header>

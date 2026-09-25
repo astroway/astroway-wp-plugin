@@ -151,6 +151,11 @@ class Admin {
 			}
 		}
 
+		if ( isset( $input['look'] ) ) {
+			$look             = (string) $input['look'];
+			$existing['look'] = in_array( $look, UI::LOOKS, true ) ? $look : 'instrument';
+		}
+
 		if ( isset( $input['render_mode'] ) ) {
 			$mode                    = (string) $input['render_mode'];
 			$existing['render_mode'] = in_array( $mode, self::RENDER_MODES, true ) ? $mode : 'auto';
@@ -203,7 +208,7 @@ class Admin {
 			),
 			'getkey'   => sprintf(
 				'<a href="%s" target="_blank" rel="noopener">%s</a>',
-				esc_url( 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin' ),
+				esc_url( Plugin::api_url( '/dashboard/sign-up', [ 'source' => 'wp_plugin' ] ) ),
 				esc_html__( 'Get API Key', 'astroway' )
 			),
 		];
@@ -258,6 +263,8 @@ class Admin {
 				]
 			);
 		} elseif ( $hook === $hook_settings ) {
+			// The style picker draws a live card in each look.
+			wp_enqueue_style( Plugin::STYLE_HANDLE );
 			wp_enqueue_script(
 				'astroway-admin-settings',
 				ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-admin-settings.js',

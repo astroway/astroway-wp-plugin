@@ -122,7 +122,13 @@ class Blocks {
 			if ( ! Tier::can( $feature ) ) {
 				return Tier::render_upgrade_cta( $feature );
 			}
-			return call_user_func( $callback, self::with_context( (array) $atts, $block ), (string) $content );
+			$atts = self::with_context( (array) $atts, $block );
+			UI::push_look( (string) ( $atts['look'] ?? '' ) );
+			try {
+				return call_user_func( $callback, $atts, (string) $content );
+			} finally {
+				UI::pop_look();
+			}
 		};
 	}
 
@@ -141,7 +147,7 @@ class Blocks {
 	 */
 	private static function with_context( array $atts, $block ): array {
 		$context = ( is_object( $block ) && isset( $block->context ) && is_array( $block->context ) ) ? $block->context : [];
-		foreach ( [ 'sign', 'lang' ] as $name ) {
+		foreach ( [ 'sign', 'lang', 'look' ] as $name ) {
 			$inherited = trim( (string) ( $context[ 'astroway/' . $name ] ?? '' ) );
 			if ( '' !== $inherited && '' === trim( (string) ( $atts[ $name ] ?? '' ) ) ) {
 				$atts[ $name ] = $inherited;

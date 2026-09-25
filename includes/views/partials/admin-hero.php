@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $astroway_logo_url    = ASTROWAY_WP_PLUGIN_URL . 'assets/img/logo-owl-moon.png';
 $astroway_has_key     = '' !== $api_key;
-$astroway_signup_url  = 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin';
-$astroway_pricing_url = 'https://api.astroway.info/pricing?source=wp_plugin';
+$astroway_signup_url  = \AstroWay\WPPlugin\Plugin::api_url( '/dashboard/sign-up', [ 'source' => 'wp_plugin' ] );
+$astroway_pricing_url = \AstroWay\WPPlugin\Plugin::api_url( '/pricing/', [ 'source' => 'wp_plugin' ] );
 ?>
 <header class="aw-hero" role="banner">
 	<div class="aw-hero-stars" aria-hidden="true"></div>

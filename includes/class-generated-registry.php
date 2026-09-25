@@ -110,6 +110,10 @@ class GeneratedRegistry {
 					'type'    => 'string',
 					'default' => '',
 				],
+				'look' => [
+					'type'    => 'string',
+					'default' => '',
+				],
 			];
 			$fields     = [];
 			foreach ( $endpoint[2] as $spec ) {
@@ -131,8 +135,18 @@ class GeneratedRegistry {
 					'icon'            => self::family_icon( $family ),
 					'keywords'        => self::keywords( $family ),
 					'attributes'      => $attributes,
-					'render_callback' => static function ( $atts ) use ( $tag ) {
-						return self::render( (array) $atts, '', $tag );
+					'uses_context'    => [ 'astroway/look' ],
+					'render_callback' => static function ( $atts, $content = '', $block = null ) use ( $tag ) {
+						$look = (string) ( $atts['look'] ?? '' );
+						if ( '' === $look && is_object( $block ) && isset( $block->context['astroway/look'] ) ) {
+							$look = (string) $block->context['astroway/look'];
+						}
+						UI::push_look( $look );
+						try {
+							return self::render( (array) $atts, '', $tag );
+						} finally {
+							UI::pop_look();
+						}
 					},
 				]
 			);

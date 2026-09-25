@@ -39,12 +39,12 @@ class Plugin {
 
 	/**
 	 * Map WP locale (`uk_UA`, `de_DE`, `pt_BR`, ...) to api short code (`uk`, `de`, `pt`).
-	 * Falls back to `uk` if the site language is outside the api's supported set —
-	 * `uk` is the source language for api content, so widgets render correctly there.
+	 * A language the api does not speak gets English: a Lithuanian or Swedish
+	 * site reads English far more readily than Ukrainian, the api's source.
 	 */
 	public static function normalize_locale( string $wp_locale ): string {
 		$short = strtolower( substr( $wp_locale, 0, 2 ) );
-		return in_array( $short, self::SUPPORTED_LANGS, true ) ? $short : 'uk';
+		return in_array( $short, self::SUPPORTED_LANGS, true ) ? $short : 'en';
 	}
 
 	/**
@@ -58,6 +58,69 @@ class Plugin {
 			return $raw;
 		}
 		return self::normalize_locale( get_locale() );
+	}
+
+	/**
+	 * Name the plugin in every request to api.astroway.info, so the api can tell
+	 * it apart from any other wp_remote_get() on the same site.
+	 */
+	public static function http_args( $args, $url ): array {
+		$args = (array) $args;
+		if ( 'api.astroway.info' === wp_parse_url( (string) $url, PHP_URL_HOST ) ) {
+			$version            = defined( 'ASTROWAY_WP_PLUGIN_VERSION' ) ? ASTROWAY_WP_PLUGIN_VERSION : '0';
+			$args['user-agent'] = 'AstroWay-WP/' . $version . '; ' . home_url();
+		}
+		return $args;
+	}
+
+	public const SITE_LANGS_TRANSIENT = 'astroway_site_langs';
+
+	/**
+	 * Link to api.astroway.info in the admin's own language. Site pages carry a
+	 * /<lang>/ prefix (none for uk, the source language), dashboard pages ?lang=,
+	 * and a language the site does not speak gets English rather than Ukrainian.
+	 */
+	public static function api_url( string $path, array $args = [] ): string {
+		$lang = strtolower( substr( (string) get_user_locale(), 0, 2 ) );
+		if ( ! in_array( $lang, self::site_langs(), true ) ) {
+			$lang = 'en';
+		}
+		if ( 0 === strpos( $path, '/dashboard' ) ) {
+			$args['lang'] = $lang;
+		} elseif ( 'uk' !== $lang ) {
+			$path = '/' . $lang . $path;
+		}
+		$url = 'https://api.astroway.info' . $path;
+		return $args ? add_query_arg( $args, $url ) : $url;
+	}
+
+	/**
+	 * Languages the api site and dashboard are published in, cached for a day.
+	 * A failed fetch is cached for an hour as uk and en, so an api under load is
+	 * not asked again on every admin page.
+	 */
+	private static function site_langs(): array {
+		$cached = get_transient( self::SITE_LANGS_TRANSIENT );
+		if ( is_array( $cached ) ) {
+			return $cached;
+		}
+		$langs    = [];
+		$response = wp_remote_get( 'https://api.astroway.info/v1/i18n/languages/public', [ 'timeout' => 3 ] );
+		if ( ! is_wp_error( $response ) && 200 === (int) wp_remote_retrieve_response_code( $response ) ) {
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+			foreach ( (array) ( $body['data']['languages'] ?? [] ) as $row ) {
+				if ( is_array( $row ) && isset( $row['code'] ) && preg_match( '/^[a-z]{2}$/', (string) $row['code'] ) ) {
+					$langs[] = (string) $row['code'];
+				}
+			}
+		}
+		if ( $langs ) {
+			set_transient( self::SITE_LANGS_TRANSIENT, $langs, DAY_IN_SECONDS );
+			return $langs;
+		}
+		$langs = [ 'uk', 'en' ];
+		set_transient( self::SITE_LANGS_TRANSIENT, $langs, HOUR_IN_SECONDS );
+		return $langs;
 	}
 
 	public static function boot(): void {
@@ -87,7 +150,10 @@ class Plugin {
 			Digest::register();
 		}
 
+		add_filter( 'http_request_args', [ __CLASS__, 'http_args' ], 10, 2 );
 		add_action( 'init', [ __CLASS__, 'register_frontend_assets' ] );
+		add_filter( 'pre_do_shortcode_tag', [ UI::class, 'shortcode_start' ], PHP_INT_MAX, 3 );
+		add_filter( 'do_shortcode_tag', [ UI::class, 'shortcode_end' ], 10, 2 );
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_frontend' ] );
 		add_action( 'enqueue_block_assets', [ __CLASS__, 'enqueue_editor_canvas' ] );
 		add_action( 'admin_notices', [ __CLASS__, 'maybe_activation_notice' ] );
@@ -97,10 +163,15 @@ class Plugin {
 		add_action( 'wp_ajax_astroway_dismiss_activation_notice', [ __CLASS__, 'dismiss_activation_notice' ] );
 		add_action( 'wp_ajax_astroway_dismiss_review_prompt', [ __CLASS__, 'dismiss_review_prompt' ] );
 		add_action( 'wp_ajax_astroway_dismiss_rate_limit_notice', [ __CLASS__, 'dismiss_rate_limit_notice' ] );
+		add_action( 'wp_ajax_astroway_review_prompt_done', [ __CLASS__, 'review_prompt_done' ] );
 	}
 
 	public const STYLE_HANDLE = 'astroway-widgets';
 	public const EMBED_HANDLE = 'astroway-embed';
+	public const UI_HANDLE    = 'astroway-ui';
+
+	/** Marks the document as scripted before any card paints, see UI::tabs(). */
+	private const JS_FLAG = 'document.documentElement.classList.add("astroway-js");';
 
 	/**
 	 * Shortcodes and blocks that always draw a frame, whatever the render mode.
@@ -138,11 +209,24 @@ class Plugin {
 			'window.astrowayEmbedQueue=[];window.addEventListener("message",function(e){var q=window.astrowayEmbedQueue;if(q&&e.data&&"astroway-embed"===e.data.source){q.push(e);}});',
 			'before'
 		);
+		wp_register_script(
+			self::UI_HANDLE,
+			ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-ui.js',
+			[],
+			ASTROWAY_WP_PLUGIN_VERSION,
+			[
+				'strategy'  => 'defer',
+				'in_footer' => false,
+			]
+		);
+		wp_add_inline_script( self::UI_HANDLE, self::JS_FLAG, 'before' );
 	}
 
 	/** Asked for by a render that ran before wp_enqueue_scripts. */
 	private static bool $wants_styles = false;
 	private static bool $wants_embed  = false;
+	private static bool $wants_ui     = false;
+	private static bool $flag_printed = false;
 
 	/**
 	 * Called by every render path.
@@ -173,6 +257,37 @@ class Plugin {
 		if ( function_exists( 'wp_enqueue_script' ) ) {
 			wp_enqueue_script( self::EMBED_HANDLE );
 		}
+	}
+
+	/**
+	 * Called by every component that needs the script: tabs, filters, table
+	 * scroll hints.
+	 *
+	 * Returns markup to print in front of the component. Empty, except when the
+	 * page is already past wp_head (a classic theme printing content): the
+	 * script then lands in the footer, and the flag that lets CSS draw the
+	 * tabbed state has to be set inline, before the component paints, or the
+	 * reader sees every panel stacked and then watches them collapse.
+	 *
+	 * @since 2.0.0
+	 */
+	public static function use_ui_script(): string {
+		if ( function_exists( 'did_action' ) && ! did_action( 'wp_enqueue_scripts' ) ) {
+			self::$wants_ui = true;
+			return '';
+		}
+		if ( ! function_exists( 'wp_enqueue_script' ) ) {
+			return '';
+		}
+		wp_enqueue_script( self::UI_HANDLE );
+		if ( self::$flag_printed || ! function_exists( 'did_action' ) || ! did_action( 'wp_head' ) || ! function_exists( 'wp_get_inline_script_tag' ) ) {
+			return '';
+		}
+		if ( function_exists( 'wp_script_is' ) && wp_script_is( self::UI_HANDLE, 'done' ) ) {
+			return '';
+		}
+		self::$flag_printed = true;
+		return wp_get_inline_script_tag( self::JS_FLAG );
 	}
 
 	/**
@@ -212,6 +327,10 @@ class Plugin {
 		if ( $styles ) {
 			wp_enqueue_style( self::STYLE_HANDLE );
 		}
+		// In the head along with the sheet, so the flag is set before any card.
+		if ( $styles || self::$wants_ui ) {
+			wp_enqueue_script( self::UI_HANDLE );
+		}
 		if ( $embed ) {
 			wp_enqueue_script( self::EMBED_HANDLE );
 		}
@@ -246,6 +365,66 @@ class Plugin {
 		wp_enqueue_style( self::STYLE_HANDLE );
 	}
 
+	/** Per-user state of our own notices: when each may come back, or never. */
+	private const NOTICE_STATE_META = 'astroway_notice_state';
+
+	/** Old one-way flags, kept working: a dismissal from before this release stays a dismissal. */
+	private const LEGACY_NOTICE_FLAGS = [
+		'activation' => 'astroway_notice_dismissed',
+		'review'     => 'astroway_review_prompt_dismissed',
+		'rate_limit' => 'astroway_rate_limit_notice_dismissed',
+	];
+
+	private static function notice_state( string $key ): array {
+		$all = get_user_meta( get_current_user_id(), self::NOTICE_STATE_META, true );
+		$all = is_array( $all ) ? $all : [];
+		return isset( $all[ $key ] ) && is_array( $all[ $key ] ) ? $all[ $key ] : [];
+	}
+
+	/**
+	 * Closing a notice is a "not now", not a "never": it comes back after the
+	 * snooze runs out. Only an explicit answer from the user ends it for good.
+	 */
+	private static function notice_hidden( string $key ): bool {
+		if ( isset( self::LEGACY_NOTICE_FLAGS[ $key ] ) && get_user_meta( get_current_user_id(), self::LEGACY_NOTICE_FLAGS[ $key ], true ) ) {
+			return true;
+		}
+		$state = self::notice_state( $key );
+		if ( ! empty( $state['done'] ) ) {
+			return true;
+		}
+		return isset( $state['until'] ) && time() < (int) $state['until'];
+	}
+
+	private static function set_notice_state( string $key, array $state ): void {
+		$all         = get_user_meta( get_current_user_id(), self::NOTICE_STATE_META, true );
+		$all         = is_array( $all ) ? $all : [];
+		$all[ $key ] = $state;
+		update_user_meta( get_current_user_id(), self::NOTICE_STATE_META, $all );
+	}
+
+	/** The close button we draw ourselves, so it is there whatever core does. */
+	private static function notice_close_button( string $url, string $label ): string {
+		return sprintf(
+			'<button type="button" class="astroway-notice-close" data-astroway-url="%s" aria-label="%s"><span aria-hidden="true">&times;</span></button>',
+			esc_url( $url ),
+			esc_attr( $label )
+		);
+	}
+
+	/** Shared styling and behaviour of the close and answer buttons. */
+	private static function notice_script(): string {
+		$css = '.astroway-notice-close{position:absolute;top:8px;right:6px;width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;color:#787169;font-size:20px;line-height:1;border-radius:4px}'
+			. '.astroway-notice-close:hover{color:#1a1815;background:rgba(0,0,0,.05)}'
+			. '.astroway-notice-close:focus{outline:2px solid #f0b429;outline-offset:1px}';
+		$js  = '(function(){var n=document.currentScript&&document.currentScript.parentNode;if(!n)return;'
+			. 'n.addEventListener("click",function(e){var b=e.target.closest("[data-astroway-url]");if(!b||!n.contains(b))return;'
+			. 'if(b.tagName==="BUTTON"){e.preventDefault();}'
+			. 'var url=b.getAttribute("data-astroway-url");if(url){fetch(url,{credentials:"same-origin"});}'
+			. 'if(b.tagName==="BUTTON"){n.style.display="none";}},true);})();';
+		return '<style>' . $css . '</style><script>' . $js . '</script>';
+	}
+
 	/**
 	 * Our notices belong on our own screens. Without this check they surface on
 	 * every admin page, including other plugins' settings.
@@ -273,7 +452,7 @@ class Plugin {
 		if ( ! self::is_own_screen( true ) ) {
 			return;
 		}
-		if ( get_user_meta( get_current_user_id(), 'astroway_notice_dismissed', true ) ) {
+		if ( self::notice_hidden( 'activation' ) ) {
 			return;
 		}
 
@@ -282,13 +461,14 @@ class Plugin {
 			'astroway_dismiss_activation_notice'
 		);
 		$settings_url = admin_url( 'admin.php?page=' . Admin::PAGE_SLUG );
-		$signup_url   = 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin';
+		$signup_url   = self::api_url( '/dashboard/sign-up', [ 'source' => 'wp_plugin' ] );
 
 		$star_svg = '<svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1.5l2.36 5.34 5.83.55-4.4 3.85 1.31 5.71L10 13.93l-5.1 2.92 1.31-5.71-4.4-3.85 5.83-.55L10 1.5z"/></svg>';
 		?>
-		<div class="notice is-dismissible astroway-activation-notice" data-astroway-dismiss="<?php echo esc_url( $dismiss_url ); ?>">
+		<div class="notice astroway-activation-notice">
+			<?php echo self::notice_close_button( $dismiss_url, esc_html__( 'Hide for now', 'astroway' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with esc_* above ?>
 			<style>
-				.astroway-activation-notice{border-left:0;padding:14px 12px 14px 18px;background:#fff;display:flex;align-items:center;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+				.astroway-activation-notice{position:relative;border-left:0;padding:14px 12px 14px 18px;background:#fff;display:flex;align-items:center;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
 				.astroway-activation-notice .awn-mark{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 25%, #1d1c24 0%, #0a0a10 75%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(240,180,41,.35), 0 0 18px rgba(240,180,41,.18)}
 				.astroway-activation-notice .awn-mark svg{width:24px;height:24px;color:#f0b429;filter:drop-shadow(0 0 4px rgba(240,180,41,.5))}
 				.astroway-activation-notice .awn-text{flex:1 1 auto;min-width:0}
@@ -316,17 +496,7 @@ class Plugin {
 					<?php esc_html_e( 'Open Settings', 'astroway' ); ?>
 				</a>
 			</div>
-			<script>
-				( function () {
-					var n = document.currentScript && document.currentScript.parentNode;
-					if ( ! n ) return;
-					n.addEventListener( 'click', function ( e ) {
-						if ( ! e.target.classList.contains( 'notice-dismiss' ) ) return;
-						var url = n.getAttribute( 'data-astroway-dismiss' );
-						if ( url ) { var img = new Image(); img.src = url; }
-					}, true );
-				} )();
-			</script>
+			<?php echo self::notice_script(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup ?>
 		</div>
 		<?php
 	}
@@ -336,7 +506,7 @@ class Plugin {
 			wp_send_json_error( null, 403 );
 		}
 		check_admin_referer( 'astroway_dismiss_activation_notice' );
-		update_user_meta( get_current_user_id(), 'astroway_notice_dismissed', 1 );
+		self::set_notice_state( 'activation', [ 'until' => time() + 60 * DAY_IN_SECONDS ] );
 		wp_send_json_success();
 	}
 
@@ -352,7 +522,7 @@ class Plugin {
 		if ( ! self::is_own_screen() ) {
 			return;
 		}
-		if ( get_user_meta( get_current_user_id(), 'astroway_review_prompt_dismissed', true ) ) {
+		if ( self::notice_hidden( 'review' ) ) {
 			return;
 		}
 		$activated_at = (int) get_option( 'astroway_activated_at', 0 );
@@ -367,11 +537,18 @@ class Plugin {
 			admin_url( 'admin-ajax.php?action=astroway_dismiss_review_prompt' ),
 			'astroway_dismiss_review_prompt'
 		);
+		$done_url    = wp_nonce_url(
+			admin_url( 'admin-ajax.php?action=astroway_review_prompt_done' ),
+			'astroway_review_prompt_done'
+		);
 		$review_url  = 'https://wordpress.org/support/plugin/astroway/reviews/#new-post';
 		?>
-		<div class="notice is-dismissible astroway-review-prompt" data-astroway-dismiss="<?php echo esc_url( $dismiss_url ); ?>">
+		<div class="notice astroway-review-prompt">
+			<?php echo self::notice_close_button( $dismiss_url, esc_html__( 'Hide for now', 'astroway' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with esc_* above ?>
 			<style>
-				.astroway-review-prompt{border-left:0;padding:14px 12px 14px 18px;background:#fff;display:flex;align-items:center;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+				.astroway-review-prompt{position:relative;border-left:0;padding:14px 12px 14px 18px;background:#fff;display:flex;align-items:center;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+				.astroway-review-prompt .arp-btn-secondary{background:transparent;color:#4a4640;border-color:#d9d3c2;cursor:pointer;font-family:inherit}
+				.astroway-review-prompt .arp-btn-secondary:hover{border-color:#f0b429;color:#1a1815}
 				.astroway-review-prompt .arp-mark{flex:0 0 auto;width:46px;height:46px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px rgba(240,180,41,.25), 0 0 18px rgba(240,180,41,.18)}
 					.astroway-review-prompt .arp-mark img{width:100%;height:100%;display:block;object-fit:cover}
 				.astroway-review-prompt .arp-text{flex:1 1 auto;min-width:0}
@@ -389,21 +566,14 @@ class Plugin {
 				<p class="arp-desc"><?php esc_html_e( 'A short review on wordpress.org helps other site owners discover the plugin, and tells us what to build next.', 'astroway' ); ?></p>
 			</div>
 			<div class="arp-actions">
-				<a href="<?php echo esc_url( $review_url ); ?>" target="_blank" rel="noopener" class="arp-btn arp-btn-primary">
+				<a href="<?php echo esc_url( $review_url ); ?>" target="_blank" rel="noopener" class="arp-btn arp-btn-primary" data-astroway-url="<?php echo esc_url( $dismiss_url ); ?>">
 					<?php esc_html_e( 'Leave a review', 'astroway' ); ?>
 				</a>
+				<button type="button" class="arp-btn arp-btn-secondary" data-astroway-url="<?php echo esc_url( $done_url ); ?>">
+					<?php esc_html_e( 'I already left one', 'astroway' ); ?>
+				</button>
 			</div>
-			<script>
-				( function () {
-					var n = document.currentScript && document.currentScript.parentNode;
-					if ( ! n ) return;
-					n.addEventListener( 'click', function ( e ) {
-						if ( ! e.target.classList.contains( 'notice-dismiss' ) ) return;
-						var url = n.getAttribute( 'data-astroway-dismiss' );
-						if ( url ) { var img = new Image(); img.src = url; }
-					}, true );
-				} )();
-			</script>
+			<?php echo self::notice_script(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup ?>
 		</div>
 		<?php
 	}
@@ -413,7 +583,7 @@ class Plugin {
 			wp_send_json_error( null, 403 );
 		}
 		check_admin_referer( 'astroway_dismiss_review_prompt' );
-		update_user_meta( get_current_user_id(), 'astroway_review_prompt_dismissed', 1 );
+		self::set_notice_state( 'review', [ 'until' => time() + 90 * DAY_IN_SECONDS ] );
 		wp_send_json_success();
 	}
 
@@ -431,7 +601,7 @@ class Plugin {
 		if ( ! self::is_own_screen() ) {
 			return;
 		}
-		if ( get_user_meta( get_current_user_id(), 'astroway_rl_notice_dismissed', true ) ) {
+		if ( self::notice_hidden( 'rate_limit' ) ) {
 			return;
 		}
 
@@ -449,25 +619,16 @@ class Plugin {
 			admin_url( 'admin-ajax.php?action=astroway_dismiss_rate_limit_notice' ),
 			'astroway_dismiss_rate_limit_notice'
 		);
-		$signup_url  = 'https://api.astroway.info/dashboard/sign-up?source=wp_plugin_rl';
+		$signup_url  = self::api_url( '/dashboard/sign-up', [ 'source' => 'wp_plugin_rl' ] );
 		?>
-		<div class="notice notice-warning is-dismissible astroway-rl-notice" data-astroway-dismiss="<?php echo esc_url( $dismiss_url ); ?>">
-			<p>
+		<div class="notice notice-warning astroway-rl-notice" style="position:relative;">
+			<?php echo self::notice_close_button( $dismiss_url, esc_html__( 'Hide for now', 'astroway' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built with esc_* above ?>
+			<p style="padding-right:28px;">
 				<strong><?php esc_html_e( 'This server has used up its anonymous AstroWay quota:', 'astroway' ); ?></strong>
 				<?php esc_html_e( 'the free tier allows this site 300 requests an hour. Until the hour resets, widgets that would have been rendered into the page fall back to a frame loaded by the visitor\'s own browser, and preview and admin calls from this server will fail. Add a free API key to lift the limit and get 10,000 credits/month plus 60 req/min.', 'astroway' ); ?>
 				<a href="<?php echo esc_url( $signup_url ); ?>" target="_blank" rel="noopener" class="button button-primary" style="margin-left:8px;"><?php esc_html_e( 'Get free API key', 'astroway' ); ?></a>
 			</p>
-			<script>
-				( function () {
-					var n = document.currentScript && document.currentScript.parentNode;
-					if ( ! n ) return;
-					n.addEventListener( 'click', function ( e ) {
-						if ( ! e.target.classList.contains( 'notice-dismiss' ) ) return;
-						var url = n.getAttribute( 'data-astroway-dismiss' );
-						if ( url ) { var img = new Image(); img.src = url; }
-					}, true );
-				} )();
-			</script>
+			<?php echo self::notice_script(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup ?>
 		</div>
 		<?php
 	}
@@ -499,7 +660,23 @@ class Plugin {
 			wp_send_json_error( null, 403 );
 		}
 		check_admin_referer( 'astroway_dismiss_rate_limit_notice' );
-		update_user_meta( get_current_user_id(), 'astroway_rl_notice_dismissed', 1 );
+		// Short, because the quota wall is a fact about today, not a preference.
+		self::set_notice_state( 'rate_limit', [ 'until' => time() + 7 * DAY_IN_SECONDS ] );
+		wp_send_json_success();
+	}
+
+	/**
+	 * "I already left one" ends the ask for good. There is no way to check it:
+	 * wordpress.org publishes reviews, not who wrote them, and matching a
+	 * WordPress user to a wp.org account would be a guess. So it is taken at
+	 * face value, which costs us nothing and spares an honest user the nagging.
+	 */
+	public static function review_prompt_done(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( null, 403 );
+		}
+		check_admin_referer( 'astroway_review_prompt_done' );
+		self::set_notice_state( 'review', [ 'done' => 1 ] );
 		wp_send_json_success();
 	}
 

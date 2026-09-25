@@ -81,7 +81,7 @@
 		}
 
 		var list = document.createElement( 'div' );
-		list.className = 'astroway-tabs';
+		list.className = 'astroway-tabs__list';
 		list.setAttribute( 'role', 'tablist' );
 
 		var locale = panels[ 0 ].getAttribute( 'lang' ) || document.documentElement.lang || '';

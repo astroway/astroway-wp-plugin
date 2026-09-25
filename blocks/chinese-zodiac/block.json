@@ -17,7 +17,9 @@
 		"date": { "type": "string", "default": "" },
 		"time": { "type": "string", "default": "" },
 		"timezone_offset": { "type": "string", "default": "" },
-		"lang": { "type": "string", "default": "" }
+		"lang": { "type": "string", "default": "" },
+		"look": { "type": "string", "default": "" }
 	},
+	"usesContext": [ "astroway/look" ],
 	"editorScript": "astroway-blocks-editor"
 }

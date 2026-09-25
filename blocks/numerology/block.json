@@ -18,7 +18,9 @@
 		"date":   { "type": "string", "default": "" },
 		"system": { "type": "string", "default": "pythagorean" },
 		"theme":  { "type": "string", "default": "" },
-		"lang":   { "type": "string", "default": "" }
+		"lang":   { "type": "string", "default": "" },
+		"look": { "type": "string", "default": "" }
 	},
+	"usesContext": [ "astroway/look" ],
 	"editorScript": "astroway-blocks-editor"
 }

@@ -28,8 +28,12 @@
 		"lang": {
 			"type": "string",
 			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
 		}
 	},
-	"usesContext": [ "astroway/sign", "astroway/lang" ],
+	"usesContext": [ "astroway/sign", "astroway/lang", "astroway/look" ],
 	"editorScript": "astroway-blocks-editor"
 }

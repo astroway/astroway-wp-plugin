@@ -230,13 +230,15 @@ class Shortcodes {
 				'date'            => '',
 				'latitude'        => '',
 				'longitude'       => '',
+				'lat'             => '',
+				'lon'             => '',
 				'timezone_offset' => '',
 				'lang'            => '',
 			],
 			(array) $atts,
 			'astroway_planetary_hours'
 		);
-		return Render::keyed( 'astroway_planetary_hours', 'planetary_hours', $atts );
+		return Render::keyed( 'astroway_planetary_hours', 'planetary_hours', self::with_coord_aliases( $atts ) );
 	}
 
 	/**
@@ -293,14 +295,16 @@ class Shortcodes {
 	public static function render_natal( $atts ): string {
 		$atts           = shortcode_atts(
 			[
-				'date'  => '',
-				'time'  => '',
-				'lat'   => '',
-				'lon'   => '',
-				'name'  => '',
-				'tz'    => '',
-				'lang'  => '',
-				'theme' => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'name'      => '',
+				'tz'        => '',
+				'lang'      => '',
+				'theme'     => '',
 			],
 			(array) $atts,
 			'astroway_natal'
@@ -338,19 +342,67 @@ class Shortcodes {
 	public static function render_daily_horoscope( $atts ): string {
 		$atts = shortcode_atts(
 			[
-				'sign' => '',
-				'lang' => '',
+				'sign'    => '',
+				'date'    => '',
+				'lang'    => '',
+				'switch'  => '',
+				'periods' => '',
 			],
 			(array) $atts,
 			'astroway_daily_horoscope'
 		);
-		return Render::widget(
-			'daily_horoscope',
-			[
-				'sign' => self::sanitize_sign( $atts['sign'] ),
-				'lang' => self::resolve_lang( $atts['lang'] ),
-			]
-		);
+		return Render::widget( 'daily_horoscope', self::horoscope_params( $atts ) );
+	}
+
+	/**
+	 * Sign and date may also come from the URL, because the card switches them
+	 * with links rather than script: that survives a full-page cache, works
+	 * without JavaScript and leaves the visitor with a URL worth sharing.
+	 * `switch="no"` pins a card to its own attributes.
+	 */
+	private static function horoscope_params( array $atts ): array {
+		$sign   = self::sanitize_sign( $atts['sign'] );
+		$date   = self::sanitize_date( $atts['date'] ?? '' );
+		$pinned = 'no' === strtolower( trim( (string) ( $atts['switch'] ?? '' ) ) );
+
+		if ( ! $pinned ) {
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- view state, nothing is written.
+			$from_url = isset( $_GET['aw_sign'] ) ? self::sanitize_sign( wp_unslash( $_GET['aw_sign'] ) ) : '';
+			$on_date  = isset( $_GET['aw_date'] ) ? self::sanitize_date( wp_unslash( $_GET['aw_date'] ) ) : '';
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
+			$sign = '' === $from_url ? $sign : $from_url;
+			$date = '' === $on_date ? $date : $on_date;
+		}
+
+		return [
+			'sign'    => $sign,
+			'date'    => $date,
+			'lang'    => self::resolve_lang( $atts['lang'] ),
+			'switch'  => ! $pinned,
+			'periods' => self::sanitize_periods( $atts['periods'] ?? '' ),
+		];
+	}
+
+	/**
+	 * The card shows day, week and month as tabs unless the shortcode narrows
+	 * the list. Each period is its own endpoint, but they are cached for as long
+	 * as they stay true, so three tabs cost three calls a day per sign, not
+	 * three per view. `periods="day"` brings back the single-period card.
+	 */
+	private static function sanitize_periods( $value ): array {
+		$valid = [ 'day', 'week', 'month' ];
+		$value = strtolower( trim( (string) $value ) );
+		if ( '' === $value ) {
+			return $valid;
+		}
+		$out = [];
+		foreach ( explode( ',', $value ) as $piece ) {
+			$piece = trim( $piece );
+			if ( in_array( $piece, $valid, true ) && ! in_array( $piece, $out, true ) ) {
+				$out[] = $piece;
+			}
+		}
+		return empty( $out ) ? $valid : $out;
 	}
 
 	/**
@@ -369,21 +421,16 @@ class Shortcodes {
 	private static function render_period_horoscope( $atts, string $widget, string $tag ): string {
 		$atts = shortcode_atts(
 			[
-				'sign' => '',
-				'date' => '',
-				'lang' => '',
+				'sign'    => '',
+				'date'    => '',
+				'lang'    => '',
+				'switch'  => '',
+				'periods' => '',
 			],
 			(array) $atts,
 			$tag
 		);
-		return Render::widget(
-			$widget,
-			[
-				'sign' => self::sanitize_sign( $atts['sign'] ),
-				'date' => self::sanitize_date( $atts['date'] ),
-				'lang' => self::resolve_lang( $atts['lang'] ),
-			]
-		);
+		return Render::widget( $widget, self::horoscope_params( $atts ) );
 	}
 
 	public static function render_planet_of_day( $atts ): string {
@@ -425,13 +472,15 @@ class Shortcodes {
 	public static function render_bodygraph( $atts ): string {
 		$atts           = shortcode_atts(
 			[
-				'date' => '',
-				'time' => '',
-				'lat'  => '',
-				'lon'  => '',
-				'name' => '',
-				'tz'   => '',
-				'lang' => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'name'      => '',
+				'tz'        => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_bodygraph'
@@ -445,13 +494,15 @@ class Shortcodes {
 	public static function render_moon_sign( $atts ): string {
 		$atts           = shortcode_atts(
 			[
-				'date' => '',
-				'time' => '',
-				'lat'  => '',
-				'lon'  => '',
-				'name' => '',
-				'tz'   => '',
-				'lang' => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'name'      => '',
+				'tz'        => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_moon_sign'
@@ -471,13 +522,15 @@ class Shortcodes {
 	public static function render_rising_sign( $atts ): string {
 		$atts           = shortcode_atts(
 			[
-				'date' => '',
-				'time' => '',
-				'lat'  => '',
-				'lon'  => '',
-				'name' => '',
-				'tz'   => '',
-				'lang' => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'name'      => '',
+				'tz'        => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_rising_sign'
@@ -563,13 +616,15 @@ class Shortcodes {
 	public static function render_mini_chart( $atts ): string {
 		$atts = shortcode_atts(
 			[
-				'date'  => '',
-				'time'  => '',
-				'lat'   => '',
-				'lon'   => '',
-				'tz'    => '',
-				'theme' => '',
-				'lang'  => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'tz'        => '',
+				'theme'     => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_mini_chart'
@@ -637,13 +692,15 @@ class Shortcodes {
 	public static function render_kundli( $atts ): string {
 		$atts = shortcode_atts(
 			[
-				'date'  => '',
-				'time'  => '',
-				'lat'   => '',
-				'lon'   => '',
-				'tz'    => '',
-				'theme' => '',
-				'lang'  => '',
+				'date'      => '',
+				'time'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'tz'        => '',
+				'theme'     => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_kundli'
@@ -695,12 +752,14 @@ class Shortcodes {
 	public static function render_panchang( $atts ): string {
 		$atts = shortcode_atts(
 			[
-				'date'  => '',
-				'lat'   => '',
-				'lon'   => '',
-				'tz'    => '',
-				'theme' => '',
-				'lang'  => '',
+				'date'      => '',
+				'lat'       => '',
+				'lon'       => '',
+				'latitude'  => '',
+				'longitude' => '',
+				'tz'        => '',
+				'theme'     => '',
+				'lang'      => '',
 			],
 			(array) $atts,
 			'astroway_panchang'
@@ -822,7 +881,25 @@ class Shortcodes {
 		return Plugin::resolve_lang( $raw );
 	}
 
+	/**
+	 * `lat`/`lon` and `latitude`/`longitude` both work everywhere. The plugin
+	 * shipped one spelling in the chart shortcodes and the other in planetary
+	 * hours, and the wrong guess renders a card that says nothing is wrong.
+	 */
+	private static function with_coord_aliases( array $atts ): array {
+		$atts['lat'] = '' !== (string) ( $atts['lat'] ?? '' ) ? $atts['lat'] : ( $atts['latitude'] ?? '' );
+		$atts['lon'] = '' !== (string) ( $atts['lon'] ?? '' ) ? $atts['lon'] : ( $atts['longitude'] ?? '' );
+		if ( array_key_exists( 'latitude', $atts ) ) {
+			$atts['latitude'] = '' !== (string) $atts['latitude'] ? $atts['latitude'] : $atts['lat'];
+		}
+		if ( array_key_exists( 'longitude', $atts ) ) {
+			$atts['longitude'] = '' !== (string) $atts['longitude'] ? $atts['longitude'] : $atts['lon'];
+		}
+		return $atts;
+	}
+
 	private static function sanitize_chart_params( array $atts ): array {
+		$atts = self::with_coord_aliases( $atts );
 		$date = self::sanitize_date( $atts['date'] );
 		$time = self::sanitize_time( $atts['time'] );
 		// api chart endpoints read `lng` (not `lon`) and `tz` as numeric hours.

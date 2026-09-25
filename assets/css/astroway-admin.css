@@ -1409,3 +1409,40 @@
 		grid-template-columns: minmax(0, 1fr);
 	}
 }
+
+/* Widget style picker: a live card per look. */
+.aw-looks {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 14px;
+	margin: 0 0 14px;
+}
+
+.aw-look {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 14px;
+	border: 1px solid var(--aw-rule);
+	border-radius: 12px;
+	background: #fff;
+	cursor: pointer;
+}
+
+.aw-look:has(input:checked) {
+	border-color: var(--aw-gold-deep);
+	box-shadow: 0 0 0 1px var(--aw-gold-deep);
+}
+
+.aw-look-head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.aw-look .astroway-card {
+	--astroway-card-margin: 6px 0 0;
+	font-size: 14px;
+	color: var(--aw-ink);
+	pointer-events: none;
+}

@@ -64,6 +64,15 @@
 
 	var LANG_FIELD = { name: 'lang', type: 'select', label: __( 'Language', 'astroway' ), options: LANG_OPTIONS };
 
+	// Blank follows the section around the block, then the site setting.
+	var LOOK_OPTIONS = [
+		{ label: __( 'Site default', 'astroway' ),  value: '' },
+		{ label: __( 'Instrument', 'astroway' ),    value: 'instrument' },
+		{ label: __( 'Night sky', 'astroway' ),     value: 'night' },
+		{ label: __( 'Theme colours', 'astroway' ), value: 'native' }
+	];
+	var LOOK_FIELD = { name: 'look', type: 'select', label: __( 'Style', 'astroway' ), options: LOOK_OPTIONS };
+
 	var CHART_FIELDS = [
 		{ name: 'date', type: 'text', label: __( 'Date (YYYY-MM-DD)', 'astroway' ) },
 		{ name: 'time', type: 'text', label: __( 'Time (HH:MM)', 'astroway' ) },
@@ -347,7 +356,7 @@
 	 */
 	function previewAttributes( attrs, context ) {
 		var merged = Object.assign( {}, attrs );
-		[ 'sign', 'lang' ].forEach( function ( name ) {
+		[ 'sign', 'lang', 'look' ].forEach( function ( name ) {
 			var inherited = context && context[ 'astroway/' + name ];
 			if ( inherited && ! merged[ name ] ) {
 				merged[ name ] = inherited;
@@ -369,7 +378,7 @@
 					el(
 						PanelBody,
 						{ title: cfg.panel, initialOpen: true },
-						cfg.fields.map( function ( field ) {
+						cfg.fields.concat( [ LOOK_FIELD ] ).map( function ( field ) {
 							return buildControl( field, props.attributes, props.setAttributes );
 						} )
 					)
@@ -425,6 +434,7 @@
 					} );
 				} );
 				controls.push( buildControl( LANG_FIELD, props.attributes, props.setAttributes ) );
+				controls.push( buildControl( LOOK_FIELD, props.attributes, props.setAttributes ) );
 
 				return el(
 					Fragment,
@@ -436,7 +446,7 @@
 						el( Disabled, null,
 							el( ServerSideRender, {
 								block:      name,
-								attributes: props.attributes
+								attributes: previewAttributes( props.attributes, props.context )
 							} )
 						)
 					)
@@ -476,6 +486,13 @@
 							value:    props.attributes.lang || '',
 							options:  LANG_OPTIONS,
 							onChange: function ( value ) { props.setAttributes( { lang: value } ); }
+						} ),
+						el( SelectControl, {
+							key:      'look',
+							label:    __( 'Style for blocks inside', 'astroway' ),
+							value:    props.attributes.look || '',
+							options:  LOOK_OPTIONS,
+							onChange: function ( value ) { props.setAttributes( { look: value } ); }
 						} ),
 						el( SelectControl, {
 							key:      'layout',

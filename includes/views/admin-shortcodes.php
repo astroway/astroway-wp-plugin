@@ -39,6 +39,8 @@ $astroway_cards = [
 		'block'       => 'astroway/daily-horoscope',
 		'params'      => [
 			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'periods', 'string', false, __( 'Which period tabs the card shows: any of day, week, month, comma separated. All three by default; periods="day" gives a single card.', 'astroway' ) ],
+			[ 'switch', 'string', false, __( 'switch="no" pins the card to these attributes. By default the visitor can pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the page URL.', 'astroway' ) ],
 		],
 	],
 	[
@@ -49,6 +51,8 @@ $astroway_cards = [
 		'block'       => 'astroway/weekly-horoscope',
 		'params'      => [
 			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'periods', 'string', false, __( 'Which period tabs the card shows: any of day, week, month, comma separated. All three by default; periods="day" gives a single card.', 'astroway' ) ],
+			[ 'switch', 'string', false, __( 'switch="no" pins the card to these attributes. By default the visitor can pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the page URL.', 'astroway' ) ],
 			[ 'date', 'string', false, __( 'Any date inside the week you want. Defaults to today.', 'astroway' ) ],
 		],
 	],
@@ -60,6 +64,8 @@ $astroway_cards = [
 		'block'       => 'astroway/monthly-horoscope',
 		'params'      => [
 			[ 'sign', 'string', true, __( 'One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces.', 'astroway' ) ],
+			[ 'periods', 'string', false, __( 'Which period tabs the card shows: any of day, week, month, comma separated. All three by default; periods="day" gives a single card.', 'astroway' ) ],
+			[ 'switch', 'string', false, __( 'switch="no" pins the card to these attributes. By default the visitor can pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the page URL.', 'astroway' ) ],
 			[ 'date', 'string', false, __( 'Any date inside the month you want. Defaults to today.', 'astroway' ) ],
 		],
 	],

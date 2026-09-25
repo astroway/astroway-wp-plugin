@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $astroway_option_key    = \AstroWay\WPPlugin\Admin::OPTION_KEY;
 $astroway_page_slug     = \AstroWay\WPPlugin\Admin::PAGE_API_KEY;
 $astroway_current_slug  = $astroway_page_slug;
-$astroway_canonical_url = 'https://api.astroway.info/pricing';
+$astroway_canonical_url = \AstroWay\WPPlugin\Plugin::api_url( '/pricing/' );
 
 $astroway_hero_title   = __( 'Getting started', 'astroway' );
 $astroway_hero_tagline = __( 'Paste a shortcode into a page. No account, no key, nothing to configure.', 'astroway' );

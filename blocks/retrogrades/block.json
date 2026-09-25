@@ -14,7 +14,9 @@
 		"customClassName": true
 	},
 	"attributes": {
-		"lang": { "type": "string", "default": "" }
+		"lang": { "type": "string", "default": "" },
+		"look": { "type": "string", "default": "" }
 	},
+	"usesContext": [ "astroway/look" ],
 	"editorScript": "astroway-blocks-editor"
 }

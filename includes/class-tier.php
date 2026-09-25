@@ -185,12 +185,12 @@ class Tier {
 	 * @since 0.7.4
 	 */
 	public static function render_upgrade_cta( string $feature ): string {
-		$upgrade_url = add_query_arg(
+		$upgrade_url = Plugin::api_url(
+			'/dashboard/upgrade',
 			[
 				'source'  => 'wp_plugin',
 				'feature' => $feature,
-			],
-			'https://api.astroway.info/dashboard/upgrade'
+			]
 		);
 
 		$label = ucwords( str_replace( '_', ' ', $feature ) );
