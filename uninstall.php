@@ -19,10 +19,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 function astroway_uninstall_site() {
 	global $wpdb;
 
-	foreach ( [ 'astroway_settings', 'astroway_activated_at', 'astroway_rate_limit_hit_at', 'astroway_quota_seen', 'astroway_digest_last_sent' ] as $astroway_option ) {
+	foreach ( [ 'astroway_settings', 'astroway_activated_at', 'astroway_rate_limit_hit_at', 'astroway_quota_seen', 'astroway_digest_last_sent', 'astroway_form_hits' ] as $astroway_option ) {
 		delete_option( $astroway_option );
 	}
 	delete_transient( 'astroway_rate_limit_probe' );
+	delete_transient( 'astroway_form_fails' );
 
 	// Cached api answers: every transient under the plugin's prefix. There is no
 	// API for deleting transients by prefix, so this is one query.
@@ -36,6 +37,7 @@ function astroway_uninstall_site() {
 	);
 
 	wp_clear_scheduled_hook( 'astroway_sky_digest_tick' );
+	wp_clear_scheduled_hook( 'astroway_site_key_issue' );
 }
 
 if ( is_multisite() ) {
@@ -56,6 +58,11 @@ if ( is_multisite() ) {
 // Network-wide: the update checker's state in paid builds, and the per-user
 // "dismissed" flags of the plugin's notices.
 delete_site_option( 'external_updates-astroway' );
+// One option per host, plus its lock: astroway_site_key_<host>.
+global $wpdb;
+$astroway_key_table = is_multisite() ? $wpdb->sitemeta : $wpdb->options;
+$astroway_key_col   = is_multisite() ? 'meta_key' : 'option_name';
+$wpdb->query( $wpdb->prepare( "DELETE FROM {$astroway_key_table} WHERE {$astroway_key_col} LIKE %s", $wpdb->esc_like( 'astroway_site_key_' ) . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table and column are core names picked above.
 foreach ( [ 'astroway_notice_dismissed', 'astroway_review_prompt_dismissed', 'astroway_rl_notice_dismissed' ] as $astroway_meta_key ) {
 	delete_metadata( 'user', 0, $astroway_meta_key, '', true );
 }

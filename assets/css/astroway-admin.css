@@ -476,7 +476,9 @@
 	font-variation-settings: "opsz" 36;
 	letter-spacing: -0.01em;
 	color: var(--aw-ink);
-	flex: 1;
+	/* Room for the title first: on a phone the hint wraps under it instead
+	   of squeezing it to one word a line. */
+	flex: 1 1 12em;
 	min-width: 0;
 }
 
@@ -1017,6 +1019,11 @@
 }
 .aw-step-caption {
 	margin: 6px 0 14px;
+}
+.aw-app .aw-site-key {
+	margin: 16px 0 0;
+	padding: 12px 0 0 34px;
+	border-top: 1px solid var(--aw-rule-soft);
 }
 .aw-step-caption:last-of-type {
 	margin-bottom: 10px;

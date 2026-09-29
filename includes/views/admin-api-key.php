@@ -130,6 +130,25 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 					?>
 				</p>
 				</div>
+				<?php
+				$astroway_site_key = \AstroWay\WPPlugin\SiteKey::status();
+				?>
+				<p class="aw-hint aw-site-key">
+					<?php
+					if ( $astroway_site_key['has_key'] ) {
+						esc_html_e( 'This site has its own key for the widgets above: 300 readings an hour, no account needed.', 'astroway' );
+					} elseif ( '' === $astroway_site_key['reason'] ) {
+						esc_html_e( 'This site is asking api.astroway.info for its own key for the widgets above. Until then they use the shared allowance.', 'astroway' );
+					} else {
+						printf(
+							/* translators: 1: why the site key could not be issued, 2: date and time of the next try */
+							esc_html__( 'This site has no key of its own yet: %1$s The widgets work on the shared allowance meanwhile. Next try: %2$s.', 'astroway' ),
+							esc_html( \AstroWay\WPPlugin\SiteKey::reason_text( $astroway_site_key['reason'] ) ),
+							esc_html( wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), max( time(), $astroway_site_key['retry'] ) ) )
+						);
+					}
+					?>
+				</p>
 			</div>
 		</article>
 

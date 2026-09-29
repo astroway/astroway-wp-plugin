@@ -471,58 +471,17 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( null, 403 );
 		}
-		$q = isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '';
-		if ( strlen( $q ) < 2 ) {
-			wp_send_json_success( [ 'results' => [] ] );
-		}
-		$cache_key = 'atlas_' . md5( strtolower( $q ) );
-		$cached    = Cache::get( $cache_key );
-		if ( false !== $cached ) {
-			wp_send_json_success( $cached );
-		}
-		$resp = wp_remote_get(
-			add_query_arg(
-				[
-					'q'     => $q,
-					'limit' => 6,
-				],
-				'https://app.astroway.info/api/atlas/search'
-			),
-			[
-				'timeout' => 10,
-				'headers' => [
-					'Accept'              => 'application/json',
-					// Without it the atlas counts every site sharing this server's
-					// egress address in one bucket, which on shared hosting is
-					// somebody else's traffic spending your allowance.
-					'X-AstroWay-Site-URL' => home_url(),
-				],
-			]
-		);
-		if ( is_wp_error( $resp ) ) {
-			wp_send_json_error( [ 'message' => $resp->get_error_message() ] );
-		}
-		$code = wp_remote_retrieve_response_code( $resp );
-		if ( 429 === $code ) {
-			// Retrying before retry_after is refused anyway and keeps the window
-			// sliding forward, so hand the wait back to the caller.
-			$retry = (int) wp_remote_retrieve_header( $resp, 'retry-after' );
+		$q     = isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '';
+		$found = Atlas::search( $q );
+		if ( isset( $found['error'] ) ) {
 			wp_send_json_error(
 				[
-					'message'     => __( 'City lookup is busy, try again in a moment.', 'astroway' ),
-					'retry_after' => $retry > 0 ? $retry : 60,
+					'message'     => $found['error'],
+					'retry_after' => $found['retry_after'] ?? null,
 				],
-				429
+				isset( $found['retry_after'] ) ? 429 : 502
 			);
 		}
-		if ( 200 !== $code ) {
-			wp_send_json_error( [ 'message' => 'upstream ' . $code ] );
-		}
-		$body = json_decode( wp_remote_retrieve_body( $resp ), true );
-		if ( ! is_array( $body ) ) {
-			wp_send_json_error( [ 'message' => 'invalid upstream response' ] );
-		}
-		Cache::set( $cache_key, $body, DAY_IN_SECONDS );
-		wp_send_json_success( $body );
+		wp_send_json_success( $found );
 	}
 }

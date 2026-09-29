@@ -167,7 +167,11 @@ class PublicData {
 	 * required param missing, a remembered failure, or the request failing now.
 	 * Callers must handle null by falling back, never by rendering an empty box.
 	 */
-	public static function get( string $widget, array $params = [] ): ?array {
+	/**
+	 * @param bool $remember False for a visitor's own data: asked fresh, and
+	 *                       neither the answer nor a failure is kept.
+	 */
+	public static function get( string $widget, array $params = [], bool $remember = true ): ?array {
 		$config = self::ENDPOINTS[ $widget ] ?? null;
 		if ( null === $config ) {
 			return null;
@@ -176,6 +180,10 @@ class PublicData {
 		$query = self::query_for( $widget, $params );
 		if ( null === $query ) {
 			return null;
+		}
+
+		if ( ! $remember ) {
+			return self::request( $config['path'], $query, $config['method'] ?? 'GET' );
 		}
 
 		$key    = self::cache_key( $config['path'], $query );
@@ -418,6 +426,30 @@ class PublicData {
 		return checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ? $raw : '';
 	}
 
+	/** Days either side of today a dated horoscope may ask for on the site key. */
+	private const SITE_KEY_DAYS = [
+		'/public/horoscope/daily'   => 2,
+		'/public/horoscope/weekly'  => 8,
+		'/public/horoscope/monthly' => 35,
+	];
+
+	/**
+	 * Whether the site key may carry this call. The api refuses it a horoscope
+	 * dated far from today (400 DATE_OUT_OF_RANGE); the date arrows reach any
+	 * day, and without the key those still go on the anonymous allowance.
+	 */
+	private static function near_today( string $path, array $payload, ?int $now = null ): bool {
+		if ( ! isset( self::SITE_KEY_DAYS[ $path ], $payload['date'] ) ) {
+			return true;
+		}
+		$day = strtotime( (string) $payload['date'] . ' 00:00:00 UTC' );
+		if ( false === $day ) {
+			return true;
+		}
+		$today = strtotime( gmdate( 'Y-m-d', null === $now ? time() : $now ) . ' 00:00:00 UTC' );
+		return abs( $day - $today ) <= self::SITE_KEY_DAYS[ $path ] * DAY_IN_SECONDS;
+	}
+
 	private static function request( string $path, array $payload, string $method = 'GET' ): ?array {
 		$base = rtrim( ASTROWAY_API_BASE, '/' ) . $path;
 		$args = [
@@ -442,9 +474,10 @@ class PublicData {
 		// Server-side only. PublicClient::embed_url() must never carry it: that
 		// URL is an iframe src, so it lands in the page's markup and in the
 		// visitor's browser history.
-		$key = ( new ApiClient() )->key();
-		if ( '' !== $key ) {
-			$args['headers']['X-Api-Key'] = $key;
+		$key      = ( new ApiClient() )->key();
+		$site_key = '' === $key && self::near_today( $path, $payload ) ? SiteKey::key() : '';
+		if ( '' !== $key || '' !== $site_key ) {
+			$args['headers']['X-Api-Key'] = '' !== $key ? $key : $site_key;
 		}
 
 		if ( 'POST' === $method ) {
@@ -463,6 +496,10 @@ class PublicData {
 		self::record_quota( $response, $status );
 
 		if ( 200 !== $status ) {
+			if ( '' !== $site_key ) {
+				$error = json_decode( (string) wp_remote_retrieve_body( $response ), true );
+				SiteKey::note( $status, (string) ( $error['error']['code'] ?? '' ), $site_key );
+			}
 			return null;
 		}
 
@@ -472,6 +509,66 @@ class PublicData {
 		}
 
 		return $body['data'];
+	}
+
+	/**
+	 * Edited natal texts for these keys in this language, `key => [title, body]`.
+	 *
+	 * The texts are static, so each one is kept for a week once had. A key the
+	 * api has no text for yet is asked again after a day, not on every render:
+	 * houses and aspects arrive as they are edited. At most 64 keys a call.
+	 */
+	public static function natal_texts( array $keys, string $lang, ?int $now = null ): array {
+		$now   = null === $now ? time() : $now;
+		$keys  = array_values( array_unique( array_filter( array_map( 'strval', $keys ), static fn( $k ) => (bool) preg_match( '/^[a-z]+(_[a-z]+)?\.[a-z0-9]+$/', $k ) ) ) );
+		$store = Cache::get( 'natal_texts_' . $lang );
+		$store = is_array( $store ) ? $store : [];
+		$texts = isset( $store['texts'] ) && is_array( $store['texts'] ) ? $store['texts'] : [];
+		$gone  = isset( $store['missing'] ) && is_array( $store['missing'] ) ? $store['missing'] : [];
+
+		$need = array_values(
+			array_filter(
+				$keys,
+				static fn( $k ) => ! isset( $texts[ $k ] ) && (int) ( $gone[ $k ] ?? 0 ) <= $now - DAY_IN_SECONDS
+			)
+		);
+		if ( $need && false === Cache::get( 'natal_texts_' . $lang . '_neg' ) ) {
+			foreach ( array_chunk( $need, 64 ) as $chunk ) {
+				$data = self::request(
+					'/natal-texts',
+					[
+						'keys' => implode( ',', $chunk ),
+						'lang' => $lang,
+					]
+				);
+				if ( null === $data ) {
+					Cache::set( 'natal_texts_' . $lang . '_neg', 'fail', self::NEGATIVE_TTL );
+					break;
+				}
+				foreach ( (array) ( $data['texts'] ?? [] ) as $k => $t ) {
+					if ( is_array( $t ) && '' !== (string) ( $t['body'] ?? '' ) ) {
+						$texts[ (string) $k ] = [
+							'title' => (string) ( $t['title'] ?? '' ),
+							'body'  => (string) $t['body'],
+						];
+						unset( $gone[ (string) $k ] );
+					}
+				}
+				foreach ( (array) ( $data['missing'] ?? [] ) as $k ) {
+					$gone[ (string) $k ] = $now;
+				}
+			}
+			Cache::set(
+				'natal_texts_' . $lang,
+				[
+					'texts'   => $texts,
+					'missing' => $gone,
+				],
+				WEEK_IN_SECONDS
+			);
+		}
+
+		return array_intersect_key( $texts, array_flip( $keys ) );
 	}
 
 	/** Option holding the last quota reading taken from a real render. */

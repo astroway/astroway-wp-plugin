@@ -59,7 +59,11 @@ class Render {
 			return PublicClient::embed_iframe( $widget, $params );
 		}
 
-		$data = PublicData::get( $widget, $params );
+		return self::with_data( $widget, PublicData::get( $widget, $params, empty( $params['nocache'] ) ), $params );
+	}
+
+	/** The card for an answer already in hand: the form asks once and reads it twice. */
+	public static function with_data( string $widget, ?array $data, array $params ): string {
 		if ( null === $data ) {
 			return self::fallback( $widget, $params );
 		}
@@ -181,7 +185,8 @@ class Render {
 			}
 			$longitude = (float) $moon['longitude'];
 			$title     = __( 'Moon sign', 'astroway' );
-			$house     = self::house_of( $longitude, $cusps );
+			// Houses turn with the clock: without the time this one would be noon's.
+			$house = empty( $params['time_unknown'] ) ? self::house_of( $longitude, $cusps ) : null;
 		}
 
 		$sign = self::sign_of( $longitude );
@@ -470,6 +475,24 @@ class Render {
 
 		$houses = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
 		$cusps  = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+		// Houses and the Ascendant turn with the clock: without the time they
+		// would be those of noon, drawn as if known.
+		$unknown = ! empty( $params['time_unknown'] );
+		// The Moon moves up to 15 degrees a day, as wide as an aspect's orb, so
+		// its aspects at noon are not a fact about this birth either.
+		$aspects_in = is_array( $data['aspects'] ?? null ) ? $data['aspects'] : [];
+		if ( $unknown ) {
+			$houses     = [];
+			$cusps      = [];
+			$aspects_in = array_values(
+				array_filter(
+					$aspects_in,
+					static function ( $aspect ): bool {
+						return ! is_array( $aspect ) || ! in_array( 'Moon', [ $aspect['planet1'] ?? '', $aspect['planet2'] ?? '' ], true );
+					}
+				)
+			);
+		}
 
 		$name  = trim( (string) ( $params['name'] ?? '' ) );
 		$title = __( 'Natal chart', 'astroway' );
@@ -478,7 +501,7 @@ class Render {
 			$title = sprintf( __( 'Natal chart: %s', 'astroway' ), $name );
 		}
 
-		$aspects = self::natal_aspects( $data['aspects'] ?? [] );
+		$aspects = self::natal_aspects( $aspects_in );
 
 		$sun = null;
 		foreach ( $planets as $planet ) {
@@ -496,6 +519,9 @@ class Render {
 			]
 		);
 		$inner .= self::natal_big_three( $planets, $houses );
+		if ( $unknown ) {
+			$inner .= UI::callout( esc_html__( 'Birth time unknown: the chart is drawn for noon, without houses, the Ascendant or the Moon\'s aspects, and the Moon may be up to 7 degrees from where it was.', 'astroway' ) );
+		}
 		$inner .= UI::tabs(
 			__( 'Natal chart', 'astroway' ),
 			[
@@ -520,7 +546,109 @@ class Render {
 		);
 		$inner .= self::natal_matrix( $planets );
 
+		$keys   = self::natal_text_keys( $planets, $cusps, $houses, $aspects_in );
+		$inner .= self::natal_reading( $keys, PublicData::natal_texts( $keys, $lang ) );
+
 		return self::shell( 'natal', $lang, $inner );
+	}
+
+	/** Bodies the natal texts cover, in the order the reading lists them. */
+	private const TEXT_BODIES = [ 'sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'chiron' ];
+
+	/** Keys for /v1/natal-texts: body in sign, body in house, then aspects. */
+	public static function natal_text_keys( array $planets, array $cusps, array $houses, $aspects ): array {
+		$keys = [];
+		foreach ( self::TEXT_BODIES as $body ) {
+			foreach ( $planets as $planet ) {
+				if ( ! is_array( $planet ) || ! isset( $planet['longitude'] ) || self::planet_id( (string) ( $planet['name'] ?? '' ) ) !== $body ) {
+					continue;
+				}
+				$keys[] = $body . '.' . self::sign_of( (float) $planet['longitude'] );
+				$house  = self::house_of( (float) $planet['longitude'], $cusps );
+				if ( null !== $house ) {
+					$keys[] = $body . '.h' . $house;
+				}
+			}
+		}
+		if ( isset( $houses['ascendant'] ) ) {
+			$keys[] = 'ascendant.' . self::sign_of( (float) $houses['ascendant'] );
+		}
+
+		// Pairs among the ten planets, in the api's fixed order, major aspects only.
+		$order = array_flip( array_slice( self::TEXT_BODIES, 0, 10 ) );
+		foreach ( is_array( $aspects ) ? $aspects : [] as $aspect ) {
+			$a    = self::planet_id( (string) ( $aspect['planet1'] ?? '' ) );
+			$b    = self::planet_id( (string) ( $aspect['planet2'] ?? '' ) );
+			$type = strtolower( trim( (string) ( $aspect['type']['name'] ?? '' ) ) );
+			if ( ! isset( $order[ $a ], $order[ $b ] ) || $a === $b || ! in_array( $type, [ 'conjunction', 'opposition', 'trine', 'square', 'sextile' ], true ) ) {
+				continue;
+			}
+			$pair   = $order[ $a ] < $order[ $b ] ? $a . '_' . $b : $b . '_' . $a;
+			$keys[] = $pair . '.' . $type;
+		}
+		return array_values( array_unique( $keys ) );
+	}
+
+	/** The row's mark: the body's glyph, the Ascendant's sign, an aspect's own glyph. */
+	private static function reading_mark( string $key ): string {
+		[ $subject, $what ] = array_pad( explode( '.', $key, 2 ), 2, '' );
+		if ( 'ascendant' === $subject ) {
+			return $what;
+		}
+		return false === strpos( $subject, '_' ) ? $subject : $what;
+	}
+
+	/**
+	 * "What it means": one row per body with its sign text, its house text
+	 * under it when there is one, then one row per aspect. A key with no text
+	 * is left out rather than filled in from another language.
+	 */
+	public static function natal_reading( array $keys, array $texts ): string {
+		// Blocks are split by a blank line. Inside one, a short first line
+		// followed by more is its heading, "• " lines are a list, the rest prose.
+		$paras = static function ( string $body ): string {
+			$out = '';
+			foreach ( preg_split( '/\n\s*\n/', trim( $body ) ) as $block ) {
+				$lines = array_values( array_filter( array_map( 'trim', explode( "\n", $block ) ), 'strlen' ) );
+				if ( count( $lines ) > 1 && 0 !== strpos( $lines[0], '•' ) && mb_strlen( $lines[0] ) <= 60 ) {
+					// The card draws its own marks; a colour emoji differs per OS and sits outside the palette.
+					$out .= '<h5>' . esc_html( (string) preg_replace( '/^[\p{Extended_Pictographic}\x{FE0F}\x{200D}\s]+/u', '', array_shift( $lines ) ) ) . '</h5>';
+				}
+				$list = '';
+				foreach ( $lines as $line ) {
+					if ( 0 === strpos( $line, '•' ) ) {
+						$list .= '<li>' . esc_html( trim( substr( $line, strlen( '•' ) ) ) ) . '</li>';
+						continue;
+					}
+					$out .= '' === $list ? '' : '<ul>' . $list . '</ul>';
+					$list = '';
+					$out .= '<p>' . esc_html( $line ) . '</p>';
+				}
+				$out .= '' === $list ? '' : '<ul>' . $list . '</ul>';
+			}
+			return $out;
+		};
+
+		$items = [];
+		foreach ( $keys as $key ) {
+			if ( ! isset( $texts[ $key ] ) || preg_match( '/\.h\d+$/', $key ) ) {
+				continue;
+			}
+			[ $subject ] = explode( '.', $key );
+			$body_html   = $paras( $texts[ $key ]['body'] );
+			foreach ( $keys as $house_key ) {
+				if ( 0 === strpos( $house_key, $subject . '.h' ) && isset( $texts[ $house_key ] ) ) {
+					$body_html .= '<h4>' . esc_html( $texts[ $house_key ]['title'] ) . '</h4>' . $paras( $texts[ $house_key ]['body'] );
+				}
+			}
+			$items[] = [
+				'title'     => $texts[ $key ]['title'],
+				'icon_html' => Glyphs::icon( self::reading_mark( $key ) ),
+				'body_html' => '<div class="astroway-prose">' . $body_html . '</div>',
+			];
+		}
+
+		return $items ? UI::section( __( 'What it means', 'astroway' ), UI::accordion( $items ) ) : '';
 	}
 
 	/** "Moon sign · 15 May 1990": what the card is, then when it is for. */
@@ -539,17 +667,18 @@ class Render {
 		if ( '' === $date ) {
 			return '';
 		}
-		$time  = (string) ( $params['time'] ?? '' );
+		$time  = empty( $params['time_unknown'] ) ? (string) ( $params['time'] ?? '' ) : '';
 		$time  = preg_match( '/^\d{2}:\d{2}$/', $time ) ? $time : '';
 		$stamp = strtotime( $date . ' 00:00:00 UTC' );
 		$shown = false === $stamp ? $date : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp );
 		$shown = '' === $time ? (string) $shown : $shown . ', ' . $time;
 
-		return sprintf(
+		$html = sprintf(
 			'<time datetime="%s">%s</time>',
 			esc_attr( '' === $time ? $date : $date . 'T' . $time ),
 			esc_html( $shown )
 		);
+		return empty( $params['time_unknown'] ) ? $html : $html . ' <span class="astroway-card__when"><span aria-hidden="true">·</span>' . esc_html__( 'time unknown', 'astroway' ) . '</span>';
 	}
 
 	private static function sanitised_date( string $date ): string {
@@ -712,14 +841,16 @@ class Render {
 
 		return Wheel::natal(
 			[
-				'asc'     => (float) ( $houses['ascendant'] ?? 0 ),
-				'mc'      => (float) ( $houses['mc'] ?? 0 ),
-				'cusps'   => $cusps,
-				'planets' => $drawn,
-				'aspects' => $aspects,
-				'title'   => $title,
-				'desc'    => __( 'Natal chart: signs, houses, planets and the aspects between them.', 'astroway' ),
-				'angles'  => [
+				'asc'       => (float) ( $houses['ascendant'] ?? 0 ),
+				'mc'        => (float) ( $houses['mc'] ?? 0 ),
+				// No Ascendant, no angles: drawn at 0° they would be invented.
+				'no_angles' => ! isset( $houses['ascendant'] ),
+				'cusps'     => $cusps,
+				'planets'   => $drawn,
+				'aspects'   => $aspects,
+				'title'     => $title,
+				'desc'      => __( 'Natal chart: signs, houses, planets and the aspects between them.', 'astroway' ),
+				'angles'    => [
 					'asc' => __( 'ASC', 'astroway' ),
 					'ic'  => __( 'IC', 'astroway' ),
 					'dsc' => __( 'DSC', 'astroway' ),
@@ -1434,7 +1565,7 @@ class Render {
 	}
 
 	/** Translated sign name; falls back to whatever the api sent when unrecognised. */
-	private static function sign_label( string $raw ): string {
+	public static function sign_label( string $raw ): string {
 		$labels = [
 			'aries'       => __( 'Aries', 'astroway' ),
 			'taurus'      => __( 'Taurus', 'astroway' ),
@@ -1595,11 +1726,11 @@ class Render {
 	 *                         can ask about a station it knows the date of.
 	 */
 	public static function keyed( string $tag, string $widget, array $params, ?int $now = null ): string {
-		if ( ! ( new ApiClient() )->has_key() ) {
+		if ( ! ( new ApiClient() )->can_read_sky() ) {
 			return self::admin_note(
 				sprintf(
 					/* translators: %s = shortcode tag */
-					__( '%s needs an API key: paste one in AstroWay, API Key. Only administrators see this note.', 'astroway' ),
+					__( '%s needs an API key: this site asks for its own automatically, or paste yours in AstroWay, API Key. Only administrators see this note.', 'astroway' ),
 					'[' . $tag . ']'
 				)
 			);

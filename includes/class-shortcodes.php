@@ -311,6 +311,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// No date: the visitor gives theirs.
+		if ( '' === trim( (string) $atts['date'] ) ) {
+			return Form::render( 'natal', $params );
+		}
 		// The wheel is a picture drawn by the api and cannot read the page it lands
 		// on, so its palette has to be declared. Left empty it is light, see
 		// PublicClient::embed_url().
@@ -509,6 +513,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// No date: the visitor gives theirs.
+		if ( '' === trim( (string) $atts['date'] ) ) {
+			return Form::render( 'moon_sign', $params );
+		}
 		return Render::widget( 'moon_sign', $params );
 	}
 
@@ -537,6 +545,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// No date: the visitor gives theirs.
+		if ( '' === trim( (string) $atts['date'] ) ) {
+			return Form::render( 'rising_sign', $params );
+		}
 		return Render::widget( 'rising_sign', $params );
 	}
 

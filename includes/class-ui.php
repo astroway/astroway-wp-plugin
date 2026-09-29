@@ -720,6 +720,80 @@ class UI {
 		return '<div class="astroway-skeleton" aria-hidden="true">' . $html . '</div>';
 	}
 
+	/**
+	 * A labelled input with its hint and its error on lines of their own, both
+	 * tied to the input for screen readers.
+	 *
+	 * @param array $f `name`, `label`, `type` (text, date, time, number), `value`,
+	 *                 `hint`, `error`, and `attrs` for the input itself.
+	 */
+	public static function field( array $f ): string {
+		$id    = self::uid();
+		$error = (string) ( $f['error'] ?? '' );
+		$hint  = (string) ( $f['hint'] ?? '' );
+		$desc  = trim( ( '' === $hint ? '' : $id . '-h' ) . ' ' . ( '' === $error ? '' : $id . '-e' ) );
+		$attrs = array_merge(
+			(array) ( $f['attrs'] ?? [] ),
+			[
+				'type'  => (string) ( $f['type'] ?? 'text' ),
+				'id'    => $id,
+				'name'  => (string) $f['name'],
+				'value' => (string) ( $f['value'] ?? '' ),
+			]
+		);
+		if ( '' !== $desc ) {
+			$attrs['aria-describedby'] = $desc;
+		}
+		if ( '' !== $error ) {
+			$attrs['aria-invalid'] = 'true';
+		}
+		return '<div class="astroway-field' . ( '' === $error ? '' : ' is-invalid' ) . '">'
+			. '<label class="astroway-field__label" for="' . esc_attr( $id ) . '">' . esc_html( (string) $f['label'] ) . '</label>'
+			. '<input class="astroway-field__input"' . self::attrs( $attrs ) . '>'
+			. ( '' === $hint ? '' : '<p class="astroway-field__hint" id="' . esc_attr( $id ) . '-h">' . esc_html( $hint ) . '</p>' )
+			. ( '' === $error ? '' : '<p class="astroway-field__error" id="' . esc_attr( $id ) . '-e">' . esc_html( $error ) . '</p>' )
+			. '</div>';
+	}
+
+	/** A checkbox with its label to the right, the whole line a target. */
+	public static function check( string $name, string $label, bool $checked ): string {
+		$id = self::uid();
+		return '<div class="astroway-field astroway-field--check"><input class="astroway-field__box" type="checkbox" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="1"' . ( $checked ? ' checked' : '' ) . '><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label></div>';
+	}
+
+	/**
+	 * One of several, as radios under a legend: the second step when a city
+	 * name fits more than one place.
+	 *
+	 * @param array  $options Each `value` and `label`.
+	 * @param string $asked   What the visitor typed, shown under the legend.
+	 */
+	public static function choices( string $name, string $legend, array $options, string $asked = '' ): string {
+		$html = '';
+		foreach ( array_values( $options ) as $i => $option ) {
+			$id    = self::uid();
+			$html .= '<div class="astroway-field--check"><input class="astroway-field__box" type="radio" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( (string) $option['value'] ) . '"' . ( 0 === $i ? ' checked' : '' ) . '><label for="' . esc_attr( $id ) . '">' . esc_html( (string) $option['label'] ) . '</label></div>';
+		}
+		$asked = '' === $asked ? '' : '<p class="astroway-choices__asked">' . esc_html( $asked ) . '</p>';
+		return '<fieldset class="astroway-field astroway-choices"><legend class="astroway-field__label">' . esc_html( $legend ) . '</legend>' . $asked . $html . '</fieldset>';
+	}
+
+	/**
+	 * A form that posts back to the page it is on. `action` stays empty: a
+	 * built URL can meet a canonical redirect, and a browser turns a
+	 * redirected POST into a GET without its body.
+	 *
+	 * @param array $hidden Name => value, printed as hidden inputs.
+	 */
+	public static function form( string $inner_html, array $hidden, string $submit ): string {
+		$fields = '';
+		foreach ( $hidden as $name => $value ) {
+			$fields .= '<input type="hidden" name="' . esc_attr( (string) $name ) . '" value="' . esc_attr( (string) $value ) . '">';
+		}
+		return '<form class="astroway-form" method="post" action="" novalidate>' . $fields . $inner_html
+			. '<p class="astroway-form__actions"><button class="astroway-button" type="submit"><span>' . esc_html( $submit ) . '</span></button></p></form>';
+	}
+
 	/** Small print at the foot of a card. */
 	public static function note( string $text ): string {
 		$text = trim( $text );

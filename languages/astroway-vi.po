@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-09-23T22:15:18+00:00\n"
+"POT-Creation-Date: 2026-09-23T22:51:31+00:00\n"
 "PO-Revision-Date: 2026-09-21 14:37+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Vietnamese <translations@astroway.info>\n"
@@ -101,7 +101,7 @@ msgstr "Đang xác minh…"
 msgid "limited info"
 msgstr "thông tin giới hạn"
 
-#: includes/class-admin.php:253 includes/views/admin-api-key.php:268
+#: includes/class-admin.php:253 includes/views/admin-api-key.php:287
 msgid "Plan"
 msgstr "Gói"
 
@@ -227,7 +227,7 @@ msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
 "Thay đổi tên miền thất bại. Sử dụng liên kết bảng điều khiển dưới đây."
 
-#: includes/class-admin.php:512
+#: includes/class-atlas.php:63
 msgid "City lookup is busy, try again in a moment."
 msgstr "Tra cứu thành phố đang bận, vui lòng thử lại sau một lúc."
 
@@ -264,7 +264,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "Mặt Trăng vô hiệu từ %1$s đến %2$s."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:1770
+#: includes/class-digest.php:248 includes/class-render.php:1901
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "Đang nghịch hành ngay bây giờ: %s."
@@ -279,6 +279,176 @@ msgstr "Mặt Trăng: %1$s, %2$s%% chiếu sáng."
 msgid "You are not allowed to do that."
 msgstr "Bạn không được phép làm điều đó."
 
+#: includes/class-form.php:96
+msgid ""
+"When a visitor fills in a birth chart, moon sign or rising sign form, the "
+"date, time and place they enter are sent to api.astroway.info to calculate "
+"the answer, and the city name to app.astroway.info to find its coordinates. "
+"The AstroWay plugin does not store them on this site: the answer is not "
+"cached and the page is sent with no-store. Security or activity-log plugins "
+"on this site may record form submissions on their own."
+msgstr ""
+"Khi khách điền biểu mẫu bản đồ sao, cung Mặt Trăng hoặc cung mọc, ngày, giờ "
+"và nơi sinh họ nhập được gửi tới api.astroway.info để tính, còn tên thành "
+"phố gửi tới app.astroway.info để tìm tọa độ. Plugin AstroWay không lưu chúng"
+" trên trang này: kết quả không được lưu đệm và trang được gửi với no-store. "
+"Các plugin bảo mật hoặc nhật ký hoạt động trên trang này có thể tự ghi lại "
+"biểu mẫu đã gửi."
+
+#: includes/class-form.php:125
+msgid "This form works only on the site it is on."
+msgstr "Biểu mẫu này chỉ hoạt động trên trang chứa nó."
+
+#: includes/class-form.php:137
+msgid ""
+"Too many calculations from here in a short time. Try again in a few minutes."
+msgstr ""
+"Có quá nhiều lượt tính từ đây trong thời gian ngắn. Hãy thử lại sau vài "
+"phút."
+
+#: includes/class-form.php:140
+msgid "The calculator is busy right now. Try again later."
+msgstr "Công cụ tính đang bận. Hãy thử lại sau."
+
+#: includes/class-form.php:176
+msgid "The calculation did not come back. Try again in a moment."
+msgstr "Kết quả tính không trả về. Hãy thử lại sau giây lát."
+
+#: includes/class-form.php:183
+msgid "Calculate another"
+msgstr "Tính lại"
+
+#: includes/class-form.php:190
+msgid "Enter the date of birth."
+msgstr "Nhập ngày sinh."
+
+#: includes/class-form.php:192
+msgid "Enter a date between 1800 and today."
+msgstr "Nhập ngày trong khoảng từ năm 1800 đến hôm nay."
+
+#: includes/class-form.php:196
+msgid ""
+"The rising sign depends on the minute of birth; without the time it cannot "
+"be told."
+msgstr ""
+"Cung mọc phụ thuộc vào phút sinh; thiếu giờ sinh thì không xác định được."
+
+#: includes/class-form.php:199
+msgid "Enter the time of birth, or tick that it is unknown."
+msgstr "Nhập giờ sinh, hoặc đánh dấu là không biết."
+
+#: includes/class-form.php:203
+msgid "Latitude runs from -90 to 90."
+msgstr "Vĩ độ từ -90 đến 90."
+
+#: includes/class-form.php:206
+msgid "Longitude runs from -180 to 180."
+msgstr "Kinh độ từ -180 đến 180."
+
+#: includes/class-form.php:209
+msgid "Enter the city of birth."
+msgstr "Nhập thành phố nơi sinh."
+
+#: includes/class-form.php:237
+msgid "The city search is not answering. Enter the coordinates below instead."
+msgstr "Tìm kiếm thành phố không phản hồi. Hãy nhập tọa độ bên dưới."
+
+#: includes/class-form.php:241
+msgid ""
+"No place by that name. Check the spelling, or enter the coordinates below."
+msgstr ""
+"Không có nơi nào tên như vậy. Kiểm tra chính tả hoặc nhập tọa độ bên dưới."
+
+#: includes/class-form.php:267
+msgid "Your birth chart"
+msgstr "Bản đồ sao của bạn"
+
+#: includes/class-form.php:268
+msgid "Your moon sign"
+msgstr "Cung Mặt Trăng của bạn"
+
+#: includes/class-form.php:269
+msgid "Your rising sign"
+msgstr "Cung mọc của bạn"
+
+#: includes/class-form.php:279
+msgid "Date of birth"
+msgstr "Ngày sinh"
+
+#: includes/class-form.php:293
+msgid "Time of birth"
+msgstr "Giờ sinh"
+
+#: includes/class-form.php:297
+msgid "Local time at the place of birth."
+msgstr "Giờ địa phương tại nơi sinh."
+
+#: includes/class-form.php:301
+msgid "I do not know the time"
+msgstr "Tôi không biết giờ sinh"
+
+#: includes/class-form.php:305
+msgid "Which one?"
+msgstr "Nơi nào?"
+
+#: includes/class-form.php:311
+msgid "City of birth"
+msgstr "Thành phố nơi sinh"
+
+#: includes/class-form.php:320
+msgid "Enter coordinates instead"
+msgstr "Nhập tọa độ thay thế"
+
+#: includes/class-form.php:324
+msgid "Latitude"
+msgstr "Vĩ độ"
+
+#: includes/class-form.php:327
+msgid "North positive, e.g. 50.45"
+msgstr "Bắc là số dương, vd. 50.45"
+
+#: includes/class-form.php:334
+msgid "Longitude"
+msgstr "Kinh độ"
+
+#: includes/class-form.php:337
+msgid "East positive, e.g. 30.52"
+msgstr "Đông là số dương, vd. 30.52"
+
+#: includes/class-form.php:345
+msgid "Leave empty"
+msgstr "Để trống"
+
+#: includes/class-form.php:347
+msgid "Calculate"
+msgstr "Tính"
+
+#: includes/class-form.php:472
+msgid ""
+"The clocks changed at this place on that day, so one hour of it happened "
+"twice or not at all. Check the birth time was read from a local clock."
+msgstr ""
+"Ngày hôm đó nơi này đổi giờ, nên có một giờ lặp lại hoặc không tồn tại. Hãy "
+"kiểm tra giờ sinh được ghi theo đồng hồ địa phương."
+
+#: includes/class-form.php:489
+msgid ""
+"Without the time of birth the Moon's degree is approximate; its sign is "
+"certain for that day."
+msgstr ""
+"Không có giờ sinh thì độ của Mặt Trăng chỉ gần đúng; cung của nó trong ngày "
+"đó là chắc chắn."
+
+#. translators: 1, 2: zodiac signs
+#: includes/class-form.php:495
+#, php-format
+msgid ""
+"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides"
+" which one is yours."
+msgstr ""
+"Hôm đó Mặt Trăng đổi cung, từ %1$s sang %2$s. Giờ sinh quyết định cung nào "
+"là của bạn."
+
 #. translators: %s = title of a generated block, e.g. "Natal Chart"
 #: includes/class-generated-registry.php:171
 #, php-format
@@ -286,7 +456,7 @@ msgid "%s (API)"
 msgstr "%s (API)"
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:406 includes/class-render.php:1602
+#: includes/class-generated-registry.php:406
 #, php-format
 msgid ""
 "%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
@@ -296,7 +466,7 @@ msgstr ""
 "này."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:426 includes/class-render.php:1614
+#: includes/class-generated-registry.php:426 includes/class-render.php:1745
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -306,23 +476,23 @@ msgstr ""
 "này."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:440 includes/class-render.php:1661
+#: includes/class-generated-registry.php:440 includes/class-render.php:1792
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
 "Tiện ích %s không thể tải ngay bây giờ. Chỉ quản trị viên mới thấy ghi chú "
 "này."
 
-#: includes/class-plugin.php:469 includes/class-plugin.php:547
-#: includes/class-plugin.php:625
+#: includes/class-plugin.php:471 includes/class-plugin.php:549
+#: includes/class-plugin.php:627
 msgid "Hide for now"
 msgstr "Tạm ẩn"
 
-#: includes/class-plugin.php:488
+#: includes/class-plugin.php:490
 msgid "AstroWay is active"
 msgstr "AstroWay đang hoạt động"
 
-#: includes/class-plugin.php:489
+#: includes/class-plugin.php:491
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -335,20 +505,20 @@ msgstr ""
 "truy cập. Để có giới hạn cao hơn và tính năng Pro, hãy lấy một khóa API miễn"
 " phí."
 
-#: includes/class-plugin.php:493 includes/class-plugin.php:629
+#: includes/class-plugin.php:495 includes/class-plugin.php:631
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Lấy khóa API miễn phí"
 
-#: includes/class-plugin.php:496
+#: includes/class-plugin.php:498
 msgid "Open Settings"
 msgstr "Mở Cài đặt"
 
-#: includes/class-plugin.php:565
+#: includes/class-plugin.php:567
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:566
+#: includes/class-plugin.php:568
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -356,19 +526,19 @@ msgstr ""
 "Một đánh giá ngắn trên wordpress.org giúp các chủ sở hữu trang web khác khám"
 " phá plugin và cho chúng tôi biết phải xây dựng gì tiếp theo."
 
-#: includes/class-plugin.php:570
+#: includes/class-plugin.php:572
 msgid "Leave a review"
 msgstr "Để lại đánh giá"
 
-#: includes/class-plugin.php:573
+#: includes/class-plugin.php:575
 msgid "I already left one"
 msgstr "Tôi đã để lại đánh giá"
 
-#: includes/class-plugin.php:627
+#: includes/class-plugin.php:629
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Machine này đã sử dụng hết hạn ngạch AstroWay ẩn danh:"
 
-#: includes/class-plugin.php:628
+#: includes/class-plugin.php:630
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -382,7 +552,7 @@ msgstr ""
 " và quản trị từ máy chủ này sẽ thất bại. Thêm một khóa API miễn phí để nâng "
 "giới hạn và nhận 10.000 tín dụng/tháng cộng 60 yêu cầu/phút."
 
-#: includes/class-plugin.php:652
+#: includes/class-plugin.php:654
 msgid ""
 "AstroWay can no longer read the saved API key: the security keys in wp-"
 "config.php have changed since it was saved. Widgets keep working without it."
@@ -391,7 +561,7 @@ msgstr ""
 "wp-config.php đã thay đổi kể từ khi nó được lưu. Các widget vẫn hoạt động "
 "bình thường mà không cần khóa này."
 
-#: includes/class-plugin.php:654
+#: includes/class-plugin.php:656
 msgid "Paste the key again"
 msgstr "Dán lại khóa"
 
@@ -453,7 +623,7 @@ msgstr "Tính tương thích synastry"
 msgid "AstroWay widget"
 msgstr "Tiện ích AstroWay"
 
-#: includes/class-render.php:98
+#: includes/class-render.php:102
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -462,7 +632,7 @@ msgstr ""
 "điểm, không phải ngày tháng. Chỉ quản trị viên mới thấy ghi chú này."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:105
+#: includes/class-render.php:109
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
@@ -471,523 +641,540 @@ msgstr ""
 "Tiện ích %s không thể tải ngay bây giờ. Chỉ quản trị viên mới thấy ghi chú "
 "này."
 
-#: includes/class-render.php:169
+#: includes/class-render.php:173
 msgid "Rising sign"
 msgstr "Cung mọc"
 
-#: includes/class-render.php:183
+#: includes/class-render.php:187
 msgid "Moon sign"
 msgstr "Cung Mặt Trăng"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
-#: includes/class-render.php:192
+#: includes/class-render.php:197
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:206 includes/class-render.php:779
+#: includes/class-render.php:211 includes/class-render.php:910
 msgid "Position"
 msgstr "độ"
 
 #. translators: %d = house number
-#: includes/class-render.php:209 includes/class-render.php:779
+#: includes/class-render.php:214 includes/class-render.php:910
 msgid "House"
 msgstr "cung"
 
 #. translators: %d = house number
-#: includes/class-render.php:209 includes/class-render.php:701
-#: includes/class-render.php:747
+#: includes/class-render.php:214 includes/class-render.php:830
+#: includes/class-render.php:878
 #, php-format
 msgid "House %d"
 msgstr "Nhà %d"
 
-#: includes/class-render.php:217
+#: includes/class-render.php:222
 msgid "Chart ruler"
 msgstr "Hành tinh chủ chiêu"
 
-#: includes/class-render.php:220
+#: includes/class-render.php:225
 msgid "Ruler position"
 msgstr "vị trí hành tinh chủ"
 
-#: includes/class-render.php:226 includes/class-render.php:755
+#: includes/class-render.php:231 includes/class-render.php:886
 msgid "Midheaven"
 msgstr "Trung Thiên"
 
-#: includes/class-render.php:267
+#: includes/class-render.php:272
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:270
+#: includes/class-render.php:275
 #, php-format
 msgid "Human Design: %s"
 msgstr "Thiết kế Con người: %s"
 
-#: includes/class-render.php:281
+#: includes/class-render.php:286
 msgid "Strategy"
 msgstr "Chiến lược"
 
-#: includes/class-render.php:284
+#: includes/class-render.php:289
 msgid "Authority"
 msgstr "Quyền"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:291
+#: includes/class-render.php:296
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:296
+#: includes/class-render.php:301
 msgid "Profile"
 msgstr "Hồ sơ"
 
-#: includes/class-render.php:299
+#: includes/class-render.php:304
 msgid "Definition"
 msgstr "Định nghĩa"
 
-#: includes/class-render.php:302
+#: includes/class-render.php:307
 msgid "Not-self theme"
 msgstr "Chủ đề phi bản ngã"
 
-#: includes/class-render.php:306
+#: includes/class-render.php:311
 msgid "Incarnation cross"
 msgstr "Thập tự Nhập thể"
 
-#: includes/class-render.php:340
+#: includes/class-render.php:345
 msgid "Defined centres"
 msgstr "Trung tâm xác định"
 
-#: includes/class-render.php:343
+#: includes/class-render.php:348
 msgid "Open centres"
 msgstr "Trung tâm mở"
 
-#: includes/class-render.php:345
+#: includes/class-render.php:350
 msgid "Centres"
 msgstr "Trung tâm"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:360
+#: includes/class-render.php:365
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s đến %4$s"
 
-#: includes/class-render.php:371
+#: includes/class-render.php:376
 msgid "Channels"
 msgstr "Kênh"
 
-#: includes/class-render.php:376
+#: includes/class-render.php:381
 msgid "Generator"
 msgstr "Generator"
 
-#: includes/class-render.php:377
+#: includes/class-render.php:382
 msgid "Manifesting Generator"
 msgstr "Manifesting Generator"
 
-#: includes/class-render.php:378
+#: includes/class-render.php:383
 msgid "Manifestor"
 msgstr "Manifestor"
 
-#: includes/class-render.php:379
+#: includes/class-render.php:384
 msgid "Projector"
 msgstr "Projector"
 
-#: includes/class-render.php:380
+#: includes/class-render.php:385
 msgid "Reflector"
 msgstr "Reflector"
 
-#: includes/class-render.php:387
+#: includes/class-render.php:392
 msgid "Wait to respond"
 msgstr "Chờ phản hồi"
 
-#: includes/class-render.php:388
+#: includes/class-render.php:393
 msgid "Wait for the invitation"
 msgstr "Chờ lời mời"
 
-#: includes/class-render.php:389 includes/class-render.php:390
+#: includes/class-render.php:394 includes/class-render.php:395
 msgid "Inform before acting"
 msgstr "Thông báo trước khi hành động"
 
-#: includes/class-render.php:391
+#: includes/class-render.php:396
 msgid "Wait a lunar cycle"
 msgstr "Chờ một chu kỳ mặt trăng"
 
-#: includes/class-render.php:392
+#: includes/class-render.php:397
 msgid "Respond, then inform"
 msgstr "Phản hồi, sau đó thông báo"
 
-#: includes/class-render.php:399
+#: includes/class-render.php:404
 msgid "Emotional (Solar Plexus)"
 msgstr "Cảm xúc (Đám rối Thần kinh Bụng)"
 
-#: includes/class-render.php:400 includes/class-render.php:451
+#: includes/class-render.php:405 includes/class-render.php:456
 msgid "Sacral"
 msgstr "Sacral"
 
-#: includes/class-render.php:401
+#: includes/class-render.php:406
 msgid "Splenic"
 msgstr "Lá lách"
 
-#: includes/class-render.php:402
+#: includes/class-render.php:407
 msgid "Ego (Heart)"
 msgstr "Bản ngã (Tim)"
 
-#: includes/class-render.php:403
+#: includes/class-render.php:408
 msgid "Self-projected"
 msgstr "Tự chiếu"
 
-#: includes/class-render.php:404
+#: includes/class-render.php:409
 msgid "Mental (environment)"
 msgstr "Tinh thần (môi trường)"
 
-#: includes/class-render.php:405 includes/class-render.php:406
+#: includes/class-render.php:410 includes/class-render.php:411
 msgid "Lunar cycle"
 msgstr "Chu kỳ mặt trăng"
 
-#: includes/class-render.php:413
+#: includes/class-render.php:418
 msgid "Single definition"
 msgstr "Định nghĩa đơn nhất"
 
-#: includes/class-render.php:414
+#: includes/class-render.php:419
 msgid "Split definition"
 msgstr "Định nghĩa chia tách"
 
-#: includes/class-render.php:415
+#: includes/class-render.php:420
 msgid "Triple split definition"
 msgstr "Định nghĩa chia ba"
 
-#: includes/class-render.php:416
+#: includes/class-render.php:421
 msgid "Quadruple split definition"
 msgstr "Định nghĩa chia bốn"
 
-#: includes/class-render.php:417
+#: includes/class-render.php:422
 msgid "No definition"
 msgstr "Không định nghĩa"
 
-#: includes/class-render.php:424
+#: includes/class-render.php:429
 msgid "Frustration"
 msgstr "Bực bội"
 
-#: includes/class-render.php:425
+#: includes/class-render.php:430
 msgid "Bitterness"
 msgstr "Vị đắng"
 
-#: includes/class-render.php:426
+#: includes/class-render.php:431
 msgid "Anger"
 msgstr "Giận dữ"
 
-#: includes/class-render.php:427
+#: includes/class-render.php:432
 msgid "Disappointment"
 msgstr "Thất vọng"
 
-#: includes/class-render.php:434
+#: includes/class-render.php:439
 msgid "Right Angle"
 msgstr "Góc Phải"
 
-#: includes/class-render.php:435
+#: includes/class-render.php:440
 msgid "Left Angle"
 msgstr "Góc Trái"
 
-#: includes/class-render.php:436
+#: includes/class-render.php:441
 msgid "Juxtaposition"
 msgstr "Nối tiếp"
 
-#: includes/class-render.php:444
+#: includes/class-render.php:449
 msgid "Head"
 msgstr "Đầu"
 
-#: includes/class-render.php:445
+#: includes/class-render.php:450
 msgid "Ajna"
 msgstr "Ajna"
 
-#: includes/class-render.php:446
+#: includes/class-render.php:451
 msgid "Throat"
 msgstr "Cổ họng"
 
-#: includes/class-render.php:447
+#: includes/class-render.php:452
 msgid "G (identity)"
 msgstr "G (bản ngã)"
 
-#: includes/class-render.php:448
+#: includes/class-render.php:453
 msgid "Heart (ego)"
 msgstr "Tim (bản ngã)"
 
-#: includes/class-render.php:449
+#: includes/class-render.php:454
 msgid "Solar Plexus"
 msgstr "Đám rối dương"
 
-#: includes/class-render.php:450
+#: includes/class-render.php:455
 msgid "Spleen"
 msgstr "Lá lách"
 
-#: includes/class-render.php:452
+#: includes/class-render.php:457
 msgid "Root"
 msgstr "Gốc"
 
-#: includes/class-render.php:475 includes/class-render.php:500
+#: includes/class-render.php:498 includes/class-render.php:526
 msgid "Natal chart"
 msgstr "Biểu đồ ngày sinh"
 
 #. translators: %s = person's name
-#: includes/class-render.php:478
+#: includes/class-render.php:501
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Biểu đồ ngày sinh: %s"
 
-#: includes/class-render.php:503
+#: includes/class-render.php:523
+msgid ""
+"Birth time unknown: the chart is drawn for noon, without houses, the "
+"Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from "
+"where it was."
+msgstr ""
+"Không rõ giờ sinh: bản đồ được tính cho giữa trưa, không có nhà, cung mọc và"
+" góc chiếu của Mặt Trăng, và Mặt Trăng có thể lệch tới 7 độ."
+
+#: includes/class-render.php:529
 msgid "Wheel"
 msgstr "Bánh xe"
 
-#: includes/class-render.php:507
+#: includes/class-render.php:533
 msgid "Grid"
 msgstr "Lưới"
 
-#: includes/class-render.php:508
+#: includes/class-render.php:534
 msgid "Aspects between planets"
 msgstr "Góc chiếu giữa các hành tinh"
 
-#: includes/class-render.php:511 includes/class-render.php:778
+#: includes/class-render.php:537 includes/class-render.php:909
 msgid "Placements"
 msgstr "Vị trí"
 
-#: includes/class-render.php:515
+#: includes/class-render.php:541
 msgid "Aspects"
 msgstr "Góc chiếu"
 
-#: includes/class-render.php:573 includes/class-render.php:1034
+#: includes/class-render.php:651
+msgid "What it means"
+msgstr "Ý nghĩa"
+
+#: includes/class-render.php:681
+msgid "time unknown"
+msgstr "không rõ giờ"
+
+#: includes/class-render.php:702 includes/class-render.php:1165
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr "Mặt Trời"
 
-#: includes/class-render.php:574 includes/class-render.php:1035
+#: includes/class-render.php:703 includes/class-render.php:1166
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr "Mặt Trăng"
 
-#: includes/class-render.php:590 includes/class-render.php:754
+#: includes/class-render.php:719 includes/class-render.php:885
 msgid "Ascendant"
 msgstr "Cung Mọc"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:624 includes/class-render.php:905
+#: includes/class-render.php:753 includes/class-render.php:1036
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:721
+#: includes/class-render.php:852
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr ""
 "Bản đồ sao: cung hoàng đạo, nhà, hành tinh và các góc chiếu giữa chúng."
 
-#: includes/class-render.php:723
+#: includes/class-render.php:854
 msgid "ASC"
 msgstr "ASC"
 
-#: includes/class-render.php:724
+#: includes/class-render.php:855
 msgid "IC"
 msgstr "IC"
 
-#: includes/class-render.php:725
+#: includes/class-render.php:856
 msgid "DSC"
 msgstr "DSC"
 
-#: includes/class-render.php:726
+#: includes/class-render.php:857
 msgid "MC"
 msgstr "MC"
 
 #. translators: %d = house number
-#: includes/class-render.php:748
+#: includes/class-render.php:879
 msgid "retrograde"
 msgstr "nghịch hành"
 
-#: includes/class-render.php:779
+#: includes/class-render.php:910
 msgid "Body"
 msgstr "Thiên thể"
 
-#: includes/class-render.php:779
+#: includes/class-render.php:910
 msgid "Motion"
 msgstr "Chuyển động"
 
-#: includes/class-render.php:790 includes/class-render.php:2310
+#: includes/class-render.php:921 includes/class-render.php:2441
 msgid "Fire"
 msgstr "Hỏa"
 
-#: includes/class-render.php:794 includes/class-render.php:2311
+#: includes/class-render.php:925 includes/class-render.php:2442
 msgid "Earth"
 msgstr "Thổ"
 
-#: includes/class-render.php:798
+#: includes/class-render.php:929
 msgid "Air"
 msgstr "Khí"
 
-#: includes/class-render.php:802 includes/class-render.php:2313
+#: includes/class-render.php:933 includes/class-render.php:2444
 msgid "Water"
 msgstr "Thủy"
 
-#: includes/class-render.php:808
+#: includes/class-render.php:939
 msgid "Cardinal"
 msgstr "Tiên phong"
 
-#: includes/class-render.php:812
+#: includes/class-render.php:943
 msgid "Fixed"
 msgstr "Cố định"
 
-#: includes/class-render.php:816
+#: includes/class-render.php:947
 msgid "Mutable"
 msgstr "Biến đổi"
 
-#: includes/class-render.php:884
+#: includes/class-render.php:1015
 msgid "Elements by mode"
 msgstr "Nguyên tố theo tính chất"
 
-#: includes/class-render.php:886
+#: includes/class-render.php:1017
 msgid "Total"
 msgstr "Tổng"
 
-#: includes/class-render.php:915
+#: includes/class-render.php:1046
 msgid "Major aspects"
 msgstr "Góc hợp chính"
 
-#: includes/class-render.php:1020
+#: includes/class-render.php:1151
 msgid "New Moon"
 msgstr "Mặt Trăng Mới"
 
-#: includes/class-render.php:1021
+#: includes/class-render.php:1152
 msgid "Waxing Crescent"
 msgstr "Trăng Lưỡi Liềm Tăng"
 
-#: includes/class-render.php:1022
+#: includes/class-render.php:1153
 msgid "First Quarter"
 msgstr "Quý Một"
 
-#: includes/class-render.php:1023
+#: includes/class-render.php:1154
 msgid "Waxing Gibbous"
 msgstr "Trăng Bầu Tăng"
 
-#: includes/class-render.php:1024
+#: includes/class-render.php:1155
 msgid "Full Moon"
 msgstr "Mặt Trăng Đầy"
 
-#: includes/class-render.php:1025
+#: includes/class-render.php:1156
 msgid "Waning Gibbous"
 msgstr "Trăng Bầu Giảm"
 
-#: includes/class-render.php:1026
+#: includes/class-render.php:1157
 msgid "Last Quarter"
 msgstr "Quý Cuối"
 
-#: includes/class-render.php:1027
+#: includes/class-render.php:1158
 msgid "Waning Crescent"
 msgstr "Trăng Lưỡi Liềm Giảm"
 
-#: includes/class-render.php:1036 assets/js/astroway-blocks-editor.js:146
+#: includes/class-render.php:1167 assets/js/astroway-blocks-editor.js:146
 msgid "Mercury"
 msgstr "Sao Thủy"
 
-#: includes/class-render.php:1037 assets/js/astroway-blocks-editor.js:147
+#: includes/class-render.php:1168 assets/js/astroway-blocks-editor.js:147
 msgid "Venus"
 msgstr "Sao Kim"
 
-#: includes/class-render.php:1038 assets/js/astroway-blocks-editor.js:148
+#: includes/class-render.php:1169 assets/js/astroway-blocks-editor.js:148
 msgid "Mars"
 msgstr "Sao Hỏa"
 
-#: includes/class-render.php:1039 assets/js/astroway-blocks-editor.js:149
+#: includes/class-render.php:1170 assets/js/astroway-blocks-editor.js:149
 msgid "Jupiter"
 msgstr "Sao Mộc"
 
-#: includes/class-render.php:1040 assets/js/astroway-blocks-editor.js:150
+#: includes/class-render.php:1171 assets/js/astroway-blocks-editor.js:150
 msgid "Saturn"
 msgstr "Sao Thổ"
 
-#: includes/class-render.php:1041 assets/js/astroway-blocks-editor.js:151
+#: includes/class-render.php:1172 assets/js/astroway-blocks-editor.js:151
 msgid "Uranus"
 msgstr "Sao Thiên Vương"
 
-#: includes/class-render.php:1042 assets/js/astroway-blocks-editor.js:152
+#: includes/class-render.php:1173 assets/js/astroway-blocks-editor.js:152
 msgid "Neptune"
 msgstr "Sao Hải Vương"
 
-#: includes/class-render.php:1043 assets/js/astroway-blocks-editor.js:153
+#: includes/class-render.php:1174 assets/js/astroway-blocks-editor.js:153
 msgid "Pluto"
 msgstr "Sao Diêm Vương"
 
-#: includes/class-render.php:1044
+#: includes/class-render.php:1175
 msgid "Chiron"
 msgstr "Chiron"
 
-#: includes/class-render.php:1045 includes/class-render.php:1052
-#: includes/class-render.php:1053
+#: includes/class-render.php:1176 includes/class-render.php:1183
+#: includes/class-render.php:1184
 msgid "Lilith"
 msgstr "Lilith"
 
-#: includes/class-render.php:1046 includes/class-render.php:1050
-#: includes/class-render.php:1051
+#: includes/class-render.php:1177 includes/class-render.php:1181
+#: includes/class-render.php:1182
 msgid "North Node"
 msgstr "Bắc Giao Điểm"
 
-#: includes/class-render.php:1047
+#: includes/class-render.php:1178
 msgid "South Node"
 msgstr "Nam Giao Điểm"
 
-#: includes/class-render.php:1060
+#: includes/class-render.php:1191
 msgid "conjunct"
 msgstr "hợp"
 
-#: includes/class-render.php:1061
+#: includes/class-render.php:1192
 msgid "opposite"
 msgstr "đối đỉnh"
 
-#: includes/class-render.php:1062
+#: includes/class-render.php:1193
 msgid "trine"
 msgstr "tam hợp"
 
-#: includes/class-render.php:1063
+#: includes/class-render.php:1194
 msgid "square"
 msgstr "vuông góc"
 
-#: includes/class-render.php:1064
+#: includes/class-render.php:1195
 msgid "sextile"
 msgstr "lục hợp"
 
-#: includes/class-render.php:1095
+#: includes/class-render.php:1226
 msgid "Period"
 msgstr "Khoảng thời gian"
 
-#: includes/class-render.php:1169
+#: includes/class-render.php:1300
 msgid "Week"
 msgstr "Tuần"
 
-#: includes/class-render.php:1171
+#: includes/class-render.php:1302
 msgid "Month"
 msgstr "Tháng"
 
-#: includes/class-render.php:1173
+#: includes/class-render.php:1304
 msgid "Year"
 msgstr "Năm"
 
-#: includes/class-render.php:1175
+#: includes/class-render.php:1306
 msgid "Today"
 msgstr "Hôm nay"
 
-#: includes/class-render.php:1196
+#: includes/class-render.php:1327
 msgid "Horoscope for the week"
 msgstr "Tử vi tuần"
 
-#: includes/class-render.php:1198
+#: includes/class-render.php:1329
 msgid "Horoscope for the month"
 msgstr "Tử vi tháng"
 
-#: includes/class-render.php:1200
+#: includes/class-render.php:1331
 msgid "Horoscope for the year"
 msgstr "Tử vi năm"
 
-#: includes/class-render.php:1202 includes/views/admin-settings.php:328
+#: includes/class-render.php:1333 includes/views/admin-settings.php:328
 msgid "Horoscope for today"
 msgstr "Tử vi hôm nay"
 
-#: includes/class-render.php:1222 assets/js/astroway-blocks-editor.js:208
+#: includes/class-render.php:1353 assets/js/astroway-blocks-editor.js:208
 #: assets/js/astroway-blocks-editor.js:229
 #: assets/js/astroway-blocks-editor.js:237
 #: assets/js/astroway-blocks-editor.js:256
@@ -995,308 +1182,318 @@ msgstr "Tử vi hôm nay"
 msgid "Zodiac sign"
 msgstr "Dấu hiệu hoàng đạo"
 
-#: includes/class-render.php:1247
+#: includes/class-render.php:1378
 msgid "Weeks"
 msgstr "Các tuần"
 
-#: includes/class-render.php:1248
+#: includes/class-render.php:1379
 msgid "Previous week"
 msgstr "Tuần trước"
 
-#: includes/class-render.php:1249
+#: includes/class-render.php:1380
 msgid "Next week"
 msgstr "Tuần sau"
 
-#: includes/class-render.php:1253
+#: includes/class-render.php:1384
 msgid "Months"
 msgstr "Các tháng"
 
-#: includes/class-render.php:1254
+#: includes/class-render.php:1385
 msgid "Previous month"
 msgstr "Tháng trước"
 
-#: includes/class-render.php:1255
+#: includes/class-render.php:1386
 msgid "Next month"
 msgstr "Tháng sau"
 
-#: includes/class-render.php:1259
+#: includes/class-render.php:1390
 msgid "Days"
 msgstr "Các ngày"
 
-#: includes/class-render.php:1260
+#: includes/class-render.php:1391
 msgid "Previous day"
 msgstr "Ngày trước"
 
-#: includes/class-render.php:1261
+#: includes/class-render.php:1392
 msgid "Next day"
 msgstr "Ngày sau"
 
-#: includes/class-render.php:1301
+#: includes/class-render.php:1432
 msgid "Moon in"
 msgstr "Mặt Trăng ở"
 
-#: includes/class-render.php:1308
+#: includes/class-render.php:1439
 msgid "Age"
 msgstr "Tuổi"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:1311
+#: includes/class-render.php:1442
 #, php-format
 msgid "%s days"
 msgstr "%s ngày"
 
-#: includes/class-render.php:1318
+#: includes/class-render.php:1449
 msgid "Sun in"
 msgstr "Mặt Trời ở"
 
-#: includes/class-render.php:1337
+#: includes/class-render.php:1468
 msgid "Illuminated"
 msgstr "Được chiếu sáng"
 
 #. translators: %s = tarot card name
-#: includes/class-render.php:1363
+#: includes/class-render.php:1494
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (đảo ngược)"
 
-#: includes/class-render.php:1369
+#: includes/class-render.php:1500
 msgid "Card of the day"
 msgstr "Lá bài trong ngày"
 
-#: includes/class-render.php:1398 assets/js/astroway-blocks-editor.js:243
+#: includes/class-render.php:1529 assets/js/astroway-blocks-editor.js:243
 msgid "Planet of the day"
 msgstr "Hành tinh trong ngày"
 
-#: includes/class-render.php:1408
+#: includes/class-render.php:1539
 msgid "Themes of the day"
 msgstr "Chủ đề trong ngày"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:1423
+#: includes/class-render.php:1554
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: tử vi tuần"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:1426
+#: includes/class-render.php:1557
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: tử vi tháng"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:1429
+#: includes/class-render.php:1560
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: tử vi cho năm"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:1432
+#: includes/class-render.php:1563
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: tử vi hôm nay"
 
-#: includes/class-render.php:1439 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:1570 assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Bạch Dương"
 
-#: includes/class-render.php:1440 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:1571 assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Kim Ngưu"
 
-#: includes/class-render.php:1441 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:1572 assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Song Tử"
 
-#: includes/class-render.php:1442 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:1573 assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Cự Giải"
 
-#: includes/class-render.php:1443 includes/views/admin-settings.php:326
+#: includes/class-render.php:1574 includes/views/admin-settings.php:326
 #: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Sư Tử"
 
-#: includes/class-render.php:1444 includes/views/admin-settings.php:335
+#: includes/class-render.php:1575 includes/views/admin-settings.php:335
 #: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Xử Nữ"
 
-#: includes/class-render.php:1445 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:1576 assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Thiên Bình"
 
-#: includes/class-render.php:1446 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:1577 assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Thiên Yết"
 
-#: includes/class-render.php:1447 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:1578 assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Nhân Mã"
 
-#: includes/class-render.php:1448 includes/views/admin-settings.php:340
+#: includes/class-render.php:1579 includes/views/admin-settings.php:340
 #: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Ma Kết"
 
-#: includes/class-render.php:1449 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:1580 assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Bảo Bình"
 
-#: includes/class-render.php:1450 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:1581 assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Song Ngư"
 
-#: includes/class-render.php:1692 includes/class-render.php:1750
+#. translators: %s = shortcode tag
+#: includes/class-render.php:1733
+#, php-format
+msgid ""
+"%s needs an API key: this site asks for its own automatically, or paste "
+"yours in AstroWay, API Key. Only administrators see this note."
+msgstr ""
+"%s cần khóa API: trang tự động xin khóa riêng, hoặc dán khóa của bạn vào "
+"AstroWay, API Key. Chỉ quản trị viên thấy ghi chú này."
+
+#: includes/class-render.php:1823 includes/class-render.php:1881
 msgid "Retrograde"
 msgstr "Nghịch hành"
 
-#: includes/class-render.php:1693 includes/class-render.php:1753
-#: includes/class-render.php:1756
+#: includes/class-render.php:1824 includes/class-render.php:1884
+#: includes/class-render.php:1887
 msgid "Direct"
 msgstr "Thuận hành"
 
-#: includes/class-render.php:1698
+#: includes/class-render.php:1829
 msgid "Retrograde watch"
 msgstr "Theo dõi nghịch hành"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1707
+#: includes/class-render.php:1838
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "Có, %s đang nghịch hành ngay bây giờ."
 
-#: includes/class-render.php:1714
+#: includes/class-render.php:1845
 msgid "Retrograde since"
 msgstr "Nghịch hành từ"
 
-#: includes/class-render.php:1715
+#: includes/class-render.php:1846
 msgid "Direct again on"
 msgstr "Thuận hành lại vào"
 
-#: includes/class-render.php:1716
+#: includes/class-render.php:1847
 msgid "Days left"
 msgstr "Số ngày còn lại"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1723
+#: includes/class-render.php:1854
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "Không, %s đang thuận hành ngay bây giờ."
 
-#: includes/class-render.php:1729
+#: includes/class-render.php:1860
 msgid "Next retrograde"
 msgstr "Nghịch hành tiếp theo"
 
-#: includes/class-render.php:1730 includes/class-render.php:1883
+#: includes/class-render.php:1861 includes/class-render.php:2014
 msgid "Ends"
 msgstr "Kết thúc"
 
-#: includes/class-render.php:1731
+#: includes/class-render.php:1862
 msgid "Days until"
 msgstr "Số ngày cho đến khi"
 
-#: includes/class-render.php:1767
+#: includes/class-render.php:1898
 msgid "Nothing is retrograde right now."
 msgstr "Không có gì đang nghịch hành ngay bây giờ."
 
-#: includes/class-render.php:1776 assets/js/astroway-blocks-editor.js:278
+#: includes/class-render.php:1907 assets/js/astroway-blocks-editor.js:278
 msgid "Retrograde planets"
 msgstr "Các hành tinh nghịch hành"
 
-#: includes/class-render.php:1784 assets/js/astroway-blocks-editor.js:273
+#: includes/class-render.php:1915 assets/js/astroway-blocks-editor.js:273
 msgid "Planet"
 msgstr "Hành tinh"
 
-#: includes/class-render.php:1785 includes/views/admin-api-key.php:233
+#: includes/class-render.php:1916 includes/views/admin-api-key.php:252
 msgid "Status"
 msgstr "Trạng thái"
 
-#: includes/class-render.php:1789
+#: includes/class-render.php:1920
 msgid "Retrograde period"
 msgstr "Thời kỳ nghịch hành"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:1843
+#: includes/class-render.php:1974
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "Mặt Trăng vô hiệu cho đến %s."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:1849
+#: includes/class-render.php:1980
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr "Mặt Trăng không vô hiệu. Cửa sổ tiếp theo mở vào %s."
 
-#: includes/class-render.php:1853
+#: includes/class-render.php:1984
 msgid "The Moon is not void of course."
 msgstr "Mặt Trăng không vô hiệu."
 
-#: includes/class-render.php:1874 assets/js/astroway-blocks-editor.js:282
+#: includes/class-render.php:2005 assets/js/astroway-blocks-editor.js:282
 msgid "Void of course Moon"
 msgstr "Mặt Trăng không có khía cạnh"
 
-#: includes/class-render.php:1882
+#: includes/class-render.php:2013
 msgid "Starts"
 msgstr "Bắt đầu"
 
-#: includes/class-render.php:1884
+#: includes/class-render.php:2015
 msgid "Length"
 msgstr "Thời lượng"
 
-#: includes/class-render.php:1885
+#: includes/class-render.php:2016
 msgid "Last aspect"
 msgstr "Góc chiếu cuối cùng"
 
-#: includes/class-render.php:1886
+#: includes/class-render.php:2017
 msgid "Next sign"
 msgstr "Cung tiếp theo"
 
-#: includes/class-render.php:1945
+#: includes/class-render.php:2076
 msgid "Night"
 msgstr "Đêm"
 
-#: includes/class-render.php:1945
+#: includes/class-render.php:2076
 msgid "Day"
 msgstr "Ngày"
 
 #. translators: %s = planet name
-#: includes/class-render.php:1960
+#: includes/class-render.php:2091
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "Ngày do %s cai quản."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:1967
+#: includes/class-render.php:2098
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "Giờ của %1$s kéo dài đến %2$s."
 
-#: includes/class-render.php:1975 includes/class-render.php:2013
+#: includes/class-render.php:2106 includes/class-render.php:2144
 #: assets/js/astroway-blocks-editor.js:317
 msgid "Planetary hours"
 msgstr "Giờ hành tinh"
 
-#: includes/class-render.php:1986
+#: includes/class-render.php:2117
 msgid "Hour"
 msgstr "Giờ"
 
-#: includes/class-render.php:1987
+#: includes/class-render.php:2118
 msgid "Ruler"
 msgstr "Sao cai quản"
 
-#: includes/class-render.php:1988
+#: includes/class-render.php:2119
 msgid "From"
 msgstr "Từ"
 
-#: includes/class-render.php:1989
+#: includes/class-render.php:2120
 msgid "To"
 msgstr "Đến"
 
-#: includes/class-render.php:1990
+#: includes/class-render.php:2121
 msgid "Part of day"
 msgstr "Phần của ngày"
 
-#: includes/class-render.php:2020
+#: includes/class-render.php:2151
 msgid ""
 "The Sun does not set at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1304,7 +1501,7 @@ msgstr ""
 "Mặt Trời không lặn ở vĩ độ này vào ngày này, nên không có giờ hành tinh nào "
 "để chia."
 
-#: includes/class-render.php:2021
+#: includes/class-render.php:2152
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -1312,187 +1509,187 @@ msgstr ""
 "Mặt Trời không mọc ở vĩ độ này vào ngày này, nên không có giờ hành tinh nào "
 "để chia."
 
-#: includes/class-render.php:2052
+#: includes/class-render.php:2183
 msgid "First chart"
 msgstr "Biểu đồ đầu tiên"
 
-#: includes/class-render.php:2053
+#: includes/class-render.php:2184
 msgid "Second chart"
 msgstr "Biểu đồ thứ hai"
 
-#: includes/class-render.php:2056
+#: includes/class-render.php:2187
 msgid "Compatibility"
 msgstr "Sự tương hợp"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:2069
+#: includes/class-render.php:2200
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr "Các góc giữa hai biểu đồ: %d"
 
-#: includes/class-render.php:2078
+#: includes/class-render.php:2209
 msgid "Closest aspects"
 msgstr "Các góc gần nhất"
 
 #. translators: %d = the full number of aspects between the two charts
-#: includes/class-render.php:2092
+#: includes/class-render.php:2223
 #, php-format
 msgid "Show all aspects (%d)"
 msgstr "Hiển thị tất cả các góc (%d)"
 
-#: includes/class-render.php:2129
+#: includes/class-render.php:2260
 msgid "Separating"
 msgstr "Rời xa"
 
-#: includes/class-render.php:2129
+#: includes/class-render.php:2260
 msgid "Applying"
 msgstr "Tiến gần"
 
-#: includes/class-render.php:2149
+#: includes/class-render.php:2280
 msgid "Aspect"
 msgstr "Góc"
 
-#: includes/class-render.php:2151
+#: includes/class-render.php:2282
 msgid "Orb"
 msgstr "Orb"
 
-#: includes/class-render.php:2152
+#: includes/class-render.php:2283
 msgid "Trend"
 msgstr "Xu hướng"
 
-#: includes/class-render.php:2195
+#: includes/class-render.php:2326
 msgid "Harmonious"
 msgstr "Hòa hợp"
 
-#: includes/class-render.php:2196
+#: includes/class-render.php:2327
 msgid "Balanced"
 msgstr "Cân bằng"
 
-#: includes/class-render.php:2197
+#: includes/class-render.php:2328
 msgid "Mixed"
 msgstr "Hỗn hợp"
 
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:2229
+#: includes/class-render.php:2360
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s và %2$s"
 
-#: includes/class-render.php:2256 assets/js/astroway-blocks-editor.js:308
+#: includes/class-render.php:2387 assets/js/astroway-blocks-editor.js:308
 msgid "Chinese zodiac"
 msgstr "Con giáp Trung Quốc"
 
-#: includes/class-render.php:2270
+#: includes/class-render.php:2401
 msgid "Element"
 msgstr "Ngũ hành"
 
-#: includes/class-render.php:2275
+#: includes/class-render.php:2406
 msgid "Year element"
 msgstr "Ngũ hành năm"
 
-#: includes/class-render.php:2278
+#: includes/class-render.php:2409
 msgid "Polarity"
 msgstr "Âm dương"
 
-#: includes/class-render.php:2278
+#: includes/class-render.php:2409
 msgid "Yin"
 msgstr "Âm"
 
-#: includes/class-render.php:2278
+#: includes/class-render.php:2409
 msgid "Yang"
 msgstr "Dương"
 
-#: includes/class-render.php:2281
+#: includes/class-render.php:2412
 msgid "Pillar"
 msgstr "Trụ"
 
-#: includes/class-render.php:2290
+#: includes/class-render.php:2421
 msgid "Rat"
 msgstr "Chuột"
 
-#: includes/class-render.php:2291
+#: includes/class-render.php:2422
 msgid "Ox"
 msgstr "Trâu"
 
-#: includes/class-render.php:2292
+#: includes/class-render.php:2423
 msgid "Tiger"
 msgstr "Hổ"
 
-#: includes/class-render.php:2293
+#: includes/class-render.php:2424
 msgid "Rabbit"
 msgstr "Thỏ"
 
-#: includes/class-render.php:2294
+#: includes/class-render.php:2425
 msgid "Dragon"
 msgstr "Rồng"
 
-#: includes/class-render.php:2295
+#: includes/class-render.php:2426
 msgid "Snake"
 msgstr "Rắn"
 
-#: includes/class-render.php:2296
+#: includes/class-render.php:2427
 msgid "Horse"
 msgstr "Ngựa"
 
-#: includes/class-render.php:2297
+#: includes/class-render.php:2428
 msgid "Goat"
 msgstr "Dê"
 
-#: includes/class-render.php:2298
+#: includes/class-render.php:2429
 msgid "Monkey"
 msgstr "Khỉ"
 
-#: includes/class-render.php:2299
+#: includes/class-render.php:2430
 msgid "Rooster"
 msgstr "Gà"
 
-#: includes/class-render.php:2300
+#: includes/class-render.php:2431
 msgid "Dog"
 msgstr "Chó"
 
-#: includes/class-render.php:2301
+#: includes/class-render.php:2432
 msgid "Pig"
 msgstr "Heo"
 
-#: includes/class-render.php:2309
+#: includes/class-render.php:2440
 msgid "Wood"
 msgstr "Mộc"
 
-#: includes/class-render.php:2312
+#: includes/class-render.php:2443
 msgid "Metal"
 msgstr "Kim"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:2400
+#: includes/class-render.php:2531
 #, php-format
 msgid "%d min"
 msgstr "%d phút"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:2406
+#: includes/class-render.php:2537
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d giờ %2$02d phút"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:2725
+#: includes/class-render.php:2856
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d trong tổng số %2$d"
 
-#: includes/class-render.php:2776
+#: includes/class-render.php:2907
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "có"
 
-#: includes/class-render.php:2776
+#: includes/class-render.php:2907
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "không"
 
-#: includes/class-shortcodes.php:338
+#: includes/class-shortcodes.php:342
 msgid ""
 "[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a "
 "zone name such as tz=\"Europe/Kyiv\", or hours from UTC such as tz=\"+3\". "
@@ -1503,7 +1700,7 @@ msgstr ""
 "so với UTC như tz=\"+3\". Chỉ quản trị viên mới nhìn thấy lưu ý này."
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:589
+#: includes/class-shortcodes.php:601
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -1511,6 +1708,62 @@ msgid ""
 msgstr ""
 "Tiện ích %s tạm thời không có sẵn, vì vậy nó không hiển thị gì. Chỉ các quản"
 " trị viên thấy lưu ý này."
+
+#: includes/class-site-key.php:107
+msgid ""
+"this site could not reach api.astroway.info; the host may block outgoing "
+"requests."
+msgstr ""
+"trang này không kết nối được tới api.astroway.info; nhà cung cấp hosting có "
+"thể chặn yêu cầu đi ra."
+
+#: includes/class-site-key.php:108
+msgid "api.astroway.info could not reach this site."
+msgstr "api.astroway.info không kết nối được tới trang này."
+
+#: includes/class-site-key.php:109
+msgid "this site took too long to answer api.astroway.info."
+msgstr "trang này trả lời api.astroway.info quá chậm."
+
+#: includes/class-site-key.php:110
+msgid ""
+"this site answered the check with an error; a security plugin or firewall "
+"that closes the REST API to visitors would do that."
+msgstr ""
+"trang trả lời bước kiểm tra bằng lỗi; plugin bảo mật hoặc tường lửa đóng "
+"REST API với khách sẽ gây ra điều này."
+
+#: includes/class-site-key.php:111
+msgid ""
+"the check came back with the wrong answer, often a page cache in front of "
+"the REST API."
+msgstr ""
+"bước kiểm tra nhận câu trả lời sai, thường do bộ nhớ đệm trang đứng trước "
+"REST API."
+
+#: includes/class-site-key.php:112
+msgid "the check came back with a whole page instead of a short answer."
+msgstr "bước kiểm tra nhận cả một trang thay vì câu trả lời ngắn."
+
+#: includes/class-site-key.php:113
+msgid "the site address is not a public https address."
+msgstr "địa chỉ trang không phải địa chỉ https công khai."
+
+#: includes/class-site-key.php:114
+msgid "the previous key stopped working."
+msgstr "khóa trước đó đã ngừng hoạt động."
+
+#: includes/class-site-key.php:115
+msgid "the previous key belongs to another address."
+msgstr "khóa trước đó thuộc về địa chỉ khác."
+
+#: includes/class-site-key.php:116
+msgid "api.astroway.info sent an answer this site could not read."
+msgstr "api.astroway.info gửi một câu trả lời trang này không đọc được."
+
+#: includes/class-site-key.php:118
+msgid "api.astroway.info refused the request."
+msgstr "api.astroway.info đã từ chối yêu cầu."
 
 #: includes/class-tier.php:200
 msgid "Locked feature"
@@ -1607,34 +1860,61 @@ msgstr ""
 " tự động điền tọa độ và múi giờ: %s."
 
 #: includes/views/admin-api-key.php:139
+msgid ""
+"This site has its own key for the widgets above: 300 readings an hour, no "
+"account needed."
+msgstr ""
+"Trang có khóa riêng cho các widget ở trên: 300 lượt tính mỗi giờ, không cần "
+"tài khoản."
+
+#: includes/views/admin-api-key.php:141
+msgid ""
+"This site is asking api.astroway.info for its own key for the widgets above."
+" Until then they use the shared allowance."
+msgstr ""
+"Trang đang xin api.astroway.info khóa riêng cho các widget ở trên. Trong lúc"
+" chờ, chúng dùng hạn mức chung."
+
+#. translators: 1: why the site key could not be issued, 2: date and time of
+#. the next try
+#: includes/views/admin-api-key.php:145
+#, php-format
+msgid ""
+"This site has no key of its own yet: %1$s The widgets work on the shared "
+"allowance meanwhile. Next try: %2$s."
+msgstr ""
+"Trang chưa có khóa riêng: %1$s Trong lúc này các widget dùng hạn mức chung. "
+"Lần thử tiếp theo: %2$s."
+
+#: includes/views/admin-api-key.php:158
 msgid "Your API key"
 msgstr "Khóa API của bạn"
 
-#: includes/views/admin-api-key.php:140
+#: includes/views/admin-api-key.php:159
 msgid "optional · paste · verify · save"
 msgstr "tùy chọn · dán · xác minh · lưu"
 
-#: includes/views/admin-api-key.php:145
+#: includes/views/admin-api-key.php:164
 msgid "Your key"
 msgstr "Khóa của bạn"
 
-#: includes/views/admin-api-key.php:149 includes/views/admin-api-key.php:181
+#: includes/views/admin-api-key.php:168 includes/views/admin-api-key.php:200
 msgid "Verify"
 msgstr "Xác minh"
 
 #. translators: %s = the constant name, ASTROWAY_API_KEY
-#: includes/views/admin-api-key.php:156
+#: includes/views/admin-api-key.php:175
 #, php-format
 msgid "Set in wp-config.php as %s. To change or remove it, edit that file."
 msgstr ""
 "Được thiết lập trong tệp wp-config.php dưới dạng %s. Để thay đổi hoặc xóa "
 "nó, hãy chỉnh sửa tệp đó."
 
-#: includes/views/admin-api-key.php:163
+#: includes/views/admin-api-key.php:182
 msgid "Saved key"
 msgstr "Khóa đã lưu"
 
-#: includes/views/admin-api-key.php:166
+#: includes/views/admin-api-key.php:185
 msgid ""
 "The saved key can no longer be read: the security keys in wp-config.php have"
 " changed since it was saved. Widgets keep working without it. Paste the key "
@@ -1644,23 +1924,23 @@ msgstr ""
 " đã thay đổi kể từ khi nó được lưu. Các widget vẫn hoạt động bình thường mà "
 "không cần khóa này. Hãy dán lại khóa để khôi phục nó."
 
-#: includes/views/admin-api-key.php:169
+#: includes/views/admin-api-key.php:188
 msgid "Replace it with a new key"
 msgstr "Thay thế bằng một khóa mới"
 
-#: includes/views/admin-api-key.php:169
+#: includes/views/admin-api-key.php:188
 msgid "Paste your key"
 msgstr "Dán khóa của bạn"
 
-#: includes/views/admin-api-key.php:177
+#: includes/views/admin-api-key.php:196
 msgid "Leave empty to keep the saved key"
 msgstr "Để trống để giữ lại khóa đã lưu"
 
-#: includes/views/admin-api-key.php:187
+#: includes/views/admin-api-key.php:206
 msgid "Remove the saved key"
 msgstr "Xóa khóa đã lưu"
 
-#: includes/views/admin-api-key.php:194
+#: includes/views/admin-api-key.php:213
 msgid ""
 "Paste a key from api.astroway.info/dashboard, or leave the field empty. "
 "Every widget renders without one. If you do save a key, your server offers "
@@ -1679,7 +1959,7 @@ msgstr ""
 "API từ mã nguồn của riêng bạn."
 
 #. translators: %s = the constant name, ASTROWAY_API_KEY
-#: includes/views/admin-api-key.php:200
+#: includes/views/admin-api-key.php:219
 #, php-format
 msgid ""
 "Prefer to keep it out of the database? Define %s in wp-config.php and it "
@@ -1688,72 +1968,72 @@ msgstr ""
 "Bạn muốn lưu trữ thông tin này bên ngoài cơ sở dữ liệu? Hãy định nghĩa %s "
 "trong tệp wp-config.php và nó sẽ thay thế cho trường này."
 
-#: includes/views/admin-api-key.php:217
+#: includes/views/admin-api-key.php:236
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
-#: includes/views/admin-api-key.php:238
+#: includes/views/admin-api-key.php:257
 msgid "live · key authenticated"
 msgstr "Đã xác thực"
 
-#: includes/views/admin-api-key.php:241
+#: includes/views/admin-api-key.php:260
 msgid "suspended, contact support"
 msgstr "bị tạm ngưng, vui lòng liên hệ bộ phận hỗ trợ"
 
-#: includes/views/admin-api-key.php:244
+#: includes/views/admin-api-key.php:263
 msgid "revoked, re-issue key"
 msgstr "hủy bỏ, cấp lại khóa"
 
-#: includes/views/admin-api-key.php:247
+#: includes/views/admin-api-key.php:266
 msgid "invalid key"
 msgstr "Khóa trả phí."
 
-#: includes/views/admin-api-key.php:250
+#: includes/views/admin-api-key.php:269
 msgid "unreachable, check connection"
 msgstr "Không thể kết nối, hãy kiểm tra kết nối"
 
-#: includes/views/admin-api-key.php:261
+#: includes/views/admin-api-key.php:280
 msgid "Key"
 msgstr "Khóa API"
 
-#: includes/views/admin-api-key.php:275
+#: includes/views/admin-api-key.php:294
 msgid "Credits"
 msgstr "Tín dụng / tháng"
 
-#: includes/views/admin-api-key.php:294
+#: includes/views/admin-api-key.php:313
 msgid "Period ends"
 msgstr "Kỳ hạn kết thúc"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:301
+#: includes/views/admin-api-key.php:320
 #, php-format
 msgid "in %s"
 msgstr "vào %s"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:302
+#: includes/views/admin-api-key.php:321
 msgid "expired"
 msgstr "Bắt buộc"
 
-#: includes/views/admin-api-key.php:315
+#: includes/views/admin-api-key.php:334
 msgid "Domain"
 msgstr "Tên miền"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:324
+#: includes/views/admin-api-key.php:343
 #, php-format
 msgid "bound %s ago"
 msgstr "liên kết %s trước"
 
-#: includes/views/admin-api-key.php:331
+#: includes/views/admin-api-key.php:350
 msgid "not bound: the first request binds this site"
 msgstr "không được gán: yêu cầu đầu tiên sẽ gán trang web này"
 
-#: includes/views/admin-api-key.php:338
+#: includes/views/admin-api-key.php:357
 msgid "Source"
 msgstr "Tài nguyên"
 
-#: includes/views/admin-api-key.php:345
+#: includes/views/admin-api-key.php:364
 msgid ""
 "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
 "and credits shown via legacy fallback."
@@ -1762,7 +2042,7 @@ msgstr ""
 "/v1/auth/keys/me. Kế hoạch và số dư tín dụng được hiển thị thông qua cơ chế "
 "dự phòng cũ."
 
-#: includes/views/admin-api-key.php:348
+#: includes/views/admin-api-key.php:367
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -1770,7 +2050,7 @@ msgstr ""
 "Dán khóa từ api.astroway.info/dashboard. Để trống để quay lại chế độ Ẩn "
 "danh."
 
-#: includes/views/admin-api-key.php:350
+#: includes/views/admin-api-key.php:369
 msgid ""
 "Could not reach api.astroway.info. Network or upstream issue, try again in a"
 " moment."
@@ -1778,111 +2058,111 @@ msgstr ""
 "Không thể kết nối với api.astroway.info. Có thể do sự cố mạng hoặc sự cố từ "
 "phía nhà cung cấp dịch vụ, vui lòng thử lại sau một lát."
 
-#: includes/views/admin-api-key.php:359
+#: includes/views/admin-api-key.php:378
 msgid "What a key adds"
 msgstr "Một khóa mang lại điều gì"
 
-#: includes/views/admin-api-key.php:360
+#: includes/views/admin-api-key.php:379
 msgid "3 tiers compared"
 msgstr "So sánh 3 gói"
 
-#: includes/views/admin-api-key.php:368
+#: includes/views/admin-api-key.php:387
 msgid "Anonymous"
 msgstr "Ẩn danh"
 
-#: includes/views/admin-api-key.php:369
+#: includes/views/admin-api-key.php:388
 msgid "no setup"
 msgstr "không cần cài đặt"
 
-#: includes/views/admin-api-key.php:372
+#: includes/views/admin-api-key.php:391
 msgid "Free key"
 msgstr "Khóa miễn phí"
 
-#: includes/views/admin-api-key.php:373
+#: includes/views/admin-api-key.php:392
 msgid "signup"
 msgstr "đăng ký"
 
-#: includes/views/admin-api-key.php:376
+#: includes/views/admin-api-key.php:395
 msgid "Paid"
 msgstr "Trả phí"
 
-#: includes/views/admin-api-key.php:377
+#: includes/views/admin-api-key.php:396
 msgid "from $5/mo"
 msgstr "từ $5/tháng"
 
-#: includes/views/admin-api-key.php:383
+#: includes/views/admin-api-key.php:402
 msgid "Widgets in this plugin"
 msgstr "Các tiện ích trong plugin này"
 
-#: includes/views/admin-api-key.php:384 includes/views/admin-api-key.php:385
-#: includes/views/admin-api-key.php:386
+#: includes/views/admin-api-key.php:403 includes/views/admin-api-key.php:404
+#: includes/views/admin-api-key.php:405
 msgid "all of them"
 msgstr "tất cả bọn họ"
 
-#: includes/views/admin-api-key.php:389
+#: includes/views/admin-api-key.php:408
 msgid "API requests / month"
 msgstr "Số lượt yêu cầu API mỗi tháng"
 
-#: includes/views/admin-api-key.php:390 includes/views/admin-api-key.php:396
-#: includes/views/admin-api-key.php:402 includes/views/admin-api-key.php:408
-#: includes/views/admin-api-key.php:409 includes/views/admin-api-key.php:414
-#: includes/views/admin-api-key.php:420 includes/views/admin-api-key.php:421
+#: includes/views/admin-api-key.php:409 includes/views/admin-api-key.php:415
+#: includes/views/admin-api-key.php:421 includes/views/admin-api-key.php:427
+#: includes/views/admin-api-key.php:428 includes/views/admin-api-key.php:433
+#: includes/views/admin-api-key.php:439 includes/views/admin-api-key.php:440
 msgid "none"
 msgstr "không có"
 
-#: includes/views/admin-api-key.php:391
+#: includes/views/admin-api-key.php:410
 msgid "10,000"
 msgstr "10.000"
 
-#: includes/views/admin-api-key.php:392
+#: includes/views/admin-api-key.php:411
 msgid "50K to 3.5M"
 msgstr "Từ 50.000 đến 3,5 triệu"
 
-#: includes/views/admin-api-key.php:395
+#: includes/views/admin-api-key.php:414
 msgid "Rate limit, keyed endpoints"
 msgstr "Giới hạn tốc độ, các điểm cuối có khóa"
 
-#: includes/views/admin-api-key.php:397
+#: includes/views/admin-api-key.php:416
 msgid "~60 requests/min"
 msgstr "~60 yêu cầu/phút"
 
-#: includes/views/admin-api-key.php:398
+#: includes/views/admin-api-key.php:417
 msgid "30 to 1000 requests/min"
 msgstr "30 đến 1.000 yêu cầu/phút"
 
-#: includes/views/admin-api-key.php:401
+#: includes/views/admin-api-key.php:420
 msgid "Dashboard, usage history"
 msgstr "Bảng điều khiển, lịch sử sử dụng"
 
-#: includes/views/admin-api-key.php:403 includes/views/admin-api-key.php:404
-#: includes/views/admin-api-key.php:410 includes/views/admin-api-key.php:422
+#: includes/views/admin-api-key.php:422 includes/views/admin-api-key.php:423
+#: includes/views/admin-api-key.php:429 includes/views/admin-api-key.php:441
 msgid "included"
 msgstr "đã bao gồm"
 
-#: includes/views/admin-api-key.php:407
+#: includes/views/admin-api-key.php:426
 msgid "AI interpretations"
 msgstr "Giải thích AI"
 
-#: includes/views/admin-api-key.php:413
+#: includes/views/admin-api-key.php:432
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "Hỗ trợ"
 
-#: includes/views/admin-api-key.php:415
+#: includes/views/admin-api-key.php:434
 msgid "community"
 msgstr "cộng đồng"
 
-#: includes/views/admin-api-key.php:416
+#: includes/views/admin-api-key.php:435
 msgid "priority"
 msgstr "ưu tiên"
 
-#: includes/views/admin-api-key.php:419
+#: includes/views/admin-api-key.php:438
 msgid "Spend cap"
 msgstr "Giới hạn chi tiêu"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:430
+#: includes/views/admin-api-key.php:449
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
@@ -1893,15 +2173,15 @@ msgstr ""
 "mã nguồn của bạn. Các widget trên trang của bạn không bị ảnh hưởng bởi bất "
 "kỳ nội dung nào trong số đó. Giá niêm yết → %s"
 
-#: includes/views/admin-api-key.php:441
+#: includes/views/admin-api-key.php:460
 msgid "How it works"
 msgstr "Cách hoạt động"
 
-#: includes/views/admin-api-key.php:445
+#: includes/views/admin-api-key.php:464
 msgid "On your pages."
 msgstr "Trên các trang của bạn."
 
-#: includes/views/admin-api-key.php:446
+#: includes/views/admin-api-key.php:465
 msgid ""
 "Your server renders most widgets into the page, counted against this site's "
 "allowance of 300 requests an hour, or against your own plan when a paid key "
@@ -1916,11 +2196,11 @@ msgstr ""
 "này mang dấu nước \"Powered by AstroWay\": khung (frame) này được trình "
 "duyệt của người truy cập tải về, và đó không phải là nơi chứa khóa của bạn."
 
-#: includes/views/admin-api-key.php:449
+#: includes/views/admin-api-key.php:468
 msgid "Free key."
 msgstr "Khóa miễn phí."
 
-#: includes/views/admin-api-key.php:450
+#: includes/views/admin-api-key.php:469
 msgid ""
 "A personal bucket of 10,000 calls a month for code you write yourself, plus "
 "a dashboard with activity history. It does not change what the shortcodes "
@@ -1932,11 +2212,11 @@ msgstr ""
 "thay đổi nội dung hiển thị của các mã ngắn, và hình mờ trên các widget có "
 "khung vẫn được giữ nguyên: khóa không nằm trong địa chỉ của khung."
 
-#: includes/views/admin-api-key.php:453
+#: includes/views/admin-api-key.php:472
 msgid "Paid key."
 msgstr "Khóa trả phí."
 
-#: includes/views/admin-api-key.php:454
+#: includes/views/admin-api-key.php:473
 msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
@@ -4054,6 +4334,16 @@ msgstr ""
 msgctxt "block description"
 msgid "How two zodiac signs read together."
 msgstr "Cách hai cung hoàng đạo tương tác với nhau."
+
+#~ msgid ""
+#~ "Birth time unknown: the chart is drawn for noon, without houses or the "
+#~ "Ascendant, and the Moon may be up to 7 degrees from where it was."
+#~ msgstr ""
+#~ "Không rõ giờ sinh: bản đồ được tính cho giữa trưa, không có nhà và cung mọc,"
+#~ " và Mặt Trăng có thể lệch tới 7 độ."
+
+#~ msgid "Latitude runs from -90 to 90, longitude from -180 to 180."
+#~ msgstr "Vĩ độ từ -90 đến 90, kinh độ từ -180 đến 180."
 
 #~ msgid "Illumination"
 #~ msgstr "Chiếu sáng"

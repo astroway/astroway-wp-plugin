@@ -33,6 +33,19 @@ class ApiClient {
 		return $this->has_key() ? $this->api_key : '';
 	}
 
+	/** Routes of the api's free set the keyed cards use: the site key opens them. */
+	private const SITE_KEY_PATHS = [ '/retrograde-periods', '/moon-voc', '/planetary-hours', '/horoscope/yearly', '/horoscope/compatibility', '/chinese/zodiac/animal' ];
+
+	/** Whether the sky cards can ask at all: the owner's key, or the site's own. */
+	public function can_read_sky(): bool {
+		return $this->has_key() || '' !== SiteKey::key();
+	}
+
+	/** The site key for a free-set route when the owner has no key; '' otherwise. */
+	private function site_key_for( string $path ): string {
+		return ! $this->has_key() && in_array( $path, self::SITE_KEY_PATHS, true ) ? SiteKey::key() : '';
+	}
+
 	public function ping_health(): array {
 		return $this->get( '/health' );
 	}
@@ -99,18 +112,24 @@ class ApiClient {
 	 *                       answers in Ukrainian, its source language, without it.
 	 */
 	public function call( string $method, string $path, array $params = [], string $lang = '' ): array {
+		$site_key = $this->site_key_for( $path );
 		if ( 'POST' !== strtoupper( $method ) ) {
-			return $this->get( $path, $params, $lang );
+			$result = $this->get( $path, $params, $lang, $site_key );
+		} else {
+			$response = wp_remote_post(
+				$this->base . $path,
+				[
+					'timeout' => 10,
+					'headers' => $this->headers( $lang, $site_key ) + [ 'Content-Type' => 'application/json' ],
+					'body'    => (string) wp_json_encode( $params ),
+				]
+			);
+			$result   = $this->normalize( $response );
 		}
-		$response = wp_remote_post(
-			$this->base . $path,
-			[
-				'timeout' => 10,
-				'headers' => $this->headers( $lang ) + [ 'Content-Type' => 'application/json' ],
-				'body'    => (string) wp_json_encode( $params ),
-			]
-		);
-		return $this->normalize( $response );
+		if ( '' !== $site_key && in_array( (int) ( $result['status'] ?? 0 ), [ 401, 403 ], true ) ) {
+			SiteKey::note( (int) $result['status'], (string) ( $result['data']['error']['code'] ?? '' ), $site_key );
+		}
+		return $result;
 	}
 
 	/**
@@ -154,7 +173,7 @@ class ApiClient {
 		return $payload;
 	}
 
-	private function get( string $path, array $params = [], string $lang = '' ): array {
+	private function get( string $path, array $params = [], string $lang = '', string $site_key = '' ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {
 			$url = add_query_arg( $params, $url );
@@ -163,19 +182,21 @@ class ApiClient {
 			$url,
 			[
 				'timeout' => 5,
-				'headers' => $this->headers( $lang ),
+				'headers' => $this->headers( $lang, $site_key ),
 			]
 		);
 		return $this->normalize( $response );
 	}
 
-	private function headers( string $lang = '' ): array {
+	private function headers( string $lang = '', string $site_key = '' ): array {
 		$headers = [
 			'Accept'              => 'application/json',
 			'X-AstroWay-Site-URL' => home_url(),
 		];
 		if ( $this->has_key() ) {
 			$headers['X-Api-Key'] = $this->api_key;
+		} elseif ( '' !== $site_key ) {
+			$headers['X-Api-Key'] = $site_key;
 		}
 		// A header rather than ?lang=: a GET route that validates its query
 		// strictly would refuse a parameter it does not declare.

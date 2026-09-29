@@ -50,7 +50,7 @@ class Wheel {
 
 		$svg  = sprintf( '<svg class="astroway-wheel__svg" viewBox="-56 -56 512 512" role="img" aria-labelledby="%1$s-t %1$s-d" focusable="false">', $id );
 		$svg .= '<title id="' . $id . '-t">' . esc_html( $title ) . '</title><desc id="' . $id . '-d">' . esc_html( $desc ) . '</desc>';
-		$svg .= self::rings() . self::signs() . self::houses( $cusps ) . self::aspects( $chart ) . self::angles( $chart, $cusps ) . self::planets( $chart );
+		$svg .= self::rings() . self::signs() . self::houses( $cusps ) . self::aspects( $chart ) . ( empty( $chart['no_angles'] ) ? self::angles( $chart, $cusps ) : '' ) . self::planets( $chart );
 		$svg .= '</svg>';
 
 		return '<figure class="astroway-wheel">' . $svg . '</figure>';

@@ -103,6 +103,7 @@
 	--astroway-tens: #b1261d;
 	--astroway-harm: var(--astroway-accent);
 	--astroway-accent-tint: color-mix(in oklab, var(--astroway-accent) 10%, transparent);
+	--astroway-on-accent: #fff;
 	--astroway-surface: var(--astroway-card-bg, transparent);
 	--astroway-radius: var(--astroway-card-radius, 16px);
 	--astroway-radius-inner: 10px;
@@ -117,6 +118,8 @@
 		--astroway-accent: oklch(from currentColor calc(0.45 + 0.355 * clamp(0, (l - 0.6) * 50, 1)) calc(0.148 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(264.7 + 7.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
 		--astroway-gilt: oklch(from currentColor calc(0.52 + 0.302 * clamp(0, (l - 0.6) * 50, 1)) calc(0.102 + 0.009 * clamp(0, (l - 0.6) * 50, 1)) calc(81.9 + 6.8 * clamp(0, (l - 0.6) * 50, 1)) / 1);
 		--astroway-tens: oklch(from currentColor calc(0.498 + 0.284 * clamp(0, (l - 0.6) * 50, 1)) calc(0.177 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(29 - 2.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
+		/* Text on a filled accent: near white on a dark accent, near black on a light one. */
+		--astroway-on-accent: oklch(from var(--astroway-accent) calc(0.99 - 0.84 * clamp(0, (l - 0.62) * 50, 1)) 0.01 h);
 	}
 }
 
@@ -126,6 +129,7 @@
 	--astroway-accent: #a9bcff;
 	--astroway-gilt: #e2c16c;
 	--astroway-tens: #ff978c;
+	--astroway-on-accent: #10142e;
 }
 
 /* Native: no colour of its own. Meaning is carried by stroke and shape. */
@@ -146,6 +150,7 @@
 	--astroway-line-strong: rgba(232, 203, 132, 0.42);
 	--astroway-tint: rgba(255, 255, 255, 0.035);
 	--astroway-accent: #e8c878;
+	--astroway-on-accent: #10142e;
 	--astroway-gilt: #e8c878;
 	--astroway-harm: #8fd4ff;
 	--astroway-tens: #ff9d8e;
@@ -245,7 +250,7 @@
 
 /* Theme button styles leak into anything that is a <button> or an <a>;
    everything a theme usually sets is reset for the controls here. */
-.astroway-card :is(.astroway-tabs__tab, .astroway-chip, .astroway-iconbtn, .astroway-signs__sign),
+.astroway-card :is(.astroway-tabs__tab, .astroway-chip, .astroway-iconbtn, .astroway-signs__sign, .astroway-button, .astroway-field__input),
 .astroway-section :is(.astroway-tabs__tab) {
 	appearance: none;
 	margin: 0;
@@ -452,6 +457,11 @@
 	border-block: 1px solid var(--astroway-line);
 }
 
+/* The header already rules the line above; a second one 16px under it reads as a gap. */
+.astroway-card .astroway-card__header + .astroway-facts--trio {
+	border-block-start: 0;
+}
+
 /* The same inset on both sides of every cell: with padding only after the
    divider the three texts sat at uneven steps across the row. */
 .astroway-facts--trio .astroway-facts__item {
@@ -540,7 +550,7 @@
 
 /* Three narrow columns leave "Ascendant" no room: the trio becomes rows. In em,
    because the word grows with the theme's type while pixels stay put. */
-@container (max-width: 18.5em) {
+@container (max-width: 17.8em) {
 	.astroway-card .astroway-facts--trio {
 		grid-template-columns: 1fr;
 	}
@@ -755,6 +765,9 @@
 }
 
 .astroway-acc__title {
+	/* The title takes the free width, so the chevron keeps one column at the edge. */
+	flex: 1 1 auto;
+	min-inline-size: 0;
 	font-weight: 500;
 }
 
@@ -780,6 +793,25 @@
 
 .astroway-card .astroway-acc__body {
 	padding: 0 2px 12px;
+}
+
+/* A long reading: the body starts right under its row and ends with room before
+   the next one; its headings sit below the row title, and list and prose share a size. */
+.astroway-card .astroway-acc__body > .astroway-prose {
+	padding-block-end: 12px;
+}
+
+.astroway-card .astroway-acc__body > .astroway-prose > :first-child {
+	margin-block-start: 0;
+}
+
+.astroway-card .astroway-acc__body .astroway-prose :is(h4, h5) {
+	font-size: 0.9em;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-acc__body .astroway-prose ul > li {
+	font-size: inherit;
 }
 
 /* ── Aspect rows and marks. Harmony is a circle and a solid line, tension a
@@ -2273,4 +2305,217 @@
    `display: block` on themselves, so the attribute alone did nothing. */
 .astroway-section--tabbed > [hidden] {
 	display: none;
+}
+
+/* ── Birth-data form ── */
+
+.astroway-card .astroway-form {
+	display: grid;
+	gap: 14px;
+	margin: 16px 0 0;
+}
+
+.astroway-card .astroway-field {
+	display: grid;
+	gap: 4px;
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.astroway-card .astroway-field__label {
+	padding: 0;
+	font-size: 0.9em;
+	font-weight: 500;
+}
+
+.astroway-card .astroway-field__input {
+	box-sizing: border-box;
+	inline-size: 100%;
+	min-block-size: 44px;
+	padding: 8px 12px;
+	border: 1px solid var(--astroway-line-strong);
+	border-radius: var(--astroway-radius-inner);
+	background: transparent;
+	line-height: 1.3;
+	cursor: text;
+}
+
+/* The browser's calendar and clock marks, in the card's muted ink rather than pure black. */
+.astroway-card .astroway-field__input::-webkit-calendar-picker-indicator {
+	opacity: 0.55;
+	cursor: pointer;
+}
+
+.astroway-card .astroway-field.is-invalid .astroway-field__input {
+	border-color: var(--astroway-tens);
+}
+
+.astroway-card :is(.astroway-field__hint, .astroway-field__error) {
+	margin: 0;
+	font-size: 0.84em;
+	text-wrap: pretty;
+}
+
+.astroway-card .astroway-field__hint {
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-field__error {
+	color: var(--astroway-tens);
+}
+
+/* A checkbox or radio row keeps a 44px target, but draws itself closer to
+   the field above: the tick belongs to the time, not halfway to the city. */
+.astroway-card .astroway-field--check {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-block-size: 44px;
+}
+
+.astroway-card .astroway-form > .astroway-field--check {
+	margin-block-start: -8px;
+}
+
+.astroway-card .astroway-field__box {
+	flex: none;
+	display: grid;
+	place-content: center;
+	inline-size: 18px;
+	block-size: 18px;
+	margin: 0;
+	border: 1px solid var(--astroway-line-strong);
+	border-radius: 4px;
+	background: transparent;
+	appearance: none;
+	cursor: pointer;
+}
+
+.astroway-card .astroway-field__box[type="radio"] {
+	border-radius: 50%;
+}
+
+.astroway-card .astroway-field__box:checked {
+	border-color: var(--astroway-accent);
+	background: var(--astroway-accent);
+}
+
+.astroway-card .astroway-field__box:checked::before {
+	content: "";
+	inline-size: 10px;
+	block-size: 10px;
+	background: var(--astroway-on-accent);
+	clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 22%, 86% 8%, 38% 68%);
+}
+
+.astroway-card .astroway-field__box[type="radio"]:checked::before {
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 50%;
+	clip-path: none;
+}
+
+.astroway-card .astroway-field--check label {
+	cursor: pointer;
+}
+
+.astroway-card .astroway-choices {
+	gap: 0;
+}
+
+.astroway-card .astroway-choices > .astroway-field__label {
+	margin-block-end: 4px;
+}
+
+.astroway-card .astroway-choices__asked {
+	margin: 0 0 8px;
+	font-size: 0.84em;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-choices .astroway-field--check {
+	border-block-end: 1px solid var(--astroway-line);
+}
+
+.astroway-card .astroway-choices__asked + .astroway-field--check {
+	border-block-start: 1px solid var(--astroway-line);
+}
+
+/* A disclosure, not a link: the card's own text, smaller, with the same
+   chevron the accordion turns. */
+.astroway-card .astroway-form__manual > summary {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-block-size: 44px;
+	margin-block: -8px;
+	font-size: 0.9em;
+	color: var(--astroway-muted);
+	list-style: none;
+	cursor: pointer;
+}
+
+.astroway-card .astroway-form__manual > summary::-webkit-details-marker {
+	display: none;
+}
+
+.astroway-card .astroway-form__manual > summary::after {
+	content: "";
+	inline-size: 7px;
+	block-size: 7px;
+	border-inline-end: 1.5px solid currentColor;
+	border-block-end: 1.5px solid currentColor;
+	transform: translateY(-2px) rotate(45deg);
+	transition: transform 0.2s;
+}
+
+.astroway-card .astroway-form__manual[open] > summary::after {
+	transform: translateY(2px) rotate(-135deg);
+}
+
+/* The content of a details element sits in its own box, which a grid gap on
+   the details does not reach: the fields are spaced by margin. */
+.astroway-card .astroway-form__manual > .astroway-field {
+	margin-block-start: 14px;
+}
+
+/* Off-screen rather than hidden: a robot skips a field it can tell is hidden. */
+.astroway-card .astroway-form__trap {
+	position: absolute;
+	inset-inline-start: -10000px;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.astroway-card .astroway-form__actions {
+	margin: 4px 0 0;
+}
+
+/* The one filled control in the card: the form's action. The accent follows
+   currentColor, so the button keeps the theme's text colour and only its
+   label takes the ink for a filled accent: set on the button itself, that
+   colour would become the currentColor the fill is computed from. */
+.astroway-card .astroway-button {
+	min-block-size: 44px;
+	padding: 0 22px;
+	border: 1px solid var(--astroway-accent);
+	border-radius: var(--astroway-radius-inner);
+	background: var(--astroway-accent);
+	font-weight: 600;
+}
+
+.astroway-card .astroway-button > span {
+	color: var(--astroway-on-accent);
+}
+
+.astroway-card .astroway-button:hover {
+	background: color-mix(in oklab, var(--astroway-accent) 86%, currentColor);
+}
+
+.astroway-form__again {
+	margin: 0 0 1.5em;
 }

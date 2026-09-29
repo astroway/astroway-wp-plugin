@@ -149,6 +149,8 @@ class Plugin {
 		if ( class_exists( __NAMESPACE__ . '\\Digest' ) ) {
 			Digest::register();
 		}
+		SiteKey::register();
+		Form::register();
 
 		add_filter( 'http_request_args', [ __CLASS__, 'http_args' ], 10, 2 );
 		add_action( 'init', [ __CLASS__, 'register_frontend_assets' ] );
@@ -684,6 +686,7 @@ class Plugin {
 		if ( false === get_option( 'astroway_activated_at' ) ) {
 			update_option( 'astroway_activated_at', time() );
 		}
+		SiteKey::schedule();
 	}
 
 	public static function deactivate(): void {
@@ -693,5 +696,6 @@ class Plugin {
 		if ( class_exists( __NAMESPACE__ . '\\Digest' ) ) {
 			wp_clear_scheduled_hook( Digest::EVENT );
 		}
+		wp_clear_scheduled_hook( SiteKey::EVENT );
 	}
 }
