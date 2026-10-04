@@ -150,6 +150,7 @@ class Plugin {
 			Digest::register();
 		}
 		SiteKey::register();
+		Connect::register();
 		Form::register();
 
 		add_filter( 'http_request_args', [ __CLASS__, 'http_args' ], 10, 2 );

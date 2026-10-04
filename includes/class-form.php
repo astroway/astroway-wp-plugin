@@ -1,7 +1,8 @@
 <?php
 /**
  * Birth-data form for visitors: a natal chart, moon sign or rising sign
- * shortcode with no date asks the visitor for one.
+ * shortcode with no date asks the visitor for one, a synastry shortcode with
+ * no dates for two.
  *
  * Posts back to its own page and the server draws the result, so it works
  * without JavaScript. The plugin keeps nothing of what a visitor types: the
@@ -25,6 +26,7 @@ class Form {
 	private const WINDOW   = 10 * MINUTE_IN_SECONDS;
 	private const PER_IP   = 8;
 	private const PER_HOUR = 120;
+	private const NAME_MAX = 60;
 
 	/** The Moon's greatest drift from its noon longitude within a day, per the api. */
 	private const MOON_DRIFT = 7.7;
@@ -93,7 +95,7 @@ class Form {
 		}
 		wp_add_privacy_policy_content(
 			'AstroWay',
-			'<p>' . esc_html__( 'When a visitor fills in a birth chart, moon sign or rising sign form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. The AstroWay plugin does not store them on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			'<p>' . esc_html__( 'When a visitor fills in a birth chart, compatibility, moon sign or rising sign form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
 		);
 	}
 
@@ -106,20 +108,36 @@ class Form {
 		if ( self::posted( self::MARKER ) !== $id || is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return self::card( $widget, $id, $lang, [] );
 		}
-		return self::answer( $widget, $id, $lang );
+		return self::answer( $widget, $id, $lang, $params );
 	}
 
-	private static function answer( string $widget, string $id, string $lang ): string {
-		$in = [
-			'date'    => self::posted( 'aw_date' ),
-			'time'    => self::posted( 'aw_time' ),
-			'unknown' => '1' === self::posted( 'aw_time_unknown' ),
-			'city'    => self::posted( 'aw_city' ),
-			'place'   => self::posted( 'aw_place' ),
-			'lat'     => self::posted( 'aw_lat' ),
-			'lng'     => self::posted( 'aw_lng' ),
-			'tz'      => self::posted( 'aw_tz' ),
+	/** What was posted for one person; $sfx is `_a` or `_b` on the form for two. */
+	private static function inputs( string $sfx ): array {
+		return [
+			'name'    => mb_substr( self::posted( 'aw_name' . $sfx ), 0, self::NAME_MAX ),
+			'date'    => self::posted( 'aw_date' . $sfx ),
+			'time'    => self::posted( 'aw_time' . $sfx ),
+			'unknown' => '1' === self::posted( 'aw_time_unknown' . $sfx ),
+			'city'    => self::posted( 'aw_city' . $sfx ),
+			'place'   => self::posted( 'aw_place' . $sfx ),
+			'for'     => self::posted( 'aw_place_for' . $sfx ),
+			'lat'     => self::posted( 'aw_lat' . $sfx ),
+			'lng'     => self::posted( 'aw_lng' . $sfx ),
+			'tz'      => self::posted( 'aw_tz' . $sfx ),
 		];
+	}
+
+	/** The people a form asks about, by field suffix. */
+	private static function sides( string $widget ): array {
+		return 'synastry' === $widget ? [ '_a', '_b' ] : [ '' ];
+	}
+
+	/** @param array $given The shortcode's own attributes, for what the visitor is not asked. */
+	private static function answer( string $widget, string $id, string $lang, array $given ): string {
+		$in = [];
+		foreach ( self::sides( $widget ) as $sfx ) {
+			$in[ $sfx ] = self::inputs( $sfx );
+		}
 
 		if ( ! self::same_origin() ) {
 			return self::card( $widget, $id, $lang, $in, [ '' => __( 'This form works only on the site it is on.', 'astroway' ) ] );
@@ -129,7 +147,10 @@ class Form {
 			return self::card( $widget, $id, $lang, $in );
 		}
 
-		$errors = self::validate( $widget, $in );
+		$errors = [];
+		foreach ( $in as $sfx => $one ) {
+			$errors += self::validate( $widget, $one, $sfx );
+		}
 		if ( $errors ) {
 			return self::card( $widget, $id, $lang, $in, $errors );
 		}
@@ -140,33 +161,55 @@ class Form {
 			return self::card( $widget, $id, $lang, $in, [ '' => __( 'The calculator is busy right now. Try again later.', 'astroway' ) ] );
 		}
 
-		$place = self::place( $in, $lang );
-		if ( isset( $place['error'] ) ) {
-			return self::card(
-				$widget,
-				$id,
-				$lang,
-				$in,
-				[
-					'aw_city' => $place['error'],
-					'manual'  => '1',
-				]
-			);
+		$places  = [];
+		$choices = [];
+		foreach ( $in as $sfx => $one ) {
+			$place = self::place( $one, $lang );
+			if ( isset( $place['error'] ) ) {
+				$errors[ 'aw_city' . $sfx ] = $place['error'];
+				$errors[ 'manual' . $sfx ]  = '1';
+			} elseif ( isset( $place['choices'] ) ) {
+				$choices[ $sfx ] = $place['choices'];
+			} else {
+				$places[ $sfx ] = $place;
+			}
 		}
-		if ( isset( $place['choices'] ) ) {
-			return self::card( $widget, $id, $lang, $in, [], $place['choices'] );
+		if ( $errors || $choices ) {
+			return self::card( $widget, $id, $lang, $in, $errors, $choices );
 		}
 
-		$params = [
-			'date'         => $in['date'],
-			'time'         => $in['unknown'] ? '12:00' : $in['time'],
-			'lat'          => $place['lat'],
-			'lng'          => $place['lng'],
-			'tz'           => '',
-			'lang'         => $lang,
-			'nocache'      => true,
-			'time_unknown' => $in['unknown'],
-		];
+		if ( 'synastry' === $widget ) {
+			$params = [
+				'lang'    => $lang,
+				'nocache' => true,
+				'aspects' => (int) ( $given['aspects'] ?? 0 ),
+			];
+			$sides  = [
+				'_a' => 'a',
+				'_b' => 'b',
+			];
+			foreach ( $sides as $sfx => $side ) {
+				$params[ 'date_' . $side ] = $in[ $sfx ]['date'];
+				// Empty is how the pair says "unknown": the route declares it, not noon.
+				$params[ 'time_' . $side ] = $in[ $sfx ]['unknown'] ? '' : $in[ $sfx ]['time'];
+				$params[ 'lat_' . $side ]  = (string) $places[ $sfx ]['lat'];
+				$params[ 'lng_' . $side ]  = (string) $places[ $sfx ]['lng'];
+				$params[ 'tz_' . $side ]   = '';
+				$params[ 'name_' . $side ] = $in[ $sfx ]['name'];
+			}
+		} else {
+			$params = [
+				'date'         => $in['']['date'],
+				'time'         => $in['']['unknown'] ? '12:00' : $in['']['time'],
+				'lat'          => $places['']['lat'],
+				'lng'          => $places['']['lng'],
+				'tz'           => '',
+				'lang'         => $lang,
+				'nocache'      => true,
+				'time_unknown' => $in['']['unknown'],
+				'transits'     => (string) ( $given['transits'] ?? '' ),
+			];
+		}
 		// Asked directly, not through Render::widget: a frame cannot answer a
 		// POST, so the "in an iframe" setting does not apply to a visitor's chart.
 		$data = PublicData::get( $widget, $params, false );
@@ -176,37 +219,40 @@ class Form {
 			return self::card( $widget, $id, $lang, $in, [ '' => __( 'The calculation did not come back. Try again in a moment.', 'astroway' ) ] );
 		}
 
-		$notes = self::dst_note( $in['date'], $in['time'], (string) $place['tz'], $in['unknown'] );
-		if ( 'moon_sign' === $widget && $in['unknown'] ) {
+		$notes = '';
+		foreach ( $in as $sfx => $one ) {
+			$notes .= self::dst_note( $one['date'], $one['time'], (string) $places[ $sfx ]['tz'], $one['unknown'] );
+		}
+		if ( 'moon_sign' === $widget && $in['']['unknown'] ) {
 			$notes .= self::moon_note( $data );
 		}
 		return $notes . $html . '<p class="astroway-form__again"><a href="">' . esc_html__( 'Calculate another', 'astroway' ) . '</a></p>';
 	}
 
 	/** Field errors keyed by input name; '' holds one for the whole form. */
-	private static function validate( string $widget, array $in ): array {
+	private static function validate( string $widget, array $in, string $sfx = '' ): array {
 		$errors = [];
 		if ( ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $in['date'], $m ) || ! checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ) {
-			$errors['aw_date'] = __( 'Enter the date of birth.', 'astroway' );
+			$errors[ 'aw_date' . $sfx ] = __( 'Enter the date of birth.', 'astroway' );
 		} elseif ( (int) $m[1] < 1800 || $in['date'] > gmdate( 'Y-m-d', time() + DAY_IN_SECONDS ) ) {
-			$errors['aw_date'] = __( 'Enter a date between 1800 and today.', 'astroway' );
+			$errors[ 'aw_date' . $sfx ] = __( 'Enter a date between 1800 and today.', 'astroway' );
 		}
 		if ( $in['unknown'] ) {
 			if ( 'rising_sign' === $widget ) {
-				$errors['aw_time'] = __( 'The rising sign depends on the minute of birth; without the time it cannot be told.', 'astroway' );
+				$errors[ 'aw_time' . $sfx ] = __( 'The rising sign depends on the minute of birth; without the time it cannot be told.', 'astroway' );
 			}
 		} elseif ( ! preg_match( '/^([01]\d|2[0-3]):[0-5]\d$/', $in['time'] ) ) {
-			$errors['aw_time'] = __( 'Enter the time of birth, or tick that it is unknown.', 'astroway' );
+			$errors[ 'aw_time' . $sfx ] = __( 'Enter the time of birth, or tick that it is unknown.', 'astroway' );
 		}
 		$manual = is_numeric( $in['lat'] ) && is_numeric( $in['lng'] );
 		if ( $manual && abs( (float) $in['lat'] ) > 90 ) {
-			$errors['aw_lat'] = __( 'Latitude runs from -90 to 90.', 'astroway' );
+			$errors[ 'aw_lat' . $sfx ] = __( 'Latitude runs from -90 to 90.', 'astroway' );
 		}
 		if ( $manual && abs( (float) $in['lng'] ) > 180 ) {
-			$errors['aw_lng'] = __( 'Longitude runs from -180 to 180.', 'astroway' );
+			$errors[ 'aw_lng' . $sfx ] = __( 'Longitude runs from -180 to 180.', 'astroway' );
 		}
 		if ( ! $manual && '' === $in['place'] && mb_strlen( $in['city'] ) < 2 ) {
-			$errors['aw_city'] = __( 'Enter the city of birth.', 'astroway' );
+			$errors[ 'aw_city' . $sfx ] = __( 'Enter the city of birth.', 'astroway' );
 		}
 		return $errors;
 	}
@@ -224,7 +270,9 @@ class Form {
 				'tz'  => $in['tz'],
 			];
 		}
-		if ( preg_match( '/^(-?\d{1,2}(?:\.\d+)?)\|(-?\d{1,3}(?:\.\d+)?)\|([A-Za-z0-9_\/+-]{1,64})$/', $in['place'], $m ) ) {
+		// A place kept from an earlier step counts only for the city it was picked for.
+		$kept = '' === (string) ( $in['for'] ?? '' ) || (string) $in['for'] === $in['city'];
+		if ( $kept && preg_match( '/^(-?\d{1,2}(?:\.\d+)?)\|(-?\d{1,3}(?:\.\d+)?)\|([A-Za-z0-9_\/+-]{1,64})$/', $in['place'], $m ) ) {
 			return [
 				'lat' => (float) $m[1],
 				'lng' => (float) $m[2],
@@ -232,7 +280,8 @@ class Form {
 			];
 		}
 
-		$found = Atlas::search( $in['city'] );
+		// Not kept: the plugin promises to store nothing a visitor types.
+		$found = Atlas::search( $in['city'], 6, false );
 		if ( isset( $found['error'] ) ) {
 			return [ 'error' => __( 'The city search is not answering. Enter the coordinates below instead.', 'astroway' ) ];
 		}
@@ -261,84 +310,47 @@ class Form {
 	/**
 	 * The form in a card: its fields with what was typed and what was wrong,
 	 * or the list of places when the city name fitted several.
+	 *
+	 * @param array $in      What was typed, by person suffix.
+	 * @param array $choices Places to pick from, by person suffix.
 	 */
 	private static function card( string $widget, string $id, string $lang, array $in, array $errors = [], array $choices = [] ): string {
 		$titles = [
 			'natal'       => __( 'Your birth chart', 'astroway' ),
 			'moon_sign'   => __( 'Your moon sign', 'astroway' ),
 			'rising_sign' => __( 'Your rising sign', 'astroway' ),
+			'synastry'    => __( 'Compatibility of two charts', 'astroway' ),
 		];
 		$inner  = UI::header( [ 'title' => $titles[ $widget ] ?? $titles['natal'] ] );
 		if ( isset( $errors[''] ) ) {
 			$inner .= UI::callout( esc_html( $errors[''] ), 'tens' );
 		}
 
-		$fields  = UI::field(
-			[
-				'name'  => 'aw_date',
-				'label' => __( 'Date of birth', 'astroway' ),
-				'type'  => 'date',
-				'value' => $in['date'] ?? '',
-				'error' => $errors['aw_date'] ?? '',
-				'attrs' => [
-					'min'          => '1800-01-01',
-					'max'          => gmdate( 'Y-m-d' ),
-					'autocomplete' => 'bday',
-				],
-			]
-		);
-		$fields .= UI::field(
-			[
-				'name'  => 'aw_time',
-				'label' => __( 'Time of birth', 'astroway' ),
-				'type'  => 'time',
-				'value' => $in['time'] ?? '',
-				'error' => $errors['aw_time'] ?? '',
-				'hint'  => 'rising_sign' === $widget ? '' : __( 'Local time at the place of birth.', 'astroway' ),
-			]
-		);
-		if ( 'rising_sign' !== $widget ) {
-			$fields .= UI::check( 'aw_time_unknown', __( 'I do not know the time', 'astroway' ), ! empty( $in['unknown'] ) );
-		}
-
-		if ( $choices ) {
-			$fields .= UI::choices( 'aw_place', __( 'Which one?', 'astroway' ), $choices, (string) ( $in['city'] ?? '' ) );
-			$fields .= '<input type="hidden" name="aw_city" value="' . esc_attr( (string) ( $in['city'] ?? '' ) ) . '">';
+		$fields = '';
+		if ( 'synastry' === $widget ) {
+			$legends = [
+				'_a' => __( 'First person', 'astroway' ),
+				'_b' => __( 'Second person', 'astroway' ),
+			];
+			foreach ( $legends as $sfx => $legend ) {
+				$fields .= '<fieldset class="astroway-form__person"><legend class="astroway-card__subtitle">' . esc_html( $legend ) . '</legend>'
+					. UI::field(
+						[
+							'name'  => 'aw_name' . $sfx,
+							'label' => __( 'Name (optional)', 'astroway' ),
+							'value' => $in[ $sfx ]['name'] ?? '',
+							'hint'  => __( 'Shown on the result only.', 'astroway' ),
+							'attrs' => [
+								'autocomplete' => 'off',
+								'maxlength'    => (string) self::NAME_MAX,
+							],
+						]
+					)
+					. self::person( $widget, $in[ $sfx ] ?? [], $errors, $choices[ $sfx ] ?? [], $sfx )
+					. '</fieldset>';
+			}
 		} else {
-			$fields .= UI::field(
-				[
-					'name'  => 'aw_city',
-					'label' => __( 'City of birth', 'astroway' ),
-					'value' => $in['city'] ?? '',
-					'error' => $errors['aw_city'] ?? '',
-					'attrs' => [ 'autocomplete' => 'off' ],
-				]
-			);
-			// Coordinates by hand, for a place the search does not know or a
-			// moment it is down. Open when they were used or asked for.
-			$open    = '' !== ( $in['lat'] ?? '' ) || isset( $errors['aw_lat'] ) || isset( $errors['aw_lng'] ) || isset( $errors['manual'] );
-			$fields .= '<details class="astroway-form__manual"' . ( $open ? ' open' : '' ) . '><summary>' . esc_html__( 'Enter coordinates instead', 'astroway' ) . '</summary>'
-				. UI::field(
-					[
-						'name'  => 'aw_lat',
-						'label' => __( 'Latitude', 'astroway' ),
-						'value' => $in['lat'] ?? '',
-						'error' => $errors['aw_lat'] ?? '',
-						'hint'  => __( 'North positive, e.g. 50.45', 'astroway' ),
-						'attrs' => [ 'inputmode' => 'decimal' ],
-					]
-				)
-				. UI::field(
-					[
-						'name'  => 'aw_lng',
-						'label' => __( 'Longitude', 'astroway' ),
-						'value' => $in['lng'] ?? '',
-						'error' => $errors['aw_lng'] ?? '',
-						'hint'  => __( 'East positive, e.g. 30.52', 'astroway' ),
-						'attrs' => [ 'inputmode' => 'decimal' ],
-					]
-				)
-				. '</details>';
+			$fields = self::person( $widget, $in[''] ?? [], $errors, $choices[''] ?? [], '' );
 		}
 
 		// Off-screen, not display:none: a robot skips a field it sees is hidden.
@@ -346,6 +358,84 @@ class Form {
 
 		$inner .= UI::form( $fields, [ self::MARKER => $id ], __( 'Calculate', 'astroway' ) );
 		return UI::card( 'astroway-card', 'form', $inner, [ 'lang' => $lang ] );
+	}
+
+	/** Date, time and place of one birth, with what was typed and what was wrong. */
+	private static function person( string $widget, array $in, array $errors, array $choices, string $sfx ): string {
+		$fields  = UI::field(
+			[
+				'name'  => 'aw_date' . $sfx,
+				'label' => __( 'Date of birth', 'astroway' ),
+				'type'  => 'date',
+				'value' => $in['date'] ?? '',
+				'error' => $errors[ 'aw_date' . $sfx ] ?? '',
+				'attrs' => [
+					'min'          => '1800-01-01',
+					'max'          => gmdate( 'Y-m-d' ),
+					// The browser's own birthday belongs to one person, not to both.
+					'autocomplete' => '' === $sfx ? 'bday' : 'off',
+				],
+			]
+		);
+		$fields .= UI::field(
+			[
+				'name'  => 'aw_time' . $sfx,
+				'label' => __( 'Time of birth', 'astroway' ),
+				'type'  => 'time',
+				'value' => $in['time'] ?? '',
+				'error' => $errors[ 'aw_time' . $sfx ] ?? '',
+				'hint'  => 'rising_sign' === $widget ? '' : __( 'Local time at the place of birth.', 'astroway' ),
+			]
+		);
+		if ( 'rising_sign' !== $widget ) {
+			$fields .= UI::check( 'aw_time_unknown' . $sfx, __( 'I do not know the time', 'astroway' ), ! empty( $in['unknown'] ) );
+		}
+
+		if ( $choices ) {
+			$fields .= UI::choices( 'aw_place' . $sfx, __( 'Which one?', 'astroway' ), $choices, (string) ( $in['city'] ?? '' ) );
+			return $fields . '<input type="hidden" name="aw_city' . $sfx . '" value="' . esc_attr( (string) ( $in['city'] ?? '' ) ) . '">';
+		}
+		// A place already picked survives the other person's list, tied to its
+		// city: change the city and the search runs again.
+		if ( '' !== (string) ( $in['place'] ?? '' ) && '' === (string) ( $in['lat'] ?? '' ) ) {
+			$fields .= '<input type="hidden" name="aw_place' . $sfx . '" value="' . esc_attr( (string) $in['place'] ) . '">'
+				. '<input type="hidden" name="aw_place_for' . $sfx . '" value="' . esc_attr( (string) ( $in['city'] ?? '' ) ) . '">';
+		}
+
+		$fields .= UI::field(
+			[
+				'name'  => 'aw_city' . $sfx,
+				'label' => __( 'City of birth', 'astroway' ),
+				'value' => $in['city'] ?? '',
+				'error' => $errors[ 'aw_city' . $sfx ] ?? '',
+				'attrs' => [ 'autocomplete' => 'off' ],
+			]
+		);
+		// Coordinates by hand, for a place the search does not know or a
+		// moment it is down. Open when they were used or asked for.
+		$open = '' !== ( $in['lat'] ?? '' ) || isset( $errors[ 'aw_lat' . $sfx ] ) || isset( $errors[ 'aw_lng' . $sfx ] ) || isset( $errors[ 'manual' . $sfx ] );
+		return $fields . '<details class="astroway-form__manual"' . ( $open ? ' open' : '' ) . '><summary>' . esc_html__( 'Enter coordinates instead', 'astroway' ) . '</summary>'
+			. UI::field(
+				[
+					'name'  => 'aw_lat' . $sfx,
+					'label' => __( 'Latitude', 'astroway' ),
+					'value' => $in['lat'] ?? '',
+					'error' => $errors[ 'aw_lat' . $sfx ] ?? '',
+					'hint'  => __( 'North positive, e.g. 50.45', 'astroway' ),
+					'attrs' => [ 'inputmode' => 'decimal' ],
+				]
+			)
+			. UI::field(
+				[
+					'name'  => 'aw_lng' . $sfx,
+					'label' => __( 'Longitude', 'astroway' ),
+					'value' => $in['lng'] ?? '',
+					'error' => $errors[ 'aw_lng' . $sfx ] ?? '',
+					'hint'  => __( 'East positive, e.g. 30.52', 'astroway' ),
+					'attrs' => [ 'inputmode' => 'decimal' ],
+				]
+			)
+			. '</details>';
 	}
 
 	/**

@@ -124,6 +124,7 @@ class Admin {
 		$key = isset( $input['api_key'] ) ? trim( (string) $input['api_key'] ) : '';
 		if ( ! empty( $input['api_key_remove'] ) ) {
 			$existing['api_key'] = '';
+			unset( $existing['account'] );
 			self::forget_plan();
 		} elseif ( Key::is_sealed( $key ) ) {
 			// Already sealed: update_option() runs this callback twice when the
@@ -133,6 +134,7 @@ class Admin {
 		} elseif ( '' !== $key ) {
 			if ( preg_match( '/^aw_[a-zA-Z0-9_]{4,}$/', $key ) ) {
 				$existing['api_key'] = Key::seal( $key );
+				unset( $existing['account'] );
 				// Invalidate any cached /me payload for the previous key
 				Cache::delete( 'keys_me_' . md5( $key ) );
 				self::forget_plan();
@@ -149,6 +151,11 @@ class Admin {
 					__( 'API key must start with "aw_" and contain only letters, digits, and underscores.', 'astroway' )
 				);
 			}
+		}
+
+		// Set only by Connect, next to the key the account chose; a pasted key clears it above.
+		if ( isset( $input['account'] ) && '' !== $key && empty( $input['api_key_remove'] ) ) {
+			$existing['account'] = sanitize_text_field( (string) $input['account'] );
 		}
 
 		if ( isset( $input['look'] ) ) {
@@ -179,6 +186,16 @@ class Admin {
 		}
 
 		return $existing;
+	}
+
+	/** Save a key the owner's account handed over, with the masked address it belongs to. */
+	public static function save_key( string $key, string $account ): void {
+		$opts            = (array) get_option( self::OPTION_KEY, [] );
+		$opts['api_key'] = Key::seal( $key );
+		$opts['account'] = $account;
+		update_option( self::OPTION_KEY, $opts );
+		Cache::delete( 'keys_me_' . md5( $key ) );
+		self::forget_plan();
 	}
 
 	/**

@@ -30,9 +30,11 @@ function astroway_uninstall_site() {
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- bulk delete by prefix on uninstall.
 	$wpdb->query(
 		$wpdb->prepare(
-			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s",
 			$wpdb->esc_like( '_transient_astroway_v1_' ) . '%',
-			$wpdb->esc_like( '_transient_timeout_astroway_v1_' ) . '%'
+			$wpdb->esc_like( '_transient_timeout_astroway_v1_' ) . '%',
+			$wpdb->esc_like( '_transient_astroway_connect_state_' ) . '%',
+			$wpdb->esc_like( '_transient_timeout_astroway_connect_state_' ) . '%'
 		)
 	);
 

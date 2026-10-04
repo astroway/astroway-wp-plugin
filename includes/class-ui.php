@@ -272,18 +272,21 @@ class UI {
 	 * Aspect rows: mark, words, orb. `kind` is h (harmonious), t (tense) or
 	 * n (neither), and the filter chips read it.
 	 *
-	 * @param array  $rows       Each `kind`, `glyph`, `text`, optional `orb`.
+	 * @param array  $rows       Each `kind`, `glyph`, `text`, optional `orb`,
+	 *                           `note` (a line under the words, what it means).
 	 * @param string $empty_text Shown by the filter when it hides every row.
 	 */
 	public static function aspects( array $rows, string $empty_text = '' ): string {
 		$html = '';
 		foreach ( $rows as $row ) {
 			$kind  = self::kind( (string) ( $row['kind'] ?? '' ) );
+			$note  = (string) ( $row['note'] ?? '' );
 			$html .= sprintf(
-				'<li data-astroway-kind="%1$s">%2$s<span>%3$s</span><span class="astroway-aspects__orb">%4$s</span></li>',
+				'<li data-astroway-kind="%1$s">%2$s<span>%3$s%4$s</span><span class="astroway-aspects__orb">%5$s</span></li>',
 				$kind,
 				self::mark( (string) ( $row['glyph'] ?? '' ), $kind ),
 				esc_html( (string) ( $row['text'] ?? '' ) ),
+				'' === $note ? '' : '<span class="astroway-aspects__note">' . esc_html( $note ) . '</span>',
 				esc_html( (string) ( $row['orb'] ?? '' ) )
 			);
 		}
@@ -337,6 +340,8 @@ class UI {
 			$sign = '';
 			if ( in_array( $item['line'] ?? '', [ 'h', 't' ], true ) ) {
 				$sign = self::line( $item['line'] );
+			} elseif ( in_array( $item['ring'] ?? '', [ 'in', 'out' ], true ) ) {
+				$sign = '<span class="astroway-legend__ring astroway-legend__ring--' . $item['ring'] . '" aria-hidden="true"></span>';
 			} elseif ( '' !== (string) ( $item['glyph'] ?? '' ) ) {
 				$sign = Glyphs::icon( (string) $item['glyph'] );
 			}
@@ -435,7 +440,8 @@ class UI {
 		if ( '' !== (string) ( $a['caption'] ?? '' ) ) {
 			$html .= '<caption class="astroway-sr">' . esc_html( (string) $a['caption'] ) . '</caption>';
 		}
-		$html .= '<thead><tr><td></td>';
+		// The corner names the totals when a narrow column moves them beside each row.
+		$html .= '<thead><tr><td><span class="astroway-matrix__corner" aria-hidden="true">' . esc_html( (string) ( $a['total_label'] ?? '' ) ) . '</span></td>';
 		foreach ( (array) ( $a['cols'] ?? [] ) as $col ) {
 			$html .= '<th scope="col">' . esc_html( (string) $col ) . '</th>';
 		}

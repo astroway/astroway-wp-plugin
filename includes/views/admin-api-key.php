@@ -38,6 +38,11 @@ $astroway_key_from_constant = \AstroWay\WPPlugin\Key::from_constant();
 $astroway_key_lost          = \AstroWay\WPPlugin\Key::is_lost();
 $astroway_saved_mask        = ( ! $astroway_key_from_constant && '' !== $api_key ) ? \AstroWay\WPPlugin\Key::mask( $api_key ) : '';
 
+// The return from api.astroway.info lands here with the result of the trade.
+$astroway_connect_result  = isset( $_GET['astroway_connect'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['astroway_connect'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only.
+$astroway_connect_message = \AstroWay\WPPlugin\Connect::message( $astroway_connect_result );
+$astroway_account         = (string) \AstroWay\WPPlugin\Admin::get( 'account', '' );
+
 // Status panel state machine — derived from $status_data (passed from render_api_key_page).
 $astroway_status_state   = 'none';     // none | valid | suspended | revoked | invalid_key | api_down
 $astroway_status_payload = [];
@@ -133,6 +138,7 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 				<?php
 				$astroway_site_key = \AstroWay\WPPlugin\SiteKey::status();
 				?>
+				<?php if ( '' === $api_key ) : ?>
 				<p class="aw-hint aw-site-key">
 					<?php
 					if ( $astroway_site_key['has_key'] ) {
@@ -149,6 +155,7 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 					}
 					?>
 				</p>
+				<?php endif; ?>
 			</div>
 		</article>
 
@@ -156,10 +163,21 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 			<header class="aw-panel-head">
 				<span class="aw-panel-num" aria-hidden="true">02</span>
 				<h2 class="aw-panel-title"><?php esc_html_e( 'Your API key', 'astroway' ); ?></h2>
-				<span class="aw-panel-hint"><?php esc_html_e( 'optional · paste · verify · save', 'astroway' ); ?></span>
+				<span class="aw-panel-hint"><?php esc_html_e( 'optional · connect or paste', 'astroway' ); ?></span>
 			</header>
 			<form method="post" action="options.php" class="aw-panel-body">
 				<?php settings_fields( $astroway_page_slug ); ?>
+				<?php if ( '' !== $astroway_connect_message ) : ?>
+					<div class="aw-result <?php echo 'connected' === $astroway_connect_result ? 'is-success' : 'is-error'; ?>" role="status">
+						<p><?php echo esc_html( $astroway_connect_message ); ?></p>
+					</div>
+				<?php endif; ?>
+				<?php if ( \AstroWay\WPPlugin\Connect::available() ) : ?>
+					<div class="aw-connect">
+						<a class="aw-btn aw-btn-primary" href="<?php echo esc_url( \AstroWay\WPPlugin\Connect::start_url() ); ?>"><?php esc_html_e( 'Connect your AstroWay account', 'astroway' ); ?></a>
+						<p class="aw-hint"><?php esc_html_e( 'Sign in on api.astroway.info, pick a key or create one for this site, and you are back here. Nothing to copy.', 'astroway' ); ?></p>
+					</div>
+				<?php endif; ?>
 				<?php if ( $astroway_key_from_constant ) : ?>
 					<p class="aw-label"><?php esc_html_e( 'Your key', 'astroway' ); ?></p>
 					<div class="aw-field-row">
@@ -179,13 +197,22 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 					</p>
 				<?php else : ?>
 					<?php if ( '' !== $astroway_saved_mask ) : ?>
-						<p class="aw-label"><?php esc_html_e( 'Saved key', 'astroway' ); ?> <code class="aw-key-mask"><?php echo esc_html( $astroway_saved_mask ); ?></code></p>
+						<p class="aw-label"><?php esc_html_e( 'Saved key', 'astroway' ); ?> <code class="aw-key-mask"><?php echo esc_html( $astroway_saved_mask ); ?></code>
+							<?php if ( '' !== $astroway_account ) : ?>
+								<span class="aw-hint">
+									<?php
+									/* translators: %s = the account's masked email address, such as j***@example.com */
+									printf( esc_html__( 'from the account %s', 'astroway' ), esc_html( $astroway_account ) );
+									?>
+								</span>
+							<?php endif; ?>
+						</p>
 					<?php elseif ( $astroway_key_lost ) : ?>
 						<div class="aw-result is-error">
 							<p><?php esc_html_e( 'The saved key can no longer be read: the security keys in wp-config.php have changed since it was saved. Widgets keep working without it. Paste the key again to restore it.', 'astroway' ); ?></p>
 						</div>
 					<?php endif; ?>
-					<label for="aw-api-key" class="aw-label"><?php echo '' !== $astroway_saved_mask ? esc_html__( 'Replace it with a new key', 'astroway' ) : esc_html__( 'Paste your key', 'astroway' ); ?></label>
+					<label for="aw-api-key" class="aw-label"><?php echo '' !== $astroway_saved_mask ? esc_html__( 'Replace it with a new key', 'astroway' ) : ( \AstroWay\WPPlugin\Connect::available() ? esc_html__( 'Or paste a key', 'astroway' ) : esc_html__( 'Paste your key', 'astroway' ) ); ?></label>
 					<div class="aw-field-row">
 						<?php // Rendered empty on purpose: the saved key never goes back into the page, and an empty field keeps it. ?>
 						<input type="password"

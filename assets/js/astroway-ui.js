@@ -32,6 +32,10 @@
 			if ( focus ) {
 				buttons[ next ].focus();
 			}
+			// The chosen tab in view, on a strip narrower than its tabs.
+			if ( list.scrollWidth > list.clientWidth && buttons[ next ].scrollIntoView ) {
+				buttons[ next ].scrollIntoView( { block: 'nearest', inline: 'nearest' } );
+			}
 			// A table in a panel that was hidden measured nothing to scroll.
 			hints( root );
 		}
@@ -228,20 +232,25 @@
 		}
 	}
 
-	// Marks the side a table still hides, for the CSS fade, and makes a
-	// scroller that scrolls reachable by keyboard.
+	// Marks the side a table or a tab strip still hides, for the CSS fade, and
+	// makes a table that scrolls reachable by keyboard; a tab strip already is.
 	function hint( box ) {
+		var strip  = box.classList.contains( 'astroway-tabs__list' );
 		var hidden = box.scrollWidth - box.clientWidth;
 		if ( hidden < 2 ) {
 			box.removeAttribute( 'data-astroway-more' );
-			box.removeAttribute( 'tabindex' );
+			if ( ! strip ) {
+				box.removeAttribute( 'tabindex' );
+			}
 			return;
 		}
 		var from  = Math.abs( box.scrollLeft );
 		var start = from > 1;
 		var end   = from < hidden - 1;
 		box.setAttribute( 'data-astroway-more', start && end ? 'both' : ( start ? 'start' : 'end' ) );
-		box.tabIndex = 0;
+		if ( ! strip ) {
+			box.tabIndex = 0;
+		}
 	}
 
 	function hints( scope ) {
@@ -252,7 +261,7 @@
 	each( document.querySelectorAll( '.astroway-card [data-astroway-filter]' ), filter );
 	each( document.querySelectorAll( '.astroway-card .astroway-wheel' ), wheel );
 
-	var boxes = document.querySelectorAll( '.astroway-card .astroway-scroll' );
+	var boxes = document.querySelectorAll( '.astroway-card .astroway-scroll, .astroway-card .astroway-tabs__list' );
 	each( boxes, function ( box ) {
 		hint( box );
 		box.addEventListener( 'scroll', function () {

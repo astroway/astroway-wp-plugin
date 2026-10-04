@@ -542,9 +542,15 @@ class Render {
 					'html'  => UI::aspects( $aspects ),
 					'count' => count( $aspects ),
 				],
+				[
+					'label' => __( 'Transits', 'astroway' ),
+					'html'  => self::natal_transits( $planets, $houses, $cusps, $params, $title ),
+				],
 			]
 		);
-		$inner .= self::natal_matrix( $planets );
+		$matrix = self::natal_matrix( $planets );
+		// Its own block with a heading: under the tabs it read as the tail of whichever tab was open.
+		$inner .= '' === $matrix ? '' : UI::section( __( 'Elements by mode', 'astroway' ), $matrix );
 
 		$keys   = self::natal_text_keys( $planets, $cusps, $houses, $aspects_in );
 		$inner .= self::natal_reading( $keys, PublicData::natal_texts( $keys, $lang ) );
@@ -858,6 +864,167 @@ class Render {
 				],
 			]
 		);
+	}
+
+	/** Orb of a transit worth listing: tight, because the sky moves on tomorrow. */
+	private const TRANSIT_ORB = 3.0;
+
+	/** The five major aspects by angle. */
+	private const MAJOR_ANGLES = [
+		'Conjunction' => 0,
+		'Sextile'     => 60,
+		'Square'      => 90,
+		'Trine'       => 120,
+		'Opposition'  => 180,
+	];
+
+	/**
+	 * The sky of one day on the outer ring of the chart, and the aspects it
+	 * makes to the birth planets. Only when the author asks, with
+	 * `transits="today"` or a date: it costs one more call a day.
+	 *
+	 * The sky is taken at noon UTC. The transiting Moon moves about thirteen
+	 * degrees a day, so it is drawn but kept out of the list; everything else
+	 * moves under two degrees and holds for the day.
+	 */
+	private static function natal_transits( array $planets, array $houses, array $cusps, array $params, string $title ): string {
+		$asked = (string) ( $params['transits'] ?? '' );
+		if ( '' === $asked ) {
+			return '';
+		}
+		$day = 'today' === $asked ? wp_date( 'Y-m-d' ) : $asked;
+		$sky = PublicData::get(
+			'sky',
+			[
+				'date' => $day,
+				'time' => '12:00',
+				'lat'  => '',
+				'lng'  => '',
+				'tz'   => '0',
+			],
+			empty( $params['nocache'] )
+		);
+		$now = is_array( $sky['planets'] ?? null ) ? $sky['planets'] : [];
+		if ( empty( $now ) ) {
+			return '';
+		}
+
+		$classical = [ 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto' ];
+		$lon_of    = static function ( array $bodies, array $skip ) use ( $classical ): array {
+			$out = [];
+			foreach ( $bodies as $p ) {
+				$name = is_array( $p ) ? (string) ( $p['name'] ?? '' ) : '';
+				if ( in_array( $name, $classical, true ) && ! in_array( $name, $skip, true ) && isset( $p['longitude'] ) ) {
+					$out[ $name ] = (float) $p['longitude'];
+				}
+			}
+			return $out;
+		};
+		// Without the birth time the natal Moon is a guess, as on the other tabs.
+		$natal   = $lon_of( $planets, empty( $params['time_unknown'] ) ? [] : [ 'Moon' ] );
+		$transit = $lon_of( $now, [ 'Moon' ] );
+
+		$found = [];
+		foreach ( $transit as $t_name => $t_lon ) {
+			foreach ( $natal as $n_name => $n_lon ) {
+				$gap = abs( fmod( $t_lon - $n_lon + 540, 360 ) - 180 );
+				foreach ( self::MAJOR_ANGLES as $type => $angle ) {
+					$orb = abs( $gap - $angle );
+					if ( $orb <= self::TRANSIT_ORB ) {
+						$found[] = [ $t_name, $type, $n_name, $orb ];
+					}
+				}
+			}
+		}
+		usort( $found, static fn( $a, $b ) => $a[3] <=> $b[3] );
+
+		$stamp = strtotime( $day . ' 12:00:00 UTC' );
+		$shown = false === $stamp ? $day : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp );
+		$ring  = static function ( array $bodies, string $whose ): array {
+			$out = [];
+			foreach ( $bodies as $p ) {
+				if ( ! is_array( $p ) || ! isset( $p['longitude'], $p['name'] ) ) {
+					continue;
+				}
+				$lon   = (float) $p['longitude'];
+				$out[] = [
+					'id'    => self::planet_id( (string) $p['name'] ),
+					'lon'   => $lon,
+					'rx'    => ! empty( $p['isRetrograde'] ),
+					/* translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'" */
+					'label' => sprintf( __( '%1$s (%2$s), %3$s', 'astroway' ), self::planet_label( (string) $p['name'] ), $whose, self::position_label( $lon ) ),
+				];
+			}
+			return $out;
+		};
+
+		$lines = [];
+		$rows  = [];
+		foreach ( $found as list( $t_name, $type, $n_name, $orb ) ) {
+			$lines[] = [
+				'a'    => self::planet_id( $n_name ),
+				'b'    => self::planet_id( $t_name ),
+				'kind' => self::aspect_kind( $type ),
+				'orb'  => $orb,
+			];
+			$rows[]  = [
+				'glyph' => strtolower( $type ),
+				'kind'  => self::aspect_kind( $type ),
+				'orb'   => sprintf( '%s°', self::number( $orb, 1 ) ),
+				'text'  => sprintf(
+					/* translators: 1: first planet, 2: aspect name, 3: second planet */
+					__( '%1$s %2$s %3$s', 'astroway' ),
+					self::owned( self::planet_label( $t_name ), __( 'transit', 'astroway' ) ),
+					self::aspect_label( $type ),
+					self::owned( self::planet_label( $n_name ), __( 'natal', 'astroway' ) )
+				),
+			];
+		}
+
+		/* translators: %s = a date */
+		$sky_name = sprintf( __( 'sky on %s', 'astroway' ), $shown );
+		$html     = '<p class="astroway-card__intro">' . esc_html(
+			sprintf(
+				/* translators: 1: a date, 2: an orb in degrees */
+				__( 'The planets at noon UTC on %1$s against the birth chart, aspects within %2$s°. The transiting Moon moves too fast to list.', 'astroway' ),
+				$shown,
+				self::number( self::TRANSIT_ORB, 0 )
+			)
+		) . '</p>';
+		$html .= Wheel::bi(
+			[
+				'asc'       => (float) ( $houses['ascendant'] ?? 0 ),
+				'mc'        => (float) ( $houses['mc'] ?? 0 ),
+				'no_angles' => ! isset( $houses['ascendant'] ),
+				'cusps'     => $cusps,
+				'planets'   => $ring( $planets, __( 'natal', 'astroway' ) ),
+				'outer'     => $ring( $now, __( 'transit', 'astroway' ) ),
+				'aspects'   => $lines,
+				'title'     => $title,
+				/* translators: %s = a date */
+				'desc'      => sprintf( __( 'Transit wheel: the birth chart inside, the sky on %s on the outer ring.', 'astroway' ), $shown ),
+				'angles'    => [
+					'asc' => __( 'ASC', 'astroway' ),
+					'ic'  => __( 'IC', 'astroway' ),
+					'dsc' => __( 'DSC', 'astroway' ),
+					'mc'  => __( 'MC', 'astroway' ),
+				],
+			]
+		);
+		$html .= UI::legend(
+			[
+				[
+					'ring'  => 'in',
+					'label' => __( 'Inner ring: birth chart', 'astroway' ),
+				],
+				[
+					'ring'  => 'out',
+					/* translators: %s = "sky on <date>" */
+					'label' => sprintf( __( 'Outer ring: %s', 'astroway' ), $sky_name ),
+				],
+			]
+		);
+		return $html . ( empty( $rows ) ? '<p class="astroway-card__intro">' . esc_html__( 'No close transits on this day.', 'astroway' ) . '</p>' : UI::aspects( $rows ) );
 	}
 
 	/** Every placement as a table, angles included. */
@@ -2178,55 +2345,257 @@ class Render {
 			return '';
 		}
 
-		$first  = trim( (string) ( $params['name_a'] ?? '' ) );
-		$second = trim( (string) ( $params['name_b'] ?? '' ) );
-		$first  = '' === $first ? __( 'First chart', 'astroway' ) : $first;
-		$second = '' === $second ? __( 'Second chart', 'astroway' ) : $second;
+		$named_a = trim( (string) ( $params['name_a'] ?? '' ) );
+		$named_b = trim( (string) ( $params['name_b'] ?? '' ) );
+		$first   = '' === $named_a ? __( 'First chart', 'astroway' ) : $named_a;
+		$second  = '' === $named_b ? __( 'Second chart', 'astroway' ) : $named_b;
+		$title   = '' !== $named_a && '' !== $named_b
+			/* translators: 1: first person's name, 2: second person's name */
+			? sprintf( __( '%1$s and %2$s', 'astroway' ), $named_a, $named_b )
+			: __( 'Synastry', 'astroway' );
 
-		$inner  = '<header class="astroway-card__header">';
-		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Compatibility', 'astroway' ) . '</h3>';
-		$inner .= '</header>';
-		$inner .= self::score_block( $score, (string) ( $data['label'] ?? '' ) );
+		$inner  = UI::header( [ 'title' => $title ] );
+		$inner .= self::synastry_verdict( $score, (string) ( $data['label'] ?? '' ), isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects ) );
 
-		// Phrased as a label with a figure rather than a sentence that agrees with
-		// it. The plugin ships twenty locales and has never carried a msgid_plural;
-		// the first one would go through a translation pipeline that has never
-		// produced a msgstr[2], which is a poor place to find out.
-		$total = isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects );
+		// Positions come from each chart on its own: the pair's answer holds
+		// the aspects between them and nothing about where either planet is.
+		$remember = empty( $params['nocache'] );
+		$chart_a  = self::synastry_chart( $params, 'a', $remember );
+		$chart_b  = self::synastry_chart( $params, 'b', $remember );
+
+		foreach ( [ [ $first, $chart_a, 'a' ], [ $second, $chart_b, 'b' ] ] as list( $who, $chart, $side ) ) {
+			if ( null === $chart ) {
+				continue;
+			}
+			$when   = self::natal_meta( self::side( $params, $side ) );
+			$inner .= '<h4 class="astroway-card__subtitle">' . esc_html( $who ) . ( '' === $when ? '' : ' <span class="astroway-card__aside">' . $when . '</span>' ) . '</h4>';
+			$inner .= self::natal_big_three( $chart['planets'], $chart['houses'] );
+		}
+		foreach ( [ [ $first, 'a' ], [ $second, 'b' ] ] as list( $who, $side ) ) {
+			if ( ! self::known_time( $params, $side ) ) {
+				$inner .= UI::callout(
+					esc_html(
+						sprintf(
+							/* translators: %s = person's name, or "First chart" */
+							__( '%s: birth time unknown. No houses or Ascendant for this chart, and its Moon may be up to 7 degrees from where it was.', 'astroway' ),
+							$who
+						)
+					)
+				);
+			}
+		}
+
+		$close  = self::classical_only( $aspects );
+		$panes  = [
+			[
+				'label' => __( 'Wheel', 'astroway' ),
+				'html'  => self::synastry_wheel( $chart_a, $chart_b, $close, $first, $second, $title ),
+			],
+			[
+				'label' => __( 'Aspects', 'astroway' ),
+				'html'  => self::synastry_aspects( array_slice( $close, 0, self::aspect_count( $params ) ), $first, $second ),
+			],
+			[
+				// Two wordings were wrong before this one. "Points included" collides
+				// with the word for a score in half the target languages, and "Show
+				// all %d aspects" put the number next to a noun four Slavic locales
+				// must decline. The count agrees with nothing, so it is right in all.
+				'label' => __( 'All aspects', 'astroway' ),
+				'html'  => self::aspect_grid( $first, $second, self::aspect_rows( $aspects, 0 ) ),
+				'count' => count( $aspects ),
+			],
+		];
+		$inner .= UI::tabs( __( 'Synastry', 'astroway' ), $panes );
+
+		return self::shell( 'synastry', $lang, $inner );
+	}
+
+	/** One partner's attributes under the names a single chart uses. */
+	private static function side( array $params, string $side ): array {
+		return [
+			'date'         => (string) ( $params[ 'date_' . $side ] ?? '' ),
+			'time'         => (string) ( $params[ 'time_' . $side ] ?? '' ),
+			'lat'          => (string) ( $params[ 'lat_' . $side ] ?? '' ),
+			'lng'          => (string) ( $params[ 'lng_' . $side ] ?? '' ),
+			'tz'           => (string) ( $params[ 'tz_' . $side ] ?? '' ),
+			'lang'         => (string) ( $params['lang'] ?? '' ),
+			'time_unknown' => ! self::known_time( $params, $side ),
+		];
+	}
+
+	private static function known_time( array $params, string $side ): bool {
+		return (bool) preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', trim( (string) ( $params[ 'time_' . $side ] ?? '' ) ) );
+	}
+
+	/**
+	 * One partner's chart: planets, and houses only when the time and the
+	 * place are both known, or null when the api did not answer. Asked at noon
+	 * when the time is unknown, as the pair itself is.
+	 */
+	private static function synastry_chart( array $params, string $side, bool $remember ): ?array {
+		$one = self::side( $params, $side );
+		if ( $one['time_unknown'] ) {
+			$one['time'] = '12:00';
+		}
+		$data    = PublicData::get( 'natal', $one, $remember );
+		$planets = is_array( $data['planets'] ?? null ) ? $data['planets'] : [];
+		if ( empty( $planets ) ) {
+			return null;
+		}
+		$placed = ! $one['time_unknown'] && '' !== trim( $one['lat'] ) && '' !== trim( $one['lng'] );
+		$houses = $placed && is_array( $data['houses'] ?? null ) ? $data['houses'] : [];
+		return [
+			'planets' => $planets,
+			'houses'  => $houses,
+		];
+	}
+
+	/** The score in a ring, its word, and how many aspects it rests on. */
+	private static function synastry_verdict( ?int $score, string $label, int $total ): string {
+		$named = self::compat_label( $label );
+		$text  = '' === $named ? '' : '<p class="astroway-verdict__word">' . esc_html( $named ) . '</p>';
 		if ( $total > 0 ) {
-			$inner .= '<div class="astroway-card__body"><p>' . esc_html(
+			// Phrased as a label with a figure rather than a sentence that agrees
+			// with it: the plugin has never carried a msgid_plural.
+			$text .= '<p class="astroway-verdict__note">' . esc_html(
 				sprintf(
 					/* translators: %d = how many aspects the two charts make between them */
 					__( 'Aspects between the two charts: %d', 'astroway' ),
 					$total
 				)
-			) . '</p></div>';
+			) . '</p>';
+		}
+		$ring = null === $score ? '' : UI::ring( max( 0, min( 100, $score ) ), 100, __( 'out of 100', 'astroway' ) );
+		return '' === $ring . $text ? '' : '<div class="astroway-verdict">' . $ring . '<div>' . $text . '</div></div>';
+	}
+
+	/**
+	 * The first chart inside with its houses, the second on the outer ring,
+	 * and the closest classical aspects between them as lines.
+	 */
+	private static function synastry_wheel( ?array $chart_a, ?array $chart_b, array $aspects, string $first, string $second, string $title ): string {
+		if ( null === $chart_a || null === $chart_b ) {
+			return '';
+		}
+		$ring = static function ( array $planets, string $who ): array {
+			$out = [];
+			foreach ( $planets as $planet ) {
+				if ( ! is_array( $planet ) || ! isset( $planet['longitude'], $planet['name'] ) ) {
+					continue;
+				}
+				$lon   = (float) $planet['longitude'];
+				$out[] = [
+					'id'    => self::planet_id( (string) $planet['name'] ),
+					'lon'   => $lon,
+					'rx'    => ! empty( $planet['isRetrograde'] ),
+					/* translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'" */
+					'label' => sprintf( __( '%1$s (%2$s), %3$s', 'astroway' ), self::planet_label( (string) $planet['name'] ), $who, self::position_label( $lon ) ),
+				];
+			}
+			return $out;
+		};
+
+		$lines = [];
+		foreach ( $aspects as $aspect ) {
+			$lines[] = [
+				'a'    => self::planet_id( (string) ( $aspect['planetA'] ?? '' ) ),
+				'b'    => self::planet_id( (string) ( $aspect['planetB'] ?? '' ) ),
+				'kind' => self::aspect_kind( (string) ( $aspect['aspect'] ?? '' ) ),
+				'orb'  => (float) ( $aspect['orb'] ?? 0 ),
+			];
 		}
 
-		$wanted = self::aspect_count( $params );
-		$close  = self::aspect_rows( self::classical_only( $aspects ), $wanted );
-		if ( ! empty( $close ) ) {
-			$inner .= '<h4 class="astroway-card__subtitle">' . esc_html__( 'Closest aspects', 'astroway' ) . '</h4>';
-			$inner .= self::aspect_grid( $first, $second, $close );
-		}
+		$houses = $chart_a['houses'];
+		$cusps  = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+		$wheel  = Wheel::bi(
+			[
+				'asc'       => (float) ( $houses['ascendant'] ?? 0 ),
+				'mc'        => (float) ( $houses['mc'] ?? 0 ),
+				'no_angles' => ! isset( $houses['ascendant'] ),
+				'cusps'     => $cusps,
+				'planets'   => $ring( $chart_a['planets'], $first ),
+				'outer'     => $ring( $chart_b['planets'], $second ),
+				'aspects'   => $lines,
+				'title'     => $title,
+				/* translators: 1: first person's name, 2: second person's name */
+				'desc'      => sprintf( __( 'Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between them.', 'astroway' ), $first, $second ),
+				'angles'    => [
+					'asc' => __( 'ASC', 'astroway' ),
+					'ic'  => __( 'IC', 'astroway' ),
+					'dsc' => __( 'DSC', 'astroway' ),
+					'mc'  => __( 'MC', 'astroway' ),
+				],
+			]
+		);
 
-		if ( count( $aspects ) > count( $close ) ) {
-			// Two wordings were wrong before this one. "Points included" collides
-			// with the word for a score in half the target languages, and there is
-			// a score printed directly above. "Show all %d aspects" then put the
-			// number next to the noun, which four Slavic locales must decline: for
-			// 45 the plural is aspektów, not aspekty. The count in brackets agrees
-			// with nothing, so it is right for every language and every number.
-			$inner .= '<details class="astroway-card__more"><summary>' . esc_html(
-				sprintf(
-					/* translators: %d = the full number of aspects between the two charts */
-					__( 'Show all aspects (%d)', 'astroway' ),
-					count( $aspects )
-				)
-			) . '</summary>' . self::aspect_grid( $first, $second, self::aspect_rows( $aspects, 0 ) ) . '</details>';
-		}
+		return $wheel . UI::legend(
+			[
+				[
+					'ring'  => 'in',
+					/* translators: %s = person's name, or "First chart" */
+					'label' => sprintf( __( 'Inner ring: %s', 'astroway' ), $first ),
+				],
+				[
+					'ring'  => 'out',
+					/* translators: %s = person's name, or "Second chart" */
+					'label' => sprintf( __( 'Outer ring: %s', 'astroway' ), $second ),
+				],
+				[
+					'line'  => 'h',
+					'label' => __( 'Harmony', 'astroway' ),
+				],
+				[
+					'line'  => 't',
+					'label' => __( 'Tension', 'astroway' ),
+				],
+			]
+		);
+	}
 
-		return self::shell( 'synastry', $lang, $inner );
+	/**
+	 * The closest aspects between the two, each saying whose planet is whose
+	 * and, in a line, what that kind of contact does between two people.
+	 */
+	private static function synastry_aspects( array $aspects, string $first, string $second ): string {
+		$rows = [];
+		foreach ( $aspects as $aspect ) {
+			$type   = (string) ( $aspect['aspect'] ?? '' );
+			$rows[] = [
+				'glyph' => strtolower( trim( $type ) ),
+				'kind'  => self::aspect_kind( $type ),
+				'orb'   => sprintf( '%s°', self::number( (float) ( $aspect['orb'] ?? 0 ), 1 ) ),
+				'text'  => sprintf(
+					/* translators: 1: first planet, 2: aspect name, 3: second planet */
+					__( '%1$s %2$s %3$s', 'astroway' ),
+					self::owned( self::planet_label( (string) ( $aspect['planetA'] ?? '' ) ), $first ),
+					self::aspect_label( $type ),
+					self::owned( self::planet_label( (string) ( $aspect['planetB'] ?? '' ) ), $second )
+				),
+				'note'  => self::synastry_meaning( $type ),
+			];
+		}
+		return UI::aspects( $rows );
+	}
+
+	/**
+	 * "Venus (Olena)": whose planet, bound to the planet. A line that breaks
+	 * before the bracket leaves "(natal)" alone on the next one.
+	 */
+	private static function owned( string $planet, string $owner ): string {
+		/* translators: 1: planet, 2: person's name, or the word "natal" or "transit" */
+		return (string) preg_replace( '/ \(/u', "\u{00A0}(", sprintf( __( '%1$s (%2$s)', 'astroway' ), $planet, $owner ), 1 );
+	}
+
+	/** What each major aspect does between two people, in a phrase. */
+	private static function synastry_meaning( string $type ): string {
+		$meanings = [
+			'conjunction' => __( 'One force: felt strongly by both, for better or worse.', 'astroway' ),
+			'trine'       => __( 'Flows easily between you, without effort.', 'astroway' ),
+			'sextile'     => __( 'Helps you both once one of you makes a move.', 'astroway' ),
+			'square'      => __( 'Rubs, and pushes you both to change.', 'astroway' ),
+			'opposition'  => __( 'Pulls you apart and draws you together.', 'astroway' ),
+		];
+		return $meanings[ strtolower( trim( $type ) ) ] ?? '';
 	}
 
 	/** The ten bodies the embed counts as planets, in the order the api sends them. */
@@ -2274,58 +2643,41 @@ class Render {
 	 * nothing about whose Moon, and in synastry that is the entire meaning.
 	 */
 	private static function aspect_grid( string $first, string $second, array $rows ): string {
-		return self::sky_table(
-			[
-				$first,
-				__( 'Aspect', 'astroway' ),
-				$second,
-				__( 'Orb', 'astroway' ),
-				__( 'Trend', 'astroway' ),
-			],
-			$rows
-		);
-	}
-
-	/**
-	 * The score, as a figure and as a bar.
-	 *
-	 * The bar carries aria-hidden: it is the number that was just written out in
-	 * words, drawn again, and a screen reader announcing it twice would be
-	 * repeating itself rather than adding anything.
-	 */
-	private static function score_block( ?int $score, string $label ): string {
-		if ( null === $score ) {
+		if ( empty( $rows ) ) {
 			return '';
 		}
-		$score = max( 0, min( 100, $score ) );
-		$named = self::compat_label( $label );
-
-		$html  = '<p class="astroway-card__score">';
-		$html .= '<strong class="astroway-card__score-value">' . esc_html( (string) $score ) . '<span>%</span></strong>';
-		if ( '' !== $named ) {
-			$html .= '<span class="astroway-card__score-label">' . esc_html( $named ) . '</span>';
-		}
-		$html .= '</p>';
-
-		return $html . sprintf(
-			'<div class="astroway-card__meter" aria-hidden="true"><span style="inline-size:%d%%"></span></div>',
-			$score
+		// No row header: stacked on a phone, the first planet keeps its owner's
+		// name as a label like the second does, instead of an unnamed bold line.
+		return UI::table(
+			[
+				'head'       => [
+					$first,
+					__( 'Aspect', 'astroway' ),
+					$second,
+					__( 'Orb', 'astroway' ),
+					__( 'Trend', 'astroway' ),
+				],
+				'rows'       => $rows,
+				'stack'      => true,
+				'row_header' => false,
+			]
 		);
 	}
 
 	/**
 	 * The word the api puts on a score.
 	 *
-	 * The vocabulary is not in the spec. Thirteen live pairs spread from 37 to 92
-	 * returned three words and no fourth, so those three are translated and
-	 * anything else is printed as it arrived: an English word in a German card
-	 * is poor, an empty space where the verdict should be is worse.
+	 * The vocabulary is closed since api v2.204.0 (docs/WP-COMPAT-CONTRACT.md):
+	 * harmonious, balanced, mixed, challenging. Anything else is printed as it
+	 * arrived: an English word in a German card is poor, an empty space where
+	 * the verdict should be is worse.
 	 */
 	private static function compat_label( string $raw ): string {
 		$labels = [
-			'harmonious' => __( 'Harmonious', 'astroway' ),
-			'balanced'   => __( 'Balanced', 'astroway' ),
-			'mixed'      => __( 'Mixed', 'astroway' ),
+			'harmonious'  => __( 'Harmonious', 'astroway' ),
+			'balanced'    => __( 'Balanced', 'astroway' ),
+			'mixed'       => __( 'Mixed', 'astroway' ),
+			'challenging' => __( 'Challenging', 'astroway' ),
 		];
 		$key    = strtolower( trim( $raw ) );
 		return $labels[ $key ] ?? ucfirst( $key );

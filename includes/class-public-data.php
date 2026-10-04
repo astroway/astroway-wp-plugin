@@ -153,6 +153,22 @@ class PublicData {
 		],
 	];
 
+	/**
+	 * Reads that are not widgets of their own. The sky of one day over a chart
+	 * goes to the birth chart's route but is kept to the next midnight, not a
+	 * month, so a card on "today" does not pile up a month of skies.
+	 */
+	private const READS = [
+		'sky' => [
+			'path'      => '/public/chart',
+			'method'    => 'POST',
+			'freshness' => 'day',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time' ],
+			'lang'      => false,
+		],
+	];
+
 	/** Widget keys this client can read. */
 	public static function widgets(): array {
 		return array_keys( self::ENDPOINTS );
@@ -172,7 +188,7 @@ class PublicData {
 	 *                       neither the answer nor a failure is kept.
 	 */
 	public static function get( string $widget, array $params = [], bool $remember = true ): ?array {
-		$config = self::ENDPOINTS[ $widget ] ?? null;
+		$config = self::ENDPOINTS[ $widget ] ?? self::READS[ $widget ] ?? null;
 		if ( null === $config ) {
 			return null;
 		}
@@ -261,7 +277,7 @@ class PublicData {
 	 * today, which beats blanking the widget over a typo in one attribute.
 	 */
 	private static function query_for( string $widget, array $params ): ?array {
-		$config = self::ENDPOINTS[ $widget ];
+		$config = self::ENDPOINTS[ $widget ] ?? self::READS[ $widget ];
 		$query  = [];
 
 		if ( in_array( 'chart', $config['params'], true ) ) {
@@ -402,11 +418,19 @@ class PublicData {
 		}
 
 		$chart = [
-			'date'           => $date,
-			'latitude'       => (float) ( $params[ 'lat_' . $side ] ?? 0 ),
-			'longitude'      => (float) ( $params[ 'lng_' . $side ] ?? 0 ),
-			'timezoneOffset' => (float) ( $params[ 'tz_' . $side ] ?? 0 ),
+			'date'      => $date,
+			'latitude'  => (float) ( $params[ 'lat_' . $side ] ?? 0 ),
+			'longitude' => (float) ( $params[ 'lng_' . $side ] ?? 0 ),
 		];
+		// The same rule as a single chart: a place with no zone is local time
+		// there, not UTC. The Moon moves half a degree an hour, enough to move
+		// a tight aspect in or out of orb.
+		$place = '' !== trim( (string) ( $params[ 'lat_' . $side ] ?? '' ) ) && '' !== trim( (string) ( $params[ 'lng_' . $side ] ?? '' ) );
+		if ( '' === trim( (string) ( $params[ 'tz_' . $side ] ?? '' ) ) && $place ) {
+			$chart['timezone'] = 'auto';
+		} else {
+			$chart['timezoneOffset'] = (float) ( $params[ 'tz_' . $side ] ?? 0 );
+		}
 
 		if ( preg_match( '/^\d{2}:\d{2}:\d{2}$/', $time ) ) {
 			$chart['time'] = $time;

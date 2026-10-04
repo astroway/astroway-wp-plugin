@@ -21,13 +21,14 @@ class Atlas {
 	 * otherwise. Only a non-empty answer is cached, so a stream of made-up
 	 * names cannot fill the options table.
 	 */
-	public static function search( string $q, int $limit = 6 ): array {
+	/** @param bool $remember False for what a visitor typed: asked fresh and not kept. */
+	public static function search( string $q, int $limit = 6, bool $remember = true ): array {
 		$q = trim( $q );
 		if ( mb_strlen( $q ) < 2 ) {
 			return [ 'results' => [] ];
 		}
 		$cache_key = 'atlas_' . md5( strtolower( $q ) . '|' . $limit );
-		$cached    = Cache::get( $cache_key );
+		$cached    = $remember ? Cache::get( $cache_key ) : null;
 		if ( is_array( $cached ) ) {
 			return $cached;
 		}
@@ -69,7 +70,7 @@ class Atlas {
 			return [ 'error' => 'upstream ' . $code ];
 		}
 		$results = array_values( array_filter( (array) ( $body['results'] ?? [] ), [ __CLASS__, 'usable' ] ) );
-		if ( $results ) {
+		if ( $results && $remember ) {
 			Cache::set( $cache_key, [ 'results' => $results ], DAY_IN_SECONDS );
 		}
 		return [ 'results' => $results ];

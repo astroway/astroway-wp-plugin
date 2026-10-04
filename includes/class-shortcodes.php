@@ -305,12 +305,18 @@ class Shortcodes {
 				'tz'        => '',
 				'lang'      => '',
 				'theme'     => '',
+				'transits'  => '',
 			],
 			(array) $atts,
 			'astroway_natal'
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// "today", or a date: the sky of that day over the chart.
+		$transits = strtolower( trim( (string) $atts['transits'] ) );
+		if ( 'today' === $transits || '' !== self::sanitize_date( $transits ) ) {
+			$params['transits'] = $transits;
+		}
 		// No date: the visitor gives theirs.
 		if ( '' === trim( (string) $atts['date'] ) ) {
 			return Form::render( 'natal', $params );
@@ -857,6 +863,17 @@ class Shortcodes {
 		$time_a = self::sanitize_time( $atts['time_a'] );
 		$date_b = self::sanitize_date( $atts['date_b'] );
 		$time_b = self::sanitize_time( $atts['time_b'] );
+		// Neither date: the visitor gives both. One of two is the author's typo and
+		// falls to the frame as before, rather than a form that would replace it.
+		if ( '' === trim( (string) $atts['date_a'] ) && '' === trim( (string) $atts['date_b'] ) ) {
+			return Form::render(
+				'synastry',
+				[
+					'lang'    => self::resolve_lang( $atts['lang'] ),
+					'aspects' => (int) $atts['aspects'],
+				]
+			);
+		}
 		return Render::widget(
 			'synastry',
 			[

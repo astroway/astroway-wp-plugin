@@ -4,7 +4,7 @@ Tags: astrology, birth chart, horoscope, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -42,7 +42,7 @@ Four cards answer the questions people search for rather than calculate: is Merc
 
 = Calculators for your visitors =
 
-Leave the date out and a card asks for it. `[astroway_natal]`, `[astroway_moon_sign]` and `[astroway_rising_sign]` with no birth date show a short form: date, time, and the city, found by name with its coordinates and time zone. The answer is drawn on the same page by your server, so the form works without JavaScript. Without a birth time the natal chart leaves out houses and the Ascendant rather than guessing noon, the moon sign names both signs on a day the Moon changed sign, and the rising sign says plainly that it needs the time. The plugin keeps nothing a visitor types: the answer is not cached and the page is sent no-store and noindex.
+Leave the date out and a card asks for it. `[astroway_natal]`, `[astroway_moon_sign]` and `[astroway_rising_sign]` with no birth date show a short form, and `[astroway_synastry]` with no dates asks for two people: date, time, and the city, found by name with its coordinates and time zone. The answer is drawn on the same page by your server, so the form works without JavaScript. Without a birth time the natal chart leaves out houses and the Ascendant rather than guessing noon, the moon sign names both signs on a day the Moon changed sign, and the rising sign says plainly that it needs the time. The plugin keeps nothing a visitor types: the answer is not cached and the page is sent no-store and noindex.
 
 = What a natal chart means =
 
@@ -58,7 +58,9 @@ Three cards read the signs themselves. The yearly horoscope, `[astroway_yearly_h
 
 = Two charts, read against each other =
 
-The synastry card, `[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]`, prints the compatibility score, the word the API puts on it, and the aspects behind it as a table headed by the two names, because "Moon conjunct Mercury" says nothing until you know whose Moon. The six closest are shown and the whole grid, points included, is one click away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as three requests of the hourly allowance, because it is two charts and the grid between them.
+The synastry card, `[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]`, prints the compatibility score in a ring with the word the API puts on it, the Sun, Moon and Ascendant of each person, and both charts on one bi-wheel: the first inside with its houses, the second on the outer ring, and the aspects between them as lines. Every aspect names whose planet is whose, because "Moon conjunct Mercury" says nothing until you know whose Moon, and says in a line what that kind of contact does between two people. The six closest are listed and the whole grid, points included, is one tab away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as five requests of the hourly allowance, because it is the grid between the two charts and each chart on its own, and it is cached for a month.
+
+Add `transits="today"` to a natal chart, or a date such as `transits="2026-10-01"`, and it gains a Transits tab: the birth chart inside, the sky of that day on the outer ring, and the transits within three degrees listed tightest first.
 
 = Tabs, without the JavaScript =
 
@@ -108,6 +110,10 @@ Yes. The same calculations run as free web tools with no install and no account:
 
 No. The plugin works without a key. On first use it asks api.astroway.info for a key of the site's own, proving it owns its address, and page-rendered widgets run on that: 300 readings an hour. Until it has one, or if your host blocks the check, they run on the anonymous per-site allowance of 300 requests an hour, and widgets that fall back to a frame run on the visitor's own 30 requests an hour per IP, which is enough for an ordinary site. If you do save a key, your server offers it when it fetches a widget, so those calls are counted against your plan instead of the shared anonymous allowance. Frames never carry it: that request is made by the visitor's browser. Get a free key at api.astroway.info.
 
+= How do I connect my AstroWay account? =
+
+AstroWay → Getting started → "Connect your AstroWay account". You sign in on api.astroway.info, pick one of your keys or create one for this site, and land back on the same page with the key saved. There is nothing to copy. The button shows once the site has its own site key; until then, or if you prefer, paste a key into the field below it. To disconnect, remove the key on the same page: the plugin goes back to asking for a site key of its own.
+
 = Will the widgets show up in Google? =
 
 The fifteen page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. AstroWay → Settings → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
@@ -144,17 +150,18 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 **What is sent:**
 
-* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign, synastry): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. Names given to the synastry widget are not among them: they head the table on your page and go no further. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
+* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign, synastry): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. Synastry also asks for each person's chart on its own, and a natal chart with `transits` for the planets at noon UTC on that day. Names given to the synastry widget are not among them: they head the table on your page and go no further. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
 * When a widget falls back to an embedded frame (kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
-* When a visitor sends a birth data form (natal chart, moon sign, rising sign): the date, time and coordinates they entered go to api.astroway.info, and the city name they typed goes to app.astroway.info to look up its coordinates and time zone. Both requests are made by your server; the visitor's IP address is not sent, and the answer is not stored.
+* When a visitor sends a birth data form (natal chart, compatibility, moon sign, rising sign): the date, time and coordinates they entered go to api.astroway.info, and the city name they typed goes to app.astroway.info to look up its coordinates and time zone. Both requests are made by your server; the visitor's IP address is not sent, and the answer is not stored.
 * When the site has no API key of its own: your site's address and the plugin version go to api.astroway.info to request a site key. The service then fetches a one-time proof from your site's REST route `/astroway/v1/verify` to confirm the site is yours. This runs in the background after activation and when an administrator opens the dashboard, until a key is issued.
+* When the site administrator clicks "Connect your AstroWay account": the administrator's browser opens api.astroway.info with your site's address, the admin page to return to, a one-time random value that ties the answer to this click, and the administrator's language. After they sign in there and pick a key, the browser comes back with a one-time code, and your server exchanges it at api.astroway.info, sending the code, your site's address and the site key. The answer is the chosen key and a masked name of the account, which the plugin stores as the site's API key.
 * When the site administrator clicks "Verify Key" or "Test Connection" in the Settings screen: the configured API key and a small diagnostics payload.
 
 **When this happens:**
 
 * On frontend page render (only on pages where an AstroWay shortcode or block is present), and when a visitor sends a birth data form.
 * In the background after activation and on the dashboard, only to request the site key while the site has none.
-* On explicit admin action (Verify, Test Connection, Purge Cache).
+* On explicit admin action (Connect your AstroWay account, Verify, Test Connection, Purge Cache).
 
 **Nothing is sent on deactivation.**
 
@@ -167,7 +174,7 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 This plugin stores the following on the WordPress site:
 
-* The site administrator's API key (if entered), stored in the `wp_options` table under `astroway_settings`. Visible only to users with `manage_options` capability.
+* The site administrator's API key (if entered or connected), stored encrypted in the `wp_options` table under `astroway_settings`, with the masked account name when it came from "Connect your AstroWay account". Visible only to users with `manage_options` capability.
 * WP transient cache of API responses (prefix `astroway_v1_`) to reduce repeat external calls. Cache contents are chart/horoscope/tarot output, no visitor PII beyond what was submitted via shortcode arguments. Purged via Settings → AstroWay → Purge Cache.
 * The site key the plugin was issued, encrypted, under `astroway_site_key_<host>`.
 * For the birth data forms' rate limit: a salted hash of each sender's IP address with a count of their submissions, under `astroway_form_hits`, cleared ten minutes later on the next submission and removed on uninstall. What the visitor typed is not stored.
@@ -175,6 +182,16 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 2.2.0 =
+* Synastry on a bi-wheel: both charts on one wheel, the first inside with its houses, the second on the outer ring, and the aspects between them as lines
+* The synastry card shows the score in a ring, the Sun, Moon and Ascendant of each person, and each aspect with whose planet is whose and what it does between two people
+* A synastry shortcode without dates asks the visitor for two people, on the same form as the other calculators
+* A natal chart with transits="today" or a date gains a Transits tab: the sky of that day on the outer ring and the transits to the birth chart
+* Connect your AstroWay account in one click from the Getting started page, instead of copying a key
+* Fix: synastry with a place but no time zone read the birth time as UTC; it now takes the zone of the place, as the natal chart does
+* Tabs stay on one row on a phone and fade at the edge that has more; the element matrix has its own heading; the retrograde mark no longer sits on a degree
+* Every new string translated in all 20 bundled languages
 
 = 2.1.0 =
 * Calculators for visitors: a natal chart, moon sign or rising sign shortcode without a date asks for one, with a city search, and draws the answer on the same page without JavaScript

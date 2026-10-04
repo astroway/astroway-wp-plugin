@@ -158,7 +158,12 @@
 	var BLOCKS = {
 		'astroway/natal-chart': {
 			panel:  __( 'Birth data', 'astroway' ),
-			fields: CHART_FIELDS
+			fields: CHART_FIELDS.concat( [
+				{ name: 'transits', type: 'select', label: __( 'Transits', 'astroway' ), options: [
+					{ label: __( 'None', 'astroway' ), value: '' },
+					{ label: __( 'Today\'s sky over the chart', 'astroway' ), value: 'today' }
+				] }
+			] )
 		},
 		'astroway/bodygraph': {
 			panel:  __( 'Birth data', 'astroway' ),

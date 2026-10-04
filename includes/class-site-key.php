@@ -38,7 +38,8 @@ class SiteKey {
 	}
 
 	public static function schedule(): void {
-		if ( '' === self::key() && ! wp_next_scheduled( self::EVENT ) && self::next_try( time() ) <= time() ) {
+		// A site on its owner's key does not need one; removing that key brings the ask back.
+		if ( '' === self::key() && '' === Key::current() && ! wp_next_scheduled( self::EVENT ) && self::next_try( time() ) <= time() ) {
 			wp_schedule_single_event( time() + 5, self::EVENT );
 		}
 	}
@@ -218,6 +219,13 @@ class SiteKey {
 			$entry['reason'] = 401 === $status ? 'revoked' : 'domain_mismatch';
 			self::save( $entry );
 		}
+	}
+
+	/** Drop the site key once the owner's key has replaced it. */
+	public static function retire(): void {
+		$entry = self::entry();
+		unset( $entry['key'], $entry['reason'] );
+		self::save( $entry );
 	}
 
 	/** When the next ask may go out: after any back-off, and within the day's three issues. */

@@ -1020,6 +1020,26 @@
 .aw-step-caption {
 	margin: 6px 0 14px;
 }
+/* Connecting and pasting are two ways to the same key: the rule keeps them apart. */
+.aw-app .aw-connect {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px dashed var(--aw-rule-soft);
+}
+.aw-app .aw-connect .aw-hint {
+	margin: 10px 0 0;
+}
+.aw-app .aw-result + .aw-connect,
+.aw-app .aw-result + .aw-label {
+	margin-top: 16px;
+}
+/* An email address in the uppercase label would read as a different address. */
+.aw-app .aw-label .aw-hint {
+	text-transform: none;
+	letter-spacing: normal;
+	font-weight: 400;
+	margin-left: 6px;
+}
 .aw-app .aw-site-key {
 	margin: 16px 0 0;
 	padding: 12px 0 0 34px;

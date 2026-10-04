@@ -25,10 +25,45 @@ class Wheel {
 	private const C       = 200;
 	private const R_OUTER = 196;
 	private const R_SIGNS = [ 156, 184 ];
-	private const R_ASP   = 92;
 	private const MIN_SEP = 9.2;
 
-	private static float $asc = 0.0;
+	/** Distance from the retrograde mark's centre to its degree label's below which they touch. */
+	private const RX_CLEAR = 16.0;
+
+	/** Radii of one ring of planets: the tick, the glyph, its degree. */
+	private const RING_NATAL = [
+		'mark'  => [ 156, 149 ],
+		'glyph' => 139,
+		'deg'   => 121,
+		'sep'   => self::MIN_SEP,
+	];
+
+	/**
+	 * Two rings in the band the natal wheel gives one. The second chart sits
+	 * against the signs, the first inside it, each with room for a glyph and
+	 * its degree; the aspect circle shrinks to what is left.
+	 */
+	private const RING_OUTER = [
+		'mark'  => [ 156, 151 ],
+		'glyph' => 139,
+		'deg'   => 121.5,
+		'sep'   => self::MIN_SEP,
+	];
+	private const RING_INNER = [
+		'mark'  => [ 112, 107 ],
+		'glyph' => 95,
+		'deg'   => 77.5,
+		// Wide enough that two degree labels at radius 77.5 do not touch.
+		'sep'   => 15.0,
+	];
+	private const R_SPLIT  = 112;
+	private const R_ASP_BI = 68;
+
+	private static float $asc   = 0.0;
+	private static float $r_asp = 92;
+
+	/** Radii an angle's axis skips: the second chart's ring, so no planet there is struck through. */
+	private static array $axis_gap = [];
 
 	/**
 	 * @param array $chart `asc`, `mc`, optional `cusps` (12 longitudes),
@@ -48,15 +83,65 @@ class Wheel {
 		$desc  = (string) ( $chart['desc'] ?? '' );
 		$id    = UI::uid();
 
+		self::$r_asp    = 92;
+		self::$axis_gap = [];
+
 		$svg  = sprintf( '<svg class="astroway-wheel__svg" viewBox="-56 -56 512 512" role="img" aria-labelledby="%1$s-t %1$s-d" focusable="false">', $id );
 		$svg .= '<title id="' . $id . '-t">' . esc_html( $title ) . '</title><desc id="' . $id . '-d">' . esc_html( $desc ) . '</desc>';
-		$svg .= self::rings() . self::signs() . self::houses( $cusps ) . self::aspects( $chart ) . ( empty( $chart['no_angles'] ) ? self::angles( $chart, $cusps ) : '' ) . self::planets( $chart );
+		$lon  = self::longitudes( (array) ( $chart['planets'] ?? [] ), '' );
+		$svg .= self::rings( [ self::R_OUTER, self::R_SIGNS[1], self::R_SIGNS[0], 106, self::$r_asp ] ) . self::signs() . self::houses( $cusps, true, self::R_SIGNS[0] ) . self::aspects( (array) ( $chart['aspects'] ?? [] ), $lon, $lon ) . ( empty( $chart['no_angles'] ) ? self::angles( $chart, $cusps ) : '' ) . self::planets( (array) ( $chart['planets'] ?? [] ), self::RING_NATAL, '' );
 		$svg .= '</svg>';
 
 		return '<figure class="astroway-wheel">' . $svg . '</figure>';
 	}
 
-	private static function rings(): string {
+	/**
+	 * Two charts on one wheel: the first inside with its houses and angles,
+	 * the second on a ring outside it, and the aspects running between them.
+	 * Synastry puts a partner on the outer ring, transits put the sky there.
+	 *
+	 * Planets of the outer chart are named `b-{id}` on the drawing, so the
+	 * wheel script links a line to the right Sun of the two.
+	 *
+	 * @param array $chart As natal(), plus `outer`: planets of the second chart;
+	 *                     `aspects` run from `a` (inner id) to `b` (outer id).
+	 */
+	public static function bi( array $chart ): string {
+		self::$asc      = (float) ( $chart['asc'] ?? 0 );
+		self::$r_asp    = self::R_ASP_BI;
+		self::$axis_gap = [ self::R_SPLIT, self::R_SIGNS[0] ];
+		$cusps          = array_values( array_map( 'floatval', (array) ( $chart['cusps'] ?? [] ) ) );
+		if ( 12 !== count( $cusps ) ) {
+			$cusps = [];
+		}
+
+		$title = (string) ( $chart['title'] ?? '' );
+		$desc  = (string) ( $chart['desc'] ?? '' );
+		$id    = UI::uid();
+		$inner = (array) ( $chart['planets'] ?? [] );
+		$outer = (array) ( $chart['outer'] ?? [] );
+
+		$svg  = sprintf( '<svg class="astroway-wheel__svg" viewBox="-56 -56 512 512" role="img" aria-labelledby="%1$s-t %1$s-d" focusable="false">', $id );
+		$svg .= '<title id="' . $id . '-t">' . esc_html( $title ) . '</title><desc id="' . $id . '-d">' . esc_html( $desc ) . '</desc>';
+		$svg .= self::rings( [ self::R_OUTER, self::R_SIGNS[1], self::R_SIGNS[0], self::R_SPLIT, self::$r_asp ] ) . self::signs() . self::houses( $cusps, false, self::R_SPLIT );
+		$svg .= self::aspects( (array) ( $chart['aspects'] ?? [] ), self::longitudes( $inner, '' ), self::longitudes( $outer, 'b-' ), 'b-' );
+		$svg .= ( empty( $chart['no_angles'] ) ? self::angles( $chart, $cusps ) : '' );
+		$svg .= self::planets( $outer, self::RING_OUTER, 'b-' ) . self::planets( $inner, self::RING_INNER, '' );
+		$svg .= '</svg>';
+
+		return '<figure class="astroway-wheel astroway-wheel--bi">' . $svg . '</figure>';
+	}
+
+	/** Longitude by drawing id. */
+	private static function longitudes( array $planets, string $prefix ): array {
+		$lon = [];
+		foreach ( $planets as $p ) {
+			$lon[ $prefix . (string) ( $p['id'] ?? '' ) ] = (float) ( $p['lon'] ?? 0 );
+		}
+		return $lon;
+	}
+
+	private static function rings( array $circles ): string {
 		list( $inner, $outer ) = self::R_SIGNS;
 		$c                     = self::C;
 		$html                  = sprintf(
@@ -69,7 +154,7 @@ class Wheel {
 			$inner,
 			2 * $inner
 		);
-		foreach ( [ self::R_OUTER, $outer, $inner, 106, self::R_ASP ] as $r ) {
+		foreach ( $circles as $r ) {
 			$html .= '<circle class="astroway-wheel__circle" cx="' . $c . '" cy="' . $c . '" r="' . $r . '"/>';
 		}
 		$ticks = '';
@@ -96,41 +181,48 @@ class Wheel {
 		return $html;
 	}
 
-	private static function houses( array $cusps ): string {
+	/**
+	 * Cusp lines from $from in to the aspect circle. On two rings the numbers
+	 * would sit among the inner planets, so there they stay in the table.
+	 */
+	private static function houses( array $cusps, bool $numbers, float $from ): string {
 		if ( empty( $cusps ) ) {
 			return '';
 		}
 		$html = '';
 		for ( $i = 0; $i < 12; $i++ ) {
-			$span          = fmod( $cusps[ ( $i + 1 ) % 12 ] - $cusps[ $i ] + 360, 360 );
-			list( $x, $y ) = self::at( $cusps[ $i ] + $span / 2, 99 );
-			$html         .= '<text class="astroway-wheel__hnum" x="' . self::n( $x ) . '" y="' . self::n( $y ) . '">' . ( $i + 1 ) . '</text>';
+			if ( $numbers ) {
+				$span          = fmod( $cusps[ ( $i + 1 ) % 12 ] - $cusps[ $i ] + 360, 360 );
+				list( $x, $y ) = self::at( $cusps[ $i ] + $span / 2, 99 );
+				$html         .= '<text class="astroway-wheel__hnum" x="' . self::n( $x ) . '" y="' . self::n( $y ) . '">' . ( $i + 1 ) . '</text>';
+			}
 			// The four angles draw their own, longer axis.
 			if ( 0 !== $i % 3 ) {
-				list( $x1, $y1 ) = self::at( $cusps[ $i ], self::R_SIGNS[0] );
-				list( $x2, $y2 ) = self::at( $cusps[ $i ], self::R_ASP );
+				list( $x1, $y1 ) = self::at( $cusps[ $i ], $from );
+				list( $x2, $y2 ) = self::at( $cusps[ $i ], self::$r_asp );
 				$html           .= self::line( 'astroway-wheel__cusp', $x1, $y1, $x2, $y2 );
 			}
 		}
 		return $html;
 	}
 
-	private static function aspects( array $chart ): string {
-		$lon = [];
-		foreach ( (array) ( $chart['planets'] ?? [] ) as $p ) {
-			$lon[ (string) ( $p['id'] ?? '' ) ] = (float) ( $p['lon'] ?? 0 );
-		}
+	/**
+	 * @param array  $lon_a  Longitudes the `a` end is looked up in.
+	 * @param array  $lon_b  Longitudes the `b` end is looked up in.
+	 * @param string $prefix Drawing-id prefix of the `b` end.
+	 */
+	private static function aspects( array $aspects, array $lon_a, array $lon_b, string $prefix = '' ): string {
 		$html = '';
-		foreach ( (array) ( $chart['aspects'] ?? [] ) as $a ) {
+		foreach ( $aspects as $a ) {
 			$kind = in_array( $a['kind'] ?? '', [ 'h', 't' ], true ) ? $a['kind'] : '';
 			$from = (string) ( $a['a'] ?? '' );
-			$to   = (string) ( $a['b'] ?? '' );
+			$to   = $prefix . (string) ( $a['b'] ?? '' );
 			// A conjunction is two planets in one place: a line would be a dot.
-			if ( '' === $kind || ! isset( $lon[ $from ], $lon[ $to ] ) ) {
+			if ( '' === $kind || ! isset( $lon_a[ $from ], $lon_b[ $to ] ) ) {
 				continue;
 			}
-			list( $x1, $y1 ) = self::at( $lon[ $from ], self::R_ASP );
-			list( $x2, $y2 ) = self::at( $lon[ $to ], self::R_ASP );
+			list( $x1, $y1 ) = self::at( $lon_a[ $from ], self::$r_asp );
+			list( $x2, $y2 ) = self::at( $lon_b[ $to ], self::$r_asp );
 			// Tighter aspects draw stronger.
 			$strength = max( 0.4, 1 - (float) ( $a['orb'] ?? 0 ) / 8 );
 			$html    .= sprintf(
@@ -159,8 +251,14 @@ class Wheel {
 		}
 		$html = '';
 		foreach ( $list as list( $lon, $label ) ) {
-			list( $x1, $y1 ) = self::at( $lon, self::R_ASP );
+			list( $x1, $y1 ) = self::at( $lon, self::$r_asp );
 			list( $x2, $y2 ) = self::at( $lon, 202 );
+			if ( self::$axis_gap ) {
+				list( $gx1, $gy1 ) = self::at( $lon, self::$axis_gap[0] );
+				list( $gx2, $gy2 ) = self::at( $lon, self::$axis_gap[1] );
+				$html             .= self::line( 'astroway-wheel__angle', $x1, $y1, $gx1, $gy1 );
+				list( $x1, $y1 )   = [ $gx2, $gy2 ];
+			}
 			// A label beside the wheel grows away from it, one above or below
 			// sits centred on its axis: the ascendant's must never cross the ring.
 			$side          = cos( deg2rad( 180 + ( $lon - self::$asc ) ) );
@@ -172,9 +270,13 @@ class Wheel {
 		return $html;
 	}
 
-	private static function planets( array $chart ): string {
+	/**
+	 * @param array  $ring   Radii, see RING_NATAL.
+	 * @param string $prefix Drawing-id prefix: `b-` on a second chart's ring.
+	 */
+	private static function planets( array $planets, array $ring, string $prefix ): string {
 		$list = [];
-		foreach ( (array) ( $chart['planets'] ?? [] ) as $p ) {
+		foreach ( $planets as $p ) {
 			if ( ! Glyphs::exists( (string) ( $p['id'] ?? '' ) ) ) {
 				continue;
 			}
@@ -185,35 +287,51 @@ class Wheel {
 				'label' => (string) ( $p['label'] ?? '' ),
 			];
 		}
-		$html = '';
-		foreach ( self::spread( $list, self::MIN_SEP ) as $p ) {
-			list( $m1x, $m1y ) = self::at( $p['lon'], self::R_SIGNS[0] );
-			list( $m2x, $m2y ) = self::at( $p['lon'], 149 );
+		$html  = '';
+		$class = '' === $prefix ? 'astroway-wheel__planet' : 'astroway-wheel__planet astroway-wheel__planet--b';
+		foreach ( self::spread( $list, (float) $ring['sep'] ) as $p ) {
+			list( $m1x, $m1y ) = self::at( $p['lon'], $ring['mark'][0] );
+			list( $m2x, $m2y ) = self::at( $p['lon'], $ring['mark'][1] );
 			$html             .= self::line( 'astroway-wheel__mark', $m1x, $m1y, $m2x, $m2y );
 			$moved             = abs( fmod( $p['pos'] - $p['lon'] + 540, 360 ) - 180 ) > 1.5;
 			if ( $moved ) {
-				list( $lx, $ly ) = self::at( $p['pos'], 150 );
+				list( $lx, $ly ) = self::at( $p['pos'], $ring['mark'][1] + 1 );
 				$html           .= self::line( 'astroway-wheel__lead', $m2x, $m2y, $lx, $ly );
 			}
 			// Glyph, then its degree, inwards along one radius. Minutes live in
 			// the table and the tooltip: on the wheel they crowded into each
 			// other and into the house numbers.
-			list( $gx, $gy ) = self::at( $p['pos'], 139 );
-			list( $dx, $dy ) = self::at( $p['pos'], 121 );
+			list( $gx, $gy ) = self::at( $p['pos'], $ring['glyph'] );
+			list( $dx, $dy ) = self::at( $p['pos'], $ring['deg'] );
 			$deg             = (int) floor( fmod( $p['lon'], 30 ) );
 
-			$html .= sprintf( '<g class="astroway-wheel__planet" data-planet="%1$s" data-label="%2$s">', esc_attr( $p['id'] ), esc_attr( $p['label'] ) );
+			$html .= sprintf( '<g class="%1$s" data-planet="%2$s" data-label="%3$s">', $class, esc_attr( $prefix . $p['id'] ), esc_attr( $p['label'] ) );
 			$html .= '<circle class="astroway-wheel__hit" cx="' . self::n( $gx ) . '" cy="' . self::n( $gy ) . '" r="22"/>';
 			$html .= self::glyph( $p['id'], $gx, $gy, 19, 'astroway-wheel__glyph' );
 			$html .= '<text class="astroway-wheel__deg" x="' . self::n( $dx ) . '" y="' . self::n( $dy ) . '">' . $deg . '°</text>';
-			// Tucked against the glyph's lower right, where it cannot be read
-			// as belonging to the planet next door.
 			if ( $p['rx'] ) {
-				$html .= self::glyph( 'retrograde', $gx + 10.5, $gy + 8, 9, 'astroway-wheel__rx' );
+				list( $rx, $ry ) = self::rx_at( $gx, $gy, $dx, $dy );
+				$html           .= self::glyph( 'retrograde', $rx, $ry, 9, 'astroway-wheel__rx' );
 			}
 			$html .= '</g>';
 		}
 		return $html;
+	}
+
+	/**
+	 * Where the retrograde mark sits: tucked against the glyph's lower right,
+	 * where it cannot be read as belonging to the planet next door, unless the
+	 * degree label lies that way, as it does in the upper left of the wheel.
+	 * Then the corner farthest from the label.
+	 */
+	public static function rx_at( float $gx, float $gy, float $dx, float $dy ): array {
+		$corners = [ [ 10.5, 8 ], [ -10.5, 8 ], [ 10.5, -8 ], [ -10.5, -8 ] ];
+		$far     = static fn( array $c ): float => hypot( $gx + $c[0] - $dx, $gy + $c[1] - $dy );
+		if ( $far( $corners[0] ) >= self::RX_CLEAR ) {
+			return [ $gx + $corners[0][0], $gy + $corners[0][1] ];
+		}
+		usort( $corners, static fn( $a, $b ) => $far( $b ) <=> $far( $a ) );
+		return [ $gx + $corners[0][0], $gy + $corners[0][1] ];
 	}
 
 	/**

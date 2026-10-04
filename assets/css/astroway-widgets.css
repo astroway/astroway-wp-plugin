@@ -462,6 +462,16 @@
 	border-block-start: 0;
 }
 
+/* The trio's own rule already closes it; the heading that follows adds none. */
+.astroway-card > .astroway-facts--trio + .astroway-card__subtitle {
+	border-block-start: 0;
+}
+
+/* Without the time there is no Ascendant: two halves, not two thirds and a gap. */
+.astroway-card .astroway-facts--trio:has(> :nth-child(2):last-child) {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 /* The same inset on both sides of every cell: with padding only after the
    divider the three texts sat at uneven steps across the row. */
 .astroway-facts--trio .astroway-facts__item {
@@ -550,8 +560,9 @@
 
 /* Three narrow columns leave "Ascendant" no room: the trio becomes rows. In em,
    because the word grows with the theme's type while pixels stay put. */
-@container (max-width: 17.8em) {
-	.astroway-card .astroway-facts--trio {
+@container (max-width: 21.5em) {
+	.astroway-card .astroway-facts--trio,
+	.astroway-card .astroway-facts--trio:has(> :nth-child(2):last-child) {
 		grid-template-columns: 1fr;
 	}
 
@@ -633,28 +644,33 @@
 	border-radius: 8px;
 }
 
-/* A narrow card wraps its tabs: scrolled away, the fourth tab was invisible. */
+/* A narrow card keeps its tabs on one row, as the mockup has it: wrapped, they
+   took three rows before any content. What does not fit fades at the edge the
+   way a table does, so the tab past it is not simply invisible. */
 @container (max-width: 420px) {
-	.astroway-card .astroway-tabs__list {
-		flex-wrap: wrap;
-		overflow: visible;
-	}
-
-	/* Wrapped, an underline on the selected tab sits on the first row while the
-	   strip's own line closes the second: two rules at two heights, and the
-	   upper one stops reading as "this tab". The selected one is a chip here,
-	   so the strip keeps exactly one line. */
 	.astroway-card .astroway-tabs__tab {
 		padding-inline: 10px;
-		border-block-end-color: transparent;
 	}
+}
 
-	.astroway-card .astroway-tabs__tab[aria-selected="true"] {
-		border-start-start-radius: 6px;
-		border-start-end-radius: 6px;
-		background: var(--astroway-accent-tint);
-		color: var(--astroway-accent);
-	}
+.astroway-tabs__list[data-astroway-more="end"] {
+	mask-image: linear-gradient(to left, transparent, #000 2.5em);
+}
+
+.astroway-tabs__list[data-astroway-more="start"] {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em);
+}
+
+.astroway-tabs__list[data-astroway-more="both"] {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em, #000 calc(100% - 2.5em), transparent);
+}
+
+.astroway-tabs__list[data-astroway-more="end"]:dir(rtl) {
+	mask-image: linear-gradient(to right, transparent, #000 2.5em);
+}
+
+.astroway-tabs__list[data-astroway-more="start"]:dir(rtl) {
+	mask-image: linear-gradient(to left, transparent, #000 2.5em);
 }
 
 .astroway-tabs__count {
@@ -707,7 +723,7 @@
 	margin: 0 0 4px;
 	padding: 0;
 	border: 0;
-	font-size: 1.04em;
+	font-size: 0.98em;
 	font-weight: 650;
 	line-height: 1.35;
 	letter-spacing: normal;
@@ -851,6 +867,13 @@
 	text-align: end;
 }
 
+.astroway-card .astroway-aspects__note {
+	display: block;
+	margin-block-start: 2px;
+	font-size: 0.9em;
+	color: var(--astroway-muted);
+}
+
 .astroway-mark {
 	display: inline-grid;
 	place-items: center;
@@ -939,6 +962,23 @@
 	align-items: center;
 	gap: 6px;
 	margin: 0;
+}
+
+/* Which chart a ring of the bi-wheel holds. The words carry it: in the night
+   and native looks the two planet colours are the same. */
+.astroway-legend__ring {
+	flex: none;
+	align-self: flex-start;
+	margin-block-start: 0.35em;
+	inline-size: 0.7em;
+	block-size: 0.7em;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.astroway-legend__ring--out {
+	background: var(--astroway-gilt);
+	box-shadow: none;
 }
 
 .astroway-line--h {
@@ -1249,6 +1289,12 @@
 	font-variant-numeric: tabular-nums;
 }
 
+.astroway-card .astroway-matrix__corner {
+	display: none;
+	font-size: 0.8em;
+	color: var(--astroway-muted);
+}
+
 /* Narrow: the totals column goes and each row names its own total. */
 @container (max-width: 320px) {
 	.astroway-card .astroway-matrix {
@@ -1260,6 +1306,10 @@
 	}
 
 	.astroway-card .astroway-matrix__n {
+		display: inline;
+	}
+
+	.astroway-card .astroway-matrix__corner {
 		display: inline;
 	}
 
@@ -1379,6 +1429,38 @@
 	block-size: 100%;
 	border-radius: inherit;
 	background: var(--astroway-accent);
+}
+
+/* A quieter note beside a subtitle: whose birth moment a block is about. */
+.astroway-card .astroway-card__aside {
+	margin-inline-start: 0.4em;
+	font-size: 0.85em;
+	font-weight: 400;
+	color: var(--astroway-muted);
+}
+
+/* A score in its ring beside the word for it. */
+.astroway-card .astroway-verdict {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 16px 0 0;
+}
+
+.astroway-card .astroway-verdict p {
+	margin: 0;
+}
+
+.astroway-card .astroway-verdict__word {
+	font-size: 1.25em;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.astroway-card .astroway-verdict__note {
+	margin-block-start: 2px;
+	color: var(--astroway-muted);
+	font-size: 0.9em;
 }
 
 .astroway-card .astroway-ring {
@@ -1623,6 +1705,11 @@
 
 .astroway-wheel__rx {
 	fill: var(--astroway-tens);
+}
+
+/* The second chart of a bi-wheel, told apart by colour as well as by ring. */
+.astroway-wheel__planet--b .astroway-wheel__glyph {
+	fill: var(--astroway-gilt);
 }
 
 .astroway-card .astroway-wheel text {
@@ -2230,47 +2317,6 @@
 	min-height: 0;
 }
 
-.astroway-card .astroway-card__score {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 0.15em 0.6em;
-	margin: 12px 0 0;
-}
-
-.astroway-card .astroway-card__score-value {
-	font-size: 2.4em;
-	font-weight: 700;
-	line-height: 1;
-	color: var(--astroway-accent);
-}
-
-.astroway-card__score-value span {
-	font-size: 0.45em;
-	font-weight: 600;
-	margin-inline-start: 0.1em;
-}
-
-.astroway-card .astroway-card__score-label {
-	font-size: 1.05em;
-	font-weight: 600;
-}
-
-.astroway-card .astroway-card__meter {
-	block-size: 6px;
-	margin-block: 8px 0;
-	border-radius: 999px;
-	background: var(--astroway-line);
-	overflow: hidden;
-}
-
-.astroway-card__meter > span {
-	display: block;
-	block-size: 100%;
-	border-radius: inherit;
-	background: var(--astroway-accent);
-}
-
 .astroway-card .astroway-card__more {
 	margin-block-start: 12px;
 	font-size: 0.95em;
@@ -2375,8 +2421,31 @@
 	min-block-size: 44px;
 }
 
-.astroway-card .astroway-form > .astroway-field--check {
+.astroway-card :is(.astroway-form, .astroway-form__person) > .astroway-field--check {
 	margin-block-start: -8px;
+}
+
+/* One person of two: the same column of fields under their own heading. */
+.astroway-card .astroway-form__person {
+	display: grid;
+	gap: 14px;
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* A floated legend is an ordinary grid item instead of a cut in the rule above. */
+.astroway-card .astroway-form__person > legend {
+	float: left;
+	inline-size: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.astroway-card .astroway-form__person + .astroway-form__person {
+	padding-block-start: 16px;
+	border-block-start: 1px solid var(--astroway-line);
 }
 
 .astroway-card .astroway-field__box {
@@ -2452,7 +2521,8 @@
 	min-block-size: 44px;
 	margin-block: -8px;
 	font-size: 0.9em;
-	color: var(--astroway-muted);
+	font-weight: 500;
+	color: var(--astroway-accent);
 	list-style: none;
 	cursor: pointer;
 }
