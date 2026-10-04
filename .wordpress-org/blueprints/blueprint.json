@@ -1,0 +1,30 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/astroway-demo/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "login"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "astroway"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; wp_insert_post(['post_type'=>'page','post_status'=>'publish','post_name'=>'astroway-demo','post_title'=>'AstroWay demo','post_content'=>\"<!-- wp:paragraph --><p>Every card below is a shortcode rendered by this site, with no account and no API key. Edit the page to see the shortcodes, or open AstroWay, Shortcodes in the admin for the full list.</p><!-- /wp:paragraph -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Daily horoscope</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_daily_horoscope sign=\\\"leo\\\"]<!-- /wp:shortcode -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Moon phase</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_moon_phase]<!-- /wp:shortcode -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Tarot card of the day</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_tarot_card]<!-- /wp:shortcode -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Natal chart</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_natal date=\\\"1990-05-15\\\" time=\\\"14:30\\\" lat=\\\"50.45\\\" lon=\\\"30.52\\\" tz=\\\"Europe/Kyiv\\\"]<!-- /wp:shortcode -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Synastry</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_synastry name_a=\\\"Olena\\\" date_a=\\\"1990-05-15\\\" time_a=\\\"14:30\\\" name_b=\\\"Marc\\\" date_b=\\\"1988-11-02\\\" time_b=\\\"09:15\\\"]<!-- /wp:shortcode -->\\n<!-- wp:heading --><h2 class=\\\"wp-block-heading\\\">Rising sign calculator for visitors</h2><!-- /wp:heading -->\\n<!-- wp:shortcode -->[astroway_rising_sign]<!-- /wp:shortcode -->\"]);"
+    }
+  ]
+}
