@@ -228,6 +228,16 @@
 				LANG_FIELD
 			]
 		},
+		'astroway/tarot-spread': {
+			panel:  __( 'Tarot spread', 'astroway' ),
+			fields: [
+				{ name: 'spread', type: 'select', label: __( 'Spread', 'astroway' ), options: [
+					{ label: __( 'Past, present, future', 'astroway' ), value: 'three-card' },
+					{ label: __( 'Celtic Cross', 'astroway' ), value: 'celtic-cross' }
+				] },
+				LANG_FIELD
+			]
+		},
 		'astroway/weekly-horoscope': {
 			panel:  __( 'Weekly horoscope', 'astroway' ),
 			fields: [
@@ -306,6 +316,13 @@
 			fields: [
 				{ name: 'sign1', type: 'select', label: __( 'First sign', 'astroway' ), options: SIGN_OPTIONS },
 				{ name: 'sign2', type: 'select', label: __( 'Second sign', 'astroway' ), options: SIGN_OPTIONS },
+				LANG_FIELD
+			]
+		},
+		'astroway/compatibility-matrix': {
+			panel:  __( 'Sign compatibility', 'astroway' ),
+			fields: [
+				{ name: 'sign', type: 'select', label: __( 'One sign against the others (blank for all pairs)', 'astroway' ), options: [ { label: __( 'All pairs', 'astroway' ), value: '' } ].concat( SIGN_OPTIONS.slice( 1 ) ) },
 				LANG_FIELD
 			]
 		},

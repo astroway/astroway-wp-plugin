@@ -145,6 +145,16 @@ $astroway_cards = [
 		],
 	],
 	[
+		'tag'         => 'astroway_tarot_spread',
+		'title'       => __( 'Tarot Spread of the Day', 'astroway' ),
+		'description' => __( 'Past, present and future, or the Celtic Cross, drawn once a day for this site, each card read in its position. Rendered into the page; no key needed.', 'astroway' ),
+		'example'     => '[astroway_tarot_spread spread="celtic-cross"]',
+		'block'       => 'astroway/tarot-spread',
+		'params'      => [
+			[ 'spread', 'string', false, __( 'three-card (default) for past, present and future, or celtic-cross for the Celtic Cross.', 'astroway' ) ],
+		],
+	],
+	[
 		'tag'         => 'astroway_mini_chart',
 		'title'       => __( 'Mini Birth Chart', 'astroway' ),
 		'description' => __( 'The natal wheel drawn small, for a sidebar. Loads in a frame.', 'astroway' ),
@@ -233,6 +243,16 @@ $astroway_cards = [
 			[ 'date', 'string', true, __( 'Birth date in YYYY-MM-DD.', 'astroway' ) ],
 			[ 'system', 'string', false, __( 'pythagorean (default), chaldean, kabbalistic or tamil.', 'astroway' ) ],
 			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_compatibility_matrix',
+		'title'       => __( 'Sign Compatibility Matrix', 'astroway' ),
+		'description' => __( 'Every pair of signs by its classical relation, or one sign against the other eleven. Rendered into the page; no key needed.', 'astroway' ),
+		'example'     => '[astroway_compatibility_matrix sign="leo"]',
+		'block'       => 'astroway/compatibility-matrix',
+		'params'      => [
+			[ 'sign', 'string', false, __( 'One sign against the others; leave it out for all pairs.', 'astroway' ) ],
 		],
 	],
 	[

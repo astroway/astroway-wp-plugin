@@ -332,7 +332,9 @@ class UI {
 	/**
 	 * What the lines and marks mean.
 	 *
-	 * @param array $items Each `label` and either `line` (h or t) or `glyph`.
+	 * @param array $items Each `label` and one of `line` (h or t), `ring` (in
+	 *                     or out), `sample` (design, personality or both: a
+	 *                     bodygraph channel) or `glyph`.
 	 */
 	public static function legend( array $items ): string {
 		$html = '';
@@ -342,6 +344,13 @@ class UI {
 				$sign = self::line( $item['line'] );
 			} elseif ( in_array( $item['ring'] ?? '', [ 'in', 'out' ], true ) ) {
 				$sign = '<span class="astroway-legend__ring astroway-legend__ring--' . $item['ring'] . '" aria-hidden="true"></span>';
+			} elseif ( in_array( $item['sample'] ?? '', [ 'design', 'personality', 'both' ], true ) ) {
+				// A channel half of the bodygraph, drawn as the drawing draws it.
+				$both = 'both' === $item['sample'];
+				$sign = '<svg class="astroway-line" viewBox="0 0 26 8" aria-hidden="true" focusable="false">'
+					. ( 'personality' === $item['sample'] ? '' : '<line class="astroway-bodygraph__design" x1="1" y1="4" x2="25" y2="4"/>' )
+					. ( 'design' === $item['sample'] ? '' : '<line class="astroway-bodygraph__personality' . ( $both ? ' is-both' : '' ) . '" x1="1" y1="4" x2="25" y2="4"/>' )
+					. '</svg>';
 			} elseif ( '' !== (string) ( $item['glyph'] ?? '' ) ) {
 				$sign = Glyphs::icon( (string) $item['glyph'] );
 			}
@@ -557,15 +566,20 @@ class UI {
 	/**
 	 * Labelled bars: compatibility by sphere.
 	 *
-	 * @param array $rows Each `label`, `value`, `max`, optional `text` for the end column.
+	 * @param array $rows Each `label`, `value`, `max`, optional `text` for the end
+	 *                    column, `glyph` before the label, and `value` null for a
+	 *                    row with nothing to measure: no bar, only its text.
 	 */
 	public static function bars( array $rows ): string {
 		$html = '';
 		foreach ( $rows as $row ) {
 			$max   = max( 1, (float) ( $row['max'] ?? 100 ) );
+			$none  = array_key_exists( 'value', $row ) && null === $row['value'];
 			$value = (float) ( $row['value'] ?? 0 );
 			$text  = (string) ( $row['text'] ?? self::n( $value ) );
-			$html .= '<li><span>' . esc_html( (string) ( $row['label'] ?? '' ) ) . '</span>' . self::meter( $value / $max ) . '<span class="astroway-bars__value">' . esc_html( $text ) . '</span></li>';
+			$glyph = '' === (string) ( $row['glyph'] ?? '' ) ? '' : Glyphs::icon( (string) $row['glyph'] ) . ' ';
+			$bar   = $none ? '<span aria-hidden="true"></span>' : self::meter( $value / $max );
+			$html .= '<li><span>' . $glyph . esc_html( (string) ( $row['label'] ?? '' ) ) . '</span>' . $bar . '<span class="astroway-bars__value">' . esc_html( $text ) . '</span></li>';
 		}
 		return '' === $html ? '' : '<ul class="astroway-bars">' . $html . '</ul>';
 	}

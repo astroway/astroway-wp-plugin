@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/compatibility-matrix",
+	"title": "Sign Compatibility Matrix (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"compatibility",
+		"zodiac",
+		"matrix",
+		"signs",
+		"astroway"
+	],
+	"description": "How each pair of zodiac signs stands to each other, or one sign against the rest.",
+	"textdomain": "astroway",
+	"icon": "grid-view",
+	"supports": {
+		"html": false,
+		"align": [
+			"center",
+			"wide"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"sign": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

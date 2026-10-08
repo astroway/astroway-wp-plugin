@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/tarot-spread",
+	"title": "Tarot Spread of the Day (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"tarot",
+		"spread",
+		"celtic cross",
+		"astroway"
+	],
+	"description": "Three cards or the Celtic Cross, drawn once a day for this site, each card read in its position.",
+	"textdomain": "astroway",
+	"icon": "images-alt",
+	"supports": {
+		"html": false,
+		"align": [
+			"center",
+			"wide"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"spread": {
+			"type": "string",
+			"default": "three-card",
+			"enum": [
+				"three-card",
+				"celtic-cross"
+			]
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

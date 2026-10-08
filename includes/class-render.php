@@ -42,6 +42,9 @@ class Render {
 		'zodiac_compatibility' => [ 'astroway-compat-card', 'zodiac-compatibility' ],
 		'chinese_zodiac'       => [ 'astroway-chinese-card', 'chinese-zodiac' ],
 		'synastry'             => [ 'astroway-synastry-card', 'synastry' ],
+		'zodiac_matrix'        => [ 'astroway-compat-card', 'zodiac-matrix' ],
+		'tarot_three_card'     => [ 'astroway-tarot-card', 'tarot-spread' ],
+		'tarot_celtic_cross'   => [ 'astroway-tarot-card', 'tarot-cross' ],
 	];
 
 	/**
@@ -149,6 +152,11 @@ class Render {
 				return self::bodygraph_card( $data, $lang, $params );
 			case 'synastry':
 				return self::synastry_card( $data, $lang, $params );
+			case 'zodiac_matrix':
+				return self::matrix_card( $data, $lang, $params );
+			case 'tarot_three_card':
+			case 'tarot_celtic_cross':
+				return self::spread_card( $widget, $data, $lang );
 		}
 		return '';
 	}
@@ -253,14 +261,12 @@ class Render {
 	}
 
 	/**
-	 * Human Design chart as text.
+	 * Human Design chart: the facts as text, then the bodygraph, drawn here.
 	 *
-	 * Unlike the natal card this one drops the frame entirely rather than keeping
-	 * it alongside. The natal frame draws a wheel, a picture the JSON does not
-	 * carry. `/v1/embed/bodygraph` draws nothing: checked against the live
-	 * response, it is the same handful of facts as a text table with emoji for
-	 * the centres. Keeping it would print the reading twice on the page, the
-	 * second copy in someone else's stylesheet and invisible to a crawler.
+	 * `/v1/embed/bodygraph` draws nothing: checked against the live response,
+	 * it is the same handful of facts as a text table with emoji for the
+	 * centres. Keeping it would print the reading twice on the page, the second
+	 * copy in someone else's stylesheet and invisible to a crawler.
 	 */
 	private static function bodygraph_card( array $data, string $lang, array $params ): string {
 		$type = trim( (string) ( $data['type'] ?? '' ) );
@@ -312,10 +318,153 @@ class Render {
 		}
 		$inner .= self::detail_list( $rows );
 
-		$inner .= self::hd_centres( $data['centers'] ?? [] );
-		$inner .= self::hd_channels( $data['channels'] ?? [] );
+		$channels = is_array( $data['channels'] ?? null ) ? $data['channels'] : [];
+		$inner   .= UI::tabs(
+			__( 'Human Design', 'astroway' ),
+			[
+				[
+					'label' => __( 'Bodygraph', 'astroway' ),
+					'html'  => self::hd_bodygraph( $data, $title ),
+				],
+				[
+					'label' => __( 'Centres and channels', 'astroway' ),
+					'html'  => self::hd_centres( $data['centers'] ?? [] ) . self::hd_channels( $channels ),
+				],
+			]
+		);
 
 		return self::shell( 'bodygraph', $lang, $inner );
+	}
+
+	/** The HD planets in the order every chart lists them, with their glyphs. */
+	private const HD_PLANETS = [
+		'Sun'     => 'sun',
+		'Earth'   => 'planet-earth',
+		'NNode'   => 'north-node',
+		'SNode'   => 'south-node',
+		'Moon'    => 'moon',
+		'Mercury' => 'mercury',
+		'Venus'   => 'venus',
+		'Mars'    => 'mars',
+		'Jupiter' => 'jupiter',
+		'Saturn'  => 'saturn',
+		'Uranus'  => 'uranus',
+		'Neptune' => 'neptune',
+		'Pluto'   => 'pluto',
+	];
+
+	/**
+	 * The drawing over its two columns of activations: design on the left,
+	 * personality on the right, as on every printed chart. Under it rather
+	 * than beside it: beside, the card would need about 650px before a column
+	 * head such as "Persönlichkeit" fits.
+	 */
+	private static function hd_bodygraph( array $data, string $title ): string {
+		$centres = [];
+		$defined = [];
+		foreach ( (array) ( $data['centers'] ?? [] ) as $centre ) {
+			if ( is_array( $centre ) && in_array( $centre['name'] ?? '', Bodygraph::centres(), true ) ) {
+				$centres[ $centre['name'] ] = ! empty( $centre['defined'] );
+				if ( ! empty( $centre['defined'] ) ) {
+					$defined[] = self::hd_centre_label( (string) $centre['name'] );
+				}
+			}
+		}
+		if ( empty( $centres ) ) {
+			return '';
+		}
+
+		$gates = [];
+		$sides = [
+			'd' => '',
+			'p' => '',
+		];
+		foreach ( [
+			'd' => 'designActivations',
+			'p' => 'personalityActivations',
+		] as $side => $key ) {
+			$by_planet = [];
+			foreach ( (array) ( $data[ $key ] ?? [] ) as $act ) {
+				if ( is_array( $act ) && is_string( $act['planet'] ?? null ) && isset( self::HD_PLANETS[ $act['planet'] ], $act['gate'], $act['line'] ) ) {
+					$by_planet[ $act['planet'] ] = $act;
+				}
+			}
+			foreach ( self::HD_PLANETS as $planet => $glyph ) {
+				if ( ! isset( $by_planet[ $planet ] ) ) {
+					continue;
+				}
+				$gate                    = (int) $by_planet[ $planet ]['gate'];
+				$line                    = (int) $by_planet[ $planet ]['line'];
+				$gates[ $gate ][ $side ] = true;
+				$sides[ $side ]         .= '<li>' . Glyphs::icon( $glyph, self::hd_planet_label( $planet ) )
+					. '<span aria-hidden="true">' . $gate . '.' . $line . '</span><span class="astroway-sr">'
+					/* translators: 1: Human Design gate number, 2: line number within the gate */
+					. esc_html( sprintf( __( 'gate %1$d, line %2$d', 'astroway' ), $gate, $line ) ) . '</span></li>';
+			}
+		}
+
+		$names = [];
+		foreach ( (array) ( $data['channels'] ?? [] ) as $channel ) {
+			if ( is_array( $channel ) && isset( $channel['gate1'], $channel['gate2'] ) ) {
+				$names[] = (int) $channel['gate1'] . '-' . (int) $channel['gate2'];
+			}
+		}
+		$desc = empty( $defined )
+			? __( 'No centre is defined.', 'astroway' )
+			/* translators: %s = list of centre names */
+			: sprintf( __( 'Defined centres: %s.', 'astroway' ), implode( ', ', $defined ) );
+		if ( ! empty( $names ) ) {
+			/* translators: %s = list of channels such as 13-33 */
+			$desc .= ' ' . sprintf( __( 'Channels: %s.', 'astroway' ), implode( ', ', $names ) );
+		}
+
+		$side = static function ( string $kind, string $head, string $items ): string {
+			if ( '' === $items ) {
+				return '';
+			}
+			return '<div class="astroway-bodygraph__side astroway-bodygraph__side--' . $kind . '"><p class="astroway-bodygraph__head">' . esc_html( $head ) . '</p><ul>' . $items . '</ul></div>';
+		};
+
+		$html  = '<figure class="astroway-bodygraph">';
+		$html .= '<div class="astroway-bodygraph__graph">' . Bodygraph::draw(
+			[
+				'centres' => $centres,
+				'gates'   => $gates,
+				'title'   => $title,
+				'desc'    => $desc,
+			]
+		) . '</div>';
+		$cols  = $side( 'design', __( 'Design', 'astroway' ), $sides['d'] ) . $side( 'personality', __( 'Personality', 'astroway' ), $sides['p'] );
+		$html .= '' === $cols ? '' : '<div class="astroway-bodygraph__sides">' . $cols . '</div>';
+		$html .= '<figcaption>' . UI::legend(
+			[
+				[
+					'sample' => 'design',
+					'label'  => __( 'Design (unconscious)', 'astroway' ),
+				],
+				[
+					'sample' => 'personality',
+					'label'  => __( 'Personality (conscious)', 'astroway' ),
+				],
+				[
+					'sample' => 'both',
+					'label'  => __( 'Both', 'astroway' ),
+				],
+			]
+		) . '</figcaption>';
+		return $html . '</figure>';
+	}
+
+	private static function hd_planet_label( string $raw ): string {
+		switch ( $raw ) {
+			case 'Earth':
+				return _x( 'Earth', 'planet', 'astroway' );
+			case 'NNode':
+				return self::planet_label( 'North Node' );
+			case 'SNode':
+				return self::planet_label( 'South Node' );
+		}
+		return self::planet_label( $raw );
 	}
 
 	/** Defined centres named, undefined ones counted: nine lines would drown the card. */
@@ -1644,41 +1793,66 @@ class Render {
 		if ( ! is_array( $drawn ) || ! is_array( $drawn['card'] ?? null ) ) {
 			return '';
 		}
-
-		$card        = $drawn['card'];
-		$is_reversed = ! empty( $drawn['reversed'] );
-		// The api ships both readings on every card; which one applies depends on
-		// how it was drawn, so picking the wrong branch silently reverses the meaning.
-		$reading = $is_reversed ? ( $card['reversed'] ?? [] ) : ( $card['upright'] ?? [] );
-
-		$name = (string) ( $card['name'] ?? '' );
-		if ( '' === $name ) {
+		$read = Tarot::read( $drawn, is_array( $data['localized'] ?? null ) ? $data['localized'] : [], 'en' === Plugin::resolve_lang( $lang ) );
+		if ( '' === $read['name'] ) {
 			return '';
 		}
-		if ( $is_reversed ) {
-			$name = sprintf(
-				/* translators: %s = tarot card name */
-				__( '%s (reversed)', 'astroway' ),
-				$name
-			);
-		}
 
-		$inner  = '<header class="astroway-card__header">';
-		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Card of the day', 'astroway' ) . '</h3>';
-		$inner .= self::date_line( (string) ( $data['date'] ?? '' ) );
-		$inner .= '</header>';
-		$inner .= '<p class="astroway-card__lead">' . esc_html( $name ) . '</p>';
-
-		$keywords = isset( $reading['keywords'] ) && is_array( $reading['keywords'] ) ? $reading['keywords'] : [];
-		if ( ! empty( $keywords ) ) {
-			$inner .= '<p class="astroway-card__keywords">' . esc_html( implode( ', ', array_map( 'strval', $keywords ) ) ) . '</p>';
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Card of the day', 'astroway' ),
+				'meta_html' => self::kind_meta( __( 'Rider-Waite-Smith', 'astroway' ), (string) ( $data['date'] ?? '' ) ),
+			]
+		);
+		$inner .= '<div class="astroway-tarot">' . Tarot::face( $drawn ) . '<div class="astroway-tarot__text">';
+		$inner .= '<p class="astroway-card__lead">' . esc_html( Tarot::title( $read ) ) . '</p>';
+		if ( ! empty( $read['keywords'] ) ) {
+			$inner .= '<p class="astroway-card__keywords">' . esc_html( implode( ', ', $read['keywords'] ) ) . '</p>';
 		}
-		$meaning = trim( (string) ( $reading['meaning'] ?? '' ) );
-		if ( '' !== $meaning ) {
-			$inner .= '<div class="astroway-card__body"><p>' . esc_html( $meaning ) . '</p></div>';
+		if ( '' !== $read['meaning'] ) {
+			$inner .= '<div class="astroway-card__body"><p>' . esc_html( $read['meaning'] ) . '</p></div>';
 		}
+		$inner .= '</div></div>';
 
 		return self::shell( 'tarot_daily', $lang, $inner );
+	}
+
+	/**
+	 * A spread of the day: three cards in a row, or the Celtic Cross laid out
+	 * with the ten cards listed under it.
+	 */
+	private static function spread_card( string $widget, array $data, string $lang ): string {
+		$drawn = array_values( array_filter( (array) ( $data['drawn'] ?? [] ), 'is_array' ) );
+		$cross = 'tarot_celtic_cross' === $widget;
+		if ( count( $drawn ) !== ( $cross ? 10 : 3 ) ) {
+			return '';
+		}
+		$localized = is_array( $data['localized'] ?? null ) ? $data['localized'] : [];
+
+		$english = 'en' === Plugin::resolve_lang( $lang );
+		$items   = '';
+		foreach ( $drawn as $i => $one ) {
+			$items .= Tarot::item( $one, $localized, $english, $cross ? $i + 1 : 0 );
+		}
+		if ( '' === $items ) {
+			return '';
+		}
+
+		$title = $english ? (string) ( $data['spread']['name'] ?? '' ) : '';
+		if ( ! empty( $localized['textLocalized'] ) && '' !== trim( (string) ( $localized['spread']['name'] ?? '' ) ) ) {
+			$title = (string) $localized['spread']['name'];
+		}
+
+		$inner  = UI::header(
+			[
+				'title'     => '' === trim( $title ) ? __( 'Tarot spread', 'astroway' ) : $title,
+				'meta_html' => esc_html__( 'Spread of the day', 'astroway' ),
+			]
+		);
+		$inner .= $cross ? Tarot::cross( $drawn ) : '';
+		$inner .= '<ol class="astroway-spread astroway-spread--' . ( $cross ? 'cross' : 'three' ) . '">' . $items . '</ol>';
+
+		return self::shell( $widget, $lang, $inner );
 	}
 
 	private static function planet_card( array $data, string $lang ): string {
@@ -2356,6 +2530,7 @@ class Render {
 
 		$inner  = UI::header( [ 'title' => $title ] );
 		$inner .= self::synastry_verdict( $score, (string) ( $data['label'] ?? '' ), isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects ) );
+		$inner .= self::synastry_spheres( is_array( $data['spheres'] ?? null ) ? $data['spheres'] : [] );
 
 		// Positions come from each chart on its own: the pair's answer holds
 		// the aspects between them and nothing about where either planet is.
@@ -2448,6 +2623,38 @@ class Render {
 			'planets' => $planets,
 			'houses'  => $houses,
 		];
+	}
+
+	/**
+	 * The score split by sphere, as bars: the aspects that touch each sphere's
+	 * planet, scored by the same model as the whole (api v2.204.0). A sphere
+	 * with no aspect has no score, and draws none: an empty sphere is not an
+	 * average one. Keys past the six known are left out rather than untranslated.
+	 */
+	private static function synastry_spheres( array $spheres ): string {
+		$names = [
+			'identity'      => [ 'sun', __( 'Identity', 'astroway' ) ],
+			'emotional'     => [ 'moon', __( 'Emotions', 'astroway' ) ],
+			'communication' => [ 'mercury', __( 'Communication', 'astroway' ) ],
+			'love'          => [ 'venus', __( 'Love', 'astroway' ) ],
+			'passion'       => [ 'mars', __( 'Passion', 'astroway' ) ],
+			'commitment'    => [ 'saturn', __( 'Commitment', 'astroway' ) ],
+		];
+		$rows  = [];
+		foreach ( $spheres as $sphere ) {
+			$key = is_array( $sphere ) ? (string) ( $sphere['key'] ?? '' ) : '';
+			if ( ! isset( $names[ $key ] ) ) {
+				continue;
+			}
+			$score  = is_numeric( $sphere['score'] ?? null ) ? max( 0, min( 100, (int) round( (float) $sphere['score'] ) ) ) : null;
+			$rows[] = [
+				'glyph' => $names[ $key ][0],
+				'label' => $names[ $key ][1],
+				'value' => $score,
+				'text'  => null === $score ? __( 'no aspects', 'astroway' ) : (string) $score,
+			];
+		}
+		return empty( $rows ) ? '' : UI::section( __( 'By sphere', 'astroway' ), UI::bars( $rows ) );
 	}
 
 	/** The score in a ring, its word, and how many aspects it rests on. */
@@ -2683,6 +2890,150 @@ class Render {
 		return $labels[ $key ] ?? ucfirst( $key );
 	}
 
+	private const ZODIAC = [ 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ];
+
+	/**
+	 * Every pair of signs, or one sign against the other eleven.
+	 *
+	 * The api sends a relation and a tone and no number, on purpose: a pair of
+	 * Sun signs has nothing to weigh, so a percentage would be invented. The
+	 * grid draws the relation as its aspect glyph and the tone as its colour;
+	 * two signs one or five apart "do not see each other" and take the
+	 * semisextile and quincunx marks, drawn neutral.
+	 */
+	private static function matrix_card( array $data, string $lang, array $params ): string {
+		$pairs = [];
+		foreach ( (array) ( $data['pairs'] ?? [] ) as $pair ) {
+			if ( is_array( $pair ) && in_array( $pair['signA'] ?? '', self::ZODIAC, true ) && in_array( $pair['signB'] ?? '', self::ZODIAC, true ) ) {
+				$pairs[ $pair['signA'] . '|' . $pair['signB'] ] = $pair;
+			}
+		}
+		if ( count( $pairs ) < 66 ) {
+			return '';
+		}
+
+		$sign = strtolower( trim( (string) ( $params['sign'] ?? '' ) ) );
+		$sign = in_array( $sign, self::ZODIAC, true ) ? $sign : '';
+
+		$inner  = UI::header(
+			[
+				'title' => '' === $sign ? __( 'Sign compatibility', 'astroway' )
+					/* translators: %s = zodiac sign name */
+					: sprintf( __( '%s and the other signs', 'astroway' ), self::sign_label( $sign ) ),
+				'medal' => $sign,
+			]
+		);
+		$inner .= '<p class="astroway-card__intro">' . esc_html__( 'How each pair of signs stands in the zodiac: the classical relation, harmonious, challenging or unrelated. It is a relation of signs, not a score; for two people, their charts say far more.', 'astroway' ) . '</p>';
+
+		if ( '' !== $sign ) {
+			$rows = [];
+			foreach ( self::ZODIAC as $other ) {
+				if ( $other === $sign ) {
+					continue;
+				}
+				$pair   = self::matrix_pair( $pairs, $sign, $other );
+				$rows[] = [
+					'glyph' => self::relation_glyph( $pair ),
+					'kind'  => self::tone_kind( (string) ( $pair['tone'] ?? '' ) ),
+					'text'  => sprintf(
+						/* translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine" */
+						__( '%1$s: %2$s', 'astroway' ),
+						self::sign_label( $other ),
+						self::relation_label( (string) ( $pair['relation'] ?? '' ) )
+					),
+					'note'  => self::relation_note( (string) ( $pair['relation'] ?? '' ) ),
+				];
+			}
+			$inner .= UI::aspects( $rows );
+		} else {
+			$signs = [];
+			foreach ( self::ZODIAC as $one ) {
+				$signs[] = [
+					'id'   => $one,
+					'name' => self::sign_label( $one ),
+				];
+			}
+			$cells = [];
+			foreach ( $pairs as $pair ) {
+				if ( $pair['signA'] === $pair['signB'] ) {
+					continue;
+				}
+				$cells[] = [
+					'a'     => $pair['signA'],
+					'b'     => $pair['signB'],
+					'glyph' => self::relation_glyph( $pair ),
+					'kind'  => self::tone_kind( (string) ( $pair['tone'] ?? '' ) ),
+					'text'  => sprintf(
+						/* translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g. "trine" */
+						__( '%1$s and %2$s: %3$s', 'astroway' ),
+						self::sign_label( $pair['signA'] ),
+						self::sign_label( $pair['signB'] ),
+						self::relation_label( (string) ( $pair['relation'] ?? '' ) )
+					),
+				];
+			}
+			$inner .= UI::aspect_grid( $signs, $cells, __( 'Sign compatibility', 'astroway' ) );
+		}
+		$inner .= UI::legend(
+			[
+				[
+					'line'  => 'h',
+					'label' => __( 'Harmony', 'astroway' ),
+				],
+				[
+					'line'  => 't',
+					'label' => __( 'Tension', 'astroway' ),
+				],
+				[
+					'glyph' => 'quincunx',
+					'label' => __( 'Do not see each other', 'astroway' ),
+				],
+			]
+		);
+		return self::shell( 'zodiac_matrix', $lang, $inner );
+	}
+
+	/** The pair in either order: the api sends each once, the earlier sign first. */
+	private static function matrix_pair( array $pairs, string $one, string $two ): array {
+		return $pairs[ $one . '|' . $two ] ?? $pairs[ $two . '|' . $one ] ?? [];
+	}
+
+	private static function relation_glyph( array $pair ): string {
+		$relation = (string) ( $pair['relation'] ?? '' );
+		if ( 'aversion' === $relation ) {
+			return 1 === (int) ( $pair['distance'] ?? 0 ) || 11 === (int) ( $pair['distance'] ?? 0 ) ? 'semisextile' : 'quincunx';
+		}
+		return 'same' === $relation ? 'conjunction' : $relation;
+	}
+
+	private static function tone_kind( string $tone ): string {
+		return 'harmonious' === $tone ? 'h' : ( 'challenging' === $tone ? 't' : 'n' );
+	}
+
+	private static function relation_label( string $relation ): string {
+		$labels = [
+			'same'       => __( 'the same sign', 'astroway' ),
+			'sextile'    => __( 'sextile', 'astroway' ),
+			'square'     => __( 'square', 'astroway' ),
+			'trine'      => __( 'trine', 'astroway' ),
+			'opposition' => __( 'opposite', 'astroway' ),
+			'aversion'   => __( 'aversion', 'astroway' ),
+		];
+		return $labels[ $relation ] ?? $relation;
+	}
+
+	/** What each relation means for two signs, in a phrase. */
+	private static function relation_note( string $relation ): string {
+		$notes = [
+			'sextile'    => __( 'Two signs apart: friendly elements that help each other.', 'astroway' ),
+			'square'     => __( 'Three signs apart: the same drive in clashing elements.', 'astroway' ),
+			'trine'      => __( 'Four signs apart: the same element, easy understanding.', 'astroway' ),
+			'opposition' => __( 'Opposite signs: attraction and pull in one.', 'astroway' ),
+			'aversion'   => __( 'One or five signs apart: classically they do not see each other.', 'astroway' ),
+		];
+		return $notes[ $relation ] ?? '';
+	}
+
 	/** How many rows the author asked for, between one and twenty. Six by default. */
 	private static function aspect_count( array $params ): int {
 		$raw = (int) ( $params['aspects'] ?? 0 );
@@ -2719,34 +3070,82 @@ class Render {
 		return self::shell( 'zodiac_compatibility', $lang, $inner );
 	}
 
+	/** The earthly branch of each animal, the character the sign is written with. */
+	private const BRANCHES = [
+		'rat'     => '子',
+		'ox'      => '丑',
+		'tiger'   => '寅',
+		'rabbit'  => '卯',
+		'dragon'  => '辰',
+		'snake'   => '巳',
+		'horse'   => '午',
+		'goat'    => '未',
+		'monkey'  => '申',
+		'rooster' => '酉',
+		'dog'     => '戌',
+		'pig'     => '亥',
+	];
+
+	/** The ten heavenly stems by the pinyin the api sends. */
+	private const STEMS = [
+		'jia'  => '甲',
+		'yi'   => '乙',
+		'bing' => '丙',
+		'ding' => '丁',
+		'wu'   => '戊',
+		'ji'   => '己',
+		'geng' => '庚',
+		'xin'  => '辛',
+		'ren'  => '壬',
+		'gui'  => '癸',
+	];
+
 	/**
-	 * The Chinese animal of a birth year, with its element and pillar.
+	 * The Chinese animal of a birth year: its branch character in the colour of
+	 * the year's element, the pillar of stem and branch, and the api's reading
+	 * of the animal and of the element that colours it.
 	 *
-	 * The api sends the animal as an emoji beside its English name. The emoji
-	 * is printed as decoration and hidden from assistive technology, because
-	 * "horse face" read aloud in front of the word Horse is noise.
+	 * The api sends the animal as an emoji too. It is not printed: iOS and
+	 * Android draw it in their own styles, and the character is the sign.
 	 */
 	private static function chinese_card( array $data, string $lang ): string {
 		$animal = trim( (string) ( $data['animal'] ?? '' ) );
 		if ( '' === $animal ) {
 			return '';
 		}
-
+		$slug    = strtolower( $animal );
 		$element = is_array( $data['element'] ?? null ) ? $data['element'] : [];
-		$glyph   = trim( (string) ( $data['glyph'] ?? '' ) );
+		$year_el = strtolower( trim( (string) ( $element['cycling'] ?? '' ) ) );
+		$name    = self::animal_label( $animal );
 
-		$inner  = '<header class="astroway-card__header">';
-		$inner .= '<h3 class="astroway-card__title">' . esc_html__( 'Chinese zodiac', 'astroway' ) . '</h3>';
-		if ( ! empty( $data['solarYear'] ) ) {
-			$inner .= '<span class="astroway-card__meta">' . esc_html( (string) (int) $data['solarYear'] ) . '</span>';
-		}
-		$inner .= '</header>';
+		$inner = UI::header(
+			[
+				'title'     => $name,
+				'meta_html' => esc_html__( 'Chinese zodiac', 'astroway' ) . ( empty( $data['solarYear'] ) ? '' : ' <span class="astroway-card__when"><span aria-hidden="true">·</span>' . (int) $data['solarYear'] . '</span>' ),
+			]
+		);
 
-		$inner .= '<p class="astroway-card__lead">';
-		if ( '' !== $glyph ) {
-			$inner .= '<span class="astroway-card__glyph" aria-hidden="true">' . esc_html( $glyph ) . '</span> ';
+		$pillar = '';
+		$parts  = explode( '-', (string) ( $data['pillar'] ?? '' ) );
+		if ( 2 === count( $parts ) ) {
+			$cells = [
+				[ __( 'Heavenly stem', 'astroway' ), self::STEMS[ strtolower( $parts[0] ) ] ?? '', $parts[0] ],
+				[ __( 'Earthly branch', 'astroway' ), self::BRANCHES[ $slug ] ?? '', $parts[1] ],
+			];
+			foreach ( $cells as [ $label, $char, $pinyin ] ) {
+				$pillar .= '<div><dt>' . esc_html( $label ) . '</dt><dd>' . ( '' === $char ? '' : '<span class="astroway-chinese__stem" lang="zh">' . $char . '</span> ' ) . esc_html( $pinyin ) . '</dd></div>';
+			}
+			$pillar = '<dl class="astroway-chinese__pillar">' . $pillar . '</dl>';
 		}
-		$inner .= esc_html( self::animal_label( $animal ) ) . '</p>';
+
+		if ( isset( self::BRANCHES[ $slug ] ) ) {
+			$inner .= '<div class="astroway-chinese"' . ( '' === $year_el ? '' : ' data-astroway-element="' . esc_attr( $year_el ) . '"' ) . '>';
+			// The facts below name the animal; a screen reader need not guess a Chinese reading of it.
+			$inner .= '<span class="astroway-chinese__seal" aria-hidden="true" lang="zh">' . self::BRANCHES[ $slug ] . '</span>';
+			$inner .= $pillar . '</div>';
+		} else {
+			$inner .= $pillar;
+		}
 
 		$rows = [];
 		if ( ! empty( $element['fixed'] ) ) {
@@ -2760,11 +3159,59 @@ class Render {
 		if ( isset( $element['yin'] ) ) {
 			$rows[ __( 'Polarity', 'astroway' ) ] = $element['yin'] ? __( 'Yin', 'astroway' ) : __( 'Yang', 'astroway' );
 		}
-		if ( ! empty( $data['pillar'] ) ) {
+		if ( '' === $pillar && ! empty( $data['pillar'] ) ) {
 			$rows[ __( 'Pillar', 'astroway' ) ] = (string) $data['pillar'];
 		}
+		$inner .= self::detail_list( $rows );
+		$inner .= self::chinese_reading( $slug, $year_el, $lang );
 
-		return self::shell( 'chinese_zodiac', $lang, $inner . self::detail_list( $rows ) );
+		return self::shell( 'chinese_zodiac', $lang, $inner );
+	}
+
+	/**
+	 * The api's texts on the animal and on the year's element. Seventeen texts,
+	 * not sixty: a Metal Horse is the Horse coloured by Metal, as the tradition
+	 * reads it. A text the api has not translated is left out rather than
+	 * shown in another language.
+	 */
+	private static function chinese_reading( string $animal, string $element, string $lang ): string {
+		$texts = PublicData::get( 'chinese_texts', [ 'lang' => $lang ] );
+		if ( ! is_array( $texts ) || ( empty( $texts['textLocalized'] ) && 'en' !== Plugin::resolve_lang( $lang ) ) ) {
+			return '';
+		}
+
+		$html = '';
+		$a    = is_array( $texts['animals'][ $animal ] ?? null ) ? $texts['animals'][ $animal ] : [];
+		$body = '';
+		if ( '' !== trim( (string) ( $a['character'] ?? '' ) ) ) {
+			$body .= '<p>' . esc_html( trim( (string) $a['character'] ) ) . '</p>';
+		}
+		// Sentences, not values: a term over its paragraph rather than the facts list.
+		$terms = '';
+		foreach ( [
+			'strengths' => __( 'Strengths', 'astroway' ),
+			'caution'   => __( 'Watch for', 'astroway' ),
+		] as $key => $label ) {
+			if ( '' !== trim( (string) ( $a[ $key ] ?? '' ) ) ) {
+				$terms .= '<dt>' . esc_html( $label ) . '</dt><dd>' . esc_html( trim( (string) $a[ $key ] ) ) . '</dd>';
+			}
+		}
+		if ( '' !== $terms ) {
+			$body .= '<dl class="astroway-chinese__reading">' . $terms . '</dl>';
+		}
+		if ( '' !== $body ) {
+			$html .= UI::section( __( 'Character', 'astroway' ), UI::prose( $body ) );
+		}
+
+		$e = is_array( $texts['elements'][ $element ] ?? null ) ? $texts['elements'][ $element ] : [];
+		if ( '' !== trim( (string) ( $e['text'] ?? '' ) ) ) {
+			$html .= UI::section(
+				/* translators: %s = one of the five Chinese elements, such as Metal */
+				sprintf( __( 'The year element: %s', 'astroway' ), self::element_label( ucfirst( $element ) ) ),
+				UI::prose( '<p>' . esc_html( trim( (string) $e['text'] ) ) . '</p>' )
+			);
+		}
+		return $html;
 	}
 
 	/** The twelve animals of the cycle. */

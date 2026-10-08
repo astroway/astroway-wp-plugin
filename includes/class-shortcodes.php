@@ -18,6 +18,7 @@ class Shortcodes {
 		add_shortcode( 'astroway_moon_sign', self::gated( 'moon_sign', [ __CLASS__, 'render_moon_sign' ] ) );
 		add_shortcode( 'astroway_rising_sign', self::gated( 'rising_sign', [ __CLASS__, 'render_rising_sign' ] ) );
 		add_shortcode( 'astroway_tarot_card', self::gated( 'daily_tarot', [ __CLASS__, 'render_tarot_card' ] ) );
+		add_shortcode( 'astroway_tarot_spread', self::gated( 'tarot_spread', [ __CLASS__, 'render_tarot_spread' ] ) );
 		add_shortcode( 'astroway_today_in_sky', self::gated( 'today_in_sky', [ __CLASS__, 'render_today_in_sky' ] ) );
 		add_shortcode( 'astroway_fortune_cookie', self::gated( 'fortune_cookie', [ __CLASS__, 'render_fortune_cookie' ] ) );
 		add_shortcode( 'astroway_kundli', self::gated( 'kundli', [ __CLASS__, 'render_kundli' ] ) );
@@ -44,6 +45,7 @@ class Shortcodes {
 		add_shortcode( 'astroway_yearly_horoscope', self::gated( 'yearly_horoscope', [ __CLASS__, 'render_yearly_horoscope' ] ) );
 		add_shortcode( 'astroway_horoscope_yearly', self::gated( 'yearly_horoscope', [ __CLASS__, 'render_yearly_horoscope' ] ) );
 		add_shortcode( 'astroway_zodiac_compatibility', self::gated( 'zodiac_compatibility', [ __CLASS__, 'render_zodiac_compatibility' ] ) );
+		add_shortcode( 'astroway_compatibility_matrix', self::gated( 'zodiac_matrix', [ __CLASS__, 'render_compatibility_matrix' ] ) );
 		add_shortcode( 'astroway_horoscope_compatibility', self::gated( 'zodiac_compatibility', [ __CLASS__, 'render_zodiac_compatibility' ] ) );
 		add_shortcode( 'astroway_chinese_zodiac', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
 		add_shortcode( 'astroway_chinese_zodiac_animal', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
@@ -274,6 +276,25 @@ class Shortcodes {
 			'astroway_zodiac_compatibility'
 		);
 		return Render::keyed( 'astroway_zodiac_compatibility', 'zodiac_compatibility', $atts );
+	}
+
+	/** Every pair of signs, or one sign against the other eleven. No key needed. */
+	public static function render_compatibility_matrix( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'sign' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_compatibility_matrix'
+		);
+		return Render::widget(
+			'zodiac_matrix',
+			[
+				'sign' => self::sanitize_sign( $atts['sign'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
 	}
 
 	/** The Chinese animal, element and pillar of a birth moment. */
@@ -585,6 +606,20 @@ class Shortcodes {
 				'lang' => $lang,
 			]
 		);
+	}
+
+	/** A spread of the day: three cards, or the Celtic Cross. No key needed. */
+	public static function render_tarot_spread( $atts ): string {
+		$atts   = shortcode_atts(
+			[
+				'spread' => 'three-card',
+				'lang'   => '',
+			],
+			(array) $atts,
+			'astroway_tarot_spread'
+		);
+		$widget = 'celtic-cross' === strtolower( trim( (string) $atts['spread'] ) ) ? 'tarot_celtic_cross' : 'tarot_three_card';
+		return Render::widget( $widget, [ 'lang' => self::resolve_lang( $atts['lang'] ) ] );
 	}
 
 	/**

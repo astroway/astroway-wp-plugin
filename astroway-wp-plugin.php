@@ -3,7 +3,7 @@
  * Plugin Name:       AstroWay – Astrology, Birth Chart & Horoscope Widgets
  * Plugin URI:        https://github.com/astroway/astroway-wp-plugin
  * Description:       Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, Tarot, Numerology, Human Design API. Powered by api.astroway.info.
- * Version:           2.2.0
+ * Version:           2.3.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            AstroWay
@@ -40,6 +40,8 @@ require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-public-data.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-glyphs.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-ui.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-wheel.php';
+require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-bodygraph.php';
+require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-tarot.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-render.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-shortcodes.php';
 require_once ASTROWAY_WP_PLUGIN_DIR . 'includes/class-generated-registry.php';

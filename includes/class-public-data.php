@@ -54,42 +54,53 @@ class PublicData {
 	 * nothing rather than guess (there is no reasonable stand-in for a sign).
 	 */
 	private const ENDPOINTS = [
-		'daily_horoscope'   => [
+		'daily_horoscope'    => [
 			'path'      => '/public/horoscope/daily',
 			'freshness' => 'day',
 			'params'    => [ 'sign', 'date' ],
 			'required'  => [ 'sign' ],
 		],
-		'weekly_horoscope'  => [
+		'weekly_horoscope'   => [
 			'path'      => '/public/horoscope/weekly',
 			'freshness' => 'week',
 			'params'    => [ 'sign', 'date' ],
 			'required'  => [ 'sign' ],
 		],
-		'monthly_horoscope' => [
+		'monthly_horoscope'  => [
 			'path'      => '/public/horoscope/monthly',
 			'freshness' => 'month',
 			'params'    => [ 'sign', 'date' ],
 			'required'  => [ 'sign' ],
 		],
-		// No `lang`: the route does not read it. Confirmed by the api side on
-		// 2026-08-22 and by asking for en, de and uk on the same day, which
-		// returned the identical English card. Sending it anyway split the cache
-		// twenty-one ways and turned one call a day into up to twenty-one.
-		'tarot_daily'       => [
+		// With `lang` since api v2.205.0: the card's name, keywords and reading
+		// come back translated in `localized`. Before that the route ignored it.
+		'tarot_daily'        => [
 			'path'      => '/public/tarot/daily',
 			'freshness' => 'day',
 			'params'    => [ 'date' ],
 			'required'  => [],
-			'lang'      => false,
 		],
-		'moon_phase'        => [
+		// A spread of the day: the seed is the site and the date, so each site
+		// draws its own spread and keeps it until midnight UTC.
+		'tarot_three_card'   => [
+			'path'      => '/public/tarot/three-card',
+			'freshness' => 'day',
+			'params'    => [ 'seed' ],
+			'required'  => [],
+		],
+		'tarot_celtic_cross' => [
+			'path'      => '/public/tarot/celtic-cross',
+			'freshness' => 'day',
+			'params'    => [ 'seed' ],
+			'required'  => [],
+		],
+		'moon_phase'         => [
 			'path'      => '/public/moon-phase',
 			'freshness' => 'day',
 			'params'    => [ 'date' ],
 			'required'  => [],
 		],
-		'planet_of_day'     => [
+		'planet_of_day'      => [
 			'path'      => '/public/planet-of-day',
 			'freshness' => 'day',
 			'params'    => [ 'date' ],
@@ -99,7 +110,7 @@ class PublicData {
 		// a chart for a given birth moment is the same forever, so it is cached
 		// for a month rather than to a calendar boundary. No `lang` either, the
 		// payload is numbers.
-		'natal'             => [
+		'natal'              => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',
 			'freshness' => 'static',
@@ -109,7 +120,7 @@ class PublicData {
 		],
 		// Moon and rising signs read the same chart as the natal card and are
 		// cached under the same key: three widgets on one page cost one call.
-		'moon_sign'         => [
+		'moon_sign'          => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',
 			'freshness' => 'static',
@@ -117,7 +128,7 @@ class PublicData {
 			'required'  => [ 'date', 'time' ],
 			'lang'      => false,
 		],
-		'rising_sign'       => [
+		'rising_sign'        => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',
 			'freshness' => 'static',
@@ -131,7 +142,7 @@ class PublicData {
 		// hourly bucket rather than one, because it computes both charts and the
 		// matrix between them. Cached as `static` like the single chart: two
 		// birth moments do not stop aspecting each other.
-		'synastry'          => [
+		'synastry'           => [
 			'path'      => '/public/synastry',
 			'method'    => 'POST',
 			'freshness' => 'static',
@@ -141,9 +152,19 @@ class PublicData {
 			'required'  => [ 'date_a', 'date_b' ],
 			'lang'      => false,
 		],
-		// Human Design carries no `localized` object, so its closed sets (type,
-		// strategy, authority, definition, centre names) are translated here.
-		'bodygraph'         => [
+		// How each pair of signs stands in the zodiac: a relation and a tone, no
+		// score (api contract docs/WP-COMPAT-CONTRACT.md). Static, one unit.
+		'zodiac_matrix'      => [
+			'path'      => '/public/compatibility/matrix',
+			'freshness' => 'static',
+			'params'    => [],
+			'required'  => [],
+			'lang'      => false,
+		],
+		// Human Design's `localized` covers type, strategy, authority, geometry
+		// and the centres but not the definition or the not-self theme, so all
+		// of its closed sets are translated here, in one voice.
+		'bodygraph'          => [
 			'path'      => '/public/human-design',
 			'method'    => 'POST',
 			'freshness' => 'static',
@@ -159,7 +180,15 @@ class PublicData {
 	 * month, so a card on "today" does not pile up a month of skies.
 	 */
 	private const READS = [
-		'sky' => [
+		// Texts on the twelve animals and five elements for the Chinese sign
+		// card, which reads the sign itself on the keyed route.
+		'chinese_texts' => [
+			'path'      => '/public/chinese/zodiac/texts',
+			'freshness' => 'static',
+			'params'    => [],
+			'required'  => [],
+		],
+		'sky'           => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',
 			'freshness' => 'day',
@@ -230,6 +259,11 @@ class PublicData {
 	 * calendar the api anchors on. Weekly answers are anchored to Monday and
 	 * monthly ones to the 1st, so the boundary is not simply midnight.
 	 */
+	/** The seed of a spread of the day: this site, this UTC day, this spread. */
+	public static function seed( string $path, int $now ): int {
+		return (int) ( crc32( home_url() . '|' . gmdate( 'Y-m-d', $now ) . '|' . $path ) & 0x7fffffff );
+	}
+
 	public static function ttl_for( string $freshness, ?int $now = null ): int {
 		$now = null === $now ? time() : $now;
 		// POSIX time counts UTC seconds with no leap seconds, so the modulo is
@@ -302,6 +336,9 @@ class PublicData {
 					if ( '' !== $date ) {
 						$query['date'] = $date;
 					}
+					break;
+				case 'seed':
+					$query['seed'] = self::seed( $config['path'], time() );
 					break;
 			}
 		}

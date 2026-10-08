@@ -20,6 +20,7 @@ class Blocks {
 			'moon-phase'           => [ Shortcodes::class, 'render_moon_phase' ],
 			'bodygraph'            => [ Shortcodes::class, 'render_bodygraph' ],
 			'daily-tarot'          => [ Shortcodes::class, 'render_tarot_card' ],
+			'tarot-spread'         => [ Shortcodes::class, 'render_tarot_spread' ],
 			'kundli'               => [ Shortcodes::class, 'render_kundli' ],
 			'transit'              => [ Shortcodes::class, 'render_transit' ],
 			'panchang'             => [ Shortcodes::class, 'render_panchang' ],
@@ -32,6 +33,7 @@ class Blocks {
 			'rising-sign'          => [ Shortcodes::class, 'render_rising_sign' ],
 			'yearly-horoscope'     => [ Shortcodes::class, 'render_yearly_horoscope' ],
 			'zodiac-compatibility' => [ Shortcodes::class, 'render_zodiac_compatibility' ],
+			'compatibility-matrix' => [ Shortcodes::class, 'render_compatibility_matrix' ],
 			'chinese-zodiac'       => [ Shortcodes::class, 'render_chinese_zodiac' ],
 			'retrograde'           => [ Shortcodes::class, 'render_retrograde' ],
 			'retrogrades'          => [ Shortcodes::class, 'render_retrogrades' ],
@@ -95,6 +97,7 @@ class Blocks {
 			'moon-phase'           => 'moon_phase',
 			'bodygraph'            => 'bodygraph',
 			'daily-tarot'          => 'daily_tarot',
+			'tarot-spread'         => 'tarot_spread',
 			'mini-chart'           => 'mini_chart',
 			'monthly-forecast'     => 'monthly_forecast',
 			'transit-timeline'     => 'transit_timeline',
@@ -106,6 +109,7 @@ class Blocks {
 			'planetary-hours'      => 'planetary_hours',
 			'yearly-horoscope'     => 'yearly_horoscope',
 			'zodiac-compatibility' => 'zodiac_compatibility',
+			'compatibility-matrix' => 'zodiac_matrix',
 			'chinese-zodiac'       => 'chinese_zodiac',
 		];
 		return $map[ $slug ] ?? $slug;

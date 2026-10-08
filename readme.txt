@@ -4,11 +4,11 @@ Tags: astrology, birth chart, horoscope, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Horoscope, birth chart, moon and tarot widgets that print as real text in your theme. Eighteen need no API key; 680 more run on a free one.
+Horoscope, birth chart, moon and tarot widgets that print as real text in your theme. Twenty need no API key; 680 more run on a free one.
 
 == Description ==
 
@@ -28,13 +28,13 @@ AstroWay → Shortcodes in your admin lists every shortcode with its parameters 
 
 = What needs a key =
 
-* **Nothing at all:** daily, weekly and monthly horoscopes, moon phase, Tarot card of the day, planet of the day, the natal chart with its reading, the Human Design bodygraph, the moon sign, the rising sign, synastry, the four sky cards (Mercury retrograde, all retrogrades, void of course Moon, planetary hours), the yearly horoscope, sign compatibility, the Chinese animal and the birth-data calculators. On first use the plugin asks api.astroway.info for a key of the site's own, proving it owns its address; there is nothing to sign up for. The site gets 300 readings an hour, and each answer is cached until the data changes.
+* **Nothing at all:** daily, weekly and monthly horoscopes, moon phase, Tarot card of the day, planet of the day, the natal chart with its reading, the Human Design bodygraph, the moon sign, the rising sign, synastry, the four sky cards (Mercury retrograde, all retrogrades, void of course Moon, planetary hours), the yearly horoscope, sign compatibility, the sign compatibility matrix, the tarot spreads of the day, the Chinese animal and the birth-data calculators. On first use the plugin asks api.astroway.info for a key of the site's own, proving it owns its address; there is nothing to sign up for. The site gets 300 readings an hour, and each answer is cached until the data changes.
 * **A free key, no card:** 10,000 credits a month. It adds the 680 generated shortcodes. Most calls cost 10 credits.
 * **A paid plan, from $5 a month:** more credits and a higher rate limit for busy sites. The daily transit alert email needs the Pro plan.
 
 = What renders into the page =
 
-Eleven widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), planet of the day, the natal chart, the Human Design bodygraph, the moon sign, the rising sign and the synastry between two charts. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The natal chart's wheel, its aspect grid and its element matrix are drawn into the page as well, in the same colours as the text around them. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+Thirteen widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), the tarot spreads of the day, planet of the day, the natal chart, the Human Design bodygraph, the moon sign, the rising sign, the synastry between two charts and the sign compatibility matrix. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The natal chart's wheel, its aspect grid and its element matrix, the Human Design bodygraph and the tarot cards are drawn into the page as well, in the same colours as the text around them. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
 
 = What the sky is doing right now =
 
@@ -50,15 +50,19 @@ Under the chart, each planet in its sign has its reading: edited texts from Astr
 
 = 680 more, for when you need them =
 
-Eighteen widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for 680 more endpoints: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; a free key comes with 10,000 credits a month, and most calls cost 10 of them.
+Twenty widgets are hand-built and need no key. Behind them the plugin also carries a shortcode and a block for 680 more endpoints: Vedic charts and dashas, four kinds of numerology, three tarot decks, BaZi, Zi Wei Dou Shu, Human Design, geomancy, runes, Mayan calendars, astrocartography, horary, and the Hellenistic traditions. AstroWay → Shortcodes lists them by family with a copy button on each. They are generated from the API specification rather than written one by one, so when the API gains an endpoint the plugin gains a shortcode. These need an API key; a free key comes with 10,000 credits a month, and most calls cost 10 of them.
 
 = The year, two signs, and the Chinese animal =
 
-Three cards read the signs themselves. The yearly horoscope, `[astroway_yearly_horoscope sign="leo"]`, prints the year ahead. `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]` prints how two signs read together, as prose rather than as a percentage: the API returns no score, and a number with no calculation behind it is worse than no number. `[astroway_chinese_zodiac date="1990-05-15"]` prints the animal of a birth year with its element, polarity and pillar.
+Three cards read the signs themselves. The yearly horoscope, `[astroway_yearly_horoscope sign="leo"]`, prints the year ahead. `[astroway_zodiac_compatibility sign1="leo" sign2="aquarius"]` prints how two signs read together, as prose rather than as a percentage: the API returns no score, and a number with no calculation behind it is worse than no number. `[astroway_compatibility_matrix]` draws every pair of signs as a grid of their classical relations, trine, square, opposition and the rest, coloured by whether they are harmonious or challenging; with `sign="leo"` it lists one sign against the other eleven, each with what the relation means. It is a relation of signs, not a score, and says so. `[astroway_chinese_zodiac date="1990-05-15"]` prints the animal of a birth year as its branch character in the colour of the year's element, with its polarity, its pillar of stem and branch, and a reading of the animal and of the element.
+
+= A card and a spread of the day =
+
+`[astroway_tarot_card]` draws one card a day with its reading. `[astroway_tarot_spread]` lays out three cards, past, present and future, and `[astroway_tarot_spread spread="celtic-cross"]` the ten cards of the Celtic Cross, each read in its position. Every site draws its own spread once a day, and the cards read in the language of the page.
 
 = Two charts, read against each other =
 
-The synastry card, `[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]`, prints the compatibility score in a ring with the word the API puts on it, the Sun, Moon and Ascendant of each person, and both charts on one bi-wheel: the first inside with its houses, the second on the outer ring, and the aspects between them as lines. Every aspect names whose planet is whose, because "Moon conjunct Mercury" says nothing until you know whose Moon, and says in a line what that kind of contact does between two people. The six closest are listed and the whole grid, points included, is one tab away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as five requests of the hourly allowance, because it is the grid between the two charts and each chart on its own, and it is cached for a month.
+The synastry card, `[astroway_synastry name_a="Olena" date_a="1990-05-15" time_a="14:30" name_b="Marc" date_b="1988-11-02" time_b="09:15"]`, prints the compatibility score in a ring with the word the API puts on it, the same score split into six spheres as bars (identity, emotions, communication, love, passion, commitment; a sphere no aspect touches says so rather than showing a middling bar), the Sun, Moon and Ascendant of each person, and both charts on one bi-wheel: the first inside with its houses, the second on the outer ring, and the aspects between them as lines. Every aspect names whose planet is whose, because "Moon conjunct Mercury" says nothing until you know whose Moon, and says in a line what that kind of contact does between two people. The six closest are listed and the whole grid, points included, is one tab away. A birth time you do not have is declared unknown rather than guessed at noon, which would move the Moon by up to six degrees and invent an aspect that is not there. The names never leave your server. No key needed; one of these counts as five requests of the hourly allowance, because it is the grid between the two charts and each chart on its own, and it is cached for a month.
 
 Add `transits="today"` to a natal chart, or a date such as `transits="2026-10-01"`, and it gains a Transits tab: the birth chart inside, the sky of that day on the outer ring, and the transits within three degrees listed tightest first.
 
@@ -76,7 +80,7 @@ The Astrology Section block sets a zodiac sign once and every AstroWay block ins
 
 = What still loads in a frame =
 
-Widgets that have no page-side template yet, and any widget whose data cannot be fetched at that moment, fall back to an embedded frame loaded by the visitor's own browser (30 requests/hour per visitor IP). Eighteen widgets need no key of any kind, and that is where most sites stop. The generated shortcodes behind them need one: a free key gives 10,000 credits a month, most calls cost 10, and paid plans raise the limits further. The daily transit alert email is the only thing in the plugin that asks for a paid plan.
+Widgets that have no page-side template yet, and any widget whose data cannot be fetched at that moment, fall back to an embedded frame loaded by the visitor's own browser (30 requests/hour per visitor IP). Twenty widgets need no key of any kind, and that is where most sites stop. The generated shortcodes behind them need one: a free key gives 10,000 credits a month, most calls cost 10, and paid plans raise the limits further. The daily transit alert email is the only thing in the plugin that asks for a paid plan.
 
 Under the hood the widgets are powered by api.astroway.info, with 700+ endpoints covering Western, Vedic, Hellenistic, Chinese and Mayan astrology, Tarot (Rider-Waite, Marseille, Lenormand), Numerology (Pythagorean, Chaldean, Kabbalistic, Tamil), Human Design and AI horoscopes.
 
@@ -150,7 +154,7 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 **What is sent:**
 
-* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign, synastry): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. Synastry also asks for each person's chart on its own, and a natal chart with `transits` for the planets at noon UTC on that day. Names given to the synastry widget are not among them: they head the table on your page and go no further. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
+* When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, tarot spreads, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign, synastry): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. Synastry also asks for each person's chart on its own, and a natal chart with `transits` for the planets at noon UTC on that day. The sign compatibility matrix asks for the table of sign pairs, which carries nothing about anyone. A tarot spread of the day sends a number made from your site's address and the date, so each site draws its own spread once a day. The Chinese animal card also asks for the texts on the twelve animals and five elements in the page's language, which carry nothing about anyone either. Names given to the synastry widget are not among them: they head the table on your page and go no further. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
 * When a widget falls back to an embedded frame (kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
 * When a visitor sends a birth data form (natal chart, compatibility, moon sign, rising sign): the date, time and coordinates they entered go to api.astroway.info, and the city name they typed goes to app.astroway.info to look up its coordinates and time zone. Both requests are made by your server; the visitor's IP address is not sent, and the answer is not stored.
 * When the site has no API key of its own: your site's address and the plugin version go to api.astroway.info to request a site key. The service then fetches a one-time proof from your site's REST route `/astroway/v1/verify` to confirm the site is yours. This runs in the background after activation and when an administrator opens the dashboard, until a key is issued.
@@ -182,6 +186,15 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 2.3.0 =
+* Synastry splits its score into six spheres, shown as bars: identity, emotions, communication, love, passion and commitment
+* New sign compatibility matrix: every pair of signs by its classical relation, or one sign against the other eleven with what each relation means; no invented percentages
+* New tarot spreads of the day: three cards in a row, or the Celtic Cross laid out with the second card across the first and the staff beside it, each card read in its position. One shortcode, `[astroway_tarot_spread spread="celtic-cross"]`, and one block; no key needed
+* Tarot cards have a face: the card's number and its suit's emblem in the suit's colour, turned upside down when the card came out reversed. The card of the day and the spreads now read in the page's language, name, keywords and meaning
+* The Chinese animal card shows its branch character as a seal in the colour of the year's element, the pillar of heavenly stem and earthly branch, and a reading of the animal and of the year's element
+* The Human Design card draws the bodygraph: the nine centres in their traditional colours, each channel half in the colour of the side that activates its gate, and the design and personality activations of all 13 planets under it
+* Every new string translated in all 20 bundled languages
 
 = 2.2.0 =
 * Synastry on a bi-wheel: both charts on one wheel, the first inside with its houses, the second on the outer ring, and the aspects between them as lines
