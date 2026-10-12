@@ -28,6 +28,12 @@ class Form {
 	private const PER_HOUR = 120;
 	private const NAME_MAX = 60;
 
+	/** Charts that are the minute of birth or nothing: no "time unknown" box. */
+	private const TIMED = [ 'rising_sign', 'solar_return', 'lunar_return', 'davison' ];
+
+	/** Forms for two people. */
+	private const PAIRS = [ 'synastry', 'davison' ];
+
 	/** The Moon's greatest drift from its noon longitude within a day, per the api. */
 	private const MOON_DRIFT = 7.7;
 
@@ -95,7 +101,7 @@ class Form {
 		}
 		wp_add_privacy_policy_content(
 			'AstroWay',
-			'<p>' . esc_html__( 'When a visitor fills in a birth chart, compatibility, moon sign or rising sign form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			'<p>' . esc_html__( 'When a visitor fills in a birth chart, compatibility, moon sign, rising sign, Solar Return, Lunar Return or Davison chart form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
 		);
 	}
 
@@ -105,10 +111,62 @@ class Form {
 		$id                   = $widget . '-' . self::$seq[ $widget ];
 		$lang                 = (string) ( $params['lang'] ?? '' );
 
+		// Returns and the Davison chart cost an owner key credits per call, so a
+		// visitor's form runs on the site key only, and without one is not shown.
+		if ( PublicData::is_paid( $widget ) && '' === SiteKey::key() ) {
+			return Render::admin_note( __( 'Visitors do not see this calculator: it runs on the site key, so that their charts never spend your credits, and a site connected to an AstroWay account has no site key. The shortcode with the birth data written in still works. Only administrators see this note.', 'astroway' ) );
+		}
 		if ( self::posted( self::MARKER ) !== $id || is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return self::card( $widget, $id, $lang, [] );
 		}
 		return self::answer( $widget, $id, $lang, $params );
+	}
+
+	/**
+	 * A spread of the day with a button under it that draws a new one for this
+	 * visitor. The fresh draw is asked with a random seed, uncached, behind the
+	 * same guards as a birth form; anything refused shows the spread of the day
+	 * with the reason, never an empty box.
+	 */
+	public static function redraw( string $widget, array $params ): string {
+		self::$seq[ $widget ] = ( self::$seq[ $widget ] ?? 0 ) + 1;
+		$params['redraw_id']  = $widget . '-' . self::$seq[ $widget ];
+
+		if ( self::posted( self::MARKER ) !== $params['redraw_id'] || is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || '' !== self::posted( self::TRAP ) ) {
+			return Render::widget( $widget, $params );
+		}
+
+		$refused = '';
+		if ( ! self::same_origin() ) {
+			$refused = __( 'This form works only on the site it is on.', 'astroway' );
+		} elseif ( ! self::allow( time() ) ) {
+			$refused = __( 'Too many draws from here in a short time. Try again in a few minutes.', 'astroway' );
+		} elseif ( self::busy() ) {
+			$refused = __( 'The cards are busy right now. Try again later.', 'astroway' );
+		}
+		if ( '' !== $refused ) {
+			return Render::widget( $widget, $params + [ 'redraw_note' => $refused ] );
+		}
+
+		$params['seed']    = random_int( 0, 0x7fffffff );
+		$params['redrawn'] = true;
+		$data              = PublicData::get( $widget, $params, false );
+		$html              = null === $data ? '' : Render::with_data( $widget, $data, $params );
+		if ( false === strpos( $html, 'astroway-card' ) || false !== strpos( $html, 'astroway-embed' ) ) {
+			self::failed();
+			unset( $params['seed'], $params['redrawn'] );
+			return Render::widget( $widget, $params + [ 'redraw_note' => __( 'The new draw did not come back. Try again in a moment.', 'astroway' ) ] );
+		}
+		return $html;
+	}
+
+	/** The button under a spread; after a fresh draw also the way back to the spread of the day. */
+	public static function redraw_control( string $id, bool $redrawn, string $note = '' ): string {
+		$trap = '<div class="astroway-form__trap" aria-hidden="true"><label>' . esc_html__( 'Leave empty', 'astroway' ) . ' <input type="text" name="' . self::TRAP . '" value="" tabindex="-1" autocomplete="off"></label></div>';
+		$back = $redrawn ? '<p class="astroway-redraw__back"><a href="">' . esc_html__( 'Back to the spread of the day', 'astroway' ) . '</a></p>' : '';
+		// The reason sits by the button that was pressed, not under the heading a screen away.
+		$why = '' === $note ? '' : UI::callout( esc_html( $note ), 'tens' );
+		return $why . '<div class="astroway-redraw">' . UI::form( $trap, [ self::MARKER => $id ], __( 'Draw again', 'astroway' ) ) . $back . '</div>';
 	}
 
 	/** What was posted for one person; $sfx is `_a` or `_b` on the form for two. */
@@ -124,12 +182,13 @@ class Form {
 			'lat'     => self::posted( 'aw_lat' . $sfx ),
 			'lng'     => self::posted( 'aw_lng' . $sfx ),
 			'tz'      => self::posted( 'aw_tz' . $sfx ),
+			'year'    => '' === $sfx ? self::posted( 'aw_year' ) : '',
 		];
 	}
 
 	/** The people a form asks about, by field suffix. */
 	private static function sides( string $widget ): array {
-		return 'synastry' === $widget ? [ '_a', '_b' ] : [ '' ];
+		return in_array( $widget, self::PAIRS, true ) ? [ '_a', '_b' ] : [ '' ];
 	}
 
 	/** @param array $given The shortcode's own attributes, for what the visitor is not asked. */
@@ -178,7 +237,50 @@ class Form {
 			return self::card( $widget, $id, $lang, $in, $errors, $choices );
 		}
 
-		if ( 'synastry' === $widget ) {
+		if ( 'davison' === $widget ) {
+			$params = [
+				'lang'    => $lang,
+				'nocache' => true,
+			];
+			foreach ( [
+				'_a' => 'a',
+				'_b' => 'b',
+			] as $sfx => $side ) {
+				$params[ 'date_' . $side ] = $in[ $sfx ]['date'];
+				$params[ 'time_' . $side ] = $in[ $sfx ]['time'];
+				$params[ 'lat_' . $side ]  = (string) $places[ $sfx ]['lat'];
+				$params[ 'lng_' . $side ]  = (string) $places[ $sfx ]['lng'];
+				$params[ 'tz_' . $side ]   = '';
+				$params[ 'name_' . $side ] = $in[ $sfx ]['name'];
+			}
+		} elseif ( 'solar_return' === $widget || 'lunar_return' === $widget ) {
+			// Cast at the place of birth unless the author fixed another one, whose
+			// zone then tells the local time; the place of birth's zone otherwise.
+			$moved = '' !== (string) ( $given['zone'] ?? '' ) || '' !== (string) ( $given['return_tz'] ?? '' );
+			$year  = (int) ( $given['year'] ?? 0 );
+			if ( '' !== $in['']['year'] ) {
+				$year = (int) $in['']['year'];
+			} elseif ( 0 === $year ) {
+				$year = Shortcodes::year_in_force( $in['']['date'] );
+			}
+			$after  = (string) ( $given['after'] ?? '' );
+			$params = [
+				'date'    => $in['']['date'],
+				'time'    => $in['']['time'],
+				'lat'     => (string) $places['']['lat'],
+				'lng'     => (string) $places['']['lng'],
+				'tz'      => '',
+				'lang'    => $lang,
+				'nocache' => true,
+				'zone'    => $moved ? (string) ( $given['zone'] ?? '' ) : (string) $places['']['tz'],
+				'year'    => $year,
+				// A visitor asks for their next return; the answer is not cached, so today costs nothing extra.
+				'after'   => '' !== $after ? $after : gmdate( 'Y-m-d' ),
+			];
+			foreach ( [ 'return_lat', 'return_lng', 'return_tz' ] as $kept ) {
+				$params[ $kept ] = (string) ( $given[ $kept ] ?? '' );
+			}
+		} elseif ( 'synastry' === $widget ) {
 			$params = [
 				'lang'    => $lang,
 				'nocache' => true,
@@ -215,7 +317,16 @@ class Form {
 		$data = PublicData::get( $widget, $params, false );
 		$html = null === $data ? '' : Render::with_data( $widget, $data, $params );
 		if ( false === strpos( $html, 'astroway-card' ) || false !== strpos( $html, 'astroway-embed' ) ) {
-			self::failed();
+			// A paid route that refused (a revoked site key answers 401) or a return
+			// the card refused is not the api failing, and must not close every form.
+			if ( ! PublicData::is_paid( $widget ) ) {
+				self::failed();
+			} elseif ( null !== $data ) {
+				$why = 'solar_return' === $widget
+					? __( 'This chart cannot be shown for this birth date yet. Try another year or come back later.', 'astroway' )
+					: __( 'This chart cannot be shown for this birth data yet. Come back later.', 'astroway' );
+				return self::card( $widget, $id, $lang, $in, [ '' => $why ] );
+			}
 			return self::card( $widget, $id, $lang, $in, [ '' => __( 'The calculation did not come back. Try again in a moment.', 'astroway' ) ] );
 		}
 
@@ -240,6 +351,8 @@ class Form {
 		if ( $in['unknown'] ) {
 			if ( 'rising_sign' === $widget ) {
 				$errors[ 'aw_time' . $sfx ] = __( 'The rising sign depends on the minute of birth; without the time it cannot be told.', 'astroway' );
+			} elseif ( in_array( $widget, self::TIMED, true ) ) {
+				$errors[ 'aw_time' . $sfx ] = __( 'This chart depends on the minute of birth; without the time it cannot be cast.', 'astroway' );
 			}
 		} elseif ( ! preg_match( '/^([01]\d|2[0-3]):[0-5]\d$/', $in['time'] ) ) {
 			$errors[ 'aw_time' . $sfx ] = __( 'Enter the time of birth, or tick that it is unknown.', 'astroway' );
@@ -253,6 +366,9 @@ class Form {
 		}
 		if ( ! $manual && '' === $in['place'] && mb_strlen( $in['city'] ) < 2 ) {
 			$errors[ 'aw_city' . $sfx ] = __( 'Enter the city of birth.', 'astroway' );
+		}
+		if ( 'solar_return' === $widget && '' !== $in['year'] && ( ! ctype_digit( $in['year'] ) || (int) $in['year'] < 1900 || (int) $in['year'] > 2100 ) ) {
+			$errors['aw_year'] = __( 'Enter a year between 1900 and 2100, or leave it empty.', 'astroway' );
 		}
 		return $errors;
 	}
@@ -316,10 +432,13 @@ class Form {
 	 */
 	private static function card( string $widget, string $id, string $lang, array $in, array $errors = [], array $choices = [] ): string {
 		$titles = [
-			'natal'       => __( 'Your birth chart', 'astroway' ),
-			'moon_sign'   => __( 'Your moon sign', 'astroway' ),
-			'rising_sign' => __( 'Your rising sign', 'astroway' ),
-			'synastry'    => __( 'Compatibility of two charts', 'astroway' ),
+			'natal'        => __( 'Your birth chart', 'astroway' ),
+			'moon_sign'    => __( 'Your moon sign', 'astroway' ),
+			'rising_sign'  => __( 'Your rising sign', 'astroway' ),
+			'synastry'     => __( 'Compatibility of two charts', 'astroway' ),
+			'solar_return' => __( 'Your Solar Return', 'astroway' ),
+			'lunar_return' => __( 'Your next Lunar Return', 'astroway' ),
+			'davison'      => __( 'Davison chart of two people', 'astroway' ),
 		];
 		$inner  = UI::header( [ 'title' => $titles[ $widget ] ?? $titles['natal'] ] );
 		if ( isset( $errors[''] ) ) {
@@ -327,7 +446,7 @@ class Form {
 		}
 
 		$fields = '';
-		if ( 'synastry' === $widget ) {
+		if ( in_array( $widget, self::PAIRS, true ) ) {
 			$legends = [
 				'_a' => __( 'First person', 'astroway' ),
 				'_b' => __( 'Second person', 'astroway' ),
@@ -351,6 +470,23 @@ class Form {
 			}
 		} else {
 			$fields = self::person( $widget, $in[''] ?? [], $errors, $choices[''] ?? [], '' );
+		}
+		if ( 'solar_return' === $widget ) {
+			$fields .= UI::field(
+				[
+					'name'  => 'aw_year',
+					'label' => __( 'Year of the return', 'astroway' ),
+					'type'  => 'number',
+					'value' => $in['']['year'] ?? '',
+					'error' => $errors['aw_year'] ?? '',
+					'hint'  => __( 'Leave empty for the one in force now.', 'astroway' ),
+					'attrs' => [
+						'min'       => '1900',
+						'max'       => '2100',
+						'inputmode' => 'numeric',
+					],
+				]
+			);
 		}
 
 		// Off-screen, not display:none: a robot skips a field it sees is hidden.
@@ -387,7 +523,7 @@ class Form {
 				'hint'  => 'rising_sign' === $widget ? '' : __( 'Local time at the place of birth.', 'astroway' ),
 			]
 		);
-		if ( 'rising_sign' !== $widget ) {
+		if ( ! in_array( $widget, self::TIMED, true ) ) {
 			$fields .= UI::check( 'aw_time_unknown' . $sfx, __( 'I do not know the time', 'astroway' ), ! empty( $in['unknown'] ) );
 		}
 

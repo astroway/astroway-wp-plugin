@@ -39,6 +39,9 @@ class Blocks {
 			'retrogrades'          => [ Shortcodes::class, 'render_retrogrades' ],
 			'moon-voc'             => [ Shortcodes::class, 'render_moon_voc' ],
 			'planetary-hours'      => [ Shortcodes::class, 'render_planetary_hours' ],
+			'solar-return'         => [ Shortcodes::class, 'render_solar_return' ],
+			'lunar-return'         => [ Shortcodes::class, 'render_lunar_return' ],
+			'davison'              => [ Shortcodes::class, 'render_davison' ],
 			'astrology-section'    => [ __CLASS__, 'render_section' ],
 		];
 	}
@@ -111,6 +114,8 @@ class Blocks {
 			'zodiac-compatibility' => 'zodiac_compatibility',
 			'compatibility-matrix' => 'zodiac_matrix',
 			'chinese-zodiac'       => 'chinese_zodiac',
+			'solar-return'         => 'solar_return',
+			'lunar-return'         => 'lunar_return',
 		];
 		return $map[ $slug ] ?? $slug;
 	}

@@ -50,6 +50,12 @@ class Shortcodes {
 		add_shortcode( 'astroway_chinese_zodiac', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
 		add_shortcode( 'astroway_chinese_zodiac_animal', self::gated( 'chinese_zodiac', [ __CLASS__, 'render_chinese_zodiac' ] ) );
 
+		// 2.4.0. All three names were answered by the generated registry since
+		// 1.2.0; they keep its attributes as aliases and gain a card.
+		add_shortcode( 'astroway_solar_return', self::gated( 'solar_return', [ __CLASS__, 'render_solar_return' ] ) );
+		add_shortcode( 'astroway_lunar_return', self::gated( 'lunar_return', [ __CLASS__, 'render_lunar_return' ] ) );
+		add_shortcode( 'astroway_davison', self::gated( 'davison', [ __CLASS__, 'render_davison' ] ) );
+
 		// Priority 10 lands after wpautop and shortcode_unautop, which core adds
 		// at 10 before this file ever runs, and before do_shortcode at 11. The
 		// shortcodes are still text at that point, which is the only moment the
@@ -613,13 +619,18 @@ class Shortcodes {
 		$atts   = shortcode_atts(
 			[
 				'spread' => 'three-card',
+				'redraw' => 'yes',
 				'lang'   => '',
 			],
 			(array) $atts,
 			'astroway_tarot_spread'
 		);
 		$widget = 'celtic-cross' === strtolower( trim( (string) $atts['spread'] ) ) ? 'tarot_celtic_cross' : 'tarot_three_card';
-		return Render::widget( $widget, [ 'lang' => self::resolve_lang( $atts['lang'] ) ] );
+		$params = [ 'lang' => self::resolve_lang( $atts['lang'] ) ];
+		if ( in_array( strtolower( trim( (string) $atts['redraw'] ) ), [ 'no', 'false', '0', 'off' ], true ) ) {
+			return Render::widget( $widget, $params );
+		}
+		return Form::redraw( $widget, $params );
 	}
 
 	/**
@@ -929,6 +940,192 @@ class Shortcodes {
 				'lang'    => self::resolve_lang( $atts['lang'] ),
 			]
 		);
+	}
+
+	/** Attributes of a return: ours, plus the generated shortcode's spelling of each. */
+	private const RETURN_ATTS = [
+		'date'            => '',
+		'time'            => '',
+		'lat'             => '',
+		'lon'             => '',
+		'latitude'        => '',
+		'longitude'       => '',
+		'tz'              => '',
+		'timezone_offset' => '',
+		'name'            => '',
+		'return_lat'      => '',
+		'return_lon'      => '',
+		'location_lat'    => '',
+		'location_lng'    => '',
+		'return_tz'       => '',
+		'lang'            => '',
+	];
+
+	/**
+	 * The Solar Return of a year, by default the one in force today: before the
+	 * birthday this year that is last year's.
+	 */
+	public static function render_solar_return( $atts ): string {
+		$atts = shortcode_atts( self::RETURN_ATTS + [ 'year' => '' ], (array) $atts, 'astroway_solar_return' );
+		$year = (int) $atts['year'];
+		return self::render_return( 'solar_return', $atts, [ 'year' => $year ] );
+	}
+
+	/** The first Lunar Return after a date, the 1st of this month by default. */
+	public static function render_lunar_return( $atts ): string {
+		$atts  = shortcode_atts(
+			self::RETURN_ATTS + [
+				'after'      => '',
+				'after_date' => '',
+			],
+			(array) $atts,
+			'astroway_lunar_return'
+		);
+		$after = self::sanitize_date( '' !== trim( (string) $atts['after'] ) ? $atts['after'] : $atts['after_date'] );
+		// Empty stays empty for the visitor's form, which asks from today.
+		return self::render_return( 'lunar_return', $atts, [ 'after' => $after ] );
+	}
+
+	private static function render_return( string $widget, array $atts, array $extra ): string {
+		if ( '' === trim( (string) $atts['tz'] ) ) {
+			$atts['tz'] = $atts['timezone_offset'];
+		}
+		$params               = self::sanitize_chart_params( $atts ) + $extra;
+		$params['lang']       = self::resolve_lang( $atts['lang'] );
+		$visitor              = '' === trim( (string) $atts['date'] );
+		$return_lat           = '' !== trim( (string) $atts['return_lat'] ) ? $atts['return_lat'] : $atts['location_lat'];
+		$return_lon           = '' !== trim( (string) $atts['return_lon'] ) ? $atts['return_lon'] : $atts['location_lng'];
+		$params['return_lat'] = self::sanitize_coord( $return_lat, -90, 90 );
+		$params['return_lng'] = self::sanitize_coord( $return_lon, -180, 180 );
+		$hours                = self::tz_offset_hours( $atts['return_tz'], gmdate( 'Y-m-d' ) );
+		$params['return_tz']  = '' !== $hours && abs( (float) $hours ) <= 14 ? $hours : '';
+		// A zone name keeps its own summer time on the day of the return, an
+		// offset cannot. Without a return place of its own, the birth's zone
+		// name is the place's zone too.
+		$named = trim( (string) $atts['return_tz'] );
+		// The author's birth zone is not the visitor's: on a form it stays out.
+		if ( '' === $named && ! $visitor && '' === $params['return_lat'] && '' === $params['return_lng'] ) {
+			$named = trim( (string) $atts['tz'] );
+		}
+		if ( preg_match( '#^[A-Za-z]+(?:/[A-Za-z0-9_+-]+)+$#', $named ) && in_array( $named, \DateTimeZone::listIdentifiers( \DateTimeZone::ALL_WITH_BC ), true ) ) {
+			$params['zone'] = $named;
+		}
+
+		if ( $visitor ) {
+			// Year and date left empty are worked out from the visitor's own birth date.
+			return Form::render( $widget, $params );
+		}
+		if ( 'solar_return' === $widget && 0 === (int) $params['year'] ) {
+			$params['year'] = self::year_in_force( $params['date'] );
+		}
+		if ( 'lunar_return' === $widget && '' === $params['after'] ) {
+			$params['after'] = self::lunar_after();
+		}
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		if ( '' === $params['time'] || '' === $params['lat'] || '' === $params['lng'] ) {
+			return Render::admin_note( __( 'A return chart needs the birth time and the latitude and longitude of the place of birth. Only administrators see this note.', 'astroway' ) );
+		}
+		return Render::widget( $widget, $params );
+	}
+
+	/**
+	 * Where an author's Lunar Return is searched from by default: the 1st of the
+	 * month, so the card holds for the month and costs one call, not one a day.
+	 */
+	public static function lunar_after( ?int $now = null ): string {
+		return gmdate( 'Y-m-01', null === $now ? time() : $now );
+	}
+
+	/** The year of the Solar Return in force today for a birth date. */
+	public static function year_in_force( string $date, ?int $now = null ): int {
+		$now  = null === $now ? time() : $now;
+		$year = (int) gmdate( 'Y', $now );
+		if ( preg_match( '/^\d{4}-(\d{2}-\d{2})$/', $date, $m ) && gmdate( 'm-d', $now ) < $m[1] ) {
+			--$year;
+		}
+		return $year;
+	}
+
+	/**
+	 * The Davison chart of two people. Also reads the generated shortcode's
+	 * `chart1` and `chart2`, each a JSON birth chart.
+	 */
+	public static function render_davison( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date_a' => '',
+				'time_a' => '',
+				'lat_a'  => '',
+				'lon_a'  => '',
+				'tz_a'   => '',
+				'name_a' => '',
+				'date_b' => '',
+				'time_b' => '',
+				'lat_b'  => '',
+				'lon_b'  => '',
+				'tz_b'   => '',
+				'name_b' => '',
+				'chart1' => '',
+				'chart2' => '',
+				'lang'   => '',
+			],
+			(array) $atts,
+			'astroway_davison'
+		);
+		foreach ( [
+			'chart1' => 'a',
+			'chart2' => 'b',
+		] as $json => $side ) {
+			$chart = json_decode( (string) $atts[ $json ], true );
+			if ( ! is_array( $chart ) ) {
+				continue;
+			}
+			$from = [
+				'date'           => 'date_',
+				'time'           => 'time_',
+				'latitude'       => 'lat_',
+				'longitude'      => 'lon_',
+				'timezoneOffset' => 'tz_',
+				'name'           => 'name_',
+			];
+			foreach ( $from as $key => $prefix ) {
+				if ( '' === trim( (string) $atts[ $prefix . $side ] ) && isset( $chart[ $key ] ) && is_scalar( $chart[ $key ] ) ) {
+					$atts[ $prefix . $side ] = (string) $chart[ $key ];
+				}
+			}
+		}
+
+		$params = [ 'lang' => self::resolve_lang( $atts['lang'] ) ];
+		foreach ( [ 'a', 'b' ] as $side ) {
+			$date                      = self::sanitize_date( $atts[ 'date_' . $side ] );
+			$time                      = self::sanitize_time( $atts[ 'time_' . $side ] );
+			$params[ 'date_' . $side ] = $date;
+			$params[ 'time_' . $side ] = $time;
+			$params[ 'lat_' . $side ]  = self::sanitize_coord( $atts[ 'lat_' . $side ], -90, 90 );
+			$params[ 'lng_' . $side ]  = self::sanitize_coord( $atts[ 'lon_' . $side ], -180, 180 );
+			$params[ 'tz_' . $side ]   = self::tz_offset_hours( $atts[ 'tz_' . $side ], $date, $time );
+			$params[ 'name_' . $side ] = sanitize_text_field( $atts[ 'name_' . $side ] );
+		}
+
+		if ( '' === $params['date_a'] && '' === $params['date_b'] ) {
+			return Form::render( 'davison', [ 'lang' => $params['lang'] ] );
+		}
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		foreach ( [ 'a', 'b' ] as $side ) {
+			if ( '' === $params[ 'date_' . $side ] || '' === $params[ 'time_' . $side ] || '' === $params[ 'lat_' . $side ] || '' === $params[ 'lng_' . $side ] ) {
+				return Render::admin_note( __( 'A Davison chart needs the date, the time and the latitude and longitude of both births. Only administrators see this note.', 'astroway' ) );
+			}
+		}
+		return Render::widget( 'davison', $params );
+	}
+
+	/** Returns and the Davison chart are not on the free anonymous allowance. */
+	private static function needs_key(): string {
+		return Render::admin_note( __( 'This chart needs a site key or an API key: open AstroWay in the admin and connect the site. Only administrators see this note.', 'astroway' ) );
 	}
 
 	/**

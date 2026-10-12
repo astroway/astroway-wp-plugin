@@ -136,9 +136,12 @@ class Tier {
 			'mini_chart'             => $all_tiers,
 			'monthly_forecast'       => $all_tiers,
 			'transit_timeline'       => $all_tiers,
+			// Since 2.4 both are cards the site key draws for free (api v2.207.1
+			// put them in its scope); paid-only they showed every free site an
+			// upsell where the page asked for a chart.
+			'solar_return'           => $all_tiers,
+			'lunar_return'           => $all_tiers,
 			// Paid-only (v0.8+ features).
-			'solar_return'           => $paid_plus,
-			'lunar_return'           => $paid_plus,
 			'progressions'           => $paid_plus,
 			'native_render'          => $paid_plus,
 			// Pro+ only.

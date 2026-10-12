@@ -45,6 +45,9 @@ class Render {
 		'zodiac_matrix'        => [ 'astroway-compat-card', 'zodiac-matrix' ],
 		'tarot_three_card'     => [ 'astroway-tarot-card', 'tarot-spread' ],
 		'tarot_celtic_cross'   => [ 'astroway-tarot-card', 'tarot-cross' ],
+		'solar_return'         => [ 'astroway-natal-card', 'natal solar-return' ],
+		'lunar_return'         => [ 'astroway-natal-card', 'natal lunar-return' ],
+		'davison'              => [ 'astroway-natal-card', 'natal davison' ],
 	];
 
 	/**
@@ -156,7 +159,12 @@ class Render {
 				return self::matrix_card( $data, $lang, $params );
 			case 'tarot_three_card':
 			case 'tarot_celtic_cross':
-				return self::spread_card( $widget, $data, $lang );
+				return self::spread_card( $widget, $data, $lang, $params );
+			case 'solar_return':
+			case 'lunar_return':
+				return self::return_card( $widget, $data, $lang, $params );
+			case 'davison':
+				return self::davison_card( $data, $lang, $params );
 		}
 		return '';
 	}
@@ -973,7 +981,7 @@ class Render {
 	 * which put the chart on a document the page's own stylesheet and a reader
 	 * without scripts could not reach.
 	 */
-	private static function natal_wheel( array $planets, array $houses, array $cusps, array $aspects, string $title ): string {
+	private static function natal_wheel( array $planets, array $houses, array $cusps, array $aspects, string $title, string $desc = '' ): string {
 		$drawn = [];
 		foreach ( $planets as $planet ) {
 			if ( ! is_array( $planet ) || ! isset( $planet['longitude'], $planet['name'] ) ) {
@@ -1004,7 +1012,7 @@ class Render {
 				'planets'   => $drawn,
 				'aspects'   => $aspects,
 				'title'     => $title,
-				'desc'      => __( 'Natal chart: signs, houses, planets and the aspects between them.', 'astroway' ),
+				'desc'      => '' !== $desc ? $desc : __( 'Natal chart: signs, houses, planets and the aspects between them.', 'astroway' ),
 				'angles'    => [
 					'asc' => __( 'ASC', 'astroway' ),
 					'ic'  => __( 'IC', 'astroway' ),
@@ -1013,6 +1021,225 @@ class Render {
 				],
 			]
 		);
+	}
+
+	/**
+	 * A Solar or Lunar Return: the chart of the moment the Sun or the Moon comes
+	 * back to its birth place in the zodiac, read like a natal chart.
+	 *
+	 * Drawn only when the moment is the one asked for. The api's search can land
+	 * on the neighbouring Solar Return for birthdays around the new year, and a
+	 * Lunar Return before the date it was searched from; a card titled 2027 over
+	 * the chart of 2026 would be worse than no card.
+	 */
+	private static function return_card( string $widget, array $data, string $lang, array $params ): string {
+		$planets = isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [];
+		$moment  = self::return_moment( $data );
+		if ( empty( $planets ) || null === $moment ) {
+			return '';
+		}
+
+		$solar = 'solar_return' === $widget;
+		$year  = (int) ( $params['year'] ?? 0 );
+		if ( $solar ) {
+			$birthday = self::birthday_in( (string) ( $params['date'] ?? '' ), $year );
+			if ( null === $birthday || abs( $moment - $birthday ) > 2 * DAY_IN_SECONDS ) {
+				return self::admin_note( __( 'The Solar Return found for this year falls in another year, so the card is left out. Only administrators see this note.', 'astroway' ) );
+			}
+		} else {
+			$after = strtotime( (string) ( $params['after'] ?? '' ) . ' 00:00:00 UTC' );
+			if ( false === $after || $moment < $after ) {
+				return self::admin_note( __( 'The Lunar Return found falls before the date it was searched from, so the card is left out. Only administrators see this note.', 'astroway' ) );
+			}
+		}
+
+		$houses  = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
+		$cusps   = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+		$aspects = self::natal_aspects( is_array( $data['aspects'] ?? null ) ? $data['aspects'] : [] );
+		$name    = trim( (string) ( $params['name'] ?? '' ) );
+
+		if ( $solar ) {
+			/* translators: %d = year */
+			$title = sprintf( __( 'Solar Return %d', 'astroway' ), $year );
+			/* translators: 1: year, 2: person's name */
+			$title = '' === $name ? $title : sprintf( __( 'Solar Return %1$d: %2$s', 'astroway' ), $year, $name );
+			$desc  = __( 'Solar Return chart: signs, houses, planets and the aspects between them at the moment the Sun returns to its birth position.', 'astroway' );
+		} else {
+			$title = __( 'Lunar Return', 'astroway' );
+			/* translators: %s = person's name */
+			$title = '' === $name ? $title : sprintf( __( 'Lunar Return: %s', 'astroway' ), $name );
+			$desc  = __( 'Lunar Return chart: signs, houses, planets and the aspects between them at the moment the Moon returns to its birth position.', 'astroway' );
+		}
+
+		$asc    = isset( $houses['ascendant'] ) ? self::sign_of( (float) $houses['ascendant'] ) : '';
+		$inner  = UI::header(
+			[
+				'title'     => $title,
+				'medal'     => $asc,
+				'meta_html' => self::moment_meta( $moment, $params ),
+			]
+		);
+		$inner .= self::natal_big_three( $planets, $houses );
+		$inner .= self::chart_tabs( $title, $planets, $houses, $cusps, $aspects, $desc );
+
+		return self::shell( $widget, $lang, $inner );
+	}
+
+	/**
+	 * The Davison chart of a pair: one chart cast for the midpoint between the
+	 * two births in time and in place.
+	 *
+	 * The api averaged longitudes as plain numbers until app fixed it, which puts
+	 * a pair across the 180th meridian on the far side of the Earth. The card
+	 * checks the midpoint against the shorter arc itself and stays out until the
+	 * two agree, so it starts drawing on its own once the fix is live.
+	 */
+	private static function davison_card( array $data, string $lang, array $params ): string {
+		$planets  = isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [];
+		$midpoint = is_array( $data['midpoint'] ?? null ) ? $data['midpoint'] : [];
+		$utc      = strtotime( (string) ( $midpoint['utc'] ?? '' ) );
+		if ( empty( $planets ) || false === $utc || ! isset( $midpoint['lng'] ) ) {
+			return '';
+		}
+		$expected = self::mid_longitude( (float) ( $params['lng_a'] ?? 0 ), (float) ( $params['lng_b'] ?? 0 ) );
+		$apart    = abs( fmod( (float) $midpoint['lng'] - $expected + 540.0, 360.0 ) - 180.0 );
+		if ( $apart > 0.5 ) {
+			return self::admin_note( __( 'The Davison chart for these two places is not drawn yet: the midpoint the api returned is on the wrong side of the 180th meridian. Only administrators see this note.', 'astroway' ) );
+		}
+
+		$houses  = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
+		$cusps   = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+		$aspects = self::natal_aspects( is_array( $data['aspects'] ?? null ) ? $data['aspects'] : [] );
+
+		$first  = trim( (string) ( $params['name_a'] ?? '' ) );
+		$second = trim( (string) ( $params['name_b'] ?? '' ) );
+		$title  = __( 'Davison chart', 'astroway' );
+		if ( '' !== $first && '' !== $second ) {
+			/* translators: 1: first person's name, 2: second person's name */
+			$title = sprintf( __( 'Davison chart: %1$s and %2$s', 'astroway' ), $first, $second );
+		}
+
+		$sun = '';
+		foreach ( $planets as $planet ) {
+			if ( is_array( $planet ) && 'Sun' === ( $planet['name'] ?? '' ) && isset( $planet['longitude'] ) ) {
+				$sun = self::sign_of( (float) $planet['longitude'] );
+				break;
+			}
+		}
+		// Two items of the flex meta row: the dotted `when` wrapper clips the
+		// second line of a date long enough to wrap inside it.
+		$meta   = '<span>' . esc_html__( 'Midpoint', 'astroway' ) . ' ' . self::moment_meta( (int) $utc, [] ) . '</span>';
+		$inner  = UI::header(
+			[
+				'title'     => $title,
+				'medal'     => $sun,
+				'meta_html' => $meta,
+			]
+		);
+		$inner .= self::natal_big_three( $planets, $houses );
+		$inner .= self::chart_tabs( $title, $planets, $houses, $cusps, $aspects, __( 'Davison chart: one chart cast for the midpoint between two births in time and place.', 'astroway' ) );
+
+		return self::shell( 'davison', $lang, $inner );
+	}
+
+	/** Wheel, grid, placements and aspects of a chart, as the natal card lays them out. */
+	private static function chart_tabs( string $title, array $planets, array $houses, array $cusps, array $aspects, string $desc ): string {
+		return UI::tabs(
+			$title,
+			[
+				[
+					'label' => __( 'Wheel', 'astroway' ),
+					'html'  => self::natal_wheel( $planets, $houses, $cusps, $aspects, $title, $desc ),
+				],
+				[
+					'label' => __( 'Grid', 'astroway' ),
+					'html'  => UI::aspect_grid( self::natal_planet_ids( $planets ), $aspects, __( 'Aspects between planets', 'astroway' ) ),
+				],
+				[
+					'label' => __( 'Placements', 'astroway' ),
+					'html'  => self::natal_placements( $planets, $cusps, $houses ),
+				],
+				[
+					'label' => __( 'Aspects', 'astroway' ),
+					'html'  => UI::aspects( $aspects ),
+					'count' => count( $aspects ),
+				],
+			]
+		);
+	}
+
+	/** The return moment as a Unix time: `returnMoment`, or `julianDay` from an older api. */
+	private static function return_moment( array $data ): ?int {
+		$iso = (string) ( $data['returnMoment'] ?? '' );
+		if ( '' !== $iso ) {
+			$stamp = strtotime( $iso );
+			return false === $stamp ? null : $stamp;
+		}
+		if ( isset( $data['julianDay'] ) && is_numeric( $data['julianDay'] ) ) {
+			return (int) round( ( (float) $data['julianDay'] - 2440587.5 ) * DAY_IN_SECONDS );
+		}
+		return null;
+	}
+
+	/** Noon UTC of the birthday in a given year; 29 February falls on the 28th in a common year. */
+	private static function birthday_in( string $date, int $year ): ?int {
+		if ( ! preg_match( '/^\d{4}-(\d{2})-(\d{2})$/', $date, $m ) || $year < 1 ) {
+			return null;
+		}
+		$day = ( '02' === $m[1] && '29' === $m[2] && ! checkdate( 2, 29, $year ) ) ? 28 : (int) $m[2];
+		return (int) gmmktime( 12, 0, 0, (int) $m[1], $day, $year );
+	}
+
+	/** Midpoint of two longitudes along the shorter arc, in (-180, 180]. */
+	public static function mid_longitude( float $a, float $b ): float {
+		$d = fmod( $b - $a + 540.0, 360.0 ) - 180.0;
+		$m = fmod( $a + $d / 2 + 540.0, 360.0 ) - 180.0;
+		return -180.0 === $m ? 180.0 : $m;
+	}
+
+	/**
+	 * When a moment fell, as a `<time>`: in the zone of the place when it is
+	 * known (`zone`, an IANA name from the atlas, or `return_tz` in hours),
+	 * otherwise in UTC and marked so.
+	 */
+	private static function moment_meta( int $utc, array $params ): string {
+		$zone  = null;
+		$named = (string) ( $params['zone'] ?? '' );
+		if ( '' !== $named ) {
+			try {
+				$zone = new \DateTimeZone( $named );
+			} catch ( \Exception $e ) {
+				$zone = null;
+			}
+		}
+		$hours = trim( (string) ( $params['return_tz'] ?? '' ) );
+		if ( null === $zone && is_numeric( $hours ) ) {
+			$seconds = (int) round( (float) $hours * HOUR_IN_SECONDS );
+			$zone    = new \DateTimeZone( sprintf( '%s%02d:%02d', $seconds < 0 ? '-' : '+', intdiv( abs( $seconds ), 3600 ), intdiv( abs( $seconds ) % 3600, 60 ) ) );
+		}
+		$utc_zone = new \DateTimeZone( 'UTC' );
+		// The zone is always named: a bare 06:34 beside 18:24 UTC reads as the same clock.
+		$shown = wp_date( (string) get_option( 'date_format', 'Y-m-d' ) . ', H:i', $utc, $zone ?? $utc_zone ) . ' '
+			. ( null === $zone ? 'UTC' : self::zone_label( $zone, $utc ) );
+		return sprintf( '<time datetime="%s">%s</time>', esc_attr( gmdate( 'Y-m-d\TH:i:s\Z', $utc ) ), esc_html( (string) $shown ) );
+	}
+
+	/** EEST for a named zone, UTC+3 or UTC+5:30 for a bare offset. */
+	private static function zone_label( \DateTimeZone $zone, int $utc ): string {
+		$at = ( new \DateTimeImmutable( '@' . $utc ) )->setTimezone( $zone );
+		if ( false !== strpos( $zone->getName(), '/' ) ) {
+			$abbr = $at->format( 'T' );
+			// Zones without a letter abbreviation print an offset like "+03"; say UTC.
+			if ( preg_match( '/^[A-Z]{2,5}$/', $abbr ) ) {
+				return $abbr;
+			}
+		}
+		$offset = $at->getOffset();
+		if ( 0 === $offset ) {
+			return 'UTC';
+		}
+		$label = 'UTC' . ( $offset < 0 ? '-' : '+' ) . intdiv( abs( $offset ), 3600 );
+		return 0 === abs( $offset ) % 3600 ? $label : $label . ':' . sprintf( '%02d', intdiv( abs( $offset ) % 3600, 60 ) );
 	}
 
 	/** Orb of a transit worth listing: tight, because the sky moves on tomorrow. */
@@ -1821,7 +2048,7 @@ class Render {
 	 * A spread of the day: three cards in a row, or the Celtic Cross laid out
 	 * with the ten cards listed under it.
 	 */
-	private static function spread_card( string $widget, array $data, string $lang ): string {
+	private static function spread_card( string $widget, array $data, string $lang, array $params = [] ): string {
 		$drawn = array_values( array_filter( (array) ( $data['drawn'] ?? [] ), 'is_array' ) );
 		$cross = 'tarot_celtic_cross' === $widget;
 		if ( count( $drawn ) !== ( $cross ? 10 : 3 ) ) {
@@ -1843,14 +2070,18 @@ class Render {
 			$title = (string) $localized['spread']['name'];
 		}
 
-		$inner  = UI::header(
+		$redrawn = ! empty( $params['redrawn'] );
+		$inner   = UI::header(
 			[
 				'title'     => '' === trim( $title ) ? __( 'Tarot spread', 'astroway' ) : $title,
-				'meta_html' => esc_html__( 'Spread of the day', 'astroway' ),
+				'meta_html' => $redrawn ? esc_html__( 'New draw', 'astroway' ) : esc_html__( 'Spread of the day', 'astroway' ),
 			]
 		);
-		$inner .= $cross ? Tarot::cross( $drawn ) : '';
-		$inner .= '<ol class="astroway-spread astroway-spread--' . ( $cross ? 'cross' : 'three' ) . '">' . $items . '</ol>';
+		$inner  .= $cross ? Tarot::cross( $drawn ) : '';
+		$inner  .= '<ol class="astroway-spread astroway-spread--' . ( $cross ? 'cross' : 'three' ) . '">' . $items . '</ol>';
+		if ( '' !== (string) ( $params['redraw_id'] ?? '' ) ) {
+			$inner .= Form::redraw_control( (string) $params['redraw_id'], $redrawn, (string) ( $params['redraw_note'] ?? '' ) );
+		}
 
 		return self::shell( $widget, $lang, $inner );
 	}

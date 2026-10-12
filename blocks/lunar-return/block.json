@@ -1,0 +1,104 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/lunar-return",
+	"title": "Lunar Return (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"lunar return",
+		"moon",
+		"month ahead",
+		"astrology",
+		"astroway"
+	],
+	"description": "The chart of the next moment the Moon returns to its birth position, drawn into the page. Without a birth date it asks the visitor. Needs a site key or an API key.",
+	"textdomain": "astroway",
+	"icon": "marker",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"return_lat": {
+			"type": "string",
+			"default": ""
+		},
+		"return_lon": {
+			"type": "string",
+			"default": ""
+		},
+		"return_tz": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"location_lat": {
+			"type": "string",
+			"default": ""
+		},
+		"location_lng": {
+			"type": "string",
+			"default": ""
+		},
+		"after": {
+			"type": "string",
+			"default": ""
+		},
+		"after_date": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

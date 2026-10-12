@@ -155,7 +155,48 @@
 
 	var OFFSET_FIELD = { name: 'timezone_offset', type: 'text', label: __( 'UTC offset in hours (blank for the site default)', 'astroway' ) };
 
+	// Returns: the birth, then where and when the return is cast. Blank date
+	// shows the visitor a form.
+	var RETURN_FIELDS = [
+		{ name: 'return_lat', type: 'text', label: __( 'Return place: latitude (blank for the place of birth)', 'astroway' ) },
+		{ name: 'return_lon', type: 'text', label: __( 'Return place: longitude', 'astroway' ) },
+		{ name: 'return_tz',  type: 'text', label: __( 'Return place: timezone for the time shown (blank for UTC)', 'astroway' ) }
+	];
+
+	// Davison: both times and places are required, the midpoint needs them.
+	var DAVISON_FIELDS = [
+		{ name: 'name_a', type: 'text', label: __( 'Person A: name', 'astroway' ) },
+		{ name: 'date_a', type: 'text', label: __( 'Person A: date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_a', type: 'text', label: __( 'Person A: time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_a',  type: 'text', label: __( 'Person A: latitude', 'astroway' ) },
+		{ name: 'lon_a',  type: 'text', label: __( 'Person A: longitude', 'astroway' ) },
+		{ name: 'tz_a',   type: 'text', label: __( 'Person A: timezone', 'astroway' ) },
+		{ name: 'name_b', type: 'text', label: __( 'Person B: name', 'astroway' ) },
+		{ name: 'date_b', type: 'text', label: __( 'Person B: date (YYYY-MM-DD)', 'astroway' ) },
+		{ name: 'time_b', type: 'text', label: __( 'Person B: time (HH:MM)', 'astroway' ) },
+		{ name: 'lat_b',  type: 'text', label: __( 'Person B: latitude', 'astroway' ) },
+		{ name: 'lon_b',  type: 'text', label: __( 'Person B: longitude', 'astroway' ) },
+		{ name: 'tz_b',   type: 'text', label: __( 'Person B: timezone', 'astroway' ) },
+		LANG_FIELD
+	];
+
 	var BLOCKS = {
+		'astroway/solar-return': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: CHART_FIELDS.concat( [
+				{ name: 'year', type: 'text', label: __( 'Year (blank for the one in force now)', 'astroway' ) }
+			], RETURN_FIELDS )
+		},
+		'astroway/lunar-return': {
+			panel:  __( 'Birth data', 'astroway' ),
+			fields: CHART_FIELDS.concat( [
+				{ name: 'after', type: 'text', label: __( 'First return after (YYYY-MM-DD, blank for the 1st of this month)', 'astroway' ) }
+			], RETURN_FIELDS )
+		},
+		'astroway/davison': {
+			panel:  __( 'Two births', 'astroway' ),
+			fields: DAVISON_FIELDS
+		},
 		'astroway/natal-chart': {
 			panel:  __( 'Birth data', 'astroway' ),
 			fields: CHART_FIELDS.concat( [
@@ -234,6 +275,10 @@
 				{ name: 'spread', type: 'select', label: __( 'Spread', 'astroway' ), options: [
 					{ label: __( 'Past, present, future', 'astroway' ), value: 'three-card' },
 					{ label: __( 'Celtic Cross', 'astroway' ), value: 'celtic-cross' }
+				] },
+				{ name: 'redraw', type: 'select', label: __( 'Draw again button', 'astroway' ), options: [
+					{ label: __( 'Show', 'astroway' ), value: 'yes' },
+					{ label: __( 'Hide', 'astroway' ), value: 'no' }
 				] },
 				LANG_FIELD
 			]

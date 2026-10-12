@@ -10,7 +10,7 @@
 		"celtic cross",
 		"astroway"
 	],
-	"description": "Three cards or the Celtic Cross, drawn once a day for this site, each card read in its position.",
+	"description": "Three cards or the Celtic Cross, drawn once a day for this site, each card read in its position. A visitor can draw again.",
 	"textdomain": "astroway",
 	"icon": "images-alt",
 	"supports": {
@@ -28,6 +28,14 @@
 			"enum": [
 				"three-card",
 				"celtic-cross"
+			]
+		},
+		"redraw": {
+			"type": "string",
+			"default": "yes",
+			"enum": [
+				"yes",
+				"no"
 			]
 		},
 		"lang": {

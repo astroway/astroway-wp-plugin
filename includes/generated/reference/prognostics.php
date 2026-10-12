@@ -23,11 +23,6 @@ return [
 			'description' => 'Generate a combined forecast calendar including transits, lunar phases, ingresses, and retrograde stations for a given period.',
 			'documented' => true,
 		],
-		'astroway_lunar_return' => [
-			'title' => 'Lunar Return',
-			'description' => 'Find the next date when the Moon returns to its natal longitude. Returns full lunar return chart.',
-			'documented' => true,
-		],
 		'astroway_minor_progressions' => [
 			'title' => 'Minor Progressions',
 			'description' => 'Calculate minor progressions (lunar month-for-a-year) to a target date. Supports converse direction.',
@@ -61,11 +56,6 @@ return [
 		'astroway_rectification_trutine' => [
 			'title' => 'Trutine of Hermes',
 			'description' => 'Apply the Trutine of Hermes (Animodar) technique to derive the birth time from the Moon\'s prenatal syzygy position.',
-			'documented' => true,
-		],
-		'astroway_solar_return' => [
-			'title' => 'Solar Return',
-			'description' => 'Find the exact moment when the Sun returns to its natal longitude in a given year. Returns full solar return chart.',
 			'documented' => true,
 		],
 		'astroway_symbolic_directions' => [

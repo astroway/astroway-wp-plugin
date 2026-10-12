@@ -23,11 +23,6 @@ return [
 			'description' => 'Calculate a midpoint composite chart by averaging the planetary positions and house cusps of two natal charts.',
 			'documented' => true,
 		],
-		'astroway_davison' => [
-			'title' => 'Davison Chart',
-			'description' => 'Calculate a Davison relationship chart using the midpoint in time and space between two birth moments.',
-			'documented' => true,
-		],
 		'astroway_group_synastry' => [
 			'title' => 'Group Synastry',
 			'description' => 'Calculate synastry aspects among 2–8 charts simultaneously, returning all pairwise cross-chart aspect matrices.',

@@ -3075,3 +3075,27 @@
 .astroway-form__again {
 	margin: 0 0 1.5em;
 }
+
+/* Draw again: the button and the way back sit on one row under the spread
+   and wrap under each other in a narrow column. */
+.astroway-card .astroway-redraw {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 20px;
+	margin: 20px 0 0;
+}
+
+.astroway-card .astroway-redraw .astroway-form {
+	margin: 0;
+}
+
+.astroway-card .astroway-redraw__back {
+	margin: 0;
+}
+
+.astroway-card .astroway-redraw__back a {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 44px;
+}

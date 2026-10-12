@@ -172,6 +172,41 @@ class PublicData {
 			'required'  => [ 'date', 'time' ],
 			'lang'      => false,
 		],
+		// Returns and the Davison chart are keyed routes, not /public: a site key
+		// answers them inside the hourly bucket, an owner key pays 50 credits a
+		// call. `paid` keeps a visitor's form on the site key only. Houses are
+		// the point of all three, so the place is required, never 0,0.
+		'solar_return'       => [
+			'path'      => '/solar-return',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart', 'return' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
+		// Searched from the 1st of the month by default, so a page spends one
+		// call a month, not one a day.
+		'lunar_return'       => [
+			'path'      => '/lunar-return',
+			'method'    => 'POST',
+			'freshness' => 'month',
+			'params'    => [ 'chart', 'return' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
+		'davison'            => [
+			'path'      => '/davison',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'charts' ],
+			'required'  => [ 'date_a', 'date_b' ],
+			'lang'      => false,
+			'paid'      => true,
+			// The midpoint in time and space needs both minutes and both places.
+			'strict'    => true,
+		],
 	];
 
 	/**
@@ -207,6 +242,11 @@ class PublicData {
 		return isset( self::ENDPOINTS[ $widget ] );
 	}
 
+	/** A keyed route that costs an owner key credits: returns and the Davison chart. */
+	public static function is_paid( string $widget ): bool {
+		return ! empty( self::ENDPOINTS[ $widget ]['paid'] );
+	}
+
 	/**
 	 * Payload for a widget, or null when it cannot be had: unknown widget, a
 	 * required param missing, a remembered failure, or the request failing now.
@@ -228,7 +268,8 @@ class PublicData {
 		}
 
 		if ( ! $remember ) {
-			return self::request( $config['path'], $query, $config['method'] ?? 'GET' );
+			// A visitor's own calculation on a paid route goes on the site key only.
+			return self::request( $config['path'], $query, $config['method'] ?? 'GET', ! empty( $config['paid'] ) );
 		}
 
 		$key    = self::cache_key( $config['path'], $query );
@@ -315,11 +356,15 @@ class PublicData {
 		$query  = [];
 
 		if ( in_array( 'chart', $config['params'], true ) ) {
-			return self::chart_payload( $params, $config['required'] );
+			$payload = self::chart_payload( $params, $config['required'] );
+			if ( null !== $payload && in_array( 'return', $config['params'], true ) ) {
+				$payload = self::with_return( $widget, $payload, $params );
+			}
+			return $payload;
 		}
 
 		if ( in_array( 'charts', $config['params'], true ) ) {
-			return self::chart_pair_payload( $params, $config['required'] );
+			return self::chart_pair_payload( $params, $config['required'], ! empty( $config['strict'] ) );
 		}
 
 		foreach ( $config['params'] as $name ) {
@@ -338,7 +383,10 @@ class PublicData {
 					}
 					break;
 				case 'seed':
-					$query['seed'] = self::seed( $config['path'], time() );
+					// A visitor's fresh draw brings its own seed; otherwise the spread of the day.
+					$query['seed'] = isset( $params['seed'] ) && is_int( $params['seed'] )
+						? max( 0, min( 0x7fffffff, $params['seed'] ) )
+						: self::seed( $config['path'], time() );
 					break;
 			}
 		}
@@ -411,16 +459,56 @@ class PublicData {
 	}
 
 	/**
+	 * The return's own fields on top of the birth chart: the year of a Solar
+	 * Return, the date a Lunar Return is searched from, and the place it is
+	 * cast for when that is not the place of birth.
+	 */
+	private static function with_return( string $widget, array $payload, array $params ): ?array {
+		if ( 'solar_return' === $widget ) {
+			$year = (int) ( $params['year'] ?? 0 );
+			if ( $year < 1900 || $year > 2100 ) {
+				return null;
+			}
+			$payload['year'] = $year;
+		} else {
+			$after = self::sanitize_date( (string) ( $params['after'] ?? '' ) );
+			if ( '' === $after ) {
+				return null;
+			}
+			$payload['afterDate'] = $after;
+		}
+		$lat = trim( (string) ( $params['return_lat'] ?? '' ) );
+		$lng = trim( (string) ( $params['return_lng'] ?? '' ) );
+		if ( is_numeric( $lat ) && is_numeric( $lng ) ) {
+			$payload['locationLat'] = (float) $lat;
+			$payload['locationLng'] = (float) $lng;
+		}
+		return $payload;
+	}
+
+	/**
 	 * Body for POST /public/synastry: one chart per partner, flat `_a`/`_b`
 	 * attributes on the shortcode folded into the two objects the route wants.
 	 *
 	 * Null when either date is missing, because a synastry of one person is not
 	 * a reduced answer, it is a different question.
 	 */
-	private static function chart_pair_payload( array $params, array $required ): ?array {
+	private static function chart_pair_payload( array $params, array $required, bool $strict = false ): ?array {
 		foreach ( $required as $name ) {
 			if ( '' === self::sanitize_date( (string) ( $params[ $name ] ?? '' ) ) ) {
 				return null;
+			}
+		}
+		// Davison: no unknown time (the route's schema has no such flag and
+		// answers 400) and no default place (the midpoint would drift to 0,0).
+		if ( $strict ) {
+			foreach ( [ 'a', 'b' ] as $side ) {
+				$time = trim( (string) ( $params[ 'time_' . $side ] ?? '' ) );
+				$lat  = trim( (string) ( $params[ 'lat_' . $side ] ?? '' ) );
+				$lng  = trim( (string) ( $params[ 'lng_' . $side ] ?? '' ) );
+				if ( ! preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', $time ) || ! is_numeric( $lat ) || ! is_numeric( $lng ) ) {
+					return null;
+				}
 			}
 		}
 
@@ -511,7 +599,7 @@ class PublicData {
 		return abs( $day - $today ) <= self::SITE_KEY_DAYS[ $path ] * DAY_IN_SECONDS;
 	}
 
-	private static function request( string $path, array $payload, string $method = 'GET' ): ?array {
+	private static function request( string $path, array $payload, string $method = 'GET', bool $site_only = false ): ?array {
 		$base = rtrim( ASTROWAY_API_BASE, '/' ) . $path;
 		$args = [
 			'timeout' => self::TIMEOUT,
@@ -535,7 +623,7 @@ class PublicData {
 		// Server-side only. PublicClient::embed_url() must never carry it: that
 		// URL is an iframe src, so it lands in the page's markup and in the
 		// visitor's browser history.
-		$key      = ( new ApiClient() )->key();
+		$key      = $site_only ? '' : ( new ApiClient() )->key();
 		$site_key = '' === $key && self::near_today( $path, $payload ) ? SiteKey::key() : '';
 		if ( '' !== $key || '' !== $site_key ) {
 			$args['headers']['X-Api-Key'] = '' !== $key ? $key : $site_key;
