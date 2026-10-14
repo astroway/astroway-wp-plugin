@@ -306,10 +306,14 @@ class Plugin {
 		$post = is_singular() ? get_queried_object() : null;
 		if ( $post instanceof \WP_Post ) {
 			$content = (string) $post->post_content;
-			// Elementor keeps the page in post meta, and the addon's widgets are
-			// named astroway-*; a shortcode typed into its text widget lands there too.
+			// Page builders keep the layout in post meta; Divi and WPBakery write
+			// post_content and are covered above.
+			$builder = [];
+			foreach ( self::BUILDER_META as $meta_key ) {
+				$builder[] = get_post_meta( $post->ID, $meta_key, true );
+			}
 			$elementor = (string) get_post_meta( $post->ID, '_elementor_data', true );
-			$styles    = $styles || self::content_has_widget( $content ) || 1 === preg_match( '/"widgetType":\s*"astroway-/', $elementor ) || false !== strpos( $elementor, '[astroway_' );
+			$styles    = $styles || self::content_has_widget( $content ) || self::builder_has_widget( $builder );
 			$embed     = $embed || self::content_has_frame( $content ) || 1 === preg_match( '/"widgetType":\s*"astroway-natal"/', $elementor );
 		}
 
@@ -337,6 +341,27 @@ class Plugin {
 		if ( $embed ) {
 			wp_enqueue_script( self::EMBED_HANDLE );
 		}
+	}
+
+	/** Meta keys that hold a page builder's layout: Elementor, Beaver Builder, Bricks, Oxygen. */
+	private const BUILDER_META = [ '_elementor_data', '_fl_builder_data', '_bricks_page_content_2', 'ct_builder_json', 'ct_builder_shortcodes' ];
+
+	/**
+	 * Whether a page builder's stored layout carries one of our widgets.
+	 *
+	 * @param array $values Meta values as get_post_meta() returns them: strings, or arrays of nodes.
+	 */
+	public static function builder_has_widget( array $values ): bool {
+		foreach ( $values as $value ) {
+			if ( empty( $value ) ) {
+				continue;
+			}
+			$text = is_string( $value ) ? $value : (string) wp_json_encode( $value );
+			if ( false !== strpos( $text, '[astroway_' ) || 1 === preg_match( '/"widgetType":\s*"astroway-/', $text ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/** Whether content carries any shortcode or block of ours, the generated ones included. */

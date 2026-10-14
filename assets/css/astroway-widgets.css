@@ -3099,3 +3099,12 @@
 	align-items: center;
 	min-block-size: 44px;
 }
+
+/* The mini chart is the wheel alone, sized for a sidebar or a narrow column. */
+.astroway-card.astroway-card--mini-chart {
+	max-inline-size: 360px;
+}
+
+.astroway-card--mini-chart .astroway-wheel {
+	max-inline-size: 320px;
+}

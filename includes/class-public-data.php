@@ -118,8 +118,16 @@ class PublicData {
 			'required'  => [ 'date', 'time' ],
 			'lang'      => false,
 		],
-		// Moon and rising signs read the same chart as the natal card and are
-		// cached under the same key: three widgets on one page cost one call.
+		// The mini chart, the moon and rising signs read the same chart as the
+		// natal card and are cached under the same key: one call between them.
+		'mini_chart'         => [
+			'path'      => '/public/chart',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time' ],
+			'lang'      => false,
+		],
 		'moon_sign'          => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',

@@ -31,6 +31,7 @@ class Render {
 		'tarot_daily'          => [ 'astroway-tarot-card', 'tarot' ],
 		'planet_of_day'        => [ 'astroway-planet-card', 'planet' ],
 		'natal'                => [ 'astroway-natal-card', 'natal' ],
+		'mini_chart'           => [ 'astroway-natal-card', 'mini-chart' ],
 		'moon_sign'            => [ 'astroway-sign-card', 'moon-sign' ],
 		'rising_sign'          => [ 'astroway-sign-card', 'rising-sign' ],
 		'bodygraph'            => [ 'astroway-bodygraph-card', 'bodygraph' ],
@@ -147,6 +148,8 @@ class Render {
 				return self::planet_card( $data, $lang );
 			case 'natal':
 				return self::natal_card( $data, $lang, $params );
+			case 'mini_chart':
+				return self::mini_card( $data, $lang, $params );
 			case 'moon_sign':
 				return self::placement_card( 'moon_sign', $data, $lang, $params );
 			case 'rising_sign':
@@ -624,21 +627,20 @@ class Render {
 	 * has the shortcode today. What the JSON adds is the part an iframe hides,
 	 * the placements and aspects as readable, indexable text.
 	 */
-	private static function natal_card( array $data, string $lang, array $params ): string {
+	/**
+	 * Planets, houses, cusps and aspects of a chart, with what an unknown birth
+	 * time cannot know taken out. Shared by the natal card and the mini chart.
+	 */
+	private static function natal_inputs( array $data, array $params ): array {
 		$planets = isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [];
-		if ( empty( $planets ) ) {
-			return '';
-		}
-
-		$houses = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
-		$cusps  = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+		$houses  = isset( $data['houses'] ) && is_array( $data['houses'] ) ? $data['houses'] : [];
+		$cusps   = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
 		// Houses and the Ascendant turn with the clock: without the time they
 		// would be those of noon, drawn as if known.
-		$unknown = ! empty( $params['time_unknown'] );
 		// The Moon moves up to 15 degrees a day, as wide as an aspect's orb, so
 		// its aspects at noon are not a fact about this birth either.
 		$aspects_in = is_array( $data['aspects'] ?? null ) ? $data['aspects'] : [];
-		if ( $unknown ) {
+		if ( ! empty( $params['time_unknown'] ) ) {
 			$houses     = [];
 			$cusps      = [];
 			$aspects_in = array_values(
@@ -650,6 +652,40 @@ class Render {
 				)
 			);
 		}
+		return [ $planets, $houses, $cusps, $aspects_in ];
+	}
+
+	/** The natal wheel alone, for a sidebar or a narrow column. */
+	private static function mini_card( array $data, string $lang, array $params ): string {
+		list( $planets, $houses, $cusps, $aspects_in ) = self::natal_inputs( $data, $params );
+		if ( empty( $planets ) ) {
+			return '';
+		}
+		$title = __( 'Natal chart', 'astroway' );
+		$name  = trim( (string) ( $params['name'] ?? '' ) );
+		if ( '' !== $name ) {
+			/* translators: %s = person's name */
+			$title = sprintf( __( 'Natal chart: %s', 'astroway' ), $name );
+		}
+		$wheel = self::natal_wheel( $planets, $houses, $cusps, self::natal_aspects( $aspects_in ), $title );
+		if ( '' === $wheel ) {
+			return '';
+		}
+		$inner = UI::header(
+			[
+				'title'     => $title,
+				'meta_html' => self::natal_meta( $params ),
+			]
+		);
+		return self::shell( 'mini_chart', $lang, $inner . $wheel );
+	}
+
+	private static function natal_card( array $data, string $lang, array $params ): string {
+		list( $planets, $houses, $cusps, $aspects_in ) = self::natal_inputs( $data, $params );
+		if ( empty( $planets ) ) {
+			return '';
+		}
+		$unknown = ! empty( $params['time_unknown'] );
 
 		$name  = trim( (string) ( $params['name'] ?? '' ) );
 		$title = __( 'Natal chart', 'astroway' );

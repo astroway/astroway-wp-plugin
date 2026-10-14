@@ -1,10 +1,10 @@
 === AstroWay – Astrology, Birth Chart & Horoscope Widgets ===
 Contributors: astrowayteam
-Tags: astrology, birth chart, horoscope, natal chart, tarot
+Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -28,13 +28,13 @@ AstroWay → Shortcodes in your admin lists every shortcode with its parameters 
 
 = What needs a key =
 
-* **Nothing at all:** daily, weekly and monthly horoscopes, moon phase, Tarot card of the day, planet of the day, the natal chart with its reading, the Human Design bodygraph, the moon sign, the rising sign, synastry, the four sky cards (Mercury retrograde, all retrogrades, void of course Moon, planetary hours), the yearly horoscope, sign compatibility, the sign compatibility matrix, the tarot spreads of the day, the Chinese animal and the birth-data calculators. On first use the plugin asks api.astroway.info for a key of the site's own, proving it owns its address; there is nothing to sign up for. The site gets 300 readings an hour, and each answer is cached until the data changes.
+* **Nothing at all:** daily, weekly and monthly horoscopes, moon phase, Tarot card of the day, planet of the day, the natal chart with its reading, the mini chart, the Human Design bodygraph, the moon sign, the rising sign, synastry, the four sky cards (Mercury retrograde, all retrogrades, void of course Moon, planetary hours), the yearly horoscope, sign compatibility, the sign compatibility matrix, the tarot spreads of the day, the Chinese animal and the birth-data calculators. On first use the plugin asks api.astroway.info for a key of the site's own, proving it owns its address; there is nothing to sign up for. The site gets 300 readings an hour, and each answer is cached until the data changes.
 * **A free key, no card:** 10,000 credits a month. It adds the 680 generated shortcodes. Most calls cost 10 credits.
 * **A paid plan, from $5 a month:** more credits and a higher rate limit for busy sites. The daily transit alert email needs the Pro plan.
 
 = What renders into the page =
 
-Thirteen widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), the tarot spreads of the day, planet of the day, the natal chart, the Human Design bodygraph, the moon sign, the rising sign, the synastry between two charts and the sign compatibility matrix. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The natal chart's wheel, its aspect grid and its element matrix, the Human Design bodygraph and the tarot cards are drawn into the page as well, in the same colours as the text around them. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
+Fourteen widgets are rendered by your own server directly into the page: daily, weekly and monthly horoscopes, moon phase, Tarot card of the day (Rider-Waite deck), the tarot spreads of the day, planet of the day, the natal chart, the mini chart, the Human Design bodygraph, the moon sign, the rising sign, the synastry between two charts and the sign compatibility matrix. Their text is part of your HTML, so search engines index it, screen readers announce it, and it inherits your theme's fonts and colours instead of sitting in a frame that ignores them. The natal chart's wheel, its aspect grid and its element matrix, the Human Design bodygraph and the tarot cards are drawn into the page as well, in the same colours as the text around them. Each answer is cached until the underlying data actually changes, so a page carrying all twelve signs spends twelve requests a day rather than twelve an hour. This runs on the anonymous per-site allowance of 300 requests an hour, with no key and no account.
 
 = What the sky is doing right now =
 
@@ -102,11 +102,15 @@ Optional: AstroWay → API Key, to paste a key from api.astroway.info. Every wid
 
 = Is AstroWay free? Are there any hidden costs? =
 
-Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The fifteen widgets your server renders into the page draw on the site's own key, 300 readings an hour, which the plugin asks for by itself (a synastry, being two charts and the grid between them, counts as three of those), and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. A free API key (still no card) gives you 10,000 credits a month against api.astroway.info, and most calls cost 10 credits; that is what the 680 generated shortcodes spend. Paid plans raise that further. The daily transit alert email is the only feature here that asks for a paid plan.
+Yes. The plugin is free and open source, and the core widgets work with no account, no API key, and no credit card. The sixteen widgets your server renders into the page draw on the site's own key, 300 readings an hour, which the plugin asks for by itself (a synastry, being two charts and the grid between them, counts as three of those), and caching keeps normal traffic far below it. Widgets that still load in a frame use the visitor's own allowance of 30 requests an hour per IP. A free API key (still no card) gives you 10,000 credits a month against api.astroway.info, and most calls cost 10 credits; that is what the 680 generated shortcodes spend. Paid plans raise that further. The daily transit alert email is the only feature here that asks for a paid plan.
 
 = How do I add a horoscope or birth chart to WordPress? =
 
 Drop a shortcode into any page or post, for example `[astroway_natal date="1990-05-15" time="14:30" lat="50.45" lon="30.52"]` for a natal (birth) chart, or `[astroway_daily_horoscope sign="leo"]` for a daily horoscope. Each of them is a Gutenberg block as well: type `/astroway` in the editor and pick one. AstroWay → Shortcodes lists every shortcode with its parameters, a copy button and a search box.
+
+= Does it work with Elementor, Beaver Builder or Divi? =
+
+Yes, through the shortcodes. In Elementor put one into the Shortcode widget, or use the separate AstroWay for Elementor addon for drag-and-drop widgets. In Beaver Builder put it into the HTML or Text module. Both were checked with block and classic themes: the card renders, and its stylesheet loads in the page head. Divi, WPBakery, Bricks and Oxygen render shortcodes the same way, through their own text or shortcode module; we have not tested them, so tell us on the support forum if something looks off.
 
 = Can I see a chart without installing the plugin? =
 
@@ -122,7 +126,7 @@ AstroWay → Getting started → "Connect your AstroWay account". You sign in on
 
 = Will the widgets show up in Google? =
 
-The fifteen page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. AstroWay → Settings → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
+The sixteen page-rendered widgets, yes. Your server fetches the text and prints it into the page before the browser ever sees it, so a crawler reads it as ordinary page content and it counts toward the page. Widgets that fall back to an embedded frame do not: a frame is a separate document at another address, and a search engine credits what it finds there to that document, not to your page. AstroWay → Settings → Render mode shows which mode is in use, and you can force frames everywhere if you prefer the old behaviour.
 
 = What data is sent to api.astroway.info? =
 
@@ -188,6 +192,11 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above).**
 
 == Changelog ==
+
+= 2.4.1 =
+* The mini chart is drawn into the page like the natal chart: the wheel alone, sized for a sidebar, in your theme's colours, with no frame and no extra request when the natal chart is on the same page. `[astroway_mini_chart]`
+* Fix: the mini chart accepts latitude and longitude as well as lat and lon, as every other shortcode does
+* Fix: on Beaver Builder, Bricks and Oxygen pages the widget stylesheet loads in the page head, so a card no longer paints unstyled for a moment on classic themes
 
 = 2.4.0 =
 * New Solar Return card: the chart of the moment the Sun comes back to its birth position, for the year in force or any year, with the return's Ascendant, houses and aspects on the same wheel as the natal chart. The moment is shown in the time zone of the place. `[astroway_solar_return]`, with an optional place to cast it for

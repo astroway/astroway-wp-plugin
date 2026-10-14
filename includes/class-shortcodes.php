@@ -678,7 +678,7 @@ class Shortcodes {
 	 * drawn small; there is no page-side template, so it is always a frame.
 	 */
 	public static function render_mini_chart( $atts ): string {
-		$atts = shortcode_atts(
+		$atts           = shortcode_atts(
 			[
 				'date'      => '',
 				'time'      => '',
@@ -686,6 +686,7 @@ class Shortcodes {
 				'lon'       => '',
 				'latitude'  => '',
 				'longitude' => '',
+				'name'      => '',
 				'tz'        => '',
 				'theme'     => '',
 				'lang'      => '',
@@ -693,20 +694,14 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_mini_chart'
 		);
-		$date = self::sanitize_date( $atts['date'] );
-		$time = self::sanitize_time( $atts['time'] );
-		return PublicClient::embed_iframe(
-			'mini_chart',
-			[
-				'date'  => $date,
-				'time'  => $time,
-				'lat'   => self::sanitize_coord( $atts['lat'], -90, 90 ),
-				'lng'   => self::sanitize_coord( $atts['lon'], -180, 180 ),
-				'tz'    => self::tz_offset_hours( $atts['tz'], $date, $time ),
-				'theme' => self::sanitize_theme( $atts['theme'] ),
-				'lang'  => self::resolve_lang( $atts['lang'] ),
-			]
-		);
+		$params         = self::sanitize_chart_params( $atts );
+		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// The frame fallback still reads a palette, see render_natal().
+		$theme = self::sanitize_theme( $atts['theme'] );
+		if ( '' !== $theme ) {
+			$params['theme'] = $theme;
+		}
+		return self::utc_note( $params ) . Render::widget( 'mini_chart', $params );
 	}
 
 	/** Four-week themed forecast for one sign. */
