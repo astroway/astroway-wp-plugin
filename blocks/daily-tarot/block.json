@@ -15,7 +15,9 @@
 	},
 	"attributes": {
 		"deck": { "type": "string", "default": "rider-waite", "enum": [ "rider-waite", "marseille", "lenormand" ] },
+		"art": { "type": "string", "default": "rws-1909" },
 		"lang": { "type": "string", "default": "" },
+		"hide_sections": { "type": "string", "default": "" },
 		"look": { "type": "string", "default": "" }
 	},
 	"usesContext": [ "astroway/look" ],

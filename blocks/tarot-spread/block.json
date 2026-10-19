@@ -38,6 +38,26 @@
 				"no"
 			]
 		},
+		"art": {
+			"type": "string",
+			"default": "rws-1909"
+		},
+		"reveal": {
+			"type": "string",
+			"default": "no",
+			"enum": [
+				"no",
+				"click"
+			]
+		},
+		"reading": {
+			"type": "string",
+			"default": "0",
+			"enum": [
+				"0",
+				"1"
+			]
+		},
 		"lang": {
 			"type": "string",
 			"default": ""

@@ -34,7 +34,7 @@ class ApiClient {
 	}
 
 	/** Routes of the api's free set the keyed cards use: the site key opens them. */
-	private const SITE_KEY_PATHS = [ '/retrograde-periods', '/moon-voc', '/planetary-hours', '/horoscope/yearly', '/horoscope/compatibility', '/chinese/zodiac/animal' ];
+	private const SITE_KEY_PATHS = [ '/retrograde-periods', '/moon-voc', '/planetary-hours', '/horoscope/yearly', '/horoscope/compatibility', '/chinese/zodiac/animal', '/planets' ];
 
 	/** Whether the sky cards can ask at all: the owner's key, or the site's own. */
 	public function can_read_sky(): bool {

@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
-"POT-Creation-Date: 2026-10-01T11:33:43+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-2.0\n"
+"POT-Creation-Date: 2026-10-06T16:24:13+00:00\n"
 "PO-Revision-Date: 2026-09-21 14:37+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Korean <translations@astroway.info>\n"
@@ -35,8 +35,12 @@ msgstr ""
 " – shortcodes + Gutenberg blocks. Powered by api.astroway.info."
 
 #. Author of the plugin
-#: astroway-wp-plugin.php includes/class-admin.php:37
-#: includes/class-admin.php:38 includes/class-blocks.php:193
+#: astroway-wp-plugin.php includes/builders/class-beaver-module.php:31
+#: includes/builders/class-elementor.php:58
+#: includes/builders/class-wpbakery.php:34 includes/class-admin-extras.php:71
+#: includes/class-admin-extras.php:129 includes/class-admin-extras.php:189
+#: includes/class-admin.php:37 includes/class-admin.php:38
+#: includes/class-blocks.php:195
 msgid "AstroWay"
 msgstr "AstroWay"
 
@@ -44,6 +48,134 @@ msgstr "AstroWay"
 #: astroway-wp-plugin.php
 msgid "https://astroway.info"
 msgstr "https://astroway.info"
+
+#: includes/builders/class-beaver.php:50 includes/class-admin.php:58
+#: includes/class-admin.php:229 includes/views/admin-settings.php:16
+#: includes/views/partials/admin-footer-nav.php:14
+msgid "Settings"
+msgstr "설정"
+
+#: includes/builders/class-elementor.php:82
+msgid ""
+"AstroWay now has every widget in Elementor itself. The AstroWay for "
+"Elementor addon is no longer needed: deactivate it and your pages keep their"
+" widgets."
+msgstr ""
+"이제 AstroWay가 모든 위젯을 Elementor 안에서 직접 제공합니다. AstroWay for Elementor 애드온은 더 이상"
+" 필요하지 않습니다. 비활성화해도 페이지의 위젯은 그대로 남습니다."
+
+#: includes/class-admin-extras.php:61
+msgid "API key in wp-config.php"
+msgstr "wp-config.php의 API 키"
+
+#: includes/class-admin-extras.php:62
+msgid "API key in AstroWay settings"
+msgstr "AstroWay 설정의 API 키"
+
+#: includes/class-admin-extras.php:63
+msgid "the site key this site was issued"
+msgstr "이 사이트에 발급된 사이트 키"
+
+#: includes/class-admin-extras.php:64
+msgid "no key yet"
+msgstr "아직 키 없음"
+
+#: includes/class-admin-extras.php:81 includes/class-admin-extras.php:144
+#: includes/views/admin-api-key.php:307
+msgid "Key"
+msgstr "API 키"
+
+#: includes/class-admin-extras.php:83 includes/class-admin-extras.php:148
+#: includes/class-admin.php:275 includes/views/admin-api-key.php:314
+msgid "Plan"
+msgstr "플랜"
+
+#: includes/class-admin-extras.php:86 includes/class-admin-extras.php:89
+#: includes/views/admin-api-key.php:321 includes/views/admin-api-key.php:326
+msgid "Credits"
+msgstr "월간 크레딧"
+
+#: includes/class-admin-extras.php:86 includes/views/admin-api-key.php:322
+msgid "Unlimited"
+msgstr "무제한"
+
+#. translators: 1: credits left, 2: credits in the period
+#: includes/class-admin-extras.php:91
+#, php-format
+msgid "%1$s of %2$s left"
+msgstr "%2$s 중 %1$s 남음"
+
+#: includes/class-admin-extras.php:96 includes/views/admin-api-key.php:345
+msgid "Period ends"
+msgstr "기간 종료"
+
+#: includes/class-admin-extras.php:99 includes/class-admin-extras.php:152
+#: includes/class-admin.php:278
+msgid "Bound to"
+msgstr "바인딩"
+
+#. translators: %s = time of day, such as 14:05
+#: includes/class-admin-extras.php:113
+#, php-format
+msgid ""
+"The hourly limit was reached at %s (UTC); widgets fell back to frames until "
+"it reset."
+msgstr "%s (UTC)에 시간당 한도에 도달했습니다. 초기화될 때까지 위젯이 프레임으로 표시되었습니다."
+
+#: includes/class-admin-extras.php:119
+msgid ""
+"Widgets that need no key work already. Connect the site to unlock the rest."
+msgstr "키가 필요 없는 위젯은 이미 작동합니다. 나머지를 사용하려면 사이트를 연결하세요."
+
+#: includes/class-admin-extras.php:121 includes/class-admin-extras.php:198
+msgid "Open AstroWay"
+msgstr "AstroWay 열기"
+
+#: includes/class-admin-extras.php:140
+msgid "Plugin version"
+msgstr "플러그인 버전"
+
+#: includes/class-admin-extras.php:156
+msgid "Cached answers"
+msgstr "캐시된 응답"
+
+#. translators: 1: number of cached answers, 2: their size in KB
+#: includes/class-admin-extras.php:158
+#, php-format
+msgid "%1$d, %2$d KB"
+msgstr "%1$d개, %2$d KB"
+
+#: includes/class-admin-extras.php:161 includes/views/admin-settings.php:366
+msgid "Render mode"
+msgstr "렌더링 모드"
+
+#: includes/class-admin-extras.php:171
+msgid "AstroWay key"
+msgstr "AstroWay 키"
+
+#: includes/class-admin-extras.php:185
+msgid "AstroWay has a key"
+msgstr "AstroWay에 키가 있습니다"
+
+#: includes/class-admin-extras.php:186
+msgid "AstroWay has no key yet"
+msgstr "AstroWay에 아직 키가 없습니다"
+
+#. translators: %s = where the key comes from
+#: includes/class-admin-extras.php:195
+#, php-format
+msgid "Widgets use %s."
+msgstr "위젯이 사용하는 키: %s."
+
+#: includes/class-admin-extras.php:196
+msgid ""
+"Widgets that need no key work. The site asks for its own key on its own; if "
+"it cannot, connect it on the AstroWay page."
+msgstr "키가 필요 없는 위젯은 작동합니다. 사이트가 스스로 키를 요청하며, 실패하면 AstroWay 페이지에서 연결하세요."
+
+#: includes/class-admin-extras.php:260
+msgid "This shortcode cannot be tried here."
+msgstr "이 단축코드는 여기에서 사용해 볼 수 없습니다."
 
 #: includes/class-admin.php:49 includes/class-admin.php:50
 #: includes/views/admin-api-key.php:18
@@ -53,12 +185,6 @@ msgstr "시작하기"
 #: includes/class-admin.php:57
 msgid "AstroWay Settings"
 msgstr "AstroWay 설정"
-
-#: includes/class-admin.php:58 includes/class-admin.php:224
-#: includes/views/admin-settings.php:16
-#: includes/views/partials/admin-footer-nav.php:14
-msgid "Settings"
-msgstr "설정"
 
 #: includes/class-admin.php:65
 msgid "AstroWay Shortcodes"
@@ -85,108 +211,116 @@ msgid ""
 "underscores."
 msgstr "API 키는 \"aw_\"로 시작해야 하며 문자, 숫자, 밑줄만 포함할 수 있습니다."
 
-#: includes/class-admin.php:229
+#: includes/class-admin.php:234
 msgid "Get API Key"
 msgstr "API 키 받기"
 
-#: includes/class-admin.php:268
+#: includes/class-admin.php:273
 msgid "Verifying…"
 msgstr "검증 중…"
 
-#: includes/class-admin.php:269
+#: includes/class-admin.php:274
 msgid "limited info"
 msgstr "제한된 정보"
 
-#: includes/class-admin.php:270 includes/views/admin-api-key.php:314
-msgid "Plan"
-msgstr "플랜"
-
-#: includes/class-admin.php:271
+#: includes/class-admin.php:276
 msgid "Used"
 msgstr "사용됨"
 
-#: includes/class-admin.php:272
+#: includes/class-admin.php:277
 msgid "Rate"
 msgstr "요금"
 
-#: includes/class-admin.php:273
-msgid "Bound to"
-msgstr "바인딩"
-
-#: includes/class-admin.php:274
+#: includes/class-admin.php:279
 msgid "Enter a valid API key first."
 msgstr "유효한 API 키를 먼저 입력하세요."
 
-#: includes/class-admin.php:276 includes/views/admin-settings.php:266
+#: includes/class-admin.php:281 includes/views/admin-settings.php:266
 msgid "Network error"
 msgstr "네트워크 오류"
 
-#: includes/class-admin.php:277
+#: includes/class-admin.php:282
 msgid "Key verified."
 msgstr "키가 확인되었습니다."
 
-#: includes/class-admin.php:278 includes/class-admin.php:303
-#: includes/class-admin.php:322
+#: includes/class-admin.php:283 includes/class-admin.php:308
+#: includes/class-admin.php:337
 msgid "copied!"
 msgstr "복사됨!"
 
-#: includes/class-admin.php:298
+#: includes/class-admin.php:303
 msgid "Pinging…"
 msgstr "핑 중…"
 
-#: includes/class-admin.php:299
+#: includes/class-admin.php:304
 msgid "API is healthy"
 msgstr "API가 정상입니다"
 
-#: includes/class-admin.php:300
+#: includes/class-admin.php:305
 msgid "API unreachable"
 msgstr "API에 접근할 수 없음"
 
-#: includes/class-admin.php:301
+#: includes/class-admin.php:306
 msgid "Purge all cached data?"
 msgstr "모든 캐시 데이터를 지우시겠습니까?"
 
-#: includes/class-admin.php:302
+#: includes/class-admin.php:307
 msgid "Cache cleared:"
 msgstr "캐시 지움:"
 
-#: includes/class-admin.php:323
+#: includes/class-admin.php:333
+msgid "Rendering…"
+msgstr "표시하는 중…"
+
+#: includes/class-admin.php:334
+msgid "This shortcode could not be rendered here."
+msgstr "이 단축코드를 여기에 표시하지 못했습니다."
+
+#: includes/class-admin.php:335 includes/class-widget-manifest.php:334
+msgid "Hide"
+msgstr "숨기기"
+
+#: includes/class-admin.php:336 includes/views/admin-shortcodes.php:109
+msgid "Try it"
+msgstr "사용해 보기"
+
+#: includes/class-admin.php:338
 msgid "Searching…"
 msgstr "검색 중…"
 
-#: includes/class-admin.php:324
+#: includes/class-admin.php:339
 msgid "No cities found."
 msgstr "도시를 찾을 수 없습니다."
 
-#: includes/class-admin.php:325
+#: includes/class-admin.php:340
 msgid "Search error. Try again."
 msgstr "검색 오류. 다시 시도하세요."
 
-#: includes/class-admin.php:326
+#: includes/class-admin.php:341
 msgid "Type at least 2 characters."
 msgstr "최소 2자를 입력하세요."
 
-#: includes/class-admin.php:327
+#: includes/class-admin.php:342
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "위도 / 경도 / 시간대를 채우기 위해 도시를 선택하세요."
 
 #. translators: 1: number of shortcodes matching the filter, 2: total number
 #. of shortcodes
-#: includes/class-admin.php:329
+#: includes/class-admin.php:344
 #, php-format
 msgid "%1$d of %2$d"
 msgstr "%1$d 중 %2$d"
 
-#: includes/class-admin.php:330
+#: includes/class-admin.php:345
 msgid "No shortcode matches."
 msgstr "일치하는 숏코드가 없습니다."
 
-#: includes/class-admin.php:339 includes/class-admin.php:355
-#: includes/class-admin.php:364 includes/class-connect.php:46
+#: includes/class-admin.php:354 includes/class-admin.php:370
+#: includes/class-admin.php:379 includes/class-connect.php:46
 msgid "Unauthorized."
 msgstr "권한 없음."
 
-#: includes/class-admin.php:381
+#: includes/class-admin.php:396
 msgid ""
 "No API key. The plugin runs in anonymous mode: this site is allowed 300 "
 "requests an hour, and widgets that fall back to a frame use each visitor's "
@@ -195,7 +329,7 @@ msgstr ""
 "API 키가 없습니다. 플러그인은 익명 모드로 실행됩니다. 이 사이트는 시간당 300회의 요청이 허용되며, 프레임으로 전환되는 위젯은 "
 "방문자 한 명당 30회의 요청 한도를 각각 사용합니다."
 
-#: includes/class-admin.php:389
+#: includes/class-admin.php:404
 msgid ""
 "Key rejected by api.astroway.info (HTTP 401). Re-paste a valid key or clear "
 "the field for anonymous mode."
@@ -204,20 +338,20 @@ msgstr ""
 "지우십시오."
 
 #. translators: %d is the HTTP status code returned by the API.
-#: includes/class-admin.php:392
+#: includes/class-admin.php:407
 #, php-format
 msgid "Could not verify the key (HTTP %d)."
 msgstr "키를 확인할 수 없습니다 (HTTP %d)."
 
-#: includes/class-admin.php:435
+#: includes/class-admin.php:450
 msgid "API key required."
 msgstr "API 키 구성됨"
 
-#: includes/class-admin.php:439
+#: includes/class-admin.php:454
 msgid "Enter a valid domain (e.g. example.com)."
 msgstr "유효한 도메인을 입력하십시오 (예: example.com)."
 
-#: includes/class-admin.php:476
+#: includes/class-admin.php:491
 msgid "Domain change failed. Use the dashboard link below."
 msgstr "도메인 변경에 실패했습니다. 아래 대시보드 링크를 사용하십시오."
 
@@ -225,7 +359,7 @@ msgstr "도메인 변경에 실패했습니다. 아래 대시보드 링크를 �
 msgid "City lookup is busy, try again in a moment."
 msgstr "도시 조회가 바쁩니다, 잠시 후 다시 시도해 주세요."
 
-#: includes/class-blocks.php:198
+#: includes/class-blocks.php:200
 msgid "AstroWay: full API"
 msgstr "AstroWay: 전체 API"
 
@@ -297,7 +431,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "달이 %1$s부터 %2$s까지 void of course입니다."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:2473
+#: includes/class-digest.php:248 includes/class-render.php:3138
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "현재 역행: %s."
@@ -314,22 +448,36 @@ msgstr "해당 작업을 수행할 권한이 없습니다."
 
 #: includes/class-form.php:104
 msgid ""
-"When a visitor fills in a birth chart, compatibility, moon sign, rising "
-"sign, Solar Return, Lunar Return or Davison chart form, the date, time and "
-"place they enter are sent to api.astroway.info to calculate the answer, and "
-"the city name to app.astroway.info to find its coordinates. Names typed into"
-" the compatibility form are not sent anywhere. The AstroWay plugin does not "
-"store any of it on this site: the answer is not cached and the page is sent "
-"with no-store. Security or activity-log plugins on this site may record form"
-" submissions on their own."
+"When a visitor fills in a birth chart, Human Design, compatibility, moon "
+"sign, rising sign, Solar Return, Lunar Return or Davison chart form, the "
+"date, time and place they enter are sent to api.astroway.info to calculate "
+"the answer, and the city name to app.astroway.info to find its coordinates. "
+"Names typed into the compatibility form are not sent anywhere. The AstroWay "
+"plugin does not store any of it on this site: the answer is not cached and "
+"the page is sent with no-store. Security or activity-log plugins on this "
+"site may record form submissions on their own."
 msgstr ""
-"방문자가 출생 차트, 궁합, 달 별자리, 라이징 사인, 솔라 리턴, 루나 리턴, 데이비슨 차트 양식을 작성하면 입력한 날짜, 시간, "
-"장소는 계산을 위해 api.astroway.info로, 도시 이름은 좌표를 찾기 위해 app.astroway.info로 전송됩니다. 궁합"
-" 양식에 입력한 이름은 어디에도 전송되지 않습니다. AstroWay 플러그인은 이 사이트에 그중 어떤 것도 저장하지 않습니다. 결과는 "
-"캐시되지 않으며 페이지는 no-store로 전송됩니다. 이 사이트의 보안 또는 활동 기록 플러그인이 양식 제출을 따로 기록할 수 "
-"있습니다."
+"방문자가 출생 차트, 휴먼 디자인, 궁합, 달 별자리, 라이징 사인, 솔라 리턴, 루나 리턴, 데이비슨 차트 양식을 작성하면 입력한 "
+"날짜, 시간, 장소는 계산을 위해 api.astroway.info로, 도시 이름은 좌표를 찾기 위해 app.astroway.info로 "
+"전송됩니다. 궁합 양식에 입력한 이름은 어디에도 전송되지 않습니다. AstroWay 플러그인은 이 사이트에 그중 어떤 것도 저장하지 "
+"않습니다. 결과는 캐시되지 않으며 페이지는 no-store로 전송됩니다. 이 사이트의 보안 또는 활동 기록 플러그인이 양식 제출을 따로 "
+"기록할 수 있습니다."
 
-#: includes/class-form.php:117
+#: includes/class-form.php:105
+msgid ""
+"Tarot cards with pictures load those pictures in the visitor's browser from "
+"cdn.astroway.info, which therefore receives the visitor's IP address, as for"
+" any image from another site. When a spread asks for its reading, the drawn "
+"cards and the page's language are sent from this site's server to "
+"api.astroway.info; nothing about the visitor is sent with them, and the "
+"reading is kept on this site for a day so that the same spread is read once."
+msgstr ""
+"그림이 있는 타로 카드는 방문자의 브라우저에서 cdn.astroway.info로부터 그림을 불러오므로, 다른 사이트의 이미지와 마찬가지로"
+" 이 서비스가 방문자의 IP 주소를 받습니다. 스프레드가 해석을 요청하면 뽑은 카드와 페이지 언어가 이 사이트의 서버에서 "
+"api.astroway.info로 전송됩니다. 방문자에 관한 정보는 함께 전송되지 않으며, 같은 스프레드를 한 번만 해석하도록 해석은 이"
+" 사이트에 하루 동안 보관됩니다."
+
+#: includes/class-form.php:118
 msgid ""
 "Visitors do not see this calculator: it runs on the site key, so that their "
 "charts never spend your credits, and a site connected to an AstroWay account"
@@ -339,224 +487,252 @@ msgstr ""
 "방문자에게는 이 계산기가 보이지 않습니다: 방문자의 차트가 크레딧을 쓰지 않도록 사이트 키로 작동하는데, AstroWay 계정에 연결된 "
 "사이트에는 사이트 키가 없습니다. 출생 정보를 적어 넣은 숏코드는 계속 작동합니다. 이 메모는 관리자만 볼 수 있습니다."
 
-#: includes/class-form.php:141 includes/class-form.php:202
+#: includes/class-form.php:183 includes/class-form.php:265
+#: includes/class-form.php:326
 msgid "This form works only on the site it is on."
 msgstr "이 양식은 게시된 사이트에서만 작동합니다."
 
-#: includes/class-form.php:143
-msgid "Too many draws from here in a short time. Try again in a few minutes."
-msgstr "짧은 시간에 여기서 너무 많은 스프레드를 뽑았습니다. 몇 분 뒤에 다시 시도하세요."
+#: includes/class-form.php:190
+msgid "Enter the full name at birth."
+msgstr "출생 시 전체 이름을 입력하세요."
 
-#: includes/class-form.php:145
-msgid "The cards are busy right now. Try again later."
-msgstr "카드가 지금 바쁩니다. 나중에 다시 시도하세요."
+#: includes/class-form.php:193 includes/class-form.php:472
+msgid "Enter the date of birth."
+msgstr "생년월일을 입력하세요."
 
-#: includes/class-form.php:158
-msgid "The new draw did not come back. Try again in a moment."
-msgstr "새 스프레드가 돌아오지 않았습니다. 잠시 후 다시 시도하세요."
+#: includes/class-form.php:195 includes/class-form.php:474
+msgid "Enter a date between 1800 and today."
+msgstr "1800년부터 오늘 사이의 날짜를 입력하세요."
 
-#: includes/class-form.php:165 includes/class-form.php:493
-msgid "Leave empty"
-msgstr "비워 두세요"
-
-#: includes/class-form.php:166
-msgid "Back to the spread of the day"
-msgstr "오늘의 스프레드로 돌아가기"
-
-#: includes/class-form.php:169
-msgid "Draw again"
-msgstr "다시 뽑기"
-
-#: includes/class-form.php:217
+#: includes/class-form.php:202 includes/class-form.php:342
 msgid ""
 "Too many calculations from here in a short time. Try again in a few minutes."
 msgstr "짧은 시간에 여기서 너무 많은 계산이 있었습니다. 몇 분 뒤에 다시 시도하세요."
 
-#: includes/class-form.php:220
+#: includes/class-form.php:217
+msgid "Your numerology chart"
+msgstr "나의 수비학 차트"
+
+#: includes/class-form.php:224
+msgid "Full name at birth"
+msgstr "출생 시 전체 이름"
+
+#: includes/class-form.php:236 includes/class-form.php:631
+msgid "Date of birth"
+msgstr "생년월일"
+
+#: includes/class-form.php:244 includes/class-form.php:289
+#: includes/class-form.php:620
+msgid "Leave empty"
+msgstr "비워 두세요"
+
+#: includes/class-form.php:245 includes/class-form.php:622
+msgid "Calculate"
+msgstr "계산하기"
+
+#: includes/class-form.php:267
+msgid "Too many draws from here in a short time. Try again in a few minutes."
+msgstr "짧은 시간에 여기서 너무 많은 스프레드를 뽑았습니다. 몇 분 뒤에 다시 시도하세요."
+
+#: includes/class-form.php:269
+msgid "The cards are busy right now. Try again later."
+msgstr "카드가 지금 바쁩니다. 나중에 다시 시도하세요."
+
+#: includes/class-form.php:282
+msgid "The new draw did not come back. Try again in a moment."
+msgstr "새 스프레드가 돌아오지 않았습니다. 잠시 후 다시 시도하세요."
+
+#: includes/class-form.php:290
+msgid "Back to the spread of the day"
+msgstr "오늘의 스프레드로 돌아가기"
+
+#: includes/class-form.php:293
+msgid "Draw again"
+msgstr "다시 뽑기"
+
+#: includes/class-form.php:345
 msgid "The calculator is busy right now. Try again later."
 msgstr "계산기가 지금 바쁩니다. 나중에 다시 시도하세요."
 
-#: includes/class-form.php:326
+#: includes/class-form.php:451
 msgid ""
 "This chart cannot be shown for this birth date yet. Try another year or come"
 " back later."
 msgstr "이 출생일로는 아직 이 차트를 표시할 수 없습니다. 다른 연도를 시도하거나 나중에 다시 오세요."
 
-#: includes/class-form.php:327
+#: includes/class-form.php:452
 msgid "This chart cannot be shown for this birth data yet. Come back later."
 msgstr "이 출생 정보로는 아직 이 차트를 표시할 수 없습니다. 나중에 다시 오세요."
 
-#: includes/class-form.php:330
+#: includes/class-form.php:455
 msgid "The calculation did not come back. Try again in a moment."
 msgstr "계산 결과가 돌아오지 않았습니다. 잠시 후 다시 시도하세요."
 
-#: includes/class-form.php:340
+#: includes/class-form.php:465
 msgid "Calculate another"
 msgstr "다시 계산하기"
 
-#: includes/class-form.php:347
-msgid "Enter the date of birth."
-msgstr "생년월일을 입력하세요."
-
-#: includes/class-form.php:349
-msgid "Enter a date between 1800 and today."
-msgstr "1800년부터 오늘 사이의 날짜를 입력하세요."
-
-#: includes/class-form.php:353
+#: includes/class-form.php:478
 msgid ""
 "The rising sign depends on the minute of birth; without the time it cannot "
 "be told."
 msgstr "라이징 사인은 태어난 분에 따라 달라집니다. 시간 없이는 알 수 없습니다."
 
-#: includes/class-form.php:355
+#: includes/class-form.php:480
 msgid ""
 "This chart depends on the minute of birth; without the time it cannot be "
 "cast."
 msgstr "이 차트는 출생 분에 따라 달라지므로 시간이 없으면 작성할 수 없습니다."
 
-#: includes/class-form.php:358
+#: includes/class-form.php:483
 msgid "Enter the time of birth, or tick that it is unknown."
 msgstr "출생 시간을 입력하거나 모른다고 표시하세요."
 
-#: includes/class-form.php:362
+#: includes/class-form.php:487
 msgid "Latitude runs from -90 to 90."
 msgstr "위도는 -90~90입니다."
 
-#: includes/class-form.php:365
+#: includes/class-form.php:490
 msgid "Longitude runs from -180 to 180."
 msgstr "경도는 -180~180입니다."
 
-#: includes/class-form.php:368
+#: includes/class-form.php:493
 msgid "Enter the city of birth."
 msgstr "출생 도시를 입력하세요."
 
-#: includes/class-form.php:371
+#: includes/class-form.php:496
 msgid "Enter a year between 1900 and 2100, or leave it empty."
 msgstr "1900년에서 2100년 사이의 연도를 입력하거나 비워 두세요."
 
-#: includes/class-form.php:402
+#: includes/class-form.php:527
 msgid "The city search is not answering. Enter the coordinates below instead."
 msgstr "도시 검색이 응답하지 않습니다. 대신 아래에 좌표를 입력하세요."
 
-#: includes/class-form.php:406
+#: includes/class-form.php:531
 msgid ""
 "No place by that name. Check the spelling, or enter the coordinates below."
 msgstr "그런 이름의 장소가 없습니다. 철자를 확인하거나 아래에 좌표를 입력하세요."
 
-#: includes/class-form.php:435
+#: includes/class-form.php:560
 msgid "Your birth chart"
 msgstr "나의 출생 차트"
 
-#: includes/class-form.php:436
+#: includes/class-form.php:561
 msgid "Your moon sign"
 msgstr "나의 달 별자리"
 
-#: includes/class-form.php:437
+#: includes/class-form.php:562
 msgid "Your rising sign"
 msgstr "나의 라이징 사인"
 
-#: includes/class-form.php:438
+#: includes/class-form.php:563
 msgid "Compatibility of two charts"
 msgstr "두 차트의 궁합"
 
-#: includes/class-form.php:439
+#: includes/class-form.php:564
 msgid "Your Solar Return"
 msgstr "나의 솔라 리턴"
 
-#: includes/class-form.php:440
+#: includes/class-form.php:565
 msgid "Your next Lunar Return"
 msgstr "나의 다음 루나 리턴"
 
-#: includes/class-form.php:441
+#: includes/class-form.php:566
 msgid "Davison chart of two people"
 msgstr "두 사람의 데이비슨 차트"
 
-#: includes/class-form.php:451
+#: includes/class-form.php:567
+msgid "Your Human Design"
+msgstr "당신의 휴먼 디자인"
+
+#: includes/class-form.php:577
 msgid "First person"
 msgstr "첫 번째 사람"
 
-#: includes/class-form.php:452
+#: includes/class-form.php:578
 msgid "Second person"
 msgstr "두 번째 사람"
 
-#: includes/class-form.php:459
+#: includes/class-form.php:585
 msgid "Name (optional)"
 msgstr "이름 (선택)"
 
-#: includes/class-form.php:461
+#: includes/class-form.php:587
 msgid "Shown on the result only."
 msgstr "결과에만 표시됩니다."
 
-#: includes/class-form.php:478
+#: includes/class-form.php:604
 msgid "Year of the return"
 msgstr "리턴 연도"
 
-#: includes/class-form.php:482
+#: includes/class-form.php:608
 msgid "Leave empty for the one in force now."
 msgstr "현재 유효한 것을 쓰려면 비워 두세요."
 
-#: includes/class-form.php:495
-msgid "Calculate"
-msgstr "계산하기"
-
-#: includes/class-form.php:504
-msgid "Date of birth"
-msgstr "생년월일"
-
-#: includes/class-form.php:519
+#: includes/class-form.php:646
 msgid "Time of birth"
 msgstr "출생 시간"
 
-#: includes/class-form.php:523
+#: includes/class-form.php:650
 msgid "Local time at the place of birth."
 msgstr "출생지의 현지 시간."
 
-#: includes/class-form.php:527
+#: includes/class-form.php:654
 msgid "I do not know the time"
 msgstr "시간을 모릅니다"
 
-#: includes/class-form.php:531
+#: includes/class-form.php:658
 msgid "Which one?"
 msgstr "어느 곳인가요?"
 
-#: includes/class-form.php:544
+#: includes/class-form.php:671
 msgid "City of birth"
 msgstr "출생 도시"
 
-#: includes/class-form.php:553
+#: includes/class-form.php:680
 msgid "Enter coordinates instead"
 msgstr "대신 좌표 입력"
 
-#: includes/class-form.php:557
+#: includes/class-form.php:684
 msgid "Latitude"
 msgstr "위도"
 
-#: includes/class-form.php:560
+#: includes/class-form.php:687
 msgid "North positive, e.g. 50.45"
 msgstr "북쪽이 양수, 예: 50.45"
 
-#: includes/class-form.php:567
+#: includes/class-form.php:694
 msgid "Longitude"
 msgstr "경도"
 
-#: includes/class-form.php:570
+#: includes/class-form.php:697
 msgid "East positive, e.g. 30.52"
 msgstr "동쪽이 양수, 예: 30.52"
 
-#: includes/class-form.php:698
+#: includes/class-form.php:715
+msgid ""
+"I agree that the date, time and place I enter are sent to api.astroway.info "
+"to calculate the answer."
+msgstr "입력한 날짜, 시간, 장소가 답을 계산하기 위해 api.astroway.info로 전송되는 것에 동의합니다."
+
+#: includes/class-form.php:728
+msgid "Tick the box to continue."
+msgstr "계속하려면 상자에 체크하세요."
+
+#: includes/class-form.php:851
 msgid ""
 "The clocks changed at this place on that day, so one hour of it happened "
 "twice or not at all. Check the birth time was read from a local clock."
 msgstr "그날 이곳에서 시계가 바뀌어 한 시간이 두 번 있었거나 없었습니다. 출생 시간이 현지 시계로 기록되었는지 확인하세요."
 
-#: includes/class-form.php:715
+#: includes/class-form.php:868
 msgid ""
 "Without the time of birth the Moon's degree is approximate; its sign is "
 "certain for that day."
 msgstr "출생 시간이 없으면 달의 도수는 대략적입니다. 그날의 별자리는 확실합니다."
 
 #. translators: 1, 2: zodiac signs
-#: includes/class-form.php:721
+#: includes/class-form.php:874
 #, php-format
 msgid ""
 "The Moon changed sign that day, from %1$s to %2$s. The time of birth decides"
@@ -579,7 +755,7 @@ msgstr ""
 "%s에는 API 키가 필요합니다. AstroWay의 API 키에 하나를 붙여넣어주세요. 관리자만이 이 알림를 볼 수 있습니다."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:426 includes/class-render.php:2317
+#: includes/class-generated-registry.php:426 includes/class-render.php:2874
 #, php-format
 msgid ""
 "%1$s is missing required attributes: %2$s. Only administrators see this "
@@ -587,21 +763,21 @@ msgid ""
 msgstr "%1$s에는 필수 속성이 없습니다: %2$s. 관리자만이 이 알림를 볼 수 있습니다."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:440 includes/class-render.php:2364
+#: includes/class-generated-registry.php:440 includes/class-render.php:2925
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr "%s를 현재 로드할 수 없습니다. 관리자만이 이 알림를 볼 수 있습니다."
 
-#: includes/class-plugin.php:472 includes/class-plugin.php:550
-#: includes/class-plugin.php:628
+#: includes/class-plugin.php:523 includes/class-plugin.php:601
+#: includes/class-plugin.php:679
 msgid "Hide for now"
 msgstr "지금은 숨기기"
 
-#: includes/class-plugin.php:491
+#: includes/class-plugin.php:542
 msgid "AstroWay is active"
 msgstr "AstroWay 활성화"
 
-#: includes/class-plugin.php:492
+#: includes/class-plugin.php:543
 msgid ""
 "Shortcodes work without an API key. Widgets your server renders into the "
 "page draw on your site's allowance of 300 requests an hour; widgets that "
@@ -611,20 +787,20 @@ msgstr ""
 "숏코드는 API 키 없이도 작동합니다. 서버에서 페이지로 렌더링되는 위젯은 사이트당 시간당 300건의 요청 한도에서 차감되며, 프레임으로"
 " 대체되는 위젯은 방문자당 30건의 요청 한도에서 차감됩니다. 한도를 높이거나 프로 기능을 이용하려면 무료 API 키를 발급받으세요."
 
-#: includes/class-plugin.php:496 includes/class-plugin.php:632
+#: includes/class-plugin.php:547 includes/class-plugin.php:683
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "무료 API 키 받기"
 
-#: includes/class-plugin.php:499
+#: includes/class-plugin.php:550
 msgid "Open Settings"
 msgstr "설정 열기"
 
-#: includes/class-plugin.php:568
+#: includes/class-plugin.php:619
 msgid "Enjoying AstroWay?"
 msgstr "AstroWay"
 
-#: includes/class-plugin.php:569
+#: includes/class-plugin.php:620
 msgid ""
 "A short review on wordpress.org helps other site owners discover the plugin,"
 " and tells us what to build next."
@@ -632,19 +808,19 @@ msgstr ""
 "wordpress.org에 짧은 리뷰를 남겨주시면 다른 사이트 소유자가 이 plugin을 발견하는 데 도움이 되며, 다음으로 무엇을 "
 "개발해야 할지 알려줍니다."
 
-#: includes/class-plugin.php:573
+#: includes/class-plugin.php:624
 msgid "Leave a review"
 msgstr "리뷰 남기기"
 
-#: includes/class-plugin.php:576
+#: includes/class-plugin.php:627
 msgid "I already left one"
 msgstr "이미 리뷰를 남겼어요"
 
-#: includes/class-plugin.php:630
+#: includes/class-plugin.php:681
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "이 서버는 익명 AstroWay 할당량을 모두 사용했습니다:"
 
-#: includes/class-plugin.php:631
+#: includes/class-plugin.php:682
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -656,7 +832,7 @@ msgstr ""
 "방문자의 브라우저에서 직접 불러오는 프레임으로 대체되며, 이 서버를 통한 미리보기 및 관리자 요청은 실패하게 됩니다. 무료 API 키를 "
 "추가하면 이 제한을 해제하고 월 10,000 크레딧과 분당 60회 요청 한도를 이용할 수 있습니다."
 
-#: includes/class-plugin.php:655
+#: includes/class-plugin.php:706
 msgid ""
 "AstroWay can no longer read the saved API key: the security keys in wp-"
 "config.php have changed since it was saved. Widgets keep working without it."
@@ -664,67 +840,84 @@ msgstr ""
 "AstroWay가 저장된 API 키를 더 이상 읽을 수 없습니다. 저장된 이후 wp-config.php의 보안 키가 변경되었기 "
 "때문입니다. 위젯은 이 키 없이도 계속 작동합니다."
 
-#: includes/class-plugin.php:657
+#: includes/class-plugin.php:708
 msgid "Paste the key again"
 msgstr "키를 다시 붙여넣으세요"
 
-#: includes/class-public-client.php:88
+#. translators: %d = requests an hour one visitor may make; keep %d as it is
+#: includes/class-public-client.php:94
+#, php-format
 msgid ""
-"This widget reached the free limit for one visitor (30 requests an hour from"
+"This widget reached the free limit for one visitor (%d requests an hour from"
 " one IP address), so visitors on that connection see nothing here until the "
 "hour resets. Only administrators see this note."
 msgstr ""
-"이 위젯은 방문자 1인당 무료 한도(IP 주소당 시간당 30회 요청)에 도달했으므로, 해당 IP 주소의 방문자는 1시간이 지나기 전까지 "
+"이 위젯은 방문자 1인당 무료 한도(IP 주소당 시간당 %d회 요청)에 도달했으므로, 해당 IP 주소의 방문자는 1시간이 지나기 전까지 "
 "이곳에서 아무것도 볼 수 없습니다. 관리자만 이 알림을 볼 수 있습니다."
 
-#: includes/class-public-client.php:161
+#: includes/class-public-client.php:96
+msgid ""
+"This widget could not load: the frame reported an error. Check its "
+"attributes; visitors see nothing here. Only administrators see this note."
+msgstr ""
+"이 위젯을 불러오지 못했습니다: 프레임이 오류를 보고했습니다. 속성을 확인하세요. 방문자에게는 여기에 아무것도 보이지 않습니다. 관리자만"
+" 이 알림을 볼 수 있습니다."
+
+#: includes/class-public-client.php:97
+msgid ""
+"This widget reached the free per-visitor limit, so visitors on that "
+"connection see nothing here until the hour resets. Only administrators see "
+"this note."
+msgstr ""
+"이 위젯이 방문자당 무료 한도에 도달하여, 해당 연결의 방문자는 한 시간이 초기화될 때까지 여기에서 아무것도 볼 수 없습니다. 관리자만 "
+"이 알림을 볼 수 있습니다."
+
+#: includes/class-public-client.php:171
 msgid "Natal chart wheel"
 msgstr "natal 차트 휠"
 
-#: includes/class-public-client.php:162
-#: assets/js/astroway-blocks-editor.js:252
+#: includes/class-public-client.php:172 includes/class-widget-manifest.php:295
 msgid "Daily horoscope"
 msgstr "일일 운세"
 
-#: includes/class-public-client.php:163
-#: assets/js/astroway-blocks-editor.js:259
+#: includes/class-public-client.php:173 includes/class-widget-manifest.php:299
 msgid "Moon phase"
 msgstr "달의 위상"
 
-#: includes/class-public-client.php:164
+#: includes/class-public-client.php:174
 msgid "Human Design bodygraph"
 msgstr "Human Design 바디그래프"
 
-#: includes/class-public-client.php:165
+#: includes/class-public-client.php:175
 msgid "Daily Tarot card"
 msgstr "일일 타로 카드"
 
-#: includes/class-public-client.php:166
+#: includes/class-public-client.php:176
 msgid "Vedic kundli chart"
 msgstr "베다 쿤달리 차트"
 
-#: includes/class-public-client.php:167
+#: includes/class-public-client.php:177
 msgid "Transit sky snapshot"
 msgstr "천체 이동 스냅샷"
 
-#: includes/class-public-client.php:168
-#: includes/views/admin-shortcodes.php:224
+#: includes/class-public-client.php:178
+#: includes/views/partials/shortcode-cards.php:221
 msgid "Daily Panchang"
 msgstr "일일 타로 카드"
 
-#: includes/class-public-client.php:169
+#: includes/class-public-client.php:179
 msgid "Numerology core numbers"
 msgstr "수비학 핵심 숫자"
 
-#: includes/class-public-client.php:170
+#: includes/class-public-client.php:180
 msgid "Synastry compatibility"
 msgstr "시나스트리 궁합"
 
-#: includes/class-public-client.php:172
+#: includes/class-public-client.php:182
 msgid "AstroWay widget"
 msgstr "AstroWay 위젯"
 
-#: includes/class-render.php:108
+#: includes/class-render.php:116
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -732,334 +925,417 @@ msgstr ""
 "위도와 경도가 필요합니다. 상승점은 특정 장소의 지평선(시간이 아닌 장소)을 나타내기 때문입니다. 이 메모는 관리자만 볼 수 있습니다."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:115
+#: includes/class-render.php:123
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
 "note."
 msgstr "%s 위젯을 지금 로드할 수 없습니다. 관리자만 이 알림을 볼 수 있습니다."
 
-#: includes/class-render.php:189
+#: includes/class-render.php:199
 msgid "Rising sign"
 msgstr "라이징 사인"
 
-#: includes/class-render.php:203
+#: includes/class-render.php:213
 msgid "Moon sign"
 msgstr "달 별자리"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
 #. translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine"
-#: includes/class-render.php:213 includes/class-render.php:3171
+#: includes/class-render.php:223 includes/class-render.php:3975
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:227 includes/class-render.php:1453
+#: includes/class-render.php:237 includes/class-render.php:1802
+#: includes/class-render.php:3057
 msgid "Position"
 msgstr "위치"
 
 #. translators: %d = house number
-#: includes/class-render.php:230 includes/class-render.php:1453
+#: includes/class-render.php:240 includes/class-render.php:1802
+#: includes/class-render.php:3814
 msgid "House"
 msgstr "하우스"
 
 #. translators: %d = house number
-#: includes/class-render.php:230 includes/class-render.php:993
-#: includes/class-render.php:1421
+#: includes/class-render.php:240 includes/class-render.php:1317
+#: includes/class-render.php:1331 includes/class-render.php:1757
+#: includes/class-render.php:1770 includes/class-render.php:3806
 #, php-format
 msgid "House %d"
 msgstr "%d 하우스"
 
-#: includes/class-render.php:238
+#: includes/class-render.php:248
 msgid "Chart ruler"
 msgstr "Chart ruler"
 
-#: includes/class-render.php:241
+#: includes/class-render.php:251
 msgid "Ruler position"
 msgstr "룰러 위치"
 
-#: includes/class-render.php:247 includes/class-render.php:1429
+#: includes/class-render.php:257 includes/class-render.php:1778
 msgid "Midheaven"
 msgstr "미드헤이븐"
 
-#: includes/class-render.php:286 includes/class-render.php:331
+#: includes/class-render.php:296 includes/class-render.php:355
 msgid "Human Design"
 msgstr "휴먼 디자인"
 
 #. translators: %s = person's name
-#: includes/class-render.php:289
+#: includes/class-render.php:299
 #, php-format
 msgid "Human Design: %s"
 msgstr "휴먼 디자인: %s"
 
-#: includes/class-render.php:300
+#. translators: %s = date of the design moment
+#: includes/class-render.php:307
+#, php-format
+msgid "Design: %s"
+msgstr "디자인: %s"
+
+#: includes/class-render.php:321
 msgid "Strategy"
 msgstr "전략"
 
-#: includes/class-render.php:303
+#: includes/class-render.php:324
 msgid "Authority"
 msgstr "어소리티"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:310
+#: includes/class-render.php:331
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:315
+#: includes/class-render.php:336
 msgid "Profile"
 msgstr "프로필"
 
-#: includes/class-render.php:318
+#: includes/class-render.php:339
 msgid "Definition"
 msgstr "정의"
 
-#: includes/class-render.php:321
-msgid "Not-self theme"
-msgstr "노트셀프 테마"
-
-#: includes/class-render.php:325
+#: includes/class-render.php:349
 msgid "Incarnation cross"
 msgstr "인카네이션 크로스"
 
-#: includes/class-render.php:334
+#: includes/class-render.php:358
 msgid "Bodygraph"
 msgstr "바디그래프"
 
-#: includes/class-render.php:338
-msgid "Centres and channels"
-msgstr "센터와 채널"
+#: includes/class-render.php:363
+msgid "Centres"
+msgstr "센터"
+
+#: includes/class-render.php:368 includes/class-render.php:666
+msgid "Channels"
+msgstr "채널"
+
+#. translators: abbreviated colour, tone and base of a Human Design
+#. activation, e.g. C5 T6 B4
+#: includes/class-render.php:443
+#, php-format
+msgid "C%1$d T%2$d B%3$d"
+msgstr "C%1$d T%2$d B%3$d"
+
+#. translators: colour, tone and base of a Human Design activation
+#: includes/class-render.php:446
+#, php-format
+msgid "colour %1$d, tone %2$d, base %3$d"
+msgstr "컬러 %1$d, 톤 %2$d, 베이스 %3$d"
 
 #. translators: 1: Human Design gate number, 2: line number within the gate
-#: includes/class-render.php:410
+#: includes/class-render.php:452
 #, php-format
 msgid "gate %1$d, line %2$d"
 msgstr "게이트 %1$d, 라인 %2$d"
 
-#: includes/class-render.php:421
+#: includes/class-render.php:463
 msgid "No centre is defined."
 msgstr "정의된 센터가 없습니다."
 
 #. translators: %s = list of centre names
-#: includes/class-render.php:423
+#: includes/class-render.php:465
 #, php-format
 msgid "Defined centres: %s."
 msgstr "정의된 센터: %s."
 
 #. translators: %s = list of channels such as 13-33
-#: includes/class-render.php:426
+#: includes/class-render.php:468
 #, php-format
 msgid "Channels: %s."
 msgstr "채널: %s."
 
-#: includes/class-render.php:445
+#: includes/class-render.php:487 includes/class-render.php:627
 msgid "Design"
 msgstr "디자인"
 
-#: includes/class-render.php:445
+#: includes/class-render.php:487 includes/class-render.php:626
 msgid "Personality"
 msgstr "퍼스낼리티"
 
-#: includes/class-render.php:451
+#: includes/class-render.php:493
 msgid "Design (unconscious)"
 msgstr "디자인 (무의식)"
 
-#: includes/class-render.php:455
+#: includes/class-render.php:497
 msgid "Personality (conscious)"
 msgstr "퍼스낼리티 (의식)"
 
-#: includes/class-render.php:459
+#: includes/class-render.php:501
 msgid "Both"
 msgstr "둘 다"
 
-#: includes/class-render.php:469
+#: includes/class-render.php:511
 msgctxt "planet"
 msgid "Earth"
 msgstr "지구"
 
-#: includes/class-render.php:502
-msgid "Defined centres"
-msgstr "정의된 센터"
+#: includes/class-render.php:524 includes/class-render.php:525
+msgid "Satisfaction"
+msgstr "만족"
 
-#: includes/class-render.php:505
-msgid "Open centres"
-msgstr "오픈 센터"
+#: includes/class-render.php:526
+msgid "Success"
+msgstr "성공"
 
-#: includes/class-render.php:507
-msgid "Centres"
-msgstr "센터"
+#: includes/class-render.php:527
+msgid "Peace"
+msgstr "평화"
+
+#: includes/class-render.php:528
+msgid "Surprise"
+msgstr "놀라움"
+
+#. translators: %s = Human Design signature, e.g. Success
+#: includes/class-render.php:533
+#, php-format
+msgid "Signature: %s"
+msgstr "시그니처: %s"
+
+#. translators: %s = Human Design not-self theme, e.g. Bitterness
+#: includes/class-render.php:537
+#, php-format
+msgid "Not-self: %s"
+msgstr "낫셀프: %s"
+
+#: includes/class-render.php:562
+msgid "Motor"
+msgstr "모터"
+
+#: includes/class-render.php:563
+msgid "Awareness"
+msgstr "인식"
+
+#: includes/class-render.php:564
+msgid "Pressure"
+msgstr "압력"
+
+#: includes/class-render.php:579 includes/class-render.php:596
+msgid "Defined"
+msgstr "정의됨"
+
+#: includes/class-render.php:579 includes/class-render.php:596
+msgid "Open"
+msgstr "열림"
+
+#. translators: %s = list of gate numbers
+#: includes/class-render.php:588
+#, php-format
+msgid "Gates: %s"
+msgstr "게이트: %s"
+
+#. translators: %s = list of gate numbers
+#: includes/class-render.php:592
+#, php-format
+msgid "Active gates: %s"
+msgstr "활성 게이트: %s"
+
+#: includes/class-render.php:620
+msgid "Individual circuitry"
+msgstr "개인 회로"
+
+#: includes/class-render.php:621
+msgid "Tribal circuitry"
+msgstr "부족 회로"
+
+#: includes/class-render.php:622
+msgid "Collective circuitry"
+msgstr "집단 회로"
+
+#: includes/class-render.php:623
+msgid "Integration channels"
+msgstr "통합 채널"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:522
+#: includes/class-render.php:656
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s부터 %4$s까지"
 
-#: includes/class-render.php:533
-msgid "Channels"
-msgstr "채널"
-
-#: includes/class-render.php:538
+#: includes/class-render.php:676
 msgid "Generator"
 msgstr "제너레이터"
 
-#: includes/class-render.php:539
+#: includes/class-render.php:677
 msgid "Manifesting Generator"
 msgstr "매니페스팅 제너레이터"
 
-#: includes/class-render.php:540
+#: includes/class-render.php:678
 msgid "Manifestor"
 msgstr "매니페스터"
 
-#: includes/class-render.php:541
+#: includes/class-render.php:679
 msgid "Projector"
 msgstr "프로젝터"
 
-#: includes/class-render.php:542
+#: includes/class-render.php:680
 msgid "Reflector"
 msgstr "리플렉터"
 
-#: includes/class-render.php:549
+#: includes/class-render.php:687
 msgid "Wait to respond"
 msgstr "답변하기 전에 잠시 기다려 주세요"
 
-#: includes/class-render.php:550
+#: includes/class-render.php:688
 msgid "Wait for the invitation"
 msgstr "초대를 기다려 주세요"
 
-#: includes/class-render.php:551 includes/class-render.php:552
+#: includes/class-render.php:689 includes/class-render.php:690
 msgid "Inform before acting"
 msgstr "행동하기 전에 미리 알리세요"
 
-#: includes/class-render.php:553
+#: includes/class-render.php:691
 msgid "Wait a lunar cycle"
 msgstr "한 달 주기를 기다려 보세요"
 
-#: includes/class-render.php:554
+#: includes/class-render.php:692
 msgid "Respond, then inform"
 msgstr "먼저 응답한 다음, 상황을 알리세요"
 
-#: includes/class-render.php:561
+#: includes/class-render.php:699
 msgid "Emotional (Solar Plexus)"
 msgstr "감정적 (명치)"
 
-#: includes/class-render.php:562 includes/class-render.php:613
+#: includes/class-render.php:700 includes/class-render.php:751
 msgid "Sacral"
 msgstr "사크랄"
 
-#: includes/class-render.php:563
+#: includes/class-render.php:701
 msgid "Splenic"
 msgstr "비장"
 
-#: includes/class-render.php:564
+#: includes/class-render.php:702
 msgid "Ego (Heart)"
 msgstr "자아 (마음)"
 
-#: includes/class-render.php:565
+#: includes/class-render.php:703
 msgid "Self-projected"
 msgstr "자기 투영된"
 
-#: includes/class-render.php:566
+#: includes/class-render.php:704
 msgid "Mental (environment)"
 msgstr "정신적 (환경)"
 
-#: includes/class-render.php:567 includes/class-render.php:568
+#: includes/class-render.php:705 includes/class-render.php:706
 msgid "Lunar cycle"
 msgstr "월주기"
 
-#: includes/class-render.php:575
+#: includes/class-render.php:713
 msgid "Single definition"
 msgstr "Single definition"
 
-#: includes/class-render.php:576
+#: includes/class-render.php:714
 msgid "Split definition"
 msgstr "Split definition"
 
-#: includes/class-render.php:577
+#: includes/class-render.php:715
 msgid "Triple split definition"
 msgstr "Triple split definition"
 
-#: includes/class-render.php:578
+#: includes/class-render.php:716
 msgid "Quadruple split definition"
 msgstr "Quadruple split definition"
 
-#: includes/class-render.php:579
+#: includes/class-render.php:717
 msgid "No definition"
 msgstr "No definition"
 
-#: includes/class-render.php:586
+#: includes/class-render.php:724
 msgid "Frustration"
 msgstr "Frustration"
 
-#: includes/class-render.php:587
+#: includes/class-render.php:725
 msgid "Bitterness"
 msgstr "Bitterness"
 
-#: includes/class-render.php:588
+#: includes/class-render.php:726
 msgid "Anger"
 msgstr "Anger"
 
-#: includes/class-render.php:589
+#: includes/class-render.php:727
 msgid "Disappointment"
 msgstr "Disappointment"
 
-#: includes/class-render.php:596
+#: includes/class-render.php:734
 msgid "Right Angle"
 msgstr "Right Angle"
 
-#: includes/class-render.php:597
+#: includes/class-render.php:735
 msgid "Left Angle"
 msgstr "Left Angle"
 
-#: includes/class-render.php:598
+#: includes/class-render.php:736
 msgid "Juxtaposition"
 msgstr "Juxtaposition"
 
-#: includes/class-render.php:606
+#: includes/class-render.php:744
 msgid "Head"
 msgstr "헤드"
 
-#: includes/class-render.php:607
+#: includes/class-render.php:745
 msgid "Ajna"
 msgstr "아즈나"
 
-#: includes/class-render.php:608
+#: includes/class-render.php:746
 msgid "Throat"
 msgstr "스로트"
 
-#: includes/class-render.php:609
+#: includes/class-render.php:747
 msgid "G (identity)"
 msgstr "G (아이덴티티)"
 
-#: includes/class-render.php:610
+#: includes/class-render.php:748
 msgid "Heart (ego)"
 msgstr "하트 (에고)"
 
-#: includes/class-render.php:611
+#: includes/class-render.php:749
 msgid "Solar Plexus"
 msgstr "솔라플렉서스"
 
-#: includes/class-render.php:612
+#: includes/class-render.php:750
 msgid "Spleen"
 msgstr "스플린"
 
-#: includes/class-render.php:614
+#: includes/class-render.php:752
 msgid "Root"
 msgstr "루트"
 
-#: includes/class-render.php:655 includes/class-render.php:683
+#: includes/class-render.php:799 includes/class-render.php:826
+#: includes/class-render.php:857
 msgid "Natal chart"
 msgstr "출생 차트"
 
 #. translators: %s = person's name
-#: includes/class-render.php:658
+#: includes/class-render.php:803 includes/class-render.php:829
 #, php-format
 msgid "Natal chart: %s"
 msgstr "출생 차트: %s"
 
-#: includes/class-render.php:680
+#: includes/class-render.php:854
 msgid ""
 "Birth time unknown: the chart is drawn for noon, without houses, the "
 "Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from "
@@ -1067,137 +1343,286 @@ msgid ""
 msgstr ""
 "출생 시간 모름: 차트는 정오 기준으로 계산했고 하우스, 어센던트, 달의 애스펙트는 빠졌으며, 달은 최대 7도까지 어긋날 수 있습니다."
 
-#: includes/class-render.php:686 includes/class-render.php:1151
-#: includes/class-render.php:2797
+#: includes/class-render.php:860 includes/class-render.php:1487
+#: includes/class-render.php:3464
 msgid "Wheel"
 msgstr "휠"
 
-#: includes/class-render.php:690 includes/class-render.php:1155
+#: includes/class-render.php:865 includes/class-render.php:1491
 msgid "Grid"
 msgstr "그리드"
 
-#: includes/class-render.php:691 includes/class-render.php:1156
+#: includes/class-render.php:867 includes/class-render.php:1492
 msgid "Aspects between planets"
 msgstr "행성 간 애스펙트"
 
-#: includes/class-render.php:694 includes/class-render.php:1159
-#: includes/class-render.php:1452
+#: includes/class-render.php:870 includes/class-render.php:1495
+#: includes/class-render.php:1801
 msgid "Placements"
 msgstr "배치"
 
-#: includes/class-render.php:698 includes/class-render.php:1163
-#: includes/class-render.php:2801
+#: includes/class-render.php:875 includes/class-render.php:1499
+#: includes/class-render.php:3469
 msgid "Aspects"
 msgstr "애스펙트"
 
-#: includes/class-render.php:703 assets/js/astroway-blocks-editor.js:203
+#: includes/class-render.php:881 includes/class-widget-manifest.php:237
 msgid "Transits"
 msgstr "트랜짓"
 
-#: includes/class-render.php:710 includes/class-render.php:1558
+#: includes/class-render.php:889 includes/class-render.php:1907
 msgid "Elements by mode"
 msgstr "특성별 원소"
 
-#: includes/class-render.php:814
+#: includes/class-render.php:1008
 msgid "What it means"
 msgstr "의미"
 
-#: includes/class-render.php:844
+#: includes/class-render.php:1038
 msgid "time unknown"
 msgstr "시간 모름"
 
-#: includes/class-render.php:865 includes/class-render.php:1708
+#: includes/class-render.php:1053
+msgid "Part of Fortune"
+msgstr "파트 오브 포춘"
+
+#: includes/class-render.php:1054
+msgid "Vertex"
+msgstr "버텍스"
+
+#: includes/class-render.php:1055 includes/class-render.php:2070
+msgid "South Node"
+msgstr "남쪽 노드"
+
+#: includes/class-render.php:1080 includes/class-render.php:1813
+#: includes/class-render.php:4355 includes/class-tarot.php:245
+msgid "Fire"
+msgstr "화"
+
+#: includes/class-render.php:1081 includes/class-render.php:1817
+#: includes/class-render.php:4356 includes/class-tarot.php:248
+msgid "Earth"
+msgstr "토"
+
+#: includes/class-render.php:1082 includes/class-render.php:1821
+#: includes/class-tarot.php:247
+msgid "Air"
+msgstr "공기"
+
+#: includes/class-render.php:1083 includes/class-render.php:1825
+#: includes/class-render.php:4358 includes/class-tarot.php:246
+msgid "Water"
+msgstr "수"
+
+#: includes/class-render.php:1086 includes/class-render.php:1831
+msgid "Cardinal"
+msgstr "카디널"
+
+#: includes/class-render.php:1087 includes/class-render.php:1835
+msgid "Fixed"
+msgstr "고정"
+
+#: includes/class-render.php:1088 includes/class-render.php:1839
+msgid "Mutable"
+msgstr "변통"
+
+#. translators: %s = element or elements, e.g. "Earth" or "Earth, Water"
+#. translators: %s = one of the five Chinese elements
+#: includes/class-render.php:1094 includes/class-render.php:4241
+#, php-format
+msgid "Element: %s"
+msgstr "원소: %s"
+
+#. translators: %s = mode or modes, e.g. "Fixed"
+#: includes/class-render.php:1098
+#, php-format
+msgid "Mode: %s"
+msgstr "양태: %s"
+
+#: includes/class-render.php:1101
+msgid "Day chart"
+msgstr "낮 차트"
+
+#: includes/class-render.php:1103
+msgid "Night chart"
+msgstr "밤 차트"
+
+#. translators: %d = number of aspects
+#: includes/class-render.php:1109 includes/class-render.php:3709
+#, php-format
+msgid "Harmonious %d"
+msgstr "조화: %d"
+
+#. translators: %d = number of aspects
+#: includes/class-render.php:1111 includes/class-render.php:3711
+#, php-format
+msgid "Challenging %d"
+msgstr "긴장: %d"
+
+#: includes/class-render.php:1123 includes/class-render.php:2956
+#: includes/class-render.php:3034 includes/class-render.php:3108
+msgid "Retrograde"
+msgstr "역행"
+
+#: includes/class-render.php:1137
+msgid "Grand cross"
+msgstr "그랜드 크로스"
+
+#: includes/class-render.php:1138
+msgid "T-square"
+msgstr "T-스퀘어"
+
+#: includes/class-render.php:1139
+msgid "Grand trine"
+msgstr "그랜드 트라인"
+
+#: includes/class-render.php:1140
+msgid "Yod"
+msgstr "요드"
+
+#: includes/class-render.php:1141
+msgid "Stellium"
+msgstr "스텔리움"
+
+#: includes/class-render.php:1144
+msgid "Four planets in two oppositions, each square to the next."
+msgstr "두 개의 대립에 놓인 네 행성으로, 각각 다음 행성과 스퀘어입니다."
+
+#: includes/class-render.php:1145
+msgid "Two planets in opposition, both square to a third, the apex."
+msgstr "대립하는 두 행성이 꼭짓점인 세 번째 행성과 모두 스퀘어입니다."
+
+#: includes/class-render.php:1146
+msgid "Three planets a trine apart, closing a triangle."
+msgstr "서로 트라인을 이루는 세 행성이 삼각형을 닫습니다."
+
+#: includes/class-render.php:1147
+msgid "Two planets in sextile, both quincunx to a third, the apex."
+msgstr "섹스타일인 두 행성이 꼭짓점인 세 번째 행성과 모두 퀸컹스입니다."
+
+#. translators: %s = planet name, the apex of a chart pattern
+#: includes/class-render.php:1156
+#, php-format
+msgid "%s (apex)"
+msgstr "%s (꼭짓점)"
+
+#. translators: 1: number of planets, 2: sign name
+#: includes/class-render.php:1162
+#, php-format
+msgid "%1$d planets in %2$s."
+msgstr "%2$s에 있는 행성: %1$d."
+
+#. translators: 1: number of planets, 2: house number
+#: includes/class-render.php:1164
+#, php-format
+msgid "%1$d planets in house %2$d."
+msgstr "%2$d하우스에 있는 행성: %1$d."
+
+#: includes/class-render.php:1171
+msgid "Chart patterns"
+msgstr "차트 패턴"
+
+#: includes/class-render.php:1188 includes/class-render.php:2057
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr "태양"
 
-#: includes/class-render.php:866 includes/class-render.php:1709
+#: includes/class-render.php:1189 includes/class-render.php:2058
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr "달"
 
-#: includes/class-render.php:882 includes/class-render.php:1428
+#: includes/class-render.php:1205 includes/class-render.php:1777
 msgid "Ascendant"
 msgstr "어센던트"
 
+#: includes/class-render.php:1237 includes/class-render.php:3871
+msgid "Separating"
+msgstr "분리"
+
+#: includes/class-render.php:1237 includes/class-render.php:3871
+msgid "Applying"
+msgstr "접근"
+
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:916 includes/class-render.php:1352
-#: includes/class-render.php:1579 includes/class-render.php:3007
+#: includes/class-render.php:1240 includes/class-render.php:1688
+#: includes/class-render.php:1928 includes/class-render.php:3685
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:1015
+#: includes/class-render.php:1351
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr "출생 차트: 별자리, 하우스, 행성과 그 사이의 애스펙트."
 
-#: includes/class-render.php:1017 includes/class-render.php:1383
-#: includes/class-render.php:2961
+#: includes/class-render.php:1353 includes/class-render.php:1719
+#: includes/class-render.php:3641
 msgid "ASC"
 msgstr "ASC"
 
-#: includes/class-render.php:1018 includes/class-render.php:1384
-#: includes/class-render.php:2962
+#: includes/class-render.php:1354 includes/class-render.php:1720
+#: includes/class-render.php:3642
 msgid "IC"
 msgstr "IC"
 
-#: includes/class-render.php:1019 includes/class-render.php:1385
-#: includes/class-render.php:2963
+#: includes/class-render.php:1355 includes/class-render.php:1721
+#: includes/class-render.php:3643
 msgid "DSC"
 msgstr "DSC"
 
-#: includes/class-render.php:1020 includes/class-render.php:1386
-#: includes/class-render.php:2964
+#: includes/class-render.php:1356 includes/class-render.php:1722
+#: includes/class-render.php:3644
 msgid "MC"
 msgstr "MC"
 
-#: includes/class-render.php:1047
+#: includes/class-render.php:1383
 msgid ""
 "The Solar Return found for this year falls in another year, so the card is "
 "left out. Only administrators see this note."
 msgstr "올해에 대해 찾은 솔라 리턴이 다른 해에 해당하므로 카드를 표시하지 않습니다. 이 메모는 관리자만 볼 수 있습니다."
 
-#: includes/class-render.php:1052
+#: includes/class-render.php:1388
 msgid ""
 "The Lunar Return found falls before the date it was searched from, so the "
 "card is left out. Only administrators see this note."
 msgstr "찾은 루나 리턴이 검색을 시작한 날짜보다 앞서므로 카드를 표시하지 않습니다. 이 메모는 관리자만 볼 수 있습니다."
 
 #. translators: %d = year
-#: includes/class-render.php:1063
+#: includes/class-render.php:1399
 #, php-format
 msgid "Solar Return %d"
 msgstr "솔라 리턴 %d"
 
 #. translators: 1: year, 2: person's name
-#: includes/class-render.php:1065
+#: includes/class-render.php:1401
 #, php-format
 msgid "Solar Return %1$d: %2$s"
 msgstr "솔라 리턴 %1$d: %2$s"
 
-#: includes/class-render.php:1066
+#: includes/class-render.php:1402
 msgid ""
 "Solar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Sun returns to its birth position."
 msgstr "솔라 리턴 차트: 태양이 출생 시 위치로 돌아오는 순간의 별자리, 하우스, 행성과 그 사이의 애스펙트."
 
-#: includes/class-render.php:1068 includes/views/admin-shortcodes.php:303
+#: includes/class-render.php:1404
+#: includes/views/partials/shortcode-cards.php:300
 msgid "Lunar Return"
 msgstr "루나 리턴"
 
 #. translators: %s = person's name
-#: includes/class-render.php:1070
+#: includes/class-render.php:1406
 #, php-format
 msgid "Lunar Return: %s"
 msgstr "루나 리턴: %s"
 
-#: includes/class-render.php:1071
+#: includes/class-render.php:1407
 msgid ""
 "Lunar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Moon returns to its birth position."
 msgstr "루나 리턴 차트: 달이 출생 시 위치로 돌아오는 순간의 별자리, 하우스, 행성과 그 사이의 애스펙트."
 
-#: includes/class-render.php:1107
+#: includes/class-render.php:1443
 msgid ""
 "The Davison chart for these two places is not drawn yet: the midpoint the "
 "api returned is on the wrong side of the 180th meridian. Only administrators"
@@ -1206,21 +1631,21 @@ msgstr ""
 "이 두 장소의 데이비슨 차트는 아직 그려지지 않습니다: api가 돌려준 중간점이 180도 경선의 반대쪽에 있습니다. 이 메모는 관리자만 "
 "볼 수 있습니다."
 
-#: includes/class-render.php:1116
+#: includes/class-render.php:1452
 msgid "Davison chart"
 msgstr "데이비슨 차트"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:1119
+#: includes/class-render.php:1455
 #, php-format
 msgid "Davison chart: %1$s and %2$s"
 msgstr "데이비슨 차트: %1$s와 %2$s"
 
-#: includes/class-render.php:1131
+#: includes/class-render.php:1467
 msgid "Midpoint"
 msgstr "중간점"
 
-#: includes/class-render.php:1140
+#: includes/class-render.php:1476
 msgid ""
 "Davison chart: one chart cast for the midpoint between two births in time "
 "and place."
@@ -1228,27 +1653,27 @@ msgstr "데이비슨 차트: 두 출생의 시간과 장소의 중간점으로 �
 
 #. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo
 #. 24°22'"
-#: includes/class-render.php:1331 includes/class-render.php:2930
+#: includes/class-render.php:1667 includes/class-render.php:3610
 #, php-format
 msgid "%1$s (%2$s), %3$s"
 msgstr "%1$s (%2$s), %3$s"
 
-#: includes/class-render.php:1353 includes/class-render.php:1377
+#: includes/class-render.php:1689 includes/class-render.php:1713
 msgid "transit"
 msgstr "트랜짓"
 
-#: includes/class-render.php:1355 includes/class-render.php:1376
+#: includes/class-render.php:1691 includes/class-render.php:1712
 msgid "natal"
 msgstr "출생"
 
 #. translators: %s = a date
-#: includes/class-render.php:1361
+#: includes/class-render.php:1697
 #, php-format
 msgid "sky on %s"
 msgstr "%s의 하늘"
 
 #. translators: 1: a date, 2: an orb in degrees
-#: includes/class-render.php:1365
+#: includes/class-render.php:1701
 #, php-format
 msgid ""
 "The planets at noon UTC on %1$s against the birth chart, aspects within "
@@ -1258,385 +1683,423 @@ msgstr ""
 "뺐습니다."
 
 #. translators: %s = a date
-#: includes/class-render.php:1381
+#: includes/class-render.php:1717
 #, php-format
 msgid ""
 "Transit wheel: the birth chart inside, the sky on %s on the outer ring."
 msgstr "트랜짓 휠: 안쪽에 출생 차트, 바깥 원에 %s의 하늘."
 
-#: includes/class-render.php:1394
+#: includes/class-render.php:1730
 msgid "Inner ring: birth chart"
 msgstr "안쪽 원: 출생 차트"
 
 #. translators: %s = "sky on <date>"
 #. translators: %s = person's name, or "Second chart"
-#: includes/class-render.php:1399 includes/class-render.php:2979
+#: includes/class-render.php:1735 includes/class-render.php:3659
 #, php-format
 msgid "Outer ring: %s"
 msgstr "바깥 원: %s"
 
-#: includes/class-render.php:1403
+#: includes/class-render.php:1739
 msgid "No close transits on this day."
 msgstr "이날은 가까운 트랜짓이 없습니다."
 
 #. translators: %d = house number
-#: includes/class-render.php:1422
+#: includes/class-render.php:1758
 msgid "retrograde"
 msgstr "역행"
 
-#: includes/class-render.php:1453
+#: includes/class-render.php:1802
 msgid "Body"
 msgstr "천체"
 
-#: includes/class-render.php:1453
+#: includes/class-render.php:1802 includes/class-render.php:3057
 msgid "Motion"
 msgstr "운행"
 
-#: includes/class-render.php:1464 includes/class-render.php:3471
-msgid "Fire"
-msgstr "화"
-
-#: includes/class-render.php:1468 includes/class-render.php:3472
-msgid "Earth"
-msgstr "토"
-
-#: includes/class-render.php:1472
-msgid "Air"
-msgstr "공기"
-
-#: includes/class-render.php:1476 includes/class-render.php:3474
-msgid "Water"
-msgstr "수"
-
-#: includes/class-render.php:1482
-msgid "Cardinal"
-msgstr "카디널"
-
-#: includes/class-render.php:1486
-msgid "Fixed"
-msgstr "고정"
-
-#: includes/class-render.php:1490
-msgid "Mutable"
-msgstr "변통"
-
-#: includes/class-render.php:1560
+#: includes/class-render.php:1909
 msgid "Total"
 msgstr "합계"
 
-#: includes/class-render.php:1589
+#: includes/class-render.php:1938
 msgid "Major aspects"
 msgstr "주요 어스펙트"
 
-#: includes/class-render.php:1694
+#: includes/class-render.php:2043 includes/class-render.php:2477
 msgid "New Moon"
 msgstr "신월"
 
-#: includes/class-render.php:1695
+#: includes/class-render.php:2044
 msgid "Waxing Crescent"
 msgstr "초승달"
 
-#: includes/class-render.php:1696
+#: includes/class-render.php:2045 includes/class-render.php:2478
 msgid "First Quarter"
 msgstr "1분기"
 
-#: includes/class-render.php:1697
+#: includes/class-render.php:2046
 msgid "Waxing Gibbous"
 msgstr "상현달"
 
-#: includes/class-render.php:1698
+#: includes/class-render.php:2047 includes/class-render.php:2479
 msgid "Full Moon"
 msgstr "보름달"
 
-#: includes/class-render.php:1699
+#: includes/class-render.php:2048
 msgid "Waning Gibbous"
 msgstr "하현달"
 
-#: includes/class-render.php:1700
+#: includes/class-render.php:2049 includes/class-render.php:2480
 msgid "Last Quarter"
 msgstr "지난 분기"
 
-#: includes/class-render.php:1701
+#: includes/class-render.php:2050
 msgid "Waning Crescent"
 msgstr "지나가는 초승달"
 
-#: includes/class-render.php:1710 assets/js/astroway-blocks-editor.js:146
+#: includes/class-render.php:2059 includes/class-widget-manifest.php:388
 msgid "Mercury"
 msgstr "수성"
 
-#: includes/class-render.php:1711 assets/js/astroway-blocks-editor.js:147
+#: includes/class-render.php:2060 includes/class-widget-manifest.php:389
 msgid "Venus"
 msgstr "금성"
 
-#: includes/class-render.php:1712 assets/js/astroway-blocks-editor.js:148
+#: includes/class-render.php:2061 includes/class-widget-manifest.php:390
 msgid "Mars"
 msgstr "화성"
 
-#: includes/class-render.php:1713 assets/js/astroway-blocks-editor.js:149
+#: includes/class-render.php:2062 includes/class-widget-manifest.php:391
 msgid "Jupiter"
 msgstr "목성"
 
-#: includes/class-render.php:1714 assets/js/astroway-blocks-editor.js:150
+#: includes/class-render.php:2063 includes/class-widget-manifest.php:392
 msgid "Saturn"
 msgstr "토성"
 
-#: includes/class-render.php:1715 assets/js/astroway-blocks-editor.js:151
+#: includes/class-render.php:2064 includes/class-widget-manifest.php:393
 msgid "Uranus"
 msgstr "천왕성"
 
-#: includes/class-render.php:1716 assets/js/astroway-blocks-editor.js:152
+#: includes/class-render.php:2065 includes/class-widget-manifest.php:394
 msgid "Neptune"
 msgstr "해왕성"
 
-#: includes/class-render.php:1717 assets/js/astroway-blocks-editor.js:153
+#: includes/class-render.php:2066 includes/class-widget-manifest.php:395
 msgid "Pluto"
 msgstr "명왕성"
 
-#: includes/class-render.php:1718
+#: includes/class-render.php:2067
 msgid "Chiron"
 msgstr "카이론"
 
-#: includes/class-render.php:1719 includes/class-render.php:1726
-#: includes/class-render.php:1727
+#: includes/class-render.php:2068 includes/class-render.php:2075
+#: includes/class-render.php:2076
 msgid "Lilith"
 msgstr "릴리스"
 
-#: includes/class-render.php:1720 includes/class-render.php:1724
-#: includes/class-render.php:1725
+#: includes/class-render.php:2069 includes/class-render.php:2073
+#: includes/class-render.php:2074
 msgid "North Node"
 msgstr "북쪽 노드"
 
-#: includes/class-render.php:1721
-msgid "South Node"
-msgstr "남쪽 노드"
-
-#: includes/class-render.php:1734
+#: includes/class-render.php:2083
 msgid "conjunct"
 msgstr "컨정션"
 
-#: includes/class-render.php:1735 includes/class-render.php:3250
+#: includes/class-render.php:2084 includes/class-render.php:4054
 msgid "opposite"
 msgstr "오포지션"
 
-#: includes/class-render.php:1736 includes/class-render.php:3249
+#: includes/class-render.php:2085 includes/class-render.php:4053
 msgid "trine"
 msgstr "트라인"
 
-#: includes/class-render.php:1737 includes/class-render.php:3248
+#: includes/class-render.php:2086 includes/class-render.php:4052
 msgid "square"
 msgstr "스퀘어"
 
-#: includes/class-render.php:1738 includes/class-render.php:3247
+#: includes/class-render.php:2087 includes/class-render.php:4051
 msgid "sextile"
 msgstr "섹스타일"
 
-#: includes/class-render.php:1769
+#: includes/class-render.php:2119
 msgid "Period"
 msgstr "기간"
 
-#: includes/class-render.php:1843
-msgid "Week"
-msgstr "주"
+#: includes/class-render.php:2139
+msgid "Horoscope"
+msgstr "운세"
 
-#: includes/class-render.php:1845
-msgid "Month"
-msgstr "월"
+#: includes/class-render.php:2143
+msgid "Pick your sign"
+msgstr "별자리를 선택하세요"
 
-#: includes/class-render.php:1847
-msgid "Year"
-msgstr "년"
-
-#: includes/class-render.php:1849
-msgid "Today"
-msgstr "오늘"
-
-#: includes/class-render.php:1870
-msgid "Horoscope for the week"
-msgstr "이번 주 운세"
-
-#: includes/class-render.php:1872
-msgid "Horoscope for the month"
-msgstr "이번 달 운세"
-
-#: includes/class-render.php:1874
-msgid "Horoscope for the year"
-msgstr "올해 운세"
-
-#: includes/class-render.php:1876 includes/views/admin-settings.php:328
-msgid "Horoscope for today"
-msgstr "오늘의 운세"
-
-#: includes/class-render.php:1896 assets/js/astroway-blocks-editor.js:254
-#: assets/js/astroway-blocks-editor.js:289
-#: assets/js/astroway-blocks-editor.js:297
-#: assets/js/astroway-blocks-editor.js:316
-#: assets/js/astroway-blocks-editor.js:354
+#: includes/class-render.php:2146 includes/class-render.php:2320
+#: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:64
 msgid "Zodiac sign"
 msgstr "조디악 표지판"
 
-#: includes/class-render.php:1921
+#. translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning
+#. Crescent"
+#: includes/class-render.php:2172
+#, php-format
+msgid "Moon in %1$s · %2$s"
+msgstr "달은 %1$s · %2$s"
+
+#: includes/class-render.php:2176
+msgid "Sky today"
+msgstr "오늘의 하늘"
+
+#: includes/class-render.php:2267
+msgid "Week"
+msgstr "주"
+
+#: includes/class-render.php:2269
+msgid "Month"
+msgstr "월"
+
+#: includes/class-render.php:2271
+msgid "Year"
+msgstr "년"
+
+#: includes/class-render.php:2273
+msgid "Today"
+msgstr "오늘"
+
+#: includes/class-render.php:2294
+msgid "Horoscope for the week"
+msgstr "이번 주 운세"
+
+#: includes/class-render.php:2296
+msgid "Horoscope for the month"
+msgstr "이번 달 운세"
+
+#: includes/class-render.php:2298
+msgid "Horoscope for the year"
+msgstr "올해 운세"
+
+#: includes/class-render.php:2300 includes/views/admin-settings.php:328
+msgid "Horoscope for today"
+msgstr "오늘의 운세"
+
+#: includes/class-render.php:2345
 msgid "Weeks"
 msgstr "주"
 
-#: includes/class-render.php:1922
+#: includes/class-render.php:2346
 msgid "Previous week"
 msgstr "이전 주"
 
-#: includes/class-render.php:1923
+#: includes/class-render.php:2347
 msgid "Next week"
 msgstr "다음 주"
 
-#: includes/class-render.php:1927
+#: includes/class-render.php:2351
 msgid "Months"
 msgstr "월"
 
-#: includes/class-render.php:1928
+#: includes/class-render.php:2352
 msgid "Previous month"
 msgstr "이전 달"
 
-#: includes/class-render.php:1929
+#: includes/class-render.php:2353
 msgid "Next month"
 msgstr "다음 달"
 
-#: includes/class-render.php:1933
+#: includes/class-render.php:2357
 msgid "Days"
 msgstr "일"
 
-#: includes/class-render.php:1934
+#: includes/class-render.php:2358
 msgid "Previous day"
 msgstr "이전 날"
 
-#: includes/class-render.php:1935
+#: includes/class-render.php:2359
 msgid "Next day"
 msgstr "다음 날"
 
-#: includes/class-render.php:1975
+#: includes/class-render.php:2399
 msgid "Moon in"
 msgstr "달이 ~에"
 
-#: includes/class-render.php:1982
+#: includes/class-render.php:2407
 msgid "Age"
 msgstr "나이"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:1985
+#: includes/class-render.php:2410
 #, php-format
 msgid "%s days"
 msgstr "%s일"
 
-#: includes/class-render.php:1992
+#: includes/class-render.php:2417
 msgid "Sun in"
 msgstr "태양이 ~에"
 
-#: includes/class-render.php:2011
+#: includes/class-render.php:2435
+msgid "Waxing"
+msgstr "차오르는 달"
+
+#: includes/class-render.php:2435
+msgid "Waning"
+msgstr "기우는 달"
+
+#: includes/class-render.php:2437
 msgid "Illuminated"
 msgstr "밝기"
 
-#: includes/class-render.php:2030
+#. translators: PHP date format for a day within the coming month, such as
+#. "Oct 10"
+#: includes/class-render.php:2499
+msgctxt "moon cycle date"
+msgid "M j"
+msgstr "n월 j일"
+
+#: includes/class-render.php:2508
+msgid "Distance"
+msgstr "거리"
+
+#. translators: %s = distance in kilometres
+#: includes/class-render.php:2512
+#, php-format
+msgid "%s km"
+msgstr "%s km"
+
+#: includes/class-render.php:2520
+msgid "Moon cycle"
+msgstr "달의 주기"
+
+#: includes/class-render.php:2535
 msgid "Card of the day"
 msgstr "오늘의 카드"
 
-#: includes/class-render.php:2031 assets/js/astroway-blocks-editor.js:33
+#: includes/class-render.php:2536 includes/class-widget-manifest.php:309
+#: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "라이더-화이트-스미스"
 
-#: includes/class-render.php:2076 assets/js/astroway-blocks-editor.js:273
+#: includes/class-render.php:2605 includes/class-widget-manifest.php:319
 msgid "Tarot spread"
 msgstr "타로 스프레드"
 
-#: includes/class-render.php:2077
+#: includes/class-render.php:2606
 msgid "New draw"
 msgstr "새 스프레드"
 
-#: includes/class-render.php:2077
+#: includes/class-render.php:2606
 msgid "Spread of the day"
 msgstr "오늘의 스프레드"
 
-#: includes/class-render.php:2101 assets/js/astroway-blocks-editor.js:303
+#: includes/class-render.php:2612
+msgid "Turn all the cards over"
+msgstr "모든 카드 뒤집기"
+
+#: includes/class-render.php:2639
+msgid "Reading the spread…"
+msgstr "스프레드를 해석하는 중…"
+
+#: includes/class-render.php:2640
+msgid "The reading could not be had just now."
+msgstr "지금은 해석을 가져올 수 없습니다."
+
+#: includes/class-render.php:2658 includes/class-widget-manifest.php:366
 msgid "Planet of the day"
 msgstr "오늘의 행성"
 
-#: includes/class-render.php:2111
+#: includes/class-render.php:2668
 msgid "Themes of the day"
 msgstr "오늘의 테마"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2126
+#: includes/class-render.php:2683
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: 주간 운세"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2129
+#: includes/class-render.php:2686
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: 월간 운세"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2132
+#: includes/class-render.php:2689
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: 올해의 운세"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2135
+#: includes/class-render.php:2692
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: 오늘의 운세"
 
-#: includes/class-render.php:2142 assets/js/astroway-blocks-editor.js:18
+#: includes/class-render.php:2699 includes/class-widget-manifest.php:43
+#: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "양자리"
 
-#: includes/class-render.php:2143 assets/js/astroway-blocks-editor.js:19
+#: includes/class-render.php:2700 includes/class-widget-manifest.php:44
+#: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "황소자리"
 
-#: includes/class-render.php:2144 assets/js/astroway-blocks-editor.js:20
+#: includes/class-render.php:2701 includes/class-widget-manifest.php:45
+#: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "쌍둥이자리"
 
-#: includes/class-render.php:2145 assets/js/astroway-blocks-editor.js:21
+#: includes/class-render.php:2702 includes/class-widget-manifest.php:46
+#: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "게자리"
 
-#: includes/class-render.php:2146 includes/views/admin-settings.php:326
+#: includes/class-render.php:2703 includes/class-widget-manifest.php:47
+#: includes/views/admin-settings.php:326
 #: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "사자자리"
 
-#: includes/class-render.php:2147 includes/views/admin-settings.php:335
+#: includes/class-render.php:2704 includes/class-widget-manifest.php:48
+#: includes/views/admin-settings.php:335
 #: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "처녀자리"
 
-#: includes/class-render.php:2148 assets/js/astroway-blocks-editor.js:24
+#: includes/class-render.php:2705 includes/class-widget-manifest.php:49
+#: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "천칭자리"
 
-#: includes/class-render.php:2149 assets/js/astroway-blocks-editor.js:25
+#: includes/class-render.php:2706 includes/class-widget-manifest.php:50
+#: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "전갈자리"
 
-#: includes/class-render.php:2150 assets/js/astroway-blocks-editor.js:26
+#: includes/class-render.php:2707 includes/class-widget-manifest.php:51
+#: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "궁수자리"
 
-#: includes/class-render.php:2151 includes/views/admin-settings.php:340
+#: includes/class-render.php:2708 includes/class-widget-manifest.php:52
+#: includes/views/admin-settings.php:340
 #: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "염소자리"
 
-#: includes/class-render.php:2152 assets/js/astroway-blocks-editor.js:28
+#: includes/class-render.php:2709 includes/class-widget-manifest.php:53
+#: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "물병자리"
 
-#: includes/class-render.php:2153 assets/js/astroway-blocks-editor.js:29
+#: includes/class-render.php:2710 includes/class-widget-manifest.php:54
+#: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "물고기자리"
 
 #. translators: %s = shortcode tag
-#: includes/class-render.php:2305
+#: includes/class-render.php:2862
 #, php-format
 msgid ""
 "%s needs an API key: this site asks for its own automatically, or paste "
@@ -1645,243 +2108,296 @@ msgstr ""
 "%s 에는 API 키가 필요합니다. 사이트가 자동으로 자체 키를 요청하거나, AstroWay, API Key에 직접 키를 붙여 넣으세요."
 " 이 메모는 관리자만 볼 수 있습니다."
 
-#: includes/class-render.php:2395 includes/class-render.php:2453
-msgid "Retrograde"
-msgstr "역행"
-
-#: includes/class-render.php:2396 includes/class-render.php:2456
-#: includes/class-render.php:2459
+#: includes/class-render.php:2957 includes/class-render.php:3036
+#: includes/class-render.php:3090
 msgid "Direct"
 msgstr "순행"
 
-#: includes/class-render.php:2401
+#: includes/class-render.php:2962
 msgid "Retrograde watch"
 msgstr "역행 관측"
 
 #. translators: %s = planet name
-#: includes/class-render.php:2410
+#: includes/class-render.php:2971
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "예, %s는 현재 역행 중입니다."
 
-#: includes/class-render.php:2417
+#: includes/class-render.php:2978
 msgid "Retrograde since"
 msgstr "역행 시작"
 
-#: includes/class-render.php:2418
+#: includes/class-render.php:2979
 msgid "Direct again on"
 msgstr "다시 순행하는 날짜"
 
-#: includes/class-render.php:2419
+#: includes/class-render.php:2980
 msgid "Days left"
 msgstr "남은 일수"
 
 #. translators: %s = planet name
-#: includes/class-render.php:2426
+#: includes/class-render.php:2987
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "아니요, %s는 현재 순행 중입니다."
 
-#: includes/class-render.php:2432
+#: includes/class-render.php:2993 includes/class-render.php:3156
 msgid "Next retrograde"
 msgstr "다음 역행"
 
-#: includes/class-render.php:2433 includes/class-render.php:2586
+#: includes/class-render.php:2994 includes/class-render.php:3250
 msgid "Ends"
 msgstr "종료"
 
-#: includes/class-render.php:2434
+#: includes/class-render.php:2995
 msgid "Days until"
 msgstr "남은 일수"
 
-#: includes/class-render.php:2470
-msgid "Nothing is retrograde right now."
-msgstr "현재 역행 중인 것이 없습니다."
+#: includes/class-render.php:3032
+msgid "Stationary"
+msgstr "정지"
 
-#: includes/class-render.php:2479 assets/js/astroway-blocks-editor.js:338
-msgid "Retrograde planets"
-msgstr "역행 행성"
+#: includes/class-render.php:3052
+msgid "Planets in the sky"
+msgstr "하늘의 행성"
 
-#: includes/class-render.php:2487 assets/js/astroway-blocks-editor.js:333
+#: includes/class-render.php:3057 includes/class-render.php:3152
+#: includes/class-render.php:3814 includes/class-widget-manifest.php:386
 msgid "Planet"
 msgstr "행성"
 
-#: includes/class-render.php:2488 includes/views/admin-api-key.php:279
-msgid "Status"
-msgstr "상태"
+#. translators: %s = sign and degree, such as Aquarius 3°04'
+#: includes/class-render.php:3069
+#, php-format
+msgid "Turns direct at %s"
+msgstr "%s에서 순행으로 돌아섬"
 
-#: includes/class-render.php:2492
-msgid "Retrograde period"
-msgstr "역행 기간"
+#. translators: %s = sign and degree, such as Scorpio 8°29'
+#: includes/class-render.php:3071
+#, php-format
+msgid "Turns retrograde at %s"
+msgstr "%s에서 역행 시작"
+
+#. translators: %s = date
+#: includes/class-render.php:3097
+#, php-format
+msgid "In the pre-retrograde shadow since %s"
+msgstr "%s부터 역행 전 그림자 구간"
+
+#. translators: %s = date
+#: includes/class-render.php:3099
+#, php-format
+msgid "In the post-retrograde shadow until %s"
+msgstr "%s까지 역행 후 그림자 구간"
+
+#. translators: 1: day number, 2: days in the retrograde period
+#: includes/class-render.php:3111
+#, php-format
+msgid "Day %1$d of %2$d"
+msgstr "%2$d일 중 %1$d일째"
+
+#. translators: %s = date
+#: includes/class-render.php:3115
+#, php-format
+msgid "Leaves the shadow on %s"
+msgstr "%s에 그림자 구간을 벗어남"
+
+#. translators: %s = date
+#: includes/class-render.php:3123
+#, php-format
+msgid "Shadow from %s"
+msgstr "그림자 구간 시작 %s"
+
+#: includes/class-render.php:3135
+msgid "Nothing is retrograde right now."
+msgstr "현재 역행 중인 것이 없습니다."
+
+#: includes/class-render.php:3144 includes/class-widget-manifest.php:402
+msgid "Retrograde planets"
+msgstr "역행 행성"
+
+#: includes/class-render.php:3155
+msgid "Now"
+msgstr "지금"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:2546
+#: includes/class-render.php:3210
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "달이 %s까지 void of course입니다."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:2552
+#: includes/class-render.php:3216
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr "달이 void of course가 아닙니다. 다음 창이 %s에 열립니다."
 
-#: includes/class-render.php:2556
+#: includes/class-render.php:3220
 msgid "The Moon is not void of course."
 msgstr "달이 void of course가 아닙니다."
 
-#: includes/class-render.php:2577 assets/js/astroway-blocks-editor.js:342
+#: includes/class-render.php:3241 includes/class-widget-manifest.php:406
 msgid "Void of course Moon"
 msgstr "보이드 문"
 
-#: includes/class-render.php:2585
+#: includes/class-render.php:3249
 msgid "Starts"
 msgstr "시작"
 
-#: includes/class-render.php:2587
+#: includes/class-render.php:3251
 msgid "Length"
 msgstr "기간"
 
-#: includes/class-render.php:2588
+#: includes/class-render.php:3252
 msgid "Last aspect"
 msgstr "마지막 어스펙트"
 
-#: includes/class-render.php:2589
+#: includes/class-render.php:3253
 msgid "Next sign"
 msgstr "다음 별자리"
 
-#: includes/class-render.php:2648
+#: includes/class-render.php:3312
 msgid "Night"
 msgstr "밤"
 
-#: includes/class-render.php:2648
+#: includes/class-render.php:3312
 msgid "Day"
 msgstr "낮"
 
 #. translators: %s = planet name
-#: includes/class-render.php:2663
+#: includes/class-render.php:3327
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "그 날은 %s가 지배합니다."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:2670
+#: includes/class-render.php:3334
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "%1$s의 시간은 %2$s까지 지속됩니다."
 
-#: includes/class-render.php:2678 includes/class-render.php:2716
-#: assets/js/astroway-blocks-editor.js:384
+#: includes/class-render.php:3342 includes/class-render.php:3380
+#: includes/class-widget-manifest.php:444
 msgid "Planetary hours"
 msgstr "행성 시간"
 
-#: includes/class-render.php:2689
+#: includes/class-render.php:3353
 msgid "Hour"
 msgstr "시간"
 
-#: includes/class-render.php:2690
+#: includes/class-render.php:3354
 msgid "Ruler"
 msgstr "지배 행성"
 
-#: includes/class-render.php:2691
+#: includes/class-render.php:3355
 msgid "From"
 msgstr "시작"
 
-#: includes/class-render.php:2692
+#: includes/class-render.php:3356
 msgid "To"
 msgstr "끝"
 
-#: includes/class-render.php:2693
+#: includes/class-render.php:3357
 msgid "Part of day"
 msgstr "시간 구분"
 
-#: includes/class-render.php:2723
+#: includes/class-render.php:3387
 msgid ""
 "The Sun does not set at this latitude on this date, so there are no "
 "planetary hours to divide."
 msgstr "이 위도와 날짜에서는 태양이 지지 않으므로 나눌 행성 시간이 없습니다."
 
-#: includes/class-render.php:2724
+#: includes/class-render.php:3388
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
 msgstr "이 위도와 날짜에서는 태양이 뜨지 않으므로 나눌 행성 시간이 없습니다."
 
-#: includes/class-render.php:2755
+#: includes/class-render.php:3419
 msgid "First chart"
 msgstr "첫 번째 차트"
 
-#: includes/class-render.php:2756
+#: includes/class-render.php:3420
 msgid "Second chart"
 msgstr "두 번째 차트"
 
 #. translators: 1: first person's name, 2: second person's name
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:2759 includes/class-render.php:3294
+#: includes/class-render.php:3423 includes/class-render.php:4098
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 및 %2$s"
 
-#: includes/class-render.php:2760 includes/class-render.php:2814
+#: includes/class-render.php:3424 includes/class-render.php:3489
 msgid "Synastry"
 msgstr "시너스트리"
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:2786
+#: includes/class-render.php:3453
 #, php-format
 msgid ""
 "%s: birth time unknown. No houses or Ascendant for this chart, and its Moon "
 "may be up to 7 degrees from where it was."
 msgstr "%s: 출생 시간 모름. 이 차트에는 하우스와 어센던트가 없으며, 달은 실제 위치에서 최대 7도까지 어긋날 수 있습니다."
 
-#: includes/class-render.php:2809
+#: includes/class-render.php:3474
+msgid "Houses"
+msgstr "하우스"
+
+#: includes/class-render.php:3483
 msgid "All aspects"
 msgstr "모든 각"
 
-#: includes/class-render.php:2867
+#: includes/class-render.php:3542 includes/class-render.php:3725
 msgid "Identity"
 msgstr "정체성"
 
-#: includes/class-render.php:2868
+#: includes/class-render.php:3543 includes/class-render.php:3726
 msgid "Emotions"
 msgstr "감정"
 
-#: includes/class-render.php:2869
+#: includes/class-render.php:3544 includes/class-render.php:3727
 msgid "Communication"
 msgstr "소통"
 
-#: includes/class-render.php:2870
+#: includes/class-render.php:3545 includes/class-render.php:3728
 msgid "Love"
 msgstr "사랑"
 
-#: includes/class-render.php:2871
+#: includes/class-render.php:3546 includes/class-render.php:3729
 msgid "Passion"
 msgstr "열정"
 
-#: includes/class-render.php:2872
+#: includes/class-render.php:3547 includes/class-render.php:3730
 msgid "Commitment"
 msgstr "헌신"
 
-#: includes/class-render.php:2885
+#: includes/class-render.php:3562
 msgid "no aspects"
 msgstr "애스펙트 없음"
 
-#: includes/class-render.php:2888
+#. translators: 1: tone word such as "Harmonious", 2: number of aspects
+#: includes/class-render.php:3565
+#, php-format
+msgid "%1$s, aspects: %2$d"
+msgstr "%1$s, 애스펙트: %2$d"
+
+#: includes/class-render.php:3568
 msgid "By sphere"
 msgstr "영역별"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:2901
+#: includes/class-render.php:3581
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr "두 차트 사이의 각: %d"
 
-#: includes/class-render.php:2906
+#: includes/class-render.php:3586
 msgid "out of 100"
 msgstr "100점 만점"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:2959
+#: includes/class-render.php:3639
 #, php-format
 msgid ""
 "Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between"
@@ -1889,93 +2405,153 @@ msgid ""
 msgstr "시너스트리 휠: 안쪽에 %1$s, 바깥 원에 %2$s, 그리고 그 사이의 각."
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:2974
+#: includes/class-render.php:3654
 #, php-format
 msgid "Inner ring: %s"
 msgstr "안쪽 원: %s"
 
-#: includes/class-render.php:2983 includes/class-render.php:3212
+#: includes/class-render.php:3663 includes/class-render.php:4016
 msgid "Harmony"
 msgstr "조화"
 
-#: includes/class-render.php:2987 includes/class-render.php:3216
+#: includes/class-render.php:3667 includes/class-render.php:4020
 msgid "Tension"
 msgstr "긴장"
 
+#. translators: %d = number of conjunctions
+#: includes/class-render.php:3713
+#, php-format
+msgid "Conjunctions %d"
+msgstr "합: %d"
+
+#: includes/class-render.php:3733
+msgid "You let each other be who you are."
+msgstr "서로가 있는 그대로이게 둡니다."
+
+#: includes/class-render.php:3734
+msgid "You read each other's moods without words."
+msgstr "말없이도 서로의 기분을 읽습니다."
+
+#: includes/class-render.php:3735
+msgid "Talking comes easily and settles things."
+msgstr "대화가 쉽고 일을 해결합니다."
+
+#: includes/class-render.php:3736
+msgid "Affection and taste are shared."
+msgstr "애정과 취향을 함께 나눕니다."
+
+#: includes/class-render.php:3737
+msgid "Desire and drive meet in the middle."
+msgstr "욕구와 추진력이 가운데서 만납니다."
+
+#: includes/class-render.php:3738
+msgid "Promises hold and plans last."
+msgstr "약속은 지켜지고 계획은 이어집니다."
+
+#: includes/class-render.php:3741
+msgid "Leave each other room to be different."
+msgstr "서로 달라도 될 여지를 남겨 두세요."
+
+#: includes/class-render.php:3742
+msgid "Say what you feel rather than expect it to be guessed."
+msgstr "알아주길 기다리지 말고 느낌을 말하세요."
+
+#: includes/class-render.php:3743
+msgid "Check what was heard, not only what was said."
+msgstr "말한 것뿐 아니라 들은 것을 확인하세요."
+
+#: includes/class-render.php:3744
+msgid "Show care in the way the other one receives it."
+msgstr "상대가 받아들이는 방식으로 마음을 보여 주세요."
+
+#: includes/class-render.php:3745
+msgid "Agree on pace before friction turns into a fight."
+msgstr "마찰이 다툼이 되기 전에 속도를 맞추세요."
+
+#: includes/class-render.php:3746
+msgid "Make plans explicit and keep them small at first."
+msgstr "계획을 분명히 말하고 작게 시작하세요."
+
+#: includes/class-render.php:3769 includes/class-render.php:4307
+msgid "Strengths"
+msgstr "강점"
+
+#: includes/class-render.php:3770
+msgid "Growth areas"
+msgstr "성장 영역"
+
+#. translators: 1: whose planets, 2: whose houses
+#: includes/class-render.php:3813
+#, php-format
+msgid "Planets of %1$s in the houses of %2$s"
+msgstr "%2$s의 하우스에 있는 %1$s의 행성"
+
 #. translators: 1: planet, 2: person's name, or the word "natal" or "transit"
-#: includes/class-render.php:3024
+#: includes/class-render.php:3828
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: includes/class-render.php:3030
+#: includes/class-render.php:3834
 msgid "One force: felt strongly by both, for better or worse."
 msgstr "하나의 힘: 좋든 나쁘든 두 사람 모두 강하게 느낍니다."
 
-#: includes/class-render.php:3031
+#: includes/class-render.php:3835
 msgid "Flows easily between you, without effort."
 msgstr "두 사람 사이에 힘들이지 않고 흐릅니다."
 
-#: includes/class-render.php:3032
+#: includes/class-render.php:3836
 msgid "Helps you both once one of you makes a move."
 msgstr "둘 중 한 사람이 먼저 움직이면 두 사람 모두에게 도움이 됩니다."
 
-#: includes/class-render.php:3033
+#: includes/class-render.php:3837
 msgid "Rubs, and pushes you both to change."
 msgstr "마찰을 일으키고, 두 사람 모두를 변화로 이끕니다."
 
-#: includes/class-render.php:3034
+#: includes/class-render.php:3838
 msgid "Pulls you apart and draws you together."
 msgstr "두 사람을 떼어 놓으면서 동시에 끌어당깁니다."
 
-#: includes/class-render.php:3067
-msgid "Separating"
-msgstr "분리"
-
-#: includes/class-render.php:3067
-msgid "Applying"
-msgstr "접근"
-
-#: includes/class-render.php:3093
+#: includes/class-render.php:3897
 msgid "Aspect"
 msgstr "각"
 
-#: includes/class-render.php:3095
+#: includes/class-render.php:3899
 msgid "Orb"
 msgstr "오브"
 
-#: includes/class-render.php:3096
+#: includes/class-render.php:3900
 msgid "Trend"
 msgstr "추세"
 
-#: includes/class-render.php:3115
+#: includes/class-render.php:3919
 msgid "Harmonious"
 msgstr "조화로운"
 
-#: includes/class-render.php:3116
+#: includes/class-render.php:3920
 msgid "Balanced"
 msgstr "균형 잡힌"
 
-#: includes/class-render.php:3117
+#: includes/class-render.php:3921
 msgid "Mixed"
 msgstr "혼합된"
 
-#: includes/class-render.php:3118
+#: includes/class-render.php:3922
 msgid "Challenging"
 msgstr "도전적인"
 
-#: includes/class-render.php:3151 includes/class-render.php:3206
-#: assets/js/astroway-blocks-editor.js:368
+#: includes/class-render.php:3955 includes/class-render.php:4010
+#: includes/class-widget-manifest.php:428
 msgid "Sign compatibility"
 msgstr "별자리 궁합"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3153
+#: includes/class-render.php:3957
 #, php-format
 msgid "%s and the other signs"
 msgstr "%s와 다른 별자리"
 
-#: includes/class-render.php:3157
+#: includes/class-render.php:3961
 msgid ""
 "How each pair of signs stands in the zodiac: the classical relation, "
 "harmonious, challenging or unrelated. It is a relation of signs, not a "
@@ -1986,184 +2562,208 @@ msgstr ""
 
 #. translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g.
 #. "trine"
-#: includes/class-render.php:3199
+#: includes/class-render.php:4003
 #, php-format
 msgid "%1$s and %2$s: %3$s"
 msgstr "%1$s와 %2$s: %3$s"
 
-#: includes/class-render.php:3220
+#: includes/class-render.php:4024
 msgid "Do not see each other"
 msgstr "서로를 보지 못함"
 
-#: includes/class-render.php:3246
+#: includes/class-render.php:4050
 msgid "the same sign"
 msgstr "같은 별자리"
 
-#: includes/class-render.php:3251
+#: includes/class-render.php:4055
 msgid "aversion"
 msgstr "어버전"
 
-#: includes/class-render.php:3259
+#: includes/class-render.php:4063
 msgid "Two signs apart: friendly elements that help each other."
 msgstr "두 별자리 떨어짐: 서로 돕는 우호적인 원소."
 
-#: includes/class-render.php:3260
+#: includes/class-render.php:4064
 msgid "Three signs apart: the same drive in clashing elements."
 msgstr "세 별자리 떨어짐: 부딪히는 원소 속 같은 추진력."
 
-#: includes/class-render.php:3261
+#: includes/class-render.php:4065
 msgid "Four signs apart: the same element, easy understanding."
 msgstr "네 별자리 떨어짐: 같은 원소, 쉬운 이해."
 
-#: includes/class-render.php:3262
+#: includes/class-render.php:4066
 msgid "Opposite signs: attraction and pull in one."
 msgstr "마주 보는 별자리: 끌림과 당김이 함께."
 
-#: includes/class-render.php:3263
+#: includes/class-render.php:4067
 msgid "One or five signs apart: classically they do not see each other."
 msgstr "한 개 또는 다섯 개 떨어짐: 고전적으로 서로를 보지 못합니다."
 
-#: includes/class-render.php:3355 assets/js/astroway-blocks-editor.js:375
+#. translators: 1: the year's element, such as Metal, 2: the animal, such as
+#. Horse, 3: the year
+#: includes/class-render.php:4200
+#, php-format
+msgid "%1$s %2$s, %3$d"
+msgstr "%1$s %2$s, %3$d년"
+
+#: includes/class-render.php:4205 includes/class-widget-manifest.php:435
 msgid "Chinese zodiac"
 msgstr "십이간지"
 
-#: includes/class-render.php:3363
+#: includes/class-render.php:4213
 msgid "Heavenly stem"
 msgstr "천간"
 
-#: includes/class-render.php:3364
+#: includes/class-render.php:4214
 msgid "Earthly branch"
 msgstr "지지"
 
-#: includes/class-render.php:3383
-msgid "Element"
-msgstr "오행"
+#. translators: %s = one of the five Chinese elements
+#: includes/class-render.php:4247
+#, php-format
+msgid "Year element: %s"
+msgstr "해의 오행: %s"
 
-#: includes/class-render.php:3388
-msgid "Year element"
-msgstr "연 오행"
+#. translators: %s = Yin or Yang
+#: includes/class-render.php:4251
+#, php-format
+msgid "Polarity: %s"
+msgstr "음양: %s"
 
-#: includes/class-render.php:3391
-msgid "Polarity"
-msgstr "극성"
-
-#: includes/class-render.php:3391
+#. translators: %s = Yin or Yang
+#: includes/class-render.php:4251
 msgid "Yin"
 msgstr "음"
 
-#: includes/class-render.php:3391
+#. translators: %s = Yin or Yang
+#: includes/class-render.php:4251
 msgid "Yang"
 msgstr "양"
 
-#: includes/class-render.php:3394
-msgid "Pillar"
-msgstr "주"
+#. translators: %s = the year's stem and branch, such as Geng-Wu
+#: includes/class-render.php:4255
+#, php-format
+msgid "Pillar: %s"
+msgstr "주: %s"
 
-#: includes/class-render.php:3423
-msgid "Strengths"
-msgstr "강점"
+#. translators: 1: the year, 2: the moment it begins, 3: the moment it ends,
+#. both in Beijing time
+#: includes/class-render.php:4263
+#, php-format
+msgid ""
+"The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at "
+"Lichun, the start of spring, not on 1 January."
+msgstr "%1$d년 띠의 해는 베이징 시간으로 %2$s부터 %3$s까지입니다. 1월 1일이 아니라 봄의 시작인 입춘에 시작됩니다."
 
-#: includes/class-render.php:3424
+#. translators: %d = the year
+#: includes/class-render.php:4265
+#, php-format
+msgid ""
+"The %d animal year begins at the start of spring (Lichun, about 4 February),"
+" not on 1 January."
+msgstr "%d년 띠의 해는 1월 1일이 아니라 입춘(2월 4일경)에 시작합니다."
+
+#: includes/class-render.php:4308
 msgid "Watch for"
 msgstr "주의할 점"
 
-#: includes/class-render.php:3434
+#: includes/class-render.php:4318
 msgid "Character"
 msgstr "성격"
 
 #. translators: %s = one of the five Chinese elements, such as Metal
-#: includes/class-render.php:3441
+#: includes/class-render.php:4325
 #, php-format
 msgid "The year element: %s"
 msgstr "해의 오행: %s"
 
-#: includes/class-render.php:3451
+#: includes/class-render.php:4335
 msgid "Rat"
 msgstr "쥐"
 
-#: includes/class-render.php:3452
+#: includes/class-render.php:4336
 msgid "Ox"
 msgstr "황소"
 
-#: includes/class-render.php:3453
+#: includes/class-render.php:4337
 msgid "Tiger"
 msgstr "호랑이"
 
-#: includes/class-render.php:3454
+#: includes/class-render.php:4338
 msgid "Rabbit"
 msgstr "토끼"
 
-#: includes/class-render.php:3455
+#: includes/class-render.php:4339
 msgid "Dragon"
 msgstr "드래곤"
 
-#: includes/class-render.php:3456
+#: includes/class-render.php:4340
 msgid "Snake"
 msgstr "뱀"
 
-#: includes/class-render.php:3457
+#: includes/class-render.php:4341
 msgid "Horse"
 msgstr "말"
 
-#: includes/class-render.php:3458
+#: includes/class-render.php:4342
 msgid "Goat"
 msgstr "염소"
 
-#: includes/class-render.php:3459
+#: includes/class-render.php:4343
 msgid "Monkey"
 msgstr "원숭이"
 
-#: includes/class-render.php:3460
+#: includes/class-render.php:4344
 msgid "Rooster"
 msgstr "수탉"
 
-#: includes/class-render.php:3461
+#: includes/class-render.php:4345
 msgid "Dog"
 msgstr "개"
 
-#: includes/class-render.php:3462
+#: includes/class-render.php:4346
 msgid "Pig"
 msgstr "돼지"
 
-#: includes/class-render.php:3470
+#: includes/class-render.php:4354
 msgid "Wood"
 msgstr "목"
 
-#: includes/class-render.php:3473
+#: includes/class-render.php:4357
 msgid "Metal"
 msgstr "금"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:3561
+#: includes/class-render.php:4445
 #, php-format
 msgid "%d min"
 msgstr "%d분"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:3567
+#: includes/class-render.php:4451
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d시간 %2$02d분"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:3886
+#: includes/class-render.php:4770
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d개의 %2$d 표시"
 
-#: includes/class-render.php:3937
+#: includes/class-render.php:4821
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "예"
 
-#: includes/class-render.php:3937
+#: includes/class-render.php:4821
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "아니요"
 
-#: includes/class-shortcodes.php:375
+#: includes/class-shortcodes.php:386
 msgid ""
 "[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a "
 "zone name such as tz=\"Europe/Kyiv\", or hours from UTC such as tz=\"+3\". "
@@ -2173,32 +2773,46 @@ msgstr ""
 " 시간대 이름을 추가하거나, tz=\"+3\"과 같이 UTC 기준 시간 차이를 입력하세요. 이 참고 사항은 관리자만 볼 수 있습니다."
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:653
+#: includes/class-shortcodes.php:685
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
 "administrators see this note."
 msgstr "%s 위젯은 일시적으로 사용할 수 없으므로 아무것도 렌더링하지 않습니다. 관리자만 이 알림을 볼 수 있습니다."
 
-#: includes/class-shortcodes.php:1028
+#: includes/class-shortcodes.php:912 includes/class-shortcodes.php:1243
+msgid "This date does not exist."
+msgstr "존재하지 않는 날짜입니다."
+
+#: includes/class-shortcodes.php:1082
 msgid ""
 "A return chart needs the birth time and the latitude and longitude of the "
 "place of birth. Only administrators see this note."
 msgstr "리턴 차트에는 출생 시간과 출생지의 위도와 경도가 필요합니다. 이 메모는 관리자만 볼 수 있습니다."
 
-#: includes/class-shortcodes.php:1120
+#: includes/class-shortcodes.php:1174
 msgid ""
 "A Davison chart needs the date, the time and the latitude and longitude of "
 "both births. Only administrators see this note."
 msgstr "데이비슨 차트에는 두 출생의 날짜, 시간, 위도와 경도가 필요합니다. 이 메모는 관리자만 볼 수 있습니다."
 
-#: includes/class-shortcodes.php:1128
+#: includes/class-shortcodes.php:1182
 msgid ""
 "This chart needs a site key or an API key: open AstroWay in the admin and "
 "connect the site. Only administrators see this note."
 msgstr ""
 "이 차트에는 사이트 키 또는 API 키가 필요합니다: 관리자 화면에서 AstroWay를 열고 사이트를 연결하세요. 이 메모는 관리자만 볼"
 " 수 있습니다."
+
+#. translators: 1: shortcode tag, 2: attribute name, 3: the value written
+#: includes/class-shortcodes.php:1251
+#, php-format
+msgid ""
+"[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form "
+"instead. Only administrators see this note."
+msgstr ""
+"[%1$s]에 존재하지 않는 날짜가 있습니다: %2$s = %3$s. 방문자에게는 대신 양식이 표시됩니다. 관리자만 이 알림을 볼 수 "
+"있습니다."
 
 #: includes/class-site-key.php:108
 msgid ""
@@ -2250,11 +2864,128 @@ msgstr "api.astroway.info가 이 사이트가 읽을 수 없는 응답을 보냈
 msgid "api.astroway.info refused the request."
 msgstr "api.astroway.info가 요청을 거부했습니다."
 
+#: includes/class-tarot-reading.php:224
+msgid "Summary"
+msgstr "요약"
+
+#: includes/class-tarot-reading.php:228
+msgid "Advice"
+msgstr "조언"
+
 #. translators: %s = tarot card name
-#: includes/class-tarot.php:125
+#: includes/class-tarot-reading.php:239 includes/class-tarot.php:326
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (역방향)"
+
+#: includes/class-tarot-reading.php:249
+msgid "Card by card"
+msgstr "카드별"
+
+#: includes/class-tarot-reading.php:269
+msgid ""
+"The reading needs an API key: the site key does not cover readings. Paste "
+"yours in AstroWay, API Key. Only administrators see this note."
+msgstr ""
+"해석에는 API 키가 필요합니다. 사이트 키는 해석을 지원하지 않습니다. AstroWay, API Key에 키를 붙여 넣으세요. 이 "
+"안내는 관리자에게만 보입니다."
+
+#: includes/class-tarot-reading.php:270
+msgid ""
+"Today's number of new tarot readings is reached; readings already given are "
+"still shown. Only administrators see this note."
+msgstr "오늘의 새 타로 해석 횟수에 도달했습니다. 이미 제공된 해석은 계속 표시됩니다. 이 메모는 관리자만 볼 수 있습니다."
+
+#: includes/class-tarot-reading.php:271
+msgid ""
+"The api did not return the reading just now. Only administrators see this "
+"note."
+msgstr "API가 지금 해석을 반환하지 않았습니다. 이 메모는 관리자만 볼 수 있습니다."
+
+#: includes/class-tarot-reading.php:272
+msgid ""
+"The api answered with a reading of other cards, so it was not shown; it is "
+"asked again in an hour. Only administrators see this note."
+msgstr "API가 다른 카드의 해석을 보내 표시하지 않았습니다. 한 시간 뒤에 다시 요청합니다. 이 안내는 관리자에게만 보입니다."
+
+#: includes/class-tarot.php:218
+msgid "Major arcana"
+msgstr "메이저 아르카나"
+
+#: includes/class-tarot.php:218
+msgid "Minor arcana"
+msgstr "마이너 아르카나"
+
+#: includes/class-tarot.php:223
+msgid "Wands"
+msgstr "완드"
+
+#: includes/class-tarot.php:224
+msgid "Cups"
+msgstr "컵"
+
+#: includes/class-tarot.php:225
+msgid "Swords"
+msgstr "소드"
+
+#: includes/class-tarot.php:226
+msgid "Pentacles"
+msgstr "펜타클"
+
+#: includes/class-tarot.php:230
+msgid "Upright"
+msgstr "정방향"
+
+#: includes/class-tarot.php:230
+msgid "Reversed"
+msgstr "역방향"
+
+#: includes/class-tarot.php:253
+msgid "Element"
+msgstr "오행"
+
+#: includes/class-tarot.php:260
+msgid "Astrology"
+msgstr "점성술"
+
+#: includes/class-tarot.php:266 includes/class-widget-manifest.php:271
+#: includes/views/partials/shortcode-cards.php:235
+msgid "Numerology"
+msgstr "수비학"
+
+#: includes/class-tarot.php:271
+msgid "Yes"
+msgstr "예"
+
+#: includes/class-tarot.php:272
+msgid "No"
+msgstr "아니요"
+
+#: includes/class-tarot.php:273
+msgid "Maybe"
+msgstr "아마도"
+
+#: includes/class-tarot.php:278
+msgid "Yes or no"
+msgstr "예 또는 아니요"
+
+#. translators: 1: planet, 2: zodiac sign, as in "Mercury in Virgo"
+#: includes/class-tarot.php:293
+#, php-format
+msgid "%1$s in %2$s"
+msgstr "%2$s의 %1$s"
+
+#: includes/class-tarot.php:316
+msgid "If it came out reversed"
+msgstr "역방향으로 나왔다면"
+
+#: includes/class-tarot.php:316
+msgid "If it came out upright"
+msgstr "정방향으로 나왔다면"
+
+#: includes/class-tarot.php:350
+msgid "Turn the card over"
+msgstr "카드 뒤집기"
 
 #: includes/class-tier.php:203
 msgid "Locked feature"
@@ -2271,6 +3002,420 @@ msgstr "이 위젯은 유료 AstroWay 플랜에서 사용할 수 있습니다."
 #: includes/class-tier.php:217
 msgid "Upgrade →"
 msgstr "업그레이드 →"
+
+#: includes/class-widget-manifest.php:59
+#: includes/class-widget-manifest.php:422
+#: includes/class-widget-manifest.php:423
+#: assets/js/astroway-blocks-editor.js:17
+msgid "Default (today's featured sign)"
+msgstr "기본값(오늘의 추천 기호)"
+
+#: includes/class-widget-manifest.php:64
+#: assets/js/astroway-blocks-editor.js:41
+msgid "Visitor picks the sign"
+msgstr "방문자가 별자리 선택"
+
+#: includes/class-widget-manifest.php:70
+#: assets/js/astroway-blocks-editor.js:68
+msgid "Language"
+msgstr "언어"
+
+#: includes/class-widget-manifest.php:72
+#: includes/class-widget-manifest.php:108
+#: assets/js/astroway-blocks-editor.js:44
+#: assets/js/astroway-blocks-editor.js:72
+msgid "Site default"
+msgstr "사이트 기본값"
+
+#: includes/class-widget-manifest.php:100
+msgid "Card pictures"
+msgstr "카드 그림"
+
+#: includes/class-widget-manifest.php:100
+msgid "Drawn face, no pictures"
+msgstr "그린 앞면, 그림 없음"
+
+#: includes/class-widget-manifest.php:106
+#: assets/js/astroway-blocks-editor.js:77
+msgid "Style"
+msgstr "스타일"
+
+#: includes/class-widget-manifest.php:109
+#: includes/views/admin-settings.php:307
+#: assets/js/astroway-blocks-editor.js:73
+msgid "Instrument"
+msgstr "인스트루먼트"
+
+#: includes/class-widget-manifest.php:110
+#: includes/views/admin-settings.php:308
+#: assets/js/astroway-blocks-editor.js:74
+msgid "Night sky"
+msgstr "밤하늘"
+
+#: includes/class-widget-manifest.php:111
+#: includes/views/admin-settings.php:309
+#: assets/js/astroway-blocks-editor.js:75
+msgid "Theme colours"
+msgstr "테마 색상"
+
+#: includes/class-widget-manifest.php:119
+msgid "Theme"
+msgstr "테마"
+
+#: includes/class-widget-manifest.php:121
+msgid "Default (light)"
+msgstr "기본 (밝은 테마)"
+
+#: includes/class-widget-manifest.php:122
+msgid "Dark"
+msgstr "어둡게"
+
+#: includes/class-widget-manifest.php:123
+msgid "Light"
+msgstr "밝게"
+
+#: includes/class-widget-manifest.php:124
+msgid "Console (green on black)"
+msgstr "콘솔 (검정색 배경에 녹색)"
+
+#: includes/class-widget-manifest.php:130
+msgid "Latitude (-90 to 90)"
+msgstr "위도(-90~90)"
+
+#: includes/class-widget-manifest.php:134
+msgid "Longitude (-180 to 180)"
+msgstr "경도(-180~180)"
+
+#: includes/class-widget-manifest.php:138
+#: includes/class-widget-manifest.php:403
+msgid "Date (leave blank for today)"
+msgstr "날짜 (오늘이면 비워 두세요)"
+
+#: includes/class-widget-manifest.php:142
+msgid "UTC offset in hours (blank for the site default)"
+msgstr "UTC 오프셋 (시간) (사이트 기본값은 비워두세요)"
+
+#: includes/class-widget-manifest.php:146
+msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
+msgstr "표준 시간대(유럽/키예프 또는 +03:00)"
+
+#: includes/class-widget-manifest.php:151
+#: includes/class-widget-manifest.php:163
+msgid "Date (YYYY-MM-DD)"
+msgstr "날짜(YYYY-MM-DD)"
+
+#: includes/class-widget-manifest.php:152
+#: includes/class-widget-manifest.php:164
+msgid "Time (HH:MM)"
+msgstr "시간(HH:MM)"
+
+#: includes/class-widget-manifest.php:155
+msgid "Person name (optional)"
+msgstr "사람 이름(선택 사항)"
+
+#: includes/class-widget-manifest.php:156
+msgid "Timezone (Europe/Kyiv or +03:00)"
+msgstr "표준 시간대(유럽/키예프 또는 +03:00)"
+
+#: includes/class-widget-manifest.php:175
+msgid "Return place: latitude (blank for the place of birth)"
+msgstr "리턴 장소: 위도 (출생지는 비워 두기)"
+
+#: includes/class-widget-manifest.php:176
+msgid "Return place: longitude"
+msgstr "리턴 장소: 경도"
+
+#: includes/class-widget-manifest.php:177
+msgid "Return place: timezone for the time shown (blank for UTC)"
+msgstr "리턴 장소: 표시할 시간의 시간대 (UTC는 비워 두기)"
+
+#: includes/class-widget-manifest.php:186
+msgid "Person A: name (for the table heading)"
+msgstr "인물 A: 이름 (표 머리글용)"
+
+#: includes/class-widget-manifest.php:186
+msgid "Person A: name"
+msgstr "A: 이름"
+
+#: includes/class-widget-manifest.php:187
+msgid "Person A: date (YYYY-MM-DD)"
+msgstr "A 씨: 날짜 (YYYY-MM-DD)"
+
+#: includes/class-widget-manifest.php:188
+msgid "Person A: time (HH:MM, blank if unknown)"
+msgstr "인물 A: 시간 (HH:MM, 알 수 없으면 비워두세요)"
+
+#: includes/class-widget-manifest.php:188
+msgid "Person A: time (HH:MM)"
+msgstr "A: 시간 (HH:MM)"
+
+#: includes/class-widget-manifest.php:189
+msgid "Person A: latitude"
+msgstr "A: 위도"
+
+#: includes/class-widget-manifest.php:190
+msgid "Person A: longitude"
+msgstr "A: 경도"
+
+#: includes/class-widget-manifest.php:191
+msgid "Person A: timezone"
+msgstr "A: 시간대"
+
+#: includes/class-widget-manifest.php:193
+msgid "Person B: name (for the table heading)"
+msgstr "인물 B: 이름 (표 머리글용)"
+
+#: includes/class-widget-manifest.php:193
+msgid "Person B: name"
+msgstr "B: 이름"
+
+#: includes/class-widget-manifest.php:194
+msgid "Person B: date (YYYY-MM-DD)"
+msgstr "B: 날짜 (YYYY-MM-DD)"
+
+#: includes/class-widget-manifest.php:195
+msgid "Person B: time (HH:MM, blank if unknown)"
+msgstr "인물 B: 시간 (HH:MM, 알 수 없으면 비워두세요)"
+
+#: includes/class-widget-manifest.php:195
+msgid "Person B: time (HH:MM)"
+msgstr "B: 시간 (HH:MM)"
+
+#: includes/class-widget-manifest.php:196
+msgid "Person B: latitude"
+msgstr "B: 위도"
+
+#: includes/class-widget-manifest.php:197
+msgid "Person B: longitude"
+msgstr "B: 경도"
+
+#: includes/class-widget-manifest.php:198
+msgid "Person B: timezone"
+msgstr "B: 시간대"
+
+#: includes/class-widget-manifest.php:215
+msgid "Birth data"
+msgstr "출생 데이터"
+
+#: includes/class-widget-manifest.php:216
+msgid "Any date inside the month (blank for this month)"
+msgstr "해당 월 내의 임의의 날짜 (이번 달은 비워 둠)"
+
+#: includes/class-widget-manifest.php:220
+msgid "Year (blank for the one in force now)"
+msgstr "연도 (현재 유효한 것은 비워 두기)"
+
+#: includes/class-widget-manifest.php:224
+msgid "First return after (YYYY-MM-DD, blank for the 1st of this month)"
+msgstr "이 날짜 이후 첫 리턴 (YYYY-MM-DD, 이번 달 1일은 비워 두기)"
+
+#: includes/class-widget-manifest.php:227
+msgid "Two births"
+msgstr "두 출생"
+
+#: includes/class-widget-manifest.php:239
+msgid "None"
+msgstr "없음"
+
+#: includes/class-widget-manifest.php:240
+msgid "Today's sky over the chart"
+msgstr "차트 위의 오늘 하늘"
+
+#: includes/class-widget-manifest.php:263
+msgid "Transit date"
+msgstr "천체 이동 날짜"
+
+#: includes/class-widget-manifest.php:267
+msgid "Panchang"
+msgstr "변경 사항 저장"
+
+#: includes/class-widget-manifest.php:273
+msgid "Full name"
+msgstr "전체 이름"
+
+#: includes/class-widget-manifest.php:274
+msgid "Date of birth (YYYY-MM-DD)"
+msgstr "날짜(YYYY-MM-DD)"
+
+#: includes/class-widget-manifest.php:277
+#: includes/views/admin-settings.php:123
+#: includes/views/partials/admin-sidebar.php:42
+msgid "System"
+msgstr "시스템"
+
+#: includes/class-widget-manifest.php:279
+msgid "Pythagorean"
+msgstr "피타고라스식"
+
+#: includes/class-widget-manifest.php:280
+msgid "Chaldean"
+msgstr "칼데아식"
+
+#: includes/class-widget-manifest.php:288
+msgid "Two subjects"
+msgstr "두 명의 대상"
+
+#: includes/class-widget-manifest.php:291
+msgid "How many aspects to show (6 by default)"
+msgstr "표시할 각의 수 (기본값 6)"
+
+#: includes/class-widget-manifest.php:303
+msgid "Daily Tarot"
+msgstr "데일리 타로"
+
+#: includes/class-widget-manifest.php:307
+msgid "Deck"
+msgstr "데크"
+
+#: includes/class-widget-manifest.php:310
+#: assets/js/astroway-blocks-editor.js:34
+msgid "Marseille"
+msgstr "마르세유"
+
+#: includes/class-widget-manifest.php:311
+#: assets/js/astroway-blocks-editor.js:35
+msgid "Lenormand"
+msgstr "레노르망"
+
+#: includes/class-widget-manifest.php:323
+msgid "Spread"
+msgstr "스프레드"
+
+#: includes/class-widget-manifest.php:325
+msgid "Past, present, future"
+msgstr "과거, 현재, 미래"
+
+#: includes/class-widget-manifest.php:326
+msgid "Celtic Cross"
+msgstr "켈틱 크로스"
+
+#: includes/class-widget-manifest.php:331
+msgid "Draw again button"
+msgstr "다시 뽑기 버튼"
+
+#: includes/class-widget-manifest.php:333
+msgid "Show"
+msgstr "표시"
+
+#: includes/class-widget-manifest.php:340
+msgid "Cards"
+msgstr "카드"
+
+#: includes/class-widget-manifest.php:342
+msgid "Face up"
+msgstr "앞면"
+
+#: includes/class-widget-manifest.php:343
+msgid "Face down, turned by the visitor"
+msgstr "뒷면, 방문자가 뒤집음"
+
+#: includes/class-widget-manifest.php:348
+msgid "Reading of the spread"
+msgstr "스프레드 해석"
+
+#: includes/class-widget-manifest.php:350
+msgid "Off"
+msgstr "끔"
+
+#: includes/class-widget-manifest.php:351
+msgid "After the last card is turned"
+msgstr "마지막 카드를 뒤집은 뒤"
+
+#: includes/class-widget-manifest.php:358
+msgid "Weekly horoscope"
+msgstr "주간 운세"
+
+#: includes/class-widget-manifest.php:359
+msgid "Any date inside the week (blank for this week)"
+msgstr "해당 주 내의 임의의 날짜 (이번 주는 비워 둠)"
+
+#: includes/class-widget-manifest.php:362
+msgid "Monthly horoscope"
+msgstr "월간 운세"
+
+#: includes/class-widget-manifest.php:374
+msgid "Monthly forecast"
+msgstr "월간 전망"
+
+#: includes/class-widget-manifest.php:378
+msgid "Moon transit timeline"
+msgstr "달의 통과 시간표"
+
+#: includes/class-widget-manifest.php:379
+msgid "Day the seven start from (blank for today)"
+msgstr "7일 차 시작일 (오늘은 공란)"
+
+#: includes/class-widget-manifest.php:382
+msgid "Retrograde status"
+msgstr "역행 상태"
+
+#: includes/class-widget-manifest.php:408
+msgid "Day to start from (blank for today)"
+msgstr "시작 날짜 (오늘 날짜는 비워두세요)"
+
+#: includes/class-widget-manifest.php:409
+msgid "Time to start from (HH:MM, blank for midnight)"
+msgstr "시작 시간 (HH:MM, 자정은 비워두세요)"
+
+#: includes/class-widget-manifest.php:411
+msgid "Days to look ahead (1 to 30, default 7)"
+msgstr "미리 볼 일수 (1~30일, 기본값 7일)"
+
+#: includes/class-widget-manifest.php:416
+msgid "Yearly horoscope"
+msgstr "연간 운세"
+
+#: includes/class-widget-manifest.php:417
+msgid "Any date inside the year (blank for this year)"
+msgstr "해당 연도 내의 임의의 날짜 (올해의 경우 공란)"
+
+#: includes/class-widget-manifest.php:420
+msgid "Two signs"
+msgstr "두 개의 표지판"
+
+#: includes/class-widget-manifest.php:422
+msgid "First sign"
+msgstr "첫 징후"
+
+#: includes/class-widget-manifest.php:423
+msgid "Second sign"
+msgstr "두 번째 징조"
+
+#: includes/class-widget-manifest.php:430
+msgid "One sign against the others (blank for all pairs)"
+msgstr "한 별자리와 나머지 (모든 쌍은 비워 두기)"
+
+#: includes/class-widget-manifest.php:430
+msgid "All pairs"
+msgstr "모든 쌍"
+
+#: includes/class-widget-manifest.php:437
+msgid "Birth date (YYYY-MM-DD)"
+msgstr "생년월일 (YYYY-MM-DD)"
+
+#: includes/class-widget-manifest.php:438
+msgid "Birth time (HH:MM, optional)"
+msgstr "출생 시간 (HH:MM, 선택 사항)"
+
+#: includes/class-widget-manifest.php:488
+msgid "Hide sections (comma-separated keys)"
+msgstr "섹션 숨기기(쉼표로 구분한 키)"
+
+#: includes/class-widget-manifest.php:493
+msgid "Readings list"
+msgstr "해석 목록"
+
+#: includes/class-widget-manifest.php:495
+msgid "As the card has it"
+msgstr "카드에 정해진 대로"
+
+#: includes/class-widget-manifest.php:496
+msgid "First row open"
+msgstr "첫 번째 행 열림"
+
+#: includes/class-widget-manifest.php:497
+msgid "All rows closed"
+msgstr "모든 행 닫힘"
 
 #: includes/views/admin-api-key.php:19
 msgid ""
@@ -2298,13 +3443,13 @@ msgid "Copy a shortcode."
 msgstr "숏코드를 복사하세요."
 
 #: includes/views/admin-api-key.php:94 includes/views/admin-api-key.php:118
-#: includes/views/admin-shortcodes.php:500
-#: includes/views/partials/admin-generated-coverage.php:60
+#: includes/views/admin-shortcodes.php:102
+#: includes/views/partials/admin-generated-coverage.php:67
 msgid "Click to copy"
 msgstr "클릭하여 복사"
 
 #: includes/views/admin-api-key.php:98 includes/views/admin-api-key.php:122
-#: includes/views/admin-shortcodes.php:504
+#: includes/views/admin-shortcodes.php:106
 msgid "copy"
 msgstr "복사"
 
@@ -2463,6 +3608,10 @@ msgstr "데이터베이스에 저장하지 않으시겠습니까? wp-config.php�
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
+#: includes/views/admin-api-key.php:279
+msgid "Status"
+msgstr "상태"
+
 #: includes/views/admin-api-key.php:284
 msgid "live · key authenticated"
 msgstr "인증됨"
@@ -2483,48 +3632,36 @@ msgstr "유료 키."
 msgid "unreachable, check connection"
 msgstr "연결 불가, 연결 상태를 확인하십시오"
 
-#: includes/views/admin-api-key.php:307
-msgid "Key"
-msgstr "API 키"
-
-#: includes/views/admin-api-key.php:321
-msgid "Credits"
-msgstr "월간 크레딧"
-
-#: includes/views/admin-api-key.php:340
-msgid "Period ends"
-msgstr "기간 종료"
-
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:347
+#: includes/views/admin-api-key.php:352
 #, php-format
 msgid "in %s"
 msgstr "%s 후"
 
 #. translators: %s = relative time.
-#: includes/views/admin-api-key.php:348
+#: includes/views/admin-api-key.php:353
 msgid "expired"
 msgstr "필수"
 
-#: includes/views/admin-api-key.php:361
+#: includes/views/admin-api-key.php:366
 msgid "Domain"
 msgstr "도메인"
 
 #. translators: %s = relative time the key was bound to this domain.
-#: includes/views/admin-api-key.php:370
+#: includes/views/admin-api-key.php:375
 #, php-format
 msgid "bound %s ago"
 msgstr "%s 전으로 제한됨"
 
-#: includes/views/admin-api-key.php:377
+#: includes/views/admin-api-key.php:382
 msgid "not bound: the first request binds this site"
 msgstr "바인딩되지 않음: 첫 번째 요청에서 이 사이트가 바인딩됩니다"
 
-#: includes/views/admin-api-key.php:384
+#: includes/views/admin-api-key.php:389
 msgid "Source"
 msgstr "리소스"
 
-#: includes/views/admin-api-key.php:391
+#: includes/views/admin-api-key.php:396
 msgid ""
 "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
 "and credits shown via legacy fallback."
@@ -2532,7 +3669,7 @@ msgstr ""
 "데이터 제한: 연결된 API는 아직 /v1/auth/keys/me를 노출하지 않습니다. 플랜 및 크레딧 정보는 레거시 대체 방식을 통해 "
 "표시됩니다."
 
-#: includes/views/admin-api-key.php:394
+#: includes/views/admin-api-key.php:399
 msgid ""
 "The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
 " key above, or clear the field to revert to anonymous mode."
@@ -2540,118 +3677,118 @@ msgstr ""
 "저장된 키가 api.astroway.info에서 거부되었습니다(HTTP 401). 위에 유효한 키를 다시 붙여넣거나, 필드를 비워 익명 "
 "모드로 되돌리세요."
 
-#: includes/views/admin-api-key.php:396
+#: includes/views/admin-api-key.php:401
 msgid ""
 "Could not reach api.astroway.info. Network or upstream issue, try again in a"
 " moment."
 msgstr ""
 "api.astroway.info에 연결할 수 없습니다. 네트워크 또는 업스트림 문제일 수 있으니 잠시 후 다시 시도해 주세요."
 
-#: includes/views/admin-api-key.php:405
+#: includes/views/admin-api-key.php:410
 msgid "What a key adds"
 msgstr "키가 추가하는 내용"
 
-#: includes/views/admin-api-key.php:406
+#: includes/views/admin-api-key.php:411
 msgid "3 tiers compared"
 msgstr "3티어 비교"
 
-#: includes/views/admin-api-key.php:414
+#: includes/views/admin-api-key.php:419
 msgid "Anonymous"
 msgstr "익명"
 
-#: includes/views/admin-api-key.php:415
+#: includes/views/admin-api-key.php:420
 msgid "no setup"
 msgstr "설정 없음"
 
-#: includes/views/admin-api-key.php:418
+#: includes/views/admin-api-key.php:423
 msgid "Free key"
 msgstr "무료 키"
 
-#: includes/views/admin-api-key.php:419
+#: includes/views/admin-api-key.php:424
 msgid "signup"
 msgstr "가입"
 
-#: includes/views/admin-api-key.php:422
+#: includes/views/admin-api-key.php:427
 msgid "Paid"
 msgstr "유료"
 
-#: includes/views/admin-api-key.php:423
+#: includes/views/admin-api-key.php:428
 msgid "from $5/mo"
 msgstr "월 $5부터"
 
-#: includes/views/admin-api-key.php:429
+#: includes/views/admin-api-key.php:434
 msgid "Widgets in this plugin"
 msgstr "이 플러그인의 위젯"
 
-#: includes/views/admin-api-key.php:430 includes/views/admin-api-key.php:431
-#: includes/views/admin-api-key.php:432
+#: includes/views/admin-api-key.php:435 includes/views/admin-api-key.php:436
+#: includes/views/admin-api-key.php:437
 msgid "all of them"
 msgstr "그들 모두"
 
-#: includes/views/admin-api-key.php:435
+#: includes/views/admin-api-key.php:440
 msgid "API requests / month"
 msgstr "월간 API 요청 횟수"
 
-#: includes/views/admin-api-key.php:436 includes/views/admin-api-key.php:442
-#: includes/views/admin-api-key.php:448 includes/views/admin-api-key.php:454
-#: includes/views/admin-api-key.php:455 includes/views/admin-api-key.php:460
-#: includes/views/admin-api-key.php:466 includes/views/admin-api-key.php:467
+#: includes/views/admin-api-key.php:441 includes/views/admin-api-key.php:447
+#: includes/views/admin-api-key.php:453 includes/views/admin-api-key.php:459
+#: includes/views/admin-api-key.php:460 includes/views/admin-api-key.php:465
+#: includes/views/admin-api-key.php:471 includes/views/admin-api-key.php:472
 msgid "none"
 msgstr "없음"
 
-#: includes/views/admin-api-key.php:437
+#: includes/views/admin-api-key.php:442
 msgid "10,000"
 msgstr "10,000"
 
-#: includes/views/admin-api-key.php:438
+#: includes/views/admin-api-key.php:443
 msgid "50K to 3.5M"
 msgstr "5만에서 350만"
 
-#: includes/views/admin-api-key.php:441
+#: includes/views/admin-api-key.php:446
 msgid "Rate limit, keyed endpoints"
 msgstr "요청 제한, 키 기반 엔드포인트"
 
-#: includes/views/admin-api-key.php:443
+#: includes/views/admin-api-key.php:448
 msgid "~60 requests/min"
 msgstr "분당 약 60건의 요청"
 
-#: includes/views/admin-api-key.php:444
+#: includes/views/admin-api-key.php:449
 msgid "30 to 1000 requests/min"
 msgstr "분당 30~1,000건의 요청"
 
-#: includes/views/admin-api-key.php:447
+#: includes/views/admin-api-key.php:452
 msgid "Dashboard, usage history"
 msgstr "대시보드, 이용 내역"
 
-#: includes/views/admin-api-key.php:449 includes/views/admin-api-key.php:450
-#: includes/views/admin-api-key.php:456 includes/views/admin-api-key.php:468
+#: includes/views/admin-api-key.php:454 includes/views/admin-api-key.php:455
+#: includes/views/admin-api-key.php:461 includes/views/admin-api-key.php:473
 msgid "included"
 msgstr "포함됨"
 
-#: includes/views/admin-api-key.php:453
+#: includes/views/admin-api-key.php:458
 msgid "AI interpretations"
 msgstr "AI 해석"
 
-#: includes/views/admin-api-key.php:459
+#: includes/views/admin-api-key.php:464
 #: includes/views/partials/admin-sidebar.php:35
 msgid "Support"
 msgstr "지원"
 
-#: includes/views/admin-api-key.php:461
+#: includes/views/admin-api-key.php:466
 msgid "community"
 msgstr "커뮤니티"
 
-#: includes/views/admin-api-key.php:462
+#: includes/views/admin-api-key.php:467
 msgid "priority"
 msgstr "우선순위"
 
-#: includes/views/admin-api-key.php:465
+#: includes/views/admin-api-key.php:470
 msgid "Spend cap"
 msgstr "지출 상한"
 
 #. translators: %s is a link to the canonical pricing page on
 #. api.astroway.info
-#: includes/views/admin-api-key.php:476
+#: includes/views/admin-api-key.php:481
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
@@ -2661,15 +3798,15 @@ msgstr ""
 "첫 번째 행을 제외한 나머지 모든 행은 사용자 자신의 코드에서 api.astroway.info를 호출하는 방법에 관한 내용입니다. "
 "페이지에 있는 위젯들은 이 내용과 전혀 관련이 없습니다. 표준 가격 → %s"
 
-#: includes/views/admin-api-key.php:487
+#: includes/views/admin-api-key.php:492
 msgid "How it works"
 msgstr "작동 방식"
 
-#: includes/views/admin-api-key.php:491
+#: includes/views/admin-api-key.php:496
 msgid "On your pages."
 msgstr "귀하의 페이지에서."
 
-#: includes/views/admin-api-key.php:492
+#: includes/views/admin-api-key.php:497
 msgid ""
 "Your server renders most widgets into the page, counted against this site's "
 "allowance of 300 requests an hour, or against your own plan when a paid key "
@@ -2681,11 +3818,11 @@ msgstr ""
 " 요금제 한도에 포함됩니다. 나머지는 각 방문자의 30회 요청 한도 내에서 프레임으로 로드되며, 여기에는 \"Powered by "
 "AstroWay\" 워터마크가 표시됩니다. 프레임은 방문자의 브라우저에서 불러오기 때문에, 귀하의 키가 포함될 여지가 없습니다."
 
-#: includes/views/admin-api-key.php:495
+#: includes/views/admin-api-key.php:500
 msgid "Free key."
 msgstr "무료 키."
 
-#: includes/views/admin-api-key.php:496
+#: includes/views/admin-api-key.php:501
 msgid ""
 "A personal bucket of 10,000 calls a month for code you write yourself, plus "
 "a dashboard with activity history. It does not change what the shortcodes "
@@ -2695,11 +3832,11 @@ msgstr ""
 "직접 작성한 코드에 대해 월 10,000회 호출이 가능한 개인용 할당량과 활동 내역이 표시되는 대시보드가 제공됩니다. 이 기능은 숏코드가"
 " 렌더링하는 내용을 변경하지 않으며, 프레임이 적용된 위젯의 워터마크는 그대로 유지됩니다. 키는 프레임 주소의 일부가 아니기 때문입니다."
 
-#: includes/views/admin-api-key.php:499
+#: includes/views/admin-api-key.php:504
 msgid "Paid key."
 msgstr "유료 키."
 
-#: includes/views/admin-api-key.php:500
+#: includes/views/admin-api-key.php:505
 msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
@@ -2825,12 +3962,6 @@ msgstr "모두 지우기"
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
 msgstr "TTL: 차트 1시간 · 달 24시간 · 참조 데이터 7일 · 키 /me 30분."
 
-#: includes/views/admin-settings.php:123
-#: includes/views/partials/admin-sidebar.php:42
-#: assets/js/astroway-blocks-editor.js:242
-msgid "System"
-msgstr "시스템"
-
 #: includes/views/admin-settings.php:124
 msgid "diagnostic info for support"
 msgstr "지원을 위한 진단 정보"
@@ -2941,31 +4072,16 @@ msgid "how every card on the site looks"
 msgstr "사이트의 모든 카드가 보이는 방식"
 
 #: includes/views/admin-settings.php:307
-#: assets/js/astroway-blocks-editor.js:70
-msgid "Instrument"
-msgstr "인스트루먼트"
-
-#: includes/views/admin-settings.php:307
 msgid ""
 "Lapis and gilt on your theme's own background, like the face of an "
 "astronomical clock. Light and dark themes both work."
 msgstr "테마 본래 배경 위의 청금석과 금박, 천문 시계의 문자판처럼. 밝은 테마와 어두운 테마 모두에 어울립니다."
 
 #: includes/views/admin-settings.php:308
-#: assets/js/astroway-blocks-editor.js:71
-msgid "Night sky"
-msgstr "밤하늘"
-
-#: includes/views/admin-settings.php:308
 msgid ""
 "A deep blue card with stars and gold, the same on any site. Best on dark or "
 "photo-heavy themes."
 msgstr "별과 금으로 꾸민 짙은 파란색 카드로, 어느 사이트에서나 같습니다. 어둡거나 사진이 많은 테마에 가장 좋습니다."
-
-#: includes/views/admin-settings.php:309
-#: assets/js/astroway-blocks-editor.js:72
-msgid "Theme colours"
-msgstr "테마 색상"
 
 #: includes/views/admin-settings.php:309
 msgid "No colour of its own: everything is drawn in your theme's text colour."
@@ -2987,10 +4103,6 @@ msgstr "설정"
 #: includes/views/admin-settings.php:358
 msgid "Save widget style"
 msgstr "위젯 스타일 저장"
-
-#: includes/views/admin-settings.php:366
-msgid "Render mode"
-msgstr "렌더링 모드"
 
 #: includes/views/admin-settings.php:367
 msgid "where widget content is drawn"
@@ -3094,790 +4206,111 @@ msgstr "오늘 알림을 지금 나에게 전송"
 msgid "Goes to your own address, not to the list above."
 msgstr "위 목록이 아닌 귀하의 주소로 전송됩니다."
 
+#: includes/views/admin-settings.php:454
+msgid "Visitor forms"
+msgstr "방문자 양식"
+
+#: includes/views/admin-settings.php:455
+msgid "optional consent box before birth data is sent"
+msgstr "출생 정보를 보내기 전 선택적 동의"
+
+#: includes/views/admin-settings.php:463
+msgid "Ask visitors to agree before a form is sent"
+msgstr "양식을 보내기 전에 방문자에게 동의 요청"
+
+#: includes/views/admin-settings.php:464
+msgid ""
+"Adds a required checkbox to the birth chart, compatibility, moon sign, "
+"rising sign, Human Design and numerology forms. Off by default."
+msgstr "출생 차트, 궁합, 달 별자리, 상승궁, 휴먼 디자인, 수비학 양식에 필수 체크박스를 추가합니다. 기본값은 꺼짐입니다."
+
+#: includes/views/admin-settings.php:468
+msgid "Checkbox text (leave empty for the default)"
+msgstr "체크박스 문구 (기본 문구를 쓰려면 비워 두세요)"
+
+#: includes/views/admin-settings.php:471
+msgid "Save form setting"
+msgstr "양식 설정 저장"
+
 #: includes/views/admin-shortcodes.php:15
 msgid ""
 "Drop any shortcode into a post or page. Also available as Gutenberg blocks "
 "(/astroway)."
 msgstr "게시물이나 페이지에 원하는 숏코드를 삽입하세요. 구텐베르크 블록(/astroway)으로도 사용할 수 있습니다."
 
-#: includes/views/admin-shortcodes.php:20
-msgid "Natal Chart"
-msgstr "natal 차트"
-
-#: includes/views/admin-shortcodes.php:21
-msgid ""
-"Birth chart: the wheel plus planet positions, houses and aspects as text."
-msgstr ""
-"Birth chart: the wheel plus planet positions, houses and aspects as text."
-
-#: includes/views/admin-shortcodes.php:25
-#: includes/views/admin-shortcodes.php:99
-#: includes/views/admin-shortcodes.php:114
-#: includes/views/admin-shortcodes.php:129
-#: includes/views/admin-shortcodes.php:165
-#: includes/views/admin-shortcodes.php:203
-#: includes/views/admin-shortcodes.php:244
-#: includes/views/admin-shortcodes.php:426
-msgid "Birth date in YYYY-MM-DD."
-msgstr "출생일 YYYY-MM-DD."
-
-#: includes/views/admin-shortcodes.php:26
-#: includes/views/admin-shortcodes.php:100
-#: includes/views/admin-shortcodes.php:115
-#: includes/views/admin-shortcodes.php:130
-#: includes/views/admin-shortcodes.php:166
-#: includes/views/admin-shortcodes.php:204
-msgid "Birth time in HH:MM (24-hour)."
-msgstr "출생시 HH:MM (24시간)."
-
+#. translators: %s = comma-separated section keys
 #: includes/views/admin-shortcodes.php:27
-msgid "WGS-84 latitude (e.g. 50.45)."
-msgstr "WGS-84 위도(예: 50.45)."
-
-#: includes/views/admin-shortcodes.php:28
-msgid "WGS-84 longitude (e.g. 30.52)."
-msgstr "WGS-84 경도(예: 30.52)."
-
-#: includes/views/admin-shortcodes.php:29
-#: includes/views/admin-shortcodes.php:118
-#: includes/views/admin-shortcodes.php:133
-msgid "IANA timezone (e.g. Europe/Kyiv)."
-msgstr "IANA 시간대(예: Europe/Kyiv)."
-
-#: includes/views/admin-shortcodes.php:30
-msgid "Display name on the chart."
-msgstr "차트에 표시할 이름."
+#, php-format
+msgid "Comma-separated parts to leave out: %s."
+msgstr "표시하지 않을 부분(쉼표로 구분): %s."
 
 #: includes/views/admin-shortcodes.php:31
-msgid ""
-"Palette of the wheel drawing: light (default), dark or console. The text "
-"beside it follows your theme on its own; the wheel is an image and cannot, "
-"so set this to match."
-msgstr ""
-"휠 그림의 색상 팔레트: 밝은 색(기본값), 어두운 색 또는 콘솔 색상. 옆에 있는 텍스트는 테마에 따라 자동으로 조정되지만, 휠은 "
-"이미지이므로 테마와 일치하도록 이 설정을 조정하십시오."
-
-#: includes/views/admin-shortcodes.php:36
-msgid "Daily Horoscope"
-msgstr "일일 운세"
-
-#: includes/views/admin-shortcodes.php:37
-msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
-msgstr "오늘의 운세를 한 개의 별자리 기호에 대한 것입니다. api 측에서 일일 자동 새로고침."
-
-#: includes/views/admin-shortcodes.php:41
-#: includes/views/admin-shortcodes.php:53
-#: includes/views/admin-shortcodes.php:66
-#: includes/views/admin-shortcodes.php:180
-msgid ""
-"One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
-"sagittarius, capricorn, aquarius, pisces."
-msgstr ""
-"다음 중 하나: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
-"sagittarius, capricorn, aquarius, pisces."
-
-#: includes/views/admin-shortcodes.php:42
-#: includes/views/admin-shortcodes.php:54
-#: includes/views/admin-shortcodes.php:67
-msgid ""
-"Which period tabs the card shows: any of day, week, month, comma separated. "
-"All three by default; periods=\"day\" gives a single card."
-msgstr ""
-"카드에 표시할 기간 탭: day, week, month 중 원하는 것을 쉼표로 구분. 기본값은 세 가지 모두이며 "
-"periods=\"day\" 는 카드 하나만 보여 줍니다."
-
-#: includes/views/admin-shortcodes.php:43
-#: includes/views/admin-shortcodes.php:55
-#: includes/views/admin-shortcodes.php:68
-msgid ""
-"switch=\"no\" pins the card to these attributes. By default the visitor can "
-"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to "
-"the page URL."
-msgstr ""
-"switch=\"no\" 는 카드를 이 속성들로 고정합니다. 기본적으로 방문자는 다른 별자리를 고르거나 날짜를 넘길 수 있고, 이때 "
-"페이지 주소에 ?aw_sign= 와 ?aw_date= 가 붙습니다."
-
-#: includes/views/admin-shortcodes.php:48
-msgid "Weekly Horoscope"
-msgstr "주간 운세"
+msgid "first opens the first reading, none keeps them all closed."
+msgstr "first는 첫 번째 해석을 열고, none은 모두 닫아 둡니다."
 
 #: includes/views/admin-shortcodes.php:49
-msgid ""
-"Horoscope for the current week, anchored to Monday. Rendered into the page, "
-"not an iframe."
-msgstr "월요일을 기준으로 하는 이번 주의 운세입니다. iframe이 아닌 페이지에 렌더링됩니다."
-
-#: includes/views/admin-shortcodes.php:56
-msgid "Any date inside the week you want. Defaults to today."
-msgstr "원하는 주 내의 모든 날짜. 기본값은 오늘입니다."
-
-#: includes/views/admin-shortcodes.php:61
-msgid "Monthly Horoscope"
-msgstr "월간 운세"
-
-#: includes/views/admin-shortcodes.php:62
-msgid ""
-"Horoscope for the current month, anchored to the 1st. Rendered into the "
-"page, not an iframe."
-msgstr "매월 1일을 기준으로 하는 이번 달의 운세입니다. iframe이 아닌 페이지에 렌더링됩니다."
-
-#: includes/views/admin-shortcodes.php:69
-#: includes/views/admin-shortcodes.php:181
-msgid "Any date inside the month you want. Defaults to today."
-msgstr "원하는 월 내의 모든 날짜. 기본값은 오늘입니다."
-
-#: includes/views/admin-shortcodes.php:74
-msgid "Planet of the Day"
-msgstr "오늘의 행성"
-
-#: includes/views/admin-shortcodes.php:75
-msgid ""
-"Traditional planetary ruler of the weekday, with its glyph and themes. "
-"Rendered into the page, not an iframe."
-msgstr "요일의 전통적인 행성 지배자, 해당 상형문자와 테마를 포함합니다. iframe이 아닌 페이지에 렌더링됩니다."
-
-#: includes/views/admin-shortcodes.php:79
-#: includes/views/admin-shortcodes.php:89
-#: includes/views/admin-shortcodes.php:218
-#: includes/views/admin-shortcodes.php:229
-#: includes/views/admin-shortcodes.php:393
-msgid "Override date in YYYY-MM-DD. Defaults to today."
-msgstr "YYYY-MM-DD 형식의 날짜를 재정의합니다. 기본적으로 오늘 날짜입니다."
-
-#: includes/views/admin-shortcodes.php:84
-msgid "Moon Phase"
-msgstr "달의 위상"
-
-#: includes/views/admin-shortcodes.php:85
-msgid "Current Moon phase visualization with illumination percent."
-msgstr "조명 비율을 반영한 현재 달의 위상 시각화."
-
-#: includes/views/admin-shortcodes.php:94
-msgid "Human Design Bodygraph"
-msgstr "Human Design 바디그래프"
-
-#: includes/views/admin-shortcodes.php:95
-msgid ""
-"The bodygraph drawing, with type, strategy, authority, profile and the "
-"defined centres as text beside it."
-msgstr "바디그래프 그림과 그 옆에 유형, 전략, 권위, 프로필 및 정의된 중심이 텍스트로 표기되어 있다."
-
-#: includes/views/admin-shortcodes.php:101
-#: includes/views/admin-shortcodes.php:167
-#: includes/views/admin-shortcodes.php:205
-#: includes/views/admin-shortcodes.php:230
-msgid "WGS-84 latitude."
-msgstr "WGS-84 위도."
-
-#: includes/views/admin-shortcodes.php:102
-#: includes/views/admin-shortcodes.php:117
-#: includes/views/admin-shortcodes.php:132
-#: includes/views/admin-shortcodes.php:168
-#: includes/views/admin-shortcodes.php:206
-#: includes/views/admin-shortcodes.php:231
-#: includes/views/admin-shortcodes.php:392
-msgid "WGS-84 longitude."
-msgstr "WGS-84 경도."
-
-#: includes/views/admin-shortcodes.php:103
-#: includes/views/admin-shortcodes.php:169
-#: includes/views/admin-shortcodes.php:207
-#: includes/views/admin-shortcodes.php:232
-msgid "IANA timezone."
-msgstr "IANA 시간대."
-
-#: includes/views/admin-shortcodes.php:104
-msgid "Display name."
-msgstr "표시 이름."
-
-#: includes/views/admin-shortcodes.php:109
-msgid "Moon Sign"
-msgstr "달의 별자리"
-
-#: includes/views/admin-shortcodes.php:110
-msgid ""
-"The Moon's sign, degree and house from a birth chart. Answers \"what is my "
-"moon sign\" on its own, without the whole chart around it."
-msgstr ""
-"출생 차트에서 달의 별자리, 도수 및 하우스. 전체 차트 정보 없이도 “내 달 별자리는 무엇인가”라는 질문에 대한 답을 제공합니다."
-
-#: includes/views/admin-shortcodes.php:116
-msgid ""
-"WGS-84 latitude. Only affects the house shown; the sign is the same "
-"anywhere."
-msgstr "WGS-84 위도. 표시된 주택에만 적용되며, 표지판은 어디에서나 동일합니다."
-
-#: includes/views/admin-shortcodes.php:119
-#: includes/views/admin-shortcodes.php:134
-msgid "Display name in the heading."
-msgstr "제목에 표시할 이름을 입력하세요."
-
-#: includes/views/admin-shortcodes.php:124
-msgid "Rising Sign"
-msgstr "상승 별자리"
-
-#: includes/views/admin-shortcodes.php:125
-msgid ""
-"The rising sign with its chart ruler and the Midheaven. Coordinates are "
-"required: the ascendant is the horizon at a place."
-msgstr "상승궁과 그 차트의 지배성, 그리고 중천. 좌표가 필요합니다: 상승궁은 특정 장소의 지평선입니다."
-
-#: includes/views/admin-shortcodes.php:131
-msgid ""
-"WGS-84 latitude. Without it the card renders nothing rather than the wrong "
-"horizon."
-msgstr "WGS-84 위도. 이 정보가 없으면 카드에 잘못된 수평선 대신 아무것도 표시되지 않습니다."
-
-#: includes/views/admin-shortcodes.php:139
-msgid "Daily Tarot Card"
-msgstr "일일 타로 카드"
-
-#: includes/views/admin-shortcodes.php:140
-msgid "Single card pull of the day from a chosen deck."
-msgstr "선택한 덱에서 당일의 단일 카드 당첨."
-
-#: includes/views/admin-shortcodes.php:144
-msgid ""
-"Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
-"renders into the page; the other two load in a frame."
-msgstr ""
-"덱 슬러그: 라이더-웨이트(기본값), 마르세유, 또는 레노르망. 라이더-웨이트만 페이지에 직접 표시되며, 나머지 두 가지는 프레임 내에서"
-" 로드됩니다."
-
-#: includes/views/admin-shortcodes.php:149
-msgid "Tarot Spread of the Day"
-msgstr "오늘의 타로 스프레드"
-
-#: includes/views/admin-shortcodes.php:150
-msgid ""
-"Past, present and future, or the Celtic Cross, drawn once a day for this "
-"site, each card read in its position. Rendered into the page; no key needed."
-msgstr ""
-"과거, 현재, 미래 또는 켈틱 크로스. 이 사이트를 위해 하루에 한 번 뽑고 각 카드는 자기 자리에서 읽습니다. 페이지에 렌더링됩니다. "
-"키가 필요 없습니다."
-
-#: includes/views/admin-shortcodes.php:154
-msgid ""
-"three-card (default) for past, present and future, or celtic-cross for the "
-"Celtic Cross."
-msgstr "three-card(기본값)는 과거, 현재, 미래, celtic-cross는 켈틱 크로스."
-
-#: includes/views/admin-shortcodes.php:155
-msgid ""
-"yes (default) shows a Draw again button that deals the visitor a new spread,"
-" not kept or cached; no hides it."
-msgstr ""
-"yes(기본값)는 방문자에게 새 스프레드를 뽑아 주는 다시 뽑기 버튼을 표시하며, 결과는 저장되거나 캐시되지 않습니다. no는 버튼을 "
-"숨깁니다."
-
-#: includes/views/admin-shortcodes.php:160
-msgid "Mini Birth Chart"
-msgstr "미니 출생 차트"
-
-#: includes/views/admin-shortcodes.php:161
-msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
-msgstr "사이드바에 표시하기 위해 작게 그려진 출생 차트입니다. 프레임에 로드됩니다."
-
-#: includes/views/admin-shortcodes.php:170
-#: includes/views/admin-shortcodes.php:182
-#: includes/views/admin-shortcodes.php:193
-#: includes/views/admin-shortcodes.php:208
-#: includes/views/admin-shortcodes.php:219
-#: includes/views/admin-shortcodes.php:233
-#: includes/views/admin-shortcodes.php:246
-#: includes/views/admin-shortcodes.php:279
-msgid "light (default), dark or console."
-msgstr "light(기본값), dark 또는 console."
-
-#: includes/views/admin-shortcodes.php:175
-msgid "Monthly Forecast"
-msgstr "월간 전망"
-
-#: includes/views/admin-shortcodes.php:176
-msgid ""
-"Four weeks ahead for one sign, each with its own theme. Loads in a frame."
-msgstr "한 별자리에 대한 향후 4주간의 운세로, 각각 고유한 주제를 담고 있습니다. 한 프레임에 여러 개가 담겨 있습니다."
-
-#: includes/views/admin-shortcodes.php:187
-msgid "Moon Transit Timeline"
-msgstr "달의 통과 시간표"
-
-#: includes/views/admin-shortcodes.php:188
-msgid ""
-"The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
-msgstr "향후 7일간의 달 이동 일정. 특정 별자리와 관련이 없습니다. 한 화면에 모두 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:192
-msgid "Day the seven start from. Defaults to today."
-msgstr "7일째가 시작되는 날. 기본값은 오늘입니다."
-
-#: includes/views/admin-shortcodes.php:198
-msgid "Vedic Kundli"
-msgstr "베다 쿤들리"
-
-#: includes/views/admin-shortcodes.php:199
-msgid ""
-"North-Indian D1 chart. Loads in a frame: there is no page-side template for "
-"it yet."
-msgstr "북인도 D1 차트. 프레임 내 로드: 아직 이에 대한 페이지 측 템플릿이 없습니다."
-
-#: includes/views/admin-shortcodes.php:213
-msgid "Transit Sky"
-msgstr "트랜짓 스카이"
-
-#: includes/views/admin-shortcodes.php:214
-msgid ""
-"Where the planets stand on a given date. Loads in a frame: there is no page-"
-"side template for it yet."
-msgstr "특정 날짜에 행성들이 어떤 위치에 있는지 보여줍니다. 프레임으로 불러옵니다. 아직 이에 대한 페이지 측 템플릿은 없습니다."
-
-#: includes/views/admin-shortcodes.php:225
-msgid ""
-"Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
-"Loads in a frame."
-msgstr "특정 날짜와 장소에 대한 티티, 낙샤트라, 요가, 카라나, 바라, 라후-칼 정보를 한 화면에 모두 표시합니다."
-
-#: includes/views/admin-shortcodes.php:238
-#: assets/js/astroway-blocks-editor.js:238
-msgid "Numerology"
-msgstr "수비학"
-
-#: includes/views/admin-shortcodes.php:239
-msgid ""
-"Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
-msgstr "인생 경로, 표현, 영혼의 열망, 성격 번호. 프레임에 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:243
-msgid "Full birth name. The letters are what the numbers are built from."
-msgstr "본명 전체. 이 글자들이 숫자를 구성하는 요소입니다."
-
-#: includes/views/admin-shortcodes.php:245
-msgid "pythagorean (default), chaldean, kabbalistic or tamil."
-msgstr "피타고라스식(기본값), 칼데아식, 카발라식 또는 타밀식."
-
-#: includes/views/admin-shortcodes.php:251
-msgid "Sign Compatibility Matrix"
-msgstr "별자리 궁합 매트릭스"
-
-#: includes/views/admin-shortcodes.php:252
-msgid ""
-"Every pair of signs by its classical relation, or one sign against the other"
-" eleven. Rendered into the page; no key needed."
-msgstr "고전적인 관계로 본 모든 별자리 쌍, 또는 한 별자리와 나머지 열한 별자리. 페이지에 렌더링됩니다. 키가 필요 없습니다."
-
-#: includes/views/admin-shortcodes.php:256
-msgid "One sign against the others; leave it out for all pairs."
-msgstr "한 별자리와 나머지. 모든 쌍을 보려면 비워 두세요."
-
-#: includes/views/admin-shortcodes.php:261
-msgid "Synastry Compatibility"
-msgstr "상호 호환성"
-
-#: includes/views/admin-shortcodes.php:262
-msgid ""
-"Compatibility score and the cross-aspects behind it, for two birth charts. "
-"Rendered into the page; no key needed."
-msgstr "두 출생 차트에 대한 궁합 점수와 그 뒤에 있는 교차 각. 페이지에 렌더링됩니다; 키가 필요 없습니다."
-
-#: includes/views/admin-shortcodes.php:266
-msgid "First person: birth date in YYYY-MM-DD."
-msgstr "첫 번째 사람: 생년월일은 YYYY-MM-DD 형식입니다."
-
-#: includes/views/admin-shortcodes.php:267
-msgid ""
-"First person: birth time in HH:MM. Leave it out and the time is declared "
-"unknown rather than guessed."
-msgstr "첫 번째 사람: 출생 시간 (HH:MM). 입력하지 않으면 시간이 추정되지 않고 알 수 없음으로 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:268
-msgid "First person: latitude."
-msgstr "첫 번째 사람: 위도."
-
-#: includes/views/admin-shortcodes.php:269
-msgid "First person: longitude."
-msgstr "첫 번째 사람: 경도."
-
-#: includes/views/admin-shortcodes.php:270
-msgid "First person: IANA timezone."
-msgstr "첫 번째 사람: IANA 시간대."
-
-#: includes/views/admin-shortcodes.php:271
-msgid "First person: name for the table heading. Stays on your server."
-msgstr "첫 번째 사람: 표 머리글에 표시할 이름. 귀하의 서버에 저장됩니다."
-
-#: includes/views/admin-shortcodes.php:272
-#: includes/views/admin-shortcodes.php:333
-msgid "Second person: birth date in YYYY-MM-DD."
-msgstr "두 번째 사람: 생년월일은 YYYY-MM-DD 형식입니다."
-
-#: includes/views/admin-shortcodes.php:273
-msgid "Second person: birth time in HH:MM. Optional in the same way."
-msgstr "두 번째 사람: 출생 시간 (HH:MM). 동일하게 선택 사항입니다."
-
-#: includes/views/admin-shortcodes.php:274
-msgid "Second person: latitude."
-msgstr "두 번째 사람: 위도."
-
-#: includes/views/admin-shortcodes.php:275
-msgid "Second person: longitude."
-msgstr "두 번째 사람: 경도."
-
-#: includes/views/admin-shortcodes.php:276
-msgid "Second person: IANA timezone."
-msgstr "두 번째 사람: IANA 시간대."
-
-#: includes/views/admin-shortcodes.php:277
-msgid "Second person: name for the table heading."
-msgstr "두 번째 사람: 표 머리글에 표시할 이름."
-
-#: includes/views/admin-shortcodes.php:278
-msgid ""
-"How many aspects the table holds, 1 to 20. Six by default, which is what the"
-" frame version showed."
-msgstr "표에 표시할 각의 수, 1~20. 기본값은 6이며, 이는 프레임 버전에서 보여진 값입니다."
-
-#: includes/views/admin-shortcodes.php:284
-msgid "Solar Return"
-msgstr "솔라 리턴"
-
-#: includes/views/admin-shortcodes.php:285
-msgid ""
-"The chart of the moment the Sun returns to its birth position in a year, "
-"with houses and aspects. Without a date it asks the visitor. Needs a site "
-"key or an API key; on an API key each new chart costs 50 credits."
-msgstr ""
-"한 해에 태양이 출생 시 위치로 돌아오는 순간의 차트로, 하우스와 애스펙트를 포함합니다. 날짜가 없으면 방문자에게 묻습니다. 사이트 키 "
-"또는 API 키가 필요하며, API 키로는 새 차트마다 50크레딧이 듭니다."
-
-#: includes/views/admin-shortcodes.php:289
-#: includes/views/admin-shortcodes.php:308
-msgid "Birth date in YYYY-MM-DD. Leave it out and the visitor gets a form."
-msgstr "YYYY-MM-DD 형식의 출생일. 비워 두면 방문자에게 양식이 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:290
-msgid ""
-"Birth time in HH:MM. Required with a date: houses turn with the minute."
-msgstr "HH:MM 형식의 출생 시간. 날짜와 함께 필수입니다: 하우스는 분마다 바뀝니다."
-
-#: includes/views/admin-shortcodes.php:291
-#: includes/views/admin-shortcodes.php:310
-msgid "Latitude of the place of birth."
-msgstr "출생지의 위도."
-
-#: includes/views/admin-shortcodes.php:292
-#: includes/views/admin-shortcodes.php:311
-msgid "Longitude of the place of birth."
-msgstr "출생지의 경도."
-
-#: includes/views/admin-shortcodes.php:293
-#: includes/views/admin-shortcodes.php:312
-msgid ""
-"IANA timezone or UTC offset of the birth; blank looks it up from the place."
-msgstr "출생 시의 IANA 시간대 또는 UTC 오프셋. 비워 두면 장소로 찾습니다."
-
-#: includes/views/admin-shortcodes.php:294
-msgid "Year of the return. Blank for the one in force now."
-msgstr "리턴 연도. 현재 유효한 것은 비워 두세요."
-
-#: includes/views/admin-shortcodes.php:295
-#: includes/views/admin-shortcodes.php:314
-msgid ""
-"Latitude of the place the return is cast for, when it is not the place of "
-"birth."
-msgstr "출생지가 아닐 때, 리턴 차트를 작성할 장소의 위도."
-
-#: includes/views/admin-shortcodes.php:296
-#: includes/views/admin-shortcodes.php:315
-msgid "Longitude of that place."
-msgstr "그 장소의 경도."
-
-#: includes/views/admin-shortcodes.php:297
-#: includes/views/admin-shortcodes.php:316
-msgid "Timezone the moment is shown in. Blank shows it in UTC."
-msgstr "순간을 표시할 시간대. 비워 두면 UTC로 표시합니다."
-
-#: includes/views/admin-shortcodes.php:298
-#: includes/views/admin-shortcodes.php:317
-msgid "Name for the heading."
-msgstr "제목에 쓸 이름."
-
-#: includes/views/admin-shortcodes.php:304
-msgid ""
-"The chart of the next moment the Moon returns to its birth position. Without"
-" a date it asks the visitor. Needs a site key or an API key; on an API key "
-"each new chart costs 50 credits."
-msgstr ""
-"달이 출생 시 위치로 돌아오는 다음 순간의 차트입니다. 날짜가 없으면 방문자에게 묻습니다. 사이트 키 또는 API 키가 필요하며, API"
-" 키로는 새 차트마다 50크레딧이 듭니다."
-
-#: includes/views/admin-shortcodes.php:309
-msgid "Birth time in HH:MM. Required with a date."
-msgstr "HH:MM 형식의 출생 시간. 날짜와 함께 필수입니다."
-
-#: includes/views/admin-shortcodes.php:313
-msgid ""
-"The first return after this date, YYYY-MM-DD. Blank for the 1st of this "
-"month, so the card holds for the month."
-msgstr "이 날짜 이후 첫 리턴, YYYY-MM-DD. 비워 두면 이번 달 1일이 되어 카드가 한 달 동안 유지됩니다."
-
-#: includes/views/admin-shortcodes.php:322
-msgid "Davison Chart"
-msgstr "데이비슨 차트"
-
-#: includes/views/admin-shortcodes.php:323
-msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and"
-" place. Without dates it asks the visitor for both. Needs a site key or an "
-"API key; on an API key each new chart costs 50 credits."
-msgstr ""
-"커플을 위한 하나의 차트로, 두 출생의 시간과 장소의 중간점으로 작성합니다. 날짜가 없으면 방문자에게 둘 다 묻습니다. 사이트 키 또는 "
-"API 키가 필요하며, API 키로는 새 차트마다 50크레딧이 듭니다."
-
-#: includes/views/admin-shortcodes.php:327
-msgid ""
-"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor"
-" gets a form."
-msgstr "첫 번째 사람: YYYY-MM-DD 형식의 출생일. 두 날짜를 모두 비워 두면 방문자에게 양식이 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:328
-msgid "First person: birth time in HH:MM. Required."
-msgstr "첫 번째 사람: HH:MM 형식의 출생 시간. 필수."
-
-#: includes/views/admin-shortcodes.php:329
-msgid "First person: latitude. Required."
-msgstr "첫 번째 사람: 위도. 필수."
-
-#: includes/views/admin-shortcodes.php:330
-msgid "First person: longitude. Required."
-msgstr "첫 번째 사람: 경도. 필수."
-
-#: includes/views/admin-shortcodes.php:331
-msgid "First person: IANA timezone; blank looks it up from the place."
-msgstr "첫 번째 사람: IANA 시간대. 비워 두면 장소로 찾습니다."
-
-#: includes/views/admin-shortcodes.php:332
-msgid "First person: name for the heading."
-msgstr "첫 번째 사람: 제목에 쓸 이름."
-
-#: includes/views/admin-shortcodes.php:334
-msgid "Second person: birth time in HH:MM. Required."
-msgstr "두 번째 사람: HH:MM 형식의 출생 시간. 필수."
-
-#: includes/views/admin-shortcodes.php:335
-msgid "Second person: latitude. Required."
-msgstr "두 번째 사람: 위도. 필수."
-
-#: includes/views/admin-shortcodes.php:336
-msgid "Second person: longitude. Required."
-msgstr "두 번째 사람: 경도. 필수."
-
-#: includes/views/admin-shortcodes.php:337
-msgid "Second person: IANA timezone; blank looks it up from the place."
-msgstr "두 번째 사람: IANA 시간대. 비워 두면 장소로 찾습니다."
-
-#: includes/views/admin-shortcodes.php:338
-msgid "Second person: name for the heading."
-msgstr "두 번째 사람: 제목에 쓸 이름."
-
-#: includes/views/admin-shortcodes.php:343
-msgid "Mercury Retrograde"
-msgstr "수성 역행"
-
-#: includes/views/admin-shortcodes.php:344
-msgid ""
-"Whether Mercury is retrograde right now, since when, and until when. Use "
-"[astroway_retrograde planet=\"venus\"] for any of the other seven that "
-"station."
-msgstr ""
-"현재 수성이 역행 중인지, 언제부터 언제까지인지 확인합니다. 다른 일곱 행성에 대해 역행 정보를 보려면 "
-"[astroway_retrograde planet=\"venus\"]를 사용하세요."
-
-#: includes/views/admin-shortcodes.php:348
-#: includes/views/admin-shortcodes.php:368
-msgid "Language code. Defaults to the site locale."
-msgstr "언어 코드. 기본값은 사이트 로케일입니다."
-
-#: includes/views/admin-shortcodes.php:353
-msgid "Retrograde Status"
-msgstr "역행 상태"
-
-#: includes/views/admin-shortcodes.php:354
-msgid "The same card for any planet that stations."
-msgstr "역행 중인 모든 행성에 대해 동일한 카드가 표시됩니다."
-
-#: includes/views/admin-shortcodes.php:358
-msgid ""
-"mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
-msgstr "수성 (기본), 금성, 화성, 목성, 토성, 천왕성, 해왕성 또는 명왕성."
-
-#: includes/views/admin-shortcodes.php:363
-msgid "Retrograde Planets"
-msgstr "역행 행성"
-
-#: includes/views/admin-shortcodes.php:364
-msgid ""
-"All eight planets that station, each with its status today and the dates of "
-"the retrograde it is in or heading for."
-msgstr "역행 중인 8개 행성 모두에 대해 오늘의 상태와 현재 또는 앞으로 진행될 역행 기간을 표시합니다."
-
-#: includes/views/admin-shortcodes.php:373
-msgid "Void of Course Moon"
-msgstr "무효 달"
-
-#: includes/views/admin-shortcodes.php:374
-msgid ""
-"Whether the Moon is void of course now, and the windows around it with their"
-" last aspect and next sign."
-msgstr "현재 달이 무효인지, 그리고 그 전후의 구간에 마지막 어스펙트와 다음 별자리 정보를 표시합니다."
-
-#: includes/views/admin-shortcodes.php:378
-msgid "Day to start from in YYYY-MM-DD. Defaults to today."
-msgstr "시작일 (YYYY-MM-DD 형식). 기본값은 오늘입니다."
-
-#: includes/views/admin-shortcodes.php:379
-msgid "Time to start from in HH:MM. Defaults to midnight."
-msgstr "시작 시간 (HH:MM 형식). 기본값은 자정입니다."
-
-#: includes/views/admin-shortcodes.php:380
-#: includes/views/admin-shortcodes.php:394
-#: includes/views/admin-shortcodes.php:428
-msgid "Hours from UTC. Defaults to the site timezone."
-msgstr "UTC 기준 시간 차이. 기본값은 사이트 시간대입니다."
-
-#: includes/views/admin-shortcodes.php:381
-msgid "How far ahead to look, 1 to 30. Defaults to 7."
-msgstr "미리 볼 기간 (1~30). 기본값은 7입니다."
-
-#: includes/views/admin-shortcodes.php:386
-msgid "Planetary Hours"
-msgstr "행성 시"
-
-#: includes/views/admin-shortcodes.php:387
-msgid ""
-"The twenty-four planetary hours of a day at one place, with the hour the "
-"reader is in marked."
-msgstr "한 장소에서 하루의 24개 행성 시를 표시하며, 현재 읽고 있는 시각을 강조합니다."
-
-#: includes/views/admin-shortcodes.php:391
-msgid "WGS-84 latitude. The hours are the day divided by this horizon."
-msgstr "WGS-84 위도. 시간은 이 지평선을 기준으로 하루를 나눈 값입니다."
-
-#: includes/views/admin-shortcodes.php:399
-msgid "Yearly Horoscope"
-msgstr "연간 운세"
-
-#: includes/views/admin-shortcodes.php:400
-msgid ""
-"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
-"the name it had as a generated shortcode."
-msgstr ""
-"한 별자리의 내년을 전망합니다. 또한 생성된 숏코드 이름인 [astroway_horoscope_yearly]에 대한 답변이기도 합니다."
-
-#: includes/views/admin-shortcodes.php:404
-msgid "Zodiac sign in English, lowercase."
-msgstr "영어로 된 별자리 이름, 소문자."
-
-#: includes/views/admin-shortcodes.php:405
-msgid "Any date inside the year. Defaults to this year."
-msgstr "해당 연도 내의 임의의 날짜. 기본값은 올해입니다."
-
-#: includes/views/admin-shortcodes.php:410
-msgid "Zodiac Compatibility"
-msgstr "별자리 궁합"
-
-#: includes/views/admin-shortcodes.php:411
-msgid ""
-"How two signs read together. Prose, not a percentage: the endpoint returns "
-"no score and inventing one would be a number with no calculation behind it."
-msgstr ""
-"두 표지판이 함께 전달하는 의미. 산문일 뿐, 백분율이 아니다: 종점은 점수를 반환하지 않으며, 점수를 임의로 만들어낸다면 그 뒤에는 "
-"아무런 계산도 따르지 않는 숫자가 될 뿐이다."
-
-#: includes/views/admin-shortcodes.php:415
-msgid "First sign in English, lowercase."
-msgstr "영어로 된 첫 번째 표지판, 소문자로."
-
-#: includes/views/admin-shortcodes.php:416
-msgid "Second sign in English, lowercase."
-msgstr "영어로 된 두 번째 표지판, 소문자."
-
-#: includes/views/admin-shortcodes.php:421
-msgid "Chinese Zodiac"
-msgstr "십이간지"
-
-#: includes/views/admin-shortcodes.php:422
-msgid ""
-"The animal of a birth year with its element, polarity and pillar. A birth "
-"time sharpens the answer at the turn of the year."
-msgstr "생년도의 동물과 그 원소, 극성, 기둥. 출생 시간은 연말연시 무렵의 답변을 더욱 명확하게 해줍니다."
-
-#: includes/views/admin-shortcodes.php:427
-msgid "Birth time in HH:MM."
-msgstr "HH:MM 형식의 출생 시간."
-
-#: includes/views/admin-shortcodes.php:447
 msgid "Find your coordinates and timezone"
 msgstr "좌표와 시간대를 찾으세요."
 
-#: includes/views/admin-shortcodes.php:448
+#: includes/views/admin-shortcodes.php:50
 msgid "city → lat · lon · IANA tz"
 msgstr "도시 → 위도 · 경도 · IANA 시간대"
 
-#: includes/views/admin-shortcodes.php:455
+#: includes/views/admin-shortcodes.php:57
 msgid "Type a city name, for example Kyiv, Berlin or São Paulo"
 msgstr "도시 이름을 입력하세요. 예를 들어 Kyiv, Berlin 또는 São Paulo"
 
-#: includes/views/admin-shortcodes.php:459
+#: includes/views/admin-shortcodes.php:61
 msgid "Search"
 msgstr "검색"
 
 #. translators: %s is a link to the Wikipedia IANA tz list
-#: includes/views/admin-shortcodes.php:466
+#: includes/views/admin-shortcodes.php:68
 #, php-format
 msgid ""
 "Pick the matching city to copy values into the shortcode. Reference: %s."
 msgstr "일치하는 도시를 선택하여 값을 shortcode에 복사하세요. 참조: %s."
 
-#: includes/views/admin-shortcodes.php:467
+#: includes/views/admin-shortcodes.php:69
 msgid "IANA timezone list"
 msgstr "IANA 시간대 목록"
 
-#: includes/views/admin-shortcodes.php:476
+#: includes/views/admin-shortcodes.php:78
 msgid "Filter shortcodes"
 msgstr "필터 숏코드"
 
 #. translators: %d is the number of shortcodes
-#: includes/views/admin-shortcodes.php:480
+#: includes/views/admin-shortcodes.php:82
 #, php-format
 msgid "Filter %d shortcodes: name, tag or what it does"
 msgstr "%d 개의 숏코드 필터링: 이름, 태그 또는 기능"
 
-#: includes/views/admin-shortcodes.php:512
+#: includes/views/admin-shortcodes.php:116
 msgid "Parameter"
 msgstr "매개 변수"
 
-#: includes/views/admin-shortcodes.php:513
+#: includes/views/admin-shortcodes.php:117
 msgid "Type"
 msgstr "유형"
 
-#: includes/views/admin-shortcodes.php:514
+#: includes/views/admin-shortcodes.php:118
 msgid "Required"
 msgstr "필수"
 
-#: includes/views/admin-shortcodes.php:515
+#: includes/views/admin-shortcodes.php:119
 msgid "Description"
 msgstr "설명"
 
-#: includes/views/admin-shortcodes.php:528
+#: includes/views/admin-shortcodes.php:132
 msgid "required"
 msgstr "필수"
 
-#: includes/views/admin-shortcodes.php:530
+#: includes/views/admin-shortcodes.php:134
 msgid "optional"
 msgstr "선택"
 
 #. translators: %s is a Gutenberg block name
-#: includes/views/admin-shortcodes.php:553
+#: includes/views/admin-shortcodes.php:157
 #, php-format
 msgid "Also available as Gutenberg block \"%s\"."
 msgstr "Gutenberg 블록 \"%s\"으로도 사용할 수 있습니다."
@@ -3961,6 +4394,14 @@ msgstr ""
 "%1$d개의 추가_shortcode가 %2$d개의 패밀리에서 생성되었습니다. api 사양에서 생성되었습니다. 각각 API 키가 "
 "필요합니다. 위의 위젯은 수작업으로 구축되어 더 잘 읽을 수 있으며, 이러한_api가 계산할 수 있는 모든 것을 다룹니다."
 
+#: includes/views/partials/admin-generated-coverage.php:47
+msgid "Families"
+msgstr "분류"
+
+#: includes/views/partials/admin-generated-coverage.php:48
+msgid "All"
+msgstr "전체"
+
 #: includes/views/partials/admin-hero.php:30
 msgid "astroway · plugin · v"
 msgstr "astroway · 플러그인 · v"
@@ -4001,388 +4442,745 @@ msgstr "문서"
 msgid "GitHub repository"
 msgstr "GitHub 저장소"
 
-#: assets/js/astroway-blocks-editor.js:17
-msgid "Default (today's featured sign)"
-msgstr "기본값(오늘의 추천 기호)"
+#: includes/views/partials/shortcode-cards.php:17
+msgid "Natal Chart"
+msgstr "natal 차트"
 
-#: assets/js/astroway-blocks-editor.js:34
-msgid "Marseille"
-msgstr "마르세유"
+#: includes/views/partials/shortcode-cards.php:18
+msgid ""
+"Birth chart: the wheel plus planet positions, houses and aspects as text."
+msgstr ""
+"Birth chart: the wheel plus planet positions, houses and aspects as text."
 
-#: assets/js/astroway-blocks-editor.js:35
-msgid "Lenormand"
-msgstr "레노르망"
+#: includes/views/partials/shortcode-cards.php:22
+#: includes/views/partials/shortcode-cards.php:96
+#: includes/views/partials/shortcode-cards.php:111
+#: includes/views/partials/shortcode-cards.php:126
+#: includes/views/partials/shortcode-cards.php:162
+#: includes/views/partials/shortcode-cards.php:200
+#: includes/views/partials/shortcode-cards.php:241
+#: includes/views/partials/shortcode-cards.php:423
+msgid "Birth date in YYYY-MM-DD."
+msgstr "출생일 YYYY-MM-DD."
 
-#: assets/js/astroway-blocks-editor.js:41
-#: assets/js/astroway-blocks-editor.js:69
-msgid "Site default"
-msgstr "사이트 기본값"
+#: includes/views/partials/shortcode-cards.php:23
+#: includes/views/partials/shortcode-cards.php:97
+#: includes/views/partials/shortcode-cards.php:112
+#: includes/views/partials/shortcode-cards.php:127
+#: includes/views/partials/shortcode-cards.php:163
+#: includes/views/partials/shortcode-cards.php:201
+msgid "Birth time in HH:MM (24-hour)."
+msgstr "출생시 HH:MM (24시간)."
 
-#: assets/js/astroway-blocks-editor.js:65
-msgid "Language"
-msgstr "언어"
+#: includes/views/partials/shortcode-cards.php:24
+msgid "WGS-84 latitude (e.g. 50.45)."
+msgstr "WGS-84 위도(예: 50.45)."
 
-#: assets/js/astroway-blocks-editor.js:74
-msgid "Style"
-msgstr "스타일"
+#: includes/views/partials/shortcode-cards.php:25
+msgid "WGS-84 longitude (e.g. 30.52)."
+msgstr "WGS-84 경도(예: 30.52)."
 
-#: assets/js/astroway-blocks-editor.js:77
-#: assets/js/astroway-blocks-editor.js:103
-msgid "Date (YYYY-MM-DD)"
-msgstr "날짜(YYYY-MM-DD)"
+#: includes/views/partials/shortcode-cards.php:26
+#: includes/views/partials/shortcode-cards.php:115
+#: includes/views/partials/shortcode-cards.php:130
+msgid "IANA timezone (e.g. Europe/Kyiv)."
+msgstr "IANA 시간대(예: Europe/Kyiv)."
 
-#: assets/js/astroway-blocks-editor.js:78
-#: assets/js/astroway-blocks-editor.js:104
-msgid "Time (HH:MM)"
-msgstr "시간(HH:MM)"
+#: includes/views/partials/shortcode-cards.php:27
+msgid "Display name on the chart."
+msgstr "차트에 표시할 이름."
 
-#: assets/js/astroway-blocks-editor.js:79
-#: assets/js/astroway-blocks-editor.js:105
-#: assets/js/astroway-blocks-editor.js:114
-#: assets/js/astroway-blocks-editor.js:387
-msgid "Latitude (-90 to 90)"
-msgstr "위도(-90~90)"
+#: includes/views/partials/shortcode-cards.php:28
+msgid ""
+"Palette of the wheel drawing: light (default), dark or console. The text "
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
+msgstr ""
+"휠 그림의 색상 팔레트: 밝은 색(기본값), 어두운 색 또는 콘솔 색상. 옆에 있는 텍스트는 테마에 따라 자동으로 조정되지만, 휠은 "
+"이미지이므로 테마와 일치하도록 이 설정을 조정하십시오."
 
-#: assets/js/astroway-blocks-editor.js:80
-#: assets/js/astroway-blocks-editor.js:106
-#: assets/js/astroway-blocks-editor.js:115
-#: assets/js/astroway-blocks-editor.js:388
-msgid "Longitude (-180 to 180)"
-msgstr "경도(-180~180)"
+#: includes/views/partials/shortcode-cards.php:33
+msgid "Daily Horoscope"
+msgstr "일일 운세"
 
-#: assets/js/astroway-blocks-editor.js:81
-msgid "Person name (optional)"
-msgstr "사람 이름(선택 사항)"
+#: includes/views/partials/shortcode-cards.php:34
+msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
+msgstr "오늘의 운세를 한 개의 별자리 기호에 대한 것입니다. api 측에서 일일 자동 새로고침."
 
-#: assets/js/astroway-blocks-editor.js:82
-msgid "Timezone (Europe/Kyiv or +03:00)"
-msgstr "표준 시간대(유럽/키예프 또는 +03:00)"
+#: includes/views/partials/shortcode-cards.php:38
+#: includes/views/partials/shortcode-cards.php:50
+#: includes/views/partials/shortcode-cards.php:63
+#: includes/views/partials/shortcode-cards.php:177
+msgid ""
+"One of: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
+"sagittarius, capricorn, aquarius, pisces."
+msgstr ""
+"다음 중 하나: aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, "
+"sagittarius, capricorn, aquarius, pisces."
 
-#: assets/js/astroway-blocks-editor.js:87
-msgid "Default (light)"
-msgstr "기본 (밝은 테마)"
+#: includes/views/partials/shortcode-cards.php:39
+#: includes/views/partials/shortcode-cards.php:51
+#: includes/views/partials/shortcode-cards.php:64
+msgid ""
+"Which period tabs the card shows: any of day, week, month, comma separated. "
+"All three by default; periods=\"day\" gives a single card."
+msgstr ""
+"카드에 표시할 기간 탭: day, week, month 중 원하는 것을 쉼표로 구분. 기본값은 세 가지 모두이며 "
+"periods=\"day\" 는 카드 하나만 보여 줍니다."
 
-#: assets/js/astroway-blocks-editor.js:88
-msgid "Dark"
-msgstr "어둡게"
+#: includes/views/partials/shortcode-cards.php:40
+#: includes/views/partials/shortcode-cards.php:52
+#: includes/views/partials/shortcode-cards.php:65
+msgid ""
+"switch=\"no\" pins the card to these attributes. By default the visitor can "
+"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to "
+"the page URL."
+msgstr ""
+"switch=\"no\" 는 카드를 이 속성들로 고정합니다. 기본적으로 방문자는 다른 별자리를 고르거나 날짜를 넘길 수 있고, 이때 "
+"페이지 주소에 ?aw_sign= 와 ?aw_date= 가 붙습니다."
 
-#: assets/js/astroway-blocks-editor.js:89
-msgid "Light"
-msgstr "밝게"
-
-#: assets/js/astroway-blocks-editor.js:90
-msgid "Console (green on black)"
-msgstr "콘솔 (검정색 배경에 녹색)"
-
-#: assets/js/astroway-blocks-editor.js:94
-msgid "Pythagorean"
-msgstr "피타고라스식"
-
-#: assets/js/astroway-blocks-editor.js:95
-msgid "Chaldean"
-msgstr "칼데아식"
-
-#: assets/js/astroway-blocks-editor.js:98
-msgid "Theme"
-msgstr "테마"
-
-#: assets/js/astroway-blocks-editor.js:99
-msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
-msgstr "표준 시간대(유럽/키예프 또는 +03:00)"
-
-#: assets/js/astroway-blocks-editor.js:113
-#: assets/js/astroway-blocks-editor.js:228
-#: assets/js/astroway-blocks-editor.js:261
-#: assets/js/astroway-blocks-editor.js:305
-#: assets/js/astroway-blocks-editor.js:386
-msgid "Date (leave blank for today)"
-msgstr "날짜(오늘은 비워둡니다)"
-
-#: assets/js/astroway-blocks-editor.js:126
-msgid "Person A: name (for the table heading)"
-msgstr "인물 A: 이름 (표 머리글용)"
-
-#: assets/js/astroway-blocks-editor.js:127
-#: assets/js/astroway-blocks-editor.js:169
-msgid "Person A: date (YYYY-MM-DD)"
-msgstr "A 씨: 날짜 (YYYY-MM-DD)"
-
-#: assets/js/astroway-blocks-editor.js:128
-msgid "Person A: time (HH:MM, blank if unknown)"
-msgstr "인물 A: 시간 (HH:MM, 알 수 없으면 비워두세요)"
-
-#: assets/js/astroway-blocks-editor.js:129
-#: assets/js/astroway-blocks-editor.js:171
-msgid "Person A: latitude"
-msgstr "A: 위도"
-
-#: assets/js/astroway-blocks-editor.js:130
-#: assets/js/astroway-blocks-editor.js:172
-msgid "Person A: longitude"
-msgstr "A: 경도"
-
-#: assets/js/astroway-blocks-editor.js:131
-#: assets/js/astroway-blocks-editor.js:173
-msgid "Person A: timezone"
-msgstr "A: 시간대"
-
-#: assets/js/astroway-blocks-editor.js:132
-msgid "Person B: name (for the table heading)"
-msgstr "인물 B: 이름 (표 머리글용)"
-
-#: assets/js/astroway-blocks-editor.js:133
-#: assets/js/astroway-blocks-editor.js:175
-msgid "Person B: date (YYYY-MM-DD)"
-msgstr "B: 날짜 (YYYY-MM-DD)"
-
-#: assets/js/astroway-blocks-editor.js:134
-msgid "Person B: time (HH:MM, blank if unknown)"
-msgstr "인물 B: 시간 (HH:MM, 알 수 없으면 비워두세요)"
-
-#: assets/js/astroway-blocks-editor.js:135
-#: assets/js/astroway-blocks-editor.js:177
-msgid "Person B: latitude"
-msgstr "B: 위도"
-
-#: assets/js/astroway-blocks-editor.js:136
-#: assets/js/astroway-blocks-editor.js:178
-msgid "Person B: longitude"
-msgstr "B: 경도"
-
-#: assets/js/astroway-blocks-editor.js:137
-#: assets/js/astroway-blocks-editor.js:179
-msgid "Person B: timezone"
-msgstr "B: 시간대"
-
-#: assets/js/astroway-blocks-editor.js:138
-msgid "How many aspects to show (6 by default)"
-msgstr "표시할 각의 수 (기본값 6)"
-
-#: assets/js/astroway-blocks-editor.js:156
-msgid "UTC offset in hours (blank for the site default)"
-msgstr "UTC 오프셋 (시간) (사이트 기본값은 비워두세요)"
-
-#: assets/js/astroway-blocks-editor.js:161
-msgid "Return place: latitude (blank for the place of birth)"
-msgstr "리턴 장소: 위도 (출생지는 비워 두기)"
-
-#: assets/js/astroway-blocks-editor.js:162
-msgid "Return place: longitude"
-msgstr "리턴 장소: 경도"
-
-#: assets/js/astroway-blocks-editor.js:163
-msgid "Return place: timezone for the time shown (blank for UTC)"
-msgstr "리턴 장소: 표시할 시간의 시간대 (UTC는 비워 두기)"
-
-#: assets/js/astroway-blocks-editor.js:168
-msgid "Person A: name"
-msgstr "A: 이름"
-
-#: assets/js/astroway-blocks-editor.js:170
-msgid "Person A: time (HH:MM)"
-msgstr "A: 시간 (HH:MM)"
-
-#: assets/js/astroway-blocks-editor.js:174
-msgid "Person B: name"
-msgstr "B: 이름"
-
-#: assets/js/astroway-blocks-editor.js:176
-msgid "Person B: time (HH:MM)"
-msgstr "B: 시간 (HH:MM)"
-
-#: assets/js/astroway-blocks-editor.js:185
-#: assets/js/astroway-blocks-editor.js:191
-#: assets/js/astroway-blocks-editor.js:201
-#: assets/js/astroway-blocks-editor.js:210
-#: assets/js/astroway-blocks-editor.js:214
-#: assets/js/astroway-blocks-editor.js:218
-#: assets/js/astroway-blocks-editor.js:222
-#: assets/js/astroway-blocks-editor.js:310
-msgid "Birth data"
-msgstr "출생 데이터"
-
-#: assets/js/astroway-blocks-editor.js:187
-msgid "Year (blank for the one in force now)"
-msgstr "연도 (현재 유효한 것은 비워 두기)"
-
-#: assets/js/astroway-blocks-editor.js:193
-msgid "First return after (YYYY-MM-DD, blank for the 1st of this month)"
-msgstr "이 날짜 이후 첫 리턴 (YYYY-MM-DD, 이번 달 1일은 비워 두기)"
-
-#: assets/js/astroway-blocks-editor.js:197
-msgid "Two births"
-msgstr "두 출생"
-
-#: assets/js/astroway-blocks-editor.js:204
-msgid "None"
-msgstr "없음"
-
-#: assets/js/astroway-blocks-editor.js:205
-msgid "Today's sky over the chart"
-msgstr "차트 위의 오늘 하늘"
-
-#: assets/js/astroway-blocks-editor.js:226
-msgid "Transit date"
-msgstr "천체 이동 날짜"
-
-#: assets/js/astroway-blocks-editor.js:234
-msgid "Panchang"
-msgstr "변경 사항 저장"
-
-#: assets/js/astroway-blocks-editor.js:240
-msgid "Full name"
-msgstr "전체 이름"
-
-#: assets/js/astroway-blocks-editor.js:241
-msgid "Date of birth (YYYY-MM-DD)"
-msgstr "날짜(YYYY-MM-DD)"
-
-#: assets/js/astroway-blocks-editor.js:248
-msgid "Two subjects"
-msgstr "두 명의 대상"
-
-#: assets/js/astroway-blocks-editor.js:266
-msgid "Daily Tarot"
-msgstr "데일리 타로"
-
-#: assets/js/astroway-blocks-editor.js:268
-msgid "Deck"
-msgstr "데크"
-
-#: assets/js/astroway-blocks-editor.js:275
-msgid "Spread"
-msgstr "스프레드"
-
-#: assets/js/astroway-blocks-editor.js:276
-msgid "Past, present, future"
-msgstr "과거, 현재, 미래"
-
-#: assets/js/astroway-blocks-editor.js:277
-msgid "Celtic Cross"
-msgstr "켈틱 크로스"
-
-#: assets/js/astroway-blocks-editor.js:279
-msgid "Draw again button"
-msgstr "다시 뽑기 버튼"
-
-#: assets/js/astroway-blocks-editor.js:280
-msgid "Show"
-msgstr "표시"
-
-#: assets/js/astroway-blocks-editor.js:281
-msgid "Hide"
-msgstr "숨기기"
-
-#: assets/js/astroway-blocks-editor.js:287
-msgid "Weekly horoscope"
+#: includes/views/partials/shortcode-cards.php:45
+msgid "Weekly Horoscope"
 msgstr "주간 운세"
 
-#: assets/js/astroway-blocks-editor.js:290
-msgid "Any date inside the week (blank for this week)"
-msgstr "해당 주 내의 임의의 날짜 (이번 주는 비워 둠)"
+#: includes/views/partials/shortcode-cards.php:46
+msgid ""
+"Horoscope for the current week, anchored to Monday. Rendered into the page, "
+"not an iframe."
+msgstr "월요일을 기준으로 하는 이번 주의 운세입니다. iframe이 아닌 페이지에 렌더링됩니다."
 
-#: assets/js/astroway-blocks-editor.js:295
-msgid "Monthly horoscope"
+#: includes/views/partials/shortcode-cards.php:53
+msgid "Any date inside the week you want. Defaults to today."
+msgstr "원하는 주 내의 모든 날짜. 기본값은 오늘입니다."
+
+#: includes/views/partials/shortcode-cards.php:58
+msgid "Monthly Horoscope"
 msgstr "월간 운세"
 
-#: assets/js/astroway-blocks-editor.js:298
-#: assets/js/astroway-blocks-editor.js:317
-msgid "Any date inside the month (blank for this month)"
-msgstr "해당 월 내의 임의의 날짜 (이번 달은 비워 둠)"
+#: includes/views/partials/shortcode-cards.php:59
+msgid ""
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
+msgstr "매월 1일을 기준으로 하는 이번 달의 운세입니다. iframe이 아닌 페이지에 렌더링됩니다."
 
-#: assets/js/astroway-blocks-editor.js:314
-msgid "Monthly forecast"
+#: includes/views/partials/shortcode-cards.php:66
+#: includes/views/partials/shortcode-cards.php:178
+msgid "Any date inside the month you want. Defaults to today."
+msgstr "원하는 월 내의 모든 날짜. 기본값은 오늘입니다."
+
+#: includes/views/partials/shortcode-cards.php:71
+msgid "Planet of the Day"
+msgstr "오늘의 행성"
+
+#: includes/views/partials/shortcode-cards.php:72
+msgid ""
+"Traditional planetary ruler of the weekday, with its glyph and themes. "
+"Rendered into the page, not an iframe."
+msgstr "요일의 전통적인 행성 지배자, 해당 상형문자와 테마를 포함합니다. iframe이 아닌 페이지에 렌더링됩니다."
+
+#: includes/views/partials/shortcode-cards.php:76
+#: includes/views/partials/shortcode-cards.php:86
+#: includes/views/partials/shortcode-cards.php:215
+#: includes/views/partials/shortcode-cards.php:226
+#: includes/views/partials/shortcode-cards.php:390
+msgid "Override date in YYYY-MM-DD. Defaults to today."
+msgstr "YYYY-MM-DD 형식의 날짜를 재정의합니다. 기본적으로 오늘 날짜입니다."
+
+#: includes/views/partials/shortcode-cards.php:81
+msgid "Moon Phase"
+msgstr "달의 위상"
+
+#: includes/views/partials/shortcode-cards.php:82
+msgid "Current Moon phase visualization with illumination percent."
+msgstr "조명 비율을 반영한 현재 달의 위상 시각화."
+
+#: includes/views/partials/shortcode-cards.php:91
+msgid "Human Design Bodygraph"
+msgstr "Human Design 바디그래프"
+
+#: includes/views/partials/shortcode-cards.php:92
+msgid ""
+"The bodygraph drawing, with type, strategy, authority, profile and the "
+"defined centres as text beside it."
+msgstr "바디그래프 그림과 그 옆에 유형, 전략, 권위, 프로필 및 정의된 중심이 텍스트로 표기되어 있다."
+
+#: includes/views/partials/shortcode-cards.php:98
+#: includes/views/partials/shortcode-cards.php:164
+#: includes/views/partials/shortcode-cards.php:202
+#: includes/views/partials/shortcode-cards.php:227
+msgid "WGS-84 latitude."
+msgstr "WGS-84 위도."
+
+#: includes/views/partials/shortcode-cards.php:99
+#: includes/views/partials/shortcode-cards.php:114
+#: includes/views/partials/shortcode-cards.php:129
+#: includes/views/partials/shortcode-cards.php:165
+#: includes/views/partials/shortcode-cards.php:203
+#: includes/views/partials/shortcode-cards.php:228
+#: includes/views/partials/shortcode-cards.php:389
+msgid "WGS-84 longitude."
+msgstr "WGS-84 경도."
+
+#: includes/views/partials/shortcode-cards.php:100
+#: includes/views/partials/shortcode-cards.php:166
+#: includes/views/partials/shortcode-cards.php:204
+#: includes/views/partials/shortcode-cards.php:229
+msgid "IANA timezone."
+msgstr "IANA 시간대."
+
+#: includes/views/partials/shortcode-cards.php:101
+msgid "Display name."
+msgstr "표시 이름."
+
+#: includes/views/partials/shortcode-cards.php:106
+msgid "Moon Sign"
+msgstr "달의 별자리"
+
+#: includes/views/partials/shortcode-cards.php:107
+msgid ""
+"The Moon's sign, degree and house from a birth chart. Answers \"what is my "
+"moon sign\" on its own, without the whole chart around it."
+msgstr ""
+"출생 차트에서 달의 별자리, 도수 및 하우스. 전체 차트 정보 없이도 “내 달 별자리는 무엇인가”라는 질문에 대한 답을 제공합니다."
+
+#: includes/views/partials/shortcode-cards.php:113
+msgid ""
+"WGS-84 latitude. Only affects the house shown; the sign is the same "
+"anywhere."
+msgstr "WGS-84 위도. 표시된 주택에만 적용되며, 표지판은 어디에서나 동일합니다."
+
+#: includes/views/partials/shortcode-cards.php:116
+#: includes/views/partials/shortcode-cards.php:131
+msgid "Display name in the heading."
+msgstr "제목에 표시할 이름을 입력하세요."
+
+#: includes/views/partials/shortcode-cards.php:121
+msgid "Rising Sign"
+msgstr "상승 별자리"
+
+#: includes/views/partials/shortcode-cards.php:122
+msgid ""
+"The rising sign with its chart ruler and the Midheaven. Coordinates are "
+"required: the ascendant is the horizon at a place."
+msgstr "상승궁과 그 차트의 지배성, 그리고 중천. 좌표가 필요합니다: 상승궁은 특정 장소의 지평선입니다."
+
+#: includes/views/partials/shortcode-cards.php:128
+msgid ""
+"WGS-84 latitude. Without it the card renders nothing rather than the wrong "
+"horizon."
+msgstr "WGS-84 위도. 이 정보가 없으면 카드에 잘못된 수평선 대신 아무것도 표시되지 않습니다."
+
+#: includes/views/partials/shortcode-cards.php:136
+msgid "Daily Tarot Card"
+msgstr "일일 타로 카드"
+
+#: includes/views/partials/shortcode-cards.php:137
+msgid "Single card pull of the day from a chosen deck."
+msgstr "선택한 덱에서 당일의 단일 카드 당첨."
+
+#: includes/views/partials/shortcode-cards.php:141
+msgid ""
+"Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
+"renders into the page; the other two load in a frame."
+msgstr ""
+"덱 슬러그: 라이더-웨이트(기본값), 마르세유, 또는 레노르망. 라이더-웨이트만 페이지에 직접 표시되며, 나머지 두 가지는 프레임 내에서"
+" 로드됩니다."
+
+#: includes/views/partials/shortcode-cards.php:146
+msgid "Tarot Spread of the Day"
+msgstr "오늘의 타로 스프레드"
+
+#: includes/views/partials/shortcode-cards.php:147
+msgid ""
+"Past, present and future, or the Celtic Cross, drawn once a day for this "
+"site, each card read in its position. Rendered into the page; no key needed."
+msgstr ""
+"과거, 현재, 미래 또는 켈틱 크로스. 이 사이트를 위해 하루에 한 번 뽑고 각 카드는 자기 자리에서 읽습니다. 페이지에 렌더링됩니다. "
+"키가 필요 없습니다."
+
+#: includes/views/partials/shortcode-cards.php:151
+msgid ""
+"three-card (default) for past, present and future, or celtic-cross for the "
+"Celtic Cross."
+msgstr "three-card(기본값)는 과거, 현재, 미래, celtic-cross는 켈틱 크로스."
+
+#: includes/views/partials/shortcode-cards.php:152
+msgid ""
+"yes (default) shows a Draw again button that deals the visitor a new spread,"
+" not kept or cached; no hides it."
+msgstr ""
+"yes(기본값)는 방문자에게 새 스프레드를 뽑아 주는 다시 뽑기 버튼을 표시하며, 결과는 저장되거나 캐시되지 않습니다. no는 버튼을 "
+"숨깁니다."
+
+#: includes/views/partials/shortcode-cards.php:157
+msgid "Mini Birth Chart"
+msgstr "미니 출생 차트"
+
+#: includes/views/partials/shortcode-cards.php:158
+msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
+msgstr "사이드바에 표시하기 위해 작게 그려진 출생 차트입니다. 프레임에 로드됩니다."
+
+#: includes/views/partials/shortcode-cards.php:167
+#: includes/views/partials/shortcode-cards.php:179
+#: includes/views/partials/shortcode-cards.php:190
+#: includes/views/partials/shortcode-cards.php:205
+#: includes/views/partials/shortcode-cards.php:216
+#: includes/views/partials/shortcode-cards.php:230
+#: includes/views/partials/shortcode-cards.php:243
+#: includes/views/partials/shortcode-cards.php:276
+msgid "light (default), dark or console."
+msgstr "light(기본값), dark 또는 console."
+
+#: includes/views/partials/shortcode-cards.php:172
+msgid "Monthly Forecast"
 msgstr "월간 전망"
 
-#: assets/js/astroway-blocks-editor.js:323
-msgid "Moon transit timeline"
+#: includes/views/partials/shortcode-cards.php:173
+msgid ""
+"Four weeks ahead for one sign, each with its own theme. Loads in a frame."
+msgstr "한 별자리에 대한 향후 4주간의 운세로, 각각 고유한 주제를 담고 있습니다. 한 프레임에 여러 개가 담겨 있습니다."
+
+#: includes/views/partials/shortcode-cards.php:184
+msgid "Moon Transit Timeline"
 msgstr "달의 통과 시간표"
 
-#: assets/js/astroway-blocks-editor.js:325
-msgid "Day the seven start from (blank for today)"
-msgstr "7일 차 시작일 (오늘은 공란)"
+#: includes/views/partials/shortcode-cards.php:185
+msgid ""
+"The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
+msgstr "향후 7일간의 달 이동 일정. 특정 별자리와 관련이 없습니다. 한 화면에 모두 표시됩니다."
 
-#: assets/js/astroway-blocks-editor.js:331
-msgid "Retrograde status"
+#: includes/views/partials/shortcode-cards.php:189
+msgid "Day the seven start from. Defaults to today."
+msgstr "7일째가 시작되는 날. 기본값은 오늘입니다."
+
+#: includes/views/partials/shortcode-cards.php:195
+msgid "Vedic Kundli"
+msgstr "베다 쿤들리"
+
+#: includes/views/partials/shortcode-cards.php:196
+msgid ""
+"North-Indian D1 chart. Loads in a frame: there is no page-side template for "
+"it yet."
+msgstr "북인도 D1 차트. 프레임 내 로드: 아직 이에 대한 페이지 측 템플릿이 없습니다."
+
+#: includes/views/partials/shortcode-cards.php:210
+msgid "Transit Sky"
+msgstr "트랜짓 스카이"
+
+#: includes/views/partials/shortcode-cards.php:211
+msgid ""
+"Where the planets stand on a given date. Loads in a frame: there is no page-"
+"side template for it yet."
+msgstr "특정 날짜에 행성들이 어떤 위치에 있는지 보여줍니다. 프레임으로 불러옵니다. 아직 이에 대한 페이지 측 템플릿은 없습니다."
+
+#: includes/views/partials/shortcode-cards.php:222
+msgid ""
+"Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
+"Loads in a frame."
+msgstr "특정 날짜와 장소에 대한 티티, 낙샤트라, 요가, 카라나, 바라, 라후-칼 정보를 한 화면에 모두 표시합니다."
+
+#: includes/views/partials/shortcode-cards.php:236
+msgid ""
+"Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
+msgstr "인생 경로, 표현, 영혼의 열망, 성격 번호. 프레임에 표시됩니다."
+
+#: includes/views/partials/shortcode-cards.php:240
+msgid "Full birth name. The letters are what the numbers are built from."
+msgstr "본명 전체. 이 글자들이 숫자를 구성하는 요소입니다."
+
+#: includes/views/partials/shortcode-cards.php:242
+msgid "pythagorean (default), chaldean, kabbalistic or tamil."
+msgstr "피타고라스식(기본값), 칼데아식, 카발라식 또는 타밀식."
+
+#: includes/views/partials/shortcode-cards.php:248
+msgid "Sign Compatibility Matrix"
+msgstr "별자리 궁합 매트릭스"
+
+#: includes/views/partials/shortcode-cards.php:249
+msgid ""
+"Every pair of signs by its classical relation, or one sign against the other"
+" eleven. Rendered into the page; no key needed."
+msgstr "고전적인 관계로 본 모든 별자리 쌍, 또는 한 별자리와 나머지 열한 별자리. 페이지에 렌더링됩니다. 키가 필요 없습니다."
+
+#: includes/views/partials/shortcode-cards.php:253
+msgid "One sign against the others; leave it out for all pairs."
+msgstr "한 별자리와 나머지. 모든 쌍을 보려면 비워 두세요."
+
+#: includes/views/partials/shortcode-cards.php:258
+msgid "Synastry Compatibility"
+msgstr "상호 호환성"
+
+#: includes/views/partials/shortcode-cards.php:259
+msgid ""
+"Compatibility score and the cross-aspects behind it, for two birth charts. "
+"Rendered into the page; no key needed."
+msgstr "두 출생 차트에 대한 궁합 점수와 그 뒤에 있는 교차 각. 페이지에 렌더링됩니다; 키가 필요 없습니다."
+
+#: includes/views/partials/shortcode-cards.php:263
+msgid "First person: birth date in YYYY-MM-DD."
+msgstr "첫 번째 사람: 생년월일은 YYYY-MM-DD 형식입니다."
+
+#: includes/views/partials/shortcode-cards.php:264
+msgid ""
+"First person: birth time in HH:MM. Leave it out and the time is declared "
+"unknown rather than guessed."
+msgstr "첫 번째 사람: 출생 시간 (HH:MM). 입력하지 않으면 시간이 추정되지 않고 알 수 없음으로 표시됩니다."
+
+#: includes/views/partials/shortcode-cards.php:265
+msgid "First person: latitude."
+msgstr "첫 번째 사람: 위도."
+
+#: includes/views/partials/shortcode-cards.php:266
+msgid "First person: longitude."
+msgstr "첫 번째 사람: 경도."
+
+#: includes/views/partials/shortcode-cards.php:267
+msgid "First person: IANA timezone."
+msgstr "첫 번째 사람: IANA 시간대."
+
+#: includes/views/partials/shortcode-cards.php:268
+msgid "First person: name for the table heading. Stays on your server."
+msgstr "첫 번째 사람: 표 머리글에 표시할 이름. 귀하의 서버에 저장됩니다."
+
+#: includes/views/partials/shortcode-cards.php:269
+#: includes/views/partials/shortcode-cards.php:330
+msgid "Second person: birth date in YYYY-MM-DD."
+msgstr "두 번째 사람: 생년월일은 YYYY-MM-DD 형식입니다."
+
+#: includes/views/partials/shortcode-cards.php:270
+msgid "Second person: birth time in HH:MM. Optional in the same way."
+msgstr "두 번째 사람: 출생 시간 (HH:MM). 동일하게 선택 사항입니다."
+
+#: includes/views/partials/shortcode-cards.php:271
+msgid "Second person: latitude."
+msgstr "두 번째 사람: 위도."
+
+#: includes/views/partials/shortcode-cards.php:272
+msgid "Second person: longitude."
+msgstr "두 번째 사람: 경도."
+
+#: includes/views/partials/shortcode-cards.php:273
+msgid "Second person: IANA timezone."
+msgstr "두 번째 사람: IANA 시간대."
+
+#: includes/views/partials/shortcode-cards.php:274
+msgid "Second person: name for the table heading."
+msgstr "두 번째 사람: 표 머리글에 표시할 이름."
+
+#: includes/views/partials/shortcode-cards.php:275
+msgid ""
+"How many aspects the table holds, 1 to 20. Six by default, which is what the"
+" frame version showed."
+msgstr "표에 표시할 각의 수, 1~20. 기본값은 6이며, 이는 프레임 버전에서 보여진 값입니다."
+
+#: includes/views/partials/shortcode-cards.php:281
+msgid "Solar Return"
+msgstr "솔라 리턴"
+
+#: includes/views/partials/shortcode-cards.php:282
+msgid ""
+"The chart of the moment the Sun returns to its birth position in a year, "
+"with houses and aspects. Without a date it asks the visitor. Needs a site "
+"key or an API key; on an API key each new chart costs 50 credits."
+msgstr ""
+"한 해에 태양이 출생 시 위치로 돌아오는 순간의 차트로, 하우스와 애스펙트를 포함합니다. 날짜가 없으면 방문자에게 묻습니다. 사이트 키 "
+"또는 API 키가 필요하며, API 키로는 새 차트마다 50크레딧이 듭니다."
+
+#: includes/views/partials/shortcode-cards.php:286
+#: includes/views/partials/shortcode-cards.php:305
+msgid "Birth date in YYYY-MM-DD. Leave it out and the visitor gets a form."
+msgstr "YYYY-MM-DD 형식의 출생일. 비워 두면 방문자에게 양식이 표시됩니다."
+
+#: includes/views/partials/shortcode-cards.php:287
+msgid ""
+"Birth time in HH:MM. Required with a date: houses turn with the minute."
+msgstr "HH:MM 형식의 출생 시간. 날짜와 함께 필수입니다: 하우스는 분마다 바뀝니다."
+
+#: includes/views/partials/shortcode-cards.php:288
+#: includes/views/partials/shortcode-cards.php:307
+msgid "Latitude of the place of birth."
+msgstr "출생지의 위도."
+
+#: includes/views/partials/shortcode-cards.php:289
+#: includes/views/partials/shortcode-cards.php:308
+msgid "Longitude of the place of birth."
+msgstr "출생지의 경도."
+
+#: includes/views/partials/shortcode-cards.php:290
+#: includes/views/partials/shortcode-cards.php:309
+msgid ""
+"IANA timezone or UTC offset of the birth; blank looks it up from the place."
+msgstr "출생 시의 IANA 시간대 또는 UTC 오프셋. 비워 두면 장소로 찾습니다."
+
+#: includes/views/partials/shortcode-cards.php:291
+msgid "Year of the return. Blank for the one in force now."
+msgstr "리턴 연도. 현재 유효한 것은 비워 두세요."
+
+#: includes/views/partials/shortcode-cards.php:292
+#: includes/views/partials/shortcode-cards.php:311
+msgid ""
+"Latitude of the place the return is cast for, when it is not the place of "
+"birth."
+msgstr "출생지가 아닐 때, 리턴 차트를 작성할 장소의 위도."
+
+#: includes/views/partials/shortcode-cards.php:293
+#: includes/views/partials/shortcode-cards.php:312
+msgid "Longitude of that place."
+msgstr "그 장소의 경도."
+
+#: includes/views/partials/shortcode-cards.php:294
+#: includes/views/partials/shortcode-cards.php:313
+msgid "Timezone the moment is shown in. Blank shows it in UTC."
+msgstr "순간을 표시할 시간대. 비워 두면 UTC로 표시합니다."
+
+#: includes/views/partials/shortcode-cards.php:295
+#: includes/views/partials/shortcode-cards.php:314
+msgid "Name for the heading."
+msgstr "제목에 쓸 이름."
+
+#: includes/views/partials/shortcode-cards.php:301
+msgid ""
+"The chart of the next moment the Moon returns to its birth position. Without"
+" a date it asks the visitor. Needs a site key or an API key; on an API key "
+"each new chart costs 50 credits."
+msgstr ""
+"달이 출생 시 위치로 돌아오는 다음 순간의 차트입니다. 날짜가 없으면 방문자에게 묻습니다. 사이트 키 또는 API 키가 필요하며, API"
+" 키로는 새 차트마다 50크레딧이 듭니다."
+
+#: includes/views/partials/shortcode-cards.php:306
+msgid "Birth time in HH:MM. Required with a date."
+msgstr "HH:MM 형식의 출생 시간. 날짜와 함께 필수입니다."
+
+#: includes/views/partials/shortcode-cards.php:310
+msgid ""
+"The first return after this date, YYYY-MM-DD. Blank for the 1st of this "
+"month, so the card holds for the month."
+msgstr "이 날짜 이후 첫 리턴, YYYY-MM-DD. 비워 두면 이번 달 1일이 되어 카드가 한 달 동안 유지됩니다."
+
+#: includes/views/partials/shortcode-cards.php:319
+msgid "Davison Chart"
+msgstr "데이비슨 차트"
+
+#: includes/views/partials/shortcode-cards.php:320
+msgid ""
+"One chart for a couple, cast for the midpoint between two births in time and"
+" place. Without dates it asks the visitor for both. Needs a site key or an "
+"API key; on an API key each new chart costs 50 credits."
+msgstr ""
+"커플을 위한 하나의 차트로, 두 출생의 시간과 장소의 중간점으로 작성합니다. 날짜가 없으면 방문자에게 둘 다 묻습니다. 사이트 키 또는 "
+"API 키가 필요하며, API 키로는 새 차트마다 50크레딧이 듭니다."
+
+#: includes/views/partials/shortcode-cards.php:324
+msgid ""
+"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor"
+" gets a form."
+msgstr "첫 번째 사람: YYYY-MM-DD 형식의 출생일. 두 날짜를 모두 비워 두면 방문자에게 양식이 표시됩니다."
+
+#: includes/views/partials/shortcode-cards.php:325
+msgid "First person: birth time in HH:MM. Required."
+msgstr "첫 번째 사람: HH:MM 형식의 출생 시간. 필수."
+
+#: includes/views/partials/shortcode-cards.php:326
+msgid "First person: latitude. Required."
+msgstr "첫 번째 사람: 위도. 필수."
+
+#: includes/views/partials/shortcode-cards.php:327
+msgid "First person: longitude. Required."
+msgstr "첫 번째 사람: 경도. 필수."
+
+#: includes/views/partials/shortcode-cards.php:328
+msgid "First person: IANA timezone; blank looks it up from the place."
+msgstr "첫 번째 사람: IANA 시간대. 비워 두면 장소로 찾습니다."
+
+#: includes/views/partials/shortcode-cards.php:329
+msgid "First person: name for the heading."
+msgstr "첫 번째 사람: 제목에 쓸 이름."
+
+#: includes/views/partials/shortcode-cards.php:331
+msgid "Second person: birth time in HH:MM. Required."
+msgstr "두 번째 사람: HH:MM 형식의 출생 시간. 필수."
+
+#: includes/views/partials/shortcode-cards.php:332
+msgid "Second person: latitude. Required."
+msgstr "두 번째 사람: 위도. 필수."
+
+#: includes/views/partials/shortcode-cards.php:333
+msgid "Second person: longitude. Required."
+msgstr "두 번째 사람: 경도. 필수."
+
+#: includes/views/partials/shortcode-cards.php:334
+msgid "Second person: IANA timezone; blank looks it up from the place."
+msgstr "두 번째 사람: IANA 시간대. 비워 두면 장소로 찾습니다."
+
+#: includes/views/partials/shortcode-cards.php:335
+msgid "Second person: name for the heading."
+msgstr "두 번째 사람: 제목에 쓸 이름."
+
+#: includes/views/partials/shortcode-cards.php:340
+msgid "Mercury Retrograde"
+msgstr "수성 역행"
+
+#: includes/views/partials/shortcode-cards.php:341
+msgid ""
+"Whether Mercury is retrograde right now, since when, and until when. Use "
+"[astroway_retrograde planet=\"venus\"] for any of the other seven that "
+"station."
+msgstr ""
+"현재 수성이 역행 중인지, 언제부터 언제까지인지 확인합니다. 다른 일곱 행성에 대해 역행 정보를 보려면 "
+"[astroway_retrograde planet=\"venus\"]를 사용하세요."
+
+#: includes/views/partials/shortcode-cards.php:345
+#: includes/views/partials/shortcode-cards.php:365
+msgid "Language code. Defaults to the site locale."
+msgstr "언어 코드. 기본값은 사이트 로케일입니다."
+
+#: includes/views/partials/shortcode-cards.php:350
+msgid "Retrograde Status"
 msgstr "역행 상태"
 
-#: assets/js/astroway-blocks-editor.js:344
-msgid "Day to start from (blank for today)"
-msgstr "시작 날짜 (오늘 날짜는 비워두세요)"
+#: includes/views/partials/shortcode-cards.php:351
+msgid "The same card for any planet that stations."
+msgstr "역행 중인 모든 행성에 대해 동일한 카드가 표시됩니다."
 
-#: assets/js/astroway-blocks-editor.js:345
-msgid "Time to start from (HH:MM, blank for midnight)"
-msgstr "시작 시간 (HH:MM, 자정은 비워두세요)"
+#: includes/views/partials/shortcode-cards.php:355
+msgid ""
+"mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
+msgstr "수성 (기본), 금성, 화성, 목성, 토성, 천왕성, 해왕성 또는 명왕성."
 
-#: assets/js/astroway-blocks-editor.js:347
-msgid "Days to look ahead (1 to 30, default 7)"
-msgstr "미리 볼 일수 (1~30일, 기본값 7일)"
+#: includes/views/partials/shortcode-cards.php:360
+msgid "Retrograde Planets"
+msgstr "역행 행성"
 
-#: assets/js/astroway-blocks-editor.js:352
-msgid "Yearly horoscope"
+#: includes/views/partials/shortcode-cards.php:361
+msgid ""
+"All eight planets that station, each with its status today and the dates of "
+"the retrograde it is in or heading for."
+msgstr "역행 중인 8개 행성 모두에 대해 오늘의 상태와 현재 또는 앞으로 진행될 역행 기간을 표시합니다."
+
+#: includes/views/partials/shortcode-cards.php:370
+msgid "Void of Course Moon"
+msgstr "무효 달"
+
+#: includes/views/partials/shortcode-cards.php:371
+msgid ""
+"Whether the Moon is void of course now, and the windows around it with their"
+" last aspect and next sign."
+msgstr "현재 달이 무효인지, 그리고 그 전후의 구간에 마지막 어스펙트와 다음 별자리 정보를 표시합니다."
+
+#: includes/views/partials/shortcode-cards.php:375
+msgid "Day to start from in YYYY-MM-DD. Defaults to today."
+msgstr "시작일 (YYYY-MM-DD 형식). 기본값은 오늘입니다."
+
+#: includes/views/partials/shortcode-cards.php:376
+msgid "Time to start from in HH:MM. Defaults to midnight."
+msgstr "시작 시간 (HH:MM 형식). 기본값은 자정입니다."
+
+#: includes/views/partials/shortcode-cards.php:377
+#: includes/views/partials/shortcode-cards.php:391
+#: includes/views/partials/shortcode-cards.php:425
+msgid "Hours from UTC. Defaults to the site timezone."
+msgstr "UTC 기준 시간 차이. 기본값은 사이트 시간대입니다."
+
+#: includes/views/partials/shortcode-cards.php:378
+msgid "How far ahead to look, 1 to 30. Defaults to 7."
+msgstr "미리 볼 기간 (1~30). 기본값은 7입니다."
+
+#: includes/views/partials/shortcode-cards.php:383
+msgid "Planetary Hours"
+msgstr "행성 시"
+
+#: includes/views/partials/shortcode-cards.php:384
+msgid ""
+"The twenty-four planetary hours of a day at one place, with the hour the "
+"reader is in marked."
+msgstr "한 장소에서 하루의 24개 행성 시를 표시하며, 현재 읽고 있는 시각을 강조합니다."
+
+#: includes/views/partials/shortcode-cards.php:388
+msgid "WGS-84 latitude. The hours are the day divided by this horizon."
+msgstr "WGS-84 위도. 시간은 이 지평선을 기준으로 하루를 나눈 값입니다."
+
+#: includes/views/partials/shortcode-cards.php:396
+msgid "Yearly Horoscope"
 msgstr "연간 운세"
 
-#: assets/js/astroway-blocks-editor.js:355
-msgid "Any date inside the year (blank for this year)"
-msgstr "해당 연도 내의 임의의 날짜 (올해의 경우 공란)"
+#: includes/views/partials/shortcode-cards.php:397
+msgid ""
+"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
+"the name it had as a generated shortcode."
+msgstr ""
+"한 별자리의 내년을 전망합니다. 또한 생성된 숏코드 이름인 [astroway_horoscope_yearly]에 대한 답변이기도 합니다."
 
-#: assets/js/astroway-blocks-editor.js:360
-msgid "Two signs"
-msgstr "두 개의 표지판"
+#: includes/views/partials/shortcode-cards.php:401
+msgid "Zodiac sign in English, lowercase."
+msgstr "영어로 된 별자리 이름, 소문자."
 
-#: assets/js/astroway-blocks-editor.js:362
-msgid "First sign"
-msgstr "첫 징후"
+#: includes/views/partials/shortcode-cards.php:402
+msgid "Any date inside the year. Defaults to this year."
+msgstr "해당 연도 내의 임의의 날짜. 기본값은 올해입니다."
 
-#: assets/js/astroway-blocks-editor.js:363
-msgid "Second sign"
-msgstr "두 번째 징조"
+#: includes/views/partials/shortcode-cards.php:407
+msgid "Zodiac Compatibility"
+msgstr "별자리 궁합"
 
-#: assets/js/astroway-blocks-editor.js:370
-msgid "One sign against the others (blank for all pairs)"
-msgstr "한 별자리와 나머지 (모든 쌍은 비워 두기)"
+#: includes/views/partials/shortcode-cards.php:408
+msgid ""
+"How two signs read together. Prose, not a percentage: the endpoint returns "
+"no score and inventing one would be a number with no calculation behind it."
+msgstr ""
+"두 표지판이 함께 전달하는 의미. 산문일 뿐, 백분율이 아니다: 종점은 점수를 반환하지 않으며, 점수를 임의로 만들어낸다면 그 뒤에는 "
+"아무런 계산도 따르지 않는 숫자가 될 뿐이다."
 
-#: assets/js/astroway-blocks-editor.js:370
-msgid "All pairs"
-msgstr "모든 쌍"
+#: includes/views/partials/shortcode-cards.php:412
+msgid "First sign in English, lowercase."
+msgstr "영어로 된 첫 번째 표지판, 소문자로."
 
-#: assets/js/astroway-blocks-editor.js:377
-msgid "Birth date (YYYY-MM-DD)"
-msgstr "생년월일 (YYYY-MM-DD)"
+#: includes/views/partials/shortcode-cards.php:413
+msgid "Second sign in English, lowercase."
+msgstr "영어로 된 두 번째 표지판, 소문자."
 
-#: assets/js/astroway-blocks-editor.js:378
-msgid "Birth time (HH:MM, optional)"
-msgstr "출생 시간 (HH:MM, 선택 사항)"
+#: includes/views/partials/shortcode-cards.php:418
+msgid "Chinese Zodiac"
+msgstr "십이간지"
 
-#: assets/js/astroway-blocks-editor.js:542
+#: includes/views/partials/shortcode-cards.php:419
+msgid ""
+"The animal of a birth year with its element, polarity and pillar. A birth "
+"time sharpens the answer at the turn of the year."
+msgstr "생년도의 동물과 그 원소, 극성, 기둥. 출생 시간은 연말연시 무렵의 답변을 더욱 명확하게 해줍니다."
+
+#: includes/views/partials/shortcode-cards.php:424
+msgid "Birth time in HH:MM."
+msgstr "HH:MM 형식의 출생 시간."
+
+#: assets/js/astroway-blocks-editor.js:235
 msgid "Section"
 msgstr "절"
 
-#: assets/js/astroway-blocks-editor.js:545
+#: assets/js/astroway-blocks-editor.js:238
 msgid "Zodiac sign for blocks inside"
 msgstr "내면의 걸림돌을 나타내는 별자리"
 
-#: assets/js/astroway-blocks-editor.js:552
+#: assets/js/astroway-blocks-editor.js:245
 msgid "Language for blocks inside"
 msgstr "내부 블록에 대한 언어"
 
-#: assets/js/astroway-blocks-editor.js:559
+#: assets/js/astroway-blocks-editor.js:252
 msgid "Style for blocks inside"
 msgstr "안쪽 블록 스타일"
 
-#: assets/js/astroway-blocks-editor.js:566
+#: assets/js/astroway-blocks-editor.js:259
 msgid "Layout on the page"
 msgstr "페이지 내 레이아웃"
 
-#: assets/js/astroway-blocks-editor.js:569
+#: assets/js/astroway-blocks-editor.js:262
 msgid "One after another"
 msgstr "연이어"
 
-#: assets/js/astroway-blocks-editor.js:570
+#: assets/js/astroway-blocks-editor.js:263
 msgid "Tabs"
 msgstr "탭"
 
-#: assets/js/astroway-blocks-editor.js:572
+#: assets/js/astroway-blocks-editor.js:265
 msgid ""
 "Tabs need JavaScript. Without it the cards stay stacked, so nothing is lost."
 msgstr ""
@@ -5094,6 +5892,52 @@ msgstr "별자리 궁합 (AstroWay)"
 msgctxt "block description"
 msgid "How two zodiac signs read together."
 msgstr "두 별자리 간의 궁합은 어떠한가."
+
+#~ msgid ""
+#~ "The reading needs a site key or an API key: open AstroWay in the admin and "
+#~ "connect the site. Only administrators see this note."
+#~ msgstr ""
+#~ "해석에는 사이트 키 또는 API 키가 필요합니다. 관리자 화면에서 AstroWay를 열고 사이트를 연결하세요. 이 메모는 관리자만 볼 수"
+#~ " 있습니다."
+
+#~ msgid "Retrograde period"
+#~ msgstr "역행 기간"
+
+#~ msgid ""
+#~ "When a visitor fills in a birth chart, compatibility, moon sign, rising "
+#~ "sign, Solar Return, Lunar Return or Davison chart form, the date, time and "
+#~ "place they enter are sent to api.astroway.info to calculate the answer, and "
+#~ "the city name to app.astroway.info to find its coordinates. Names typed into"
+#~ " the compatibility form are not sent anywhere. The AstroWay plugin does not "
+#~ "store any of it on this site: the answer is not cached and the page is sent "
+#~ "with no-store. Security or activity-log plugins on this site may record form"
+#~ " submissions on their own."
+#~ msgstr ""
+#~ "방문자가 출생 차트, 궁합, 달 별자리, 라이징 사인, 솔라 리턴, 루나 리턴, 데이비슨 차트 양식을 작성하면 입력한 날짜, 시간, "
+#~ "장소는 계산을 위해 api.astroway.info로, 도시 이름은 좌표를 찾기 위해 app.astroway.info로 전송됩니다. 궁합"
+#~ " 양식에 입력한 이름은 어디에도 전송되지 않습니다. AstroWay 플러그인은 이 사이트에 그중 어떤 것도 저장하지 않습니다. 결과는 "
+#~ "캐시되지 않으며 페이지는 no-store로 전송됩니다. 이 사이트의 보안 또는 활동 기록 플러그인이 양식 제출을 따로 기록할 수 "
+#~ "있습니다."
+
+#~ msgid "Not-self theme"
+#~ msgstr "노트셀프 테마"
+
+#~ msgid "Centres and channels"
+#~ msgstr "센터와 채널"
+
+#~ msgid "Defined centres"
+#~ msgstr "정의된 센터"
+
+#~ msgid "Open centres"
+#~ msgstr "오픈 센터"
+
+#~ msgid ""
+#~ "This widget reached the free limit for one visitor (30 requests an hour from"
+#~ " one IP address), so visitors on that connection see nothing here until the "
+#~ "hour resets. Only administrators see this note."
+#~ msgstr ""
+#~ "이 위젯은 방문자 1인당 무료 한도(IP 주소당 시간당 30회 요청)에 도달했으므로, 해당 IP 주소의 방문자는 1시간이 지나기 전까지 "
+#~ "이곳에서 아무것도 볼 수 없습니다. 관리자만 이 알림을 볼 수 있습니다."
 
 #~ msgid "The first return after this date, YYYY-MM-DD. Blank for today."
 #~ msgstr "이 날짜 이후 첫 리턴, YYYY-MM-DD. 오늘은 비워 두기."

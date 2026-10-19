@@ -40,13 +40,20 @@
 
 	// Collapse for visitors. An administrator keeps the note the server put
 	// next to the frame, so the owner still learns why the widget is gone.
-	function collapse( frame ) {
+	function collapse( frame, data ) {
 		var wrap = frame.parentNode;
 		var note = wrap && wrap.querySelector( '.astroway-embed__note' );
 		if ( ! wrap ) {
 			return;
 		}
 		if ( note ) {
+			// The reason the frame gave, and the limit it reported, not a guess.
+			var limit = Math.floor( Number( data && data.limit ) );
+			if ( 'error' === ( data && data.event ) && note.getAttribute( 'data-astroway-error' ) ) {
+				note.textContent = note.getAttribute( 'data-astroway-error' );
+			} else if ( limit > 0 && note.getAttribute( 'data-astroway-limit' ) ) {
+				note.textContent = note.getAttribute( 'data-astroway-limit' ).replace( '%d', String( limit ) );
+			}
 			frame.remove();
 			note.hidden = false;
 			wrap.classList.add( 'astroway-embed--unavailable' );
@@ -66,7 +73,7 @@
 		}
 
 		if ( 'rate-limited' === data.event || 'error' === data.event ) {
-			collapse( frame );
+			collapse( frame, data );
 			return;
 		}
 

@@ -85,7 +85,17 @@ class PublicClient {
 		if ( ! function_exists( 'current_user_can' ) || ! current_user_can( 'manage_options' ) ) {
 			return '';
 		}
-		return '<p class="astroway-embed__note" hidden>' . esc_html__( 'This widget reached the free limit for one visitor (30 requests an hour from one IP address), so visitors on that connection see nothing here until the hour resets. Only administrators see this note.', 'astroway' ) . '</p>';
+		// The frame says why it gave up and, for the limit, how many requests an
+		// hour it allows; the script picks the sentence and puts the number in.
+		return sprintf(
+			'<p class="astroway-embed__note" hidden data-astroway-limit="%1$s" data-astroway-error="%2$s">%3$s</p>',
+			esc_attr(
+				/* translators: %d = requests an hour one visitor may make; keep %d as it is */
+				__( 'This widget reached the free limit for one visitor (%d requests an hour from one IP address), so visitors on that connection see nothing here until the hour resets. Only administrators see this note.', 'astroway' )
+			),
+			esc_attr__( 'This widget could not load: the frame reported an error. Check its attributes; visitors see nothing here. Only administrators see this note.', 'astroway' ),
+			esc_html__( 'This widget reached the free per-visitor limit, so visitors on that connection see nothing here until the hour resets. Only administrators see this note.', 'astroway' )
+		);
 	}
 
 	/**

@@ -277,7 +277,8 @@ class Wheel {
 	private static function planets( array $planets, array $ring, string $prefix ): string {
 		$list = [];
 		foreach ( $planets as $p ) {
-			if ( ! Glyphs::exists( (string) ( $p['id'] ?? '' ) ) ) {
+			$text = (string) ( $p['text'] ?? '' );
+			if ( '' === $text && ! Glyphs::exists( (string) ( $p['id'] ?? '' ) ) ) {
 				continue;
 			}
 			$list[] = [
@@ -285,6 +286,7 @@ class Wheel {
 				'lon'   => self::norm( (float) ( $p['lon'] ?? 0 ) ),
 				'rx'    => ! empty( $p['rx'] ),
 				'label' => (string) ( $p['label'] ?? '' ),
+				'text'  => $text,
 			];
 		}
 		$html  = '';
@@ -307,7 +309,10 @@ class Wheel {
 
 			$html .= sprintf( '<g class="%1$s" data-planet="%2$s" data-label="%3$s">', $class, esc_attr( $prefix . $p['id'] ), esc_attr( $p['label'] ) );
 			$html .= '<circle class="astroway-wheel__hit" cx="' . self::n( $gx ) . '" cy="' . self::n( $gy ) . '" r="22"/>';
-			$html .= self::glyph( $p['id'], $gx, $gy, 19, 'astroway-wheel__glyph' );
+			// A point with no glyph of its own (the vertex) is written: Vx.
+			$html .= '' !== ( $p['text'] ?? '' ) && ! Glyphs::exists( $p['id'] )
+				? '<text class="astroway-wheel__glyph-text" x="' . self::n( $gx ) . '" y="' . self::n( $gy ) . '">' . esc_html( $p['text'] ) . '</text>'
+				: self::glyph( $p['id'], $gx, $gy, 19, 'astroway-wheel__glyph' );
 			$html .= '<text class="astroway-wheel__deg" x="' . self::n( $dx ) . '" y="' . self::n( $dy ) . '">' . $deg . '°</text>';
 			if ( $p['rx'] ) {
 				list( $rx, $ry ) = self::rx_at( $gx, $gy, $dx, $dy );

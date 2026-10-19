@@ -1473,3 +1473,44 @@
 	color: var(--aw-ink);
 	pointer-events: none;
 }
+
+/* Try it: the real card under its example. */
+.aw-card-example {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.aw-try-out {
+	margin-block: 12px 4px;
+	padding: 12px;
+	border: 1px dashed #c3c4c7;
+	border-radius: 6px;
+	background: #fff;
+}
+
+/* Family filter for the generated shortcodes. */
+.aw-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-block: 4px 12px;
+}
+
+.aw-chip {
+	padding: 4px 10px;
+	border: 1px solid #c3c4c7;
+	border-radius: 999px;
+	background: #fff;
+	color: inherit;
+	font: inherit;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.aw-chip.is-active {
+	border-color: #2271b1;
+	background: #2271b1;
+	color: #fff;
+}

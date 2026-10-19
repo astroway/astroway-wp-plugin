@@ -29,7 +29,7 @@ class Form {
 	private const NAME_MAX = 60;
 
 	/** Charts that are the minute of birth or nothing: no "time unknown" box. */
-	private const TIMED = [ 'rising_sign', 'solar_return', 'lunar_return', 'davison' ];
+	private const TIMED = [ 'rising_sign', 'solar_return', 'lunar_return', 'davison', 'bodygraph' ];
 
 	/** Forms for two people. */
 	private const PAIRS = [ 'synastry', 'davison' ];
@@ -101,7 +101,8 @@ class Form {
 		}
 		wp_add_privacy_policy_content(
 			'AstroWay',
-			'<p>' . esc_html__( 'When a visitor fills in a birth chart, compatibility, moon sign, rising sign, Solar Return, Lunar Return or Davison chart form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			'<p>' . esc_html__( 'When a visitor fills in a birth chart, Human Design, compatibility, moon sign, rising sign, Solar Return, Lunar Return or Davison chart form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			. '<p>' . esc_html__( 'Tarot cards with pictures load those pictures in the visitor\'s browser from cdn.astroway.info, which therefore receives the visitor\'s IP address, as for any image from another site. When a spread asks for its reading, the drawn cards and the page\'s language are sent from this site\'s server to api.astroway.info; nothing about the visitor is sent with them, and the reading is kept on this site for a day so that the same spread is read once.', 'astroway' ) . '</p>'
 		);
 	}
 
@@ -117,9 +118,132 @@ class Form {
 			return Render::admin_note( __( 'Visitors do not see this calculator: it runs on the site key, so that their charts never spend your credits, and a site connected to an AstroWay account has no site key. The shortcode with the birth data written in still works. Only administrators see this note.', 'astroway' ) );
 		}
 		if ( self::posted( self::MARKER ) !== $id || is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
-			return self::card( $widget, $id, $lang, [] );
+			return self::card( $widget, $id, $lang, ...self::prefill( $params ) );
 		}
 		return self::answer( $widget, $id, $lang, $params );
+	}
+
+	/**
+	 * What a shortcode already gave, for the form it falls back to, with the
+	 * reason it fell back: the time and place the author typed are kept when
+	 * only the date was wrong.
+	 *
+	 * @return array{0: array, 1: array} Typed values by person suffix, and errors.
+	 */
+	private static function prefill( array $params ): array {
+		$errors = (array) ( $params['form_errors'] ?? [] );
+		if ( ! $errors ) {
+			return [ [], [] ];
+		}
+		$lat = (string) ( $params['lat'] ?? '' );
+		$lng = (string) ( $params['lng'] ?? '' );
+		if ( is_numeric( $lat ) && is_numeric( $lng ) ) {
+			$errors['manual'] = '1';
+		}
+		$in = [
+			'name'    => (string) ( $params['name'] ?? '' ),
+			'date'    => '',
+			'time'    => (string) ( $params['time'] ?? '' ),
+			'unknown' => false,
+			'city'    => '',
+			'place'   => '',
+			'for'     => '',
+			'lat'     => is_numeric( $lat ) ? $lat : '',
+			'lng'     => is_numeric( $lng ) ? $lng : '',
+			'tz'      => '',
+			'year'    => '',
+		];
+		return [ [ '' => $in ], $errors ];
+	}
+
+	/**
+	 * The numerology form: a full name and a date, then the numbers. The
+	 * numbers still come in a frame, as they do with the data written in.
+	 *
+	 * @param array $params `name`, `date`, `system`, `theme`, `lang` from the shortcode.
+	 * @param array $errors Why the form shows instead of the numbers, by field.
+	 */
+	public static function numerology( array $params, array $errors = [] ): string {
+		self::$seq['numerology'] = ( self::$seq['numerology'] ?? 0 ) + 1;
+		$id                      = 'numerology-' . self::$seq['numerology'];
+		$lang                    = (string) ( $params['lang'] ?? '' );
+		$in                      = [
+			'name' => (string) ( $params['name'] ?? '' ),
+			'date' => (string) ( $params['date'] ?? '' ),
+		];
+		if ( self::posted( self::MARKER ) !== $id || is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			return self::numerology_card( $id, $lang, $in, $errors );
+		}
+
+		$in = [
+			'name' => trim( mb_substr( self::posted( 'aw_name' ), 0, self::NAME_MAX ) ),
+			'date' => self::posted( 'aw_date' ),
+		];
+		if ( ! self::same_origin() ) {
+			return self::numerology_card( $id, $lang, $in, [ '' => __( 'This form works only on the site it is on.', 'astroway' ) ] );
+		}
+		if ( '' !== self::posted( self::TRAP ) ) {
+			return self::numerology_card( $id, $lang, $in );
+		}
+		$errors = [];
+		if ( mb_strlen( $in['name'] ) < 2 ) {
+			$errors['aw_name'] = __( 'Enter the full name at birth.', 'astroway' );
+		}
+		if ( ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $in['date'], $m ) || ! checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ) {
+			$errors['aw_date'] = __( 'Enter the date of birth.', 'astroway' );
+		} elseif ( (int) $m[1] < 1800 || $in['date'] > gmdate( 'Y-m-d', time() + DAY_IN_SECONDS ) ) {
+			$errors['aw_date'] = __( 'Enter a date between 1800 and today.', 'astroway' );
+		}
+		$errors += self::consent_errors( '1' === self::posted( 'aw_consent' ) );
+		if ( $errors ) {
+			return self::numerology_card( $id, $lang, $in, $errors );
+		}
+		if ( ! self::allow( time() ) ) {
+			return self::numerology_card( $id, $lang, $in, [ '' => __( 'Too many calculations from here in a short time. Try again in a few minutes.', 'astroway' ) ] );
+		}
+		return PublicClient::embed_iframe(
+			'numerology',
+			[
+				'name'   => sanitize_text_field( $in['name'] ),
+				'date'   => $in['date'],
+				'system' => (string) ( $params['system'] ?? '' ),
+				'theme'  => (string) ( $params['theme'] ?? '' ),
+				'lang'   => $lang,
+			]
+		);
+	}
+
+	private static function numerology_card( string $id, string $lang, array $in, array $errors = [] ): string {
+		$inner = UI::header( [ 'title' => __( 'Your numerology chart', 'astroway' ) ] );
+		if ( isset( $errors[''] ) ) {
+			$inner .= UI::callout( esc_html( $errors[''] ), 'tens' );
+		}
+		$fields  = UI::field(
+			[
+				'name'  => 'aw_name',
+				'label' => __( 'Full name at birth', 'astroway' ),
+				'value' => $in['name'] ?? '',
+				'error' => $errors['aw_name'] ?? '',
+				'attrs' => [
+					'autocomplete' => 'name',
+					'maxlength'    => (string) self::NAME_MAX,
+				],
+			]
+		);
+		$fields .= UI::field(
+			[
+				'name'  => 'aw_date',
+				'label' => __( 'Date of birth', 'astroway' ),
+				'type'  => 'date',
+				'value' => $in['date'] ?? '',
+				'error' => $errors['aw_date'] ?? '',
+			]
+		);
+		$fields .= self::consent_field( $errors );
+		// Off-screen, not display:none: a robot skips a field it sees is hidden.
+		$fields .= '<div class="astroway-form__trap" aria-hidden="true"><label>' . esc_html__( 'Leave empty', 'astroway' ) . ' <input type="text" name="' . self::TRAP . '" value="" tabindex="-1" autocomplete="off"></label></div>';
+		$inner  .= UI::form( $fields, [ self::MARKER => $id ], __( 'Calculate', 'astroway' ) );
+		return UI::card( 'astroway-card', 'form', $inner, [ 'lang' => $lang ] );
 	}
 
 	/**
@@ -210,6 +334,7 @@ class Form {
 		foreach ( $in as $sfx => $one ) {
 			$errors += self::validate( $widget, $one, $sfx );
 		}
+		$errors += self::consent_errors( '1' === self::posted( 'aw_consent' ) );
 		if ( $errors ) {
 			return self::card( $widget, $id, $lang, $in, $errors );
 		}
@@ -439,6 +564,7 @@ class Form {
 			'solar_return' => __( 'Your Solar Return', 'astroway' ),
 			'lunar_return' => __( 'Your next Lunar Return', 'astroway' ),
 			'davison'      => __( 'Davison chart of two people', 'astroway' ),
+			'bodygraph'    => __( 'Your Human Design', 'astroway' ),
 		];
 		$inner  = UI::header( [ 'title' => $titles[ $widget ] ?? $titles['natal'] ] );
 		if ( isset( $errors[''] ) ) {
@@ -489,6 +615,7 @@ class Form {
 			);
 		}
 
+		$fields .= self::consent_field( $errors );
 		// Off-screen, not display:none: a robot skips a field it sees is hidden.
 		$fields .= '<div class="astroway-form__trap" aria-hidden="true"><label>' . esc_html__( 'Leave empty', 'astroway' ) . ' <input type="text" name="' . self::TRAP . '" value="" tabindex="-1" autocomplete="off"></label></div>';
 
@@ -579,7 +706,33 @@ class Form {
 	 * post only from a page of this site. Browsers send one of the two headers
 	 * on every form post; a request with neither is not a browser.
 	 */
-	private static function same_origin(): bool {
+	/** The consent box when the owner turned it on, '' otherwise. */
+	public static function consent_field( array $errors ): string {
+		if ( ! self::consent_on() ) {
+			return '';
+		}
+		$text   = trim( (string) Admin::get( 'form_consent_text', '' ) );
+		$text   = '' !== $text ? $text : __( 'I agree that the date, time and place I enter are sent to api.astroway.info to calculate the answer.', 'astroway' );
+		$error  = (string) ( $errors['aw_consent'] ?? '' );
+		$ticked = ( '1' === self::posted( 'aw_consent' ) );
+		$html   = UI::check( 'aw_consent', $text, $ticked );
+		if ( '' !== $error ) {
+			$html = str_replace( 'astroway-field--check', 'astroway-field--check is-invalid', $html )
+				. '<p class="astroway-field__error">' . esc_html( $error ) . '</p>';
+		}
+		return $html;
+	}
+
+	/** An unticked box refused server-side; a browser that skips `required` gets no further. */
+	public static function consent_errors( bool $ticked ): array {
+		return self::consent_on() && ! $ticked ? [ 'aw_consent' => __( 'Tick the box to continue.', 'astroway' ) ] : [];
+	}
+
+	private static function consent_on(): bool {
+		return ! empty( Admin::get( 'form_consent', 0 ) );
+	}
+
+	public static function same_origin(): bool {
 		$site = (string) ( $_SERVER['HTTP_SEC_FETCH_SITE'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- compared to fixed strings.
 		if ( '' !== $site ) {
 			return in_array( $site, [ 'same-origin', 'none' ], true );
@@ -592,7 +745,7 @@ class Form {
 	 * Eight answers per visitor in ten minutes and a hundred and twenty an hour
 	 * for the site, counted in one option with a ceiling, not a row per visitor.
 	 */
-	private static function allow( int $now ): bool {
+	public static function allow( int $now ): bool {
 		$hits = get_option( self::HITS, [] );
 		$hits = is_array( $hits ) ? $hits : [];
 

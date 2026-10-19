@@ -206,8 +206,18 @@ class Shortcodes {
 
 	/** All eight planets that station, and what each is doing today. */
 	public static function render_retrogrades( $atts ): string {
-		$atts = shortcode_atts( [ 'lang' => '' ], (array) $atts, 'astroway_retrogrades' );
-		return Render::keyed( 'astroway_retrogrades', 'retrogrades', $atts );
+		$atts = shortcode_atts(
+			[
+				'date' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_retrogrades'
+		);
+		// A pinned date answers about its noon in UTC; without one, about now.
+		$date = self::sanitize_date( $atts['date'] );
+		$now  = '' === $date ? null : (int) strtotime( $date . 'T12:00:00Z' );
+		return Render::keyed( 'astroway_retrogrades', 'retrogrades', [ 'lang' => $atts['lang'] ], $now );
 	}
 
 	/**
@@ -344,9 +354,10 @@ class Shortcodes {
 		if ( 'today' === $transits || '' !== self::sanitize_date( $transits ) ) {
 			$params['transits'] = $transits;
 		}
-		// No date: the visitor gives theirs.
-		if ( '' === trim( (string) $atts['date'] ) ) {
-			return Form::render( 'natal', $params );
+		// No date: the visitor gives theirs. A date that does not exist is no date,
+		// and the form says so rather than a chart for some other day.
+		if ( '' === trim( (string) $atts['date'] ) || self::impossible( $atts['date'] ) ) {
+			return self::form_for( 'natal', 'astroway_natal', $atts, $params );
 		}
 		// The wheel is a picture drawn by the api and cannot read the page it lands
 		// on, so its palette has to be declared. Left empty it is light, see
@@ -524,6 +535,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
+		// No date, or one that does not exist: the visitor gives theirs, as on the natal chart.
+		if ( '' === trim( (string) $atts['date'] ) || self::impossible( $atts['date'] ) ) {
+			return self::form_for( 'bodygraph', 'astroway_bodygraph', $atts, $params );
+		}
 		return Render::widget( 'bodygraph', $params );
 	}
 
@@ -546,9 +561,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
-		// No date: the visitor gives theirs.
-		if ( '' === trim( (string) $atts['date'] ) ) {
-			return Form::render( 'moon_sign', $params );
+		// No date: the visitor gives theirs. A date that does not exist is no date,
+		// and the form says so rather than a chart for some other day.
+		if ( '' === trim( (string) $atts['date'] ) || self::impossible( $atts['date'] ) ) {
+			return self::form_for( 'moon_sign', 'astroway_moon_sign', $atts, $params );
 		}
 		return Render::widget( 'moon_sign', $params );
 	}
@@ -578,9 +594,10 @@ class Shortcodes {
 		);
 		$params         = self::sanitize_chart_params( $atts );
 		$params['lang'] = self::resolve_lang( $atts['lang'] );
-		// No date: the visitor gives theirs.
-		if ( '' === trim( (string) $atts['date'] ) ) {
-			return Form::render( 'rising_sign', $params );
+		// No date: the visitor gives theirs. A date that does not exist is no date,
+		// and the form says so rather than a chart for some other day.
+		if ( '' === trim( (string) $atts['date'] ) || self::impossible( $atts['date'] ) ) {
+			return self::form_for( 'rising_sign', 'astroway_rising_sign', $atts, $params );
 		}
 		return Render::widget( 'rising_sign', $params );
 	}
@@ -590,6 +607,7 @@ class Shortcodes {
 			[
 				'type' => 'daily',
 				'deck' => 'rider-waite',
+				'art'  => 'rws-1909',
 				'lang' => '',
 			],
 			(array) $atts,
@@ -602,7 +620,13 @@ class Shortcodes {
 		// other deck stays on the iframe rather than being answered with cards
 		// from the wrong deck under the right heading.
 		if ( 'rider-waite' === $deck ) {
-			return Render::widget( 'tarot_daily', [ 'lang' => $lang ] );
+			return Render::widget(
+				'tarot_daily',
+				[
+					'lang' => $lang,
+					'art'  => Tarot::sanitize_art( $atts['art'] ),
+				]
+			);
 		}
 
 		return PublicClient::embed_iframe(
@@ -618,15 +642,23 @@ class Shortcodes {
 	public static function render_tarot_spread( $atts ): string {
 		$atts   = shortcode_atts(
 			[
-				'spread' => 'three-card',
-				'redraw' => 'yes',
-				'lang'   => '',
+				'spread'  => 'three-card',
+				'redraw'  => 'yes',
+				'art'     => 'rws-1909',
+				'reveal'  => 'no',
+				'reading' => '0',
+				'lang'    => '',
 			],
 			(array) $atts,
 			'astroway_tarot_spread'
 		);
 		$widget = 'celtic-cross' === strtolower( trim( (string) $atts['spread'] ) ) ? 'tarot_celtic_cross' : 'tarot_three_card';
-		$params = [ 'lang' => self::resolve_lang( $atts['lang'] ) ];
+		$params = [
+			'lang'    => self::resolve_lang( $atts['lang'] ),
+			'art'     => Tarot::sanitize_art( $atts['art'] ),
+			'reveal'  => 'click' === strtolower( trim( (string) $atts['reveal'] ) ) ? 'click' : '',
+			'reading' => in_array( strtolower( trim( (string) $atts['reading'] ) ), [ '1', 'yes', 'true', 'on' ], true ),
+		];
 		if ( in_array( strtolower( trim( (string) $atts['redraw'] ) ), [ 'no', 'false', '0', 'off' ], true ) ) {
 			return Render::widget( $widget, $params );
 		}
@@ -794,6 +826,17 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_transit'
 		);
+		// The frame is for a site with no key at all: since api 2.223.0 the site key opens /planets too.
+		if ( ( new ApiClient() )->can_read_sky() ) {
+			return Render::keyed(
+				'astroway_transit',
+				'transit',
+				[
+					'date' => self::sanitize_date( $atts['date'] ),
+					'lang' => $atts['lang'],
+				]
+			);
+		}
 		return PublicClient::embed_iframe(
 			'transit',
 			[
@@ -853,11 +896,27 @@ class Shortcodes {
 			(array) $atts,
 			'astroway_numerology'
 		);
+		$name = sanitize_text_field( $atts['name'] );
+		$raw  = trim( (string) $atts['date'] );
+		$date = self::sanitize_date( $raw );
+		// Without both the visitor gives them: the frame would show its message for the author.
+		if ( '' === $name || '' === $date ) {
+			$bad = '' !== $raw && '' === $date;
+			return ( $bad ? self::bad_date_note( 'astroway_numerology', 'date', $raw ) : '' ) . Form::numerology(
+				[
+					'name'   => $name,
+					'system' => self::sanitize_num_system( $atts['system'] ),
+					'theme'  => self::sanitize_theme( $atts['theme'] ),
+					'lang'   => self::resolve_lang( $atts['lang'] ),
+				],
+				$bad ? [ 'aw_date' => __( 'This date does not exist.', 'astroway' ) ] : []
+			);
+		}
 		return PublicClient::embed_iframe(
 			'numerology',
 			[
-				'name'   => sanitize_text_field( $atts['name'] ),
-				'date'   => self::sanitize_date( $atts['date'] ),
+				'name'   => $name,
+				'date'   => $date,
 				'system' => self::sanitize_num_system( $atts['system'] ),
 				'theme'  => self::sanitize_theme( $atts['theme'] ),
 				'lang'   => self::resolve_lang( $atts['lang'] ),
@@ -1169,9 +1228,40 @@ class Shortcodes {
 		];
 	}
 
+	/** Something was written in the date, and it is not a day of the calendar. */
+	private static function impossible( $raw ): bool {
+		$raw = trim( (string) $raw );
+		return '' !== $raw && '' === self::sanitize_date( $raw );
+	}
+
+	/** The visitor form, with the reason when the written date does not exist. */
+	private static function form_for( string $widget, string $tag, array $atts, array $params ): string {
+		if ( ! self::impossible( $atts['date'] ?? '' ) ) {
+			return Form::render( $widget, $params );
+		}
+		return self::bad_date_note( $tag, 'date', trim( (string) $atts['date'] ) )
+			. Form::render( $widget, $params + [ 'form_errors' => [ 'aw_date' => __( 'This date does not exist.', 'astroway' ) ] ] );
+	}
+
+	/** Names the attribute and the value for the author; visitors get nothing. */
+	private static function bad_date_note( string $tag, string $attr, string $value ): string {
+		return Render::admin_note(
+			sprintf(
+				/* translators: 1: shortcode tag, 2: attribute name, 3: the value written */
+				__( '[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form instead. Only administrators see this note.', 'astroway' ),
+				$tag,
+				$attr,
+				$value
+			)
+		);
+	}
+
 	public static function sanitize_date( $value ): string {
 		$value = trim( (string) $value );
-		return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ? $value : '';
+		if ( ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $value, $m ) ) {
+			return '';
+		}
+		return checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ? $value : '';
 	}
 
 	/**

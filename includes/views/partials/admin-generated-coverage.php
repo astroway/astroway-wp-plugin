@@ -44,8 +44,15 @@ foreach ( $astroway_families as $astroway_family ) {
 			</p>
 		</header>
 
+		<div class="aw-chips" role="group" aria-label="<?php esc_attr_e( 'Families', 'astroway' ); ?>">
+			<button type="button" class="aw-chip is-active" data-family="" aria-pressed="true"><?php esc_html_e( 'All', 'astroway' ); ?></button>
+			<?php foreach ( $astroway_families as $astroway_slug => $astroway_family ) : ?>
+				<button type="button" class="aw-chip" data-family="<?php echo esc_attr( (string) $astroway_slug ); ?>" aria-pressed="false"><?php echo esc_html( $astroway_family['label'] ); ?></button>
+			<?php endforeach; ?>
+		</div>
+
 		<?php foreach ( $astroway_families as $astroway_slug => $astroway_family ) : ?>
-			<details class="aw-generated-family">
+			<details class="aw-generated-family" data-family="<?php echo esc_attr( (string) $astroway_slug ); ?>">
 				<summary>
 					<?php echo esc_html( $astroway_family['label'] ); ?>
 					<span class="aw-generated-count"><?php echo esc_html( (string) count( $astroway_family['endpoints'] ) ); ?></span>

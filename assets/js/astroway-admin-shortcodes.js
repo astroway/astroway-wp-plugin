@@ -86,6 +86,56 @@
 		}
 
 		/* City → lat / lon / tz helper. DOM-only, never innerHTML with user data. */
+		// Try it: the server renders the page's own example for this tag.
+		document.querySelectorAll( '.aw-try' ).forEach( function ( btn ) {
+			btn.addEventListener( 'click', function () {
+				var out = btn.closest( '.aw-panel-body' ).querySelector( '.aw-try-out' );
+				if ( ! out ) return;
+				if ( ! out.hidden && out.dataset.loaded ) {
+					out.hidden = true;
+					btn.textContent = i18n.tryIt || 'Try it';
+					return;
+				}
+				out.hidden = false;
+				btn.textContent = i18n.tryHide || 'Hide';
+				if ( out.dataset.loaded ) return;
+				out.textContent = i18n.trying || 'Rendering…';
+				var body = new URLSearchParams();
+				body.set( 'action', 'astroway_try_shortcode' );
+				body.set( 'nonce', cfg.tryNonce || '' );
+				body.set( 'tag', btn.getAttribute( 'data-tag' ) || '' );
+				fetch( cfg.ajaxUrl, { method: 'POST', credentials: 'same-origin', body: body } )
+					.then( function ( r ) { return r.json(); } )
+					.then( function ( resp ) {
+						if ( resp && resp.success && resp.data ) {
+							out.innerHTML = resp.data.html || '';
+							out.dataset.loaded = '1';
+						} else {
+							out.textContent = ( resp && resp.data && resp.data.message ) || i18n.tryFailed;
+						}
+					} )
+					.catch( function () { out.textContent = i18n.tryFailed || ''; } );
+			} );
+		} );
+
+		// Family chips: one family open at a time, or all of them.
+		var chips = document.querySelectorAll( '.aw-generated .aw-chip' );
+		chips.forEach( function ( chip ) {
+			chip.addEventListener( 'click', function () {
+				var fam = chip.getAttribute( 'data-family' );
+				chips.forEach( function ( c ) {
+					var on = c === chip;
+					c.classList.toggle( 'is-active', on );
+					c.setAttribute( 'aria-pressed', on ? 'true' : 'false' );
+				} );
+				document.querySelectorAll( '.aw-generated-family' ).forEach( function ( d ) {
+					var match = ! fam || d.getAttribute( 'data-family' ) === fam;
+					d.hidden = ! match;
+					if ( fam ) d.open = match;
+				} );
+			} );
+		} );
+
 		var input     = document.getElementById( 'aw-city-search' );
 		var searchBtn = document.getElementById( 'aw-city-search-btn' );
 		var results   = document.getElementById( 'aw-city-results' );
@@ -187,6 +237,7 @@
 					statusLine( i18n.searchError || 'Search error.', 'error' );
 				} );
 		}
+
 
 		if ( searchBtn ) searchBtn.addEventListener( 'click', doSearch );
 		input.addEventListener( 'keydown', function ( e ) {

@@ -316,7 +316,12 @@ if ( '' !== $api_key && is_array( $status_data ) ) {
 					</div>
 					<?php endif; ?>
 
-					<?php if ( isset( $astroway_status_payload['credits_remaining'] ) && isset( $astroway_status_payload['credits_total_this_period'] ) ) : ?>
+					<?php if ( ! empty( $astroway_status_payload['unlimited'] ) ) : ?>
+					<div class="aw-status-row">
+						<dt><?php esc_html_e( 'Credits', 'astroway' ); ?></dt>
+						<dd><?php esc_html_e( 'Unlimited', 'astroway' ); ?></dd>
+					</div>
+					<?php elseif ( isset( $astroway_status_payload['credits_remaining'] ) && isset( $astroway_status_payload['credits_total_this_period'] ) ) : ?>
 					<div class="aw-status-row">
 						<dt><?php esc_html_e( 'Credits', 'astroway' ); ?></dt>
 						<dd>

@@ -63,6 +63,34 @@ class Sky {
 	}
 
 	/**
+	 * Where the ten bodies stand at noon UTC on a day, or null.
+	 *
+	 * A day in the past or the future never changes, so it is kept as long as
+	 * anything; today is kept until midnight. Latitude and longitude are zero
+	 * because the positions are geocentric and the houses are not shown.
+	 */
+	public static function planets( string $date, ?int $now = null ): ?array {
+		$now   = null === $now ? time() : $now;
+		$day   = self::date( $date );
+		$today = gmdate( 'Y-m-d', $now );
+		$day   = '' !== $day ? $day : $today;
+
+		return ( new ApiClient() )->cached_call(
+			'POST',
+			'/planets',
+			[
+				'date'           => $day,
+				'time'           => '12:00:00',
+				'timezoneOffset' => 0,
+				'latitude'       => 0,
+				'longitude'      => 0,
+			],
+			PublicData::ttl_for( $day === $today ? 'day' : 'static', $now ),
+			'sky_'
+		);
+	}
+
+	/**
 	 * The range to ask for, quantised to the calendar month.
 	 *
 	 * Two reasons for the shape. The api selects periods by the date they begin
@@ -218,8 +246,13 @@ class Sky {
 				continue;
 			}
 			$out[] = [
-				'start' => $start,
-				'end'   => $end,
+				'start'          => $start,
+				'end'            => $end,
+				'station_retro'  => isset( $period['stationRetroLong'] ) && is_numeric( $period['stationRetroLong'] ) ? (float) $period['stationRetroLong'] : null,
+				'station_direct' => isset( $period['stationDirectLong'] ) && is_numeric( $period['stationDirectLong'] ) ? (float) $period['stationDirectLong'] : null,
+				// null when the api has no shadow (it gives up past 400 days) or sent garbage.
+				'shadow_start'   => self::moment( $period['shadowStart'] ?? null, $start, true ),
+				'shadow_end'     => self::moment( $period['shadowEnd'] ?? null, $end, false ),
 			];
 		}
 		usort(
@@ -229,6 +262,33 @@ class Sky {
 			}
 		);
 		return $out;
+	}
+
+	/** A shadow edge, kept only on the right side of the retrograde it belongs to. */
+	private static function moment( $iso, int $edge, bool $before ): ?int {
+		$stamp = is_string( $iso ) && '' !== $iso ? strtotime( $iso ) : false;
+		if ( false === $stamp ) {
+			return null;
+		}
+		return ( $before ? $stamp <= $edge : $stamp >= $edge ) ? $stamp : null;
+	}
+
+	/**
+	 * The shadow a direct planet is in at a moment: 'pre' before a retrograde,
+	 * 'post' after one, with the edge that matters; null outside both.
+	 *
+	 * @return array{0: string, 1: int}|null
+	 */
+	public static function shadow_at( array $periods, int $now ): ?array {
+		foreach ( $periods as $period ) {
+			if ( null !== $period['shadow_start'] && $period['shadow_start'] <= $now && $now < $period['start'] ) {
+				return [ 'pre', $period['shadow_start'] ];
+			}
+			if ( null !== $period['shadow_end'] && $period['end'] < $now && $now <= $period['shadow_end'] ) {
+				return [ 'post', $period['shadow_end'] ];
+			}
+		}
+		return null;
 	}
 
 	/**

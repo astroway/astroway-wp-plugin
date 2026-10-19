@@ -19,7 +19,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 function astroway_uninstall_site() {
 	global $wpdb;
 
-	foreach ( [ 'astroway_settings', 'astroway_activated_at', 'astroway_rate_limit_hit_at', 'astroway_quota_seen', 'astroway_digest_last_sent', 'astroway_form_hits' ] as $astroway_option ) {
+	foreach ( [ 'astroway_settings', 'astroway_activated_at', 'astroway_rate_limit_hit_at', 'astroway_quota_seen', 'astroway_digest_last_sent', 'astroway_form_hits', 'astroway_tarot_readings', 'astroway_tarot_reading_lock' ] as $astroway_option ) {
 		delete_option( $astroway_option );
 	}
 	delete_transient( 'astroway_rate_limit_probe' );

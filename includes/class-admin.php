@@ -179,6 +179,11 @@ class Admin {
 			$existing['widget_disclaimer'] = empty( $input['widget_disclaimer'] ) ? 0 : 1;
 		}
 
+		if ( isset( $input['form_consent_submitted'] ) ) {
+			$existing['form_consent']      = empty( $input['form_consent'] ) ? 0 : 1;
+			$existing['form_consent_text'] = mb_substr( sanitize_text_field( (string) ( $input['form_consent_text'] ?? '' ) ), 0, 500 );
+		}
+
 		if ( isset( $input['digest_submitted'] ) && class_exists( __NAMESPACE__ . '\\Digest' ) ) {
 			$existing['digest_enabled']    = empty( $input['digest_enabled'] ) ? 0 : 1;
 			$existing['digest_hour']       = max( 0, min( 23, (int) ( $input['digest_hour'] ?? Digest::DEFAULT_HOUR ) ) );
@@ -305,6 +310,11 @@ class Admin {
 				]
 			);
 		} else { // $hook_shortcodes
+			// Try it draws a real card on this page, so the card styles come too.
+			if ( ! wp_style_is( Plugin::STYLE_HANDLE, 'registered' ) ) {
+				Plugin::register_frontend_assets();
+			}
+			wp_enqueue_style( Plugin::STYLE_HANDLE );
 			wp_enqueue_script(
 				'astroway-admin-shortcodes',
 				ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-admin-shortcodes.js',
@@ -316,9 +326,14 @@ class Admin {
 				'astroway-admin-shortcodes',
 				'astrowayAdmin',
 				[
-					'nonce'   => wp_create_nonce( 'astroway_admin' ),
-					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-					'i18n'    => [
+					'nonce'    => wp_create_nonce( 'astroway_admin' ),
+					'tryNonce' => wp_create_nonce( 'astroway_try' ),
+					'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
+					'i18n'     => [
+						'trying'      => __( 'Rendering…', 'astroway' ),
+						'tryFailed'   => __( 'This shortcode could not be rendered here.', 'astroway' ),
+						'tryHide'     => __( 'Hide', 'astroway' ),
+						'tryIt'       => __( 'Try it', 'astroway' ),
 						'copied'      => __( 'copied!', 'astroway' ),
 						'searching'   => __( 'Searching…', 'astroway' ),
 						'noResults'   => __( 'No cities found.', 'astroway' ),

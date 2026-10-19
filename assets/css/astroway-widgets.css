@@ -359,16 +359,16 @@
 		block-size: 40px;
 	}
 
-	/* The arrows drop to their own row rather than the medallion vanishing:
-	   hiding it left the first card on a phone looking like a cut-down version
-	   of the nine below it. */
-	.astroway-card .astroway-card__header:has(> .astroway-card__actions) .astroway-card__heading {
-		flex: 1 1 60%;
-	}
+}
 
-	.astroway-card .astroway-card__header:has(> .astroway-card__actions) .astroway-card__actions {
-		margin-inline-start: auto;
-	}
+/* The arrows stay on the title's row, the title wrapping beside them: dropped
+   under it they cost a whole row before the reading on a phone. */
+.astroway-card .astroway-card__header:has(> .astroway-card__actions) {
+	flex-wrap: nowrap;
+}
+
+.astroway-card .astroway-card__header:has(> .astroway-card__actions) .astroway-card__heading {
+	flex: 1 1 0;
 }
 
 .astroway-medal__ring {
@@ -653,6 +653,89 @@
 	}
 }
 
+/* Still too wide after that, the script lets the strip wrap: a second row of
+   tabs reads better than a last tab cut in half at the card's edge. */
+.astroway-tabs__list[data-astroway-wrap] {
+	flex-wrap: wrap;
+	overflow-x: visible;
+	mask-image: none;
+}
+
+.astroway-card .astroway-tabs__list[data-astroway-wrap] .astroway-tabs__tab {
+	padding-inline: 8px;
+}
+
+/* ── Tags: static pills for keywords and a card's kind. ── */
+
+.astroway-card .astroway-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 10px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.astroway-card .astroway-tags > li {
+	margin: 0;
+	padding: 3px 10px;
+	border: 1px solid var(--astroway-line);
+	border-radius: 999px;
+	background: var(--astroway-tint);
+	font-size: 0.82em;
+	line-height: 1.5;
+}
+
+/* The natal summary: the same pills, retrograde planets as glyphs in one of them. */
+.astroway-card .astroway-natal__summary {
+	margin-block-end: 4px;
+}
+
+.astroway-card .astroway-natal__rx {
+	display: inline-flex;
+	gap: 3px;
+	margin-inline-start: 4px;
+	vertical-align: -0.12em;
+}
+
+.astroway-card .astroway-natal__rx .astroway-glyph {
+	width: 1em;
+	height: 1em;
+	fill: var(--astroway-tens);
+}
+
+/* Chart patterns: one card per figure, two across where there is room. */
+.astroway-card .astroway-patterns {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 15em), 1fr));
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.astroway-card .astroway-patterns__item {
+	margin: 0;
+	padding: 12px 14px;
+	border: 1px solid var(--astroway-line);
+	border-radius: var(--astroway-radius);
+}
+
+.astroway-card .astroway-patterns__name {
+	margin: 0;
+	font-size: 1em;
+}
+
+.astroway-card .astroway-patterns__item .astroway-tags {
+	margin-block-start: 6px;
+}
+
+.astroway-card .astroway-patterns__about {
+	margin: 8px 0 0;
+	color: var(--astroway-muted);
+	font-size: 0.9em;
+}
+
 .astroway-tabs__list[data-astroway-more="end"] {
 	mask-image: linear-gradient(to left, transparent, #000 2.5em);
 }
@@ -713,7 +796,14 @@
 }
 
 /* The header already draws the line; a second one right under it reads as a gap. */
-.astroway-card .astroway-chinese ~ .astroway-facts--list + .astroway-card__section {
+.astroway-card .astroway-chinese ~ :is(.astroway-facts--list, .astroway-chinese__boundary) + .astroway-card__section {
+	border-block-start: 0;
+	padding-block-start: 0;
+}
+
+/* The facts already close with a rule; without the meaning between them the
+   section drew a second one 14px lower. */
+.astroway-card--moon > .astroway-facts--trio + .astroway-card__section {
 	border-block-start: 0;
 	padding-block-start: 0;
 }
@@ -870,6 +960,13 @@
 	font-variant-numeric: tabular-nums;
 	font-size: 0.92em;
 	text-align: end;
+}
+
+/* Applying or separating, under the orb, smaller: a detail for those who look for it. */
+.astroway-card .astroway-aspects__trend {
+	display: block;
+	font-size: 0.85em;
+	white-space: nowrap;
 }
 
 .astroway-card .astroway-aspects__note {
@@ -1198,14 +1295,36 @@
 
 	/* The row is one block here, so the mark belongs to the row and not to
 	   each cell: painting the cells left white gaps between them. */
+	/* No inset of its own: padding pushed a marked row's labels 6px out of
+	   line with the rows around it, and a negative margin widened the row past
+	   the scroll box. The tint alone marks it. */
 	.astroway-card .astroway-table--stack tr.is-current {
-		padding-inline: 6px;
 		background: var(--astroway-accent-tint);
 	}
 
-	.astroway-card .astroway-table--stack tr.is-current > * {
+	.astroway-card .astroway-table.astroway-table--stack tr.is-current > * {
+		padding-inline-start: 0;
 		background: none;
 	}
+}
+
+/* Retrograde board: the period, how far through it, where it turns, one line each. */
+.astroway-card .astroway-retro > span {
+	display: block;
+}
+
+.astroway-card .astroway-retro__progress {
+	display: grid;
+	gap: 4px;
+	margin-block: 4px;
+	font-size: 0.9em;
+	font-weight: 400;
+}
+
+.astroway-card .astroway-retro__station {
+	color: var(--astroway-muted);
+	font-size: 0.9em;
+	font-weight: 400;
 }
 
 /* ── Matrix: elements by modality ── */
@@ -1529,6 +1648,39 @@
 	text-align: end;
 }
 
+/* The sphere's word and aspect count under its name. */
+.astroway-card .astroway-bars__note {
+	display: block;
+	color: var(--astroway-muted);
+	font-size: 0.85em;
+	line-height: 1.3;
+}
+
+/* Synastry: strengths beside growth areas, one under the other on a phone. */
+.astroway-card .astroway-synastry__columns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 14em), 1fr));
+	gap: 4px 24px;
+	margin-block-start: 18px;
+}
+
+.astroway-card .astroway-synastry__columns ul {
+	margin: 8px 0 0;
+	padding-inline-start: 1.1em;
+}
+
+.astroway-card .astroway-synastry__columns li {
+	margin: 0 0 6px;
+}
+
+.astroway-card .astroway-synastry__columns strong {
+	display: block;
+}
+
+.astroway-card .astroway-acc__text {
+	margin: 0;
+}
+
 /* ── Timeline: dates on a rail, the past quieter, today marked ── */
 
 .astroway-card .astroway-timeline {
@@ -1706,6 +1858,14 @@
 
 .astroway-wheel__glyph {
 	fill: currentColor;
+}
+
+/* Points written rather than drawn: the vertex, Vx. */
+.astroway-card .astroway-wheel__glyph-text {
+	fill: currentColor;
+	font-size: 15px;
+	font-weight: 600;
+	text-anchor: middle;
 }
 
 .astroway-wheel__rx {
@@ -2030,11 +2190,40 @@
 	inline-size: 100%;
 }
 
-/* Gate numbers are 10 units: 11px once the drawing has its full 396px. */
+/* Gate numbers are 10 units: 11px once the drawing has its full 396px. Below
+   that the inactive ones would shrink past reading and collide, so only the
+   active gates stay, drawn larger: they are what the chart is about. */
 @container (max-width: 395.98px) {
-	.astroway-card .astroway-bodygraph__gates {
+	.astroway-card .astroway-bodygraph__gate:not(.is-on) {
 		display: none;
 	}
+
+	.astroway-card .astroway-bodygraph__gate.is-on {
+		font-size: 13px;
+	}
+}
+
+.astroway-card .astroway-bodygraph__ctb {
+	margin-inline-start: auto;
+	color: var(--astroway-muted);
+	font-size: 0.78em;
+	white-space: nowrap;
+}
+
+.astroway-card .astroway-hd__tags {
+	margin-block: 4px 12px;
+}
+
+.astroway-card .astroway-hd__circuit {
+	margin: 14px 0 4px;
+	font-size: 0.85em;
+	font-weight: 600;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-hd__gates {
+	margin: 8px 0 0;
+	font-variant-numeric: tabular-nums;
 }
 
 /* ── Chinese sign: the branch character as a seal in the colour of the year's
@@ -2074,6 +2263,47 @@
 	color: var(--astroway-seal);
 	font-size: 52px;
 	line-height: 1;
+}
+
+/* The animal written in full leads; the branch seal steps back beside the pillar. */
+.astroway-card .astroway-chinese__name {
+	display: grid;
+	justify-items: center;
+	order: -1;
+	gap: 2px;
+	color: color-mix(in oklab, var(--astroway-el) 72%, currentColor);
+}
+
+.astroway-card .astroway-chinese__animal {
+	font-size: 64px;
+	line-height: 1;
+}
+
+.astroway-card .astroway-chinese__pinyin {
+	font-size: 0.95em;
+	letter-spacing: 0.02em;
+}
+
+.astroway-card .astroway-chinese__name + .astroway-chinese__pillar,
+.astroway-card .astroway-chinese:has(.astroway-chinese__name) .astroway-chinese__seal {
+	--astroway-seal-size: 56px;
+}
+
+.astroway-card .astroway-chinese:has(.astroway-chinese__name) .astroway-chinese__seal {
+	inline-size: var(--astroway-seal-size);
+	block-size: var(--astroway-seal-size);
+	font-size: 30px;
+	outline-offset: -5px;
+}
+
+.astroway-card .astroway-chinese ~ .astroway-tags {
+	margin-block-end: 10px;
+}
+
+.astroway-card .astroway-chinese__boundary {
+	margin: 0 0 14px;
+	font-size: 0.85em;
+	color: var(--astroway-muted);
 }
 
 .astroway-card .astroway-chinese__pillar {
@@ -2354,6 +2584,205 @@
 	color: var(--astroway-on-accent);
 }
 
+/* ── Tarot pictures and cards that lie face down ──
+   A picture keeps the drawn face's proportions, so the spread and the cross
+   lay out the same either way; the set's own art is a touch taller and is
+   cropped at the edges rather than stretched. */
+
+.astroway-card img.astroway-tarot__face--image,
+.astroway-card img.astroway-tarot__back--image {
+	aspect-ratio: 100 / 170;
+	block-size: auto;
+	object-fit: cover;
+	border: 1px solid var(--astroway-line);
+	border-radius: 6px;
+	background: var(--astroway-tint);
+}
+
+.astroway-card .astroway-tarot__face--reversed {
+	transform: rotate(180deg);
+}
+
+.astroway-card .astroway-tarot__back {
+	display: block;
+	inline-size: 100%;
+	block-size: auto;
+	--astroway-suit: var(--astroway-gilt);
+}
+
+/* With pictures the cards are worth seeing: larger beside their text, and
+   larger again in the row of three. */
+.astroway-card .astroway-spread__card:has(> .astroway-tarot__face--image, > .astroway-tarot__flip) {
+	grid-template-columns: 88px 1fr;
+}
+
+.astroway-card .astroway-spread__card > .astroway-tarot__face--image,
+.astroway-card .astroway-spread__card > .astroway-tarot__flip {
+	inline-size: 88px;
+}
+
+@container (max-width: 17em) {
+	.astroway-card .astroway-spread__card:has(> .astroway-tarot__face--image, > .astroway-tarot__flip) {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* With pictures the cards are worth seeing: larger in the row of three. */
+@container (min-width: 40em) {
+	.astroway-card .astroway-spread--three .astroway-spread__card:has(> .astroway-tarot__face--image, > .astroway-tarot__flip) {
+		grid-template-columns: 1fr;
+	}
+
+	.astroway-card .astroway-spread--three .astroway-spread__card > .astroway-tarot__face--image,
+	.astroway-card .astroway-spread--three .astroway-spread__card > .astroway-tarot__flip {
+		inline-size: 128px;
+	}
+}
+
+/* Three cards with pictures lie in a row, as a spread does on a table, with
+   what each says listed under the row. The list items dissolve into the grid
+   so the faces share one row and the texts take the full width below. */
+.astroway-card .astroway-tarot__label {
+	display: none;
+}
+
+.astroway-card .astroway-spread--three:has(.astroway-tarot__face--image) {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	column-gap: clamp(8px, 3cqi, 24px);
+	row-gap: 0;
+}
+
+.astroway-card .astroway-spread--three:has(.astroway-tarot__face--image) > .astroway-spread__card {
+	display: contents;
+}
+
+.astroway-card .astroway-spread--three:has(.astroway-tarot__face--image) .astroway-spread__card > :is(.astroway-tarot__face--image, .astroway-tarot__flip) {
+	grid-row: 1;
+	justify-self: center;
+	inline-size: 100%;
+	max-inline-size: 200px;
+}
+
+.astroway-card .astroway-spread--three:has(.astroway-tarot__face--image) .astroway-tarot__label {
+	display: block;
+	grid-row: 2;
+	margin: 8px 0 18px;
+	text-align: center;
+	font-size: 0.875em;
+	font-weight: 600;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-spread--three:has(.astroway-tarot__face--image) .astroway-spread__text {
+	grid-column: 1 / -1;
+	padding-block: 14px;
+	border-block-start: 1px solid var(--astroway-line);
+}
+
+/* Face down, a card's text waits until it is turned; the row alone is the spread. */
+.astroway-js .astroway-card .astroway-spread--three.astroway-spread--reveal:has(.astroway-tarot__face--image) .astroway-spread__card:not(.is-open) .astroway-spread__text {
+	display: none;
+}
+
+.astroway-card .astroway-tarot__flip {
+	display: grid;
+	flex: none;
+	inline-size: 64px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: default;
+}
+
+.astroway-card .astroway-tarot__flip .astroway-tarot__face {
+	inline-size: 100%;
+}
+
+.astroway-card .astroway-tarot__side {
+	display: block;
+	grid-area: 1 / 1;
+}
+
+/* Without the script every card reads face up, as before: no back at all. */
+.astroway-card .astroway-tarot__side--back {
+	display: none;
+}
+
+.astroway-js .astroway-card .astroway-spread--reveal .astroway-tarot__flip {
+	cursor: pointer;
+	border-radius: 7px;
+}
+
+.astroway-js .astroway-card .astroway-spread--reveal .astroway-tarot__flip:focus-visible {
+	outline: 2px solid var(--astroway-accent);
+	outline-offset: 3px;
+}
+
+.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]) .astroway-tarot__side--back {
+	display: block;
+}
+
+.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]):not(.is-open) .astroway-tarot__side--face {
+	visibility: hidden;
+}
+
+.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]).is-open .astroway-tarot__side--back {
+	visibility: hidden;
+}
+
+/* In the cross the sides take the slot's size; the first card's back shows
+   only its ends from under the second, as its face does. */
+.astroway-card .astroway-cross__slot .astroway-tarot__side {
+	inline-size: var(--astroway-slot);
+}
+
+.astroway-cross__slot--1 .astroway-tarot__back { mask-image: linear-gradient(#000 20%, transparent 20%, transparent 80%, #000 80%); }
+
+/* What a card says waits under its position until it is turned. */
+.astroway-js .astroway-card .astroway-spread--reveal .astroway-spread__card:not(.is-open) .astroway-spread__said {
+	display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]) .astroway-tarot__side {
+		transition: transform 0.45s ease, visibility 0s linear 0.22s;
+		backface-visibility: hidden;
+	}
+
+	.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]):not(.is-open) .astroway-tarot__side--face,
+	.astroway-js .astroway-card :is(.astroway-spread--reveal .astroway-spread__card, .astroway-cross__slot[data-astroway-card]).is-open .astroway-tarot__side--back {
+		transform: rotateY(180deg);
+	}
+}
+
+.astroway-card .astroway-tarot__open-all {
+	margin: 18px 0 0;
+	text-align: center;
+}
+
+/* Only a page with the script can turn cards; without it the button would do nothing. */
+.astroway-card .astroway-tarot__open-all {
+	display: none;
+}
+
+.astroway-js .astroway-card .astroway-tarot__open-all:not([hidden]) {
+	display: block;
+}
+
+.astroway-card .astroway-tarot__reading:not(:empty) {
+	margin-block-start: 8px;
+}
+
+.astroway-card .astroway-tarot__wait,
+.astroway-card .astroway-tarot__failed {
+	margin: 0;
+	color: var(--astroway-muted);
+}
+
 /* ── Sky strip: what the sky is doing today, in one line ── */
 
 .astroway-card .astroway-sky {
@@ -2406,6 +2835,36 @@
 .astroway-card .astroway-card__moon .astroway-moon {
 	inline-size: clamp(88px, 34%, 132px);
 	block-size: auto;
+}
+
+.astroway-card .astroway-card__phase {
+	margin: 6px 0 0;
+	font-size: 0.86em;
+	font-weight: 600;
+	color: var(--astroway-muted);
+}
+
+/* With room, the drawing and the figure share a row instead of stacking. */
+@container (min-width: 26em) {
+	.astroway-card .astroway-card__moonrow {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: center;
+		gap: 24px;
+		margin-block-start: 18px;
+	}
+
+	.astroway-card .astroway-card__moonrow .astroway-card__moon {
+		margin: 0;
+	}
+
+	.astroway-card .astroway-card__moonrow .astroway-card__moon .astroway-moon {
+		inline-size: 120px;
+	}
+
+	.astroway-card .astroway-card__moonrow .astroway-score {
+		margin: 0;
+	}
 }
 
 /* The lit limb is the bright one in every look. It used to take the gilt
@@ -3107,4 +3566,32 @@
 
 .astroway-card--mini-chart .astroway-wheel {
 	max-inline-size: 320px;
+}
+
+/* ── Horoscope: the sky of the day and the advice. ── */
+
+.astroway-card .astroway-horoscope__sky {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 10px;
+	margin: 12px 0 0;
+	font-size: 0.9em;
+}
+
+.astroway-card .astroway-horoscope__sky-label {
+	font-weight: 600;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-horoscope__sky .astroway-sky {
+	margin: 0;
+}
+
+.astroway-card .astroway-callout--advice .astroway-callout__title {
+	margin: 0 0 6px;
+}
+
+.astroway-card .astroway-callout--advice ul {
+	margin: 0;
 }

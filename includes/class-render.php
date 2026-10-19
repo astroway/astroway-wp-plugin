@@ -37,6 +37,7 @@ class Render {
 		'bodygraph'            => [ 'astroway-bodygraph-card', 'bodygraph' ],
 		'retrograde'           => [ 'astroway-retrograde-card', 'retrograde' ],
 		'retrogrades'          => [ 'astroway-retrograde-card', 'retrogrades' ],
+		'transit'              => [ 'astroway-transit-card', 'transit' ],
 		'moon_voc'             => [ 'astroway-voc-card', 'moon-voc' ],
 		'planetary_hours'      => [ 'astroway-hours-card', 'planetary-hours' ],
 		'yearly_horoscope'     => [ 'astroway-horoscope-card', 'horoscope' ],
@@ -58,6 +59,12 @@ class Render {
 	 * @param array  $params Shortcode params, already sanitised by the caller.
 	 */
 	public static function widget( string $widget, array $params = [] ): string {
+		// No sign is a question for the visitor, not an answer: the frame behind
+		// it used to read Aries as if the author had chosen it.
+		if ( in_array( $widget, self::HOROSCOPE_PERIODS, true ) && '' === trim( (string) ( $params['sign'] ?? '' ) ) ) {
+			return self::sign_prompt( $widget, $params );
+		}
+
 		// "In an iframe" is a preference, and it only applies where a frame is
 		// actually an option. The moon and rising sign cards have no embed route
 		// behind them, so honouring the setting there would render nothing at all.
@@ -143,7 +150,7 @@ class Render {
 			case 'moon_phase':
 				return self::moon_card( $data, $lang );
 			case 'tarot_daily':
-				return self::tarot_card( $data, $lang );
+				return self::tarot_card( $data, $lang, $params );
 			case 'planet_of_day':
 				return self::planet_card( $data, $lang );
 			case 'natal':
@@ -292,11 +299,22 @@ class Render {
 			$title = sprintf( __( 'Human Design: %s', 'astroway' ), $name );
 		}
 
-		$inner  = '<header class="astroway-card__header">';
-		$inner .= '<h3 class="astroway-card__title">' . esc_html( $title ) . '</h3>';
-		$inner .= self::date_line( (string) ( $params['date'] ?? '' ) );
-		$inner .= '</header>';
+		$meta = self::natal_meta( $params );
+		if ( is_numeric( $data['designJd'] ?? null ) ) {
+			// The design moment, 88 degrees of the Sun before birth, from its Julian day.
+			$stamp = (int) round( ( (float) $data['designJd'] - 2440587.5 ) * DAY_IN_SECONDS );
+			/* translators: %s = date of the design moment */
+			$design = sprintf( __( 'Design: %s', 'astroway' ), wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp ) );
+			$meta  .= ' <span class="astroway-card__when"><span aria-hidden="true">·</span>' . esc_html( $design ) . '</span>';
+		}
+		$inner  = UI::header(
+			[
+				'title'     => $title,
+				'meta_html' => $meta,
+			]
+		);
 		$inner .= '<p class="astroway-card__lead">' . esc_html( self::hd_type_label( $type ) ) . '</p>';
+		$inner .= UI::shown( 'tags' ) ? self::hd_tags( $type, (string) ( $data['notSelfTheme'] ?? '' ) ) : '';
 
 		$rows = [];
 		if ( ! empty( $data['strategy'] ) ) {
@@ -320,14 +338,17 @@ class Render {
 		if ( ! empty( $data['definition'] ) ) {
 			$rows[ __( 'Definition', 'astroway' ) ] = self::hd_definition_label( (string) $data['definition'] );
 		}
-		if ( ! empty( $data['notSelfTheme'] ) ) {
-			$rows[ __( 'Not-self theme', 'astroway' ) ] = self::hd_theme_label( (string) $data['notSelfTheme'] );
-		}
 		if ( ! empty( $data['cross']['name'] ) ) {
 			// The cross names are an open set of hundreds, so they stay as sent.
-			$rows[ __( 'Incarnation cross', 'astroway' ) ] = (string) $data['cross']['name'];
+			$cross = (string) $data['cross']['name'];
+			$gates = array_values( array_filter( (array) ( $data['cross']['gates'] ?? [] ), 'is_numeric' ) );
+			if ( 4 === count( $gates ) ) {
+				// Personality Sun and Earth, then design Sun and Earth, as charts write it.
+				$cross .= sprintf( ' (%d/%d | %d/%d)', ...array_map( 'intval', $gates ) );
+			}
+			$rows[ __( 'Incarnation cross', 'astroway' ) ] = $cross;
 		}
-		$inner .= self::detail_list( $rows );
+		$inner .= UI::shown( 'facts' ) ? self::detail_list( $rows ) : '';
 
 		$channels = is_array( $data['channels'] ?? null ) ? $data['channels'] : [];
 		$inner   .= UI::tabs(
@@ -335,11 +356,18 @@ class Render {
 			[
 				[
 					'label' => __( 'Bodygraph', 'astroway' ),
+					'key'   => 'bodygraph',
 					'html'  => self::hd_bodygraph( $data, $title ),
 				],
 				[
-					'label' => __( 'Centres and channels', 'astroway' ),
-					'html'  => self::hd_centres( $data['centers'] ?? [] ) . self::hd_channels( $channels ),
+					'label' => __( 'Centres', 'astroway' ),
+					'key'   => 'centres',
+					'html'  => self::hd_centres( $data['centers'] ?? [] ),
+				],
+				[
+					'label' => __( 'Channels', 'astroway' ),
+					'key'   => 'channels',
+					'html'  => self::hd_channels( $channels ),
 				],
 			]
 		);
@@ -404,13 +432,24 @@ class Render {
 				if ( ! isset( $by_planet[ $planet ] ) ) {
 					continue;
 				}
-				$gate                    = (int) $by_planet[ $planet ]['gate'];
-				$line                    = (int) $by_planet[ $planet ]['line'];
+				$act                     = $by_planet[ $planet ];
+				$gate                    = (int) $act['gate'];
+				$line                    = (int) $act['line'];
 				$gates[ $gate ][ $side ] = true;
-				$sides[ $side ]         .= '<li>' . Glyphs::icon( $glyph, self::hd_planet_label( $planet ) )
+				$ctb                     = '';
+				if ( isset( $act['color'], $act['tone'], $act['base'] ) ) {
+					$ctb = '<small class="astroway-bodygraph__ctb"><span aria-hidden="true">'
+						/* translators: abbreviated colour, tone and base of a Human Design activation, e.g. C5 T6 B4 */
+						. esc_html( sprintf( __( 'C%1$d T%2$d B%3$d', 'astroway' ), (int) $act['color'], (int) $act['tone'], (int) $act['base'] ) )
+						. '</span><span class="astroway-sr">'
+						/* translators: colour, tone and base of a Human Design activation */
+						. esc_html( sprintf( __( 'colour %1$d, tone %2$d, base %3$d', 'astroway' ), (int) $act['color'], (int) $act['tone'], (int) $act['base'] ) )
+						. '</span></small>';
+				}
+				$sides[ $side ] .= '<li>' . Glyphs::icon( $glyph, self::hd_planet_label( $planet ) )
 					. '<span aria-hidden="true">' . $gate . '.' . $line . '</span><span class="astroway-sr">'
 					/* translators: 1: Human Design gate number, 2: line number within the gate */
-					. esc_html( sprintf( __( 'gate %1$d, line %2$d', 'astroway' ), $gate, $line ) ) . '</span></li>';
+					. esc_html( sprintf( __( 'gate %1$d, line %2$d', 'astroway' ), $gate, $line ) ) . '</span>' . $ctb . '</li>';
 			}
 		}
 
@@ -479,61 +518,157 @@ class Render {
 	}
 
 	/** Defined centres named, undefined ones counted: nine lines would drown the card. */
+	/** Signature and not-self theme, the pair every type is told by. */
+	private static function hd_tags( string $type, string $not_self ): string {
+		$signatures = [
+			'Generator'             => __( 'Satisfaction', 'astroway' ),
+			'Manifesting Generator' => __( 'Satisfaction', 'astroway' ),
+			'Projector'             => __( 'Success', 'astroway' ),
+			'Manifestor'            => __( 'Peace', 'astroway' ),
+			'Reflector'             => __( 'Surprise', 'astroway' ),
+		];
+		$tags       = [];
+		if ( isset( $signatures[ $type ] ) ) {
+			/* translators: %s = Human Design signature, e.g. Success */
+			$tags[] = sprintf( __( 'Signature: %s', 'astroway' ), $signatures[ $type ] );
+		}
+		if ( '' !== trim( $not_self ) ) {
+			/* translators: %s = Human Design not-self theme, e.g. Bitterness */
+			$tags[] = sprintf( __( 'Not-self: %s', 'astroway' ), self::hd_theme_label( $not_self ) );
+		}
+		$html = UI::tags( $tags );
+		return '' === $html ? '' : str_replace( 'class="astroway-tags"', 'class="astroway-tags astroway-hd__tags"', $html );
+	}
+
+	/** Motors, awareness and pressure centres: fixed by the system, not by the chart. */
+	private const HD_CENTRE_KINDS = [
+		'Head'        => [ 'pressure' ],
+		'Ajna'        => [ 'awareness' ],
+		'Throat'      => [],
+		'G'           => [],
+		'Heart'       => [ 'motor' ],
+		'Spleen'      => [ 'awareness' ],
+		'SolarPlexus' => [ 'motor', 'awareness' ],
+		'Sacral'      => [ 'motor' ],
+		'Root'        => [ 'motor', 'pressure' ],
+	];
+
+	/** The nine centres, top to bottom, each a row that opens on its kind and gates. */
 	private static function hd_centres( $centres ): string {
 		if ( ! is_array( $centres ) || empty( $centres ) ) {
 			return '';
 		}
-		$defined = [];
-		$open    = [];
+		$kinds = [
+			'motor'     => __( 'Motor', 'astroway' ),
+			'awareness' => __( 'Awareness', 'astroway' ),
+			'pressure'  => __( 'Pressure', 'astroway' ),
+		];
+		$by    = [];
 		foreach ( $centres as $centre ) {
-			if ( ! is_array( $centre ) || empty( $centre['name'] ) ) {
+			if ( is_array( $centre ) && isset( self::HD_CENTRE_KINDS[ (string) ( $centre['name'] ?? '' ) ] ) ) {
+				$by[ (string) $centre['name'] ] = $centre;
+			}
+		}
+		$items = [];
+		foreach ( self::HD_CENTRE_KINDS as $name => $kind ) {
+			if ( ! isset( $by[ $name ] ) ) {
 				continue;
 			}
-			$label = self::hd_centre_label( (string) $centre['name'] );
-			if ( ! empty( $centre['defined'] ) ) {
-				$defined[] = $label;
-			} else {
-				$open[] = $label;
+			$centre  = $by[ $name ];
+			$defined = ! empty( $centre['defined'] );
+			$tags    = [ $defined ? __( 'Defined', 'astroway' ) : __( 'Open', 'astroway' ) ];
+			foreach ( $kind as $k ) {
+				$tags[] = $kinds[ $k ];
 			}
+			$body   = UI::tags( $tags );
+			$all    = array_map( 'intval', array_filter( (array) ( $centre['gates'] ?? [] ), 'is_numeric' ) );
+			$active = array_map( 'intval', array_filter( (array) ( $centre['activeGates'] ?? [] ), 'is_numeric' ) );
+			if ( $all ) {
+				/* translators: %s = list of gate numbers */
+				$body .= '<p class="astroway-hd__gates">' . esc_html( sprintf( __( 'Gates: %s', 'astroway' ), implode( ', ', $all ) ) ) . '</p>';
+			}
+			if ( $active ) {
+				/* translators: %s = list of gate numbers */
+				$body .= '<p class="astroway-hd__gates">' . esc_html( sprintf( __( 'Active gates: %s', 'astroway' ), implode( ', ', $active ) ) ) . '</p>';
+			}
+			$items[] = [
+				'title'     => self::hd_centre_label( $name ),
+				'meta_html' => esc_html( $defined ? __( 'Defined', 'astroway' ) : __( 'Open', 'astroway' ) ),
+				'body_html' => $body,
+			];
 		}
-		if ( empty( $defined ) && empty( $open ) ) {
-			return '';
-		}
-
-		$rows = [];
-		if ( ! empty( $defined ) ) {
-			$rows[ __( 'Defined centres', 'astroway' ) ] = implode( ', ', $defined );
-		}
-		if ( ! empty( $open ) ) {
-			$rows[ __( 'Open centres', 'astroway' ) ] = implode( ', ', $open );
-		}
-		return '<h4 class="astroway-card__subtitle">' . esc_html__( 'Centres', 'astroway' ) . '</h4>' . self::detail_list( $rows );
+		return UI::accordion( $items );
 	}
 
+	/**
+	 * The circuit each of the 36 channels belongs to. The integration channels
+	 * stand apart from the three circuit groups.
+	 */
+	private const HD_CIRCUITS = [
+		'integration' => [ '10-20', '10-34', '10-57', '20-34', '20-57', '34-57' ],
+		'individual'  => [ '1-8', '2-14', '3-60', '12-22', '23-43', '24-61', '28-38', '39-55', '25-51' ],
+		'tribal'      => [ '19-49', '37-40', '21-45', '26-44', '32-54', '6-59', '27-50' ],
+		'collective'  => [ '4-63', '7-31', '5-15', '9-52', '16-48', '17-62', '18-58', '11-56', '13-33', '29-46', '30-41', '35-36', '42-53', '47-64' ],
+	];
+
+	/** Defined channels grouped by circuit, each opening on its centres and which side made it. */
 	private static function hd_channels( $channels ): string {
 		if ( ! is_array( $channels ) || empty( $channels ) ) {
 			return '';
 		}
-		$items = '';
+		$groups = [
+			'individual'  => __( 'Individual circuitry', 'astroway' ),
+			'tribal'      => __( 'Tribal circuitry', 'astroway' ),
+			'collective'  => __( 'Collective circuitry', 'astroway' ),
+			'integration' => __( 'Integration channels', 'astroway' ),
+		];
+		$sides  = [
+			'personality' => __( 'Personality', 'astroway' ),
+			'design'      => __( 'Design', 'astroway' ),
+		];
+		$filed  = [];
 		foreach ( $channels as $channel ) {
 			if ( ! is_array( $channel ) || ! isset( $channel['gate1'], $channel['gate2'] ) ) {
 				continue;
 			}
-			$items .= '<li>' . esc_html(
-				sprintf(
+			$a       = (int) $channel['gate1'];
+			$b       = (int) $channel['gate2'];
+			$key     = min( $a, $b ) . '-' . max( $a, $b );
+			$circuit = '';
+			foreach ( self::HD_CIRCUITS as $name => $list ) {
+				if ( in_array( $key, $list, true ) ) {
+					$circuit = $name;
+					break;
+				}
+			}
+			$tags = [
+				self::hd_centre_label( (string) ( $channel['centerA'] ?? '' ) ),
+				self::hd_centre_label( (string) ( $channel['centerB'] ?? '' ) ),
+			];
+			foreach ( (array) ( $channel['activatedBy'] ?? [] ) as $by ) {
+				if ( isset( $sides[ $by ] ) ) {
+					$tags[] = $sides[ $by ];
+				}
+			}
+			$filed[ $circuit ][] = [
+				'title'     => sprintf(
 					/* translators: 1: first gate number, 2: second gate number, 3: first centre, 4: second centre */
 					__( '%1$d-%2$d, %3$s to %4$s', 'astroway' ),
-					(int) $channel['gate1'],
-					(int) $channel['gate2'],
+					$a,
+					$b,
 					self::hd_centre_label( (string) ( $channel['centerA'] ?? '' ) ),
 					self::hd_centre_label( (string) ( $channel['centerB'] ?? '' ) )
-				)
-			) . '</li>';
+				),
+				'body_html' => UI::tags( $tags ),
+			];
 		}
-		if ( '' === $items ) {
-			return '';
+		$html = '';
+		foreach ( $groups + [ '' => __( 'Channels', 'astroway' ) ] as $circuit => $label ) {
+			if ( ! empty( $filed[ $circuit ] ) ) {
+				$html .= '<h5 class="astroway-hd__circuit">' . esc_html( $label ) . '</h5>' . UI::accordion( $filed[ $circuit ] );
+			}
 		}
-		return '<h4 class="astroway-card__subtitle">' . esc_html__( 'Channels', 'astroway' ) . '</h4><ul class="astroway-card__channels">' . $items . '</ul>';
+		return $html;
 	}
 
 	private static function hd_type_label( string $raw ): string {
@@ -695,6 +830,8 @@ class Render {
 		}
 
 		$aspects = self::natal_aspects( $aspects_in );
+		$sect    = $unknown ? '' : (string) ( $data['chartSect'] ?? '' );
+		$points  = self::natal_points( $planets, $houses, $sect );
 
 		$sun = null;
 		foreach ( $planets as $planet ) {
@@ -711,7 +848,8 @@ class Render {
 				'meta_html' => self::natal_meta( $params ),
 			]
 		);
-		$inner .= self::natal_big_three( $planets, $houses );
+		$inner .= UI::shown( 'big-three' ) ? self::natal_big_three( $planets, $houses ) : '';
+		$inner .= UI::shown( 'summary' ) ? self::natal_summary( $planets, $aspects_in, $sect ) : '';
 		if ( $unknown ) {
 			$inner .= UI::callout( esc_html__( 'Birth time unknown: the chart is drawn for noon, without houses, the Ascendant or the Moon\'s aspects, and the Moon may be up to 7 degrees from where it was.', 'astroway' ) );
 		}
@@ -720,30 +858,36 @@ class Render {
 			[
 				[
 					'label' => __( 'Wheel', 'astroway' ),
-					'html'  => self::natal_wheel( $planets, $houses, $cusps, $aspects, $title ),
+					'key'   => 'wheel',
+					'html'  => self::natal_wheel( $planets, $houses, $cusps, $aspects, $title, '', $points ),
 				],
 				[
 					'label' => __( 'Grid', 'astroway' ),
+					'key'   => 'grid',
 					'html'  => UI::aspect_grid( self::natal_planet_ids( $planets ), $aspects, __( 'Aspects between planets', 'astroway' ) ),
 				],
 				[
 					'label' => __( 'Placements', 'astroway' ),
-					'html'  => self::natal_placements( $planets, $cusps, $houses ),
+					'key'   => 'placements',
+					'html'  => self::natal_placements( $planets, $cusps, $houses, $points ),
 				],
 				[
 					'label' => __( 'Aspects', 'astroway' ),
+					'key'   => 'aspects',
 					'html'  => UI::aspects( $aspects ),
 					'count' => count( $aspects ),
 				],
 				[
 					'label' => __( 'Transits', 'astroway' ),
+					'key'   => 'transits',
 					'html'  => self::natal_transits( $planets, $houses, $cusps, $params, $title ),
 				],
 			]
 		);
 		$matrix = self::natal_matrix( $planets );
 		// Its own block with a heading: under the tabs it read as the tail of whichever tab was open.
-		$inner .= '' === $matrix ? '' : UI::section( __( 'Elements by mode', 'astroway' ), $matrix );
+		$inner .= '' === $matrix ? '' : UI::section( __( 'Elements by mode', 'astroway' ), $matrix, '', 'elements' );
+		$inner .= self::natal_patterns( $planets, $unknown ? [] : $cusps );
 
 		$keys   = self::natal_text_keys( $planets, $cusps, $houses, $aspects_in );
 		$inner .= self::natal_reading( $keys, PublicData::natal_texts( $keys, $lang ) );
@@ -772,6 +916,13 @@ class Render {
 		if ( isset( $houses['ascendant'] ) ) {
 			$keys[] = 'ascendant.' . self::sign_of( (float) $houses['ascendant'] );
 		}
+		// Asked for so they appear the day the api writes them; a missing key is cached as missing.
+		foreach ( $planets as $planet ) {
+			$id = is_array( $planet ) && isset( $planet['longitude'] ) ? self::planet_id( (string) ( $planet['name'] ?? '' ) ) : '';
+			if ( in_array( $id, [ 'north-node', 'lilith' ], true ) ) {
+				$keys[] = str_replace( '-', '_', $id ) . '.' . self::sign_of( (float) $planet['longitude'] );
+			}
+		}
 
 		// Pairs among the ten planets, in the api's fixed order, major aspects only.
 		$order = array_flip( array_slice( self::TEXT_BODIES, 0, 10 ) );
@@ -793,6 +944,9 @@ class Render {
 		[ $subject, $what ] = array_pad( explode( '.', $key, 2 ), 2, '' );
 		if ( 'ascendant' === $subject ) {
 			return $what;
+		}
+		if ( 'north_node' === $subject ) {
+			return 'north-node';
 		}
 		return false === strpos( $subject, '_' ) ? $subject : $what;
 	}
@@ -847,7 +1001,11 @@ class Render {
 			];
 		}
 
-		return $items ? UI::section( __( 'What it means', 'astroway' ), UI::accordion( $items ) ) : '';
+		if ( $items ) {
+			// The first row open says at a glance that the rows hold text; open="none" closes it.
+			$items[0]['open'] = true;
+		}
+		return $items ? UI::section( __( 'What it means', 'astroway' ), UI::accordion( $items ), '', 'meaning' ) : '';
 	}
 
 	/** "Moon sign · 15 May 1990": what the card is, then when it is for. */
@@ -882,6 +1040,135 @@ class Render {
 
 	private static function sanitised_date( string $date ): string {
 		return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ? $date : '';
+	}
+
+	/**
+	 * The Part of Fortune, the vertex and the South Node, ready for the wheel
+	 * and the placements table.
+	 *
+	 * @return list<array{id: string, name: string, lon: float, text?: string}>
+	 */
+	private static function natal_points( array $planets, array $houses, string $sect ): array {
+		$names = [
+			'fortune'    => __( 'Part of Fortune', 'astroway' ),
+			'vertex'     => __( 'Vertex', 'astroway' ),
+			'south-node' => __( 'South Node', 'astroway' ),
+		];
+		$out   = [];
+		foreach ( ChartFacts::points( $planets, $houses, $sect ) as $id => $lon ) {
+			$point = [
+				'id'   => $id,
+				'name' => $names[ $id ],
+				'lon'  => $lon,
+			];
+			// The vertex has no glyph of its own; astrologers write it Vx.
+			if ( 'vertex' === $id ) {
+				$point['text'] = 'Vx';
+			}
+			$out[] = $point;
+		}
+		return $out;
+	}
+
+	/**
+	 * One line of pills: the element and mode the chart leans on, day or night,
+	 * how many aspects are harmonious and how many tense, which planets are
+	 * retrograde.
+	 */
+	private static function natal_summary( array $planets, array $aspects_in, string $sect ): string {
+		$elements = [
+			'fire'  => __( 'Fire', 'astroway' ),
+			'earth' => __( 'Earth', 'astroway' ),
+			'air'   => __( 'Air', 'astroway' ),
+			'water' => __( 'Water', 'astroway' ),
+		];
+		$modes    = [
+			'cardinal' => __( 'Cardinal', 'astroway' ),
+			'fixed'    => __( 'Fixed', 'astroway' ),
+			'mutable'  => __( 'Mutable', 'astroway' ),
+		];
+		$dominant = ChartFacts::dominant( $planets );
+		$pills    = [];
+		if ( ! empty( $dominant['element'] ) ) {
+			/* translators: %s = element or elements, e.g. "Earth" or "Earth, Water" */
+			$pills[] = esc_html( sprintf( __( 'Element: %s', 'astroway' ), implode( ', ', array_map( static fn( $k ) => $elements[ $k ], $dominant['element'] ) ) ) );
+		}
+		if ( ! empty( $dominant['mode'] ) ) {
+			/* translators: %s = mode or modes, e.g. "Fixed" */
+			$pills[] = esc_html( sprintf( __( 'Mode: %s', 'astroway' ), implode( ', ', array_map( static fn( $k ) => $modes[ $k ], $dominant['mode'] ) ) ) );
+		}
+		if ( 'diurnal' === $sect ) {
+			$pills[] = esc_html__( 'Day chart', 'astroway' );
+		} elseif ( 'nocturnal' === $sect ) {
+			$pills[] = esc_html__( 'Night chart', 'astroway' );
+		}
+		$major   = array_filter( $aspects_in, static fn( $a ) => is_array( $a ) && ! empty( $a['type']['isMajor'] ) );
+		$balance = ChartFacts::balance( $major );
+		if ( $balance['h'] + $balance['t'] > 0 ) {
+			/* translators: %d = number of aspects */
+			$pills[] = esc_html( sprintf( __( 'Harmonious %d', 'astroway' ), $balance['h'] ) );
+			/* translators: %d = number of aspects */
+			$pills[] = esc_html( sprintf( __( 'Challenging %d', 'astroway' ), $balance['t'] ) );
+		}
+		$retro = '';
+		foreach ( $planets as $planet ) {
+			$id = is_array( $planet ) ? self::planet_id( (string) ( $planet['name'] ?? '' ) ) : '';
+			// The nodes and Lilith move backwards by their nature; naming them says nothing.
+			if ( ! empty( $planet['isRetrograde'] ) && ! in_array( $id, [ 'north-node', 'south-node', 'lilith' ], true ) ) {
+				$name   = self::planet_label( (string) ( $planet['name'] ?? '' ) );
+				$retro .= Glyphs::exists( $id ) ? Glyphs::icon( $id, $name ) : esc_html( $name ) . ' ';
+			}
+		}
+		if ( '' !== $retro ) {
+			$pills[] = esc_html__( 'Retrograde', 'astroway' ) . ' <span class="astroway-natal__rx">' . $retro . '</span>';
+		}
+		if ( empty( $pills ) ) {
+			return '';
+		}
+		return '<ul class="astroway-tags astroway-natal__summary"><li>' . implode( '</li><li>', $pills ) . '</li></ul>';
+	}
+
+	/** Chart patterns as cards: the figure's name, its planets with the apex marked, what it is. */
+	private static function natal_patterns( array $planets, array $cusps ): string {
+		if ( ! UI::shown( 'patterns' ) ) {
+			return '';
+		}
+		$names = [
+			'grand_cross' => __( 'Grand cross', 'astroway' ),
+			't_square'    => __( 'T-square', 'astroway' ),
+			'grand_trine' => __( 'Grand trine', 'astroway' ),
+			'yod'         => __( 'Yod', 'astroway' ),
+			'stellium'    => __( 'Stellium', 'astroway' ),
+		];
+		$about = [
+			'grand_cross' => __( 'Four planets in two oppositions, each square to the next.', 'astroway' ),
+			't_square'    => __( 'Two planets in opposition, both square to a third, the apex.', 'astroway' ),
+			'grand_trine' => __( 'Three planets a trine apart, closing a triangle.', 'astroway' ),
+			'yod'         => __( 'Two planets in sextile, both quincunx to a third, the apex.', 'astroway' ),
+		];
+		$cards = '';
+		foreach ( ChartFacts::patterns( $planets, $cusps ) as $figure ) {
+			$tags = [];
+			foreach ( $figure['bodies'] as $id ) {
+				$label  = self::planet_label( ucfirst( $id ) );
+				$tags[] = ( $figure['apex'] ?? '' ) === $id
+					/* translators: %s = planet name, the apex of a chart pattern */
+					? sprintf( __( '%s (apex)', 'astroway' ), $label )
+					: $label;
+			}
+			if ( 'stellium' === $figure['kind'] ) {
+				$desc = isset( $figure['sign'] )
+					/* translators: 1: number of planets, 2: sign name */
+					? sprintf( __( '%1$d planets in %2$s.', 'astroway' ), count( $figure['bodies'] ), self::sign_label( $figure['sign'] ) )
+					/* translators: 1: number of planets, 2: house number */
+					: sprintf( __( '%1$d planets in house %2$d.', 'astroway' ), count( $figure['bodies'] ), (int) $figure['house'] );
+			} else {
+				$desc = $about[ $figure['kind'] ];
+			}
+			$cards .= '<li class="astroway-patterns__item"><h5 class="astroway-patterns__name">' . esc_html( $names[ $figure['kind'] ] ) . '</h5>'
+				. UI::tags( $tags ) . '<p class="astroway-patterns__about">' . esc_html( $desc ) . '</p></li>';
+		}
+		return '' === $cards ? '' : UI::section( __( 'Chart patterns', 'astroway' ), '<ul class="astroway-patterns">' . $cards . '</ul>', '', 'patterns' );
 	}
 
 	/**
@@ -947,6 +1234,7 @@ class Render {
 				'glyph' => $glyph,
 				'kind'  => self::aspect_kind( $type ),
 				'orb'   => $orb,
+				'trend' => isset( $aspect['isApplying'] ) ? ( empty( $aspect['isApplying'] ) ? __( 'Separating', 'astroway' ) : __( 'Applying', 'astroway' ) ) : '',
 				'text'  => sprintf(
 					/* translators: 1: first planet, 2: aspect name, 3: second planet */
 					__( '%1$s %2$s %3$s', 'astroway' ),
@@ -1017,7 +1305,7 @@ class Render {
 	 * which put the chart on a document the page's own stylesheet and a reader
 	 * without scripts could not reach.
 	 */
-	private static function natal_wheel( array $planets, array $houses, array $cusps, array $aspects, string $title, string $desc = '' ): string {
+	private static function natal_wheel( array $planets, array $houses, array $cusps, array $aspects, string $title, string $desc = '', array $points = [] ): string {
 		$drawn = [];
 		foreach ( $planets as $planet ) {
 			if ( ! is_array( $planet ) || ! isset( $planet['longitude'], $planet['name'] ) ) {
@@ -1036,6 +1324,18 @@ class Render {
 		}
 		if ( empty( $drawn ) ) {
 			return '';
+		}
+		foreach ( $points as $point ) {
+			$house   = self::house_of( $point['lon'], $cusps );
+			$label   = $point['name'] . ', ' . self::position_label( $point['lon'] );
+			$label  .= null === $house ? '' : ', ' . sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house );
+			$drawn[] = [
+				'id'    => $point['id'],
+				'lon'   => $point['lon'],
+				'rx'    => false,
+				'label' => $label,
+				'text'  => $point['text'] ?? '',
+			];
 		}
 
 		return Wheel::natal(
@@ -1440,7 +1740,7 @@ class Render {
 	}
 
 	/** Every placement as a table, angles included. */
-	private static function natal_placements( array $planets, array $cusps, array $houses ): string {
+	private static function natal_placements( array $planets, array $cusps, array $houses, array $points = [] ): string {
 		$rows = [];
 		foreach ( $planets as $planet ) {
 			if ( ! is_array( $planet ) || ! isset( $planet['longitude'], $planet['name'] ) ) {
@@ -1456,6 +1756,19 @@ class Render {
 					self::position_label( $lon ),
 					null === $house ? '' : sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house ),
 					empty( $planet['isRetrograde'] ) ? '' : __( 'retrograde', 'astroway' ),
+				],
+			];
+		}
+
+		foreach ( $points as $point ) {
+			$house  = self::house_of( $point['lon'], $cusps );
+			$icon   = Glyphs::exists( $point['id'] ) ? Glyphs::icon( $point['id'], $point['name'] ) . ' ' : '';
+			$rows[] = [
+				'cells' => [
+					[ 'html' => $icon . esc_html( $point['name'] ) ],
+					self::position_label( $point['lon'] ),
+					null === $house ? '' : sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house ),
+					'',
 				],
 			];
 		}
@@ -1801,11 +2114,86 @@ class Render {
 				'actions_html' => self::horoscope_datenav( $widget, $data, $params ),
 			]
 		);
-		$inner .= self::sign_switch( $slug, $params );
+		$inner .= UI::shown( 'signs' ) ? self::sign_switch( $slug, $params ) : '';
+		$inner .= 'daily_horoscope' === $widget && UI::shown( 'sky' ) ? self::sky_today( (string) ( $data['date'] ?? '' ), $params ) : '';
 		$inner .= UI::tabs( __( 'Period', 'astroway' ), $panels, self::horoscope_selected( $widget, $panels ) );
 		$inner .= UI::note( (string) ( $data['disclaimer'] ?? '' ) );
 
 		return self::shell( $widget, $lang, $inner );
+	}
+
+	/**
+	 * The card for a horoscope with no sign: the twelve signs as links, the
+	 * same ones the card switches with, so it works without a script and
+	 * behind a page cache.
+	 */
+	private static function sign_prompt( string $widget, array $params ): string {
+		$links = [];
+		$names = [];
+		foreach ( self::sign_slugs() as $slug ) {
+			$links[ $slug ] = add_query_arg( 'aw_sign', $slug );
+			$names[ $slug ] = self::sign_label( $slug );
+		}
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Horoscope', 'astroway' ),
+				'meta_html' => esc_html( self::period_label( (string) array_search( $widget, self::HOROSCOPE_PERIODS, true ) ) ),
+			]
+		);
+		$inner .= '<p class="astroway-card__intro">' . esc_html__( 'Pick your sign', 'astroway' ) . '</p>';
+		$inner .= UI::signs(
+			[
+				'label'   => __( 'Zodiac sign', 'astroway' ),
+				'current' => '',
+				'links'   => $links,
+				'names'   => $names,
+			]
+		);
+		return self::shell( $widget, Plugin::resolve_lang( $params['lang'] ?? '' ), $inner );
+	}
+
+	/** The Moon's sign and phase on the horoscope's day, from the cached moon card. */
+	private static function sky_today( string $date, array $params ): string {
+		$moon  = PublicData::get(
+			'moon_phase',
+			[
+				'date' => preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ? $date : '',
+				'lang' => $params['lang'] ?? '',
+			]
+		);
+		$phase = (string) ( $moon['phaseName'] ?? '' );
+		$sign  = (string) ( $moon['moonSign'] ?? '' );
+		if ( '' === $phase || '' === $sign ) {
+			return '';
+		}
+		$lit  = isset( $moon['illuminationPercent'] ) ? (float) $moon['illuminationPercent'] / 100 : 0.5;
+		$text = sprintf(
+			/* translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning Crescent" */
+			__( 'Moon in %1$s · %2$s', 'astroway' ),
+			self::localised( $moon, 'moonSign', self::sign_label( $sign ) ),
+			self::localised( $moon, 'phaseName', self::phase_label( $phase ) )
+		);
+		return '<div class="astroway-horoscope__sky"><span class="astroway-horoscope__sky-label">' . esc_html__( 'Sky today', 'astroway' ) . '</span>'
+			. UI::sky(
+				[
+					[
+						'icon_html' => UI::moon( $lit, ! empty( $moon['waxing'] ) ),
+						'text'      => $text,
+					],
+				]
+			) . '</div>';
+	}
+
+	/**
+	 * A bold heading line right before a list is the reading's advice; set it
+	 * off so it reads as the practical part. Without that shape, nothing changes.
+	 */
+	private static function advice( string $html ): string {
+		return (string) preg_replace_callback(
+			'#<p><strong>([^<]{1,80})</strong></p>(<ul>.*?</ul>)#su',
+			static fn( $m ) => UI::callout( '<p class="astroway-callout__title"><strong>' . $m[1] . '</strong></p>' . $m[2], 'advice' ),
+			$html
+		);
 	}
 
 	/** Period key per horoscope widget, in the order the tabs show them. */
@@ -1842,7 +2230,7 @@ class Render {
 			}
 			$panels[] = [
 				'label' => self::period_label( $period ),
-				'html'  => UI::prose( self::lead( self::paragraphs( $text ) ) ),
+				'html'  => UI::prose( self::advice( self::lead( self::paragraphs( $text ) ) ) ),
 				'key'   => $key,
 			];
 		}
@@ -2011,6 +2399,7 @@ class Render {
 				'label' => __( 'Moon in', 'astroway' ),
 				'glyph' => strtolower( $sign ),
 				'value' => self::localised( $data, 'moonSign', self::sign_label( $sign ) ),
+				'sub'   => is_numeric( $data['moonDegree'] ?? null ) ? self::arc( (float) $data['moonDegree'] ) : '',
 			];
 		}
 		if ( isset( $data['ageDays'] ) ) {
@@ -2041,17 +2430,97 @@ class Render {
 
 		// The drawing carries the state the numbers describe: lit fraction and
 		// which limb it sits on, so the picture cannot disagree with the figure.
-		$inner .= '<div class="astroway-card__moon">' . UI::moon( null === $lit ? 0.5 : $lit / 100, $waxing ) . '</div>';
-
+		// The word under it is for a reader who does not know which limb means growing.
+		$row  = '<div class="astroway-card__moon">' . UI::moon( null === $lit ? 0.5 : $lit / 100, $waxing );
+		$row .= '<p class="astroway-card__phase">' . esc_html( $waxing ? __( 'Waxing', 'astroway' ) : __( 'Waning', 'astroway' ) ) . '</p></div>';
 		if ( null !== $lit ) {
-			$inner .= UI::score( (int) round( $lit ), __( 'Illuminated', 'astroway' ) );
+			$row .= UI::score( (int) round( $lit ), __( 'Illuminated', 'astroway' ) );
 		}
-		$inner .= UI::facts( $facts, 'trio' );
+		$inner .= '<div class="astroway-card__moonrow">' . $row . '</div>';
+		$inner .= UI::shown( 'facts' ) ? UI::facts( $facts, 'trio' ) : '';
+		$inner .= UI::shown( 'meaning' ) ? self::moon_meaning( $data, $lang ) : '';
+		$inner .= self::moon_cycle( $data );
 
 		return self::shell( 'moon_phase', $lang, $inner );
 	}
 
-	private static function tarot_card( array $data, string $lang ): string {
+	/** Degrees and minutes inside a sign, floored so 29.99 never reads as 30. */
+	private static function arc( float $degree ): string {
+		$minutes = (int) floor( max( 0.0, $degree ) * 60 );
+		return sprintf( '%d°%02d′', intdiv( $minutes, 60 ) % 30, $minutes % 60 );
+	}
+
+	/**
+	 * What the phase means. Until the api has translated it, `localized` repeats
+	 * the English, and an English sentence on another language's page is worse
+	 * than no sentence, so the part waits for the translation.
+	 */
+	private static function moon_meaning( array $data, string $lang ): string {
+		$english  = (string) ( $data['meaning'] ?? '' );
+		$en_words = is_array( $data['keywords'] ?? null ) ? $data['keywords'] : [];
+		if ( 'en' === Plugin::resolve_lang( $lang ) ) {
+			$meaning = $english;
+			$words   = $en_words;
+		} else {
+			$local   = is_array( $data['localized'] ?? null ) ? $data['localized'] : [];
+			$meaning = is_string( $local['meaning'] ?? null ) && $local['meaning'] !== $english ? $local['meaning'] : '';
+			$words   = is_array( $local['keywords'] ?? null ) && $local['keywords'] !== $en_words ? $local['keywords'] : [];
+		}
+		$words = array_filter( $words, 'is_string' );
+		$html  = '' === trim( $meaning ) ? '' : '<div class="astroway-card__body"><p>' . esc_html( trim( $meaning ) ) . '</p></div>';
+		return $html . UI::tags( $words );
+	}
+
+	/** The next four main phases, soonest first, and how far the Moon is. */
+	private static function moon_cycle( array $data ): string {
+		$names = [
+			'newMoon'      => __( 'New Moon', 'astroway' ),
+			'firstQuarter' => __( 'First Quarter', 'astroway' ),
+			'fullMoon'     => __( 'Full Moon', 'astroway' ),
+			'lastQuarter'  => __( 'Last Quarter', 'astroway' ),
+		];
+		$next  = is_array( $data['next'] ?? null ) ? $data['next'] : [];
+		$found = [];
+		foreach ( $names as $key => $label ) {
+			$iso = $next[ $key ] ?? null;
+			if ( ! is_string( $iso ) || ! preg_match( '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?Z$/', $iso ) ) {
+				continue;
+			}
+			$stamp = strtotime( $iso );
+			if ( false !== $stamp ) {
+				$found[] = [ $stamp, $iso, $label ];
+			}
+		}
+		usort( $found, static fn( $a, $b ) => $a[0] <=> $b[0] );
+
+		// All four fall within a month, so the year is noise and the site's long
+		// date format wrapped the time onto a line of its own at 375px.
+		/* translators: PHP date format for a day within the coming month, such as "Oct 10" */
+		$day  = _x( 'M j', 'moon cycle date', 'astroway' );
+		$time = (string) get_option( 'time_format', 'H:i' );
+		$rows = '';
+		foreach ( $found as [ $stamp, $iso, $label ] ) {
+			$rows .= '<div class="astroway-facts__item"><dt>' . esc_html( $label ) . '</dt><dd><time datetime="' . esc_attr( $iso ) . '">'
+				. '<span class="astroway-nowrap">' . esc_html( (string) wp_date( $day, $stamp ) ) . '</span> '
+				. '<span class="astroway-facts__sub">' . esc_html( (string) wp_date( $time, $stamp ) ) . '</span></time></dd></div>';
+		}
+		if ( is_numeric( $data['distanceKm'] ?? null ) && (float) $data['distanceKm'] > 0 ) {
+			$rows .= '<div class="astroway-facts__item"><dt>' . esc_html__( 'Distance', 'astroway' ) . '</dt><dd>'
+				. esc_html(
+					sprintf(
+						/* translators: %s = distance in kilometres */
+						__( '%s km', 'astroway' ),
+						self::number( (float) $data['distanceKm'], 0 )
+					)
+				) . '</dd></div>';
+		}
+		if ( '' === $rows ) {
+			return '';
+		}
+		return UI::section( __( 'Moon cycle', 'astroway' ), '<dl class="astroway-facts astroway-facts--list">' . $rows . '</dl>', '', 'phases' );
+	}
+
+	private static function tarot_card( array $data, string $lang, array $params = [] ): string {
 		$drawn = $data['drawn'][0] ?? null;
 		if ( ! is_array( $drawn ) || ! is_array( $drawn['card'] ?? null ) ) {
 			return '';
@@ -2061,21 +2530,38 @@ class Render {
 			return '';
 		}
 
-		$inner  = UI::header(
+		$inner     = UI::header(
 			[
 				'title'     => __( 'Card of the day', 'astroway' ),
 				'meta_html' => self::kind_meta( __( 'Rider-Waite-Smith', 'astroway' ), (string) ( $data['date'] ?? '' ) ),
 			]
 		);
-		$inner .= '<div class="astroway-tarot">' . Tarot::face( $drawn ) . '<div class="astroway-tarot__text">';
-		$inner .= '<p class="astroway-card__lead">' . esc_html( Tarot::title( $read ) ) . '</p>';
-		if ( ! empty( $read['keywords'] ) ) {
-			$inner .= '<p class="astroway-card__keywords">' . esc_html( implode( ', ', $read['keywords'] ) ) . '</p>';
-		}
+		$localized = is_array( $data['localized'] ?? null ) ? $data['localized'] : [];
+		$english   = 'en' === Plugin::resolve_lang( $lang );
+		$pictures  = '' !== (string) ( $params['art'] ?? '' );
+		$inner    .= '<div class="astroway-tarot">' . Tarot::face( $drawn, $pictures ) . '<div class="astroway-tarot__text">';
+		$inner    .= '<p class="astroway-card__lead">' . esc_html( Tarot::title( $read ) ) . '</p>';
+		$inner    .= UI::shown( 'tags' ) ? UI::tags( Tarot::kind_tags( $drawn, $localized ) ) : '';
 		if ( '' !== $read['meaning'] ) {
 			$inner .= '<div class="astroway-card__body"><p>' . esc_html( $read['meaning'] ) . '</p></div>';
 		}
+		$inner .= UI::shown( 'keywords' ) ? UI::tags( $read['keywords'] ) : '';
 		$inner .= '</div></div>';
+		$inner .= UI::shown( 'facts' ) ? UI::facts( Tarot::facts( (array) $drawn['card'], $english ) ) : '';
+
+		// The other way up stays closed: it is for study, not the answer of the day.
+		$other = Tarot::other_side( $drawn, $localized, $english );
+		if ( UI::shown( 'other-side' ) && ( '' !== $other['meaning'] || ! empty( $other['keywords'] ) ) ) {
+			$body   = '' === $other['meaning'] ? '' : '<p>' . esc_html( $other['meaning'] ) . '</p>';
+			$inner .= UI::accordion(
+				[
+					[
+						'title'     => $other['title'],
+						'body_html' => $body . UI::tags( $other['keywords'] ),
+					],
+				]
+			);
+		}
 
 		return self::shell( 'tarot_daily', $lang, $inner );
 	}
@@ -2093,9 +2579,16 @@ class Render {
 		$localized = is_array( $data['localized'] ?? null ) ? $data['localized'] : [];
 
 		$english = 'en' === Plugin::resolve_lang( $lang );
-		$items   = '';
+		$opts    = [
+			'pictures' => '' !== (string) ( $params['art'] ?? '' ),
+			'reveal'   => 'click' === ( $params['reveal'] ?? '' ),
+		];
+		if ( $opts['reveal'] ) {
+			$opts['back'] = Tarot::back( $opts['pictures'] && is_array( $data['back'] ?? null ) ? $data['back'] : [] );
+		}
+		$items = '';
 		foreach ( $drawn as $i => $one ) {
-			$items .= Tarot::item( $one, $localized, $english, $cross ? $i + 1 : 0 );
+			$items .= Tarot::item( $one, $localized, $english, $cross ? $i + 1 : 0, $opts + [ 'index' => $i + 1 ] );
 		}
 		if ( '' === $items ) {
 			return '';
@@ -2113,13 +2606,41 @@ class Render {
 				'meta_html' => $redrawn ? esc_html__( 'New draw', 'astroway' ) : esc_html__( 'Spread of the day', 'astroway' ),
 			]
 		);
-		$inner  .= $cross ? Tarot::cross( $drawn ) : '';
-		$inner  .= '<ol class="astroway-spread astroway-spread--' . ( $cross ? 'cross' : 'three' ) . '">' . $items . '</ol>';
+		$inner  .= $cross ? Tarot::cross( $drawn, $opts ) : '';
+		$inner  .= '<ol class="astroway-spread astroway-spread--' . ( $cross ? 'cross' : 'three' ) . ( $opts['reveal'] ? ' astroway-spread--reveal' : '' ) . '">' . $items . '</ol>';
+		if ( $opts['reveal'] ) {
+			$inner .= '<p class="astroway-tarot__open-all"><button type="button" class="astroway-button" data-astroway-open-all><span>' . esc_html__( 'Turn all the cards over', 'astroway' ) . '</span></button></p>';
+		}
+		if ( ! empty( $params['reading'] ) ) {
+			$inner .= self::reading_slot( $widget, $data, $lang, $params );
+		}
+		if ( $opts['reveal'] || ! empty( $params['reading'] ) ) {
+			wp_enqueue_script( Plugin::TAROT_HANDLE );
+		}
 		if ( '' !== (string) ( $params['redraw_id'] ?? '' ) ) {
 			$inner .= Form::redraw_control( (string) $params['redraw_id'], $redrawn, (string) ( $params['redraw_note'] ?? '' ) );
 		}
 
 		return self::shell( $widget, $lang, $inner );
+	}
+
+	/**
+	 * Where the reading of the spread arrives once the cards are open: what to
+	 * ask for is this very draw, the seed the api drew it with.
+	 */
+	private static function reading_slot( string $widget, array $data, string $lang, array $params ): string {
+		return sprintf(
+			'<div class="astroway-tarot__reading" data-astroway-reading="%1$s" data-astroway-seed="%2$d" data-astroway-lang="%3$s" data-astroway-art="%4$s" data-astroway-endpoint="%5$s" data-astroway-wait="%6$s" data-astroway-failed="%7$s"%8$s aria-live="polite"></div>',
+			esc_attr( $widget ),
+			(int) ( $data['seed'] ?? 0 ),
+			esc_attr( $lang ),
+			esc_attr( (string) ( $params['art'] ?? '' ) ),
+			esc_url( rest_url( TarotReading::ROUTE_NS . TarotReading::ROUTE ) ),
+			esc_attr__( 'Reading the spread…', 'astroway' ),
+			esc_attr__( 'The reading could not be had just now.', 'astroway' ),
+			// Only an administrator's request carries the nonce, so only they are told why it failed.
+			function_exists( 'wp_create_nonce' ) && current_user_can( 'manage_options' ) ? ' data-astroway-nonce="' . esc_attr( wp_create_nonce( 'wp_rest' ) ) . '"' : ''
+		);
 	}
 
 	private static function planet_card( array $data, string $lang ): string {
@@ -2249,7 +2770,7 @@ class Render {
 					}
 					$items = '';
 					foreach ( $bullets as $line ) {
-						$items .= '<li>' . self::inline( (string) preg_replace( '/^\s*[-*]\s+/u', '', $line ) ) . '</li>';
+						$items .= '<li>' . self::inline( (string) preg_replace( '/^\s*[-*–•]\s+/u', '', $line ) ) . '</li>';
 					}
 					$html .= '<ul>' . $items . '</ul>';
 				} else {
@@ -2260,7 +2781,7 @@ class Render {
 
 			foreach ( $lines as $line ) {
 				$line = (string) $line;
-				if ( preg_match( '/^\s*[-*]\s+\S/u', $line ) ) {
+				if ( preg_match( '/^\s*[-*–•]\s+\S/u', $line ) ) {
 					$bullets[] = $line;
 					continue;
 				}
@@ -2387,6 +2908,10 @@ class Render {
 				$data   = Signs::compatibility( $params );
 				$markup = is_array( $data ) ? self::compatibility_card( $data, $lang, $params ) : '';
 				break;
+			case 'transit':
+				$data   = Sky::planets( (string) ( $params['date'] ?? '' ), $now );
+				$markup = is_array( $data ) ? self::transit_card( $data, $lang, $params, $now ) : '';
+				break;
 			case 'chinese_zodiac':
 				$data   = Signs::chinese_zodiac( $params );
 				$markup = is_array( $data ) ? self::chinese_card( $data, $lang ) : '';
@@ -2475,6 +3000,83 @@ class Render {
 	}
 
 	/** Every planet that stations, and what each is doing today. */
+	/** Mean daily motion in degrees; under a tenth of it, a planet reads as standing at its station. */
+	private const MEAN_SPEED = [
+		'mercury' => 1.383,
+		'venus'   => 1.2,
+		'mars'    => 0.524,
+		'jupiter' => 0.083,
+		'saturn'  => 0.0335,
+		'uranus'  => 0.0117,
+		'neptune' => 0.006,
+		'pluto'   => 0.004,
+	];
+
+	/**
+	 * Where the ten bodies stand on a day: sign and degree, and which way they move.
+	 *
+	 * Drawn into the page from the owner's key; it replaces the frame, which a
+	 * visitor past the hourly limit saw fold away to nothing.
+	 */
+	private static function transit_card( array $data, string $lang, array $params, int $now ): string {
+		$rows = [];
+		foreach ( (array) ( $data['planets'] ?? [] ) as $planet ) {
+			if ( ! is_array( $planet ) || ! isset( $planet['longitude'], $planet['name'] ) || (int) ( $planet['id'] ?? 99 ) > 9 ) {
+				continue;
+			}
+			$id    = self::planet_id( (string) $planet['name'] );
+			$name  = self::planet_label( (string) $planet['name'] );
+			$speed = (float) ( $planet['speedLong'] ?? 0 );
+			$mean  = self::MEAN_SPEED[ $id ] ?? 0.0;
+			if ( $mean > 0 && abs( $speed ) < $mean / 10 ) {
+				$motion = esc_html__( 'Stationary', 'astroway' );
+			} elseif ( ! empty( $planet['isRetrograde'] ) ) {
+				$motion = '<span aria-hidden="true">℞</span> ' . esc_html__( 'Retrograde', 'astroway' );
+			} else {
+				$motion = esc_html__( 'Direct', 'astroway' );
+			}
+			$rows[] = [
+				'cells' => [
+					[ 'html' => Glyphs::icon( $id, $name ) . ' ' . esc_html( $name ) ],
+					self::position_label( (float) $planet['longitude'] ),
+					[ 'html' => $motion ],
+				],
+			];
+		}
+		if ( empty( $rows ) ) {
+			return '';
+		}
+		$date   = (string) ( $params['date'] ?? '' );
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Planets in the sky', 'astroway' ),
+				'medal'     => 'sun',
+				'meta_html' => self::date_line( '' !== $date ? $date : gmdate( 'Y-m-d', $now ) ),
+			]
+		);
+		$inner .= self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Position', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows );
+		return self::shell( 'transit', $lang, $inner );
+	}
+
+	/** "Turns direct at Aquarius 3°04'", from the longitude of a station; '' without one. */
+	private static function station_line( ?float $longitude, string $which ): string {
+		if ( null === $longitude ) {
+			return '';
+		}
+		$where = self::position_label( $longitude );
+		$text  = 'direct' === $which
+			/* translators: %s = sign and degree, such as Aquarius 3°04' */
+			? sprintf( __( 'Turns direct at %s', 'astroway' ), $where )
+			/* translators: %s = sign and degree, such as Scorpio 8°29' */
+			: sprintf( __( 'Turns retrograde at %s', 'astroway' ), $where );
+		return '<span class="astroway-retro__station">' . esc_html( $text ) . '</span>';
+	}
+
+	/** The shadow: the stretch of sky the planet covers three times, before and after the loop. */
+	private static function shadow_line( string $format, int $moment, float $offset ): string {
+		return '<span class="astroway-retro__station astroway-retro__shadow">' . esc_html( sprintf( $format, self::sky_date( $moment, $offset ) ) ) . '</span>';
+	}
+
 	private static function retrograde_board( array $data, string $lang, int $now ): string {
 		$offset    = Sky::offset( '', $now );
 		$rows      = [];
@@ -2482,22 +3084,49 @@ class Render {
 
 		foreach ( Sky::PLANETS as $slug => $planet_id ) {
 			$name                   = self::planet_label( ucfirst( $slug ) );
-			list( $current, $next ) = Sky::state_at( Sky::periods_of( $data, $planet_id ), $now );
+			$periods                = Sky::periods_of( $data, $planet_id );
+			list( $current, $next ) = Sky::state_at( $periods, $now );
 
+			$now_cell  = esc_html__( 'Direct', 'astroway' );
+			$next_cell = '';
+			$shadow    = null === $current ? Sky::shadow_at( $periods, $now ) : null;
+			if ( null !== $shadow ) {
+				$now_cell .= self::shadow_line(
+					'pre' === $shadow[0]
+						/* translators: %s = date */
+						? __( 'In the pre-retrograde shadow since %s', 'astroway' )
+						/* translators: %s = date */
+						: __( 'In the post-retrograde shadow until %s', 'astroway' ),
+					$shadow[1],
+					$offset
+				);
+			}
 			if ( null !== $current ) {
 				$backwards[] = $name;
-				$status      = __( 'Retrograde', 'astroway' );
-				$dates       = self::sky_range( $current['start'], $current['end'], $offset );
-			} elseif ( null !== $next ) {
-				$status = __( 'Direct', 'astroway' );
-				$dates  = self::sky_range( $next['start'], $next['end'], $offset );
-			} else {
-				$status = __( 'Direct', 'astroway' );
-				$dates  = '';
+				$total       = max( 1, (int) ceil( ( $current['end'] - $current['start'] ) / DAY_IN_SECONDS ) );
+				$day         = min( $total, (int) floor( ( $now - $current['start'] ) / DAY_IN_SECONDS ) + 1 );
+				$now_cell    = '<strong>' . esc_html__( 'Retrograde', 'astroway' ) . '</strong> '
+					. '<span class="astroway-retro__dates">' . esc_html( self::sky_range( $current['start'], $current['end'], $offset ) ) . '</span>'
+					/* translators: 1: day number, 2: days in the retrograde period */
+					. '<span class="astroway-retro__progress">' . esc_html( sprintf( __( 'Day %1$d of %2$d', 'astroway' ), $day, $total ) ) . UI::meter( $day / $total ) . '</span>'
+					. self::station_line( $current['station_direct'] ?? null, 'direct' );
+				if ( null !== ( $current['shadow_end'] ?? null ) ) {
+					/* translators: %s = date */
+					$now_cell .= self::shadow_line( __( 'Leaves the shadow on %s', 'astroway' ), $current['shadow_end'], $offset );
+				}
+			}
+			if ( null !== $next ) {
+				$next_cell = '<span class="astroway-retro__dates">' . esc_html( self::sky_range( $next['start'], $next['end'], $offset ) ) . '</span>'
+					. self::station_line( $next['station_retro'] ?? null, 'retro' );
+				if ( null !== ( $next['shadow_start'] ?? null ) && $next['shadow_start'] > $now ) {
+					/* translators: %s = date */
+					$next_cell .= self::shadow_line( __( 'Shadow from %s', 'astroway' ), $next['shadow_start'], $offset );
+				}
 			}
 
 			$rows[] = [
-				'cells'   => [ $name, $status, $dates ],
+				// One block per cell: a stacked cell is a label column and a value column.
+				'cells'   => [ $name, [ 'html' => '<div class="astroway-retro">' . $now_cell . '</div>' ], [ 'html' => '' === $next_cell ? '' : '<div class="astroway-retro">' . $next_cell . '</div>' ] ],
 				'current' => null !== $current,
 			];
 		}
@@ -2521,11 +3150,10 @@ class Render {
 		$inner .= self::sky_table(
 			[
 				__( 'Planet', 'astroway' ),
-				__( 'Status', 'astroway' ),
-				// Named for what the dates are, not for where they sit: on a
-				// direct planet the row shows the retrograde still to come, and
-				// a column headed "Period" would read as the direct one.
-				__( 'Retrograde period', 'astroway' ),
+				// The period in force and the one to come apart: one shared column
+				// read a direct planet's coming retrograde as the present one.
+				__( 'Now', 'astroway' ),
+				__( 'Next retrograde', 'astroway' ),
 			],
 			$rows
 		);
@@ -2795,9 +3423,12 @@ class Render {
 			? sprintf( __( '%1$s and %2$s', 'astroway' ), $named_a, $named_b )
 			: __( 'Synastry', 'astroway' );
 
-		$inner  = UI::header( [ 'title' => $title ] );
-		$inner .= self::synastry_verdict( $score, (string) ( $data['label'] ?? '' ), isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects ) );
-		$inner .= self::synastry_spheres( is_array( $data['spheres'] ?? null ) ? $data['spheres'] : [] );
+		$spheres = is_array( $data['spheres'] ?? null ) ? $data['spheres'] : [];
+		$inner   = UI::header( [ 'title' => $title ] );
+		$inner  .= self::synastry_verdict( $score, (string) ( $data['label'] ?? '' ), isset( $data['count'] ) && is_numeric( $data['count'] ) ? (int) $data['count'] : count( $aspects ) );
+		$inner  .= UI::shown( 'summary' ) ? self::synastry_summary( $aspects ) : '';
+		$inner  .= self::synastry_spheres( $spheres );
+		$inner  .= self::synastry_strengths( $spheres );
 
 		// Positions come from each chart on its own: the pair's answer holds
 		// the aspects between them and nothing about where either planet is.
@@ -2831,11 +3462,18 @@ class Render {
 		$panes  = [
 			[
 				'label' => __( 'Wheel', 'astroway' ),
+				'key'   => 'wheel',
 				'html'  => self::synastry_wheel( $chart_a, $chart_b, $close, $first, $second, $title ),
 			],
 			[
 				'label' => __( 'Aspects', 'astroway' ),
+				'key'   => 'aspects',
 				'html'  => self::synastry_aspects( array_slice( $close, 0, self::aspect_count( $params ) ), $first, $second ),
+			],
+			[
+				'label' => __( 'Houses', 'astroway' ),
+				'key'   => 'houses',
+				'html'  => self::synastry_houses( $chart_a, $chart_b, $first, $second ),
 			],
 			[
 				// Two wordings were wrong before this one. "Points included" collides
@@ -2843,6 +3481,7 @@ class Render {
 				// all %d aspects" put the number next to a noun four Slavic locales
 				// must decline. The count agrees with nothing, so it is right in all.
 				'label' => __( 'All aspects', 'astroway' ),
+				'key'   => 'all-aspects',
 				'html'  => self::aspect_grid( $first, $second, self::aspect_rows( $aspects, 0 ) ),
 				'count' => count( $aspects ),
 			],
@@ -2914,14 +3553,19 @@ class Render {
 				continue;
 			}
 			$score  = is_numeric( $sphere['score'] ?? null ) ? max( 0, min( 100, (int) round( (float) $sphere['score'] ) ) ) : null;
+			$word   = self::compat_label( (string) ( $sphere['label'] ?? '' ) );
+			$count  = is_numeric( $sphere['count'] ?? null ) ? (int) $sphere['count'] : null;
 			$rows[] = [
 				'glyph' => $names[ $key ][0],
 				'label' => $names[ $key ][1],
 				'value' => $score,
 				'text'  => null === $score ? __( 'no aspects', 'astroway' ) : (string) $score,
+				// A label with a figure, not a sentence that agrees with it: no msgid_plural.
+				/* translators: 1: tone word such as "Harmonious", 2: number of aspects */
+				'note'  => null === $score || '' === $word || null === $count ? '' : sprintf( __( '%1$s, aspects: %2$d', 'astroway' ), $word, $count ),
 			];
 		}
-		return empty( $rows ) ? '' : UI::section( __( 'By sphere', 'astroway' ), UI::bars( $rows ) );
+		return empty( $rows ) ? '' : UI::section( __( 'By sphere', 'astroway' ), UI::bars( $rows ), '', 'spheres' );
 	}
 
 	/** The score in a ring, its word, and how many aspects it rests on. */
@@ -3031,24 +3675,148 @@ class Render {
 	 * and, in a line, what that kind of contact does between two people.
 	 */
 	private static function synastry_aspects( array $aspects, string $first, string $second ): string {
-		$rows = [];
-		foreach ( $aspects as $aspect ) {
-			$type   = (string) ( $aspect['aspect'] ?? '' );
-			$rows[] = [
-				'glyph' => strtolower( trim( $type ) ),
-				'kind'  => self::aspect_kind( $type ),
-				'orb'   => sprintf( '%s°', self::number( (float) ( $aspect['orb'] ?? 0 ), 1 ) ),
-				'text'  => sprintf(
+		$items = [];
+		foreach ( $aspects as $i => $aspect ) {
+			$type    = (string) ( $aspect['aspect'] ?? '' );
+			$meaning = self::synastry_meaning( $type );
+			$items[] = [
+				'title'     => sprintf(
 					/* translators: 1: first planet, 2: aspect name, 3: second planet */
 					__( '%1$s %2$s %3$s', 'astroway' ),
 					self::owned( self::planet_label( (string) ( $aspect['planetA'] ?? '' ) ), $first ),
 					self::aspect_label( $type ),
 					self::owned( self::planet_label( (string) ( $aspect['planetB'] ?? '' ) ), $second )
 				),
-				'note'  => self::synastry_meaning( $type ),
+				'icon_html' => UI::mark( strtolower( trim( $type ) ), self::aspect_kind( $type ) ),
+				'meta_html' => esc_html( sprintf( '%s°', self::number( (float) ( $aspect['orb'] ?? 0 ), 1 ) ) ),
+				// Until the api writes a text per pair, the row opens on what the aspect does.
+				'body_html' => '' === $meaning ? '' : '<p class="astroway-acc__text">' . esc_html( $meaning ) . '</p>',
+				'open'      => 0 === $i,
 			];
 		}
-		return UI::aspects( $rows );
+		return UI::accordion( $items );
+	}
+
+	/** Harmonious, challenging and conjunctions between the two charts, as pills. */
+	private static function synastry_summary( array $aspects ): string {
+		$balance = ChartFacts::balance( $aspects );
+		$conj    = count( array_filter( $aspects, static fn( $a ) => is_array( $a ) && 'conjunction' === strtolower( trim( (string) ( $a['aspect'] ?? '' ) ) ) ) );
+		if ( 0 === $balance['h'] + $balance['t'] + $conj ) {
+			return '';
+		}
+		return '<ul class="astroway-tags astroway-synastry__summary"><li>'
+			/* translators: %d = number of aspects */
+			. esc_html( sprintf( __( 'Harmonious %d', 'astroway' ), $balance['h'] ) ) . '</li><li>'
+			/* translators: %d = number of aspects */
+			. esc_html( sprintf( __( 'Challenging %d', 'astroway' ), $balance['t'] ) ) . '</li><li>'
+			/* translators: %d = number of conjunctions */
+			. esc_html( sprintf( __( 'Conjunctions %d', 'astroway' ), $conj ) ) . '</li></ul>';
+	}
+
+	/**
+	 * The two spheres that score highest and the two lowest, each with a
+	 * phrase. Four scored spheres at least, or the columns would repeat.
+	 */
+	private static function synastry_strengths( array $spheres ): string {
+		if ( ! UI::shown( 'strengths' ) ) {
+			return '';
+		}
+		$names  = [
+			'identity'      => __( 'Identity', 'astroway' ),
+			'emotional'     => __( 'Emotions', 'astroway' ),
+			'communication' => __( 'Communication', 'astroway' ),
+			'love'          => __( 'Love', 'astroway' ),
+			'passion'       => __( 'Passion', 'astroway' ),
+			'commitment'    => __( 'Commitment', 'astroway' ),
+		];
+		$strong = [
+			'identity'      => __( 'You let each other be who you are.', 'astroway' ),
+			'emotional'     => __( 'You read each other\'s moods without words.', 'astroway' ),
+			'communication' => __( 'Talking comes easily and settles things.', 'astroway' ),
+			'love'          => __( 'Affection and taste are shared.', 'astroway' ),
+			'passion'       => __( 'Desire and drive meet in the middle.', 'astroway' ),
+			'commitment'    => __( 'Promises hold and plans last.', 'astroway' ),
+		];
+		$grow   = [
+			'identity'      => __( 'Leave each other room to be different.', 'astroway' ),
+			'emotional'     => __( 'Say what you feel rather than expect it to be guessed.', 'astroway' ),
+			'communication' => __( 'Check what was heard, not only what was said.', 'astroway' ),
+			'love'          => __( 'Show care in the way the other one receives it.', 'astroway' ),
+			'passion'       => __( 'Agree on pace before friction turns into a fight.', 'astroway' ),
+			'commitment'    => __( 'Make plans explicit and keep them small at first.', 'astroway' ),
+		];
+		$scored = [];
+		foreach ( $spheres as $sphere ) {
+			$key = is_array( $sphere ) ? (string) ( $sphere['key'] ?? '' ) : '';
+			if ( isset( $names[ $key ] ) && is_numeric( $sphere['score'] ?? null ) ) {
+				$scored[ $key ] = (float) $sphere['score'];
+			}
+		}
+		if ( count( $scored ) < 4 ) {
+			return '';
+		}
+		arsort( $scored );
+		$list   = static function ( array $keys, array $phrases ) use ( $names ): string {
+			$html = '';
+			foreach ( $keys as $key ) {
+				$html .= '<li><strong>' . esc_html( $names[ $key ] ) . '</strong> ' . esc_html( $phrases[ $key ] ) . '</li>';
+			}
+			return '<ul>' . $html . '</ul>';
+		};
+		$top    = array_slice( array_keys( $scored ), 0, 2 );
+		$bottom = array_reverse( array_slice( array_keys( $scored ), -2 ) );
+		return '<div class="astroway-synastry__columns">'
+			. '<div class="astroway-synastry__strengths"><h4 class="astroway-card__subtitle">' . esc_html__( 'Strengths', 'astroway' ) . '</h4>' . $list( $top, $strong ) . '</div>'
+			. '<div class="astroway-synastry__growth"><h4 class="astroway-card__subtitle">' . esc_html__( 'Growth areas', 'astroway' ) . '</h4>' . $list( $bottom, $grow ) . '</div>'
+			. '</div>';
+	}
+
+	/**
+	 * Each partner's planets in the other's houses, from the two charts the
+	 * card already has. Needs the other one's cusps, so its birth time; the
+	 * three houses with the most planets are marked.
+	 */
+	private static function synastry_houses( ?array $chart_a, ?array $chart_b, string $first, string $second ): string {
+		if ( null === $chart_a || null === $chart_b ) {
+			return '';
+		}
+		$bodies = [ 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto' ];
+		$table  = function ( array $planets, array $houses, string $owner, string $host ) use ( $bodies ): string {
+			$cusps = isset( $houses['cusps'] ) && is_array( $houses['cusps'] ) ? array_values( $houses['cusps'] ) : [];
+			if ( 12 !== count( $cusps ) ) {
+				return '';
+			}
+			$placed = [];
+			foreach ( $planets as $planet ) {
+				if ( is_array( $planet ) && in_array( (string) ( $planet['name'] ?? '' ), $bodies, true ) && isset( $planet['longitude'] ) ) {
+					$placed[] = [ (string) $planet['name'], self::house_of( (float) $planet['longitude'], $cusps ) ];
+				}
+			}
+			$counts = array_count_values( array_filter( array_column( $placed, 1 ), 'is_int' ) );
+			arsort( $counts );
+			$busy = array_slice( array_keys( array_filter( $counts, static fn( $n ) => $n > 1 ) ), 0, 3 );
+			$rows = [];
+			foreach ( $placed as list( $name, $house ) ) {
+				$id     = self::planet_id( $name );
+				$label  = self::planet_label( $name );
+				$rows[] = [
+					'angle' => in_array( $house, $busy, true ),
+					'cells' => [
+						[ 'html' => Glyphs::icon( $id, $label ) . ' ' . esc_html( $label ) ],
+						null === $house ? '' : sprintf( /* translators: %d = house number */ __( 'House %d', 'astroway' ), $house ),
+					],
+				];
+			}
+			return UI::table(
+				[
+					/* translators: 1: whose planets, 2: whose houses */
+					'caption' => sprintf( __( 'Planets of %1$s in the houses of %2$s', 'astroway' ), $owner, $host ),
+					'head'    => [ __( 'Planet', 'astroway' ), __( 'House', 'astroway' ) ],
+					'rows'    => $rows,
+				]
+			);
+		};
+		return $table( $chart_a['planets'], $chart_b['houses'], $first, $second ) . $table( $chart_b['planets'], $chart_a['houses'], $second, $first );
 	}
 
 	/**
@@ -3353,6 +4121,46 @@ class Render {
 		'pig'     => '亥',
 	];
 
+	/** The animal written in full, the character a reader recognises, with its reading in tones. */
+	private const ANIMALS = [
+		'rat'     => [ '鼠', 'shǔ' ],
+		'ox'      => [ '牛', 'niú' ],
+		'tiger'   => [ '虎', 'hǔ' ],
+		'rabbit'  => [ '兔', 'tù' ],
+		'dragon'  => [ '龍', 'lóng' ],
+		'snake'   => [ '蛇', 'shé' ],
+		'horse'   => [ '馬', 'mǎ' ],
+		'goat'    => [ '羊', 'yáng' ],
+		'monkey'  => [ '猴', 'hóu' ],
+		'rooster' => [ '雞', 'jī' ],
+		'dog'     => [ '狗', 'gǒu' ],
+		'pig'     => [ '豬', 'zhū' ],
+	];
+
+	/** Stems and branches by the toneless pinyin the api sends, with the tones put back. */
+	private const TONES = [
+		'jia'  => 'jiǎ',
+		'yi'   => 'yǐ',
+		'bing' => 'bǐng',
+		'ding' => 'dīng',
+		'ji'   => 'jǐ',
+		'geng' => 'gēng',
+		'xin'  => 'xīn',
+		'ren'  => 'rén',
+		'gui'  => 'guǐ',
+		'zi'   => 'zǐ',
+		'chou' => 'chǒu',
+		'yin'  => 'yín',
+		'mao'  => 'mǎo',
+		'chen' => 'chén',
+		'si'   => 'sì',
+		'wei'  => 'wèi',
+		'shen' => 'shēn',
+		'you'  => 'yǒu',
+		'xu'   => 'xū',
+		'hai'  => 'hài',
+	];
+
 	/** The ten heavenly stems by the pinyin the api sends. */
 	private const STEMS = [
 		'jia'  => '甲',
@@ -3385,10 +4193,16 @@ class Render {
 		$year_el = strtolower( trim( (string) ( $element['cycling'] ?? '' ) ) );
 		$name    = self::animal_label( $animal );
 
+		$year  = (int) ( $data['solarYear'] ?? 0 );
+		$title = $name;
+		if ( '' !== $year_el && $year > 0 ) {
+			/* translators: 1: the year's element, such as Metal, 2: the animal, such as Horse, 3: the year */
+			$title = sprintf( __( '%1$s %2$s, %3$d', 'astroway' ), self::element_label( ucfirst( $year_el ) ), $name, $year );
+		}
 		$inner = UI::header(
 			[
-				'title'     => $name,
-				'meta_html' => esc_html__( 'Chinese zodiac', 'astroway' ) . ( empty( $data['solarYear'] ) ? '' : ' <span class="astroway-card__when"><span aria-hidden="true">·</span>' . (int) $data['solarYear'] . '</span>' ),
+				'title'     => $title,
+				'meta_html' => esc_html__( 'Chinese zodiac', 'astroway' ),
 			]
 		);
 
@@ -3400,7 +4214,10 @@ class Render {
 				[ __( 'Earthly branch', 'astroway' ), self::BRANCHES[ $slug ] ?? '', $parts[1] ],
 			];
 			foreach ( $cells as [ $label, $char, $pinyin ] ) {
-				$pillar .= '<div><dt>' . esc_html( $label ) . '</dt><dd>' . ( '' === $char ? '' : '<span class="astroway-chinese__stem" lang="zh">' . $char . '</span> ' ) . esc_html( $pinyin ) . '</dd></div>';
+				// Wu the stem and wu the branch differ only by tone; the branch is read wǔ.
+				$key     = strtolower( $pinyin );
+				$toned   = self::TONES[ $key ] ?? ( 'wu' === $key ? ( self::BRANCHES['horse'] === $char ? 'wǔ' : 'wù' ) : $pinyin );
+				$pillar .= '<div><dt>' . esc_html( $label ) . '</dt><dd>' . ( '' === $char ? '' : '<span class="astroway-chinese__stem" lang="zh">' . $char . '</span> ' ) . '<span lang="zh-Latn">' . esc_html( $toned ) . '</span></dd></div>';
 			}
 			$pillar = '<dl class="astroway-chinese__pillar">' . $pillar . '</dl>';
 		}
@@ -3409,30 +4226,61 @@ class Render {
 			$inner .= '<div class="astroway-chinese"' . ( '' === $year_el ? '' : ' data-astroway-element="' . esc_attr( $year_el ) . '"' ) . '>';
 			// The facts below name the animal; a screen reader need not guess a Chinese reading of it.
 			$inner .= '<span class="astroway-chinese__seal" aria-hidden="true" lang="zh">' . self::BRANCHES[ $slug ] . '</span>';
+			if ( isset( self::ANIMALS[ $slug ] ) ) {
+				$inner .= '<span class="astroway-chinese__name" aria-hidden="true"><span class="astroway-chinese__animal" lang="zh">' . self::ANIMALS[ $slug ][0] . '</span><span class="astroway-chinese__pinyin" lang="zh-Latn">' . self::ANIMALS[ $slug ][1] . '</span></span>';
+			}
 			$inner .= $pillar . '</div>';
 		} else {
 			$inner .= $pillar;
 		}
 
-		$rows = [];
+		// Capsules rather than a label column: "Year element" wrapped in the narrow column on a phone.
+		$tags = [];
 		if ( ! empty( $element['fixed'] ) ) {
-			$rows[ __( 'Element', 'astroway' ) ] = self::element_label( (string) $element['fixed'] );
+			/* translators: %s = one of the five Chinese elements */
+			$tags[] = sprintf( __( 'Element: %s', 'astroway' ), self::element_label( (string) $element['fixed'] ) );
 		}
 		if ( ! empty( $element['cycling'] ) ) {
 			// The element of the year itself, which turns every two years and is
 			// what "Metal Horse" names; the fixed one belongs to the animal.
-			$rows[ __( 'Year element', 'astroway' ) ] = self::element_label( (string) $element['cycling'] );
+			/* translators: %s = one of the five Chinese elements */
+			$tags[] = sprintf( __( 'Year element: %s', 'astroway' ), self::element_label( (string) $element['cycling'] ) );
 		}
 		if ( isset( $element['yin'] ) ) {
-			$rows[ __( 'Polarity', 'astroway' ) ] = $element['yin'] ? __( 'Yin', 'astroway' ) : __( 'Yang', 'astroway' );
+			/* translators: %s = Yin or Yang */
+			$tags[] = sprintf( __( 'Polarity: %s', 'astroway' ), $element['yin'] ? __( 'Yin', 'astroway' ) : __( 'Yang', 'astroway' ) );
 		}
 		if ( '' === $pillar && ! empty( $data['pillar'] ) ) {
-			$rows[ __( 'Pillar', 'astroway' ) ] = (string) $data['pillar'];
+			/* translators: %s = the year's stem and branch, such as Geng-Wu */
+			$tags[] = sprintf( __( 'Pillar: %s', 'astroway' ), (string) $data['pillar'] );
 		}
-		$inner .= self::detail_list( $rows );
+		$inner .= UI::tags( $tags );
+		if ( $year > 0 ) {
+			$from = self::beijing( $data['yearStart']['utc'] ?? null );
+			$to   = self::beijing( $data['yearEnd']['utc'] ?? null );
+			$line = '' !== $from && '' !== $to
+				/* translators: 1: the year, 2: the moment it begins, 3: the moment it ends, both in Beijing time */
+				? sprintf( __( 'The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at Lichun, the start of spring, not on 1 January.', 'astroway' ), $year, $from, $to )
+				/* translators: %d = the year */
+				: sprintf( __( 'The %d animal year begins at the start of spring (Lichun, about 4 February), not on 1 January.', 'astroway' ), $year );
+			$inner .= '<p class="astroway-chinese__boundary">' . esc_html( $line ) . '</p>';
+		}
 		$inner .= self::chinese_reading( $slug, $year_el, $lang );
 
 		return self::shell( 'chinese_zodiac', $lang, $inner );
+	}
+
+	/** A UTC moment from the api as date and time in Beijing, where the calendar is kept; '' if it does not parse. */
+	private static function beijing( $iso ): string {
+		if ( ! is_string( $iso ) || ! preg_match( '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?Z$/', $iso ) ) {
+			return '';
+		}
+		$stamp = strtotime( $iso );
+		if ( false === $stamp ) {
+			return '';
+		}
+		$format = get_option( 'date_format', 'Y-m-d' ) . ' ' . get_option( 'time_format', 'H:i' );
+		return (string) wp_date( (string) $format, $stamp, new \DateTimeZone( '+08:00' ) );
 	}
 
 	/**

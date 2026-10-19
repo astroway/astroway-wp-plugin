@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.4.1
+Stable tag: 2.5.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -58,7 +58,7 @@ Three cards read the signs themselves. The yearly horoscope, `[astroway_yearly_h
 
 = A card and a spread of the day =
 
-`[astroway_tarot_card]` draws one card a day with its reading. `[astroway_tarot_spread]` lays out three cards, past, present and future, and `[astroway_tarot_spread spread="celtic-cross"]` the ten cards of the Celtic Cross, each read in its position. Every site draws its own spread once a day, and the cards read in the language of the page.
+`[astroway_tarot_card]` draws one card a day with its reading. `[astroway_tarot_spread]` lays out three cards, past, present and future, and `[astroway_tarot_spread spread="celtic-cross"]` the ten cards of the Celtic Cross, each read in its position. Every site draws its own spread once a day, and the cards read in the language of the page. With `reveal="click"` the cards lie face down until the visitor turns them, and `reading="1"` reads the whole spread once the last card is open: a summary, advice and each position. The reading needs an API key, since the site key does not cover it; each new reading costs 100 credits and is kept for a day, so the spread of the day is read once for everyone, and at most three new readings are made a day, one at a time (filter `astroway_tarot_readings_per_day`). A reading the API returns for other cards than the ones drawn is not shown, and those cards are not asked about again for an hour.
 
 = Two charts, read against each other =
 
@@ -162,7 +162,9 @@ This plugin connects to **api.astroway.info**, the AstroWay Calculation API oper
 
 * When a widget your server renders into the page is refreshed (daily, weekly and monthly horoscope, moon phase, daily tarot, tarot spreads, planet of the day, natal chart, Human Design bodygraph, moon sign, rising sign, synastry): the parameters provided in the shortcode (zodiac sign, or date, time, latitude and longitude) plus your site's own address, sent so the request is counted against your site's allowance. Synastry also asks for each person's chart on its own, and a natal chart with `transits` for the planets at noon UTC on that day. The sign compatibility matrix asks for the table of sign pairs, which carries nothing about anyone. A tarot spread of the day sends a number made from your site's address and the date, so each site draws its own spread once a day. The Chinese animal card also asks for the texts on the twelve animals and five elements in the page's language, which carry nothing about anyone either. Names given to the synastry widget are not among them: they head the table on your page and go no further. The Solar Return, Lunar Return and Davison cards send the birth data given (date, time, latitude and longitude), the year or the date the return is searched from, and the place it is cast for when that is not the place of birth. Draw again under a tarot spread sends a random number and nothing else. The request is made by your server, not by the visitor's browser, so **the visitor's IP address is not sent at all**, and it is only made when the cached answer has expired.
 * When a widget falls back to an embedded frame (kundli, panchang, transit, numerology, the Marseille and Lenormand tarot decks, and any widget whose data could not be fetched): the visitor's browser loads that frame directly from api.astroway.info, so the parameters in the shortcode and the visitor's IP address reach the service, the latter for anonymous rate-limiting. Nothing about that visitor passes through your server.
-* When a visitor sends a birth data form (natal chart, compatibility, moon sign, rising sign, Solar Return, Lunar Return, Davison chart): the date, time and coordinates they entered go to api.astroway.info, and the city name they typed goes to app.astroway.info to look up its coordinates and time zone. Both requests are made by your server; the visitor's IP address is not sent, and the answer is not stored.
+* When a visitor sends a birth data form (natal chart, Human Design, compatibility, moon sign, rising sign, Solar Return, Lunar Return, Davison chart): the date, time and coordinates they entered go to api.astroway.info, and the city name they typed goes to app.astroway.info to look up its coordinates and time zone. Both requests are made by your server; the visitor's IP address is not sent, and the answer is not stored.
+* When a tarot card or spread shows card pictures (the default `art="rws-1909"`): the visitor's browser loads each picture from cdn.astroway.info, which receives the visitor's IP address as for any image from another site. `art="none"` keeps the drawn faces and loads nothing.
+* When a tarot spread has `reading="1"`: once the cards are open, the page asks your site's REST route `/astroway/v1/tarot-reading`, and your server sends the drawn cards and the page language to api.astroway.info to read the spread. Nothing about the visitor is sent; the reading is kept on your site for a day.
 * When the site has no API key of its own: your site's address and the plugin version go to api.astroway.info to request a site key. The service then fetches a one-time proof from your site's REST route `/astroway/v1/verify` to confirm the site is yours. This runs in the background after activation and when an administrator opens the dashboard, until a key is issued.
 * When the site administrator clicks "Connect your AstroWay account": the administrator's browser opens api.astroway.info with your site's address, the admin page to return to, a one-time random value that ties the answer to this click, and the administrator's language. After they sign in there and pick a key, the browser comes back with a one-time code, and your server exchanges it at api.astroway.info, sending the code, your site's address and the site key. The answer is the chosen key and a masked name of the account, which the plugin stores as the site's API key.
 * When the site administrator clicks "Verify Key" or "Test Connection" in the Settings screen: the configured API key and a small diagnostics payload.
@@ -187,11 +189,29 @@ This plugin stores the following on the WordPress site:
 * The site administrator's API key (if entered or connected), stored encrypted in the `wp_options` table under `astroway_settings`, with the masked account name when it came from "Connect your AstroWay account". Visible only to users with `manage_options` capability.
 * WP transient cache of API responses (prefix `astroway_v1_`) to reduce repeat external calls. Cache contents are chart/horoscope/tarot output, no visitor PII beyond what was submitted via shortcode arguments. Purged via Settings → AstroWay → Purge Cache.
 * The site key the plugin was issued, encrypted, under `astroway_site_key_<host>`.
+* For the tarot readings: each reading kept for a day in the transient cache, a count of new readings for the current day under `astroway_tarot_readings`, and while a reading is being asked for, a lock under `astroway_tarot_reading_lock` (no visitor data).
 * For the birth data forms' rate limit: a salted hash of each sender's IP address with a count of their submissions, under `astroway_form_hits`, cleared ten minutes later on the next submission and removed on uninstall. What the visitor typed is not stored.
 
-**This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above).**
+**This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.5.0 =
+* Page builders: every AstroWay widget is now an Elementor widget, a Beaver Builder module and a WPBakery element, with the same fields as its block. Pages built with the AstroWay for Elementor addon keep working; the addon can be removed
+* Tarot spread with the cards face down, turned by the visitor, with the Rider-Waite-Smith pictures and a reading of the whole spread after the last card: summary, advice and each position. `[astroway_tarot_spread reveal="click" reading="1"]`. The reading needs an API key and costs 100 credits a new reading
+* Natal chart: a summary of elements, modes, sect and retrograde planets, the Part of Fortune, Vertex and South Node, applying and separating aspects, and chart patterns (T-square, grand trine, stellium, yod)
+* Synastry: the houses one person's planets fall in for the other, strengths and areas to grow in each sphere
+* Human Design: design date, signature and not-self, the four gates of the cross, centres and channels tabs, a form for the visitor's own chart
+* Moon phase: what the phase means, the Moon's degree, the next four main phases and the distance from Earth
+* Chinese sign: the animal's character with its pinyin, and the exact Lichun moments that bound the year
+* Retrogrades: the degree of each station, how far into the retrograde we are, the shadow before and after, and a date attribute
+* Planets of a day drawn into the page instead of a frame, on the site key too. `[astroway_transit]`
+* Horoscopes without a sign show a sign picker and a line on today's sky
+* Admin: a dashboard box with the key and quota, a Site Health section, Try it in the shortcode catalogue, a family filter for the generated shortcodes, an optional consent box on visitor forms
+* Tarot pictures load a 300px file on ordinary screens
+* Fix: an impossible date such as 1990-13-45 no longer reaches a chart
+* Fix: keys without a limit read as unlimited rather than 0 credits left
+* Fix: bulleted lists in the weekly horoscope print as lists
 
 = 2.4.1 =
 * The mini chart is drawn into the page like the natal chart: the wheel alone, sized for a sidebar, in your theme's colours, with no frame and no extra request when the natal chart is on the same page. `[astroway_mini_chart]`

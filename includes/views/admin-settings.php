@@ -448,6 +448,31 @@ $astroway_diag = [
 			</div>
 		</article>
 
+		<article class="aw-panel" data-num="10">
+			<header class="aw-panel-head">
+				<span class="aw-panel-num" aria-hidden="true">10</span>
+				<h2 class="aw-panel-title"><?php esc_html_e( 'Visitor forms', 'astroway' ); ?></h2>
+				<span class="aw-panel-hint"><?php esc_html_e( 'optional consent box before birth data is sent', 'astroway' ); ?></span>
+			</header>
+			<div class="aw-panel-body">
+				<form method="post" action="options.php">
+					<?php settings_fields( \AstroWay\WPPlugin\Admin::PAGE_API_KEY ); ?>
+					<input type="hidden" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[form_consent_submitted]" value="1">
+					<label style="display:flex;gap:8px;align-items:flex-start">
+						<input type="checkbox" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[form_consent]" value="1" <?php checked( ! empty( $astroway_opts['form_consent'] ) ); ?>>
+						<span><strong><?php esc_html_e( 'Ask visitors to agree before a form is sent', 'astroway' ); ?></strong><br>
+							<span class="aw-hint"><?php esc_html_e( 'Adds a required checkbox to the birth chart, compatibility, moon sign, rising sign, Human Design and numerology forms. Off by default.', 'astroway' ); ?></span>
+						</span>
+					</label>
+					<p>
+						<label for="aw-form-consent-text"><?php esc_html_e( 'Checkbox text (leave empty for the default)', 'astroway' ); ?></label><br>
+						<input type="text" class="aw-input" id="aw-form-consent-text" maxlength="500" style="width:100%" name="<?php echo esc_attr( \AstroWay\WPPlugin\Admin::OPTION_KEY ); ?>[form_consent_text]" value="<?php echo esc_attr( (string) ( $astroway_opts['form_consent_text'] ?? '' ) ); ?>">
+					</p>
+					<?php submit_button( __( 'Save form setting', 'astroway' ), 'aw-btn aw-btn-primary', 'submit', false ); ?>
+				</form>
+			</div>
+		</article>
+
 	</main>
 
 	<?php require ASTROWAY_WP_PLUGIN_DIR . 'includes/views/partials/admin-sidebar.php'; ?>

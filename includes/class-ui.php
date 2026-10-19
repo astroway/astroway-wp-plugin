@@ -28,6 +28,9 @@ class UI {
 	/** @var string[] Looks asked for by the shortcodes and blocks being rendered, innermost last. */
 	private static array $looks = [];
 
+	/** @var array<int, array{hide: string[], open: string}> What each shortcode or block being rendered asked to hide or open, innermost last. */
+	private static array $views = [];
+
 	/** Id unique to this request, for tabs and the elements they point at. */
 	public static function uid(): string {
 		return 'astroway-u' . ( ++self::$uid );
@@ -37,6 +40,7 @@ class UI {
 	public static function reset(): void {
 		self::$uid   = 0;
 		self::$looks = [];
+		self::$views = [];
 		Glyphs::reset();
 	}
 
@@ -73,6 +77,56 @@ class UI {
 	}
 
 	/**
+	 * `hide_sections` and `open` for everything rendered until pop_view().
+	 *
+	 * Each shortcode or block gets its own entry, so a card inside another does
+	 * not inherit what the outer one hid.
+	 *
+	 * @param array $atts Shortcode or block attributes.
+	 */
+	public static function push_view( array $atts ): void {
+		$hide          = array_map( 'sanitize_key', array_map( 'trim', explode( ',', (string) ( $atts['hide_sections'] ?? '' ) ) ) );
+		$open          = (string) ( $atts['open'] ?? '' );
+		self::$views[] = [
+			'hide' => array_values( array_filter( $hide, 'strlen' ) ),
+			'open' => in_array( $open, [ 'first', 'none' ], true ) ? $open : '',
+		];
+	}
+
+	public static function pop_view(): void {
+		array_pop( self::$views );
+	}
+
+	/** Whether the card being rendered may show the part with this key. */
+	public static function shown( string $key ): bool {
+		$view = end( self::$views );
+		return ! is_array( $view ) || ! in_array( $key, $view['hide'], true );
+	}
+
+	/** first, none, or '' when the card decides which rows start open. */
+	private static function open_mode(): string {
+		$view = end( self::$views );
+		return is_array( $view ) ? $view['open'] : '';
+	}
+
+	/**
+	 * Static pills: keywords, a card's arcana and suit. Not buttons; the
+	 * filtering kind is chips().
+	 *
+	 * @param string[] $labels Plain text.
+	 */
+	public static function tags( array $labels ): string {
+		$html = '';
+		foreach ( $labels as $label ) {
+			$label = trim( (string) $label );
+			if ( '' !== $label ) {
+				$html .= '<li>' . esc_html( $label ) . '</li>';
+			}
+		}
+		return '' === $html ? '' : '<ul class="astroway-tags">' . $html . '</ul>';
+	}
+
+	/**
 	 * `look="night"` on any of our shortcodes, the generated ones included,
 	 * without each handler knowing about it. Runs last, so a shortcode another
 	 * filter has already answered is not pushed and never needs popping.
@@ -82,6 +136,7 @@ class UI {
 	public static function shortcode_start( $short_circuit, $tag, $attr ) {
 		if ( false === $short_circuit && is_string( $tag ) && 0 === strpos( $tag, 'astroway_' ) ) {
 			self::push_look( is_array( $attr ) ? (string) ( $attr['look'] ?? '' ) : '' );
+			self::push_view( is_array( $attr ) ? $attr : [] );
 		}
 		return $short_circuit;
 	}
@@ -90,6 +145,7 @@ class UI {
 	public static function shortcode_end( $output, $tag ) {
 		if ( is_string( $tag ) && 0 === strpos( $tag, 'astroway_' ) ) {
 			self::pop_look();
+			self::pop_view();
 		}
 		return $output;
 	}
@@ -195,10 +251,10 @@ class UI {
 	 * heading, which is also what a crawler reads.
 	 *
 	 * @param string $label  Accessible name of the tab list.
-	 * @param array  $panels Each `label`, `html`, optional `count`.
+	 * @param array  $panels Each `label`, `html`, optional `count`, `key` (for `hide_sections`).
 	 */
 	public static function tabs( string $label, array $panels, int $selected = 0 ): string {
-		$panels = array_values( array_filter( $panels, static fn( $p ) => '' !== (string) ( $p['html'] ?? '' ) ) );
+		$panels = array_values( array_filter( $panels, static fn( $p ) => '' !== (string) ( $p['html'] ?? '' ) && self::shown( (string) ( $p['key'] ?? '' ) ) ) );
 		if ( empty( $panels ) ) {
 			return '';
 		}
@@ -236,8 +292,15 @@ class UI {
 		return $flag . '<div class="astroway-tabs"><div class="astroway-tabs__list" role="tablist" aria-label="' . esc_attr( $label ) . '">' . $buttons . '</div>' . $bodies . '</div>';
 	}
 
-	/** A titled part of a card, set off by a rule. */
-	public static function section( string $title, string $inner_html, string $intro = '' ): string {
+	/**
+	 * A titled part of a card, set off by a rule.
+	 *
+	 * @param string $key Name an author can list in `hide_sections`; '' cannot be hidden.
+	 */
+	public static function section( string $title, string $inner_html, string $intro = '', string $key = '' ): string {
+		if ( '' !== $key && ! self::shown( $key ) ) {
+			return '';
+		}
 		$html  = '<section class="astroway-card__section"><h4 class="astroway-card__subtitle">' . esc_html( $title ) . '</h4>';
 		$html .= '' === $intro ? '' : '<p class="astroway-card__intro">' . esc_html( $intro ) . '</p>';
 		return $html . $inner_html . '</section>';
@@ -252,7 +315,11 @@ class UI {
 	public static function accordion( array $items ): string {
 		$group = self::uid();
 		$html  = '';
-		foreach ( $items as $item ) {
+		$mode  = self::open_mode();
+		foreach ( array_values( $items ) as $i => $item ) {
+			if ( '' !== $mode ) {
+				$item['open'] = 'first' === $mode && 0 === $i;
+			}
 			$summary  = '' === (string) ( $item['icon_html'] ?? '' ) ? '' : '<span class="astroway-acc__icon">' . $item['icon_html'] . '</span>';
 			$summary .= '<span class="astroway-acc__title">' . esc_html( (string) ( $item['title'] ?? '' ) ) . '</span>';
 			$summary .= '' === (string) ( $item['meta_html'] ?? '' ) ? '' : '<span class="astroway-acc__meta">' . $item['meta_html'] . '</span>';
@@ -281,13 +348,15 @@ class UI {
 		foreach ( $rows as $row ) {
 			$kind  = self::kind( (string) ( $row['kind'] ?? '' ) );
 			$note  = (string) ( $row['note'] ?? '' );
+			$trend = (string) ( $row['trend'] ?? '' );
 			$html .= sprintf(
-				'<li data-astroway-kind="%1$s">%2$s<span>%3$s%4$s</span><span class="astroway-aspects__orb">%5$s</span></li>',
+				'<li data-astroway-kind="%1$s">%2$s<span>%3$s%4$s</span><span class="astroway-aspects__orb">%5$s%6$s</span></li>',
 				$kind,
 				self::mark( (string) ( $row['glyph'] ?? '' ), $kind ),
 				esc_html( (string) ( $row['text'] ?? '' ) ),
 				'' === $note ? '' : '<span class="astroway-aspects__note">' . esc_html( $note ) . '</span>',
-				esc_html( (string) ( $row['orb'] ?? '' ) )
+				esc_html( (string) ( $row['orb'] ?? '' ) ),
+				'' === $trend ? '' : '<span class="astroway-aspects__trend">' . esc_html( $trend ) . '</span>'
 			);
 		}
 		if ( '' === $html ) {
@@ -579,7 +648,8 @@ class UI {
 			$text  = (string) ( $row['text'] ?? self::n( $value ) );
 			$glyph = '' === (string) ( $row['glyph'] ?? '' ) ? '' : Glyphs::icon( (string) $row['glyph'] ) . ' ';
 			$bar   = $none ? '<span aria-hidden="true"></span>' : self::meter( $value / $max );
-			$html .= '<li><span>' . $glyph . esc_html( (string) ( $row['label'] ?? '' ) ) . '</span>' . $bar . '<span class="astroway-bars__value">' . esc_html( $text ) . '</span></li>';
+			$note  = '' === (string) ( $row['note'] ?? '' ) ? '' : '<small class="astroway-bars__note">' . esc_html( (string) $row['note'] ) . '</small>';
+			$html .= '<li><span>' . $glyph . esc_html( (string) ( $row['label'] ?? '' ) ) . $note . '</span>' . $bar . '<span class="astroway-bars__value">' . esc_html( $text ) . '</span></li>';
 		}
 		return '' === $html ? '' : '<ul class="astroway-bars">' . $html . '</ul>';
 	}
@@ -696,7 +766,8 @@ class UI {
 	 */
 	public static function callout( string $inner_html, string $tone = '' ): string {
 		$warn = 'tens' === $tone;
-		return '<div class="astroway-callout' . ( $warn ? ' astroway-callout--tens' : '' ) . '">' . self::icon( $warn ? 'warn' : 'info' ) . '<div>' . $inner_html . '</div></div>';
+		$mod  = in_array( $tone, [ 'tens', 'advice' ], true ) ? ' astroway-callout--' . $tone : '';
+		return '<div class="astroway-callout' . $mod . '">' . self::icon( $warn ? 'warn' : 'info' ) . '<div>' . $inner_html . '</div></div>';
 	}
 
 	/** The two message icons, drawn in the current colour. */

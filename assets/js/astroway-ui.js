@@ -235,7 +235,22 @@
 	// Marks the side a table or a tab strip still hides, for the CSS fade, and
 	// makes a table that scrolls reachable by keyboard; a tab strip already is.
 	function hint( box ) {
-		var strip  = box.classList.contains( 'astroway-tabs__list' );
+		var strip = box.classList.contains( 'astroway-tabs__list' );
+		if ( strip ) {
+			// Wrapping changes only the height; measuring again on that would loop.
+			var width = box.clientWidth;
+			if ( box.hasAttribute( 'data-astroway-wrap' ) && box.astrowayWidth === width ) {
+				return;
+			}
+			box.astrowayWidth = width;
+			// Measured on one row; a strip that cannot fit wraps instead of hiding its last tab.
+			box.removeAttribute( 'data-astroway-wrap' );
+			if ( box.scrollWidth - box.clientWidth >= 2 ) {
+				box.setAttribute( 'data-astroway-wrap', '' );
+				box.removeAttribute( 'data-astroway-more' );
+				return;
+			}
+		}
 		var hidden = box.scrollWidth - box.clientWidth;
 		if ( hidden < 2 ) {
 			box.removeAttribute( 'data-astroway-more' );

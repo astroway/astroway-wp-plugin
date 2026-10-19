@@ -133,9 +133,11 @@ class Blocks {
 			}
 			$atts = self::with_context( (array) $atts, $block );
 			UI::push_look( (string) ( $atts['look'] ?? '' ) );
+			UI::push_view( $atts );
 			try {
 				return call_user_func( $callback, $atts, (string) $content );
 			} finally {
+				UI::pop_view();
 				UI::pop_look();
 			}
 		};
@@ -218,6 +220,39 @@ class Blocks {
 		'astroway/chinese-zodiac-animal'   => [ Shortcodes::class, 'render_chinese_zodiac' ],
 	];
 
+	/**
+	 * The manifest as the block editor takes it: Style left off, since the
+	 * script adds it to the generated blocks as well, and options as a list,
+	 * because a JavaScript object puts numeric keys first and would reorder them.
+	 */
+	public static function editor_widgets(): array {
+		$out = [];
+		foreach ( WidgetManifest::widgets() as $slug => $widget ) {
+			$fields = [];
+			foreach ( $widget['fields'] as $field ) {
+				if ( 'look' === $field['name'] ) {
+					continue;
+				}
+				if ( isset( $field['options'] ) ) {
+					$list = [];
+					foreach ( $field['options'] as $value => $label ) {
+						$list[] = [
+							'label' => $label,
+							'value' => (string) $value,
+						];
+					}
+					$field['options'] = $list;
+				}
+				$fields[] = $field;
+			}
+			$out[ $slug ] = [
+				'panel'  => $widget['panel'],
+				'fields' => $fields,
+			];
+		}
+		return $out;
+	}
+
 	public static function register_assets_and_blocks(): void {
 		wp_register_script(
 			self::EDITOR_HANDLE,
@@ -226,6 +261,8 @@ class Blocks {
 			ASTROWAY_WP_PLUGIN_VERSION,
 			true
 		);
+
+		wp_add_inline_script( self::EDITOR_HANDLE, 'window.astrowayWidgets = ' . wp_json_encode( self::editor_widgets() ) . ';', 'before' );
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations(

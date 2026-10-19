@@ -77,7 +77,7 @@ class PublicData {
 		'tarot_daily'        => [
 			'path'      => '/public/tarot/daily',
 			'freshness' => 'day',
-			'params'    => [ 'date' ],
+			'params'    => [ 'date', 'art' ],
 			'required'  => [],
 		],
 		// A spread of the day: the seed is the site and the date, so each site
@@ -85,13 +85,13 @@ class PublicData {
 		'tarot_three_card'   => [
 			'path'      => '/public/tarot/three-card',
 			'freshness' => 'day',
-			'params'    => [ 'seed' ],
+			'params'    => [ 'seed', 'art' ],
 			'required'  => [],
 		],
 		'tarot_celtic_cross' => [
 			'path'      => '/public/tarot/celtic-cross',
 			'freshness' => 'day',
-			'params'    => [ 'seed' ],
+			'params'    => [ 'seed', 'art' ],
 			'required'  => [],
 		],
 		'moon_phase'         => [
@@ -388,6 +388,13 @@ class PublicData {
 					$date = self::sanitize_date( $raw );
 					if ( '' !== $date ) {
 						$query['date'] = $date;
+					}
+					break;
+				case 'art':
+					// The picture set; none asked for means the drawn face and no set sent.
+					$art = Tarot::sanitize_art( $raw );
+					if ( '' !== $art ) {
+						$query['art'] = $art;
 					}
 					break;
 				case 'seed':

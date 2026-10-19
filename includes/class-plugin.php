@@ -140,6 +140,9 @@ class Plugin {
 		GeneratedRegistry::register();
 		Blocks::register();
 		Admin::register();
+		if ( class_exists( __NAMESPACE__ . '\\AdminExtras' ) ) {
+			AdminExtras::register();
+		}
 		// Guard later-version dependencies: a partial ZIP missing the Updater
 		// class (e.g. a hotfix shipped before Channel B classes land in the
 		// public repo) must still load cleanly.
@@ -152,6 +155,17 @@ class Plugin {
 		SiteKey::register();
 		Connect::register();
 		Form::register();
+		TarotReading::register();
+		// Each adapter only hooks its builder's actions; its builder classes load from there.
+		if ( class_exists( __NAMESPACE__ . '\\Builders\\Elementor' ) ) {
+			Builders\Elementor::register();
+		}
+		if ( class_exists( __NAMESPACE__ . '\\Builders\\Beaver' ) ) {
+			Builders\Beaver::register();
+		}
+		if ( class_exists( __NAMESPACE__ . '\\Builders\\WpBakery' ) ) {
+			Builders\WpBakery::register();
+		}
 
 		add_filter( 'http_request_args', [ __CLASS__, 'http_args' ], 10, 2 );
 		add_action( 'init', [ __CLASS__, 'register_frontend_assets' ] );
@@ -172,6 +186,7 @@ class Plugin {
 	public const STYLE_HANDLE = 'astroway-widgets';
 	public const EMBED_HANDLE = 'astroway-embed';
 	public const UI_HANDLE    = 'astroway-ui';
+	public const TAROT_HANDLE = 'astroway-tarot';
 
 	/** Marks the document as scripted before any card paints, see UI::tabs(). */
 	private const JS_FLAG = 'document.documentElement.classList.add("astroway-js");';
@@ -223,6 +238,17 @@ class Plugin {
 			]
 		);
 		wp_add_inline_script( self::UI_HANDLE, self::JS_FLAG, 'before' );
+		// Enqueued only by a spread that lies face down or asks for its reading.
+		wp_register_script(
+			self::TAROT_HANDLE,
+			ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-tarot.js',
+			[],
+			ASTROWAY_WP_PLUGIN_VERSION,
+			[
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			]
+		);
 	}
 
 	/** Asked for by a render that ran before wp_enqueue_scripts. */
@@ -357,7 +383,7 @@ class Plugin {
 				continue;
 			}
 			$text = is_string( $value ) ? $value : (string) wp_json_encode( $value );
-			if ( false !== strpos( $text, '[astroway_' ) || 1 === preg_match( '/"widgetType":\s*"astroway-/', $text ) ) {
+			if ( false !== strpos( $text, '[astroway_' ) || 1 === preg_match( '/"(?:widgetType|type)":\s*"astroway-/', $text ) ) {
 				return true;
 			}
 		}
