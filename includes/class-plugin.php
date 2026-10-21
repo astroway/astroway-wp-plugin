@@ -155,6 +155,7 @@ class Plugin {
 		SiteKey::register();
 		Connect::register();
 		Form::register();
+		PageCache::register();
 		TarotReading::register();
 		// Each adapter only hooks its builder's actions; its builder classes load from there.
 		if ( class_exists( __NAMESPACE__ . '\\Builders\\Elementor' ) ) {

@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -195,6 +195,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.5.1 =
+* Daily widgets now expire page caches at midnight in the site's time zone and use that time zone for 'today'.
 
 = 2.5.0 =
 * Page builders: every AstroWay widget is now an Elementor widget, a Beaver Builder module and a WPBakery element, with the same fields as its block. Pages built with the AstroWay for Elementor addon keep working; the addon can be removed

@@ -156,6 +156,7 @@ class ApiClient {
 		$key    = $prefix . md5( $path . '|' . strtoupper( $method ) . '|' . (string) wp_json_encode( $params ) . ( '' !== $lang ? '|' . $lang : '' ) );
 		$cached = Cache::get( $key );
 		if ( is_array( $cached ) ) {
+			PageCache::cap( $ttl );
 			return $cached;
 		}
 		if ( false !== Cache::get( $key . '_neg' ) ) {
@@ -170,6 +171,7 @@ class ApiClient {
 		}
 
 		Cache::set( $key, $payload, $ttl );
+		PageCache::cap( $ttl );
 		return $payload;
 	}
 

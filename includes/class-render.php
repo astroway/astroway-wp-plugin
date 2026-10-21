@@ -2959,7 +2959,7 @@ class Render {
 			[
 				'title'     => $name,
 				'medal'     => $slug,
-				'meta_html' => $state . ' ' . self::kind_meta( __( 'Retrograde watch', 'astroway' ), gmdate( 'Y-m-d', $now ) ),
+				'meta_html' => $state . ' ' . self::kind_meta( __( 'Retrograde watch', 'astroway' ), PublicData::site_day( 'day', $now ) ),
 			]
 		);
 
@@ -3051,7 +3051,7 @@ class Render {
 			[
 				'title'     => __( 'Planets in the sky', 'astroway' ),
 				'medal'     => 'sun',
-				'meta_html' => self::date_line( '' !== $date ? $date : gmdate( 'Y-m-d', $now ) ),
+				'meta_html' => self::date_line( '' !== $date ? $date : PublicData::site_day( 'day', $now ) ),
 			]
 		);
 		$inner .= self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Position', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows );
@@ -3143,7 +3143,7 @@ class Render {
 			[
 				'title'     => __( 'Retrograde planets', 'astroway' ),
 				'medal'     => 'retrograde',
-				'meta_html' => self::date_line( gmdate( 'Y-m-d', $now ) ),
+				'meta_html' => self::date_line( PublicData::site_day( 'day', $now ) ),
 			]
 		);
 		$inner .= UI::callout( '<p>' . esc_html( $lead ) . '</p>', empty( $backwards ) ? '' : 'tens' );
@@ -3240,7 +3240,7 @@ class Render {
 			[
 				'title'     => __( 'Void of course Moon', 'astroway' ),
 				'medal'     => 'moon',
-				'meta_html' => self::date_line( gmdate( 'Y-m-d', $now ) ),
+				'meta_html' => self::date_line( Sky::local_date( $offset, $now ) ),
 			]
 		);
 		$inner .= UI::callout( '<p>' . esc_html( $lead ) . '</p>', null === $open ? '' : 'tens' );

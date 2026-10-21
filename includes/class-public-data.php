@@ -16,8 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * X-AstroWay-Site-URL, which puts it in the api's per-site quota (300 an hour)
  * instead of the per-IP one (30), because a server fetching for every visitor is
  * not a visitor. And answers are cached until they actually change rather than
- * for a fixed hour: a daily horoscope is true until UTC midnight, a weekly one
- * until Monday, so a site showing all twelve signs spends twelve calls a day.
+ * for a fixed hour: a daily horoscope is true until midnight where the site
+ * lives, a weekly one until Monday, so a site showing all twelve signs spends
+ * twelve calls a day. "Today" is the site's today: the date goes to the api
+ * explicitly, because the api's own default is the UTC day, a day ahead of a
+ * site in Chicago every evening after seven.
  *
  * Failures are cached too, for a minute. Without that, an exhausted quota or a
  * timing-out api turns every page render into another request, which keeps the
@@ -81,7 +84,7 @@ class PublicData {
 			'required'  => [],
 		],
 		// A spread of the day: the seed is the site and the date, so each site
-		// draws its own spread and keeps it until midnight UTC.
+		// draws its own spread and keeps it until the site's midnight.
 		'tarot_three_card'   => [
 			'path'      => '/public/tarot/three-card',
 			'freshness' => 'day',
@@ -283,6 +286,7 @@ class PublicData {
 		$key    = self::cache_key( $config['path'], $query );
 		$cached = Cache::get( $key );
 		if ( is_array( $cached ) ) {
+			self::cap_page( $config, $params );
 			return $cached;
 		}
 
@@ -300,32 +304,38 @@ class PublicData {
 		}
 
 		Cache::set( $key, $payload, self::ttl_for( $config['freshness'] ) );
+		self::cap_page( $config, $params );
 		return $payload;
 	}
 
-	/**
-	 * Seconds until the answer changes, measured in UTC because that is the
-	 * calendar the api anchors on. Weekly answers are anchored to Monday and
-	 * monthly ones to the 1st, so the boundary is not simply midnight.
-	 */
-	/** The seed of a spread of the day: this site, this UTC day, this spread. */
+	/** The seed of a spread of the day: this site, the site's day, this spread. */
 	public static function seed( string $path, int $now ): int {
-		return (int) ( crc32( home_url() . '|' . gmdate( 'Y-m-d', $now ) . '|' . $path ) & 0x7fffffff );
+		return (int) ( crc32( home_url() . '|' . self::site_day( 'day', $now ) . '|' . $path ) & 0x7fffffff );
 	}
 
+	/**
+	 * The first day of the current period where the site lives, YYYY-MM-DD:
+	 * today, this week's Monday, or the 1st of the month.
+	 */
+	public static function site_day( string $freshness = 'day', ?int $now = null ): string {
+		return self::period_start( $freshness, null === $now ? time() : $now )->format( 'Y-m-d' );
+	}
+
+	/**
+	 * Seconds until the answer changes, at the site's midnight. Weekly answers
+	 * are anchored to Monday and monthly ones to the 1st, so the boundary is
+	 * not simply midnight. Stepped on the calendar rather than in fixed
+	 * seconds, so a daylight saving night lasts 23 or 25 hours, as on the site.
+	 */
 	public static function ttl_for( string $freshness, ?int $now = null ): int {
 		$now = null === $now ? time() : $now;
-		// POSIX time counts UTC seconds with no leap seconds, so the modulo is
-		// the last UTC midnight without needing a timezone at all.
-		$midnight = $now - ( $now % DAY_IN_SECONDS );
 
 		switch ( $freshness ) {
 			case 'week':
-				$dow      = (int) gmdate( 'N', $now ); // 1 = Monday .. 7 = Sunday
-				$boundary = $midnight + ( 8 - $dow ) * DAY_IN_SECONDS;
+				$boundary = self::period_start( 'week', $now )->modify( '+7 days' )->getTimestamp();
 				break;
 			case 'month':
-				$boundary = (int) gmmktime( 0, 0, 0, ( (int) gmdate( 'n', $now ) ) + 1, 1, (int) gmdate( 'Y', $now ) );
+				$boundary = self::period_start( 'month', $now )->modify( '+1 month' )->getTimestamp();
 				break;
 			case 'static':
 				// Nothing about a past moment changes. A month is arbitrary but
@@ -333,11 +343,35 @@ class PublicData {
 				$boundary = $now + 30 * DAY_IN_SECONDS;
 				break;
 			default:
-				$boundary = $midnight + DAY_IN_SECONDS;
+				$boundary = self::period_start( 'day', $now )->modify( '+1 day' )->getTimestamp();
 				break;
 		}
 
 		return max( self::MIN_TTL, $boundary - $now );
+	}
+
+	/** Midnight that opens the period, on the site's clock. */
+	private static function period_start( string $freshness, int $now ): \DateTimeImmutable {
+		$zone  = function_exists( 'wp_timezone' ) ? wp_timezone() : new \DateTimeZone( 'UTC' );
+		$start = ( new \DateTimeImmutable( '@' . $now ) )->setTimezone( $zone )->setTime( 0, 0 );
+		if ( 'week' === $freshness ) {
+			return $start->modify( '-' . ( (int) $start->format( 'N' ) - 1 ) . ' days' );
+		}
+		if ( 'month' === $freshness ) {
+			return $start->modify( 'first day of this month' );
+		}
+		return $start;
+	}
+
+	/**
+	 * A card of today tells the page cache when it stops being true. One with a
+	 * date of its own is left alone: it is true for as long as the page is.
+	 */
+	private static function cap_page( array $config, array $params ): void {
+		if ( 'static' === $config['freshness'] || '' !== self::sanitize_date( (string) ( $params['date'] ?? '' ) ) ) {
+			return;
+		}
+		PageCache::cap( self::ttl_for( $config['freshness'] ) );
 	}
 
 	/**
@@ -386,6 +420,10 @@ class PublicData {
 					break;
 				case 'date':
 					$date = self::sanitize_date( $raw );
+					if ( '' === $date && 'static' !== $config['freshness'] ) {
+						// The period as the site counts it, not the api's UTC default.
+						$date = self::site_day( $config['freshness'] );
+					}
 					if ( '' !== $date ) {
 						$query['date'] = $date;
 					}

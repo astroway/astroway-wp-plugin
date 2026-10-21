@@ -66,13 +66,13 @@ class Sky {
 	 * Where the ten bodies stand at noon UTC on a day, or null.
 	 *
 	 * A day in the past or the future never changes, so it is kept as long as
-	 * anything; today is kept until midnight. Latitude and longitude are zero
+	 * anything; today, the site's today, is kept until its midnight. Latitude and longitude are zero
 	 * because the positions are geocentric and the houses are not shown.
 	 */
 	public static function planets( string $date, ?int $now = null ): ?array {
 		$now   = null === $now ? time() : $now;
 		$day   = self::date( $date );
-		$today = gmdate( 'Y-m-d', $now );
+		$today = PublicData::site_day( 'day', $now );
 		$day   = '' !== $day ? $day : $today;
 
 		return ( new ApiClient() )->cached_call(
