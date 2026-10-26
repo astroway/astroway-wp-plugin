@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-2.0\n"
-"POT-Creation-Date: 2026-10-06T16:24:13+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-wave2\n"
+"POT-Creation-Date: 2026-10-08T05:59:38+00:00\n"
 "PO-Revision-Date: 2026-09-21 14:37+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Japanese <translations@astroway.info>\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: astroway-wp-plugin.php
 msgid "AstroWay – Astrology, Birth Chart & Horoscope Widgets"
-msgstr "AstroWay – 占星術、出生図＆ホロスコープウィジェット"
+msgstr "AstroWay – 占星術、ネイタルチャートと星占いのウィジェット"
 
 #. Plugin URI of the plugin
 #: astroway-wp-plugin.php
@@ -31,8 +31,8 @@ msgid ""
 "Astrology shortcodes & blocks: natal charts, synastry, transits, horoscope, "
 "Tarot, Numerology, Human Design API. Powered by api.astroway.info."
 msgstr ""
-"出生図、シナストリー、トランジット、タロット、数秘術、ヒューマンデザイン、AI ホロスコープ – ショートコード + Gutenberg "
-"ブロック。api.astroway.info によって提供されています。"
+"占星術のショートコードとブロック: ネイタルチャート、シナストリー、トランジット、星占い、タロット、数秘術、ヒューマンデザイン "
+"API。api.astroway.info が提供しています。"
 
 #. Author of the plugin
 #: astroway-wp-plugin.php includes/builders/class-beaver-module.php:31
@@ -42,7 +42,7 @@ msgstr ""
 #: includes/class-admin.php:37 includes/class-admin.php:38
 #: includes/class-blocks.php:195
 msgid "AstroWay"
-msgstr "アストロウェイ"
+msgstr "AstroWay"
 
 #. Author URI of the plugin
 #: astroway-wp-plugin.php
@@ -57,9 +57,8 @@ msgstr "設定"
 
 #: includes/builders/class-elementor.php:82
 msgid ""
-"AstroWay now has every widget in Elementor itself. The AstroWay for "
-"Elementor addon is no longer needed: deactivate it and your pages keep their"
-" widgets."
+"AstroWay now has every widget in Elementor itself. The AstroWay for Elementor"
+" addon is no longer needed: deactivate it and your pages keep their widgets."
 msgstr ""
 "AstroWay はすべてのウィジェットを Elementor 内で提供するようになりました。AstroWay for Elementor "
 "アドオンはもう不要です。無効にしても、ページのウィジェットはそのまま残ります。"
@@ -83,7 +82,7 @@ msgstr "まだキーがありません"
 #: includes/class-admin-extras.php:81 includes/class-admin-extras.php:144
 #: includes/views/admin-api-key.php:307
 msgid "Key"
-msgstr "API キー"
+msgstr "キー"
 
 #: includes/class-admin-extras.php:83 includes/class-admin-extras.php:148
 #: includes/class-admin.php:275 includes/views/admin-api-key.php:314
@@ -93,7 +92,7 @@ msgstr "プラン"
 #: includes/class-admin-extras.php:86 includes/class-admin-extras.php:89
 #: includes/views/admin-api-key.php:321 includes/views/admin-api-key.php:326
 msgid "Credits"
-msgstr "月間クレジット"
+msgstr "クレジット"
 
 #: includes/class-admin-extras.php:86 includes/views/admin-api-key.php:322
 msgid "Unlimited"
@@ -147,7 +146,7 @@ msgstr "%1$d 件、%2$d KB"
 
 #: includes/class-admin-extras.php:161 includes/views/admin-settings.php:366
 msgid "Render mode"
-msgstr "レンダーモード"
+msgstr "描画モード"
 
 #: includes/class-admin-extras.php:171
 msgid "AstroWay key"
@@ -184,11 +183,11 @@ msgstr "はじめに"
 
 #: includes/class-admin.php:57
 msgid "AstroWay Settings"
-msgstr "アストロウェイ設定"
+msgstr "AstroWay 設定"
 
 #: includes/class-admin.php:65
 msgid "AstroWay Shortcodes"
-msgstr "アストロウェイショートコード"
+msgstr "AstroWay ショートコード"
 
 #: includes/class-admin.php:66 includes/views/admin-api-key.php:133
 #: includes/views/admin-shortcodes.php:14
@@ -199,11 +198,11 @@ msgstr "ショートコード"
 #: includes/class-admin.php:110
 msgid ""
 "This is a publishable key for browsers (pk_). The plugin calls the API from "
-"your server, so it needs a secret key that starts with \"aw_\". Both keys "
-"are on your dashboard at api.astroway.info/dashboard/keys."
+"your server, so it needs a secret key that starts with \"aw_\". Both keys are"
+" on your dashboard at api.astroway.info/dashboard/keys."
 msgstr ""
-"これは、ブラウザ用の公開鍵 (pk_) です。このプラグインはサーバーから API "
-"を呼び出すため、「aw_」で始まる秘密鍵が必要です。どちらの鍵も、api.astroway.info/dashboard/keys "
+"これは、ブラウザ用の公開キー (pk_) です。このプラグインはサーバーから API "
+"を呼び出すため、「aw_」で始まる秘密キーが必要です。どちらのキーも、api.astroway.info/dashboard/keys "
 "のダッシュボードで確認できます。"
 
 #: includes/class-admin.php:151
@@ -305,8 +304,8 @@ msgstr "2文字以上入力してください。"
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "緯度 / 経度 / タイムゾーンを入力する都市を選択してください"
 
-#. translators: 1: number of shortcodes matching the filter, 2: total number
-#. of shortcodes
+#. translators: 1: number of shortcodes matching the filter, 2: total number of
+#. shortcodes
 #: includes/class-admin.php:344
 #, php-format
 msgid "%1$d of %2$d"
@@ -346,7 +345,7 @@ msgstr "キーを確認できませんでした (HTTP %d)。"
 
 #: includes/class-admin.php:450
 msgid "API key required."
-msgstr "API キーが設定されています"
+msgstr "API キーが必要です。"
 
 #: includes/class-admin.php:454
 msgid "Enter a valid domain (e.g. example.com)."
@@ -385,8 +384,8 @@ msgstr "接続に5分以上かかりました。このページからやり直�
 
 #: includes/class-connect.php:175
 msgid ""
-"api.astroway.info issued this connection to another site, or this site has "
-"no key of its own yet. Start again from this page."
+"api.astroway.info issued this connection to another site, or this site has no"
+" key of its own yet. Start again from this page."
 msgstr ""
 "api.astroway.info はこの接続を別のサイトに発行したか、このサイトにはまだ独自のキーがありません。このページからやり直してください。"
 
@@ -398,8 +397,8 @@ msgstr "接続を完了するために api.astroway.info に接続できませ�
 
 #: includes/class-connect.php:179
 msgid ""
-"api.astroway.info did not accept the connection. Start again from this page,"
-" or paste a key instead."
+"api.astroway.info did not accept the connection. Start again from this page, "
+"or paste a key instead."
 msgstr "api.astroway.info は接続を受け付けませんでした。このページからやり直すか、キーを貼り付けてください。"
 
 #. translators: %s = a date
@@ -428,10 +427,10 @@ msgstr "%1$sは本日、%2$sで順行に転じます。"
 #: includes/class-digest.php:230
 #, php-format
 msgid "The Moon is void of course from %1$s to %2$s."
-msgstr "月は%1$sから%2$sまで「空の月」の状態です。"
+msgstr "%1$sから%2$sまで月はボイドタイムです。"
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:3138
+#: includes/class-digest.php:248 includes/class-render.php:3577
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "現在逆行中: %s。"
@@ -440,11 +439,11 @@ msgstr "現在逆行中: %s。"
 #: includes/class-digest.php:264
 #, php-format
 msgid "Moon: %1$s, %2$s%% lit."
-msgstr "月: %1$s、%2$s%% 点灯中。"
+msgstr "月: %1$s、輝面比 %2$s%%。"
 
 #: includes/class-digest.php:302
 msgid "You are not allowed to do that."
-msgstr "そんなことはしてはいけません。"
+msgstr "この操作を行う権限がありません。"
 
 #: includes/class-form.php:104
 msgid ""
@@ -454,8 +453,8 @@ msgid ""
 "the answer, and the city name to app.astroway.info to find its coordinates. "
 "Names typed into the compatibility form are not sent anywhere. The AstroWay "
 "plugin does not store any of it on this site: the answer is not cached and "
-"the page is sent with no-store. Security or activity-log plugins on this "
-"site may record form submissions on their own."
+"the page is sent with no-store. Security or activity-log plugins on this site"
+" may record form submissions on their own."
 msgstr ""
 "訪問者がネイタルチャート、ヒューマンデザイン、相性、ムーンサイン、アセンダント、ソーラーリターン、ルナリターン、ダヴィソン・チャートのフォームに入力すると、入力された日付・時刻・場所は計算のため"
 " api.astroway.info に、都市名は座標を調べるため app.astroway.info "
@@ -465,9 +464,18 @@ msgstr ""
 
 #: includes/class-form.php:105
 msgid ""
+"When a visitor fills in the numerology form, the name and birth date they "
+"enter are sent from this site's server to api.astroway.info to calculate the "
+"numbers. The AstroWay plugin does not store them on this site."
+msgstr ""
+"訪問者が数秘術フォームに入力すると、入力された名前と生年月日は数字を計算するためにこのサイトのサーバーから api.astroway.info "
+"に送信されます。AstroWay プラグインはそれらをこのサイトに保存しません。"
+
+#: includes/class-form.php:106
+msgid ""
 "Tarot cards with pictures load those pictures in the visitor's browser from "
-"cdn.astroway.info, which therefore receives the visitor's IP address, as for"
-" any image from another site. When a spread asks for its reading, the drawn "
+"cdn.astroway.info, which therefore receives the visitor's IP address, as for "
+"any image from another site. When a spread asks for its reading, the drawn "
 "cards and the page's language are sent from this site's server to "
 "api.astroway.info; nothing about the visitor is sent with them, and the "
 "reading is kept on this site for a day so that the same spread is read once."
@@ -477,267 +485,267 @@ msgstr ""
 "アドレスを受け取ります。スプレッドがリーディングを求めると、引いたカードとページの言語がこのサイトのサーバーから api.astroway.info "
 "に送られます。訪問者に関する情報は一緒に送られず、同じスプレッドを一度だけ読むよう、リーディングはこのサイトに1日保存されます。"
 
-#: includes/class-form.php:118
+#: includes/class-form.php:119
 msgid ""
 "Visitors do not see this calculator: it runs on the site key, so that their "
-"charts never spend your credits, and a site connected to an AstroWay account"
-" has no site key. The shortcode with the birth data written in still works. "
+"charts never spend your credits, and a site connected to an AstroWay account "
+"has no site key. The shortcode with the birth data written in still works. "
 "Only administrators see this note."
 msgstr ""
 "訪問者にはこの計算機が表示されません: 訪問者のチャートであなたのクレジットを消費しないようサイトキーで動作しますが、AstroWay "
 "アカウントに接続したサイトにはサイトキーがありません。出生データを書き込んだショートコードは引き続き動作します。このメモは管理者にのみ表示されます。"
 
-#: includes/class-form.php:183 includes/class-form.php:265
-#: includes/class-form.php:326
+#: includes/class-form.php:184 includes/class-form.php:283
+#: includes/class-form.php:348
 msgid "This form works only on the site it is on."
 msgstr "このフォームは設置されたサイトでのみ動作します。"
 
-#: includes/class-form.php:190
+#: includes/class-form.php:191
 msgid "Enter the full name at birth."
 msgstr "出生時のフルネームを入力してください。"
 
-#: includes/class-form.php:193 includes/class-form.php:472
+#: includes/class-form.php:194 includes/class-form.php:494
 msgid "Enter the date of birth."
 msgstr "生年月日を入力してください。"
 
-#: includes/class-form.php:195 includes/class-form.php:474
+#: includes/class-form.php:196 includes/class-form.php:496
 msgid "Enter a date between 1800 and today."
 msgstr "1800年から今日までの日付を入力してください。"
 
-#: includes/class-form.php:202 includes/class-form.php:342
+#: includes/class-form.php:203 includes/class-form.php:364
 msgid ""
 "Too many calculations from here in a short time. Try again in a few minutes."
 msgstr "短時間にここからの計算が多すぎます。数分後にもう一度お試しください。"
 
-#: includes/class-form.php:217
+#: includes/class-form.php:235
 msgid "Your numerology chart"
 msgstr "あなたの数秘術チャート"
 
-#: includes/class-form.php:224
+#: includes/class-form.php:242
 msgid "Full name at birth"
 msgstr "出生時のフルネーム"
 
-#: includes/class-form.php:236 includes/class-form.php:631
+#: includes/class-form.php:254 includes/class-form.php:653
 msgid "Date of birth"
 msgstr "生年月日"
 
-#: includes/class-form.php:244 includes/class-form.php:289
-#: includes/class-form.php:620
+#: includes/class-form.php:262 includes/class-form.php:311
+#: includes/class-form.php:642
 msgid "Leave empty"
 msgstr "空欄のまま"
 
-#: includes/class-form.php:245 includes/class-form.php:622
+#: includes/class-form.php:263 includes/class-form.php:644
 msgid "Calculate"
 msgstr "計算する"
 
-#: includes/class-form.php:267
+#: includes/class-form.php:285
 msgid "Too many draws from here in a short time. Try again in a few minutes."
 msgstr "短時間にここからのスプレッドが多すぎます。数分後にもう一度お試しください。"
 
-#: includes/class-form.php:269
+#: includes/class-form.php:287
 msgid "The cards are busy right now. Try again later."
 msgstr "カードは現在混み合っています。後でもう一度お試しください。"
 
-#: includes/class-form.php:282
+#: includes/class-form.php:304
 msgid "The new draw did not come back. Try again in a moment."
 msgstr "新しいスプレッドが返ってきませんでした。少ししてからもう一度お試しください。"
 
-#: includes/class-form.php:290
+#: includes/class-form.php:312
 msgid "Back to the spread of the day"
 msgstr "今日のスプレッドに戻る"
 
-#: includes/class-form.php:293
+#: includes/class-form.php:315
 msgid "Draw again"
 msgstr "もう一度引く"
 
-#: includes/class-form.php:345
+#: includes/class-form.php:367
 msgid "The calculator is busy right now. Try again later."
 msgstr "計算機は現在混み合っています。後でもう一度お試しください。"
 
-#: includes/class-form.php:451
+#: includes/class-form.php:473
 msgid ""
-"This chart cannot be shown for this birth date yet. Try another year or come"
-" back later."
+"This chart cannot be shown for this birth date yet. Try another year or come "
+"back later."
 msgstr "この生年月日ではこのチャートをまだ表示できません。別の年を試すか、後でもう一度お越しください。"
 
-#: includes/class-form.php:452
+#: includes/class-form.php:474
 msgid "This chart cannot be shown for this birth data yet. Come back later."
 msgstr "この出生データではこのチャートをまだ表示できません。後でもう一度お越しください。"
 
-#: includes/class-form.php:455
+#: includes/class-form.php:477
 msgid "The calculation did not come back. Try again in a moment."
 msgstr "計算結果が返ってきませんでした。少ししてからもう一度お試しください。"
 
-#: includes/class-form.php:465
+#: includes/class-form.php:487
 msgid "Calculate another"
 msgstr "別の計算をする"
 
-#: includes/class-form.php:478
+#: includes/class-form.php:500
 msgid ""
-"The rising sign depends on the minute of birth; without the time it cannot "
-"be told."
+"The rising sign depends on the minute of birth; without the time it cannot be"
+" told."
 msgstr "アセンダントは生まれた分によって決まります。時刻がなければ求められません。"
 
-#: includes/class-form.php:480
+#: includes/class-form.php:502
 msgid ""
 "This chart depends on the minute of birth; without the time it cannot be "
 "cast."
 msgstr "このチャートは出生の分に左右されます。時刻がなければ作成できません。"
 
-#: includes/class-form.php:483
+#: includes/class-form.php:505
 msgid "Enter the time of birth, or tick that it is unknown."
 msgstr "出生時刻を入力するか、不明にチェックを入れてください。"
 
-#: includes/class-form.php:487
+#: includes/class-form.php:509
 msgid "Latitude runs from -90 to 90."
 msgstr "緯度は -90〜90です。"
 
-#: includes/class-form.php:490
+#: includes/class-form.php:512
 msgid "Longitude runs from -180 to 180."
 msgstr "経度は -180〜180です。"
 
-#: includes/class-form.php:493
+#: includes/class-form.php:515
 msgid "Enter the city of birth."
 msgstr "出生地の都市を入力してください。"
 
-#: includes/class-form.php:496
+#: includes/class-form.php:518
 msgid "Enter a year between 1900 and 2100, or leave it empty."
 msgstr "1900年から2100年までの年を入力するか、空欄のままにしてください。"
 
-#: includes/class-form.php:527
+#: includes/class-form.php:549
 msgid "The city search is not answering. Enter the coordinates below instead."
 msgstr "都市検索が応答しません。代わりに下に座標を入力してください。"
 
-#: includes/class-form.php:531
+#: includes/class-form.php:553
 msgid ""
 "No place by that name. Check the spelling, or enter the coordinates below."
 msgstr "その名前の場所はありません。つづりを確認するか、下に座標を入力してください。"
 
-#: includes/class-form.php:560
+#: includes/class-form.php:582
 msgid "Your birth chart"
 msgstr "あなたのネイタルチャート"
 
-#: includes/class-form.php:561
+#: includes/class-form.php:583
 msgid "Your moon sign"
 msgstr "あなたのムーンサイン"
 
-#: includes/class-form.php:562
+#: includes/class-form.php:584
 msgid "Your rising sign"
 msgstr "あなたのアセンダント"
 
-#: includes/class-form.php:563
+#: includes/class-form.php:585
 msgid "Compatibility of two charts"
-msgstr "2つのホロスコープの相性"
+msgstr "2つのチャートの相性"
 
-#: includes/class-form.php:564
+#: includes/class-form.php:586
 msgid "Your Solar Return"
 msgstr "あなたのソーラーリターン"
 
-#: includes/class-form.php:565
+#: includes/class-form.php:587
 msgid "Your next Lunar Return"
 msgstr "あなたの次のルナリターン"
 
-#: includes/class-form.php:566
+#: includes/class-form.php:588
 msgid "Davison chart of two people"
 msgstr "2人のダヴィソン・チャート"
 
-#: includes/class-form.php:567
+#: includes/class-form.php:589
 msgid "Your Human Design"
 msgstr "あなたのヒューマンデザイン"
 
-#: includes/class-form.php:577
+#: includes/class-form.php:599
 msgid "First person"
 msgstr "1人目"
 
-#: includes/class-form.php:578
+#: includes/class-form.php:600
 msgid "Second person"
 msgstr "2人目"
 
-#: includes/class-form.php:585
+#: includes/class-form.php:607
 msgid "Name (optional)"
 msgstr "名前 (任意)"
 
-#: includes/class-form.php:587
+#: includes/class-form.php:609
 msgid "Shown on the result only."
 msgstr "結果にのみ表示されます。"
 
-#: includes/class-form.php:604
+#: includes/class-form.php:626
 msgid "Year of the return"
 msgstr "リターンの年"
 
-#: includes/class-form.php:608
+#: includes/class-form.php:630
 msgid "Leave empty for the one in force now."
-msgstr "空欄で現在有効なもの。"
+msgstr "空欄にすると現在有効なリターンを表示します。"
 
-#: includes/class-form.php:646
+#: includes/class-form.php:668
 msgid "Time of birth"
 msgstr "出生時刻"
 
-#: includes/class-form.php:650
+#: includes/class-form.php:672
 msgid "Local time at the place of birth."
 msgstr "出生地の現地時刻。"
 
-#: includes/class-form.php:654
+#: includes/class-form.php:676
 msgid "I do not know the time"
 msgstr "時刻がわからない"
 
-#: includes/class-form.php:658
+#: includes/class-form.php:680
 msgid "Which one?"
 msgstr "どれですか ?"
 
-#: includes/class-form.php:671
+#: includes/class-form.php:693
 msgid "City of birth"
 msgstr "出生地の都市"
 
-#: includes/class-form.php:680
+#: includes/class-form.php:702
 msgid "Enter coordinates instead"
 msgstr "代わりに座標を入力"
 
-#: includes/class-form.php:684
+#: includes/class-form.php:706
 msgid "Latitude"
 msgstr "緯度"
 
-#: includes/class-form.php:687
+#: includes/class-form.php:709
 msgid "North positive, e.g. 50.45"
 msgstr "北がプラス、例: 50.45"
 
-#: includes/class-form.php:694
+#: includes/class-form.php:716
 msgid "Longitude"
 msgstr "経度"
 
-#: includes/class-form.php:697
+#: includes/class-form.php:719
 msgid "East positive, e.g. 30.52"
 msgstr "東がプラス、例: 30.52"
 
-#: includes/class-form.php:715
+#: includes/class-form.php:737
 msgid ""
 "I agree that the date, time and place I enter are sent to api.astroway.info "
 "to calculate the answer."
 msgstr "入力した日付、時刻、場所が回答の計算のために api.astroway.info に送信されることに同意します。"
 
-#: includes/class-form.php:728
+#: includes/class-form.php:750
 msgid "Tick the box to continue."
 msgstr "続けるにはチェックを入れてください。"
 
-#: includes/class-form.php:851
+#: includes/class-form.php:873
 msgid ""
 "The clocks changed at this place on that day, so one hour of it happened "
 "twice or not at all. Check the birth time was read from a local clock."
 msgstr ""
 "その日この場所では時計が切り替わったため、ある1時間が2回あったか、まったくありませんでした。出生時刻が現地の時計で記録されたか確認してください。"
 
-#: includes/class-form.php:868
+#: includes/class-form.php:890
 msgid ""
 "Without the time of birth the Moon's degree is approximate; its sign is "
 "certain for that day."
 msgstr "出生時刻がないと月の度数はおおよそになります。その日のサインは確かです。"
 
 #. translators: 1, 2: zodiac signs
-#: includes/class-form.php:874
+#: includes/class-form.php:896
 #, php-format
 msgid ""
-"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides"
-" which one is yours."
+"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides "
+"which one is yours."
 msgstr "その日、月は%1$sから%2$sへサインを移りました。どちらがあなたのものかは出生時刻で決まります。"
 
 #. translators: %s = title of a generated block, e.g. "Natal Chart"
@@ -750,21 +758,20 @@ msgstr "%s (API)"
 #: includes/class-generated-registry.php:406
 #, php-format
 msgid ""
-"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
-" this note."
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see "
+"this note."
 msgstr ""
 "%s には API キーが必要です。AstroWay の「API キー」欄に API キーを入力してください。この注意書きは管理者のみが確認できます。"
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:426 includes/class-render.php:2874
+#: includes/class-generated-registry.php:426 includes/class-render.php:3313
 #, php-format
 msgid ""
-"%1$s is missing required attributes: %2$s. Only administrators see this "
-"note."
+"%1$s is missing required attributes: %2$s. Only administrators see this note."
 msgstr "%1$s には、必須属性である %2$s がありません。この注意書きは管理者のみが確認できます。"
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:440 includes/class-render.php:2925
+#: includes/class-generated-registry.php:440 includes/class-render.php:3364
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr "%s を読み込むことができませんでした。このメッセージは管理者のみが表示されます。"
@@ -776,14 +783,14 @@ msgstr "今は隠す"
 
 #: includes/class-plugin.php:542
 msgid "AstroWay is active"
-msgstr "アストロウェイは有効です"
+msgstr "AstroWay は有効です"
 
 #: includes/class-plugin.php:543
 msgid ""
-"Shortcodes work without an API key. Widgets your server renders into the "
-"page draw on your site's allowance of 300 requests an hour; widgets that "
-"fall back to a frame draw on each visitor's own 30. For higher limits and "
-"Pro features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the page"
+" draw on your site's allowance of 300 requests an hour; widgets that fall "
+"back to a frame draw on each visitor's own 30. For higher limits and Pro "
+"features, get a free API key."
 msgstr ""
 "ショートコードは API "
 "キーがなくても動作します。サーバーがページ内にレンダリングするウィジェットは、サイト全体の「1時間あたり300リクエスト」という制限にカウントされます。一方、フレームにフォールバックするウィジェットは、訪問者1人あたり「30リクエスト」の制限にカウントされます。制限の引き上げや"
@@ -800,12 +807,12 @@ msgstr "設定を開く"
 
 #: includes/class-plugin.php:619
 msgid "Enjoying AstroWay?"
-msgstr "アストロウェイ"
+msgstr "AstroWay を気に入っていただけましたか ?"
 
 #: includes/class-plugin.php:620
 msgid ""
-"A short review on wordpress.org helps other site owners discover the plugin,"
-" and tells us what to build next."
+"A short review on wordpress.org helps other site owners discover the plugin, "
+"and tells us what to build next."
 msgstr ""
 "wordpress.org "
 "に短いレビューを投稿していただければ、他のサイト運営者がこのプラグインを見つける助けになるだけでなく、私たちが次にどのような機能を開発すべきかを知る手掛かりにもなります。"
@@ -830,8 +837,8 @@ msgid ""
 "server will fail. Add a free API key to lift the limit and get 10,000 "
 "credits/month plus 60 req/min."
 msgstr ""
-"無料プランでは、このサイトへのリクエストは1時間あたり300件までと制限されています。1時間が経過して制限がリセットされるまで、ページにレンダリングされるはずだったウィジェットは、訪問者自身のブラウザで読み込まれるフレームに切り替わり、このサーバーからのプレビューおよび管理用リクエストは失敗します。"
-" 無料の API キーを追加すると、この制限が解除され、月間10,000クレジットと分あたり60リクエストが利用可能になります。"
+"無料プランでは、このサイトへのリクエストは1時間あたり300件までと制限されています。1時間が経過して制限がリセットされるまで、ページにレンダリングされるはずだったウィジェットは、訪問者自身のブラウザで読み込まれるフレームに切り替わり、このサーバーからのプレビューおよび管理用リクエストは失敗します。無料の"
+" API キーを追加すると、この制限が解除され、月間10,000クレジットと分あたり60リクエストが利用可能になります。"
 
 #: includes/class-plugin.php:706
 msgid ""
@@ -849,8 +856,8 @@ msgstr "キーをもう一度貼り付けてください"
 #: includes/class-public-client.php:94
 #, php-format
 msgid ""
-"This widget reached the free limit for one visitor (%d requests an hour from"
-" one IP address), so visitors on that connection see nothing here until the "
+"This widget reached the free limit for one visitor (%d requests an hour from "
+"one IP address), so visitors on that connection see nothing here until the "
 "hour resets. Only administrators see this note."
 msgstr ""
 "このウィジェットは、1人の訪問者あたりの無料制限 (1つの IP アドレスからの1時間あたり%dリクエスト) "
@@ -874,11 +881,11 @@ msgstr ""
 
 #: includes/class-public-client.php:171
 msgid "Natal chart wheel"
-msgstr "出生図ホイール"
+msgstr "ネイタルチャートホイール"
 
 #: includes/class-public-client.php:172 includes/class-widget-manifest.php:295
 msgid "Daily horoscope"
-msgstr "今日のホロスコープ"
+msgstr "今日の星占い"
 
 #: includes/class-public-client.php:173 includes/class-widget-manifest.php:299
 msgid "Moon phase"
@@ -898,12 +905,12 @@ msgstr "ヴェーダ式クンドリ・チャート"
 
 #: includes/class-public-client.php:177
 msgid "Transit sky snapshot"
-msgstr "通過中の空のスナップショット"
+msgstr "トランジットの天体配置"
 
 #: includes/class-public-client.php:178
 #: includes/views/partials/shortcode-cards.php:221
 msgid "Daily Panchang"
-msgstr "今日のタロットカード"
+msgstr "今日のパンチャンガ"
 
 #: includes/class-public-client.php:179
 msgid "Numerology core numbers"
@@ -911,768 +918,804 @@ msgstr "数秘術のコアナンバー"
 
 #: includes/class-public-client.php:180
 msgid "Synastry compatibility"
-msgstr "相性診断"
+msgstr "シナストリーの相性"
 
 #: includes/class-public-client.php:182
 msgid "AstroWay widget"
-msgstr "アストロウェイウィジェット"
+msgstr "AstroWay ウィジェット"
 
-#: includes/class-render.php:116
+#: includes/class-render.php:138
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
-msgstr ""
-"黄道十二星座の昇り座 (アセンダント) "
-"には緯度と経度が必要です。これは特定の場所における地平線を示すもので、日付とは関係ありません。このメモは管理者のみが表示します。"
+msgstr "アセンダントには緯度と経度が必要です。アセンダントは日付ではなく、その場所の地平線で決まります。このメモは管理者にのみ表示されます。"
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:123
+#: includes/class-render.php:145
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
 "note."
-msgstr "「%s」ウィジェットを今すぐ読み込めませんでした。管理者のみがこのメモを見ることができます。"
+msgstr "「%s」ウィジェットを現在読み込めませんでした。このメモは管理者にのみ表示されます。"
 
-#: includes/class-render.php:199
+#: includes/class-render.php:221
 msgid "Rising sign"
 msgstr "アセンダント"
 
-#: includes/class-render.php:213
+#: includes/class-render.php:235
 msgid "Moon sign"
-msgstr "ムーン・サイン"
+msgstr "ムーンサイン"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
 #. translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine"
-#: includes/class-render.php:223 includes/class-render.php:3975
+#: includes/class-render.php:245 includes/class-render.php:4420
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:237 includes/class-render.php:1802
-#: includes/class-render.php:3057
+#: includes/class-render.php:259 includes/class-render.php:1961
+#: includes/class-render.php:3496 includes/class-render.php:5434
 msgid "Position"
-msgstr "ポジション"
+msgstr "位置"
 
 #. translators: %d = house number
-#: includes/class-render.php:240 includes/class-render.php:1802
-#: includes/class-render.php:3814
+#: includes/class-render.php:262 includes/class-render.php:1961
+#: includes/class-render.php:4259 includes/class-render.php:5434
 msgid "House"
 msgstr "ハウス"
 
 #. translators: %d = house number
-#: includes/class-render.php:240 includes/class-render.php:1317
-#: includes/class-render.php:1331 includes/class-render.php:1757
-#: includes/class-render.php:1770 includes/class-render.php:3806
+#: includes/class-render.php:262 includes/class-render.php:1476
+#: includes/class-render.php:1490 includes/class-render.php:1916
+#: includes/class-render.php:1929 includes/class-render.php:4251
 #, php-format
 msgid "House %d"
 msgstr "ハウス %d"
 
-#: includes/class-render.php:248
+#: includes/class-render.php:270
 msgid "Chart ruler"
 msgstr "チャートルーラー"
 
-#: includes/class-render.php:251
+#: includes/class-render.php:273
 msgid "Ruler position"
 msgstr "支配星位置"
 
-#: includes/class-render.php:257 includes/class-render.php:1778
+#: includes/class-render.php:279 includes/class-render.php:1937
 msgid "Midheaven"
 msgstr "天頂"
 
-#: includes/class-render.php:296 includes/class-render.php:355
+#: includes/class-render.php:318 includes/class-render.php:380
 msgid "Human Design"
-msgstr "Human Design"
+msgstr "ヒューマンデザイン"
 
 #. translators: %s = person's name
-#: includes/class-render.php:299
+#: includes/class-render.php:321
 #, php-format
 msgid "Human Design: %s"
 msgstr "ヒューマンデザイン: %s"
 
 #. translators: %s = date of the design moment
-#: includes/class-render.php:307
+#: includes/class-render.php:329
 #, php-format
 msgid "Design: %s"
 msgstr "デザイン: %s"
 
-#: includes/class-render.php:321
+#: includes/class-render.php:343
 msgid "Strategy"
 msgstr "ストラテジー"
 
-#: includes/class-render.php:324
+#: includes/class-render.php:346
 msgid "Authority"
 msgstr "オーソリティ"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:331
+#: includes/class-render.php:353
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:336
+#: includes/class-render.php:358
 msgid "Profile"
 msgstr "プロファイル"
 
-#: includes/class-render.php:339
+#: includes/class-render.php:361
 msgid "Definition"
-msgstr "定義"
+msgstr "ディフィニション"
 
-#: includes/class-render.php:349
+#: includes/class-render.php:371 includes/class-render.php:671
 msgid "Incarnation cross"
 msgstr "インカーネーションクロス"
 
-#: includes/class-render.php:358
+#: includes/class-render.php:383
 msgid "Bodygraph"
 msgstr "ボディグラフ"
 
-#: includes/class-render.php:363
+#: includes/class-render.php:388
 msgid "Centres"
 msgstr "センター"
 
-#: includes/class-render.php:368 includes/class-render.php:666
+#: includes/class-render.php:393 includes/class-render.php:797
 msgid "Channels"
 msgstr "チャンネル"
 
-#. translators: abbreviated colour, tone and base of a Human Design
-#. activation, e.g. C5 T6 B4
-#: includes/class-render.php:443
+#. translators: abbreviated colour, tone and base of a Human Design activation,
+#. e.g. C5 T6 B4
+#: includes/class-render.php:468
 #, php-format
 msgid "C%1$d T%2$d B%3$d"
 msgstr "C%1$d T%2$d B%3$d"
 
 #. translators: colour, tone and base of a Human Design activation
-#: includes/class-render.php:446
+#: includes/class-render.php:471
 #, php-format
 msgid "colour %1$d, tone %2$d, base %3$d"
 msgstr "カラー %1$d、トーン %2$d、ベース %3$d"
 
 #. translators: 1: Human Design gate number, 2: line number within the gate
-#: includes/class-render.php:452
+#: includes/class-render.php:477
 #, php-format
 msgid "gate %1$d, line %2$d"
 msgstr "ゲート%1$d、ライン%2$d"
 
-#: includes/class-render.php:463
+#: includes/class-render.php:488
 msgid "No centre is defined."
 msgstr "定義されたセンターはありません。"
 
 #. translators: %s = list of centre names
-#: includes/class-render.php:465
+#: includes/class-render.php:490
 #, php-format
 msgid "Defined centres: %s."
 msgstr "定義されたセンター: %s。"
 
 #. translators: %s = list of channels such as 13-33
-#: includes/class-render.php:468
+#: includes/class-render.php:493
 #, php-format
 msgid "Channels: %s."
 msgstr "チャンネル: %s。"
 
-#: includes/class-render.php:487 includes/class-render.php:627
+#: includes/class-render.php:512 includes/class-render.php:758
 msgid "Design"
 msgstr "デザイン"
 
-#: includes/class-render.php:487 includes/class-render.php:626
+#: includes/class-render.php:512 includes/class-render.php:757
+#: includes/class-render.php:5548
 msgid "Personality"
 msgstr "パーソナリティ"
 
-#: includes/class-render.php:493
+#: includes/class-render.php:518
 msgid "Design (unconscious)"
 msgstr "デザイン (無意識)"
 
-#: includes/class-render.php:497
+#: includes/class-render.php:522
 msgid "Personality (conscious)"
 msgstr "パーソナリティ (意識)"
 
-#: includes/class-render.php:501
+#: includes/class-render.php:526
 msgid "Both"
 msgstr "両方"
 
-#: includes/class-render.php:511
+#: includes/class-render.php:536
 msgctxt "planet"
 msgid "Earth"
 msgstr "地球"
 
-#: includes/class-render.php:524 includes/class-render.php:525
+#: includes/class-render.php:549 includes/class-render.php:550
 msgid "Satisfaction"
 msgstr "満足"
 
-#: includes/class-render.php:526
+#: includes/class-render.php:551
 msgid "Success"
 msgstr "成功"
 
-#: includes/class-render.php:527
+#: includes/class-render.php:552
 msgid "Peace"
 msgstr "平和"
 
-#: includes/class-render.php:528
+#: includes/class-render.php:553
 msgid "Surprise"
 msgstr "驚き"
 
 #. translators: %s = Human Design signature, e.g. Success
-#: includes/class-render.php:533
+#: includes/class-render.php:558
 #, php-format
 msgid "Signature: %s"
 msgstr "シグネチャー: %s"
 
 #. translators: %s = Human Design not-self theme, e.g. Bitterness
-#: includes/class-render.php:537
+#: includes/class-render.php:562
 #, php-format
 msgid "Not-self: %s"
-msgstr "自分でない自己: %s"
+msgstr "ノットセルフ: %s"
 
-#: includes/class-render.php:562
+#. translators: %s = Human Design authority, such as Emotional
+#: includes/class-render.php:628
+#, php-format
+msgid "Authority: %s"
+msgstr "オーソリティ: %s"
+
+#. translators: %d = line number, 1 to 6
+#: includes/class-render.php:650
+#, php-format
+msgid "Line %d"
+msgstr "ライン%d"
+
+#. translators: %s = Human Design profile, such as 6/2
+#: includes/class-render.php:656
+#, php-format
+msgid "Profile %s"
+msgstr "プロファイル%s"
+
+#. translators: %d = gate number, 1 to 64
+#: includes/class-render.php:666
+#, php-format
+msgid "Gate %d"
+msgstr "ゲート%d"
+
+#: includes/class-render.php:680
+msgid "What the chart says"
+msgstr "チャートが語ること"
+
+#: includes/class-render.php:688
 msgid "Motor"
 msgstr "モーター"
 
-#: includes/class-render.php:563
+#: includes/class-render.php:689
 msgid "Awareness"
 msgstr "意識"
 
-#: includes/class-render.php:564
+#: includes/class-render.php:690
 msgid "Pressure"
 msgstr "プレッシャー"
 
-#: includes/class-render.php:579 includes/class-render.php:596
+#: includes/class-render.php:705 includes/class-render.php:727
 msgid "Defined"
-msgstr "定義"
+msgstr "定義あり"
 
-#: includes/class-render.php:579 includes/class-render.php:596
+#: includes/class-render.php:705 includes/class-render.php:727
 msgid "Open"
 msgstr "オープン"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:588
+#: includes/class-render.php:719
 #, php-format
 msgid "Gates: %s"
 msgstr "ゲート: %s"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:592
+#: includes/class-render.php:723
 #, php-format
 msgid "Active gates: %s"
 msgstr "アクティブなゲート: %s"
 
-#: includes/class-render.php:620
+#: includes/class-render.php:751
 msgid "Individual circuitry"
 msgstr "個人回路"
 
-#: includes/class-render.php:621
+#: includes/class-render.php:752
 msgid "Tribal circuitry"
 msgstr "部族回路"
 
-#: includes/class-render.php:622
+#: includes/class-render.php:753
 msgid "Collective circuitry"
 msgstr "集合回路"
 
-#: includes/class-render.php:623
+#: includes/class-render.php:754
 msgid "Integration channels"
-msgstr "統合チャネル"
+msgstr "統合チャンネル"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:656
+#: includes/class-render.php:787
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
-msgstr "%1$d-%2$d, %3$s to %4$s"
+msgstr "%1$d-%2$d、%3$sから%4$s"
 
-#: includes/class-render.php:676
+#: includes/class-render.php:807
 msgid "Generator"
 msgstr "ジェネレーター"
 
-#: includes/class-render.php:677
+#: includes/class-render.php:808
 msgid "Manifesting Generator"
 msgstr "マニフェスティング・ジェネレーター"
 
-#: includes/class-render.php:678
+#: includes/class-render.php:809
 msgid "Manifestor"
 msgstr "マニフェスター"
 
-#: includes/class-render.php:679
+#: includes/class-render.php:810
 msgid "Projector"
 msgstr "プロジェクター"
 
-#: includes/class-render.php:680
+#: includes/class-render.php:811
 msgid "Reflector"
 msgstr "リフレクター"
 
-#: includes/class-render.php:687
+#: includes/class-render.php:818
 msgid "Wait to respond"
 msgstr "応答を待つ"
 
-#: includes/class-render.php:688
+#: includes/class-render.php:819
 msgid "Wait for the invitation"
 msgstr "招待を待つ"
 
-#: includes/class-render.php:689 includes/class-render.php:690
+#: includes/class-render.php:820 includes/class-render.php:821
 msgid "Inform before acting"
 msgstr "行動前に通知する"
 
-#: includes/class-render.php:691
+#: includes/class-render.php:822
 msgid "Wait a lunar cycle"
 msgstr "月周期を待つ"
 
-#: includes/class-render.php:692
+#: includes/class-render.php:823
 msgid "Respond, then inform"
 msgstr "応答し、次に通知する"
 
-#: includes/class-render.php:699
+#: includes/class-render.php:830
 msgid "Emotional (Solar Plexus)"
-msgstr "感情的 (太陽神経叢)"
+msgstr "エモーショナル (ソーラープレクサス)"
 
-#: includes/class-render.php:700 includes/class-render.php:751
+#: includes/class-render.php:831 includes/class-render.php:886
 msgid "Sacral"
 msgstr "サクラル"
 
-#: includes/class-render.php:701
+#: includes/class-render.php:832
 msgid "Splenic"
-msgstr "脾臓"
+msgstr "スプリーン"
 
-#: includes/class-render.php:702
+#: includes/class-render.php:833
 msgid "Ego (Heart)"
 msgstr "エゴ (ハート)"
 
-#: includes/class-render.php:703
-msgid "Self-projected"
-msgstr "自己投射"
+#: includes/class-render.php:834
+msgid "Ego manifested"
+msgstr "エゴ・マニフェステッド"
 
-#: includes/class-render.php:704
+#: includes/class-render.php:835
+msgid "Ego projected"
+msgstr "エゴ・プロジェクテッド"
+
+#: includes/class-render.php:836
+msgid "Self-projected"
+msgstr "セルフプロジェクテッド"
+
+#: includes/class-render.php:837 includes/class-render.php:838
 msgid "Mental (environment)"
 msgstr "メンタル (環境)"
 
-#: includes/class-render.php:705 includes/class-render.php:706
+#: includes/class-render.php:839 includes/class-render.php:840
+#: includes/class-render.php:841
 msgid "Lunar cycle"
 msgstr "月周期"
 
-#: includes/class-render.php:713
+#: includes/class-render.php:848
 msgid "Single definition"
 msgstr "シングルディフィニション"
 
-#: includes/class-render.php:714
+#: includes/class-render.php:849
 msgid "Split definition"
 msgstr "スプリットディフィニション"
 
-#: includes/class-render.php:715
+#: includes/class-render.php:850
 msgid "Triple split definition"
 msgstr "トリプルスプリットディフィニション"
 
-#: includes/class-render.php:716
+#: includes/class-render.php:851
 msgid "Quadruple split definition"
 msgstr "クアドラプルスプリットディフィニション"
 
-#: includes/class-render.php:717
+#: includes/class-render.php:852
 msgid "No definition"
 msgstr "ノーディフィニション"
 
-#: includes/class-render.php:724
+#: includes/class-render.php:859
 msgid "Frustration"
 msgstr "フラストレーション"
 
-#: includes/class-render.php:725
+#: includes/class-render.php:860
 msgid "Bitterness"
-msgstr "ビター感"
+msgstr "苦々しさ"
 
-#: includes/class-render.php:726
+#: includes/class-render.php:861
 msgid "Anger"
-msgstr "アンガー"
+msgstr "怒り"
 
-#: includes/class-render.php:727
+#: includes/class-render.php:862
 msgid "Disappointment"
-msgstr "ディスアポイントメント"
+msgstr "失望"
 
-#: includes/class-render.php:734
+#: includes/class-render.php:869
 msgid "Right Angle"
 msgstr "ライトアングル"
 
-#: includes/class-render.php:735
+#: includes/class-render.php:870
 msgid "Left Angle"
 msgstr "レフトアングル"
 
-#: includes/class-render.php:736
+#: includes/class-render.php:871
 msgid "Juxtaposition"
 msgstr "ジャクスタポジション"
 
-#: includes/class-render.php:744
+#: includes/class-render.php:879
 msgid "Head"
 msgstr "ヘッド"
 
-#: includes/class-render.php:745
+#: includes/class-render.php:880
 msgid "Ajna"
 msgstr "アジナ"
 
-#: includes/class-render.php:746
+#: includes/class-render.php:881
 msgid "Throat"
 msgstr "スロート"
 
-#: includes/class-render.php:747
+#: includes/class-render.php:882
 msgid "G (identity)"
 msgstr "G (アイデンティティ)"
 
-#: includes/class-render.php:748
+#: includes/class-render.php:883
 msgid "Heart (ego)"
 msgstr "ハート (エゴ)"
 
-#: includes/class-render.php:749
+#: includes/class-render.php:884
 msgid "Solar Plexus"
 msgstr "ソーラープレクサス"
 
-#: includes/class-render.php:750
+#: includes/class-render.php:885
 msgid "Spleen"
 msgstr "スプリーン"
 
-#: includes/class-render.php:752
+#: includes/class-render.php:887
 msgid "Root"
 msgstr "ルート"
 
-#: includes/class-render.php:799 includes/class-render.php:826
-#: includes/class-render.php:857
+#: includes/class-render.php:934 includes/class-render.php:961
+#: includes/class-render.php:992
 msgid "Natal chart"
-msgstr "ホロスコープ"
+msgstr "ネイタルチャート"
 
 #. translators: %s = person's name
-#: includes/class-render.php:803 includes/class-render.php:829
+#: includes/class-render.php:938 includes/class-render.php:964
 #, php-format
 msgid "Natal chart: %s"
-msgstr "ホロスコープ: %s"
+msgstr "ネイタルチャート: %s"
 
-#: includes/class-render.php:854
+#: includes/class-render.php:989
 msgid ""
 "Birth time unknown: the chart is drawn for noon, without houses, the "
 "Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from "
 "where it was."
 msgstr "出生時刻不明: チャートは正午で計算し、ハウス、アセンダント、月のアスペクトを省いています。月は最大7度ずれる可能性があります。"
 
-#: includes/class-render.php:860 includes/class-render.php:1487
-#: includes/class-render.php:3464
+#: includes/class-render.php:995 includes/class-render.php:1646
+#: includes/class-render.php:3903
 msgid "Wheel"
 msgstr "ホイール"
 
-#: includes/class-render.php:865 includes/class-render.php:1491
+#: includes/class-render.php:1000 includes/class-render.php:1650
 msgid "Grid"
 msgstr "グリッド"
 
-#: includes/class-render.php:867 includes/class-render.php:1492
+#: includes/class-render.php:1002 includes/class-render.php:1651
 msgid "Aspects between planets"
 msgstr "惑星間のアスペクト"
 
-#: includes/class-render.php:870 includes/class-render.php:1495
-#: includes/class-render.php:1801
+#: includes/class-render.php:1005 includes/class-render.php:1654
+#: includes/class-render.php:1960
 msgid "Placements"
 msgstr "配置"
 
-#: includes/class-render.php:875 includes/class-render.php:1499
-#: includes/class-render.php:3469
+#: includes/class-render.php:1010 includes/class-render.php:1658
+#: includes/class-render.php:3908
 msgid "Aspects"
 msgstr "アスペクト"
 
-#: includes/class-render.php:881 includes/class-widget-manifest.php:237
+#: includes/class-render.php:1016 includes/class-widget-manifest.php:237
 msgid "Transits"
 msgstr "トランジット"
 
-#: includes/class-render.php:889 includes/class-render.php:1907
+#: includes/class-render.php:1024 includes/class-render.php:2066
 msgid "Elements by mode"
 msgstr "クオリティ別のエレメント"
 
-#: includes/class-render.php:1008
+#: includes/class-render.php:1153
 msgid "What it means"
 msgstr "意味"
 
-#: includes/class-render.php:1038
+#: includes/class-render.php:1183
 msgid "time unknown"
 msgstr "時刻不明"
 
-#: includes/class-render.php:1053
+#: includes/class-render.php:1198
 msgid "Part of Fortune"
 msgstr "パート・オブ・フォーチュン"
 
-#: includes/class-render.php:1054
+#: includes/class-render.php:1199
 msgid "Vertex"
 msgstr "バーテックス"
 
-#: includes/class-render.php:1055 includes/class-render.php:2070
+#: includes/class-render.php:1200 includes/class-render.php:2229
 msgid "South Node"
-msgstr "ドラゴンティル"
+msgstr "ドラゴンテイル"
 
-#: includes/class-render.php:1080 includes/class-render.php:1813
-#: includes/class-render.php:4355 includes/class-tarot.php:245
+#: includes/class-render.php:1225 includes/class-render.php:1972
+#: includes/class-render.php:4844 includes/class-tarot.php:264
 msgid "Fire"
 msgstr "火"
 
-#: includes/class-render.php:1081 includes/class-render.php:1817
-#: includes/class-render.php:4356 includes/class-tarot.php:248
+#: includes/class-render.php:1226 includes/class-render.php:1976
+#: includes/class-render.php:4845 includes/class-tarot.php:267
 msgid "Earth"
 msgstr "土"
 
-#: includes/class-render.php:1082 includes/class-render.php:1821
-#: includes/class-tarot.php:247
+#: includes/class-render.php:1227 includes/class-render.php:1980
+#: includes/class-tarot.php:266
 msgid "Air"
 msgstr "風"
 
-#: includes/class-render.php:1083 includes/class-render.php:1825
-#: includes/class-render.php:4358 includes/class-tarot.php:246
+#: includes/class-render.php:1228 includes/class-render.php:1984
+#: includes/class-render.php:4847 includes/class-tarot.php:265
 msgid "Water"
 msgstr "水"
 
-#: includes/class-render.php:1086 includes/class-render.php:1831
+#: includes/class-render.php:1231 includes/class-render.php:1990
 msgid "Cardinal"
 msgstr "活動宮"
 
-#: includes/class-render.php:1087 includes/class-render.php:1835
+#: includes/class-render.php:1232 includes/class-render.php:1994
 msgid "Fixed"
 msgstr "不動宮"
 
-#: includes/class-render.php:1088 includes/class-render.php:1839
+#: includes/class-render.php:1233 includes/class-render.php:1998
 msgid "Mutable"
 msgstr "柔軟宮"
 
 #. translators: %s = element or elements, e.g. "Earth" or "Earth, Water"
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:1094 includes/class-render.php:4241
+#: includes/class-render.php:1239 includes/class-render.php:4691
 #, php-format
 msgid "Element: %s"
 msgstr "エレメント: %s"
 
 #. translators: %s = mode or modes, e.g. "Fixed"
-#: includes/class-render.php:1098
+#: includes/class-render.php:1243
 #, php-format
 msgid "Mode: %s"
 msgstr "クオリティ: %s"
 
-#: includes/class-render.php:1101
+#: includes/class-render.php:1246
 msgid "Day chart"
 msgstr "昼のチャート"
 
-#: includes/class-render.php:1103
+#: includes/class-render.php:1248
 msgid "Night chart"
 msgstr "夜のチャート"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1109 includes/class-render.php:3709
+#: includes/class-render.php:1254 includes/class-render.php:4154
 #, php-format
 msgid "Harmonious %d"
 msgstr "調和: %d"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1111 includes/class-render.php:3711
+#: includes/class-render.php:1256 includes/class-render.php:4156
 #, php-format
 msgid "Challenging %d"
 msgstr "緊張: %d"
 
-#: includes/class-render.php:1123 includes/class-render.php:2956
-#: includes/class-render.php:3034 includes/class-render.php:3108
+#: includes/class-render.php:1268 includes/class-render.php:3395
+#: includes/class-render.php:3473 includes/class-render.php:3547
+#: includes/class-render.php:5373
 msgid "Retrograde"
 msgstr "逆行"
 
-#: includes/class-render.php:1137
+#: includes/class-render.php:1286
 msgid "Grand cross"
 msgstr "グランドクロス"
 
-#: includes/class-render.php:1138
+#: includes/class-render.php:1287
 msgid "T-square"
 msgstr "T スクエア"
 
-#: includes/class-render.php:1139
+#: includes/class-render.php:1288
 msgid "Grand trine"
 msgstr "グランドトライン"
 
-#: includes/class-render.php:1140
+#: includes/class-render.php:1289
 msgid "Yod"
 msgstr "ヨッド"
 
-#: includes/class-render.php:1141
+#: includes/class-render.php:1290
 msgid "Stellium"
 msgstr "ステリウム"
 
-#: includes/class-render.php:1144
+#: includes/class-render.php:1293
 msgid "Four planets in two oppositions, each square to the next."
 msgstr "2つのオポジションにある4つの惑星で、それぞれ隣とスクエア。"
 
-#: includes/class-render.php:1145
+#: includes/class-render.php:1294
 msgid "Two planets in opposition, both square to a third, the apex."
 msgstr "オポジションの2惑星が、どちらも頂点となる3つ目とスクエア。"
 
-#: includes/class-render.php:1146
+#: includes/class-render.php:1295
 msgid "Three planets a trine apart, closing a triangle."
 msgstr "互いにトラインの3惑星が三角形を閉じる。"
 
-#: includes/class-render.php:1147
+#: includes/class-render.php:1296
 msgid "Two planets in sextile, both quincunx to a third, the apex."
 msgstr "セクスタイルの2惑星が、どちらも頂点となる3つ目とクインカンクス。"
 
 #. translators: %s = planet name, the apex of a chart pattern
-#: includes/class-render.php:1156
+#: includes/class-render.php:1306
 #, php-format
 msgid "%s (apex)"
 msgstr "%s (頂点)"
 
 #. translators: 1: number of planets, 2: sign name
-#: includes/class-render.php:1162
+#: includes/class-render.php:1312
 #, php-format
 msgid "%1$d planets in %2$s."
 msgstr "%2$sにある惑星: %1$d。"
 
 #. translators: 1: number of planets, 2: house number
-#: includes/class-render.php:1164
+#: includes/class-render.php:1314
 #, php-format
 msgid "%1$d planets in house %2$d."
 msgstr "%2$dハウスにある惑星: %1$d。"
 
-#: includes/class-render.php:1171
+#: includes/class-render.php:1330
 msgid "Chart patterns"
 msgstr "チャートのパターン"
 
-#: includes/class-render.php:1188 includes/class-render.php:2057
+#: includes/class-render.php:1347 includes/class-render.php:2216
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr "太陽"
 
-#: includes/class-render.php:1189 includes/class-render.php:2058
+#: includes/class-render.php:1348 includes/class-render.php:2217
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr "月"
 
-#: includes/class-render.php:1205 includes/class-render.php:1777
+#: includes/class-render.php:1364 includes/class-render.php:1936
 msgid "Ascendant"
 msgstr "アセンダント"
 
-#: includes/class-render.php:1237 includes/class-render.php:3871
+#: includes/class-render.php:1396 includes/class-render.php:4316
 msgid "Separating"
 msgstr "離反中"
 
-#: includes/class-render.php:1237 includes/class-render.php:3871
+#: includes/class-render.php:1396 includes/class-render.php:4316
 msgid "Applying"
 msgstr "接近中"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:1240 includes/class-render.php:1688
-#: includes/class-render.php:1928 includes/class-render.php:3685
+#: includes/class-render.php:1399 includes/class-render.php:1847
+#: includes/class-render.php:2087 includes/class-render.php:4124
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:1351
+#: includes/class-render.php:1510
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr "ネイタルチャート: サイン、ハウス、惑星とそれらのアスペクト。"
 
-#: includes/class-render.php:1353 includes/class-render.php:1719
-#: includes/class-render.php:3641
+#: includes/class-render.php:1512 includes/class-render.php:1878
+#: includes/class-render.php:4080
 msgid "ASC"
 msgstr "ASC"
 
-#: includes/class-render.php:1354 includes/class-render.php:1720
-#: includes/class-render.php:3642
+#: includes/class-render.php:1513 includes/class-render.php:1879
+#: includes/class-render.php:4081
 msgid "IC"
 msgstr "IC"
 
-#: includes/class-render.php:1355 includes/class-render.php:1721
-#: includes/class-render.php:3643
+#: includes/class-render.php:1514 includes/class-render.php:1880
+#: includes/class-render.php:4082
 msgid "DSC"
 msgstr "DSC"
 
-#: includes/class-render.php:1356 includes/class-render.php:1722
-#: includes/class-render.php:3644
+#: includes/class-render.php:1515 includes/class-render.php:1881
+#: includes/class-render.php:4083
 msgid "MC"
 msgstr "MC"
 
-#: includes/class-render.php:1383
+#: includes/class-render.php:1542
 msgid ""
 "The Solar Return found for this year falls in another year, so the card is "
 "left out. Only administrators see this note."
 msgstr "この年について見つかったソーラーリターンが別の年にあたるため、カードは表示されません。このメモは管理者にのみ表示されます。"
 
-#: includes/class-render.php:1388
+#: includes/class-render.php:1547
 msgid ""
 "The Lunar Return found falls before the date it was searched from, so the "
 "card is left out. Only administrators see this note."
 msgstr "見つかったルナリターンが検索開始日より前にあたるため、カードは表示されません。このメモは管理者にのみ表示されます。"
 
 #. translators: %d = year
-#: includes/class-render.php:1399
+#: includes/class-render.php:1558
 #, php-format
 msgid "Solar Return %d"
 msgstr "ソーラーリターン %d"
 
 #. translators: 1: year, 2: person's name
-#: includes/class-render.php:1401
+#: includes/class-render.php:1560
 #, php-format
 msgid "Solar Return %1$d: %2$s"
 msgstr "ソーラーリターン %1$d: %2$s"
 
-#: includes/class-render.php:1402
+#: includes/class-render.php:1561
 msgid ""
 "Solar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Sun returns to its birth position."
 msgstr "ソーラーリターン・チャート: 太陽が出生時の位置に戻る瞬間のサイン、ハウス、惑星とそれらのアスペクト。"
 
-#: includes/class-render.php:1404
+#: includes/class-render.php:1563
 #: includes/views/partials/shortcode-cards.php:300
 msgid "Lunar Return"
 msgstr "ルナリターン"
 
 #. translators: %s = person's name
-#: includes/class-render.php:1406
+#: includes/class-render.php:1565
 #, php-format
 msgid "Lunar Return: %s"
 msgstr "ルナリターン: %s"
 
-#: includes/class-render.php:1407
+#: includes/class-render.php:1566
 msgid ""
 "Lunar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Moon returns to its birth position."
 msgstr "ルナリターン・チャート: 月が出生時の位置に戻る瞬間のサイン、ハウス、惑星とそれらのアスペクト。"
 
-#: includes/class-render.php:1443
+#: includes/class-render.php:1602
 msgid ""
-"The Davison chart for these two places is not drawn yet: the midpoint the "
-"api returned is on the wrong side of the 180th meridian. Only administrators"
-" see this note."
+"The Davison chart for these two places is not drawn yet: the midpoint the api"
+" returned is on the wrong side of the 180th meridian. Only administrators see"
+" this note."
 msgstr ""
 "この2つの場所のダヴィソン・チャートはまだ描画されません: api が返した中間点が180度経線の反対側にあります。このメモは管理者にのみ表示されます。"
 
-#: includes/class-render.php:1452
+#: includes/class-render.php:1611
 msgid "Davison chart"
 msgstr "ダヴィソン・チャート"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:1455
+#: includes/class-render.php:1614
 #, php-format
 msgid "Davison chart: %1$s and %2$s"
 msgstr "ダヴィソン・チャート: %1$sと%2$s"
 
-#: includes/class-render.php:1467
+#: includes/class-render.php:1626
 msgid "Midpoint"
 msgstr "中間点"
 
-#: includes/class-render.php:1476
+#: includes/class-render.php:1635
 msgid ""
-"Davison chart: one chart cast for the midpoint between two births in time "
-"and place."
+"Davison chart: one chart cast for the midpoint between two births in time and"
+" place."
 msgstr "ダヴィソン・チャート: 2人の出生の時間と場所の中間点で作成する1枚のチャート。"
 
-#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo
-#. 24°22'"
-#: includes/class-render.php:1667 includes/class-render.php:3610
+#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'"
+#: includes/class-render.php:1826 includes/class-render.php:4049
 #, php-format
 msgid "%1$s (%2$s), %3$s"
 msgstr "%1$s (%2$s)、%3$s"
 
-#: includes/class-render.php:1689 includes/class-render.php:1713
+#: includes/class-render.php:1848 includes/class-render.php:1872
 msgid "transit"
 msgstr "トランジット"
 
-#: includes/class-render.php:1691 includes/class-render.php:1712
+#: includes/class-render.php:1850 includes/class-render.php:1871
 msgid "natal"
 msgstr "ネイタル"
 
 #. translators: %s = a date
-#: includes/class-render.php:1697
+#: includes/class-render.php:1856
 #, php-format
 msgid "sky on %s"
 msgstr "%sの空"
 
 #. translators: 1: a date, 2: an orb in degrees
-#: includes/class-render.php:1701
+#: includes/class-render.php:1860
 #, php-format
 msgid ""
 "The planets at noon UTC on %1$s against the birth chart, aspects within "
@@ -1681,972 +1724,1083 @@ msgstr ""
 "%1$sの UTC 正午の天体をネイタルチャートに重ね、オーブ%2$s°以内のアスペクトを示します。トランジットの月は動きが速いため一覧に含めません。"
 
 #. translators: %s = a date
-#: includes/class-render.php:1717
+#: includes/class-render.php:1876
 #, php-format
-msgid ""
-"Transit wheel: the birth chart inside, the sky on %s on the outer ring."
+msgid "Transit wheel: the birth chart inside, the sky on %s on the outer ring."
 msgstr "トランジットのホイール: 内側にネイタルチャート、外側の円に%sの空。"
 
-#: includes/class-render.php:1730
+#: includes/class-render.php:1889
 msgid "Inner ring: birth chart"
 msgstr "内側の円: ネイタルチャート"
 
 #. translators: %s = "sky on <date>"
 #. translators: %s = person's name, or "Second chart"
-#: includes/class-render.php:1735 includes/class-render.php:3659
+#: includes/class-render.php:1894 includes/class-render.php:4098
 #, php-format
 msgid "Outer ring: %s"
 msgstr "外側の円: %s"
 
-#: includes/class-render.php:1739
+#: includes/class-render.php:1898
 msgid "No close transits on this day."
 msgstr "この日は近いトランジットはありません。"
 
 #. translators: %d = house number
-#: includes/class-render.php:1758
+#: includes/class-render.php:1917
 msgid "retrograde"
 msgstr "逆行"
 
-#: includes/class-render.php:1802
+#: includes/class-render.php:1961
 msgid "Body"
 msgstr "天体"
 
-#: includes/class-render.php:1802 includes/class-render.php:3057
+#: includes/class-render.php:1961 includes/class-render.php:3496
+#: includes/class-render.php:5434
 msgid "Motion"
 msgstr "運行"
 
-#: includes/class-render.php:1909
+#: includes/class-render.php:2068
 msgid "Total"
 msgstr "合計"
 
-#: includes/class-render.php:1938
+#: includes/class-render.php:2097
 msgid "Major aspects"
 msgstr "主要アスペクト"
 
-#: includes/class-render.php:2043 includes/class-render.php:2477
+#: includes/class-render.php:2202 includes/class-render.php:2881
 msgid "New Moon"
 msgstr "新月"
 
-#: includes/class-render.php:2044
+#: includes/class-render.php:2203
 msgid "Waxing Crescent"
-msgstr "三日月 (上弦)"
+msgstr "三日月"
 
-#: includes/class-render.php:2045 includes/class-render.php:2478
+#: includes/class-render.php:2204 includes/class-render.php:2882
 msgid "First Quarter"
-msgstr "第1四半期"
-
-#: includes/class-render.php:2046
-msgid "Waxing Gibbous"
 msgstr "上弦の月"
 
-#: includes/class-render.php:2047 includes/class-render.php:2479
+#: includes/class-render.php:2205
+msgid "Waxing Gibbous"
+msgstr "十三夜月"
+
+#: includes/class-render.php:2206 includes/class-render.php:2883
 msgid "Full Moon"
 msgstr "満月"
 
-#: includes/class-render.php:2048
+#: includes/class-render.php:2207
 msgid "Waning Gibbous"
-msgstr "下弦の月"
+msgstr "居待月"
 
-#: includes/class-render.php:2049 includes/class-render.php:2480
+#: includes/class-render.php:2208 includes/class-render.php:2884
 msgid "Last Quarter"
-msgstr "前四半期"
-
-#: includes/class-render.php:2050
-msgid "Waning Crescent"
 msgstr "下弦の月"
 
-#: includes/class-render.php:2059 includes/class-widget-manifest.php:388
+#: includes/class-render.php:2209
+msgid "Waning Crescent"
+msgstr "有明月"
+
+#: includes/class-render.php:2218 includes/class-widget-manifest.php:388
 msgid "Mercury"
 msgstr "水星"
 
-#: includes/class-render.php:2060 includes/class-widget-manifest.php:389
+#: includes/class-render.php:2219 includes/class-widget-manifest.php:389
 msgid "Venus"
 msgstr "金星"
 
-#: includes/class-render.php:2061 includes/class-widget-manifest.php:390
+#: includes/class-render.php:2220 includes/class-widget-manifest.php:390
 msgid "Mars"
 msgstr "火星"
 
-#: includes/class-render.php:2062 includes/class-widget-manifest.php:391
+#: includes/class-render.php:2221 includes/class-widget-manifest.php:391
 msgid "Jupiter"
 msgstr "木星"
 
-#: includes/class-render.php:2063 includes/class-widget-manifest.php:392
+#: includes/class-render.php:2222 includes/class-widget-manifest.php:392
 msgid "Saturn"
 msgstr "土星"
 
-#: includes/class-render.php:2064 includes/class-widget-manifest.php:393
+#: includes/class-render.php:2223 includes/class-widget-manifest.php:393
 msgid "Uranus"
 msgstr "天王星"
 
-#: includes/class-render.php:2065 includes/class-widget-manifest.php:394
+#: includes/class-render.php:2224 includes/class-widget-manifest.php:394
 msgid "Neptune"
 msgstr "海王星"
 
-#: includes/class-render.php:2066 includes/class-widget-manifest.php:395
+#: includes/class-render.php:2225 includes/class-widget-manifest.php:395
 msgid "Pluto"
 msgstr "冥王星"
 
-#: includes/class-render.php:2067
+#: includes/class-render.php:2226
 msgid "Chiron"
 msgstr "キロン"
 
-#: includes/class-render.php:2068 includes/class-render.php:2075
-#: includes/class-render.php:2076
+#: includes/class-render.php:2227 includes/class-render.php:2236
+#: includes/class-render.php:2237
 msgid "Lilith"
 msgstr "リリス"
 
-#: includes/class-render.php:2069 includes/class-render.php:2073
-#: includes/class-render.php:2074
+#: includes/class-render.php:2228 includes/class-render.php:2234
+#: includes/class-render.php:2235
 msgid "North Node"
 msgstr "ドラゴンヘッド"
 
-#: includes/class-render.php:2083
+#: includes/class-render.php:2230
+msgid "Rahu"
+msgstr "ラーフ"
+
+#: includes/class-render.php:2231
+msgid "Ketu"
+msgstr "ケートゥ"
+
+#: includes/class-render.php:2244
 msgid "conjunct"
 msgstr "コンジャンクション"
 
-#: includes/class-render.php:2084 includes/class-render.php:4054
+#: includes/class-render.php:2245 includes/class-render.php:4499
 msgid "opposite"
 msgstr "オポジション"
 
-#: includes/class-render.php:2085 includes/class-render.php:4053
+#: includes/class-render.php:2246 includes/class-render.php:4498
 msgid "trine"
 msgstr "トライン"
 
-#: includes/class-render.php:2086 includes/class-render.php:4052
+#: includes/class-render.php:2247 includes/class-render.php:4497
 msgid "square"
 msgstr "スクエア"
 
-#: includes/class-render.php:2087 includes/class-render.php:4051
+#: includes/class-render.php:2248 includes/class-render.php:4496
 msgid "sextile"
 msgstr "セクスタイル"
 
-#: includes/class-render.php:2119
+#: includes/class-render.php:2280
 msgid "Period"
 msgstr "期間"
 
-#: includes/class-render.php:2139
+#: includes/class-render.php:2300
 msgid "Horoscope"
 msgstr "星占い"
 
-#: includes/class-render.php:2143
+#: includes/class-render.php:2304
 msgid "Pick your sign"
 msgstr "あなたの星座を選んでください"
 
-#: includes/class-render.php:2146 includes/class-render.php:2320
+#: includes/class-render.php:2307 includes/class-render.php:2686
 #: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:64
 msgid "Zodiac sign"
 msgstr "星座"
 
 #. translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning
 #. Crescent"
-#: includes/class-render.php:2172
+#: includes/class-render.php:2333
 #, php-format
 msgid "Moon in %1$s · %2$s"
-msgstr "月は%1$s · %2$s"
+msgstr "%1$sの月 · %2$s"
 
-#: includes/class-render.php:2176
+#: includes/class-render.php:2337
 msgid "Sky today"
 msgstr "今日の空"
 
-#: includes/class-render.php:2267
+#: includes/class-render.php:2431 includes/class-render.php:3984
+#: includes/class-render.php:4173 includes/class-render.php:5636
+#: includes/class-tarot.php:481
+msgid "Love"
+msgstr "愛"
+
+#: includes/class-render.php:2432 includes/class-tarot.php:482
+msgid "Career"
+msgstr "仕事"
+
+#: includes/class-render.php:2433 includes/class-tarot.php:484
+msgid "Health"
+msgstr "健康"
+
+#: includes/class-render.php:2434 includes/class-tarot.php:483
+msgid "Money"
+msgstr "お金"
+
+#: includes/class-render.php:2447 includes/class-tarot-reading.php:357
+msgid "Advice"
+msgstr "アドバイス"
+
+#: includes/class-render.php:2524
+msgid "out of 10"
+msgstr "10段階中"
+
+#: includes/class-render.php:2526
+msgid "Energy of the day"
+msgstr "今日のエネルギー"
+
+#: includes/class-render.php:2534
+msgid "Lucky planet"
+msgstr "ラッキープラネット"
+
+#: includes/class-render.php:2541
+msgid "Lucky day"
+msgstr "ラッキーデー"
+
+#: includes/class-render.php:2547
+msgid "Lucky number"
+msgstr "ラッキーナンバー"
+
+#: includes/class-render.php:2561
+msgid "Compatible signs"
+msgstr "相性の良いサイン"
+
+#. translators: 1: planet, 2: aspect such as "opposite", 3: planet; one of the
+#. two rules the sign
+#: includes/class-render.php:2576 includes/class-render.php:2596
+#, php-format
+msgid "%1$s %2$s %3$s (the sign’s ruler)"
+msgstr "%1$s と %3$s の%2$s (サインの支配星)"
+
+#. translators: 1: planet, 2: house number counted from the sign
+#: includes/class-render.php:2584 includes/class-render.php:2604
+#, php-format
+msgid "%1$s in solar house %2$d"
+msgstr "%1$s がソーラーハウス%2$dに"
+
+#: includes/class-render.php:2587 includes/class-render.php:2607
+msgid "Moon in a sign of the same element"
+msgstr "月が同じエレメントのサインに"
+
+#: includes/class-render.php:2590 includes/class-render.php:2610
+msgid "Moon square or opposite the sign"
+msgstr "月がサインとスクエアまたはオポジション"
+
+#: includes/class-render.php:2633
 msgid "Week"
 msgstr "週"
 
-#: includes/class-render.php:2269
+#: includes/class-render.php:2635
 msgid "Month"
 msgstr "月"
 
-#: includes/class-render.php:2271
+#: includes/class-render.php:2637
 msgid "Year"
 msgstr "年"
 
-#: includes/class-render.php:2273
+#: includes/class-render.php:2639
 msgid "Today"
 msgstr "今日"
 
-#: includes/class-render.php:2294
+#: includes/class-render.php:2660
 msgid "Horoscope for the week"
 msgstr "今週の星占い"
 
-#: includes/class-render.php:2296
+#: includes/class-render.php:2662
 msgid "Horoscope for the month"
 msgstr "今月の星占い"
 
-#: includes/class-render.php:2298
+#: includes/class-render.php:2664
 msgid "Horoscope for the year"
 msgstr "今年の星占い"
 
-#: includes/class-render.php:2300 includes/views/admin-settings.php:328
+#: includes/class-render.php:2666 includes/views/admin-settings.php:328
 msgid "Horoscope for today"
 msgstr "今日の星占い"
 
-#: includes/class-render.php:2345
+#: includes/class-render.php:2711
 msgid "Weeks"
 msgstr "週"
 
-#: includes/class-render.php:2346
+#: includes/class-render.php:2712
 msgid "Previous week"
 msgstr "前の週"
 
-#: includes/class-render.php:2347
+#: includes/class-render.php:2713
 msgid "Next week"
 msgstr "次の週"
 
-#: includes/class-render.php:2351
+#: includes/class-render.php:2717
 msgid "Months"
 msgstr "月"
 
-#: includes/class-render.php:2352
+#: includes/class-render.php:2718
 msgid "Previous month"
 msgstr "前の月"
 
-#: includes/class-render.php:2353
+#: includes/class-render.php:2719
 msgid "Next month"
 msgstr "次の月"
 
-#: includes/class-render.php:2357
+#: includes/class-render.php:2723
 msgid "Days"
 msgstr "日"
 
-#: includes/class-render.php:2358
+#: includes/class-render.php:2724
 msgid "Previous day"
 msgstr "前の日"
 
-#: includes/class-render.php:2359
+#: includes/class-render.php:2725
 msgid "Next day"
 msgstr "次の日"
 
-#: includes/class-render.php:2399
+#: includes/class-render.php:2765
 msgid "Moon in"
-msgstr "月が"
+msgstr "月のサイン"
 
-#: includes/class-render.php:2407
+#: includes/class-render.php:2773
 msgid "Age"
-msgstr "年齢"
+msgstr "月齢"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:2410
+#: includes/class-render.php:2776
 #, php-format
 msgid "%s days"
-msgstr "%s 日"
+msgstr "%s日"
 
-#: includes/class-render.php:2417
+#: includes/class-render.php:2783
 msgid "Sun in"
-msgstr "太陽が"
+msgstr "太陽のサイン"
 
-#: includes/class-render.php:2435
+#: includes/class-render.php:2801
 msgid "Waxing"
 msgstr "満ちていく"
 
-#: includes/class-render.php:2435
+#: includes/class-render.php:2801
 msgid "Waning"
 msgstr "欠けていく"
 
-#: includes/class-render.php:2437
+#: includes/class-render.php:2803
 msgid "Illuminated"
 msgstr "輝面比"
 
-#. translators: PHP date format for a day within the coming month, such as
-#. "Oct 10"
-#: includes/class-render.php:2499
+#. translators: PHP date format for a day within the coming month, such as "Oct
+#. 10"
+#: includes/class-render.php:2825 includes/class-render.php:2903
 msgctxt "moon cycle date"
 msgid "M j"
-msgstr "n 月 j 日"
+msgstr "n月j日"
 
-#: includes/class-render.php:2508
+#. translators: %s = zodiac sign the Moon enters when the window ends
+#: includes/class-render.php:2842
+#, php-format
+msgid "Next sign: %s"
+msgstr "次のサイン: %s"
+
+#: includes/class-render.php:2846
+msgid "No void of course Moon today."
+msgstr "今日はボイドタイムはありません。"
+
+#: includes/class-render.php:2848 includes/class-render.php:3680
+#: includes/class-widget-manifest.php:406
+msgid "Void of course Moon"
+msgstr "月のボイドタイム"
+
+#: includes/class-render.php:2914
+msgid "Krishna, waning"
+msgstr "クリシュナ (欠けていく半月)"
+
+#: includes/class-render.php:2915
+msgid "Shukla, waxing"
+msgstr "シュクラ (満ちていく半月)"
+
+#. translators: %d = tithi number, 1 to 30
+#: includes/class-render.php:2918
+#, php-format
+msgid "%d of 30"
+msgstr "30のうち%d"
+
+#: includes/class-render.php:2921
+msgid "Tithi"
+msgstr "ティティ"
+
+#: includes/class-render.php:2924
+msgid "Paksha"
+msgstr "パクシャ"
+
+#: includes/class-render.php:2929
 msgid "Distance"
 msgstr "距離"
 
 #. translators: %s = distance in kilometres
-#: includes/class-render.php:2512
+#: includes/class-render.php:2933
 #, php-format
 msgid "%s km"
 msgstr "%s km"
 
-#: includes/class-render.php:2520
+#: includes/class-render.php:2941
 msgid "Moon cycle"
 msgstr "月のサイクル"
 
-#: includes/class-render.php:2535
+#: includes/class-render.php:2956
 msgid "Card of the day"
 msgstr "今日のカード"
 
-#: includes/class-render.php:2536 includes/class-widget-manifest.php:309
+#: includes/class-render.php:2957 includes/class-widget-manifest.php:309
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "ライダー＝ウェイト＝スミス"
 
-#: includes/class-render.php:2605 includes/class-widget-manifest.php:319
+#: includes/class-render.php:2978 includes/class-tarot.php:403
+msgid "About the card"
+msgstr "カードについて"
+
+#: includes/class-render.php:3041 includes/class-widget-manifest.php:319
 msgid "Tarot spread"
 msgstr "タロットスプレッド"
 
-#: includes/class-render.php:2606
+#: includes/class-render.php:3042
 msgid "New draw"
 msgstr "新しいスプレッド"
 
-#: includes/class-render.php:2606
+#: includes/class-render.php:3042
 msgid "Spread of the day"
 msgstr "今日のスプレッド"
 
-#: includes/class-render.php:2612
+#: includes/class-render.php:3048
 msgid "Turn all the cards over"
 msgstr "すべてのカードをめくる"
 
-#: includes/class-render.php:2639
+#: includes/class-render.php:3078
 msgid "Reading the spread…"
 msgstr "スプレッドを読んでいます…"
 
-#: includes/class-render.php:2640
+#: includes/class-render.php:3079
 msgid "The reading could not be had just now."
 msgstr "現在リーディングを取得できませんでした。"
 
-#: includes/class-render.php:2658 includes/class-widget-manifest.php:366
+#: includes/class-render.php:3097 includes/class-widget-manifest.php:366
 msgid "Planet of the day"
 msgstr "今日の惑星"
 
-#: includes/class-render.php:2668
+#: includes/class-render.php:3107
 msgid "Themes of the day"
 msgstr "今日のテーマ"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2683
+#: includes/class-render.php:3122
 #, php-format
 msgid "%s: horoscope for the week"
-msgstr "%s: 今週のホロスコープ"
+msgstr "%s: 今週の星占い"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2686
+#: includes/class-render.php:3125
 #, php-format
 msgid "%s: horoscope for the month"
-msgstr "%s: 今月のホロスコープ"
+msgstr "%s: 今月の星占い"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2689
+#: includes/class-render.php:3128
 #, php-format
 msgid "%s: horoscope for the year"
-msgstr "%s: 今年の運勢"
+msgstr "%s: 今年の星占い"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2692
+#: includes/class-render.php:3131
 #, php-format
 msgid "%s: horoscope for today"
-msgstr "%s: 今日のホロスコープ"
+msgstr "%s: 今日の星占い"
 
-#: includes/class-render.php:2699 includes/class-widget-manifest.php:43
+#: includes/class-render.php:3138 includes/class-widget-manifest.php:43
 #: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "牡羊座"
 
-#: includes/class-render.php:2700 includes/class-widget-manifest.php:44
+#: includes/class-render.php:3139 includes/class-widget-manifest.php:44
 #: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "牡牛座"
 
-#: includes/class-render.php:2701 includes/class-widget-manifest.php:45
+#: includes/class-render.php:3140 includes/class-widget-manifest.php:45
 #: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "双子座"
 
-#: includes/class-render.php:2702 includes/class-widget-manifest.php:46
+#: includes/class-render.php:3141 includes/class-widget-manifest.php:46
 #: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "蟹座"
 
-#: includes/class-render.php:2703 includes/class-widget-manifest.php:47
-#: includes/views/admin-settings.php:326
-#: assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:3142 includes/class-widget-manifest.php:47
+#: includes/views/admin-settings.php:326 assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "獅子座"
 
-#: includes/class-render.php:2704 includes/class-widget-manifest.php:48
-#: includes/views/admin-settings.php:335
-#: assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:3143 includes/class-widget-manifest.php:48
+#: includes/views/admin-settings.php:335 assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "乙女座"
 
-#: includes/class-render.php:2705 includes/class-widget-manifest.php:49
+#: includes/class-render.php:3144 includes/class-widget-manifest.php:49
 #: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "天秤座"
 
-#: includes/class-render.php:2706 includes/class-widget-manifest.php:50
+#: includes/class-render.php:3145 includes/class-widget-manifest.php:50
 #: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "蠍座"
 
-#: includes/class-render.php:2707 includes/class-widget-manifest.php:51
+#: includes/class-render.php:3146 includes/class-widget-manifest.php:51
 #: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "射手座"
 
-#: includes/class-render.php:2708 includes/class-widget-manifest.php:52
-#: includes/views/admin-settings.php:340
-#: assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:3147 includes/class-widget-manifest.php:52
+#: includes/views/admin-settings.php:340 assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "山羊座"
 
-#: includes/class-render.php:2709 includes/class-widget-manifest.php:53
+#: includes/class-render.php:3148 includes/class-widget-manifest.php:53
 #: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "水瓶座"
 
-#: includes/class-render.php:2710 includes/class-widget-manifest.php:54
+#: includes/class-render.php:3149 includes/class-widget-manifest.php:54
 #: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "魚座"
 
 #. translators: %s = shortcode tag
-#: includes/class-render.php:2862
+#: includes/class-render.php:3301
 #, php-format
 msgid ""
-"%s needs an API key: this site asks for its own automatically, or paste "
-"yours in AstroWay, API Key. Only administrators see this note."
+"%s needs an API key: this site asks for its own automatically, or paste yours"
+" in AstroWay, API Key. Only administrators see this note."
 msgstr ""
 "%s には API キーが必要です。サイトは自動で独自のキーを取得します。または AstroWay、API Key "
 "にご自身のキーを貼り付けてください。このメモは管理者にのみ表示されます。"
 
-#: includes/class-render.php:2957 includes/class-render.php:3036
-#: includes/class-render.php:3090
+#: includes/class-render.php:3396 includes/class-render.php:3475
+#: includes/class-render.php:3529 includes/class-render.php:5372
 msgid "Direct"
 msgstr "順行"
 
-#: includes/class-render.php:2962
+#: includes/class-render.php:3401
 msgid "Retrograde watch"
 msgstr "逆行ウォッチ"
 
 #. translators: %s = planet name
-#: includes/class-render.php:2971
+#: includes/class-render.php:3410
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "はい、%sは現在逆行中です。"
 
-#: includes/class-render.php:2978
+#: includes/class-render.php:3417
 msgid "Retrograde since"
 msgstr "逆行開始日:"
 
-#: includes/class-render.php:2979
+#: includes/class-render.php:3418
 msgid "Direct again on"
-msgstr "再び直接"
+msgstr "順行に戻る日"
 
-#: includes/class-render.php:2980
+#: includes/class-render.php:3419
 msgid "Days left"
 msgstr "残り日数"
 
 #. translators: %s = planet name
-#: includes/class-render.php:2987
+#: includes/class-render.php:3426
 #, php-format
 msgid "No, %s is direct right now."
-msgstr "いいえ、%sは現在直接接続されています。"
+msgstr "いいえ、%sは現在順行中です。"
 
-#: includes/class-render.php:2993 includes/class-render.php:3156
+#: includes/class-render.php:3432 includes/class-render.php:3595
 msgid "Next retrograde"
 msgstr "次の逆行"
 
-#: includes/class-render.php:2994 includes/class-render.php:3250
+#: includes/class-render.php:3433 includes/class-render.php:3689
 msgid "Ends"
-msgstr "以上"
+msgstr "終了"
 
-#: includes/class-render.php:2995
+#: includes/class-render.php:3434
 msgid "Days until"
-msgstr "あと○日"
+msgstr "開始までの日数"
 
-#: includes/class-render.php:3032
+#: includes/class-render.php:3471
 msgid "Stationary"
 msgstr "留"
 
-#: includes/class-render.php:3052
+#: includes/class-render.php:3491
 msgid "Planets in the sky"
-msgstr "空の惑星"
+msgstr "現在の天体配置"
 
-#: includes/class-render.php:3057 includes/class-render.php:3152
-#: includes/class-render.php:3814 includes/class-widget-manifest.php:386
+#: includes/class-render.php:3496 includes/class-render.php:3591
+#: includes/class-render.php:4259 includes/class-widget-manifest.php:386
 msgid "Planet"
 msgstr "惑星"
 
 #. translators: %s = sign and degree, such as Aquarius 3°04'
-#: includes/class-render.php:3069
+#: includes/class-render.php:3508
 #, php-format
 msgid "Turns direct at %s"
-msgstr "%s で順行に戻る"
+msgstr "%sで順行に戻る"
 
 #. translators: %s = sign and degree, such as Scorpio 8°29'
-#: includes/class-render.php:3071
+#: includes/class-render.php:3510
 #, php-format
 msgid "Turns retrograde at %s"
-msgstr "%s で逆行に入る"
+msgstr "%sで逆行に入る"
 
 #. translators: %s = date
-#: includes/class-render.php:3097
+#: includes/class-render.php:3536
 #, php-format
 msgid "In the pre-retrograde shadow since %s"
 msgstr "%sから逆行前のシャドウ中"
 
 #. translators: %s = date
-#: includes/class-render.php:3099
+#: includes/class-render.php:3538
 #, php-format
 msgid "In the post-retrograde shadow until %s"
 msgstr "%sまで逆行後のシャドウ中"
 
 #. translators: 1: day number, 2: days in the retrograde period
-#: includes/class-render.php:3111
+#: includes/class-render.php:3550
 #, php-format
 msgid "Day %1$d of %2$d"
-msgstr "%2$d 日中 %1$d 日目"
+msgstr "%2$d日中%1$d日目"
 
 #. translators: %s = date
-#: includes/class-render.php:3115
+#: includes/class-render.php:3554
 #, php-format
 msgid "Leaves the shadow on %s"
 msgstr "%sにシャドウを抜ける"
 
 #. translators: %s = date
-#: includes/class-render.php:3123
+#: includes/class-render.php:3562
 #, php-format
 msgid "Shadow from %s"
-msgstr "シャドウ開始 %s"
+msgstr "%sからシャドウ"
 
-#: includes/class-render.php:3135
+#: includes/class-render.php:3574
 msgid "Nothing is retrograde right now."
 msgstr "現在、逆行している天体は一つもありません。"
 
-#: includes/class-render.php:3144 includes/class-widget-manifest.php:402
+#: includes/class-render.php:3583 includes/class-widget-manifest.php:402
 msgid "Retrograde planets"
 msgstr "逆行する惑星"
 
-#: includes/class-render.php:3155
+#: includes/class-render.php:3594
 msgid "Now"
 msgstr "現在"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:3210
+#: includes/class-render.php:3649
 #, php-format
 msgid "The Moon is void of course until %s."
-msgstr "%sまで、月は「空の月」の状態です。"
+msgstr "%sまで月はボイドタイムです。"
 
 #. translators: %s = a date and time
-#: includes/class-render.php:3216
+#: includes/class-render.php:3655
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
-msgstr "月は「空の月」の状態ではありません。次のウィンドウは %s に開きます。"
+msgstr "月はボイドタイムではありません。次のボイドタイムは%sに始まります。"
 
-#: includes/class-render.php:3220
+#: includes/class-render.php:3659
 msgid "The Moon is not void of course."
-msgstr "月は「空の月」の状態ではありません。"
+msgstr "月はボイドタイムではありません。"
 
-#: includes/class-render.php:3241 includes/class-widget-manifest.php:406
-msgid "Void of course Moon"
-msgstr "ボイドの月"
-
-#: includes/class-render.php:3249
+#: includes/class-render.php:3688
 msgid "Starts"
 msgstr "開始"
 
-#: includes/class-render.php:3251
+#: includes/class-render.php:3690
 msgid "Length"
-msgstr "期間"
+msgstr "長さ"
 
-#: includes/class-render.php:3252
+#: includes/class-render.php:3691
 msgid "Last aspect"
-msgstr "最後の側面"
+msgstr "最後のアスペクト"
 
-#: includes/class-render.php:3253
+#: includes/class-render.php:3692
 msgid "Next sign"
-msgstr "次の星座"
+msgstr "次のサイン"
 
-#: includes/class-render.php:3312
+#: includes/class-render.php:3751
 msgid "Night"
 msgstr "夜"
 
-#: includes/class-render.php:3312
+#: includes/class-render.php:3751
 msgid "Day"
-msgstr "日"
+msgstr "昼"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3327
+#: includes/class-render.php:3766
 #, php-format
 msgid "The day is ruled by %s."
-msgstr "今日は%sが主役です。"
+msgstr "この日の支配星は%sです。"
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:3334
+#: includes/class-render.php:3773
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
-msgstr "%1$sの時間は%2$sまで続きます。"
+msgstr "%1$sの惑星時間は%2$sまで続きます。"
 
-#: includes/class-render.php:3342 includes/class-render.php:3380
+#: includes/class-render.php:3781 includes/class-render.php:3819
 #: includes/class-widget-manifest.php:444
 msgid "Planetary hours"
-msgstr "惑星の時間"
+msgstr "惑星時間"
 
-#: includes/class-render.php:3353
+#: includes/class-render.php:3792
 msgid "Hour"
 msgstr "時間"
 
-#: includes/class-render.php:3354
+#: includes/class-render.php:3793
 msgid "Ruler"
 msgstr "支配星"
 
-#: includes/class-render.php:3355
+#: includes/class-render.php:3794
 msgid "From"
-msgstr "差出人:"
+msgstr "開始"
 
-#: includes/class-render.php:3356
+#: includes/class-render.php:3795
 msgid "To"
-msgstr "宛先:"
+msgstr "終了"
 
-#: includes/class-render.php:3357
+#: includes/class-render.php:3796
 msgid "Part of day"
 msgstr "昼夜"
 
-#: includes/class-render.php:3387
+#: includes/class-render.php:3826
 msgid ""
-"The Sun does not set at this latitude on this date, so there are no "
-"planetary hours to divide."
+"The Sun does not set at this latitude on this date, so there are no planetary"
+" hours to divide."
 msgstr "この日付、この緯度では太陽が沈まないため、分割すべき惑星の時間は存在しません。"
 
-#: includes/class-render.php:3388
+#: includes/class-render.php:3827
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
 msgstr "この緯度では、この日には太陽が昇らないため、分割すべき惑星の時間は存在しません。"
 
-#: includes/class-render.php:3419
+#: includes/class-render.php:3858
 msgid "First chart"
-msgstr "1人目のホロスコープ"
+msgstr "1人目のチャート"
 
-#: includes/class-render.php:3420
+#: includes/class-render.php:3859
 msgid "Second chart"
-msgstr "2人目のホロスコープ"
+msgstr "2人目のチャート"
 
 #. translators: 1: first person's name, 2: second person's name
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:3423 includes/class-render.php:4098
+#: includes/class-render.php:3862 includes/class-render.php:4543
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s と %2$s"
 
-#: includes/class-render.php:3424 includes/class-render.php:3489
+#: includes/class-render.php:3863 includes/class-render.php:3928
 msgid "Synastry"
 msgstr "シナストリー"
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3453
+#: includes/class-render.php:3892
 #, php-format
 msgid ""
 "%s: birth time unknown. No houses or Ascendant for this chart, and its Moon "
 "may be up to 7 degrees from where it was."
-msgstr "%s: 出生時刻不明。このホロスコープにはハウスとアセンダントがなく、月は実際の位置から最大7度ずれる可能性があります。"
+msgstr "%s: 出生時刻不明。このチャートにはハウスとアセンダントがなく、月は実際の位置から最大7度ずれる可能性があります。"
 
-#: includes/class-render.php:3474
+#: includes/class-render.php:3913
 msgid "Houses"
 msgstr "ハウス"
 
-#: includes/class-render.php:3483
+#: includes/class-render.php:3922
 msgid "All aspects"
 msgstr "すべてのアスペクト"
 
-#: includes/class-render.php:3542 includes/class-render.php:3725
+#: includes/class-render.php:3981 includes/class-render.php:4170
 msgid "Identity"
 msgstr "アイデンティティ"
 
-#: includes/class-render.php:3543 includes/class-render.php:3726
+#: includes/class-render.php:3982 includes/class-render.php:4171
 msgid "Emotions"
 msgstr "感情"
 
-#: includes/class-render.php:3544 includes/class-render.php:3727
+#: includes/class-render.php:3983 includes/class-render.php:4172
 msgid "Communication"
 msgstr "コミュニケーション"
 
-#: includes/class-render.php:3545 includes/class-render.php:3728
-msgid "Love"
-msgstr "愛"
-
-#: includes/class-render.php:3546 includes/class-render.php:3729
+#: includes/class-render.php:3985 includes/class-render.php:4174
 msgid "Passion"
 msgstr "情熱"
 
-#: includes/class-render.php:3547 includes/class-render.php:3730
+#: includes/class-render.php:3986 includes/class-render.php:4175
 msgid "Commitment"
-msgstr "責任"
+msgstr "コミットメント"
 
-#: includes/class-render.php:3562
+#: includes/class-render.php:4001
 msgid "no aspects"
 msgstr "アスペクトなし"
 
 #. translators: 1: tone word such as "Harmonious", 2: number of aspects
-#: includes/class-render.php:3565
+#: includes/class-render.php:4004
 #, php-format
 msgid "%1$s, aspects: %2$d"
 msgstr "%1$s、アスペクト: %2$d"
 
-#: includes/class-render.php:3568
+#: includes/class-render.php:4007
 msgid "By sphere"
 msgstr "領域別"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:3581
+#: includes/class-render.php:4020
 #, php-format
 msgid "Aspects between the two charts: %d"
-msgstr "2つのホロスコープ間のアスペクト: %d"
+msgstr "2つのチャート間のアスペクト: %d"
 
-#: includes/class-render.php:3586
+#: includes/class-render.php:4025
 msgid "out of 100"
 msgstr "100点中"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:3639
+#: includes/class-render.php:4078
 #, php-format
 msgid ""
-"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between"
-" them."
+"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between "
+"them."
 msgstr "シナストリーのホイール: 内側に%1$s、外側の円に%2$s、その間のアスペクト。"
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3654
+#: includes/class-render.php:4093
 #, php-format
 msgid "Inner ring: %s"
 msgstr "内側の円: %s"
 
-#: includes/class-render.php:3663 includes/class-render.php:4016
+#: includes/class-render.php:4102 includes/class-render.php:4461
 msgid "Harmony"
 msgstr "調和"
 
-#: includes/class-render.php:3667 includes/class-render.php:4020
+#: includes/class-render.php:4106 includes/class-render.php:4465
 msgid "Tension"
 msgstr "緊張"
 
+#. translators: %d = how strong an aspect is, 0 to 100
+#: includes/class-render.php:4134
+#, php-format
+msgid "strength %d"
+msgstr "強さ %d"
+
 #. translators: %d = number of conjunctions
-#: includes/class-render.php:3713
+#: includes/class-render.php:4158
 #, php-format
 msgid "Conjunctions %d"
 msgstr "コンジャンクション: %d"
 
-#: includes/class-render.php:3733
+#: includes/class-render.php:4178
 msgid "You let each other be who you are."
 msgstr "お互いをありのままにさせています。"
 
-#: includes/class-render.php:3734
+#: includes/class-render.php:4179
 msgid "You read each other's moods without words."
 msgstr "言葉なしで相手の気分を読み取れます。"
 
-#: includes/class-render.php:3735
+#: includes/class-render.php:4180
 msgid "Talking comes easily and settles things."
 msgstr "話すのが楽で、物事が片付きます。"
 
-#: includes/class-render.php:3736
+#: includes/class-render.php:4181
 msgid "Affection and taste are shared."
 msgstr "愛情と好みが共通しています。"
 
-#: includes/class-render.php:3737
+#: includes/class-render.php:4182
 msgid "Desire and drive meet in the middle."
 msgstr "欲求と行動力が真ん中で出会います。"
 
-#: includes/class-render.php:3738
+#: includes/class-render.php:4183
 msgid "Promises hold and plans last."
 msgstr "約束が守られ、計画が続きます。"
 
-#: includes/class-render.php:3741
+#: includes/class-render.php:4186
 msgid "Leave each other room to be different."
 msgstr "違っていられる余地をお互いに残しましょう。"
 
-#: includes/class-render.php:3742
+#: includes/class-render.php:4187
 msgid "Say what you feel rather than expect it to be guessed."
 msgstr "察してもらうのを待たず、気持ちを言葉にしましょう。"
 
-#: includes/class-render.php:3743
+#: includes/class-render.php:4188
 msgid "Check what was heard, not only what was said."
 msgstr "言ったことだけでなく、伝わったことを確かめましょう。"
 
-#: includes/class-render.php:3744
+#: includes/class-render.php:4189
 msgid "Show care in the way the other one receives it."
 msgstr "相手が受け取りやすい形で思いやりを示しましょう。"
 
-#: includes/class-render.php:3745
+#: includes/class-render.php:4190
 msgid "Agree on pace before friction turns into a fight."
 msgstr "摩擦がけんかになる前にペースを決めましょう。"
 
-#: includes/class-render.php:3746
+#: includes/class-render.php:4191
 msgid "Make plans explicit and keep them small at first."
 msgstr "計画ははっきり言葉にし、小さく始めましょう。"
 
-#: includes/class-render.php:3769 includes/class-render.php:4307
+#: includes/class-render.php:4214 includes/class-render.php:4796
 msgid "Strengths"
 msgstr "長所"
 
-#: includes/class-render.php:3770
+#: includes/class-render.php:4215
 msgid "Growth areas"
 msgstr "成長のポイント"
 
 #. translators: 1: whose planets, 2: whose houses
-#: includes/class-render.php:3813
+#: includes/class-render.php:4258
 #, php-format
 msgid "Planets of %1$s in the houses of %2$s"
 msgstr "%2$sのハウスにある%1$sの惑星"
 
 #. translators: 1: planet, 2: person's name, or the word "natal" or "transit"
-#: includes/class-render.php:3828
+#: includes/class-render.php:4273
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: includes/class-render.php:3834
+#: includes/class-render.php:4279
 msgid "One force: felt strongly by both, for better or worse."
 msgstr "ひとつの力: 良くも悪くも2人とも強く感じます。"
 
-#: includes/class-render.php:3835
+#: includes/class-render.php:4280
 msgid "Flows easily between you, without effort."
 msgstr "2人の間を無理なく流れます。"
 
-#: includes/class-render.php:3836
+#: includes/class-render.php:4281
 msgid "Helps you both once one of you makes a move."
 msgstr "どちらかが一歩踏み出せば、2人とも助けられます。"
 
-#: includes/class-render.php:3837
+#: includes/class-render.php:4282
 msgid "Rubs, and pushes you both to change."
 msgstr "摩擦を生み、2人に変化を促します。"
 
-#: includes/class-render.php:3838
+#: includes/class-render.php:4283
 msgid "Pulls you apart and draws you together."
 msgstr "2人を引き離し、同時に引き寄せます。"
 
-#: includes/class-render.php:3897
+#: includes/class-render.php:4342
 msgid "Aspect"
 msgstr "アスペクト"
 
-#: includes/class-render.php:3899
+#: includes/class-render.php:4344
 msgid "Orb"
 msgstr "オーブ"
 
-#: includes/class-render.php:3900
+#: includes/class-render.php:4345
 msgid "Trend"
-msgstr "トレンド"
+msgstr "動き"
 
-#: includes/class-render.php:3919
+#: includes/class-render.php:4364
 msgid "Harmonious"
-msgstr "調和のとれた"
+msgstr "調和"
 
-#: includes/class-render.php:3920
+#: includes/class-render.php:4365
 msgid "Balanced"
 msgstr "均衡"
 
-#: includes/class-render.php:3921
+#: includes/class-render.php:4366
 msgid "Mixed"
 msgstr "混在"
 
-#: includes/class-render.php:3922
+#: includes/class-render.php:4367
 msgid "Challenging"
-msgstr "試練の多い"
+msgstr "緊張"
 
-#: includes/class-render.php:3955 includes/class-render.php:4010
+#: includes/class-render.php:4400 includes/class-render.php:4455
 #: includes/class-widget-manifest.php:428
 msgid "Sign compatibility"
 msgstr "サインの相性"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3957
+#: includes/class-render.php:4402
 #, php-format
 msgid "%s and the other signs"
 msgstr "%sとほかのサイン"
 
-#: includes/class-render.php:3961
+#: includes/class-render.php:4406
 msgid ""
 "How each pair of signs stands in the zodiac: the classical relation, "
-"harmonious, challenging or unrelated. It is a relation of signs, not a "
-"score; for two people, their charts say far more."
+"harmonious, challenging or unrelated. It is a relation of signs, not a score;"
+" for two people, their charts say far more."
 msgstr ""
 "黄道上で各サインの組み合わせがどう向き合うか: "
-"古典的な関係で、調和、緊張、無関係のいずれか。サイン同士の関係であって点数ではありません。2人については、それぞれのホロスコープがはるかに多くを語ります。"
+"古典的な関係で、調和、緊張、無関係のいずれか。サイン同士の関係であって点数ではありません。2人については、それぞれのチャートがはるかに多くを語ります。"
 
 #. translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g.
 #. "trine"
-#: includes/class-render.php:4003
+#: includes/class-render.php:4448
 #, php-format
 msgid "%1$s and %2$s: %3$s"
 msgstr "%1$sと%2$s: %3$s"
 
-#: includes/class-render.php:4024
+#: includes/class-render.php:4469
 msgid "Do not see each other"
 msgstr "互いに見えない"
 
-#: includes/class-render.php:4050
+#: includes/class-render.php:4495
 msgid "the same sign"
 msgstr "同じサイン"
 
-#: includes/class-render.php:4055
+#: includes/class-render.php:4500
 msgid "aversion"
 msgstr "アバージョン"
 
-#: includes/class-render.php:4063
+#: includes/class-render.php:4508
 msgid "Two signs apart: friendly elements that help each other."
 msgstr "2つ離れ: 助け合う友好的なエレメント。"
 
-#: includes/class-render.php:4064
+#: includes/class-render.php:4509
 msgid "Three signs apart: the same drive in clashing elements."
 msgstr "3つ離れ: 同じ推進力が衝突するエレメントに宿る。"
 
-#: includes/class-render.php:4065
+#: includes/class-render.php:4510
 msgid "Four signs apart: the same element, easy understanding."
 msgstr "4つ離れ: 同じエレメント、分かり合いやすい。"
 
-#: includes/class-render.php:4066
+#: includes/class-render.php:4511
 msgid "Opposite signs: attraction and pull in one."
 msgstr "正反対のサイン: 引き合いながら張り合う。"
 
-#: includes/class-render.php:4067
+#: includes/class-render.php:4512
 msgid "One or five signs apart: classically they do not see each other."
 msgstr "1つまたは5つ離れ: 古典では互いに見えない関係。"
 
 #. translators: 1: the year's element, such as Metal, 2: the animal, such as
 #. Horse, 3: the year
-#: includes/class-render.php:4200
+#: includes/class-render.php:4645
 #, php-format
 msgid "%1$s %2$s, %3$d"
 msgstr "%1$sの%2$s (%3$d年)"
 
-#: includes/class-render.php:4205 includes/class-widget-manifest.php:435
+#: includes/class-render.php:4650 includes/class-widget-manifest.php:435
 msgid "Chinese zodiac"
 msgstr "十二支"
 
-#: includes/class-render.php:4213
+#: includes/class-render.php:4660
 msgid "Heavenly stem"
 msgstr "天干"
 
-#: includes/class-render.php:4214
+#: includes/class-render.php:4661
 msgid "Earthly branch"
 msgstr "地支"
 
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:4247
+#: includes/class-render.php:4697
 #, php-format
 msgid "Year element: %s"
 msgstr "年の五行: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 #, php-format
 msgid "Polarity: %s"
 msgstr "陰陽: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 msgid "Yin"
 msgstr "陰"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 msgid "Yang"
 msgstr "陽"
 
 #. translators: %s = the year's stem and branch, such as Geng-Wu
-#: includes/class-render.php:4255
+#: includes/class-render.php:4705
 #, php-format
 msgid "Pillar: %s"
 msgstr "柱: %s"
 
 #. translators: 1: the year, 2: the moment it begins, 3: the moment it ends,
 #. both in Beijing time
-#: includes/class-render.php:4263
+#: includes/class-render.php:4713
 #, php-format
 msgid ""
 "The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at "
@@ -2654,112 +2808,307 @@ msgid ""
 msgstr "%1$d年の干支の年は北京時間で%2$sから%3$sまでです。1月1日ではなく、春の始まりである立春から始まります。"
 
 #. translators: %d = the year
-#: includes/class-render.php:4265
+#: includes/class-render.php:4715
 #, php-format
 msgid ""
-"The %d animal year begins at the start of spring (Lichun, about 4 February),"
-" not on 1 January."
-msgstr "%d 年の干支の年は1月1日ではなく立春 (2月4日頃) に始まります。"
+"The %d animal year begins at the start of spring (Lichun, about 4 February), "
+"not on 1 January."
+msgstr "%d年の干支の年は1月1日ではなく立春 (2月4日頃) に始まります。"
 
-#: includes/class-render.php:4308
+#. translators: %s = the animal's double hour, such as 11:00-13:00
+#: includes/class-render.php:4733
+#, php-format
+msgid "Hours: %s"
+msgstr "動物の時刻: %s"
+
+#. translators: %s = the three animals of the triad (san he), such as Tiger,
+#. Horse, Dog
+#: includes/class-render.php:4743
+#, php-format
+msgid "Triad: %s"
+msgstr "三合: %s"
+
+#. translators: %s = an animal, the secret friend (liu he) of this one
+#: includes/class-render.php:4747
+#, php-format
+msgid "Secret friend: %s"
+msgstr "六合 (秘密の友): %s"
+
+#. translators: %s = an animal that clashes (liu chong) with this one
+#: includes/class-render.php:4749
+#, php-format
+msgid "Clash: %s"
+msgstr "六冲 (衝突): %s"
+
+#. translators: %s = an animal that harms (liu hai) this one
+#: includes/class-render.php:4751
+#, php-format
+msgid "Harm: %s"
+msgstr "六害 (害): %s"
+
+#: includes/class-render.php:4797
 msgid "Watch for"
 msgstr "気をつけたいこと"
 
-#: includes/class-render.php:4318
+#: includes/class-render.php:4807
 msgid "Character"
 msgstr "性格"
 
 #. translators: %s = one of the five Chinese elements, such as Metal
-#: includes/class-render.php:4325
+#: includes/class-render.php:4814
 #, php-format
 msgid "The year element: %s"
 msgstr "年の五行: %s"
 
-#: includes/class-render.php:4335
+#: includes/class-render.php:4824
 msgid "Rat"
 msgstr "ネズミ"
 
-#: includes/class-render.php:4336
+#: includes/class-render.php:4825
 msgid "Ox"
-msgstr "牛"
+msgstr "ウシ"
 
-#: includes/class-render.php:4337
+#: includes/class-render.php:4826
 msgid "Tiger"
-msgstr "タイガー"
+msgstr "トラ"
 
-#: includes/class-render.php:4338
+#: includes/class-render.php:4827
 msgid "Rabbit"
 msgstr "ウサギ"
 
-#: includes/class-render.php:4339
+#: includes/class-render.php:4828
 msgid "Dragon"
-msgstr "ドラゴン"
+msgstr "リュウ"
 
-#: includes/class-render.php:4340
+#: includes/class-render.php:4829
 msgid "Snake"
 msgstr "ヘビ"
 
-#: includes/class-render.php:4341
+#: includes/class-render.php:4830
 msgid "Horse"
-msgstr "馬"
+msgstr "ウマ"
 
-#: includes/class-render.php:4342
+#: includes/class-render.php:4831
 msgid "Goat"
-msgstr "ヤギ"
+msgstr "ヒツジ"
 
-#: includes/class-render.php:4343
+#: includes/class-render.php:4832
 msgid "Monkey"
 msgstr "サル"
 
-#: includes/class-render.php:4344
+#: includes/class-render.php:4833
 msgid "Rooster"
-msgstr "オンドリ"
+msgstr "ニワトリ"
 
-#: includes/class-render.php:4345
+#: includes/class-render.php:4834
 msgid "Dog"
-msgstr "犬"
+msgstr "イヌ"
 
-#: includes/class-render.php:4346
+#: includes/class-render.php:4835
 msgid "Pig"
 msgstr "ブタ"
 
-#: includes/class-render.php:4354
+#: includes/class-render.php:4843
 msgid "Wood"
 msgstr "木"
 
-#: includes/class-render.php:4357
+#: includes/class-render.php:4846
 msgid "Metal"
 msgstr "金"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:4445
+#: includes/class-render.php:4934
 #, php-format
 msgid "%d min"
-msgstr "%d 分"
+msgstr "%d分"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:4451
+#: includes/class-render.php:4940
 #, php-format
 msgid "%1$d h %2$02d min"
-msgstr "%1$d 時間 %2$02d 分"
+msgstr "%1$d時間%2$02d 分"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:4770
+#: includes/class-render.php:5259
 #, php-format
 msgid "Showing %1$d of %2$d"
-msgstr "%1$d件中 %2$d件を表示中"
+msgstr "%2$d件中%1$d件を表示中"
 
-#: includes/class-render.php:4821
+#: includes/class-render.php:5310
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "はい"
 
-#: includes/class-render.php:4821
+#: includes/class-render.php:5310
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "いいえ"
+
+#: includes/class-render.php:5387
+msgid "Lagna"
+msgstr "ラグナ"
+
+#: includes/class-render.php:5406
+msgid "Moon nakshatra"
+msgstr "月のナクシャトラ"
+
+#. translators: %d = pada (quarter) of the nakshatra, 1 to 4
+#: includes/class-render.php:5409
+#, php-format
+msgid "Pada %d"
+msgstr "パーダ %d"
+
+#: includes/class-render.php:5418
+msgid "Dasha now"
+msgstr "現在のダシャー"
+
+#. translators: %s = date
+#: includes/class-render.php:5421
+#, php-format
+msgid "until %s"
+msgstr "%sまで"
+
+#: includes/class-render.php:5427
+msgid "Vedic birth chart"
+msgstr "インド占星術の出生図"
+
+#: includes/class-render.php:5434
+msgid "Grahas"
+msgstr "グラハ"
+
+#: includes/class-render.php:5434
+msgid "Graha"
+msgstr "グラハ"
+
+#. translators: %s = planet name
+#: includes/class-render.php:5440
+#, php-format
+msgid "Mahadasha of %s"
+msgstr "%sのマハーダシャー"
+
+#. translators: %s = planet name
+#: includes/class-render.php:5447
+#, php-format
+msgid "Antardasha of %s"
+msgstr "%sのアンタルダシャー"
+
+#: includes/class-render.php:5451
+msgid "Vimshottari dasha"
+msgstr "ヴィムショッタリ・ダシャー"
+
+#: includes/class-render.php:5457
+msgid "Yogas"
+msgstr "ヨーガ"
+
+#: includes/class-render.php:5458 includes/class-render.php:5462
+msgid "None found"
+msgstr "該当なし"
+
+#: includes/class-render.php:5461
+msgid "Doshas"
+msgstr "ドーシャ"
+
+#: includes/class-render.php:5465
+msgid "Yogas and doshas"
+msgstr "ヨーガとドーシャ"
+
+#. translators: %s = the ayanamsa in degrees and minutes
+#: includes/class-render.php:5468
+#, php-format
+msgid "Sidereal zodiac, ayanamsa %s."
+msgstr "サイデリアル方式、アヤナムシャ %s。"
+
+#: includes/class-render.php:5523
+msgid "Raja yoga"
+msgstr "Raja ヨーガ"
+
+#: includes/class-render.php:5524
+msgid "Dhana yoga"
+msgstr "Dhana ヨーガ"
+
+#: includes/class-render.php:5525
+msgid "Dharma Karmadhipati yoga"
+msgstr "Dharma Karmadhipati ヨーガ"
+
+#: includes/class-render.php:5526
+msgid "Pancha Mahapurusha yoga"
+msgstr "Pancha Mahapurusha ヨーガ"
+
+#: includes/class-render.php:5527
+msgid "Gajakesari yoga"
+msgstr "Gajakesari ヨーガ"
+
+#: includes/class-render.php:5528
+msgid "Adhi yoga"
+msgstr "Adhi ヨーガ"
+
+#: includes/class-render.php:5534
+msgid "Mangal dosha"
+msgstr "Mangal ドーシャ"
+
+#: includes/class-render.php:5535
+msgid "Kaal Sarp dosha"
+msgstr "Kaal Sarp ドーシャ"
+
+#: includes/class-render.php:5536
+msgid "Pitru dosha"
+msgstr "Pitru ドーシャ"
+
+#: includes/class-render.php:5537
+msgid "Shrapit dosha"
+msgstr "Shrapit ドーシャ"
+
+#: includes/class-render.php:5538
+msgid "Grahan dosha"
+msgstr "Grahan ドーシャ"
+
+#: includes/class-render.php:5539
+msgid "Guru Chandal dosha"
+msgstr "Guru Chandal ドーシャ"
+
+#: includes/class-render.php:5545
+msgid "Life Path"
+msgstr "ライフパス"
+
+#: includes/class-render.php:5546
+msgid "Expression"
+msgstr "表現数"
+
+#: includes/class-render.php:5547
+msgid "Soul Urge"
+msgstr "ソウル数"
+
+#: includes/class-render.php:5549
+msgid "Birthday"
+msgstr "誕生日数"
+
+#: includes/class-render.php:5550
+msgid "Personal Year"
+msgstr "パーソナルイヤー"
+
+#: includes/class-render.php:5563
+msgid "Master number"
+msgstr "マスターナンバー"
+
+#: includes/class-render.php:5584 includes/class-tarot.php:285
+#: includes/class-widget-manifest.php:271
+#: includes/views/partials/shortcode-cards.php:235
+msgid "Numerology"
+msgstr "数秘術"
+
+#: includes/class-render.php:5590
+msgid "What the numbers say"
+msgstr "数字が語ること"
+
+#: includes/class-render.php:5622
+msgid "Challenges"
+msgstr "課題"
+
+#: includes/class-render.php:5623
+msgid "Work"
+msgstr "仕事"
 
 #: includes/class-shortcodes.php:386
 msgid ""
@@ -2779,23 +3128,23 @@ msgid ""
 "administrators see this note."
 msgstr "%s ウィジェットは一時的に利用できないため、何も表示されません。この注意書きは管理者のみが確認できます。"
 
-#: includes/class-shortcodes.php:912 includes/class-shortcodes.php:1243
+#: includes/class-shortcodes.php:933 includes/class-shortcodes.php:1279
 msgid "This date does not exist."
 msgstr "この日付は存在しません。"
 
-#: includes/class-shortcodes.php:1082
+#: includes/class-shortcodes.php:1118
 msgid ""
 "A return chart needs the birth time and the latitude and longitude of the "
 "place of birth. Only administrators see this note."
 msgstr "リターンチャートには、出生時刻と出生地の緯度と経度が必要です。このメモは管理者にのみ表示されます。"
 
-#: includes/class-shortcodes.php:1174
+#: includes/class-shortcodes.php:1210
 msgid ""
 "A Davison chart needs the date, the time and the latitude and longitude of "
 "both births. Only administrators see this note."
 msgstr "ダヴィソン・チャートには、2人の出生の日付、時刻、緯度と経度が必要です。このメモは管理者にのみ表示されます。"
 
-#: includes/class-shortcodes.php:1182
+#: includes/class-shortcodes.php:1218
 msgid ""
 "This chart needs a site key or an API key: open AstroWay in the admin and "
 "connect the site. Only administrators see this note."
@@ -2804,7 +3153,7 @@ msgstr ""
 "を開き、サイトを接続してください。このメモは管理者にのみ表示されます。"
 
 #. translators: 1: shortcode tag, 2: attribute name, 3: the value written
-#: includes/class-shortcodes.php:1251
+#: includes/class-shortcodes.php:1287
 #, php-format
 msgid ""
 "[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form "
@@ -2834,8 +3183,8 @@ msgstr "サイトが確認にエラーで応答しました。訪問者に REST 
 
 #: includes/class-site-key.php:112
 msgid ""
-"the check came back with the wrong answer, often a page cache in front of "
-"the REST API."
+"the check came back with the wrong answer, often a page cache in front of the"
+" REST API."
 msgstr "確認に誤った応答が返りました。REST API の前にあるページキャッシュが原因のことがよくあります。"
 
 #: includes/class-site-key.php:113
@@ -2862,25 +3211,21 @@ msgstr "api.astroway.info から、このサイトが読めない応答が届き
 msgid "api.astroway.info refused the request."
 msgstr "api.astroway.info がリクエストを拒否しました。"
 
-#: includes/class-tarot-reading.php:224
+#: includes/class-tarot-reading.php:353
 msgid "Summary"
 msgstr "まとめ"
 
-#: includes/class-tarot-reading.php:228
-msgid "Advice"
-msgstr "アドバイス"
-
 #. translators: %s = tarot card name
-#: includes/class-tarot-reading.php:239 includes/class-tarot.php:326
+#: includes/class-tarot-reading.php:368 includes/class-tarot.php:345
 #, php-format
 msgid "%s (reversed)"
 msgstr "%s (逆位置)"
 
-#: includes/class-tarot-reading.php:249
+#: includes/class-tarot-reading.php:378
 msgid "Card by card"
 msgstr "カードごとに"
 
-#: includes/class-tarot-reading.php:269
+#: includes/class-tarot-reading.php:398
 msgid ""
 "The reading needs an API key: the site key does not cover readings. Paste "
 "yours in AstroWay, API Key. Only administrators see this note."
@@ -2888,103 +3233,101 @@ msgstr ""
 "リーディングには API キーが必要です。サイトキーはリーディングに対応していません。AstroWay の API Key "
 "に貼り付けてください。この注記は管理者にのみ表示されます。"
 
-#: includes/class-tarot-reading.php:270
+#: includes/class-tarot-reading.php:399
 msgid ""
 "Today's number of new tarot readings is reached; readings already given are "
 "still shown. Only administrators see this note."
-msgstr ""
-"本日の新しいタロットリーディングの件数が上限に達しました。すでに出たリーディングは引き続き表示されます。このメモは管理者にのみ表示されます。"
+msgstr "本日の新しいタロットリーディングの件数が上限に達しました。すでに出たリーディングは引き続き表示されます。このメモは管理者にのみ表示されます。"
 
-#: includes/class-tarot-reading.php:271
+#: includes/class-tarot-reading.php:400
 msgid ""
 "The api did not return the reading just now. Only administrators see this "
 "note."
 msgstr "API から現在リーディングが返されませんでした。このメモは管理者にのみ表示されます。"
 
-#: includes/class-tarot-reading.php:272
+#: includes/class-tarot-reading.php:401
 msgid ""
 "The api answered with a reading of other cards, so it was not shown; it is "
 "asked again in an hour. Only administrators see this note."
 msgstr "API が別のカードのリーディングを返したため表示しませんでした。1時間後に再度問い合わせます。この注記は管理者にのみ表示されます。"
 
-#: includes/class-tarot.php:218
+#: includes/class-tarot.php:237
 msgid "Major arcana"
 msgstr "大アルカナ"
 
-#: includes/class-tarot.php:218
+#: includes/class-tarot.php:237
 msgid "Minor arcana"
 msgstr "小アルカナ"
 
-#: includes/class-tarot.php:223
+#: includes/class-tarot.php:242
 msgid "Wands"
 msgstr "ワンド"
 
-#: includes/class-tarot.php:224
+#: includes/class-tarot.php:243
 msgid "Cups"
 msgstr "カップ"
 
-#: includes/class-tarot.php:225
+#: includes/class-tarot.php:244
 msgid "Swords"
 msgstr "ソード"
 
-#: includes/class-tarot.php:226
+#: includes/class-tarot.php:245
 msgid "Pentacles"
 msgstr "ペンタクル"
 
-#: includes/class-tarot.php:230
+#: includes/class-tarot.php:249
 msgid "Upright"
 msgstr "正位置"
 
-#: includes/class-tarot.php:230
+#: includes/class-tarot.php:249
 msgid "Reversed"
 msgstr "逆位置"
 
-#: includes/class-tarot.php:253
+#: includes/class-tarot.php:272
 msgid "Element"
-msgstr "五行"
+msgstr "エレメント"
 
-#: includes/class-tarot.php:260
+#: includes/class-tarot.php:279
 msgid "Astrology"
 msgstr "占星術"
 
-#: includes/class-tarot.php:266 includes/class-widget-manifest.php:271
-#: includes/views/partials/shortcode-cards.php:235
-msgid "Numerology"
-msgstr "数秘術"
-
-#: includes/class-tarot.php:271
+#: includes/class-tarot.php:290
 msgid "Yes"
 msgstr "はい"
 
-#: includes/class-tarot.php:272
+#: includes/class-tarot.php:291
 msgid "No"
 msgstr "いいえ"
 
-#: includes/class-tarot.php:273
+#: includes/class-tarot.php:292
 msgid "Maybe"
 msgstr "たぶん"
 
-#: includes/class-tarot.php:278
+#: includes/class-tarot.php:297
 msgid "Yes or no"
 msgstr "はいかいいえか"
 
 #. translators: 1: planet, 2: zodiac sign, as in "Mercury in Virgo"
-#: includes/class-tarot.php:293
+#: includes/class-tarot.php:312
 #, php-format
 msgid "%1$s in %2$s"
 msgstr "%2$sの%1$s"
 
-#: includes/class-tarot.php:316
+#: includes/class-tarot.php:335
 msgid "If it came out reversed"
 msgstr "逆位置で出ていたら"
 
-#: includes/class-tarot.php:316
+#: includes/class-tarot.php:335
 msgid "If it came out upright"
 msgstr "正位置で出ていたら"
 
-#: includes/class-tarot.php:350
+#: includes/class-tarot.php:369
 msgid "Turn the card over"
 msgstr "カードをめくる"
+
+#: includes/class-tarot.php:485
+msgid "Spirit"
+msgstr "スピリット"
 
 #: includes/class-tier.php:203
 msgid "Locked feature"
@@ -3002,25 +3345,21 @@ msgstr "このウィジェットは、AstroWay の有料プランでご利用い
 msgid "Upgrade →"
 msgstr "アップグレード →"
 
-#: includes/class-widget-manifest.php:59
-#: includes/class-widget-manifest.php:422
+#: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:422
 #: includes/class-widget-manifest.php:423
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
-msgstr "デフォルト (今日の看板)"
+msgstr "デフォルト (今日のおすすめ星座)"
 
-#: includes/class-widget-manifest.php:64
-#: assets/js/astroway-blocks-editor.js:41
+#: includes/class-widget-manifest.php:64 assets/js/astroway-blocks-editor.js:41
 msgid "Visitor picks the sign"
 msgstr "星座は訪問者が選ぶ"
 
-#: includes/class-widget-manifest.php:70
-#: assets/js/astroway-blocks-editor.js:68
+#: includes/class-widget-manifest.php:70 assets/js/astroway-blocks-editor.js:68
 msgid "Language"
 msgstr "言語"
 
-#: includes/class-widget-manifest.php:72
-#: includes/class-widget-manifest.php:108
+#: includes/class-widget-manifest.php:72 includes/class-widget-manifest.php:108
 #: assets/js/astroway-blocks-editor.js:44
 #: assets/js/astroway-blocks-editor.js:72
 msgid "Site default"
@@ -3032,27 +3371,24 @@ msgstr "カードの絵"
 
 #: includes/class-widget-manifest.php:100
 msgid "Drawn face, no pictures"
-msgstr "描画した表面 (絵なし)"
+msgstr "描いたカード面 (絵なし)"
 
 #: includes/class-widget-manifest.php:106
 #: assets/js/astroway-blocks-editor.js:77
 msgid "Style"
 msgstr "スタイル"
 
-#: includes/class-widget-manifest.php:109
-#: includes/views/admin-settings.php:307
+#: includes/class-widget-manifest.php:109 includes/views/admin-settings.php:307
 #: assets/js/astroway-blocks-editor.js:73
 msgid "Instrument"
 msgstr "インストゥルメント"
 
-#: includes/class-widget-manifest.php:110
-#: includes/views/admin-settings.php:308
+#: includes/class-widget-manifest.php:110 includes/views/admin-settings.php:308
 #: assets/js/astroway-blocks-editor.js:74
 msgid "Night sky"
 msgstr "夜空"
 
-#: includes/class-widget-manifest.php:111
-#: includes/views/admin-settings.php:309
+#: includes/class-widget-manifest.php:111 includes/views/admin-settings.php:309
 #: assets/js/astroway-blocks-editor.js:75
 msgid "Theme colours"
 msgstr "テーマの色"
@@ -3071,7 +3407,7 @@ msgstr "ダーク"
 
 #: includes/class-widget-manifest.php:123
 msgid "Light"
-msgstr "光"
+msgstr "ライト"
 
 #: includes/class-widget-manifest.php:124
 msgid "Console (green on black)"
@@ -3096,7 +3432,7 @@ msgstr "UTC からの時差 (時間単位) (サイトのデフォルト値の場
 
 #: includes/class-widget-manifest.php:146
 msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
-msgstr "タイムゾーン (ヨーロッパ/キエフまたは+03:00)"
+msgstr "タイムゾーン (Europe/Kyiv、+05:30または5.5)"
 
 #: includes/class-widget-manifest.php:151
 #: includes/class-widget-manifest.php:163
@@ -3106,15 +3442,15 @@ msgstr "日付 (YYYY-MM-DD)"
 #: includes/class-widget-manifest.php:152
 #: includes/class-widget-manifest.php:164
 msgid "Time (HH:MM)"
-msgstr "時間 (HH: MM)"
+msgstr "時間 (HH:MM)"
 
 #: includes/class-widget-manifest.php:155
 msgid "Person name (optional)"
-msgstr "個人名 (任意)"
+msgstr "名前 (任意)"
 
 #: includes/class-widget-manifest.php:156
 msgid "Timezone (Europe/Kyiv or +03:00)"
-msgstr "タイムゾーン (ヨーロッパ/キエフまたは+03:00)"
+msgstr "タイムゾーン (Europe/Kyiv または +03:00)"
 
 #: includes/class-widget-manifest.php:175
 msgid "Return place: latitude (blank for the place of birth)"
@@ -3142,11 +3478,11 @@ msgstr "A さん: 日付 (YYYY-MM-DD)"
 
 #: includes/class-widget-manifest.php:188
 msgid "Person A: time (HH:MM, blank if unknown)"
-msgstr "A さん: 時刻 (HH: MM、不明の場合は空欄)"
+msgstr "A さん: 時刻 (HH:MM、不明の場合は空欄)"
 
 #: includes/class-widget-manifest.php:188
 msgid "Person A: time (HH:MM)"
-msgstr "A さん: 時刻 (HH: MM)"
+msgstr "A さん: 時刻 (HH:MM)"
 
 #: includes/class-widget-manifest.php:189
 msgid "Person A: latitude"
@@ -3162,7 +3498,7 @@ msgstr "A さん: タイムゾーン"
 
 #: includes/class-widget-manifest.php:193
 msgid "Person B: name (for the table heading)"
-msgstr "人物 B: 名前 (表の見出し用)"
+msgstr "B さん: 名前 (表の見出し用)"
 
 #: includes/class-widget-manifest.php:193
 msgid "Person B: name"
@@ -3170,27 +3506,27 @@ msgstr "B さん: 名前"
 
 #: includes/class-widget-manifest.php:194
 msgid "Person B: date (YYYY-MM-DD)"
-msgstr "人物 B: 日付 (YYYY-MM-DD)"
+msgstr "B さん: 日付 (YYYY-MM-DD)"
 
 #: includes/class-widget-manifest.php:195
 msgid "Person B: time (HH:MM, blank if unknown)"
-msgstr "人物 B: 時刻 (HH: MM、不明の場合は空欄)"
+msgstr "B さん: 時刻 (HH:MM、不明の場合は空欄)"
 
 #: includes/class-widget-manifest.php:195
 msgid "Person B: time (HH:MM)"
-msgstr "B さん: 時刻 (HH: MM)"
+msgstr "B さん: 時刻 (HH:MM)"
 
 #: includes/class-widget-manifest.php:196
 msgid "Person B: latitude"
-msgstr "人物 B: 緯度"
+msgstr "B さん: 緯度"
 
 #: includes/class-widget-manifest.php:197
 msgid "Person B: longitude"
-msgstr "人物 B: 経度"
+msgstr "B さん: 経度"
 
 #: includes/class-widget-manifest.php:198
 msgid "Person B: timezone"
-msgstr "人物 B: タイムゾーン"
+msgstr "B さん: タイムゾーン"
 
 #: includes/class-widget-manifest.php:215
 msgid "Birth data"
@@ -3198,7 +3534,7 @@ msgstr "出生データ"
 
 #: includes/class-widget-manifest.php:216
 msgid "Any date inside the month (blank for this month)"
-msgstr "その月内の任意の日付 (今月は空欄)"
+msgstr "その月内の任意の日付 (空欄で今月)"
 
 #: includes/class-widget-manifest.php:220
 msgid "Year (blank for the one in force now)"
@@ -3210,7 +3546,7 @@ msgstr "この日以降の最初のリターン (YYYY-MM-DD、空欄で今月1�
 
 #: includes/class-widget-manifest.php:227
 msgid "Two births"
-msgstr "2人の出生"
+msgstr "2人の出生データ"
 
 #: includes/class-widget-manifest.php:239
 msgid "None"
@@ -3222,11 +3558,11 @@ msgstr "今日の空をチャートに重ねる"
 
 #: includes/class-widget-manifest.php:263
 msgid "Transit date"
-msgstr "輸送日"
+msgstr "トランジットの日付"
 
 #: includes/class-widget-manifest.php:267
 msgid "Panchang"
-msgstr "変更を保存"
+msgstr "パンチャンガ"
 
 #: includes/class-widget-manifest.php:273
 msgid "Full name"
@@ -3234,29 +3570,28 @@ msgstr "氏名 (フルネーム)"
 
 #: includes/class-widget-manifest.php:274
 msgid "Date of birth (YYYY-MM-DD)"
-msgstr "日付 (YYYY-MM-DD)"
+msgstr "生年月日 (YYYY-MM-DD)"
 
-#: includes/class-widget-manifest.php:277
-#: includes/views/admin-settings.php:123
+#: includes/class-widget-manifest.php:277 includes/views/admin-settings.php:123
 #: includes/views/partials/admin-sidebar.php:42
 msgid "System"
 msgstr "システム"
 
 #: includes/class-widget-manifest.php:279
 msgid "Pythagorean"
-msgstr "ピタゴラス派"
+msgstr "ピタゴラス式"
 
 #: includes/class-widget-manifest.php:280
 msgid "Chaldean"
-msgstr "カルデア"
+msgstr "カルデア式"
 
 #: includes/class-widget-manifest.php:288
 msgid "Two subjects"
-msgstr "2つのテーマ"
+msgstr "2人"
 
 #: includes/class-widget-manifest.php:291
 msgid "How many aspects to show (6 by default)"
-msgstr "表示する項目の数 (デフォルトは6)"
+msgstr "表示するアスペクトの数 (既定は6)"
 
 #: includes/class-widget-manifest.php:303
 msgid "Daily Tarot"
@@ -3322,15 +3657,15 @@ msgstr "最後のカードをめくった後"
 
 #: includes/class-widget-manifest.php:358
 msgid "Weekly horoscope"
-msgstr "週間占い"
+msgstr "週間星占い"
 
 #: includes/class-widget-manifest.php:359
 msgid "Any date inside the week (blank for this week)"
-msgstr "その週の任意の日付 (今週は空欄)"
+msgstr "その週内の任意の日付 (空欄で今週)"
 
 #: includes/class-widget-manifest.php:362
 msgid "Monthly horoscope"
-msgstr "月間占い"
+msgstr "月間星占い"
 
 #: includes/class-widget-manifest.php:374
 msgid "Monthly forecast"
@@ -3338,11 +3673,11 @@ msgstr "月間予測"
 
 #: includes/class-widget-manifest.php:378
 msgid "Moon transit timeline"
-msgstr "月の通過のタイムライン"
+msgstr "月のサイン移動タイムライン"
 
 #: includes/class-widget-manifest.php:379
 msgid "Day the seven start from (blank for today)"
-msgstr "7日目は (今日は空欄) から始まる"
+msgstr "7日間の開始日 (空欄で今日)"
 
 #: includes/class-widget-manifest.php:382
 msgid "Retrograde status"
@@ -3350,35 +3685,35 @@ msgstr "逆行状態"
 
 #: includes/class-widget-manifest.php:408
 msgid "Day to start from (blank for today)"
-msgstr "開始日 (今日は空欄)"
+msgstr "開始日 (空欄で今日)"
 
 #: includes/class-widget-manifest.php:409
 msgid "Time to start from (HH:MM, blank for midnight)"
-msgstr "開始時刻 (HH: MM、深夜0時は空白)"
+msgstr "開始時刻 (HH:MM、空欄で0時)"
 
 #: includes/class-widget-manifest.php:411
 msgid "Days to look ahead (1 to 30, default 7)"
-msgstr "先までの日数 (1～30、デフォルトは7)"
+msgstr "先読みする日数 (1～30、既定は7)"
 
 #: includes/class-widget-manifest.php:416
 msgid "Yearly horoscope"
-msgstr "年間占い"
+msgstr "年間星占い"
 
 #: includes/class-widget-manifest.php:417
 msgid "Any date inside the year (blank for this year)"
-msgstr "その年内の任意の日付 (今年は空欄)"
+msgstr "その年内の任意の日付 (空欄で今年)"
 
 #: includes/class-widget-manifest.php:420
 msgid "Two signs"
-msgstr "2つの看板"
+msgstr "2つのサイン"
 
 #: includes/class-widget-manifest.php:422
 msgid "First sign"
-msgstr "最初の兆候"
+msgstr "1つ目のサイン"
 
 #: includes/class-widget-manifest.php:423
 msgid "Second sign"
-msgstr "2番目の兆候"
+msgstr "2つ目のサイン"
 
 #: includes/class-widget-manifest.php:430
 msgid "One sign against the others (blank for all pairs)"
@@ -3394,25 +3729,25 @@ msgstr "生年月日 (YYYY-MM-DD)"
 
 #: includes/class-widget-manifest.php:438
 msgid "Birth time (HH:MM, optional)"
-msgstr "出生時刻 (HH: MM、任意)"
+msgstr "出生時刻 (HH:MM、任意)"
 
-#: includes/class-widget-manifest.php:488
+#: includes/class-widget-manifest.php:491
 msgid "Hide sections (comma-separated keys)"
 msgstr "セクションを隠す (カンマ区切りのキー)"
 
-#: includes/class-widget-manifest.php:493
+#: includes/class-widget-manifest.php:496
 msgid "Readings list"
 msgstr "リーディング一覧"
 
-#: includes/class-widget-manifest.php:495
+#: includes/class-widget-manifest.php:498
 msgid "As the card has it"
 msgstr "カードの既定どおり"
 
-#: includes/class-widget-manifest.php:496
+#: includes/class-widget-manifest.php:499
 msgid "First row open"
 msgstr "最初の行を開く"
 
-#: includes/class-widget-manifest.php:497
+#: includes/class-widget-manifest.php:500
 msgid "All rows closed"
 msgstr "すべての行を閉じる"
 
@@ -3427,7 +3762,7 @@ msgstr "今夜の月の満ち欠け。パラメータは一切必要ありませ
 
 #: includes/views/admin-api-key.php:25
 msgid "A birth chart: date, time and place."
-msgstr "出生図: 生年月日、時刻、出生地。"
+msgstr "ネイタルチャート: 生年月日、時刻、出生地。"
 
 #: includes/views/admin-api-key.php:84
 msgid "Your first widget"
@@ -3495,8 +3830,8 @@ msgstr "このサイトには上のウィジェット用の独自キーがあり
 
 #: includes/views/admin-api-key.php:147
 msgid ""
-"This site is asking api.astroway.info for its own key for the widgets above."
-" Until then they use the shared allowance."
+"This site is asking api.astroway.info for its own key for the widgets above. "
+"Until then they use the shared allowance."
 msgstr "このサイトは上のウィジェット用の独自キーを api.astroway.info に要求しています。それまでは共有の上限を使います。"
 
 #. translators: 1: why the site key could not be issued, 2: date and time of
@@ -3522,8 +3857,8 @@ msgstr "AstroWay アカウントを接続"
 
 #: includes/views/admin-api-key.php:178
 msgid ""
-"Sign in on api.astroway.info, pick a key or create one for this site, and "
-"you are back here. Nothing to copy."
+"Sign in on api.astroway.info, pick a key or create one for this site, and you"
+" are back here. Nothing to copy."
 msgstr "api.astroway.info にサインインし、キーを選ぶかこのサイト用に作成すると、ここに戻ります。コピーは不要です。"
 
 #: includes/views/admin-api-key.php:182
@@ -3553,8 +3888,8 @@ msgstr "アカウント %s から"
 
 #: includes/views/admin-api-key.php:212
 msgid ""
-"The saved key can no longer be read: the security keys in wp-config.php have"
-" changed since it was saved. Widgets keep working without it. Paste the key "
+"The saved key can no longer be read: the security keys in wp-config.php have "
+"changed since it was saved. Widgets keep working without it. Paste the key "
 "again to restore it."
 msgstr ""
 "保存されたキーを読み取ることができなくなりました。保存後、wp-config.php "
@@ -3582,16 +3917,15 @@ msgstr "保存されたキーを削除"
 
 #: includes/views/admin-api-key.php:240
 msgid ""
-"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
-"Every widget renders without one. If you do save a key, your server offers "
-"it on the calls behind the page-rendered widgets, so a paid plan counts them"
-" against its own allowance rather than the one this site shares with every "
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. Every"
+" widget renders without one. If you do save a key, your server offers it on "
+"the calls behind the page-rendered widgets, so a paid plan counts them "
+"against its own allowance rather than the one this site shares with every "
 "other anonymous caller. Saving a key also adds the status panel below, and "
 "the key itself is what you use when you call the API from your own code."
 msgstr ""
 "api.astroway.info/dashboard "
-"からキーを貼り付けるか、フィールドを空のままにしてください。キーがなくても、すべてのウィジェットは正常に表示されます。 "
-"キーを保存すると、ページ上でレンダリングされたウィジェットの背後で行われる呼び出しにおいて、サーバーがそのキーを使用するため、有料プランの場合は、このサイトが他のすべての匿名ユーザーと共有している割り当て量ではなく、プラン独自の割り当て量から消費されます。キーを保存すると、下部にステータスパネルも表示され、自身のコードから"
+"からキーを貼り付けるか、フィールドを空のままにしてください。キーがなくても、すべてのウィジェットは正常に表示されます。キーを保存すると、ページ上でレンダリングされたウィジェットの背後で行われる呼び出しにおいて、サーバーがそのキーを使用するため、有料プランの場合は、このサイトが他のすべての匿名ユーザーと共有している割り当て量ではなく、プラン独自の割り当て量から消費されます。キーを保存すると、下部にステータスパネルも表示され、自身のコードから"
 " API を呼び出す際にも、このキーを使用します。"
 
 #. translators: %s = the constant name, ASTROWAY_API_KEY
@@ -3612,19 +3946,19 @@ msgstr "ステータス"
 
 #: includes/views/admin-api-key.php:284
 msgid "live · key authenticated"
-msgstr "認証済み"
+msgstr "稼働中 · キー認証済み"
 
 #: includes/views/admin-api-key.php:287
 msgid "suspended, contact support"
-msgstr "利用停止となった場合は、サポートまでご連絡ください"
+msgstr "利用停止中。サポートにご連絡ください"
 
 #: includes/views/admin-api-key.php:290
 msgid "revoked, re-issue key"
-msgstr "失効、鍵の再発行"
+msgstr "失効。キーを再発行してください"
 
 #: includes/views/admin-api-key.php:293
 msgid "invalid key"
-msgstr "有料キー"
+msgstr "無効なキー"
 
 #: includes/views/admin-api-key.php:296
 msgid "unreachable, check connection"
@@ -3634,12 +3968,12 @@ msgstr "接続できません。接続を確認してください"
 #: includes/views/admin-api-key.php:352
 #, php-format
 msgid "in %s"
-msgstr "%s 内で"
+msgstr "%s後"
 
 #. translators: %s = relative time.
 #: includes/views/admin-api-key.php:353
 msgid "expired"
-msgstr "必須"
+msgstr "期限切れ"
 
 #: includes/views/admin-api-key.php:366
 msgid "Domain"
@@ -3649,15 +3983,15 @@ msgstr "ドメイン"
 #: includes/views/admin-api-key.php:375
 #, php-format
 msgid "bound %s ago"
-msgstr "%s 前にバウンドしました"
+msgstr "%s前に紐付け"
 
 #: includes/views/admin-api-key.php:382
 msgid "not bound: the first request binds this site"
-msgstr "バインドされていない: 最初のリクエストでこのサイトがバインドされます"
+msgstr "未紐付け: 最初のリクエストでこのサイトに紐付けられます"
 
 #: includes/views/admin-api-key.php:389
 msgid "Source"
-msgstr "リソース"
+msgstr "取得元"
 
 #: includes/views/admin-api-key.php:396
 msgid ""
@@ -3669,20 +4003,22 @@ msgstr ""
 
 #: includes/views/admin-api-key.php:399
 msgid ""
-"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
-" key above, or clear the field to revert to anonymous mode."
-msgstr "api.astroway.info/dashboard からキーを貼り付けてください。空白のままにすると匿名モードに戻ります。"
+"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid "
+"key above, or clear the field to revert to anonymous mode."
+msgstr ""
+"保存されたキーは api.astroway.info に拒否されました (HTTP "
+"401)。上に有効なキーを貼り付け直すか、フィールドを空にして匿名モードに戻してください。"
 
 #: includes/views/admin-api-key.php:401
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue, try again in a"
-" moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a "
+"moment."
 msgstr ""
 "api.astroway.info に接続できませんでした。ネットワークまたはアップストリームの問題です。しばらくしてからもう一度お試しください。"
 
 #: includes/views/admin-api-key.php:410
 msgid "What a key adds"
-msgstr "キーが追加するもの"
+msgstr "キーでできること"
 
 #: includes/views/admin-api-key.php:411
 msgid "3 tiers compared"
@@ -3719,7 +4055,7 @@ msgstr "このプラグインのウィジェット"
 #: includes/views/admin-api-key.php:435 includes/views/admin-api-key.php:436
 #: includes/views/admin-api-key.php:437
 msgid "all of them"
-msgstr "それらすべて"
+msgstr "すべて"
 
 #: includes/views/admin-api-key.php:440
 msgid "API requests / month"
@@ -3759,7 +4095,7 @@ msgstr "ダッシュボード、利用履歴"
 #: includes/views/admin-api-key.php:454 includes/views/admin-api-key.php:455
 #: includes/views/admin-api-key.php:461 includes/views/admin-api-key.php:473
 msgid "included"
-msgstr "含む"
+msgstr "あり"
 
 #: includes/views/admin-api-key.php:458
 msgid "AI interpretations"
@@ -3782,14 +4118,13 @@ msgstr "優先"
 msgid "Spend cap"
 msgstr "支出上限"
 
-#. translators: %s is a link to the canonical pricing page on
-#. api.astroway.info
+#. translators: %s is a link to the canonical pricing page on api.astroway.info
 #: includes/views/admin-api-key.php:481
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
-"own code. The widgets on your pages are not affected by any of it. Canonical"
-" pricing → %s"
+"own code. The widgets on your pages are not affected by any of it. Canonical "
+"pricing → %s"
 msgstr ""
 "1行目以降の各行は、自身のコードから api.astroway.info "
 "を呼び出す方法について説明しています。ページ上のウィジェットには、これらはいずれも影響しません。標準価格 → %s"
@@ -3807,12 +4142,11 @@ msgid ""
 "Your server renders most widgets into the page, counted against this site's "
 "allowance of 300 requests an hour, or against your own plan when a paid key "
 "is saved above. The rest load in a frame against each visitor's own 30, and "
-"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the"
-" visitor's browser, which is no place for your key."
+"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the "
+"visitor's browser, which is no place for your key."
 msgstr ""
-"ほとんどのウィジェットはサーバーによってページにレンダリングされ、その処理回数は当サイトの1時間あたり300リクエストという制限、または上記に有料キーが保存されている場合はご自身のプランの制限にカウントされます。"
-" 残りのウィジェットは、各訪問者ごとの30リクエスト枠内でフレームとして読み込まれ、「Powered by "
-"AstroWay」という透かしが入ります。フレームは訪問者のブラウザによって取得されるものであり、そこにあなたのキーが使用されることはありません。"
+"ほとんどのウィジェットはサーバーによってページにレンダリングされ、その処理回数は当サイトの1時間あたり300リクエストという制限、または上記に有料キーが保存されている場合はご自身のプランの制限にカウントされます。残りのウィジェットは、各訪問者ごとの30リクエスト枠内でフレームとして読み込まれ、「Powered"
+" by AstroWay」という透かしが入ります。フレームは訪問者のブラウザによって取得されるものであり、そこにあなたのキーが使用されることはありません。"
 
 #: includes/views/admin-api-key.php:500
 msgid "Free key."
@@ -3820,10 +4154,10 @@ msgstr "無料キー"
 
 #: includes/views/admin-api-key.php:501
 msgid ""
-"A personal bucket of 10,000 calls a month for code you write yourself, plus "
-"a dashboard with activity history. It does not change what the shortcodes "
-"render, and the watermark on framed widgets stays: the key is not part of "
-"the frame's address."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus a"
+" dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of the"
+" frame's address."
 msgstr ""
 "自分で作成したコードに対して、月間10,000回の呼び出しが可能な個人用クォータに加え、アクティビティ履歴を確認できるダッシュボードが利用できます。ショートコードの表示内容に変更は生じず、フレーム化されたウィジェット上の透かしも残ります。このキーはフレームのアドレスには含まれません。"
 
@@ -3836,12 +4170,11 @@ msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
 "page-rendered widgets on this site draw on that plan too, instead of the "
-"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
-" the shortcode; none of the current ones do."
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on "
+"the shortcode; none of the current ones do."
 msgstr ""
 "api.astroway.info での利用制限の引き上げと呼び出し回数の増加、AI "
-"による解釈、優先サポート、および請求額の急増を防ぐための利用上限設定。 "
-"当サイトのページ上でレンダリングされるウィジェットも、共有の匿名利用枠ではなく、そのプランを利用しています。有料エンドポイントが必要なウィジェットには、ショートコードにその旨が記載されますが、現在のところそのようなウィジェットはありません。"
+"による解釈、優先サポート、および請求額の急増を防ぐための利用上限設定。当サイトのページ上でレンダリングされるウィジェットも、共有の匿名利用枠ではなく、そのプランを利用しています。有料エンドポイントが必要なウィジェットには、ショートコードにその旨が記載されますが、現在のところそのようなウィジェットはありません。"
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -3861,7 +4194,7 @@ msgstr "WordPress でメールを送信できませんでした。サイトの�
 
 #: includes/views/admin-settings.php:39
 msgid "Transit alerts are not available on this site."
-msgstr "当サイトでは、交通情報の通知サービスはご利用いただけません。"
+msgstr "当サイトではトランジット通知はご利用いただけません。"
 
 #: includes/views/admin-settings.php:43
 #: includes/views/partials/admin-sidebar.php:44
@@ -3955,7 +4288,7 @@ msgstr "すべてクリア"
 
 #: includes/views/admin-settings.php:115
 msgid "TTLs: charts 1h · moon 24h · reference data 7d · key /me 30 min."
-msgstr "TTL: 図表1時間 · 月相24時間 · 参照データ7日間 · キー /me 30分"
+msgstr "TTL: チャート1時間 · 月相24時間 · 参照データ7日 · キー /me 30分。"
 
 #: includes/views/admin-settings.php:124
 msgid "diagnostic info for support"
@@ -3977,15 +4310,14 @@ msgstr "現在のティア: %s"
 
 #: includes/views/admin-settings.php:174
 msgid "Feature"
-msgstr "特集"
+msgstr "機能"
 
 #: includes/views/admin-settings.php:196
 msgid ""
 "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"Matrix は `astroway_tier_matrix` "
-"フィルターを通じてフィルタリングできるため、アドオンは独自の機能を追加することができます。"
+"Matrix は `astroway_tier_matrix` フィルターを通じてフィルタリングできるため、アドオンは独自の機能を追加することができます。"
 
 #: includes/views/admin-settings.php:204
 msgid "Domain binding"
@@ -4009,13 +4341,13 @@ msgstr "キーを再割り当て"
 #: includes/views/admin-settings.php:232
 #, php-format
 msgid ""
-"Applies immediately. Limited to a few changes per month; the account owner "
-"is emailed. Manage keys at %s."
-msgstr "即時適用されます。変更は月数回に限定され、アカウント所有者にはメールで通知されます。鍵の管理は %s で行ってください。"
+"Applies immediately. Limited to a few changes per month; the account owner is"
+" emailed. Manage keys at %s."
+msgstr "即時適用されます。変更は月に数回までで、アカウント所有者にメールで通知されます。キーの管理は %s で行ってください。"
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
-msgstr "最初に有効な API キーを入力してください。"
+msgstr "最初にドメインを入力してください。"
 
 #: includes/views/admin-settings.php:246
 msgid "Rebinding…"
@@ -4023,7 +4355,7 @@ msgstr "再割り当て中…"
 
 #: includes/views/admin-settings.php:256
 msgid "failed"
-msgstr "失敗した"
+msgstr "失敗"
 
 #: includes/views/admin-settings.php:261
 msgid "✓ already bound to"
@@ -4047,10 +4379,9 @@ msgstr "埋め込みウィジェットに免責事項を表示する"
 
 #: includes/views/admin-settings.php:287
 msgid ""
-"Appends a short \"informational, not professional advice\" line to the "
-"widget footer. Off by default, enable it if your jurisdiction or compliance "
-"policy requires it. The wording is rendered and localized by "
-"api.astroway.info."
+"Appends a short \"informational, not professional advice\" line to the widget"
+" footer. Off by default, enable it if your jurisdiction or compliance policy "
+"requires it. The wording is rendered and localized by api.astroway.info."
 msgstr ""
 "ウィジェットのフッターに、「これは情報提供を目的としたものであり、専門的なアドバイスではありません」という短い文言を追加します。デフォルトではオフになっていますが、管轄区域やコンプライアンス方針で必要とされる場合は有効にしてください。この文言の表示およびローカライズは、api.astroway.info"
 " によって行われます。"
@@ -4110,13 +4441,13 @@ msgstr "このページで (推奨)"
 
 #: includes/views/admin-settings.php:376
 msgid ""
-"Your server fetches the text and prints it into the page. Search engines can"
-" read it, your theme styles it, and it works without JavaScript. Answers are"
-" cached until they change, so a daily horoscope is fetched once a day per "
+"Your server fetches the text and prints it into the page. Search engines can "
+"read it, your theme styles it, and it works without JavaScript. Answers are "
+"cached until they change, so a daily horoscope is fetched once a day per "
 "sign."
 msgstr ""
-"あなたのサーバーがテキストを取得し、ページに表示します。検索エンジンがそれを読み取り、テーマがスタイルを適用し、JavaScript "
-"なしで動作します。回答は変更されるまでキャッシュされるため、毎日のホロスコープはサインごとに1日1回取得されます。"
+"あなたのサーバーがテキストを取得し、ページに表示します。検索エンジンが読み取れ、テーマのスタイルが適用され、JavaScript "
+"なしで動作します。回答は変わるまでキャッシュされるため、毎日の星占いはサインごとに1日1回取得されます。"
 
 #: includes/views/admin-settings.php:381
 msgid "In an iframe"
@@ -4125,9 +4456,9 @@ msgstr "iframe 内"
 #: includes/views/admin-settings.php:382
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
-"reaches your page source, so the content is not indexed and your theme "
-"cannot style it. Choose this if your host blocks outgoing requests, or to "
-"compare the two."
+"reaches your page source, so the content is not indexed and your theme cannot"
+" style it. Choose this if your host blocks outgoing requests, or to compare "
+"the two."
 msgstr ""
 "各訪問者のブラウザが api.astroway.info "
 "からウィジェットを読み込みます。ページソースには何も到達しないため、コンテンツはインデックスされず、テーマでスタイルを適用できません。ホストが外部リクエストをブロックする場合、または両方を比較したい場合にこれを選択してください。"
@@ -4144,7 +4475,7 @@ msgstr "描画モードを保存"
 
 #: includes/views/admin-settings.php:396
 msgid "Daily transit alerts"
-msgstr "毎日の交通情報アラート"
+msgstr "毎日のトランジット通知"
 
 #: includes/views/admin-settings.php:397
 msgid "email on the days the sky does something"
@@ -4154,22 +4485,22 @@ msgstr "空に何かが起こる日のメール"
 msgid ""
 "Transit alerts are part of the Pro plan. Everything else on this page works "
 "on any plan."
-msgstr "交通機関に関する通知は「Pro」プランに含まれています。このページに記載されているその他の機能は、どのプランでもご利用いただけます。"
+msgstr "トランジット通知は Pro プランに含まれています。このページのその他の機能はどのプランでも使えます。"
 
 #: includes/views/admin-settings.php:405
 msgid "Transit alerts need an API key. Paste one on the Getting started page."
-msgstr "Transit アラートには API キーが必要です。「はじめに」ページに API キーを貼り付けてください。"
+msgstr "トランジット通知には API キーが必要です。「はじめに」ページに API キーを貼り付けてください。"
 
 #: includes/views/admin-settings.php:414
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
-msgstr "惑星が停止状態になったり、月が「ヴォイド・オブ・コース」状態になったりした際に、毎日メールを送信する"
+msgstr "惑星が留になる日や月がボイドタイムに入る日にメールを送信する"
 
 #: includes/views/admin-settings.php:415
 msgid ""
-"Nothing is sent on the quiet days. The mail that does go out carries the "
-"moon phase and the current retrogrades as context."
-msgstr "静かな日には何も送られません。送られるメールには、月の満ち欠けや現在の逆行現象といった背景情報が添えられています。"
+"Nothing is sent on the quiet days. The mail that does go out carries the moon"
+" phase and the current retrogrades as context."
+msgstr "静かな日には何も送られません。送られるメールには、背景情報として月相と現在の逆行が添えられます。"
 
 #: includes/views/admin-settings.php:420
 msgid "Hour to send, on your site clock"
@@ -4217,10 +4548,10 @@ msgstr "フォームを送信する前に訪問者の同意を求める"
 
 #: includes/views/admin-settings.php:464
 msgid ""
-"Adds a required checkbox to the birth chart, compatibility, moon sign, "
-"rising sign, Human Design and numerology forms. Off by default."
+"Adds a required checkbox to the birth chart, compatibility, moon sign, rising"
+" sign, Human Design and numerology forms. Off by default."
 msgstr ""
-"ネイタルチャート、相性、月星座、アセンダント、ヒューマンデザイン、数秘術のフォームに必須のチェックボックスを追加します。初期設定ではオフです。"
+"ネイタルチャート、相性、ムーンサイン、アセンダント、ヒューマンデザイン、数秘術のフォームに必須のチェックボックスを追加します。初期設定ではオフです。"
 
 #: includes/views/admin-settings.php:468
 msgid "Checkbox text (leave empty for the default)"
@@ -4315,7 +4646,7 @@ msgstr "Gutenberg ブロック「%s」でも利用可能です。"
 
 #: includes/views/partials/admin-channel-b-status.php:29
 msgid "Update channel"
-msgstr "変更を保存"
+msgstr "アップデートチャンネル"
 
 #: includes/views/partials/admin-channel-b-status.php:33
 msgid "Channel B"
@@ -4335,15 +4666,15 @@ msgstr ""
 
 #: includes/views/partials/admin-channel-b-status.php:37
 msgid ""
-"Updates are delivered through the WordPress.org plugin directory. To "
-"activate Channel B for paid-tier delivery, add a paid API key above."
+"Updates are delivered through the WordPress.org plugin directory. To activate"
+" Channel B for paid-tier delivery, add a paid API key above."
 msgstr ""
 "アップデートは WordPress.org のプラグインディレクトリを通じて配信されます。有料プラン向けの配信で「Channel "
 "B」を有効にするには、上記に有料 API キーを追加してください。"
 
 #: includes/views/partials/admin-channel-b-status.php:42
 msgid "Update endpoint"
-msgstr "エンドポイントの更新"
+msgstr "アップデートのエンドポイント"
 
 #: includes/views/partials/admin-channel-b-status.php:46
 msgid "Library loaded"
@@ -4351,7 +4682,7 @@ msgstr "ライブラリが読み込まれました"
 
 #: includes/views/partials/admin-channel-b-status.php:50
 msgid "API key set"
-msgstr "API キー"
+msgstr "API キー設定済み"
 
 #: includes/views/partials/admin-channel-b-status.php:54
 msgid "Last update check"
@@ -4363,7 +4694,7 @@ msgstr "前"
 
 #: includes/views/partials/admin-channel-b-status.php:59
 msgid "not yet"
-msgstr "まだです"
+msgstr "まだ"
 
 #: includes/views/partials/admin-footer-nav.php:13
 msgid "API Key"
@@ -4442,12 +4773,12 @@ msgstr "GitHub リポジトリ"
 
 #: includes/views/partials/shortcode-cards.php:17
 msgid "Natal Chart"
-msgstr "出生図"
+msgstr "ネイタルチャート"
 
 #: includes/views/partials/shortcode-cards.php:18
 msgid ""
 "Birth chart: the wheel plus planet positions, houses and aspects as text."
-msgstr "ホロスコープ: ホイールと惑星の位置、ハウス、アスペクトをテキストで表示します。"
+msgstr "ネイタルチャート: ホイールに加え、惑星の位置、ハウス、アスペクトをテキストで表示します。"
 
 #: includes/views/partials/shortcode-cards.php:22
 #: includes/views/partials/shortcode-cards.php:96
@@ -4467,7 +4798,7 @@ msgstr "生年月日 (YYYY-MM-DD 形式)"
 #: includes/views/partials/shortcode-cards.php:163
 #: includes/views/partials/shortcode-cards.php:201
 msgid "Birth time in HH:MM (24-hour)."
-msgstr "時刻 (24時間形式 HH: MM)"
+msgstr "出生時刻 (24時間形式 HH:MM)"
 
 #: includes/views/partials/shortcode-cards.php:24
 msgid "WGS-84 latitude (e.g. 50.45)."
@@ -4485,24 +4816,24 @@ msgstr "IANA タイムゾーン (例: Europe/Kyiv)"
 
 #: includes/views/partials/shortcode-cards.php:27
 msgid "Display name on the chart."
-msgstr "図表に表示する名前"
+msgstr "チャートに表示する名前"
 
 #: includes/views/partials/shortcode-cards.php:28
 msgid ""
 "Palette of the wheel drawing: light (default), dark or console. The text "
-"beside it follows your theme on its own; the wheel is an image and cannot, "
-"so set this to match."
+"beside it follows your theme on its own; the wheel is an image and cannot, so"
+" set this to match."
 msgstr ""
 "ホイール描画のカラーパレット: ライト "
 "(デフォルト)、ダーク、またはコンソール。その横のテキストはテーマの設定に従って自動的に表示されますが、ホイールは画像であるため自動的に調整されないため、テーマに合わせて設定してください。"
 
 #: includes/views/partials/shortcode-cards.php:33
 msgid "Daily Horoscope"
-msgstr "今日のホロスコープ"
+msgstr "今日の星占い"
 
 #: includes/views/partials/shortcode-cards.php:34
 msgid "Today's horoscope for a zodiac sign. Auto-refreshes daily at api side."
-msgstr "黄道十二宮の今日のホロスコープ。api 側で毎日自動更新されます。"
+msgstr "星座ごとの今日の星占い。API 側で毎日自動更新されます。"
 
 #: includes/views/partials/shortcode-cards.php:38
 #: includes/views/partials/shortcode-cards.php:50
@@ -4530,21 +4861,21 @@ msgstr ""
 #: includes/views/partials/shortcode-cards.php:65
 msgid ""
 "switch=\"no\" pins the card to these attributes. By default the visitor can "
-"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to "
-"the page URL."
+"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the"
+" page URL."
 msgstr ""
 "switch=\"no\" でカードをこれらの属性に固定します。既定では訪問者が別のサインを選んだり日付を進めたりでき、そのときページの URL に "
 "?aw_sign= と ?aw_date= が付きます。"
 
 #: includes/views/partials/shortcode-cards.php:45
 msgid "Weekly Horoscope"
-msgstr "週刊ホロスコープ"
+msgstr "週間星占い"
 
 #: includes/views/partials/shortcode-cards.php:46
 msgid ""
 "Horoscope for the current week, anchored to Monday. Rendered into the page, "
 "not an iframe."
-msgstr "月曜日を基準とした今週のホロスコープ。iframe ではなく、ページ内に描画されます。"
+msgstr "月曜日を起点とした今週の星占い。iframe ではなくページ内に表示されます。"
 
 #: includes/views/partials/shortcode-cards.php:53
 msgid "Any date inside the week you want. Defaults to today."
@@ -4552,13 +4883,13 @@ msgstr "選択した週内の任意の日付。デフォルトは今日です。
 
 #: includes/views/partials/shortcode-cards.php:58
 msgid "Monthly Horoscope"
-msgstr "月刊ホロスコープ"
+msgstr "月間星占い"
 
 #: includes/views/partials/shortcode-cards.php:59
 msgid ""
-"Horoscope for the current month, anchored to the 1st. Rendered into the "
-"page, not an iframe."
-msgstr "1日を基準とした今月のホロスコープ。iframe ではなく、ページ内に描画されます。"
+"Horoscope for the current month, anchored to the 1st. Rendered into the page,"
+" not an iframe."
+msgstr "1日を起点とした今月の星占い。iframe ではなくページ内に表示されます。"
 
 #: includes/views/partials/shortcode-cards.php:66
 #: includes/views/partials/shortcode-cards.php:178
@@ -4589,7 +4920,7 @@ msgstr "月相"
 
 #: includes/views/partials/shortcode-cards.php:82
 msgid "Current Moon phase visualization with illumination percent."
-msgstr "現在の月相を可視化 (照度パーセント付き)"
+msgstr "現在の月相を輝面比 (%) とともに図示"
 
 #: includes/views/partials/shortcode-cards.php:91
 msgid "Human Design Bodygraph"
@@ -4599,7 +4930,7 @@ msgstr "ヒューマンデザインボディグラフ"
 msgid ""
 "The bodygraph drawing, with type, strategy, authority, profile and the "
 "defined centres as text beside it."
-msgstr "タイプ、戦略、権威、プロファイル、定義されたセンターをテキストで横に表示したボディグラフ描画。"
+msgstr "ボディグラフの図。横にタイプ、ストラテジー、オーソリティ、プロファイル、定義されたセンターをテキストで表示します。"
 
 #: includes/views/partials/shortcode-cards.php:98
 #: includes/views/partials/shortcode-cards.php:164
@@ -4631,40 +4962,39 @@ msgstr "表示名"
 
 #: includes/views/partials/shortcode-cards.php:106
 msgid "Moon Sign"
-msgstr "月星座"
+msgstr "ムーンサイン"
 
 #: includes/views/partials/shortcode-cards.php:107
 msgid ""
 "The Moon's sign, degree and house from a birth chart. Answers \"what is my "
 "moon sign\" on its own, without the whole chart around it."
-msgstr "出生図から月の星座、度数、ハウスを表示します。全体のチャートなしで「私の月星座は何ですか」に答えます。"
+msgstr "ネイタルチャートから月のサイン、度数、ハウスを表示します。チャート全体なしで「私のムーンサインは ?」に答えます。"
 
 #: includes/views/partials/shortcode-cards.php:113
 msgid ""
-"WGS-84 latitude. Only affects the house shown; the sign is the same "
-"anywhere."
-msgstr "WGS-84緯度。表示されるハウスにのみ影響し、星座はどこでも同じです。"
+"WGS-84 latitude. Only affects the house shown; the sign is the same anywhere."
+msgstr "WGS-84緯度。表示されるハウスにのみ影響し、サインはどこでも同じです。"
 
 #: includes/views/partials/shortcode-cards.php:116
 #: includes/views/partials/shortcode-cards.php:131
 msgid "Display name in the heading."
-msgstr "見出しに表示名を表示します。"
+msgstr "見出しに表示する名前。"
 
 #: includes/views/partials/shortcode-cards.php:121
 msgid "Rising Sign"
-msgstr "上昇星座"
+msgstr "アセンダント"
 
 #: includes/views/partials/shortcode-cards.php:122
 msgid ""
 "The rising sign with its chart ruler and the Midheaven. Coordinates are "
 "required: the ascendant is the horizon at a place."
-msgstr "上昇星座とそのチャート支配星、ミッドヘブンを表示します。座標が必要です: アセンダントはその場所の地平線です。"
+msgstr "アセンダントとそのチャートルーラー、天頂を表示します。座標が必要です: アセンダントはその場所の地平線です。"
 
 #: includes/views/partials/shortcode-cards.php:128
 msgid ""
 "WGS-84 latitude. Without it the card renders nothing rather than the wrong "
 "horizon."
-msgstr "WGS-84緯度。これがないとカードは何も表示せず、誤った地平線も表示しません。"
+msgstr "WGS-84緯度。指定がないと、誤った地平線を表示する代わりにカードは何も表示しません。"
 
 #: includes/views/partials/shortcode-cards.php:136
 msgid "Daily Tarot Card"
@@ -4672,15 +5002,15 @@ msgstr "今日のタロットカード"
 
 #: includes/views/partials/shortcode-cards.php:137
 msgid "Single card pull of the day from a chosen deck."
-msgstr "選択したデッキから1日のカードを引く"
+msgstr "選んだデッキから今日の1枚を引きます。"
 
 #: includes/views/partials/shortcode-cards.php:141
 msgid ""
 "Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
 "renders into the page; the other two load in a frame."
 msgstr ""
-"デッキのスラグ: ライダー・ウェイト "
-"(デフォルト)、マルセイユ、またはレノルマン。ページに直接表示されるのはライダー・ウェイトのみであり、他の2つはフレーム内で読み込まれます。"
+"デッキのスラッグ: rider-waite (既定)、marseille、lenormand。ページ内に表示されるのは rider-waite "
+"のみで、ほかの2つはフレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:146
 msgid "Tarot Spread of the Day"
@@ -4701,18 +5031,18 @@ msgstr "three-card (既定) で過去・現在・未来、celtic-cross でケル
 
 #: includes/views/partials/shortcode-cards.php:152
 msgid ""
-"yes (default) shows a Draw again button that deals the visitor a new spread,"
-" not kept or cached; no hides it."
+"yes (default) shows a Draw again button that deals the visitor a new spread, "
+"not kept or cached; no hides it."
 msgstr ""
 "yes (既定) で「もう一度引く」ボタンを表示し、訪問者に新しいスプレッドを配ります (保存もキャッシュもされません)。no で非表示にします。"
 
 #: includes/views/partials/shortcode-cards.php:157
 msgid "Mini Birth Chart"
-msgstr "ミニ出生図"
+msgstr "ミニネイタルチャート"
 
 #: includes/views/partials/shortcode-cards.php:158
 msgid "The natal wheel drawn small, for a sidebar. Loads in a frame."
-msgstr "サイドバー用に小さく描かれた出生図。フレーム内で読み込まれます。"
+msgstr "サイドバー用に小さく描いたネイタルチャートのホイール。フレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:167
 #: includes/views/partials/shortcode-cards.php:179
@@ -4732,20 +5062,20 @@ msgstr "月間予測"
 #: includes/views/partials/shortcode-cards.php:173
 msgid ""
 "Four weeks ahead for one sign, each with its own theme. Loads in a frame."
-msgstr "ある星座の4週間先の運勢。それぞれに独自のテーマがあります。1つのフレームにまとめて表示されます。"
+msgstr "1つの星座の4週間先まで。週ごとにテーマがあります。フレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:184
 msgid "Moon Transit Timeline"
-msgstr "月面通過のタイムライン"
+msgstr "月のサイン移動タイムライン"
 
 #: includes/views/partials/shortcode-cards.php:185
 msgid ""
 "The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
-msgstr "今後7日間の月の入宮。特定の星座に限定されません。1つのフレームにまとめて表示されます。"
+msgstr "今後7日間の月の入宮。星座に依存しません。フレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:189
 msgid "Day the seven start from. Defaults to today."
-msgstr "7日目が始まる日。デフォルトでは今日となります。"
+msgstr "7日間の開始日。既定は今日です。"
 
 #: includes/views/partials/shortcode-cards.php:195
 msgid "Vedic Kundli"
@@ -4755,7 +5085,7 @@ msgstr "ヴェーダ式クンドリ"
 msgid ""
 "North-Indian D1 chart. Loads in a frame: there is no page-side template for "
 "it yet."
-msgstr "北インドの D1チャート。フレームへの読み込み: これに対応するページサイドテンプレートはまだありません。"
+msgstr "北インド式 D1チャート。フレームで読み込まれます: ページ側のテンプレートはまだありません。"
 
 #: includes/views/partials/shortcode-cards.php:210
 msgid "Transit Sky"
@@ -4771,12 +5101,12 @@ msgstr "特定の日付における惑星の位置。フレーム内に読み込
 msgid ""
 "Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. "
 "Loads in a frame."
-msgstr "特定の日時と場所におけるティティ、ナクシャトラ、ヨガ、カラナ、ヴァラ、ラーフ・カール。1つのフレームにまとめて表示されます。"
+msgstr "日付と場所のティティ、ナクシャトラ、ヨーガ、カラナ、ヴァーラ、ラーフ・カーラ。フレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:236
 msgid ""
 "Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
-msgstr "ライフパス、表現、魂の衝動、そしてパーソナリティの数字。フレーム内に表示されます。"
+msgstr "ライフパス、ディスティニー (表現数)、ソウル、パーソナリティの数。フレームで読み込まれます。"
 
 #: includes/views/partials/shortcode-cards.php:240
 msgid "Full birth name. The letters are what the numbers are built from."
@@ -4784,7 +5114,7 @@ msgstr "出生時のフルネーム。これらの文字が数字の構成要素
 
 #: includes/views/partials/shortcode-cards.php:242
 msgid "pythagorean (default), chaldean, kabbalistic or tamil."
-msgstr "ピタゴラス式 (デフォルト)、カルデア式、カバラ式、またはタミル式。"
+msgstr "pythagorean (既定)、chaldean、kabbalistic、tamil。"
 
 #: includes/views/partials/shortcode-cards.php:248
 msgid "Sign Compatibility Matrix"
@@ -4792,8 +5122,8 @@ msgstr "サイン相性マトリクス"
 
 #: includes/views/partials/shortcode-cards.php:249
 msgid ""
-"Every pair of signs by its classical relation, or one sign against the other"
-" eleven. Rendered into the page; no key needed."
+"Every pair of signs by its classical relation, or one sign against the other "
+"eleven. Rendered into the page; no key needed."
 msgstr "各サインの組み合わせを古典的な関係で、または1つのサインとほかの11サイン。ページ内に表示されます。キーは不要です。"
 
 #: includes/views/partials/shortcode-cards.php:253
@@ -4802,13 +5132,13 @@ msgstr "1つのサインとほかのサイン。すべての組み合わせは�
 
 #: includes/views/partials/shortcode-cards.php:258
 msgid "Synastry Compatibility"
-msgstr "相性診断"
+msgstr "シナストリーの相性"
 
 #: includes/views/partials/shortcode-cards.php:259
 msgid ""
 "Compatibility score and the cross-aspects behind it, for two birth charts. "
 "Rendered into the page; no key needed."
-msgstr "2つの出生図の相性スコアと、その背景にある相互関係。ページ上に直接表示されているため、凡例は必要ありません。"
+msgstr "2つのネイタルチャートの相性スコアと、その根拠となる相互アスペクト。ページ内に表示されます。キーは不要です。"
 
 #: includes/views/partials/shortcode-cards.php:263
 msgid "First person: birth date in YYYY-MM-DD."
@@ -4818,7 +5148,7 @@ msgstr "1人目: 生年月日は YYYY-MM-DD の形式で。"
 msgid ""
 "First person: birth time in HH:MM. Leave it out and the time is declared "
 "unknown rather than guessed."
-msgstr "1人目: 出生時刻を HH: MM で指定してください。指定しない場合は、推測値ではなく「不明」と表示されます。"
+msgstr "1人目: 出生時刻 (HH:MM)。省略すると推測ではなく「不明」として扱われます。"
 
 #: includes/views/partials/shortcode-cards.php:265
 msgid "First person: latitude."
@@ -4834,7 +5164,7 @@ msgstr "1人目: IANA のタイムゾーン。"
 
 #: includes/views/partials/shortcode-cards.php:268
 msgid "First person: name for the table heading. Stays on your server."
-msgstr "1人目: テーブル見出しの名前。サーバー上に保存されます。"
+msgstr "1人目: 表の見出し用の名前。あなたのサーバーから外に送られません。"
 
 #: includes/views/partials/shortcode-cards.php:269
 #: includes/views/partials/shortcode-cards.php:330
@@ -4843,7 +5173,7 @@ msgstr "2人目: 生年月日は YYYY-MM-DD の形式で。"
 
 #: includes/views/partials/shortcode-cards.php:270
 msgid "Second person: birth time in HH:MM. Optional in the same way."
-msgstr "2人目: 出生時刻 (HH: MM)。同様に任意です。"
+msgstr "2人目: 出生時刻 (HH:MM)。同様に任意です。"
 
 #: includes/views/partials/shortcode-cards.php:271
 msgid "Second person: latitude."
@@ -4863,9 +5193,9 @@ msgstr "2人目: 表の見出しの名称。"
 
 #: includes/views/partials/shortcode-cards.php:275
 msgid ""
-"How many aspects the table holds, 1 to 20. Six by default, which is what the"
-" frame version showed."
-msgstr "このテーブルには1から20までの要素がいくつ含まれていますか。デフォルトでは6つで、これはフレーム版で表示されていた数と同じです。"
+"How many aspects the table holds, 1 to 20. Six by default, which is what the "
+"frame version showed."
+msgstr "表に載せるアスペクトの数 (1～20)。既定は6で、フレーム版と同じです。"
 
 #: includes/views/partials/shortcode-cards.php:281
 msgid "Solar Return"
@@ -4873,12 +5203,12 @@ msgstr "ソーラーリターン"
 
 #: includes/views/partials/shortcode-cards.php:282
 msgid ""
-"The chart of the moment the Sun returns to its birth position in a year, "
-"with houses and aspects. Without a date it asks the visitor. Needs a site "
-"key or an API key; on an API key each new chart costs 50 credits."
+"The chart of the moment the Sun returns to its birth position in a year, with"
+" houses and aspects. Without a date it asks the visitor. Needs a site key or "
+"an API key; on an API key each new chart costs 50 credits."
 msgstr ""
-"ある年に太陽が出生時の位置に戻る瞬間のチャート。ハウスとアスペクト付き。日付がなければ訪問者に尋ねます。サイトキーまたは API キーが必要です。API"
-" キーでは新しいチャートごとに50クレジットかかります。"
+"ある年に太陽が出生時の位置に戻る瞬間のチャート。ハウスとアスペクト付き。日付がなければ訪問者に尋ねます。サイトキーまたは API キーが必要です。API "
+"キーでは新しいチャートごとに50クレジットかかります。"
 
 #: includes/views/partials/shortcode-cards.php:286
 #: includes/views/partials/shortcode-cards.php:305
@@ -4886,9 +5216,8 @@ msgid "Birth date in YYYY-MM-DD. Leave it out and the visitor gets a form."
 msgstr "生年月日 (YYYY-MM-DD)。省略すると訪問者にフォームが表示されます。"
 
 #: includes/views/partials/shortcode-cards.php:287
-msgid ""
-"Birth time in HH:MM. Required with a date: houses turn with the minute."
-msgstr "出生時刻 (HH: MM)。日付と一緒に必須です: ハウスは1分ごとに動きます。"
+msgid "Birth time in HH:MM. Required with a date: houses turn with the minute."
+msgstr "出生時刻 (HH:MM)。日付と一緒に必須です: ハウスは1分ごとに動きます。"
 
 #: includes/views/partials/shortcode-cards.php:288
 #: includes/views/partials/shortcode-cards.php:307
@@ -4934,8 +5263,8 @@ msgstr "見出し用の名前。"
 
 #: includes/views/partials/shortcode-cards.php:301
 msgid ""
-"The chart of the next moment the Moon returns to its birth position. Without"
-" a date it asks the visitor. Needs a site key or an API key; on an API key "
+"The chart of the next moment the Moon returns to its birth position. Without "
+"a date it asks the visitor. Needs a site key or an API key; on an API key "
 "each new chart costs 50 credits."
 msgstr ""
 "月が出生時の位置に戻る次の瞬間のチャート。日付がなければ訪問者に尋ねます。サイトキーまたは API キーが必要です。API "
@@ -4943,7 +5272,7 @@ msgstr ""
 
 #: includes/views/partials/shortcode-cards.php:306
 msgid "Birth time in HH:MM. Required with a date."
-msgstr "出生時刻 (HH: MM)。日付と一緒に必須です。"
+msgstr "出生時刻 (HH:MM)。日付と一緒に必須です。"
 
 #: includes/views/partials/shortcode-cards.php:310
 msgid ""
@@ -4957,22 +5286,22 @@ msgstr "ダヴィソン・チャート"
 
 #: includes/views/partials/shortcode-cards.php:320
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and"
-" place. Without dates it asks the visitor for both. Needs a site key or an "
-"API key; on an API key each new chart costs 50 credits."
+"One chart for a couple, cast for the midpoint between two births in time and "
+"place. Without dates it asks the visitor for both. Needs a site key or an API"
+" key; on an API key each new chart costs 50 credits."
 msgstr ""
 "カップルのための1枚のチャート。2人の出生の時間と場所の中間点で作成します。日付がなければ訪問者に両方を尋ねます。サイトキーまたは API "
 "キーが必要です。API キーでは新しいチャートごとに50クレジットかかります。"
 
 #: includes/views/partials/shortcode-cards.php:324
 msgid ""
-"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor"
-" gets a form."
+"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor "
+"gets a form."
 msgstr "1人目: 生年月日 (YYYY-MM-DD)。両方の日付を省略すると訪問者にフォームが表示されます。"
 
 #: includes/views/partials/shortcode-cards.php:325
 msgid "First person: birth time in HH:MM. Required."
-msgstr "1人目: 出生時刻 (HH: MM)。必須。"
+msgstr "1人目: 出生時刻 (HH:MM)。必須。"
 
 #: includes/views/partials/shortcode-cards.php:326
 msgid "First person: latitude. Required."
@@ -4992,7 +5321,7 @@ msgstr "1人目: 見出し用の名前。"
 
 #: includes/views/partials/shortcode-cards.php:331
 msgid "Second person: birth time in HH:MM. Required."
-msgstr "2人目: 出生時刻 (HH: MM)。必須。"
+msgstr "2人目: 出生時刻 (HH:MM)。必須。"
 
 #: includes/views/partials/shortcode-cards.php:332
 msgid "Second person: latitude. Required."
@@ -5012,7 +5341,7 @@ msgstr "2人目: 見出し用の名前。"
 
 #: includes/views/partials/shortcode-cards.php:340
 msgid "Mercury Retrograde"
-msgstr "水星の逆行"
+msgstr "水星逆行"
 
 #: includes/views/partials/shortcode-cards.php:341
 msgid ""
@@ -5020,13 +5349,13 @@ msgid ""
 "[astroway_retrograde planet=\"venus\"] for any of the other seven that "
 "station."
 msgstr ""
-"水星が現在逆行しているか、いつからいつまで逆行するか。他の7つの惑星については、[astroway_retrograde "
-"planet=\"venus\"]を使用します."
+"水星が今逆行しているか、いつからいつまでか。留になるほかの7惑星には [astroway_retrograde planet=\"venus\"] "
+"を使います。"
 
 #: includes/views/partials/shortcode-cards.php:345
 #: includes/views/partials/shortcode-cards.php:365
 msgid "Language code. Defaults to the site locale."
-msgstr "言語コード。デフォルトではサイトのロケールに設定されます."
+msgstr "言語コード。既定はサイトのロケールです。"
 
 #: includes/views/partials/shortcode-cards.php:350
 msgid "Retrograde Status"
@@ -5034,12 +5363,12 @@ msgstr "逆行状態"
 
 #: includes/views/partials/shortcode-cards.php:351
 msgid "The same card for any planet that stations."
-msgstr "駅する任意の惑星に対して同じカードが表示されます."
+msgstr "留になる任意の惑星に同じカードを表示します。"
 
 #: includes/views/partials/shortcode-cards.php:355
 msgid ""
 "mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
-msgstr "水星 (デフォルト)、金星、火星、木星、土星、天王星、海王星、または冥王星."
+msgstr "mercury (既定)、venus、mars、jupiter、saturn、uranus、neptune、pluto。"
 
 #: includes/views/partials/shortcode-cards.php:360
 msgid "Retrograde Planets"
@@ -5049,35 +5378,35 @@ msgstr "逆行惑星"
 msgid ""
 "All eight planets that station, each with its status today and the dates of "
 "the retrograde it is in or heading for."
-msgstr "駅する8つの惑星すべて、それぞれが今日の状態と逆行している期間または進行中の期間の日付を表示します."
+msgstr "留になる8惑星すべてについて、今日の状態と、現在の逆行または次の逆行の日付を表示します。"
 
 #: includes/views/partials/shortcode-cards.php:370
 msgid "Void of Course Moon"
-msgstr "コースのない月"
+msgstr "月のボイドタイム"
 
 #: includes/views/partials/shortcode-cards.php:371
 msgid ""
-"Whether the Moon is void of course now, and the windows around it with their"
-" last aspect and next sign."
-msgstr "月が現在コースのない状態であるか、そしてその周辺の時間帯と最後の相位および次のサイン."
+"Whether the Moon is void of course now, and the windows around it with their "
+"last aspect and next sign."
+msgstr "月が今ボイドタイムかどうかと、前後のボイドタイムを最後のアスペクトと次のサインとともに表示します。"
 
 #: includes/views/partials/shortcode-cards.php:375
 msgid "Day to start from in YYYY-MM-DD. Defaults to today."
-msgstr "YYYY-MM-DD 形式で開始日を指定します。デフォルトでは今日の日付になります."
+msgstr "開始日 (YYYY-MM-DD)。既定は今日です。"
 
 #: includes/views/partials/shortcode-cards.php:376
 msgid "Time to start from in HH:MM. Defaults to midnight."
-msgstr "HH: MM 形式で開始時間を指定します。デフォルトでは真夜になります."
+msgstr "開始時刻 (HH:MM)。既定は0時です。"
 
 #: includes/views/partials/shortcode-cards.php:377
 #: includes/views/partials/shortcode-cards.php:391
 #: includes/views/partials/shortcode-cards.php:425
 msgid "Hours from UTC. Defaults to the site timezone."
-msgstr "UTC からの時間差。デフォルトではサイトのタイムゾーンに設定されます."
+msgstr "UTC からの時差 (時間)。既定はサイトのタイムゾーンです。"
 
 #: includes/views/partials/shortcode-cards.php:378
 msgid "How far ahead to look, 1 to 30. Defaults to 7."
-msgstr "先に進む日数を1から30まで指定します。デフォルトでは7日になります."
+msgstr "先読みする日数 (1～30)。既定は7です。"
 
 #: includes/views/partials/shortcode-cards.php:383
 msgid "Planetary Hours"
@@ -5087,22 +5416,21 @@ msgstr "惑星時間"
 msgid ""
 "The twenty-four planetary hours of a day at one place, with the hour the "
 "reader is in marked."
-msgstr "ある場所での1日の24の惑星時間、読者がいる時間にマーク付き."
+msgstr "ある場所の1日の24の惑星時間。今の時間に印が付きます。"
 
 #: includes/views/partials/shortcode-cards.php:388
 msgid "WGS-84 latitude. The hours are the day divided by this horizon."
-msgstr "WGS-84緯度。時間はこの地平線で日を分割したものです."
+msgstr "WGS-84緯度。惑星時間はこの地平線を基準に昼と夜を分けたものです。"
 
 #: includes/views/partials/shortcode-cards.php:396
 msgid "Yearly Horoscope"
-msgstr "年間占い"
+msgstr "年間星占い"
 
 #: includes/views/partials/shortcode-cards.php:397
 msgid ""
-"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
-"the name it had as a generated shortcode."
-msgstr ""
-"ある星座の来年の運勢。生成されたショートコードとしての名称である[astroway_horoscope_yearly]への回答でもあります。"
+"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], the"
+" name it had as a generated shortcode."
+msgstr "1つの星座のこれからの1年。自動生成ショートコードだった頃の名前 [astroway_horoscope_yearly] でも動作します。"
 
 #: includes/views/partials/shortcode-cards.php:401
 msgid "Zodiac sign in English, lowercase."
@@ -5118,18 +5446,18 @@ msgstr "星座の相性"
 
 #: includes/views/partials/shortcode-cards.php:408
 msgid ""
-"How two signs read together. Prose, not a percentage: the endpoint returns "
-"no score and inventing one would be a number with no calculation behind it."
+"How two signs read together. Prose, not a percentage: the endpoint returns no"
+" score and inventing one would be a number with no calculation behind it."
 msgstr ""
-"2つのサインを組み合わせて読み解く。これは比ではなく、単なる文章である。終点はスコアを返さないし、無理にスコアを付けようとしても、計算の根拠のない数字になってしまうだけだ。"
+"2つのサインの組み合わせを文章で読み解きます。パーセントではありません: エンドポイントはスコアを返さず、作り出せば計算の裏付けのない数字になるためです。"
 
 #: includes/views/partials/shortcode-cards.php:412
 msgid "First sign in English, lowercase."
-msgstr "最初のサインは英語で、小文字で。"
+msgstr "1つ目のサイン (英語、小文字)。"
 
 #: includes/views/partials/shortcode-cards.php:413
 msgid "Second sign in English, lowercase."
-msgstr "2つ目の看板は英語で、小文字です。"
+msgstr "2つ目のサイン (英語、小文字)。"
 
 #: includes/views/partials/shortcode-cards.php:418
 msgid "Chinese Zodiac"
@@ -5139,11 +5467,11 @@ msgstr "十二支"
 msgid ""
 "The animal of a birth year with its element, polarity and pillar. A birth "
 "time sharpens the answer at the turn of the year."
-msgstr "干支の動物とその五行、極性、柱。出生時刻が、年の変わり目における答えをより明確にします。"
+msgstr "生まれ年の動物と五行、陰陽、柱。出生時刻があると、年の変わり目付近でも答えが正確になります。"
 
 #: includes/views/partials/shortcode-cards.php:424
 msgid "Birth time in HH:MM."
-msgstr "HH: MM 形式の出生時刻。"
+msgstr "出生時刻 (HH:MM)。"
 
 #: assets/js/astroway-blocks-editor.js:235
 msgid "Section"
@@ -5167,7 +5495,7 @@ msgstr "ページ上のレイアウト"
 
 #: assets/js/astroway-blocks-editor.js:262
 msgid "One after another"
-msgstr "次々と"
+msgstr "縦に並べる"
 
 #: assets/js/astroway-blocks-editor.js:263
 msgid "Tabs"
@@ -5187,12 +5515,12 @@ msgstr "占星術セクション (AstroWay)"
 #: blocks/astrology-section/block.json
 msgctxt "block keyword"
 msgid "section"
-msgstr ""
+msgstr "セクション"
 
 #: blocks/astrology-section/block.json
 msgctxt "block keyword"
 msgid "tabs"
-msgstr ""
+msgstr "タブ"
 
 #: blocks/astrology-section/block.json blocks/chinese-zodiac/block.json
 #: blocks/compatibility-matrix/block.json blocks/daily-horoscope/block.json
@@ -5200,14 +5528,14 @@ msgstr ""
 #: blocks/yearly-horoscope/block.json blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "zodiac"
-msgstr ""
+msgstr "星座"
 
 #: blocks/astrology-section/block.json blocks/daily-horoscope/block.json
 #: blocks/monthly-forecast/block.json blocks/monthly-horoscope/block.json
 #: blocks/weekly-horoscope/block.json blocks/yearly-horoscope/block.json
 msgctxt "block keyword"
 msgid "horoscope"
-msgstr ""
+msgstr "星占い"
 
 #: blocks/astrology-section/block.json blocks/bodygraph/block.json
 #: blocks/chinese-zodiac/block.json blocks/compatibility-matrix/block.json
@@ -5227,7 +5555,7 @@ msgstr ""
 #: blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "astroway"
-msgstr ""
+msgstr "astroway"
 
 #: blocks/astrology-section/block.json
 msgctxt "block description"
@@ -5242,12 +5570,12 @@ msgstr "ヒューマンデザインボディグラフ (AstroWay)"
 #: blocks/bodygraph/block.json
 msgctxt "block keyword"
 msgid "human design"
-msgstr ""
+msgstr "ヒューマンデザイン"
 
 #: blocks/bodygraph/block.json
 msgctxt "block keyword"
 msgid "bodygraph"
-msgstr ""
+msgstr "ボディグラフ"
 
 #: blocks/bodygraph/block.json blocks/kundli/block.json
 #: blocks/mini-chart/block.json blocks/moon-sign/block.json
@@ -5255,27 +5583,27 @@ msgstr ""
 #: blocks/synastry/block.json
 msgctxt "block keyword"
 msgid "natal"
-msgstr ""
+msgstr "ネイタル"
 
 #: blocks/bodygraph/block.json
 msgctxt "block description"
 msgid "Human Design bodygraph with type, profile, and gates."
-msgstr "タイプ、プロファイル、ゲートを含むヒューマンデザインボディグラフ"
+msgstr "タイプ、プロファイル、ゲートを含むヒューマンデザインのボディグラフ。"
 
 #: blocks/chinese-zodiac/block.json
 msgctxt "block title"
 msgid "Chinese Zodiac (AstroWay)"
-msgstr "AstroWay: 十二支 (AstroWay)"
+msgstr "十二支 (AstroWay)"
 
 #: blocks/chinese-zodiac/block.json
 msgctxt "block keyword"
 msgid "chinese"
-msgstr ""
+msgstr "十二支"
 
 #: blocks/chinese-zodiac/block.json
 msgctxt "block keyword"
 msgid "animal"
-msgstr ""
+msgstr "干支"
 
 #: blocks/chinese-zodiac/block.json
 msgctxt "block description"
@@ -5291,18 +5619,18 @@ msgstr "サイン相性マトリクス (AstroWay)"
 #: blocks/synastry/block.json blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "compatibility"
-msgstr ""
+msgstr "相性"
 
 #: blocks/compatibility-matrix/block.json
 msgctxt "block keyword"
 msgid "matrix"
-msgstr ""
+msgstr "マトリクス"
 
 #: blocks/compatibility-matrix/block.json
 #: blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "signs"
-msgstr ""
+msgstr "サイン"
 
 #: blocks/compatibility-matrix/block.json
 msgctxt "block description"
@@ -5314,23 +5642,23 @@ msgstr "黄道12サインの各組み合わせの関係、または1つのサイ
 #: blocks/daily-horoscope/block.json
 msgctxt "block title"
 msgid "Horoscope for Today (AstroWay)"
-msgstr "今日のホロスコープ (AstroWay)"
+msgstr "今日の星占い (AstroWay)"
 
 #: blocks/daily-horoscope/block.json blocks/daily-tarot/block.json
 #: blocks/planet-of-day/block.json
 msgctxt "block keyword"
 msgid "daily"
-msgstr ""
+msgstr "毎日"
 
 #: blocks/daily-horoscope/block.json
 msgctxt "block keyword"
 msgid "today"
-msgstr ""
+msgstr "今日"
 
 #: blocks/daily-horoscope/block.json
 msgctxt "block description"
 msgid "Daily horoscope text for a zodiac sign."
-msgstr "黄道十二宮の今日のホロスコープテキスト"
+msgstr "星座ごとの今日の星占いテキスト。"
 
 #: blocks/daily-tarot/block.json
 msgctxt "block title"
@@ -5340,17 +5668,17 @@ msgstr "今日のタロットカード (AstroWay)"
 #: blocks/daily-tarot/block.json blocks/tarot-spread/block.json
 msgctxt "block keyword"
 msgid "tarot"
-msgstr ""
+msgstr "タロット"
 
 #: blocks/daily-tarot/block.json
 msgctxt "block keyword"
 msgid "card"
-msgstr ""
+msgstr "カード"
 
 #: blocks/daily-tarot/block.json
 msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
-msgstr "解釈付きの1日のタロットカード"
+msgstr "解釈付きの今日のタロット1枚引き。"
 
 #: blocks/davison/block.json
 msgctxt "block title"
@@ -5360,24 +5688,24 @@ msgstr "ダヴィソン・チャート (AstroWay)"
 #: blocks/davison/block.json
 msgctxt "block keyword"
 msgid "davison"
-msgstr ""
+msgstr "ダヴィソン"
 
 #: blocks/davison/block.json
 msgctxt "block keyword"
 msgid "relationship"
-msgstr ""
+msgstr "関係"
 
 #: blocks/davison/block.json
 msgctxt "block keyword"
 msgid "composite"
-msgstr ""
+msgstr "コンポジット"
 
 #: blocks/davison/block.json
 msgctxt "block description"
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and"
-" place. Without dates it asks the visitor for both. Needs a site key or an "
-"API key."
+"One chart for a couple, cast for the midpoint between two births in time and "
+"place. Without dates it asks the visitor for both. Needs a site key or an API"
+" key."
 msgstr ""
 "カップルのための1枚のチャート。2人の出生の時間と場所の中間点で作成します。日付がなければ訪問者に両方を尋ねます。サイトキーまたは API "
 "キーが必要です。"
@@ -5385,29 +5713,29 @@ msgstr ""
 #: blocks/kundli/block.json
 msgctxt "block title"
 msgid "Vedic Kundli (AstroWay)"
-msgstr "アストロウェイ設定 (AstroWay)"
+msgstr "ヴェーダ式クンドリ (AstroWay)"
 
 #: blocks/kundli/block.json
 msgctxt "block keyword"
 msgid "kundli"
-msgstr ""
+msgstr "クンドリ"
 
 #: blocks/kundli/block.json blocks/panchang/block.json
 msgctxt "block keyword"
 msgid "vedic"
-msgstr ""
+msgstr "ヴェーダ"
 
 #: blocks/kundli/block.json
 msgctxt "block keyword"
 msgid "jyotish"
-msgstr ""
+msgstr "ジョーティシュ"
 
 #: blocks/kundli/block.json
 msgctxt "block description"
 msgid ""
 "Vedic North-Indian kundli (D1) chart served by api.astroway.info as a "
 "responsive iframe."
-msgstr "レスポンシブ iframe で提供される api.astroway.info の出生図"
+msgstr "api.astroway.info がレスポンシブ iframe で提供する、北インド式のヴェーダ式クンドリ (D1) チャート。"
 
 #: blocks/lunar-return/block.json
 msgctxt "block title"
@@ -5417,100 +5745,99 @@ msgstr "ルナリターン (AstroWay)"
 #: blocks/lunar-return/block.json
 msgctxt "block keyword"
 msgid "lunar return"
-msgstr ""
+msgstr "ルナリターン"
 
 #: blocks/lunar-return/block.json blocks/moon-phase/block.json
 #: blocks/moon-sign/block.json blocks/moon-voc/block.json
 #: blocks/transit-timeline/block.json
 msgctxt "block keyword"
 msgid "moon"
-msgstr ""
+msgstr "月"
 
 #: blocks/lunar-return/block.json
 msgctxt "block keyword"
 msgid "month ahead"
-msgstr ""
+msgstr "1か月"
 
 #: blocks/lunar-return/block.json blocks/natal-chart/block.json
 #: blocks/solar-return/block.json
 msgctxt "block keyword"
 msgid "astrology"
-msgstr ""
+msgstr "占星術"
 
 #: blocks/lunar-return/block.json
 msgctxt "block description"
 msgid ""
 "The chart of the next moment the Moon returns to its birth position, drawn "
-"into the page. Without a birth date it asks the visitor. Needs a site key or"
-" an API key."
+"into the page. Without a birth date it asks the visitor. Needs a site key or "
+"an API key."
 msgstr ""
 "月が出生時の位置に戻る次の瞬間のチャートを、ページ内に描画します。生年月日がなければ訪問者に尋ねます。サイトキーまたは API キーが必要です。"
 
 #: blocks/mini-chart/block.json
 msgctxt "block title"
 msgid "Mini Birth Chart (AstroWay)"
-msgstr "AstroWay: ミニ出生図 (AstroWay)"
+msgstr "ミニネイタルチャート (AstroWay)"
 
 #: blocks/mini-chart/block.json blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "birth chart"
-msgstr ""
+msgstr "ネイタルチャート"
 
 #: blocks/mini-chart/block.json blocks/natal-chart/block.json
 msgctxt "block keyword"
 msgid "wheel"
-msgstr ""
+msgstr "ホイール"
 
 #: blocks/mini-chart/block.json
 msgctxt "block keyword"
 msgid "sidebar"
-msgstr ""
+msgstr "サイドバー"
 
 #: blocks/mini-chart/block.json
 msgctxt "block description"
 msgid ""
-"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
-" responsive iframe."
-msgstr "サイドバー用に小さく描かれた出生図。api.astroway.info によってレスポンシブな iframe として提供されています。"
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a "
+"responsive iframe."
+msgstr "サイドバー用に小さく描いたネイタルチャートのホイール。api.astroway.info がレスポンシブ iframe で提供します。"
 
 #: blocks/monthly-forecast/block.json
 msgctxt "block title"
 msgid "Monthly Forecast (AstroWay)"
-msgstr "AstroWay: 月間占い (AstroWay)"
+msgstr "月間予測 (AstroWay)"
 
 #: blocks/monthly-forecast/block.json
 msgctxt "block keyword"
 msgid "forecast"
-msgstr ""
+msgstr "予測"
 
 #: blocks/monthly-forecast/block.json
 msgctxt "block keyword"
 msgid "month"
-msgstr ""
+msgstr "月間"
 
 #: blocks/monthly-forecast/block.json
 msgctxt "block description"
 msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
-msgstr ""
-"ある星座について4週間先までの情報 (各週ごとに独自のテーマが設定されている) が、レスポンシブな iframe として表示されていました。"
+msgstr "1つの星座の4週間先まで。週ごとにテーマがあり、レスポンシブ iframe で提供されます。"
 
 #: blocks/monthly-horoscope/block.json
 msgctxt "block title"
 msgid "Horoscope for the Month (AstroWay)"
-msgstr "今月のホロスコープ (AstroWay)"
+msgstr "今月の星占い (AstroWay)"
 
 #: blocks/monthly-horoscope/block.json
 msgctxt "block keyword"
 msgid "monthly"
-msgstr ""
+msgstr "月間"
 
 #: blocks/monthly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current month, anchored to the 1st, rendered into the page"
-" as text."
+"Horoscope for the current month, anchored to the 1st, rendered into the page "
+"as text."
 msgstr "今月の星占い (1日を基準として) を、テキストとしてページに表示します。"
 
 #: blocks/moon-phase/block.json
@@ -5521,149 +5848,153 @@ msgstr "月相 (AstroWay)"
 #: blocks/moon-phase/block.json
 msgctxt "block keyword"
 msgid "lunar"
-msgstr ""
+msgstr "月"
 
 #: blocks/moon-phase/block.json
 msgctxt "block keyword"
 msgid "phase"
-msgstr ""
+msgstr "月相"
 
 #: blocks/moon-phase/block.json
 msgctxt "block description"
 msgid "Current moon phase with illumination percentage."
-msgstr "照度パーセント付きの現在の月相"
+msgstr "現在の月相と輝面比 (%)。"
 
 #: blocks/moon-sign/block.json
 msgctxt "block title"
 msgid "Moon Sign (AstroWay)"
-msgstr "月星座 (AstroWay)"
+msgstr "ムーンサイン (AstroWay)"
 
 #: blocks/moon-sign/block.json
 msgctxt "block keyword"
 msgid "sign"
-msgstr ""
+msgstr "サイン"
 
 #: blocks/moon-sign/block.json
 msgctxt "block description"
 msgid "The Moon's sign, degree and house from a birth chart."
-msgstr "出生図から月の星座、度数、ハウスを表示します。"
+msgstr "ネイタルチャートから月のサイン、度数、ハウスを表示します。"
 
 #: blocks/moon-voc/block.json
 msgctxt "block title"
 msgid "Void of Course Moon (AstroWay)"
-msgstr "AstroWay: 空の月 (AstroWay)"
+msgstr "月のボイドタイム (AstroWay)"
 
 #: blocks/moon-voc/block.json
 msgctxt "block keyword"
 msgid "void of course"
-msgstr ""
+msgstr "ボイドタイム"
 
 #: blocks/moon-voc/block.json
 msgctxt "block keyword"
 msgid "voc"
-msgstr ""
+msgstr "ボイド"
 
 #: blocks/moon-voc/block.json
 msgctxt "block description"
 msgid "Whether the Moon is void of course, and the windows around now."
-msgstr "月が「空の月」の状態にあるかどうか、そして今頃の見通しについて。"
+msgstr "月がボイドタイムかどうかと、前後のボイドタイム。"
 
 #: blocks/natal-chart/block.json
 msgctxt "block title"
 msgid "Natal Chart (AstroWay)"
-msgstr "出生図 (AstroWay)"
+msgstr "ネイタルチャート (AstroWay)"
 
 #: blocks/natal-chart/block.json
 msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
-msgstr "レスポンシブ iframe で提供される api.astroway.info の出生図"
+msgstr "api.astroway.info がレスポンシブ iframe で提供するネイタルチャートのホイール。"
 
 #: blocks/numerology/block.json
 msgctxt "block title"
 msgid "Numerology (AstroWay)"
-msgstr "月相 (AstroWay)"
+msgstr "数秘術 (AstroWay)"
 
 #: blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "numerology"
-msgstr ""
+msgstr "数秘術"
 
 #: blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "life path"
-msgstr ""
+msgstr "ライフパス"
 
 #: blocks/numerology/block.json
 msgctxt "block keyword"
 msgid "numbers"
-msgstr ""
+msgstr "数字"
 
 #: blocks/numerology/block.json
 msgctxt "block description"
 msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
-msgstr "レスポンシブ iframe で提供される api.astroway.info の出生図"
+msgstr ""
+"数秘術のコアナンバー (ライフパス、ディスティニー、ソウル、パーソナリティ)。api.astroway.info がレスポンシブ iframe "
+"で提供します。"
 
 #: blocks/panchang/block.json
 msgctxt "block title"
 msgid "Daily Panchang (AstroWay)"
-msgstr "今日のタロット (AstroWay)"
+msgstr "今日のパンチャンガ (AstroWay)"
 
 #: blocks/panchang/block.json
 msgctxt "block keyword"
 msgid "panchang"
-msgstr ""
+msgstr "パンチャンガ"
 
 #: blocks/panchang/block.json
 msgctxt "block keyword"
 msgid "tithi"
-msgstr ""
+msgstr "ティティ"
 
 #: blocks/panchang/block.json
 msgctxt "block keyword"
 msgid "nakshatra"
-msgstr ""
+msgstr "ナクシャトラ"
 
 #: blocks/panchang/block.json
 msgctxt "block description"
 msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
-msgstr "レスポンシブ iframe で提供される api.astroway.info の出生図"
+msgstr ""
+"日付と場所の今日のパンチャンガ (ティティ、ナクシャトラ、ヨーガ、カラナ、ヴァーラ、ラーフ・カーラ)。api.astroway.info がレスポンシブ "
+"iframe で提供します。"
 
 #: blocks/planet-of-day/block.json
 msgctxt "block title"
 msgid "Planet of the Day (AstroWay)"
-msgstr "AstroWay: 今日の惑星 (AstroWay)"
+msgstr "今日の惑星 (AstroWay)"
 
 #: blocks/planet-of-day/block.json blocks/planetary-hours/block.json
 #: blocks/retrograde/block.json
 msgctxt "block keyword"
 msgid "planet"
-msgstr ""
+msgstr "惑星"
 
 #: blocks/planet-of-day/block.json
 msgctxt "block description"
 msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
-msgstr "その曜日を伝統的に支配する惑星、その記号やテーマがページに表現されている。"
+msgstr "その曜日を伝統的に支配する惑星を、記号とテーマとともにページ内に表示します。"
 
 #: blocks/planetary-hours/block.json
 msgctxt "block title"
 msgid "Planetary Hours (AstroWay)"
-msgstr "AstroWay: 惑星の時間 (AstroWay)"
+msgstr "惑星時間 (AstroWay)"
 
 #: blocks/planetary-hours/block.json
 msgctxt "block keyword"
 msgid "planetary hours"
-msgstr ""
+msgstr "惑星時間"
 
 #: blocks/planetary-hours/block.json
 msgctxt "block keyword"
 msgid "hours"
-msgstr ""
+msgstr "時間"
 
 #: blocks/planetary-hours/block.json
 msgctxt "block description"
@@ -5675,17 +6006,17 @@ msgstr "ある場所における1日の24の惑星時間。現在時刻には印
 #: blocks/retrograde/block.json
 msgctxt "block title"
 msgid "Retrograde Status (AstroWay)"
-msgstr "AstroWay: 逆行状況 (AstroWay)"
+msgstr "逆行状態 (AstroWay)"
 
 #: blocks/retrograde/block.json blocks/retrogrades/block.json
 msgctxt "block keyword"
 msgid "retrograde"
-msgstr ""
+msgstr "逆行"
 
 #: blocks/retrograde/block.json
 msgctxt "block keyword"
 msgid "mercury"
-msgstr ""
+msgstr "水星"
 
 #: blocks/retrograde/block.json
 msgctxt "block description"
@@ -5695,39 +6026,39 @@ msgstr "現在、ある惑星が逆行しているかどうか、そしてそれ
 #: blocks/retrogrades/block.json
 msgctxt "block title"
 msgid "Retrograde Planets (AstroWay)"
-msgstr "AstroWay: 逆行する惑星 (AstroWay)"
+msgstr "逆行惑星 (AstroWay)"
 
 #: blocks/retrogrades/block.json blocks/transit/block.json
 msgctxt "block keyword"
 msgid "planets"
-msgstr ""
+msgstr "惑星"
 
 #: blocks/retrogrades/block.json
 msgctxt "block description"
 msgid "All eight planets that station, and what each is doing today."
-msgstr "停滞している8つの惑星すべてと、今日それぞれの惑星がどのような動きを見せているか。"
+msgstr "留になる8惑星すべてと、それぞれの今日の動き。"
 
 #: blocks/rising-sign/block.json
 msgctxt "block title"
 msgid "Rising Sign (AstroWay)"
-msgstr "上昇星座 (AstroWay)"
+msgstr "アセンダント (AstroWay)"
 
 #: blocks/rising-sign/block.json
 msgctxt "block keyword"
 msgid "rising"
-msgstr ""
+msgstr "アセンダント"
 
 #: blocks/rising-sign/block.json
 msgctxt "block keyword"
 msgid "ascendant"
-msgstr ""
+msgstr "アセンダント"
 
 #: blocks/rising-sign/block.json
 msgctxt "block description"
 msgid ""
-"The rising sign with its chart ruler. Needs coordinates: the ascendant is "
-"the horizon at a place."
-msgstr "上昇星座とそのチャート支配星を表示します。座標が必要です: アセンダントはその場所の地平線です。"
+"The rising sign with its chart ruler. Needs coordinates: the ascendant is the"
+" horizon at a place."
+msgstr "アセンダントとそのチャートルーラー。座標が必要です: アセンダントはその場所の地平線です。"
 
 #: blocks/solar-return/block.json
 msgctxt "block title"
@@ -5737,49 +6068,49 @@ msgstr "ソーラーリターン (AstroWay)"
 #: blocks/solar-return/block.json
 msgctxt "block keyword"
 msgid "solar return"
-msgstr ""
+msgstr "ソーラーリターン"
 
 #: blocks/solar-return/block.json
 msgctxt "block keyword"
 msgid "birthday"
-msgstr ""
+msgstr "誕生日"
 
 #: blocks/solar-return/block.json
 msgctxt "block keyword"
 msgid "year ahead"
-msgstr ""
+msgstr "1年"
 
 #: blocks/solar-return/block.json
 msgctxt "block description"
 msgid ""
 "The chart of the moment the Sun returns to its birth position in a given "
-"year, drawn into the page. Without a birth date it asks the visitor. Needs a"
-" site key or an API key."
+"year, drawn into the page. Without a birth date it asks the visitor. Needs a "
+"site key or an API key."
 msgstr ""
-"指定した年に太陽が出生時の位置に戻る瞬間のチャートを、ページ内に描画します。生年月日がなければ訪問者に尋ねます。サイトキーまたは API "
-"キーが必要です。"
+"指定した年に太陽が出生時の位置に戻る瞬間のチャートを、ページ内に描画します。生年月日がなければ訪問者に尋ねます。サイトキーまたは API キーが必要です。"
 
 #: blocks/synastry/block.json
 msgctxt "block title"
 msgid "Synastry Compatibility (AstroWay)"
-msgstr "出生図 (AstroWay)"
+msgstr "シナストリーの相性 (AstroWay)"
 
 #: blocks/synastry/block.json
 msgctxt "block keyword"
 msgid "synastry"
-msgstr ""
+msgstr "シナストリー"
 
 #: blocks/synastry/block.json blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "love"
-msgstr ""
+msgstr "恋愛"
 
 #: blocks/synastry/block.json
 msgctxt "block description"
 msgid ""
 "Compatibility score and the cross-aspects behind it for two birth charts, "
 "rendered into the page by api.astroway.info. No key needed."
-msgstr "api.astroway.info によってこのページに表示された、2つの出生図の相性スコアと、その背景にある相互関係。凡例は不要です。"
+msgstr ""
+"2つのネイタルチャートの相性スコアと、その根拠となる相互アスペクト。api.astroway.info のデータでページ内に表示します。キーは不要です。"
 
 #: blocks/tarot-spread/block.json
 msgctxt "block title"
@@ -5789,12 +6120,12 @@ msgstr "今日のタロットスプレッド (AstroWay)"
 #: blocks/tarot-spread/block.json
 msgctxt "block keyword"
 msgid "spread"
-msgstr ""
+msgstr "スプレッド"
 
 #: blocks/tarot-spread/block.json
 msgctxt "block keyword"
 msgid "celtic cross"
-msgstr ""
+msgstr "ケルト十字"
 
 #: blocks/tarot-spread/block.json
 msgctxt "block description"
@@ -5806,17 +6137,17 @@ msgstr "このサイトのために1日1回引く3枚またはケルト十字。
 #: blocks/transit-timeline/block.json
 msgctxt "block title"
 msgid "Moon Transit Timeline (AstroWay)"
-msgstr "AstroWay: 月の通過スケジュール (AstroWay)"
+msgstr "月のサイン移動タイムライン (AstroWay)"
 
 #: blocks/transit-timeline/block.json blocks/transit/block.json
 msgctxt "block keyword"
 msgid "transit"
-msgstr ""
+msgstr "トランジット"
 
 #: blocks/transit-timeline/block.json
 msgctxt "block keyword"
 msgid "week"
-msgstr ""
+msgstr "週間"
 
 #: blocks/transit-timeline/block.json
 msgctxt "block description"
@@ -5828,61 +6159,71 @@ msgstr "api.astroway.info がレスポンシブな iframe として提供する�
 #: blocks/transit/block.json
 msgctxt "block title"
 msgid "Transit Sky (AstroWay)"
-msgstr "出生図 (AstroWay)"
+msgstr "トランジット・スカイ (AstroWay)"
 
 #: blocks/transit/block.json
 msgctxt "block keyword"
 msgid "sky"
-msgstr ""
+msgstr "空"
 
 #: blocks/transit/block.json
 msgctxt "block description"
 msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
-msgstr "レスポンシブ iframe で提供される api.astroway.info の出生図"
+msgstr "指定日のトランジット惑星のサインと度数。api.astroway.info がレスポンシブ iframe で提供します。"
 
 #: blocks/weekly-horoscope/block.json
 msgctxt "block title"
 msgid "Horoscope for the Week (AstroWay)"
-msgstr "今週のホロスコープ (AstroWay)"
+msgstr "今週の星占い (AstroWay)"
 
 #: blocks/weekly-horoscope/block.json
 msgctxt "block keyword"
 msgid "weekly"
-msgstr ""
+msgstr "週間"
 
 #: blocks/weekly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current week, anchored to Monday, rendered into the page "
-"as text."
+"Horoscope for the current week, anchored to Monday, rendered into the page as"
+" text."
 msgstr "月曜日を基準とした今週の星占い。ページ上にテキストとして表示されます。"
 
 #: blocks/yearly-horoscope/block.json
 msgctxt "block title"
 msgid "Horoscope for the Year (AstroWay)"
-msgstr "今年の運勢 (AstroWay)"
+msgstr "今年の星占い (AstroWay)"
 
 #: blocks/yearly-horoscope/block.json
 msgctxt "block keyword"
 msgid "yearly"
-msgstr ""
+msgstr "年間"
 
 #: blocks/yearly-horoscope/block.json
 msgctxt "block description"
 msgid "The year ahead for one zodiac sign."
-msgstr "ある星座の今後の1年。"
+msgstr "1つの星座のこれからの1年。"
 
 #: blocks/zodiac-compatibility/block.json
 msgctxt "block title"
 msgid "Zodiac Compatibility (AstroWay)"
-msgstr "AstroWay: 星座の相性 (AstroWay)"
+msgstr "星座の相性 (AstroWay)"
 
 #: blocks/zodiac-compatibility/block.json
 msgctxt "block description"
 msgid "How two zodiac signs read together."
-msgstr "2つの星座の相性について。"
+msgstr "2つの星座の相性。"
+
+#, php-format
+#~ msgid "then into %s"
+#~ msgstr "その後%sへ"
+
+#~ msgid "Krishna paksha, waning"
+#~ msgstr "クリシュナパクシャ (欠けていく半月)"
+
+#~ msgid "Shukla paksha, waxing"
+#~ msgstr "シュクラパクシャ (満ちていく半月)"
 
 #~ msgid ""
 #~ "The reading needs a site key or an API key: open AstroWay in the admin and "
@@ -5895,14 +6236,14 @@ msgstr "2つの星座の相性について。"
 #~ msgstr "逆行期間"
 
 #~ msgid ""
-#~ "When a visitor fills in a birth chart, compatibility, moon sign, rising "
-#~ "sign, Solar Return, Lunar Return or Davison chart form, the date, time and "
-#~ "place they enter are sent to api.astroway.info to calculate the answer, and "
-#~ "the city name to app.astroway.info to find its coordinates. Names typed into"
-#~ " the compatibility form are not sent anywhere. The AstroWay plugin does not "
-#~ "store any of it on this site: the answer is not cached and the page is sent "
-#~ "with no-store. Security or activity-log plugins on this site may record form"
-#~ " submissions on their own."
+#~ "When a visitor fills in a birth chart, compatibility, moon sign, rising sign,"
+#~ " Solar Return, Lunar Return or Davison chart form, the date, time and place "
+#~ "they enter are sent to api.astroway.info to calculate the answer, and the "
+#~ "city name to app.astroway.info to find its coordinates. Names typed into the "
+#~ "compatibility form are not sent anywhere. The AstroWay plugin does not store "
+#~ "any of it on this site: the answer is not cached and the page is sent with "
+#~ "no-store. Security or activity-log plugins on this site may record form "
+#~ "submissions on their own."
 #~ msgstr ""
 #~ "訪問者がネイタルチャート、相性、ムーンサイン、アセンダント、ソーラーリターン、ルナリターン、ダヴィソン・チャートのフォームに入力すると、入力された日付・時刻・場所は計算のため"
 #~ " api.astroway.info に、都市名は座標を調べるため app.astroway.info "
@@ -5923,8 +6264,8 @@ msgstr "2つの星座の相性について。"
 #~ msgstr "未定義のセンター"
 
 #~ msgid ""
-#~ "This widget reached the free limit for one visitor (30 requests an hour from"
-#~ " one IP address), so visitors on that connection see nothing here until the "
+#~ "This widget reached the free limit for one visitor (30 requests an hour from "
+#~ "one IP address), so visitors on that connection see nothing here until the "
 #~ "hour resets. Only administrators see this note."
 #~ msgstr ""
 #~ "このウィジェットは、1人の訪問者あたりの無料制限（1つのIPアドレスからの1時間あたり30リクエスト）に達したため、その接続からの訪問者は、1時間が経過してリセットされるまで、ここに何も表示されません。この注意書きが表示されるのは管理者だけです。"
@@ -5936,20 +6277,20 @@ msgstr "2つの星座の相性について。"
 #~ msgstr "この日以降の最初のリターン（YYYY-MM-DD、空欄で今日）"
 
 #~ msgid ""
-#~ "This calculator needs a site key: open AstroWay in the admin and let the "
-#~ "site get one. Visitors do not see the form until then; only administrators "
-#~ "see this note."
+#~ "This calculator needs a site key: open AstroWay in the admin and let the site"
+#~ " get one. Visitors do not see the form until then; only administrators see "
+#~ "this note."
 #~ msgstr ""
 #~ "この計算機にはサイトキーが必要です：管理画面でAstroWayを開き、サイトにキーを取得させてください。それまで訪問者にはフォームが表示されません。このメモは管理者にのみ表示されます。"
 
 #~ msgid ""
 #~ "When a visitor fills in a birth chart, compatibility, moon sign or rising "
-#~ "sign form, the date, time and place they enter are sent to api.astroway.info"
-#~ " to calculate the answer, and the city name to app.astroway.info to find its"
-#~ " coordinates. Names typed into the compatibility form are not sent anywhere."
-#~ " The AstroWay plugin does not store any of it on this site: the answer is "
-#~ "not cached and the page is sent with no-store. Security or activity-log "
-#~ "plugins on this site may record form submissions on their own."
+#~ "sign form, the date, time and place they enter are sent to api.astroway.info "
+#~ "to calculate the answer, and the city name to app.astroway.info to find its "
+#~ "coordinates. Names typed into the compatibility form are not sent anywhere. "
+#~ "The AstroWay plugin does not store any of it on this site: the answer is not "
+#~ "cached and the page is sent with no-store. Security or activity-log plugins "
+#~ "on this site may record form submissions on their own."
 #~ msgstr ""
 #~ "訪問者がネイタルチャート、相性、ムーンサイン、アセンダントのフォームに入力すると、入力された日付・時刻・場所は計算のため "
 #~ "api.astroway.info に、都市名は座標を調べるため app.astroway.info "

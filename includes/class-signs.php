@@ -93,6 +93,7 @@ class Signs {
 			$body['solarYear'] = $year;
 		}
 
+		// No language: the card names everything from the plugin's translations, the api's localised names go unread.
 		return ( new ApiClient() )->cached_call( 'POST', '/chinese/zodiac/animal', $body, PublicData::ttl_for( 'static' ), 'sig_' );
 	}
 

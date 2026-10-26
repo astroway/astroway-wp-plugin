@@ -102,6 +102,7 @@ class Form {
 		wp_add_privacy_policy_content(
 			'AstroWay',
 			'<p>' . esc_html__( 'When a visitor fills in a birth chart, Human Design, compatibility, moon sign, rising sign, Solar Return, Lunar Return or Davison chart form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			. '<p>' . esc_html__( 'When a visitor fills in the numerology form, the name and birth date they enter are sent from this site\'s server to api.astroway.info to calculate the numbers. The AstroWay plugin does not store them on this site.', 'astroway' ) . '</p>'
 			. '<p>' . esc_html__( 'Tarot cards with pictures load those pictures in the visitor\'s browser from cdn.astroway.info, which therefore receives the visitor\'s IP address, as for any image from another site. When a spread asks for its reading, the drawn cards and the page\'s language are sent from this site\'s server to api.astroway.info; nothing about the visitor is sent with them, and the reading is kept on this site for a day so that the same spread is read once.', 'astroway' ) . '</p>'
 		);
 	}
@@ -157,8 +158,8 @@ class Form {
 	}
 
 	/**
-	 * The numerology form: a full name and a date, then the numbers. The
-	 * numbers still come in a frame, as they do with the data written in.
+	 * The numerology form: a full name and a date, then the numbers, in the
+	 * page on the site key, or in a frame without one.
 	 *
 	 * @param array $params `name`, `date`, `system`, `theme`, `lang` from the shortcode.
 	 * @param array $errors Why the form shows instead of the numbers, by field.
@@ -200,6 +201,23 @@ class Form {
 		}
 		if ( ! self::allow( time() ) ) {
 			return self::numerology_card( $id, $lang, $in, [ '' => __( 'Too many calculations from here in a short time. Try again in a few minutes.', 'astroway' ) ] );
+		}
+		// A visitor's own name goes on the site key, never on the owner's credits.
+		$system = (string) ( $params['system'] ?? '' );
+		if ( Birth::can_read( Birth::numerology_path( $system ), true ) ) {
+			$card = Render::birth_card(
+				'numerology',
+				[
+					'name'    => sanitize_text_field( $in['name'] ),
+					'date'    => $in['date'],
+					'system'  => $system,
+					'lang'    => $lang,
+					'visitor' => true,
+				]
+			);
+			if ( '' !== $card ) {
+				return $card;
+			}
 		}
 		return PublicClient::embed_iframe(
 			'numerology',
@@ -274,8 +292,12 @@ class Form {
 
 		$params['seed']    = random_int( 0, 0x7fffffff );
 		$params['redrawn'] = true;
-		$data              = PublicData::get( $widget, $params, false );
-		$html              = null === $data ? '' : Render::with_data( $widget, $data, $params );
+		// The api reads only its own spread of the day for free; a fresh draw is read on the owner's key or not at all.
+		if ( '' === ( new ApiClient() )->key() ) {
+			unset( $params['reading'] );
+		}
+		$data = PublicData::get( $widget, $params, false );
+		$html = null === $data ? '' : Render::with_data( $widget, $data, $params );
 		if ( false === strpos( $html, 'astroway-card' ) || false !== strpos( $html, 'astroway-embed' ) ) {
 			self::failed();
 			unset( $params['seed'], $params['redrawn'] );

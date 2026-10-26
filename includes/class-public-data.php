@@ -228,13 +228,45 @@ class PublicData {
 	private const READS = [
 		// Texts on the twelve animals and five elements for the Chinese sign
 		// card, which reads the sign itself on the keyed route.
-		'chinese_texts' => [
+		'chinese_texts'       => [
 			'path'      => '/public/chinese/zodiac/texts',
 			'freshness' => 'static',
 			'params'    => [],
 			'required'  => [],
 		],
-		'sky'           => [
+		// What the picture of a card shows and the card in five spheres of life,
+		// per language (api 2.228.1). Asked for the cards on the page only; Tarot
+		// keeps each card on its own.
+		'tarot_texts'         => [
+			'path'      => '/public/tarot/texts',
+			'freshness' => 'week',
+			'params'    => [ 'cards' ],
+			'required'  => [ 'cards' ],
+		],
+		// Texts on types, authorities, profiles, centres, channels and gates.
+		'hd_texts'            => [
+			'path'      => '/public/human-design/texts',
+			'freshness' => 'week',
+			'params'    => [],
+			'required'  => [],
+		],
+		// The api's own spread of the day, read once a day per language, no key
+		// (api 2.228.1): the reading for a site that has no owner's key.
+		'tarot_daily_reading' => [
+			'path'      => '/public/tarot/daily-reading',
+			'freshness' => 'day',
+			'params'    => [ 'date', 'art' ],
+			'required'  => [],
+		],
+		// The picture sets, for the editors' "Card pictures" field (api 2.228.1).
+		'tarot_decks'         => [
+			'path'      => '/public/tarot/decks',
+			'freshness' => 'day',
+			'params'    => [],
+			'required'  => [],
+			'lang'      => false,
+		],
+		'sky'                 => [
 			'path'      => '/public/chart',
 			'method'    => 'POST',
 			'freshness' => 'day',
@@ -306,6 +338,17 @@ class PublicData {
 		Cache::set( $key, $payload, self::ttl_for( $config['freshness'] ) );
 		self::cap_page( $config, $params );
 		return $payload;
+	}
+
+	/** What is kept for a read, without asking the api: for code a page runs on every render. */
+	public static function cached( string $widget, array $params = [] ): ?array {
+		$config = self::ENDPOINTS[ $widget ] ?? self::READS[ $widget ] ?? null;
+		$query  = null === $config ? null : self::query_for( $widget, $params );
+		if ( null === $query ) {
+			return null;
+		}
+		$cached = Cache::get( self::cache_key( $config['path'], $query ) );
+		return is_array( $cached ) ? $cached : null;
 	}
 
 	/** The seed of a spread of the day: this site, the site's day, this spread. */
@@ -433,6 +476,13 @@ class PublicData {
 					$art = Tarot::sanitize_art( $raw );
 					if ( '' !== $art ) {
 						$query['art'] = $art;
+					}
+					break;
+				case 'cards':
+					// One unknown slug fails the whole request, so only slug-shaped ones go.
+					$cards = array_filter( explode( ',', $raw ), static fn( $c ) => (bool) preg_match( '/^[a-z0-9]+(-[a-z0-9]+){0,4}$/', $c ) );
+					if ( $cards ) {
+						$query['cards'] = implode( ',', array_unique( $cards ) );
 					}
 					break;
 				case 'seed':
@@ -722,7 +772,7 @@ class PublicData {
 	 */
 	public static function natal_texts( array $keys, string $lang, ?int $now = null ): array {
 		$now   = null === $now ? time() : $now;
-		$keys  = array_values( array_unique( array_filter( array_map( 'strval', $keys ), static fn( $k ) => (bool) preg_match( '/^[a-z]+(_[a-z]+)?\.[a-z0-9]+$/', $k ) ) ) );
+		$keys  = array_values( array_unique( array_filter( array_map( 'strval', $keys ), static fn( $k ) => (bool) preg_match( '/^[a-z]+(_[a-z]+)?\.[a-z0-9]+(_[a-z]+)?$/', $k ) ) ) );
 		$store = Cache::get( 'natal_texts_' . $lang );
 		$store = is_array( $store ) ? $store : [];
 		$texts = isset( $store['texts'] ) && is_array( $store['texts'] ) ? $store['texts'] : [];

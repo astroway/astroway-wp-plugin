@@ -469,13 +469,16 @@ final class WidgetManifest {
 	 */
 	public const SECTIONS = [
 		'natal-chart'       => [ 'big-three', 'summary', 'wheel', 'grid', 'placements', 'aspects', 'transits', 'elements', 'patterns', 'meaning' ],
-		'bodygraph'         => [ 'tags', 'facts', 'bodygraph', 'centres', 'channels' ],
+		'bodygraph'         => [ 'tags', 'facts', 'reading', 'bodygraph', 'centres', 'channels' ],
 		'synastry'          => [ 'summary', 'spheres', 'strengths', 'wheel', 'aspects', 'houses', 'all-aspects' ],
-		'daily-tarot'       => [ 'tags', 'keywords', 'facts', 'other-side' ],
-		'moon-phase'        => [ 'facts', 'meaning', 'phases' ],
-		'daily-horoscope'   => [ 'signs', 'sky' ],
-		'weekly-horoscope'  => [ 'signs', 'sky' ],
-		'monthly-horoscope' => [ 'signs', 'sky' ],
+		'daily-tarot'       => [ 'tags', 'keywords', 'facts', 'about', 'other-side' ],
+		'tarot-spread'      => [ 'about' ],
+		'moon-phase'        => [ 'facts', 'meaning', 'phases', 'voc' ],
+		'kundli'            => [ 'facts', 'grahas', 'dasha', 'yogas' ],
+		'numerology'        => [ 'numbers', 'meaning' ],
+		'daily-horoscope'   => [ 'signs', 'sky', 'spheres', 'energy', 'lucky', 'compatible' ],
+		'weekly-horoscope'  => [ 'signs', 'sky', 'spheres', 'energy', 'lucky', 'compatible' ],
+		'monthly-horoscope' => [ 'signs', 'sky', 'spheres', 'energy', 'lucky', 'compatible' ],
 	];
 
 	/** Cards with a list of readings an author can open on its first row or keep closed. */

@@ -44,9 +44,28 @@ class Tarot {
 	/** Only our own CDN goes into an img src on someone else's page. */
 	private const IMAGE_HOST = 'cdn.astroway.info';
 
-	/** @return array<string, string> Set id => name. */
+	/**
+	 * The Rider-Waite-Smith picture sets the api lists, falling back to the
+	 * three known ones. Only the admin asks for the list, where the editors build
+	 * their fields; a page reads what is kept, so a render never waits on it.
+	 *
+	 * @return array<string, string> Set id => name.
+	 */
 	public static function arts(): array {
-		return self::ARTS;
+		$data = is_admin() ? PublicData::get( 'tarot_decks' ) : PublicData::cached( 'tarot_decks' );
+		$live = [];
+		foreach ( (array) ( $data['items'] ?? [] ) as $deck ) {
+			if ( ! is_array( $deck ) || 'rider-waite' !== ( $deck['deck'] ?? '' ) ) {
+				continue;
+			}
+			foreach ( (array) ( $deck['art'] ?? [] ) as $art ) {
+				$id = is_array( $art ) ? (string) ( $art['id'] ?? '' ) : '';
+				if ( preg_match( '/^[a-z0-9][a-z0-9-]{1,40}$/', $id ) ) {
+					$live[ $id ] = trim( (string) ( $art['name'] ?? $id ) );
+				}
+			}
+		}
+		return isset( $live['rws-1909'] ) ? $live : self::ARTS;
 	}
 
 	/**
@@ -59,7 +78,7 @@ class Tarot {
 		if ( '' === $value || 'none' === $value ) {
 			return '';
 		}
-		return isset( self::ARTS[ $value ] ) ? $value : 'rws-1909';
+		return isset( self::arts()[ $value ] ) ? $value : 'rws-1909';
 	}
 
 	/**
@@ -375,8 +394,103 @@ class Tarot {
 		if ( '' !== $read['position_meaning'] ) {
 			$html .= '<p class="astroway-spread__where">' . esc_html( $read['position_meaning'] ) . '</p>';
 		}
+		// Inside the part a closed card hides, so it cannot name the card before it is turned.
+		$about = UI::shown( 'about' ) ? self::about( $drawn, (array) ( $opts['texts'] ?? [] ) ) : '';
+		if ( '' !== $about ) {
+			$html .= UI::accordion(
+				[
+					[
+						'title'     => __( 'About the card', 'astroway' ),
+						'body_html' => $about,
+					],
+				]
+			);
+		}
 		$html .= $reveal ? '</div>' : '';
 		return $html . '</div></li>';
+	}
+
+	/**
+	 * The api's texts on these cards in this language, keyed by slug, or []
+	 * when it has none to give in it: an English text on another language's
+	 * page is worse than none. Each card is kept for a week on its own, so a
+	 * page reads a few kilobytes rather than the whole deck.
+	 *
+	 * @param string[] $slugs The cards on the page.
+	 */
+	public static function texts( string $lang, array $slugs ): array {
+		$lang  = Plugin::resolve_lang( $lang );
+		$slugs = array_values( array_unique( array_filter( array_map( 'strval', $slugs ), 'strlen' ) ) );
+		$base  = 'tarot_text_' . $lang . '_';
+		if ( ! $slugs || false !== Cache::get( $base . 'none' ) || false !== Cache::get( $base . 'neg' ) ) {
+			return [];
+		}
+		$texts = [];
+		$need  = [];
+		foreach ( $slugs as $slug ) {
+			$kept = Cache::get( $base . md5( $slug ) );
+			if ( is_array( $kept ) ) {
+				$texts[ $slug ] = $kept;
+			} else {
+				$need[] = $slug;
+			}
+		}
+		if ( ! $need ) {
+			return $texts;
+		}
+		$data = PublicData::get(
+			'tarot_texts',
+			[
+				'lang'  => $lang,
+				'cards' => implode( ',', $need ),
+			],
+			false
+		);
+		if ( null === $data ) {
+			Cache::set( $base . 'neg', 'fail', PublicData::NEGATIVE_TTL );
+			return $texts;
+		}
+		if ( empty( $data['textLocalized'] ) && 'en' !== $lang ) {
+			// Not translated yet: asked again tomorrow, not on every render.
+			Cache::set( $base . 'none', 1, DAY_IN_SECONDS );
+			return [];
+		}
+		foreach ( $need as $slug ) {
+			$card = $data['cards'][ $slug ] ?? null;
+			if ( is_array( $card ) ) {
+				Cache::set( $base . md5( $slug ), $card, PublicData::ttl_for( 'week' ) );
+				$texts[ $slug ] = $card;
+			}
+		}
+		return $texts;
+	}
+
+	/** What the picture shows, then the card in five spheres on the side it came out; '' without a text. */
+	public static function about( array $drawn, array $texts ): string {
+		$t = $texts[ (string) ( $drawn['card']['slug'] ?? '' ) ] ?? null;
+		if ( ! is_array( $t ) ) {
+			return '';
+		}
+		$html = '';
+		foreach ( preg_split( '/\n\s*\n/', trim( (string) ( $t['description'] ?? '' ) ) ) as $para ) {
+			$html .= '' === trim( $para ) ? '' : '<p>' . esc_html( trim( $para ) ) . '</p>';
+		}
+		$side   = empty( $drawn['reversed'] ) ? 'upright' : 'reversed';
+		$areas  = is_array( $t[ $side ] ?? null ) ? $t[ $side ] : [];
+		$labels = [
+			'love'    => __( 'Love', 'astroway' ),
+			'career'  => __( 'Career', 'astroway' ),
+			'finance' => __( 'Money', 'astroway' ),
+			'health'  => __( 'Health', 'astroway' ),
+			'spirit'  => __( 'Spirit', 'astroway' ),
+		];
+		foreach ( $labels as $key => $label ) {
+			$text = trim( (string) ( $areas[ $key ] ?? '' ) );
+			if ( '' !== $text ) {
+				$html .= '<p><strong>' . esc_html( $label ) . '.</strong> ' . esc_html( $text ) . '</p>';
+			}
+		}
+		return '' === $html ? '' : UI::prose( $html );
 	}
 
 	/**

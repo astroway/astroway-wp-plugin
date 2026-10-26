@@ -803,9 +803,27 @@
 
 /* The facts already close with a rule; without the meaning between them the
    section drew a second one 14px lower. */
-.astroway-card--moon > .astroway-facts--trio + .astroway-card__section {
+.astroway-card--moon > .astroway-facts--trio + .astroway-card__section,
+.astroway-card--kundli > .astroway-facts--trio + .astroway-card__section,
+.astroway-card--numerology > .astroway-facts--trio + .astroway-card__section {
 	border-block-start: 0;
 	padding-block-start: 0;
+}
+
+/* Two rows of three numbers share the rule between them. */
+.astroway-card.astroway-card--numerology > .astroway-facts--trio + .astroway-facts--trio {
+	margin-block-start: 0;
+	border-block-start: 0;
+}
+
+/* The number is what the card is for; the steps that reduce it stay small. */
+.astroway-card--numerology > .astroway-facts--trio dd {
+	font-size: 1.5em;
+	line-height: 1.2;
+}
+
+.astroway-card--numerology > .astroway-facts--trio .astroway-facts__sub {
+	font-size: 0.55em;
 }
 
 .astroway-card .astroway-card__header + .astroway-card__section {
@@ -1298,6 +1316,11 @@
 	/* No inset of its own: padding pushed a marked row's labels 6px out of
 	   line with the rows around it, and a negative margin widened the row past
 	   the scroll box. The tint alone marks it. */
+	/* The section that follows draws its own rule. */
+	.astroway-card--kundli .astroway-table--stack tr:last-child {
+		border-block-end: 0;
+	}
+
 	.astroway-card .astroway-table--stack tr.is-current {
 		background: var(--astroway-accent-tint);
 	}
@@ -3594,4 +3617,38 @@
 
 .astroway-card .astroway-callout--advice ul {
 	margin: 0;
+}
+
+/* The factors behind the energy score: the sign before each says which way it moved the score. */
+.astroway-card .astroway-horoscope__factors {
+	margin: 10px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.92em;
+}
+
+/* The sign in a column of its own, so a wrapped factor lines up under its words. */
+.astroway-card .astroway-horoscope__factor {
+	display: grid;
+	grid-template-columns: 1.2em minmax(0, 1fr);
+	padding-block: 3px;
+}
+
+.astroway-card .astroway-horoscope__factor > span {
+	font-weight: 600;
+	color: var(--astroway-harm);
+}
+
+.astroway-card .astroway-horoscope__factor.is-down > span {
+	color: var(--astroway-tens);
+}
+
+.astroway-card .astroway-horoscope__factor.is-flat > span {
+	color: var(--astroway-muted);
+}
+
+/* The lucky facts close with a rule; the compatible signs under them add none. */
+.astroway-card--horoscope .astroway-facts--trio + .astroway-card__section {
+	border-block-start: 0;
+	padding-block-start: 0;
 }

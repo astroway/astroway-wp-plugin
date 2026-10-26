@@ -34,11 +34,16 @@ class ApiClient {
 	}
 
 	/** Routes of the api's free set the keyed cards use: the site key opens them. */
-	private const SITE_KEY_PATHS = [ '/retrograde-periods', '/moon-voc', '/planetary-hours', '/horoscope/yearly', '/horoscope/compatibility', '/chinese/zodiac/animal', '/planets' ];
+	private const SITE_KEY_PATHS = [ '/retrograde-periods', '/moon-voc', '/planetary-hours', '/horoscope/yearly', '/horoscope/compatibility', '/chinese/zodiac/animal', '/planets', '/vedic/kundli', '/numerology/pythagorean/chart' ];
 
 	/** Whether the sky cards can ask at all: the owner's key, or the site's own. */
 	public function can_read_sky(): bool {
 		return $this->has_key() || '' !== SiteKey::key();
+	}
+
+	/** Whether this route can be asked at all: the owner's key, or the site key where its set has the route. */
+	public function can_read( string $path ): bool {
+		return $this->has_key() || ( in_array( $path, self::SITE_KEY_PATHS, true ) && '' !== SiteKey::key() );
 	}
 
 	/** The site key for a free-set route when the owner has no key; '' otherwise. */

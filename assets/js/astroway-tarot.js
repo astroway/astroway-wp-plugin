@@ -55,6 +55,12 @@
 			if ( ! reading || reading.getAttribute( 'data-astroway-asked' ) ) {
 				return;
 			}
+			// Read on the server already (the api's spread of the day): only shown.
+			if ( reading.hasAttribute( 'data-astroway-ready' ) ) {
+				reading.setAttribute( 'data-astroway-asked', '1' );
+				reading.hidden = false;
+				return;
+			}
 			reading.setAttribute( 'data-astroway-asked', '1' );
 			reading.setAttribute( 'aria-busy', 'true' );
 			reading.innerHTML = '<p class="astroway-tarot__wait"></p>';

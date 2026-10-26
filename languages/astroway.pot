@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-wave2\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-06T16:24:13+00:00\n"
+"POT-Creation-Date: 2026-10-08T05:59:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: astroway\n"
@@ -413,7 +413,7 @@ msgstr ""
 
 #. translators: %s = comma-separated list of planet names
 #: includes/class-digest.php:248
-#: includes/class-render.php:3138
+#: includes/class-render.php:3577
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr ""
@@ -433,252 +433,256 @@ msgid "When a visitor fills in a birth chart, Human Design, compatibility, moon 
 msgstr ""
 
 #: includes/class-form.php:105
+msgid "When a visitor fills in the numerology form, the name and birth date they enter are sent from this site's server to api.astroway.info to calculate the numbers. The AstroWay plugin does not store them on this site."
+msgstr ""
+
+#: includes/class-form.php:106
 msgid "Tarot cards with pictures load those pictures in the visitor's browser from cdn.astroway.info, which therefore receives the visitor's IP address, as for any image from another site. When a spread asks for its reading, the drawn cards and the page's language are sent from this site's server to api.astroway.info; nothing about the visitor is sent with them, and the reading is kept on this site for a day so that the same spread is read once."
 msgstr ""
 
-#: includes/class-form.php:118
+#: includes/class-form.php:119
 msgid "Visitors do not see this calculator: it runs on the site key, so that their charts never spend your credits, and a site connected to an AstroWay account has no site key. The shortcode with the birth data written in still works. Only administrators see this note."
 msgstr ""
 
-#: includes/class-form.php:183
-#: includes/class-form.php:265
-#: includes/class-form.php:326
+#: includes/class-form.php:184
+#: includes/class-form.php:283
+#: includes/class-form.php:348
 msgid "This form works only on the site it is on."
 msgstr ""
 
-#: includes/class-form.php:190
+#: includes/class-form.php:191
 msgid "Enter the full name at birth."
 msgstr ""
 
-#: includes/class-form.php:193
-#: includes/class-form.php:472
+#: includes/class-form.php:194
+#: includes/class-form.php:494
 msgid "Enter the date of birth."
 msgstr ""
 
-#: includes/class-form.php:195
-#: includes/class-form.php:474
+#: includes/class-form.php:196
+#: includes/class-form.php:496
 msgid "Enter a date between 1800 and today."
 msgstr ""
 
-#: includes/class-form.php:202
-#: includes/class-form.php:342
+#: includes/class-form.php:203
+#: includes/class-form.php:364
 msgid "Too many calculations from here in a short time. Try again in a few minutes."
 msgstr ""
 
-#: includes/class-form.php:217
+#: includes/class-form.php:235
 msgid "Your numerology chart"
 msgstr ""
 
-#: includes/class-form.php:224
+#: includes/class-form.php:242
 msgid "Full name at birth"
 msgstr ""
 
-#: includes/class-form.php:236
-#: includes/class-form.php:631
+#: includes/class-form.php:254
+#: includes/class-form.php:653
 msgid "Date of birth"
 msgstr ""
 
-#: includes/class-form.php:244
-#: includes/class-form.php:289
-#: includes/class-form.php:620
+#: includes/class-form.php:262
+#: includes/class-form.php:311
+#: includes/class-form.php:642
 msgid "Leave empty"
 msgstr ""
 
-#: includes/class-form.php:245
-#: includes/class-form.php:622
+#: includes/class-form.php:263
+#: includes/class-form.php:644
 msgid "Calculate"
 msgstr ""
 
-#: includes/class-form.php:267
+#: includes/class-form.php:285
 msgid "Too many draws from here in a short time. Try again in a few minutes."
 msgstr ""
 
-#: includes/class-form.php:269
+#: includes/class-form.php:287
 msgid "The cards are busy right now. Try again later."
 msgstr ""
 
-#: includes/class-form.php:282
+#: includes/class-form.php:304
 msgid "The new draw did not come back. Try again in a moment."
 msgstr ""
 
-#: includes/class-form.php:290
+#: includes/class-form.php:312
 msgid "Back to the spread of the day"
 msgstr ""
 
-#: includes/class-form.php:293
+#: includes/class-form.php:315
 msgid "Draw again"
 msgstr ""
 
-#: includes/class-form.php:345
+#: includes/class-form.php:367
 msgid "The calculator is busy right now. Try again later."
 msgstr ""
 
-#: includes/class-form.php:451
+#: includes/class-form.php:473
 msgid "This chart cannot be shown for this birth date yet. Try another year or come back later."
 msgstr ""
 
-#: includes/class-form.php:452
+#: includes/class-form.php:474
 msgid "This chart cannot be shown for this birth data yet. Come back later."
 msgstr ""
 
-#: includes/class-form.php:455
+#: includes/class-form.php:477
 msgid "The calculation did not come back. Try again in a moment."
 msgstr ""
 
-#: includes/class-form.php:465
+#: includes/class-form.php:487
 msgid "Calculate another"
 msgstr ""
 
-#: includes/class-form.php:478
+#: includes/class-form.php:500
 msgid "The rising sign depends on the minute of birth; without the time it cannot be told."
 msgstr ""
 
-#: includes/class-form.php:480
+#: includes/class-form.php:502
 msgid "This chart depends on the minute of birth; without the time it cannot be cast."
 msgstr ""
 
-#: includes/class-form.php:483
+#: includes/class-form.php:505
 msgid "Enter the time of birth, or tick that it is unknown."
 msgstr ""
 
-#: includes/class-form.php:487
+#: includes/class-form.php:509
 msgid "Latitude runs from -90 to 90."
 msgstr ""
 
-#: includes/class-form.php:490
+#: includes/class-form.php:512
 msgid "Longitude runs from -180 to 180."
 msgstr ""
 
-#: includes/class-form.php:493
+#: includes/class-form.php:515
 msgid "Enter the city of birth."
 msgstr ""
 
-#: includes/class-form.php:496
+#: includes/class-form.php:518
 msgid "Enter a year between 1900 and 2100, or leave it empty."
 msgstr ""
 
-#: includes/class-form.php:527
+#: includes/class-form.php:549
 msgid "The city search is not answering. Enter the coordinates below instead."
 msgstr ""
 
-#: includes/class-form.php:531
+#: includes/class-form.php:553
 msgid "No place by that name. Check the spelling, or enter the coordinates below."
 msgstr ""
 
-#: includes/class-form.php:560
+#: includes/class-form.php:582
 msgid "Your birth chart"
 msgstr ""
 
-#: includes/class-form.php:561
+#: includes/class-form.php:583
 msgid "Your moon sign"
 msgstr ""
 
-#: includes/class-form.php:562
+#: includes/class-form.php:584
 msgid "Your rising sign"
 msgstr ""
 
-#: includes/class-form.php:563
+#: includes/class-form.php:585
 msgid "Compatibility of two charts"
 msgstr ""
 
-#: includes/class-form.php:564
+#: includes/class-form.php:586
 msgid "Your Solar Return"
 msgstr ""
 
-#: includes/class-form.php:565
+#: includes/class-form.php:587
 msgid "Your next Lunar Return"
 msgstr ""
 
-#: includes/class-form.php:566
+#: includes/class-form.php:588
 msgid "Davison chart of two people"
 msgstr ""
 
-#: includes/class-form.php:567
+#: includes/class-form.php:589
 msgid "Your Human Design"
 msgstr ""
 
-#: includes/class-form.php:577
+#: includes/class-form.php:599
 msgid "First person"
 msgstr ""
 
-#: includes/class-form.php:578
+#: includes/class-form.php:600
 msgid "Second person"
 msgstr ""
 
-#: includes/class-form.php:585
+#: includes/class-form.php:607
 msgid "Name (optional)"
 msgstr ""
 
-#: includes/class-form.php:587
+#: includes/class-form.php:609
 msgid "Shown on the result only."
 msgstr ""
 
-#: includes/class-form.php:604
+#: includes/class-form.php:626
 msgid "Year of the return"
 msgstr ""
 
-#: includes/class-form.php:608
+#: includes/class-form.php:630
 msgid "Leave empty for the one in force now."
 msgstr ""
 
-#: includes/class-form.php:646
+#: includes/class-form.php:668
 msgid "Time of birth"
 msgstr ""
 
-#: includes/class-form.php:650
+#: includes/class-form.php:672
 msgid "Local time at the place of birth."
 msgstr ""
 
-#: includes/class-form.php:654
+#: includes/class-form.php:676
 msgid "I do not know the time"
 msgstr ""
 
-#: includes/class-form.php:658
+#: includes/class-form.php:680
 msgid "Which one?"
 msgstr ""
 
-#: includes/class-form.php:671
+#: includes/class-form.php:693
 msgid "City of birth"
 msgstr ""
 
-#: includes/class-form.php:680
+#: includes/class-form.php:702
 msgid "Enter coordinates instead"
 msgstr ""
 
-#: includes/class-form.php:684
+#: includes/class-form.php:706
 msgid "Latitude"
 msgstr ""
 
-#: includes/class-form.php:687
+#: includes/class-form.php:709
 msgid "North positive, e.g. 50.45"
 msgstr ""
 
-#: includes/class-form.php:694
+#: includes/class-form.php:716
 msgid "Longitude"
 msgstr ""
 
-#: includes/class-form.php:697
+#: includes/class-form.php:719
 msgid "East positive, e.g. 30.52"
 msgstr ""
 
-#: includes/class-form.php:715
+#: includes/class-form.php:737
 msgid "I agree that the date, time and place I enter are sent to api.astroway.info to calculate the answer."
 msgstr ""
 
-#: includes/class-form.php:728
+#: includes/class-form.php:750
 msgid "Tick the box to continue."
 msgstr ""
 
-#: includes/class-form.php:851
+#: includes/class-form.php:873
 msgid "The clocks changed at this place on that day, so one hour of it happened twice or not at all. Check the birth time was read from a local clock."
 msgstr ""
 
-#: includes/class-form.php:868
+#: includes/class-form.php:890
 msgid "Without the time of birth the Moon's degree is approximate; its sign is certain for that day."
 msgstr ""
 
 #. translators: 1, 2: zodiac signs
-#: includes/class-form.php:874
+#: includes/class-form.php:896
 #, php-format
 msgid "The Moon changed sign that day, from %1$s to %2$s. The time of birth decides which one is yours."
 msgstr ""
@@ -697,14 +701,14 @@ msgstr ""
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
 #: includes/class-generated-registry.php:426
-#: includes/class-render.php:2874
+#: includes/class-render.php:3313
 #, php-format
 msgid "%1$s is missing required attributes: %2$s. Only administrators see this note."
 msgstr ""
 
 #. translators: %s = shortcode tag
 #: includes/class-generated-registry.php:440
-#: includes/class-render.php:2925
+#: includes/class-render.php:3364
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
@@ -826,1906 +830,2271 @@ msgstr ""
 msgid "AstroWay widget"
 msgstr ""
 
-#: includes/class-render.php:116
+#: includes/class-render.php:138
 msgid "The rising sign needs a latitude and a longitude: it is the horizon at a place, not a date. Only administrators see this note."
 msgstr ""
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:123
+#: includes/class-render.php:145
 #, php-format
 msgid "The %s widget could not be loaded just now. Only administrators see this note."
 msgstr ""
 
-#: includes/class-render.php:199
+#: includes/class-render.php:221
 msgid "Rising sign"
 msgstr ""
 
-#: includes/class-render.php:213
+#: includes/class-render.php:235
 msgid "Moon sign"
 msgstr ""
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
 #. translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine"
-#: includes/class-render.php:223
-#: includes/class-render.php:3975
+#: includes/class-render.php:245
+#: includes/class-render.php:4420
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: includes/class-render.php:237
-#: includes/class-render.php:1802
-#: includes/class-render.php:3057
+#: includes/class-render.php:259
+#: includes/class-render.php:1961
+#: includes/class-render.php:3496
+#: includes/class-render.php:5434
 msgid "Position"
 msgstr ""
 
 #. translators: %d = house number
-#: includes/class-render.php:240
-#: includes/class-render.php:1802
-#: includes/class-render.php:3814
+#: includes/class-render.php:262
+#: includes/class-render.php:1961
+#: includes/class-render.php:4259
+#: includes/class-render.php:5434
 msgid "House"
 msgstr ""
 
 #. translators: %d = house number
-#: includes/class-render.php:240
-#: includes/class-render.php:1317
-#: includes/class-render.php:1331
-#: includes/class-render.php:1757
-#: includes/class-render.php:1770
-#: includes/class-render.php:3806
+#: includes/class-render.php:262
+#: includes/class-render.php:1476
+#: includes/class-render.php:1490
+#: includes/class-render.php:1916
+#: includes/class-render.php:1929
+#: includes/class-render.php:4251
 #, php-format
 msgid "House %d"
 msgstr ""
 
-#: includes/class-render.php:248
+#: includes/class-render.php:270
 msgid "Chart ruler"
 msgstr ""
 
-#: includes/class-render.php:251
+#: includes/class-render.php:273
 msgid "Ruler position"
 msgstr ""
 
-#: includes/class-render.php:257
-#: includes/class-render.php:1778
+#: includes/class-render.php:279
+#: includes/class-render.php:1937
 msgid "Midheaven"
 msgstr ""
 
-#: includes/class-render.php:296
-#: includes/class-render.php:355
+#: includes/class-render.php:318
+#: includes/class-render.php:380
 msgid "Human Design"
 msgstr ""
 
 #. translators: %s = person's name
-#: includes/class-render.php:299
+#: includes/class-render.php:321
 #, php-format
 msgid "Human Design: %s"
 msgstr ""
 
 #. translators: %s = date of the design moment
-#: includes/class-render.php:307
+#: includes/class-render.php:329
 #, php-format
 msgid "Design: %s"
 msgstr ""
 
-#: includes/class-render.php:321
+#: includes/class-render.php:343
 msgid "Strategy"
 msgstr ""
 
-#: includes/class-render.php:324
+#: includes/class-render.php:346
 msgid "Authority"
 msgstr ""
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left Angle
-#: includes/class-render.php:331
+#: includes/class-render.php:353
 #, php-format
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: includes/class-render.php:336
+#: includes/class-render.php:358
 msgid "Profile"
 msgstr ""
 
-#: includes/class-render.php:339
+#: includes/class-render.php:361
 msgid "Definition"
 msgstr ""
 
-#: includes/class-render.php:349
+#: includes/class-render.php:371
+#: includes/class-render.php:671
 msgid "Incarnation cross"
 msgstr ""
 
-#: includes/class-render.php:358
+#: includes/class-render.php:383
 msgid "Bodygraph"
 msgstr ""
 
-#: includes/class-render.php:363
+#: includes/class-render.php:388
 msgid "Centres"
 msgstr ""
 
-#: includes/class-render.php:368
-#: includes/class-render.php:666
+#: includes/class-render.php:393
+#: includes/class-render.php:797
 msgid "Channels"
 msgstr ""
 
 #. translators: abbreviated colour, tone and base of a Human Design activation, e.g. C5 T6 B4
-#: includes/class-render.php:443
+#: includes/class-render.php:468
 #, php-format
 msgid "C%1$d T%2$d B%3$d"
 msgstr ""
 
 #. translators: colour, tone and base of a Human Design activation
-#: includes/class-render.php:446
+#: includes/class-render.php:471
 #, php-format
 msgid "colour %1$d, tone %2$d, base %3$d"
 msgstr ""
 
 #. translators: 1: Human Design gate number, 2: line number within the gate
-#: includes/class-render.php:452
+#: includes/class-render.php:477
 #, php-format
 msgid "gate %1$d, line %2$d"
 msgstr ""
 
-#: includes/class-render.php:463
+#: includes/class-render.php:488
 msgid "No centre is defined."
 msgstr ""
 
 #. translators: %s = list of centre names
-#: includes/class-render.php:465
+#: includes/class-render.php:490
 #, php-format
 msgid "Defined centres: %s."
 msgstr ""
 
 #. translators: %s = list of channels such as 13-33
-#: includes/class-render.php:468
+#: includes/class-render.php:493
 #, php-format
 msgid "Channels: %s."
 msgstr ""
 
-#: includes/class-render.php:487
-#: includes/class-render.php:627
+#: includes/class-render.php:512
+#: includes/class-render.php:758
 msgid "Design"
 msgstr ""
 
-#: includes/class-render.php:487
-#: includes/class-render.php:626
+#: includes/class-render.php:512
+#: includes/class-render.php:757
+#: includes/class-render.php:5548
 msgid "Personality"
 msgstr ""
 
-#: includes/class-render.php:493
+#: includes/class-render.php:518
 msgid "Design (unconscious)"
 msgstr ""
 
-#: includes/class-render.php:497
+#: includes/class-render.php:522
 msgid "Personality (conscious)"
 msgstr ""
 
-#: includes/class-render.php:501
+#: includes/class-render.php:526
 msgid "Both"
 msgstr ""
 
-#: includes/class-render.php:511
+#: includes/class-render.php:536
 msgctxt "planet"
 msgid "Earth"
 msgstr ""
 
-#: includes/class-render.php:524
-#: includes/class-render.php:525
+#: includes/class-render.php:549
+#: includes/class-render.php:550
 msgid "Satisfaction"
 msgstr ""
 
-#: includes/class-render.php:526
+#: includes/class-render.php:551
 msgid "Success"
 msgstr ""
 
-#: includes/class-render.php:527
+#: includes/class-render.php:552
 msgid "Peace"
 msgstr ""
 
-#: includes/class-render.php:528
+#: includes/class-render.php:553
 msgid "Surprise"
 msgstr ""
 
 #. translators: %s = Human Design signature, e.g. Success
-#: includes/class-render.php:533
+#: includes/class-render.php:558
 #, php-format
 msgid "Signature: %s"
 msgstr ""
 
 #. translators: %s = Human Design not-self theme, e.g. Bitterness
-#: includes/class-render.php:537
+#: includes/class-render.php:562
 #, php-format
 msgid "Not-self: %s"
 msgstr ""
 
-#: includes/class-render.php:562
+#. translators: %s = Human Design authority, such as Emotional
+#: includes/class-render.php:628
+#, php-format
+msgid "Authority: %s"
+msgstr ""
+
+#. translators: %d = line number, 1 to 6
+#: includes/class-render.php:650
+#, php-format
+msgid "Line %d"
+msgstr ""
+
+#. translators: %s = Human Design profile, such as 6/2
+#: includes/class-render.php:656
+#, php-format
+msgid "Profile %s"
+msgstr ""
+
+#. translators: %d = gate number, 1 to 64
+#: includes/class-render.php:666
+#, php-format
+msgid "Gate %d"
+msgstr ""
+
+#: includes/class-render.php:680
+msgid "What the chart says"
+msgstr ""
+
+#: includes/class-render.php:688
 msgid "Motor"
 msgstr ""
 
-#: includes/class-render.php:563
+#: includes/class-render.php:689
 msgid "Awareness"
 msgstr ""
 
-#: includes/class-render.php:564
+#: includes/class-render.php:690
 msgid "Pressure"
 msgstr ""
 
-#: includes/class-render.php:579
-#: includes/class-render.php:596
+#: includes/class-render.php:705
+#: includes/class-render.php:727
 msgid "Defined"
 msgstr ""
 
-#: includes/class-render.php:579
-#: includes/class-render.php:596
+#: includes/class-render.php:705
+#: includes/class-render.php:727
 msgid "Open"
 msgstr ""
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:588
+#: includes/class-render.php:719
 #, php-format
 msgid "Gates: %s"
 msgstr ""
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:592
+#: includes/class-render.php:723
 #, php-format
 msgid "Active gates: %s"
 msgstr ""
 
-#: includes/class-render.php:620
+#: includes/class-render.php:751
 msgid "Individual circuitry"
 msgstr ""
 
-#: includes/class-render.php:621
+#: includes/class-render.php:752
 msgid "Tribal circuitry"
 msgstr ""
 
-#: includes/class-render.php:622
+#: includes/class-render.php:753
 msgid "Collective circuitry"
 msgstr ""
 
-#: includes/class-render.php:623
+#: includes/class-render.php:754
 msgid "Integration channels"
 msgstr ""
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre, 4: second centre
-#: includes/class-render.php:656
+#: includes/class-render.php:787
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr ""
 
-#: includes/class-render.php:676
+#: includes/class-render.php:807
 msgid "Generator"
 msgstr ""
 
-#: includes/class-render.php:677
+#: includes/class-render.php:808
 msgid "Manifesting Generator"
 msgstr ""
 
-#: includes/class-render.php:678
+#: includes/class-render.php:809
 msgid "Manifestor"
 msgstr ""
 
-#: includes/class-render.php:679
+#: includes/class-render.php:810
 msgid "Projector"
 msgstr ""
 
-#: includes/class-render.php:680
+#: includes/class-render.php:811
 msgid "Reflector"
 msgstr ""
 
-#: includes/class-render.php:687
+#: includes/class-render.php:818
 msgid "Wait to respond"
 msgstr ""
 
-#: includes/class-render.php:688
+#: includes/class-render.php:819
 msgid "Wait for the invitation"
 msgstr ""
 
-#: includes/class-render.php:689
-#: includes/class-render.php:690
+#: includes/class-render.php:820
+#: includes/class-render.php:821
 msgid "Inform before acting"
 msgstr ""
 
-#: includes/class-render.php:691
+#: includes/class-render.php:822
 msgid "Wait a lunar cycle"
 msgstr ""
 
-#: includes/class-render.php:692
+#: includes/class-render.php:823
 msgid "Respond, then inform"
 msgstr ""
 
-#: includes/class-render.php:699
+#: includes/class-render.php:830
 msgid "Emotional (Solar Plexus)"
 msgstr ""
 
-#: includes/class-render.php:700
-#: includes/class-render.php:751
+#: includes/class-render.php:831
+#: includes/class-render.php:886
 msgid "Sacral"
 msgstr ""
 
-#: includes/class-render.php:701
+#: includes/class-render.php:832
 msgid "Splenic"
 msgstr ""
 
-#: includes/class-render.php:702
+#: includes/class-render.php:833
 msgid "Ego (Heart)"
 msgstr ""
 
-#: includes/class-render.php:703
+#: includes/class-render.php:834
+msgid "Ego manifested"
+msgstr ""
+
+#: includes/class-render.php:835
+msgid "Ego projected"
+msgstr ""
+
+#: includes/class-render.php:836
 msgid "Self-projected"
 msgstr ""
 
-#: includes/class-render.php:704
+#: includes/class-render.php:837
+#: includes/class-render.php:838
 msgid "Mental (environment)"
 msgstr ""
 
-#: includes/class-render.php:705
-#: includes/class-render.php:706
+#: includes/class-render.php:839
+#: includes/class-render.php:840
+#: includes/class-render.php:841
 msgid "Lunar cycle"
 msgstr ""
 
-#: includes/class-render.php:713
+#: includes/class-render.php:848
 msgid "Single definition"
 msgstr ""
 
-#: includes/class-render.php:714
+#: includes/class-render.php:849
 msgid "Split definition"
 msgstr ""
 
-#: includes/class-render.php:715
+#: includes/class-render.php:850
 msgid "Triple split definition"
 msgstr ""
 
-#: includes/class-render.php:716
+#: includes/class-render.php:851
 msgid "Quadruple split definition"
 msgstr ""
 
-#: includes/class-render.php:717
+#: includes/class-render.php:852
 msgid "No definition"
 msgstr ""
 
-#: includes/class-render.php:724
+#: includes/class-render.php:859
 msgid "Frustration"
 msgstr ""
 
-#: includes/class-render.php:725
+#: includes/class-render.php:860
 msgid "Bitterness"
 msgstr ""
 
-#: includes/class-render.php:726
+#: includes/class-render.php:861
 msgid "Anger"
 msgstr ""
 
-#: includes/class-render.php:727
+#: includes/class-render.php:862
 msgid "Disappointment"
 msgstr ""
 
-#: includes/class-render.php:734
+#: includes/class-render.php:869
 msgid "Right Angle"
 msgstr ""
 
-#: includes/class-render.php:735
+#: includes/class-render.php:870
 msgid "Left Angle"
 msgstr ""
 
-#: includes/class-render.php:736
+#: includes/class-render.php:871
 msgid "Juxtaposition"
 msgstr ""
 
-#: includes/class-render.php:744
+#: includes/class-render.php:879
 msgid "Head"
 msgstr ""
 
-#: includes/class-render.php:745
+#: includes/class-render.php:880
 msgid "Ajna"
 msgstr ""
 
-#: includes/class-render.php:746
+#: includes/class-render.php:881
 msgid "Throat"
 msgstr ""
 
-#: includes/class-render.php:747
+#: includes/class-render.php:882
 msgid "G (identity)"
 msgstr ""
 
-#: includes/class-render.php:748
+#: includes/class-render.php:883
 msgid "Heart (ego)"
 msgstr ""
 
-#: includes/class-render.php:749
+#: includes/class-render.php:884
 msgid "Solar Plexus"
 msgstr ""
 
-#: includes/class-render.php:750
+#: includes/class-render.php:885
 msgid "Spleen"
 msgstr ""
 
-#: includes/class-render.php:752
+#: includes/class-render.php:887
 msgid "Root"
 msgstr ""
 
-#: includes/class-render.php:799
-#: includes/class-render.php:826
-#: includes/class-render.php:857
+#: includes/class-render.php:934
+#: includes/class-render.php:961
+#: includes/class-render.php:992
 msgid "Natal chart"
 msgstr ""
 
 #. translators: %s = person's name
-#: includes/class-render.php:803
-#: includes/class-render.php:829
+#: includes/class-render.php:938
+#: includes/class-render.php:964
 #, php-format
 msgid "Natal chart: %s"
 msgstr ""
 
-#: includes/class-render.php:854
+#: includes/class-render.php:989
 msgid "Birth time unknown: the chart is drawn for noon, without houses, the Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from where it was."
 msgstr ""
 
-#: includes/class-render.php:860
-#: includes/class-render.php:1487
-#: includes/class-render.php:3464
+#: includes/class-render.php:995
+#: includes/class-render.php:1646
+#: includes/class-render.php:3903
 msgid "Wheel"
 msgstr ""
 
-#: includes/class-render.php:865
-#: includes/class-render.php:1491
+#: includes/class-render.php:1000
+#: includes/class-render.php:1650
 msgid "Grid"
 msgstr ""
 
-#: includes/class-render.php:867
-#: includes/class-render.php:1492
+#: includes/class-render.php:1002
+#: includes/class-render.php:1651
 msgid "Aspects between planets"
 msgstr ""
 
-#: includes/class-render.php:870
-#: includes/class-render.php:1495
-#: includes/class-render.php:1801
+#: includes/class-render.php:1005
+#: includes/class-render.php:1654
+#: includes/class-render.php:1960
 msgid "Placements"
 msgstr ""
 
-#: includes/class-render.php:875
-#: includes/class-render.php:1499
-#: includes/class-render.php:3469
+#: includes/class-render.php:1010
+#: includes/class-render.php:1658
+#: includes/class-render.php:3908
 msgid "Aspects"
 msgstr ""
 
-#: includes/class-render.php:881
+#: includes/class-render.php:1016
 #: includes/class-widget-manifest.php:237
 msgid "Transits"
 msgstr ""
 
-#: includes/class-render.php:889
-#: includes/class-render.php:1907
+#: includes/class-render.php:1024
+#: includes/class-render.php:2066
 msgid "Elements by mode"
 msgstr ""
 
-#: includes/class-render.php:1008
+#: includes/class-render.php:1153
 msgid "What it means"
 msgstr ""
 
-#: includes/class-render.php:1038
+#: includes/class-render.php:1183
 msgid "time unknown"
 msgstr ""
 
-#: includes/class-render.php:1053
+#: includes/class-render.php:1198
 msgid "Part of Fortune"
 msgstr ""
 
-#: includes/class-render.php:1054
+#: includes/class-render.php:1199
 msgid "Vertex"
 msgstr ""
 
-#: includes/class-render.php:1055
-#: includes/class-render.php:2070
+#: includes/class-render.php:1200
+#: includes/class-render.php:2229
 msgid "South Node"
 msgstr ""
 
-#: includes/class-render.php:1080
-#: includes/class-render.php:1813
-#: includes/class-render.php:4355
-#: includes/class-tarot.php:245
+#: includes/class-render.php:1225
+#: includes/class-render.php:1972
+#: includes/class-render.php:4844
+#: includes/class-tarot.php:264
 msgid "Fire"
 msgstr ""
 
-#: includes/class-render.php:1081
-#: includes/class-render.php:1817
-#: includes/class-render.php:4356
-#: includes/class-tarot.php:248
+#: includes/class-render.php:1226
+#: includes/class-render.php:1976
+#: includes/class-render.php:4845
+#: includes/class-tarot.php:267
 msgid "Earth"
 msgstr ""
 
-#: includes/class-render.php:1082
-#: includes/class-render.php:1821
-#: includes/class-tarot.php:247
+#: includes/class-render.php:1227
+#: includes/class-render.php:1980
+#: includes/class-tarot.php:266
 msgid "Air"
 msgstr ""
 
-#: includes/class-render.php:1083
-#: includes/class-render.php:1825
-#: includes/class-render.php:4358
-#: includes/class-tarot.php:246
+#: includes/class-render.php:1228
+#: includes/class-render.php:1984
+#: includes/class-render.php:4847
+#: includes/class-tarot.php:265
 msgid "Water"
 msgstr ""
 
-#: includes/class-render.php:1086
-#: includes/class-render.php:1831
+#: includes/class-render.php:1231
+#: includes/class-render.php:1990
 msgid "Cardinal"
 msgstr ""
 
-#: includes/class-render.php:1087
-#: includes/class-render.php:1835
+#: includes/class-render.php:1232
+#: includes/class-render.php:1994
 msgid "Fixed"
 msgstr ""
 
-#: includes/class-render.php:1088
-#: includes/class-render.php:1839
+#: includes/class-render.php:1233
+#: includes/class-render.php:1998
 msgid "Mutable"
 msgstr ""
 
 #. translators: %s = element or elements, e.g. "Earth" or "Earth, Water"
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:1094
-#: includes/class-render.php:4241
+#: includes/class-render.php:1239
+#: includes/class-render.php:4691
 #, php-format
 msgid "Element: %s"
 msgstr ""
 
 #. translators: %s = mode or modes, e.g. "Fixed"
-#: includes/class-render.php:1098
+#: includes/class-render.php:1243
 #, php-format
 msgid "Mode: %s"
 msgstr ""
 
-#: includes/class-render.php:1101
+#: includes/class-render.php:1246
 msgid "Day chart"
 msgstr ""
 
-#: includes/class-render.php:1103
+#: includes/class-render.php:1248
 msgid "Night chart"
 msgstr ""
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1109
-#: includes/class-render.php:3709
+#: includes/class-render.php:1254
+#: includes/class-render.php:4154
 #, php-format
 msgid "Harmonious %d"
 msgstr ""
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1111
-#: includes/class-render.php:3711
+#: includes/class-render.php:1256
+#: includes/class-render.php:4156
 #, php-format
 msgid "Challenging %d"
 msgstr ""
 
-#: includes/class-render.php:1123
-#: includes/class-render.php:2956
-#: includes/class-render.php:3034
-#: includes/class-render.php:3108
+#: includes/class-render.php:1268
+#: includes/class-render.php:3395
+#: includes/class-render.php:3473
+#: includes/class-render.php:3547
+#: includes/class-render.php:5373
 msgid "Retrograde"
 msgstr ""
 
-#: includes/class-render.php:1137
+#: includes/class-render.php:1286
 msgid "Grand cross"
 msgstr ""
 
-#: includes/class-render.php:1138
+#: includes/class-render.php:1287
 msgid "T-square"
 msgstr ""
 
-#: includes/class-render.php:1139
+#: includes/class-render.php:1288
 msgid "Grand trine"
 msgstr ""
 
-#: includes/class-render.php:1140
+#: includes/class-render.php:1289
 msgid "Yod"
 msgstr ""
 
-#: includes/class-render.php:1141
+#: includes/class-render.php:1290
 msgid "Stellium"
 msgstr ""
 
-#: includes/class-render.php:1144
+#: includes/class-render.php:1293
 msgid "Four planets in two oppositions, each square to the next."
 msgstr ""
 
-#: includes/class-render.php:1145
+#: includes/class-render.php:1294
 msgid "Two planets in opposition, both square to a third, the apex."
 msgstr ""
 
-#: includes/class-render.php:1146
+#: includes/class-render.php:1295
 msgid "Three planets a trine apart, closing a triangle."
 msgstr ""
 
-#: includes/class-render.php:1147
+#: includes/class-render.php:1296
 msgid "Two planets in sextile, both quincunx to a third, the apex."
 msgstr ""
 
 #. translators: %s = planet name, the apex of a chart pattern
-#: includes/class-render.php:1156
+#: includes/class-render.php:1306
 #, php-format
 msgid "%s (apex)"
 msgstr ""
 
 #. translators: 1: number of planets, 2: sign name
-#: includes/class-render.php:1162
+#: includes/class-render.php:1312
 #, php-format
 msgid "%1$d planets in %2$s."
 msgstr ""
 
 #. translators: 1: number of planets, 2: house number
-#: includes/class-render.php:1164
+#: includes/class-render.php:1314
 #, php-format
 msgid "%1$d planets in house %2$d."
 msgstr ""
 
-#: includes/class-render.php:1171
+#: includes/class-render.php:1330
 msgid "Chart patterns"
 msgstr ""
 
-#: includes/class-render.php:1188
-#: includes/class-render.php:2057
+#: includes/class-render.php:1347
+#: includes/class-render.php:2216
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr ""
 
-#: includes/class-render.php:1189
-#: includes/class-render.php:2058
+#: includes/class-render.php:1348
+#: includes/class-render.php:2217
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr ""
 
-#: includes/class-render.php:1205
-#: includes/class-render.php:1777
+#: includes/class-render.php:1364
+#: includes/class-render.php:1936
 msgid "Ascendant"
 msgstr ""
 
-#: includes/class-render.php:1237
-#: includes/class-render.php:3871
+#: includes/class-render.php:1396
+#: includes/class-render.php:4316
 msgid "Separating"
 msgstr ""
 
-#: includes/class-render.php:1237
-#: includes/class-render.php:3871
+#: includes/class-render.php:1396
+#: includes/class-render.php:4316
 msgid "Applying"
 msgstr ""
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:1240
-#: includes/class-render.php:1688
-#: includes/class-render.php:1928
-#: includes/class-render.php:3685
+#: includes/class-render.php:1399
+#: includes/class-render.php:1847
+#: includes/class-render.php:2087
+#: includes/class-render.php:4124
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr ""
 
-#: includes/class-render.php:1351
+#: includes/class-render.php:1510
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr ""
 
-#: includes/class-render.php:1353
-#: includes/class-render.php:1719
-#: includes/class-render.php:3641
+#: includes/class-render.php:1512
+#: includes/class-render.php:1878
+#: includes/class-render.php:4080
 msgid "ASC"
 msgstr ""
 
-#: includes/class-render.php:1354
-#: includes/class-render.php:1720
-#: includes/class-render.php:3642
+#: includes/class-render.php:1513
+#: includes/class-render.php:1879
+#: includes/class-render.php:4081
 msgid "IC"
 msgstr ""
 
-#: includes/class-render.php:1355
-#: includes/class-render.php:1721
-#: includes/class-render.php:3643
+#: includes/class-render.php:1514
+#: includes/class-render.php:1880
+#: includes/class-render.php:4082
 msgid "DSC"
 msgstr ""
 
-#: includes/class-render.php:1356
-#: includes/class-render.php:1722
-#: includes/class-render.php:3644
+#: includes/class-render.php:1515
+#: includes/class-render.php:1881
+#: includes/class-render.php:4083
 msgid "MC"
 msgstr ""
 
-#: includes/class-render.php:1383
+#: includes/class-render.php:1542
 msgid "The Solar Return found for this year falls in another year, so the card is left out. Only administrators see this note."
 msgstr ""
 
-#: includes/class-render.php:1388
+#: includes/class-render.php:1547
 msgid "The Lunar Return found falls before the date it was searched from, so the card is left out. Only administrators see this note."
 msgstr ""
 
 #. translators: %d = year
-#: includes/class-render.php:1399
+#: includes/class-render.php:1558
 #, php-format
 msgid "Solar Return %d"
 msgstr ""
 
 #. translators: 1: year, 2: person's name
-#: includes/class-render.php:1401
+#: includes/class-render.php:1560
 #, php-format
 msgid "Solar Return %1$d: %2$s"
 msgstr ""
 
-#: includes/class-render.php:1402
+#: includes/class-render.php:1561
 msgid "Solar Return chart: signs, houses, planets and the aspects between them at the moment the Sun returns to its birth position."
 msgstr ""
 
-#: includes/class-render.php:1404
+#: includes/class-render.php:1563
 #: includes/views/partials/shortcode-cards.php:300
 msgid "Lunar Return"
 msgstr ""
 
 #. translators: %s = person's name
-#: includes/class-render.php:1406
+#: includes/class-render.php:1565
 #, php-format
 msgid "Lunar Return: %s"
 msgstr ""
 
-#: includes/class-render.php:1407
+#: includes/class-render.php:1566
 msgid "Lunar Return chart: signs, houses, planets and the aspects between them at the moment the Moon returns to its birth position."
 msgstr ""
 
-#: includes/class-render.php:1443
+#: includes/class-render.php:1602
 msgid "The Davison chart for these two places is not drawn yet: the midpoint the api returned is on the wrong side of the 180th meridian. Only administrators see this note."
 msgstr ""
 
-#: includes/class-render.php:1452
+#: includes/class-render.php:1611
 msgid "Davison chart"
 msgstr ""
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:1455
+#: includes/class-render.php:1614
 #, php-format
 msgid "Davison chart: %1$s and %2$s"
 msgstr ""
 
-#: includes/class-render.php:1467
+#: includes/class-render.php:1626
 msgid "Midpoint"
 msgstr ""
 
-#: includes/class-render.php:1476
+#: includes/class-render.php:1635
 msgid "Davison chart: one chart cast for the midpoint between two births in time and place."
 msgstr ""
 
 #. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'"
-#: includes/class-render.php:1667
-#: includes/class-render.php:3610
+#: includes/class-render.php:1826
+#: includes/class-render.php:4049
 #, php-format
 msgid "%1$s (%2$s), %3$s"
 msgstr ""
 
-#: includes/class-render.php:1689
-#: includes/class-render.php:1713
+#: includes/class-render.php:1848
+#: includes/class-render.php:1872
 msgid "transit"
 msgstr ""
 
-#: includes/class-render.php:1691
-#: includes/class-render.php:1712
+#: includes/class-render.php:1850
+#: includes/class-render.php:1871
 msgid "natal"
 msgstr ""
 
 #. translators: %s = a date
-#: includes/class-render.php:1697
+#: includes/class-render.php:1856
 #, php-format
 msgid "sky on %s"
 msgstr ""
 
 #. translators: 1: a date, 2: an orb in degrees
-#: includes/class-render.php:1701
+#: includes/class-render.php:1860
 #, php-format
 msgid "The planets at noon UTC on %1$s against the birth chart, aspects within %2$s°. The transiting Moon moves too fast to list."
 msgstr ""
 
 #. translators: %s = a date
-#: includes/class-render.php:1717
+#: includes/class-render.php:1876
 #, php-format
 msgid "Transit wheel: the birth chart inside, the sky on %s on the outer ring."
 msgstr ""
 
-#: includes/class-render.php:1730
+#: includes/class-render.php:1889
 msgid "Inner ring: birth chart"
 msgstr ""
 
 #. translators: %s = "sky on <date>"
 #. translators: %s = person's name, or "Second chart"
-#: includes/class-render.php:1735
-#: includes/class-render.php:3659
+#: includes/class-render.php:1894
+#: includes/class-render.php:4098
 #, php-format
 msgid "Outer ring: %s"
 msgstr ""
 
-#: includes/class-render.php:1739
+#: includes/class-render.php:1898
 msgid "No close transits on this day."
 msgstr ""
 
 #. translators: %d = house number
-#: includes/class-render.php:1758
+#: includes/class-render.php:1917
 msgid "retrograde"
 msgstr ""
 
-#: includes/class-render.php:1802
+#: includes/class-render.php:1961
 msgid "Body"
 msgstr ""
 
-#: includes/class-render.php:1802
-#: includes/class-render.php:3057
+#: includes/class-render.php:1961
+#: includes/class-render.php:3496
+#: includes/class-render.php:5434
 msgid "Motion"
 msgstr ""
 
-#: includes/class-render.php:1909
+#: includes/class-render.php:2068
 msgid "Total"
 msgstr ""
 
-#: includes/class-render.php:1938
+#: includes/class-render.php:2097
 msgid "Major aspects"
 msgstr ""
 
-#: includes/class-render.php:2043
-#: includes/class-render.php:2477
+#: includes/class-render.php:2202
+#: includes/class-render.php:2881
 msgid "New Moon"
 msgstr ""
 
-#: includes/class-render.php:2044
+#: includes/class-render.php:2203
 msgid "Waxing Crescent"
 msgstr ""
 
-#: includes/class-render.php:2045
-#: includes/class-render.php:2478
+#: includes/class-render.php:2204
+#: includes/class-render.php:2882
 msgid "First Quarter"
 msgstr ""
 
-#: includes/class-render.php:2046
+#: includes/class-render.php:2205
 msgid "Waxing Gibbous"
 msgstr ""
 
-#: includes/class-render.php:2047
-#: includes/class-render.php:2479
+#: includes/class-render.php:2206
+#: includes/class-render.php:2883
 msgid "Full Moon"
 msgstr ""
 
-#: includes/class-render.php:2048
+#: includes/class-render.php:2207
 msgid "Waning Gibbous"
 msgstr ""
 
-#: includes/class-render.php:2049
-#: includes/class-render.php:2480
+#: includes/class-render.php:2208
+#: includes/class-render.php:2884
 msgid "Last Quarter"
 msgstr ""
 
-#: includes/class-render.php:2050
+#: includes/class-render.php:2209
 msgid "Waning Crescent"
 msgstr ""
 
-#: includes/class-render.php:2059
+#: includes/class-render.php:2218
 #: includes/class-widget-manifest.php:388
 msgid "Mercury"
 msgstr ""
 
-#: includes/class-render.php:2060
+#: includes/class-render.php:2219
 #: includes/class-widget-manifest.php:389
 msgid "Venus"
 msgstr ""
 
-#: includes/class-render.php:2061
+#: includes/class-render.php:2220
 #: includes/class-widget-manifest.php:390
 msgid "Mars"
 msgstr ""
 
-#: includes/class-render.php:2062
+#: includes/class-render.php:2221
 #: includes/class-widget-manifest.php:391
 msgid "Jupiter"
 msgstr ""
 
-#: includes/class-render.php:2063
+#: includes/class-render.php:2222
 #: includes/class-widget-manifest.php:392
 msgid "Saturn"
 msgstr ""
 
-#: includes/class-render.php:2064
+#: includes/class-render.php:2223
 #: includes/class-widget-manifest.php:393
 msgid "Uranus"
 msgstr ""
 
-#: includes/class-render.php:2065
+#: includes/class-render.php:2224
 #: includes/class-widget-manifest.php:394
 msgid "Neptune"
 msgstr ""
 
-#: includes/class-render.php:2066
+#: includes/class-render.php:2225
 #: includes/class-widget-manifest.php:395
 msgid "Pluto"
 msgstr ""
 
-#: includes/class-render.php:2067
+#: includes/class-render.php:2226
 msgid "Chiron"
 msgstr ""
 
-#: includes/class-render.php:2068
-#: includes/class-render.php:2075
-#: includes/class-render.php:2076
+#: includes/class-render.php:2227
+#: includes/class-render.php:2236
+#: includes/class-render.php:2237
 msgid "Lilith"
 msgstr ""
 
-#: includes/class-render.php:2069
-#: includes/class-render.php:2073
-#: includes/class-render.php:2074
+#: includes/class-render.php:2228
+#: includes/class-render.php:2234
+#: includes/class-render.php:2235
 msgid "North Node"
 msgstr ""
 
-#: includes/class-render.php:2083
+#: includes/class-render.php:2230
+msgid "Rahu"
+msgstr ""
+
+#: includes/class-render.php:2231
+msgid "Ketu"
+msgstr ""
+
+#: includes/class-render.php:2244
 msgid "conjunct"
 msgstr ""
 
-#: includes/class-render.php:2084
-#: includes/class-render.php:4054
+#: includes/class-render.php:2245
+#: includes/class-render.php:4499
 msgid "opposite"
 msgstr ""
 
-#: includes/class-render.php:2085
-#: includes/class-render.php:4053
+#: includes/class-render.php:2246
+#: includes/class-render.php:4498
 msgid "trine"
 msgstr ""
 
-#: includes/class-render.php:2086
-#: includes/class-render.php:4052
+#: includes/class-render.php:2247
+#: includes/class-render.php:4497
 msgid "square"
 msgstr ""
 
-#: includes/class-render.php:2087
-#: includes/class-render.php:4051
+#: includes/class-render.php:2248
+#: includes/class-render.php:4496
 msgid "sextile"
 msgstr ""
 
-#: includes/class-render.php:2119
+#: includes/class-render.php:2280
 msgid "Period"
 msgstr ""
 
-#: includes/class-render.php:2139
+#: includes/class-render.php:2300
 msgid "Horoscope"
 msgstr ""
 
-#: includes/class-render.php:2143
+#: includes/class-render.php:2304
 msgid "Pick your sign"
 msgstr ""
 
-#: includes/class-render.php:2146
-#: includes/class-render.php:2320
+#: includes/class-render.php:2307
+#: includes/class-render.php:2686
 #: includes/class-widget-manifest.php:59
 #: includes/class-widget-manifest.php:64
 msgid "Zodiac sign"
 msgstr ""
 
 #. translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning Crescent"
-#: includes/class-render.php:2172
+#: includes/class-render.php:2333
 #, php-format
 msgid "Moon in %1$s · %2$s"
 msgstr ""
 
-#: includes/class-render.php:2176
+#: includes/class-render.php:2337
 msgid "Sky today"
 msgstr ""
 
-#: includes/class-render.php:2267
+#: includes/class-render.php:2431
+#: includes/class-render.php:3984
+#: includes/class-render.php:4173
+#: includes/class-render.php:5636
+#: includes/class-tarot.php:481
+msgid "Love"
+msgstr ""
+
+#: includes/class-render.php:2432
+#: includes/class-tarot.php:482
+msgid "Career"
+msgstr ""
+
+#: includes/class-render.php:2433
+#: includes/class-tarot.php:484
+msgid "Health"
+msgstr ""
+
+#: includes/class-render.php:2434
+#: includes/class-tarot.php:483
+msgid "Money"
+msgstr ""
+
+#: includes/class-render.php:2447
+#: includes/class-tarot-reading.php:357
+msgid "Advice"
+msgstr ""
+
+#: includes/class-render.php:2524
+msgid "out of 10"
+msgstr ""
+
+#: includes/class-render.php:2526
+msgid "Energy of the day"
+msgstr ""
+
+#: includes/class-render.php:2534
+msgid "Lucky planet"
+msgstr ""
+
+#: includes/class-render.php:2541
+msgid "Lucky day"
+msgstr ""
+
+#: includes/class-render.php:2547
+msgid "Lucky number"
+msgstr ""
+
+#: includes/class-render.php:2561
+msgid "Compatible signs"
+msgstr ""
+
+#. translators: 1: planet, 2: aspect such as "opposite", 3: planet; one of the two rules the sign
+#: includes/class-render.php:2576
+#: includes/class-render.php:2596
+#, php-format
+msgid "%1$s %2$s %3$s (the sign’s ruler)"
+msgstr ""
+
+#. translators: 1: planet, 2: house number counted from the sign
+#: includes/class-render.php:2584
+#: includes/class-render.php:2604
+#, php-format
+msgid "%1$s in solar house %2$d"
+msgstr ""
+
+#: includes/class-render.php:2587
+#: includes/class-render.php:2607
+msgid "Moon in a sign of the same element"
+msgstr ""
+
+#: includes/class-render.php:2590
+#: includes/class-render.php:2610
+msgid "Moon square or opposite the sign"
+msgstr ""
+
+#: includes/class-render.php:2633
 msgid "Week"
 msgstr ""
 
-#: includes/class-render.php:2269
+#: includes/class-render.php:2635
 msgid "Month"
 msgstr ""
 
-#: includes/class-render.php:2271
+#: includes/class-render.php:2637
 msgid "Year"
 msgstr ""
 
-#: includes/class-render.php:2273
+#: includes/class-render.php:2639
 msgid "Today"
 msgstr ""
 
-#: includes/class-render.php:2294
+#: includes/class-render.php:2660
 msgid "Horoscope for the week"
 msgstr ""
 
-#: includes/class-render.php:2296
+#: includes/class-render.php:2662
 msgid "Horoscope for the month"
 msgstr ""
 
-#: includes/class-render.php:2298
+#: includes/class-render.php:2664
 msgid "Horoscope for the year"
 msgstr ""
 
-#: includes/class-render.php:2300
+#: includes/class-render.php:2666
 #: includes/views/admin-settings.php:328
 msgid "Horoscope for today"
 msgstr ""
 
-#: includes/class-render.php:2345
+#: includes/class-render.php:2711
 msgid "Weeks"
 msgstr ""
 
-#: includes/class-render.php:2346
+#: includes/class-render.php:2712
 msgid "Previous week"
 msgstr ""
 
-#: includes/class-render.php:2347
+#: includes/class-render.php:2713
 msgid "Next week"
 msgstr ""
 
-#: includes/class-render.php:2351
+#: includes/class-render.php:2717
 msgid "Months"
 msgstr ""
 
-#: includes/class-render.php:2352
+#: includes/class-render.php:2718
 msgid "Previous month"
 msgstr ""
 
-#: includes/class-render.php:2353
+#: includes/class-render.php:2719
 msgid "Next month"
 msgstr ""
 
-#: includes/class-render.php:2357
+#: includes/class-render.php:2723
 msgid "Days"
 msgstr ""
 
-#: includes/class-render.php:2358
+#: includes/class-render.php:2724
 msgid "Previous day"
 msgstr ""
 
-#: includes/class-render.php:2359
+#: includes/class-render.php:2725
 msgid "Next day"
 msgstr ""
 
-#: includes/class-render.php:2399
+#: includes/class-render.php:2765
 msgid "Moon in"
 msgstr ""
 
-#: includes/class-render.php:2407
+#: includes/class-render.php:2773
 msgid "Age"
 msgstr ""
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:2410
+#: includes/class-render.php:2776
 #, php-format
 msgid "%s days"
 msgstr ""
 
-#: includes/class-render.php:2417
+#: includes/class-render.php:2783
 msgid "Sun in"
 msgstr ""
 
-#: includes/class-render.php:2435
+#: includes/class-render.php:2801
 msgid "Waxing"
 msgstr ""
 
-#: includes/class-render.php:2435
+#: includes/class-render.php:2801
 msgid "Waning"
 msgstr ""
 
-#: includes/class-render.php:2437
+#: includes/class-render.php:2803
 msgid "Illuminated"
 msgstr ""
 
 #. translators: PHP date format for a day within the coming month, such as "Oct 10"
-#: includes/class-render.php:2499
+#: includes/class-render.php:2825
+#: includes/class-render.php:2903
 msgctxt "moon cycle date"
 msgid "M j"
 msgstr ""
 
-#: includes/class-render.php:2508
+#. translators: %s = zodiac sign the Moon enters when the window ends
+#: includes/class-render.php:2842
+#, php-format
+msgid "Next sign: %s"
+msgstr ""
+
+#: includes/class-render.php:2846
+msgid "No void of course Moon today."
+msgstr ""
+
+#: includes/class-render.php:2848
+#: includes/class-render.php:3680
+#: includes/class-widget-manifest.php:406
+msgid "Void of course Moon"
+msgstr ""
+
+#: includes/class-render.php:2914
+msgid "Krishna, waning"
+msgstr ""
+
+#: includes/class-render.php:2915
+msgid "Shukla, waxing"
+msgstr ""
+
+#. translators: %d = tithi number, 1 to 30
+#: includes/class-render.php:2918
+#, php-format
+msgid "%d of 30"
+msgstr ""
+
+#: includes/class-render.php:2921
+msgid "Tithi"
+msgstr ""
+
+#: includes/class-render.php:2924
+msgid "Paksha"
+msgstr ""
+
+#: includes/class-render.php:2929
 msgid "Distance"
 msgstr ""
 
 #. translators: %s = distance in kilometres
-#: includes/class-render.php:2512
+#: includes/class-render.php:2933
 #, php-format
 msgid "%s km"
 msgstr ""
 
-#: includes/class-render.php:2520
+#: includes/class-render.php:2941
 msgid "Moon cycle"
 msgstr ""
 
-#: includes/class-render.php:2535
+#: includes/class-render.php:2956
 msgid "Card of the day"
 msgstr ""
 
-#: includes/class-render.php:2536
+#: includes/class-render.php:2957
 #: includes/class-widget-manifest.php:309
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr ""
 
-#: includes/class-render.php:2605
+#: includes/class-render.php:2978
+#: includes/class-tarot.php:403
+msgid "About the card"
+msgstr ""
+
+#: includes/class-render.php:3041
 #: includes/class-widget-manifest.php:319
 msgid "Tarot spread"
 msgstr ""
 
-#: includes/class-render.php:2606
+#: includes/class-render.php:3042
 msgid "New draw"
 msgstr ""
 
-#: includes/class-render.php:2606
+#: includes/class-render.php:3042
 msgid "Spread of the day"
 msgstr ""
 
-#: includes/class-render.php:2612
+#: includes/class-render.php:3048
 msgid "Turn all the cards over"
 msgstr ""
 
-#: includes/class-render.php:2639
+#: includes/class-render.php:3078
 msgid "Reading the spread…"
 msgstr ""
 
-#: includes/class-render.php:2640
+#: includes/class-render.php:3079
 msgid "The reading could not be had just now."
 msgstr ""
 
-#: includes/class-render.php:2658
+#: includes/class-render.php:3097
 #: includes/class-widget-manifest.php:366
 msgid "Planet of the day"
 msgstr ""
 
-#: includes/class-render.php:2668
+#: includes/class-render.php:3107
 msgid "Themes of the day"
 msgstr ""
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2683
+#: includes/class-render.php:3122
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr ""
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2686
+#: includes/class-render.php:3125
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr ""
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2689
+#: includes/class-render.php:3128
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr ""
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:2692
+#: includes/class-render.php:3131
 #, php-format
 msgid "%s: horoscope for today"
 msgstr ""
 
-#: includes/class-render.php:2699
+#: includes/class-render.php:3138
 #: includes/class-widget-manifest.php:43
 #: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr ""
 
-#: includes/class-render.php:2700
+#: includes/class-render.php:3139
 #: includes/class-widget-manifest.php:44
 #: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr ""
 
-#: includes/class-render.php:2701
+#: includes/class-render.php:3140
 #: includes/class-widget-manifest.php:45
 #: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr ""
 
-#: includes/class-render.php:2702
+#: includes/class-render.php:3141
 #: includes/class-widget-manifest.php:46
 #: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr ""
 
-#: includes/class-render.php:2703
+#: includes/class-render.php:3142
 #: includes/class-widget-manifest.php:47
 #: includes/views/admin-settings.php:326
 #: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr ""
 
-#: includes/class-render.php:2704
+#: includes/class-render.php:3143
 #: includes/class-widget-manifest.php:48
 #: includes/views/admin-settings.php:335
 #: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr ""
 
-#: includes/class-render.php:2705
+#: includes/class-render.php:3144
 #: includes/class-widget-manifest.php:49
 #: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr ""
 
-#: includes/class-render.php:2706
+#: includes/class-render.php:3145
 #: includes/class-widget-manifest.php:50
 #: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr ""
 
-#: includes/class-render.php:2707
+#: includes/class-render.php:3146
 #: includes/class-widget-manifest.php:51
 #: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr ""
 
-#: includes/class-render.php:2708
+#: includes/class-render.php:3147
 #: includes/class-widget-manifest.php:52
 #: includes/views/admin-settings.php:340
 #: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr ""
 
-#: includes/class-render.php:2709
+#: includes/class-render.php:3148
 #: includes/class-widget-manifest.php:53
 #: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr ""
 
-#: includes/class-render.php:2710
+#: includes/class-render.php:3149
 #: includes/class-widget-manifest.php:54
 #: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr ""
 
 #. translators: %s = shortcode tag
-#: includes/class-render.php:2862
+#: includes/class-render.php:3301
 #, php-format
 msgid "%s needs an API key: this site asks for its own automatically, or paste yours in AstroWay, API Key. Only administrators see this note."
 msgstr ""
 
-#: includes/class-render.php:2957
-#: includes/class-render.php:3036
-#: includes/class-render.php:3090
+#: includes/class-render.php:3396
+#: includes/class-render.php:3475
+#: includes/class-render.php:3529
+#: includes/class-render.php:5372
 msgid "Direct"
 msgstr ""
 
-#: includes/class-render.php:2962
+#: includes/class-render.php:3401
 msgid "Retrograde watch"
 msgstr ""
 
 #. translators: %s = planet name
-#: includes/class-render.php:2971
+#: includes/class-render.php:3410
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr ""
 
-#: includes/class-render.php:2978
+#: includes/class-render.php:3417
 msgid "Retrograde since"
 msgstr ""
 
-#: includes/class-render.php:2979
+#: includes/class-render.php:3418
 msgid "Direct again on"
 msgstr ""
 
-#: includes/class-render.php:2980
+#: includes/class-render.php:3419
 msgid "Days left"
 msgstr ""
 
 #. translators: %s = planet name
-#: includes/class-render.php:2987
+#: includes/class-render.php:3426
 #, php-format
 msgid "No, %s is direct right now."
 msgstr ""
 
-#: includes/class-render.php:2993
-#: includes/class-render.php:3156
+#: includes/class-render.php:3432
+#: includes/class-render.php:3595
 msgid "Next retrograde"
 msgstr ""
 
-#: includes/class-render.php:2994
-#: includes/class-render.php:3250
+#: includes/class-render.php:3433
+#: includes/class-render.php:3689
 msgid "Ends"
 msgstr ""
 
-#: includes/class-render.php:2995
+#: includes/class-render.php:3434
 msgid "Days until"
 msgstr ""
 
-#: includes/class-render.php:3032
+#: includes/class-render.php:3471
 msgid "Stationary"
 msgstr ""
 
-#: includes/class-render.php:3052
+#: includes/class-render.php:3491
 msgid "Planets in the sky"
 msgstr ""
 
-#: includes/class-render.php:3057
-#: includes/class-render.php:3152
-#: includes/class-render.php:3814
+#: includes/class-render.php:3496
+#: includes/class-render.php:3591
+#: includes/class-render.php:4259
 #: includes/class-widget-manifest.php:386
 msgid "Planet"
 msgstr ""
 
 #. translators: %s = sign and degree, such as Aquarius 3°04'
-#: includes/class-render.php:3069
+#: includes/class-render.php:3508
 #, php-format
 msgid "Turns direct at %s"
 msgstr ""
 
 #. translators: %s = sign and degree, such as Scorpio 8°29'
-#: includes/class-render.php:3071
+#: includes/class-render.php:3510
 #, php-format
 msgid "Turns retrograde at %s"
 msgstr ""
 
 #. translators: %s = date
-#: includes/class-render.php:3097
+#: includes/class-render.php:3536
 #, php-format
 msgid "In the pre-retrograde shadow since %s"
 msgstr ""
 
 #. translators: %s = date
-#: includes/class-render.php:3099
+#: includes/class-render.php:3538
 #, php-format
 msgid "In the post-retrograde shadow until %s"
 msgstr ""
 
 #. translators: 1: day number, 2: days in the retrograde period
-#: includes/class-render.php:3111
+#: includes/class-render.php:3550
 #, php-format
 msgid "Day %1$d of %2$d"
 msgstr ""
 
 #. translators: %s = date
-#: includes/class-render.php:3115
+#: includes/class-render.php:3554
 #, php-format
 msgid "Leaves the shadow on %s"
 msgstr ""
 
 #. translators: %s = date
-#: includes/class-render.php:3123
+#: includes/class-render.php:3562
 #, php-format
 msgid "Shadow from %s"
 msgstr ""
 
-#: includes/class-render.php:3135
+#: includes/class-render.php:3574
 msgid "Nothing is retrograde right now."
 msgstr ""
 
-#: includes/class-render.php:3144
+#: includes/class-render.php:3583
 #: includes/class-widget-manifest.php:402
 msgid "Retrograde planets"
 msgstr ""
 
-#: includes/class-render.php:3155
+#: includes/class-render.php:3594
 msgid "Now"
 msgstr ""
 
 #. translators: %s = a time of day
-#: includes/class-render.php:3210
+#: includes/class-render.php:3649
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr ""
 
 #. translators: %s = a date and time
-#: includes/class-render.php:3216
+#: includes/class-render.php:3655
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr ""
 
-#: includes/class-render.php:3220
+#: includes/class-render.php:3659
 msgid "The Moon is not void of course."
 msgstr ""
 
-#: includes/class-render.php:3241
-#: includes/class-widget-manifest.php:406
-msgid "Void of course Moon"
-msgstr ""
-
-#: includes/class-render.php:3249
+#: includes/class-render.php:3688
 msgid "Starts"
 msgstr ""
 
-#: includes/class-render.php:3251
+#: includes/class-render.php:3690
 msgid "Length"
 msgstr ""
 
-#: includes/class-render.php:3252
+#: includes/class-render.php:3691
 msgid "Last aspect"
 msgstr ""
 
-#: includes/class-render.php:3253
+#: includes/class-render.php:3692
 msgid "Next sign"
 msgstr ""
 
-#: includes/class-render.php:3312
+#: includes/class-render.php:3751
 msgid "Night"
 msgstr ""
 
-#: includes/class-render.php:3312
+#: includes/class-render.php:3751
 msgid "Day"
 msgstr ""
 
 #. translators: %s = planet name
-#: includes/class-render.php:3327
+#: includes/class-render.php:3766
 #, php-format
 msgid "The day is ruled by %s."
 msgstr ""
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:3334
+#: includes/class-render.php:3773
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr ""
 
-#: includes/class-render.php:3342
-#: includes/class-render.php:3380
+#: includes/class-render.php:3781
+#: includes/class-render.php:3819
 #: includes/class-widget-manifest.php:444
 msgid "Planetary hours"
 msgstr ""
 
-#: includes/class-render.php:3353
+#: includes/class-render.php:3792
 msgid "Hour"
 msgstr ""
 
-#: includes/class-render.php:3354
+#: includes/class-render.php:3793
 msgid "Ruler"
 msgstr ""
 
-#: includes/class-render.php:3355
+#: includes/class-render.php:3794
 msgid "From"
 msgstr ""
 
-#: includes/class-render.php:3356
+#: includes/class-render.php:3795
 msgid "To"
 msgstr ""
 
-#: includes/class-render.php:3357
+#: includes/class-render.php:3796
 msgid "Part of day"
 msgstr ""
 
-#: includes/class-render.php:3387
+#: includes/class-render.php:3826
 msgid "The Sun does not set at this latitude on this date, so there are no planetary hours to divide."
 msgstr ""
 
-#: includes/class-render.php:3388
+#: includes/class-render.php:3827
 msgid "The Sun does not rise at this latitude on this date, so there are no planetary hours to divide."
 msgstr ""
 
-#: includes/class-render.php:3419
+#: includes/class-render.php:3858
 msgid "First chart"
 msgstr ""
 
-#: includes/class-render.php:3420
+#: includes/class-render.php:3859
 msgid "Second chart"
 msgstr ""
 
 #. translators: 1: first person's name, 2: second person's name
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:3423
-#: includes/class-render.php:4098
+#: includes/class-render.php:3862
+#: includes/class-render.php:4543
 #, php-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: includes/class-render.php:3424
-#: includes/class-render.php:3489
+#: includes/class-render.php:3863
+#: includes/class-render.php:3928
 msgid "Synastry"
 msgstr ""
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3453
+#: includes/class-render.php:3892
 #, php-format
 msgid "%s: birth time unknown. No houses or Ascendant for this chart, and its Moon may be up to 7 degrees from where it was."
 msgstr ""
 
-#: includes/class-render.php:3474
+#: includes/class-render.php:3913
 msgid "Houses"
 msgstr ""
 
-#: includes/class-render.php:3483
+#: includes/class-render.php:3922
 msgid "All aspects"
 msgstr ""
 
-#: includes/class-render.php:3542
-#: includes/class-render.php:3725
+#: includes/class-render.php:3981
+#: includes/class-render.php:4170
 msgid "Identity"
 msgstr ""
 
-#: includes/class-render.php:3543
-#: includes/class-render.php:3726
+#: includes/class-render.php:3982
+#: includes/class-render.php:4171
 msgid "Emotions"
 msgstr ""
 
-#: includes/class-render.php:3544
-#: includes/class-render.php:3727
+#: includes/class-render.php:3983
+#: includes/class-render.php:4172
 msgid "Communication"
 msgstr ""
 
-#: includes/class-render.php:3545
-#: includes/class-render.php:3728
-msgid "Love"
-msgstr ""
-
-#: includes/class-render.php:3546
-#: includes/class-render.php:3729
+#: includes/class-render.php:3985
+#: includes/class-render.php:4174
 msgid "Passion"
 msgstr ""
 
-#: includes/class-render.php:3547
-#: includes/class-render.php:3730
+#: includes/class-render.php:3986
+#: includes/class-render.php:4175
 msgid "Commitment"
 msgstr ""
 
-#: includes/class-render.php:3562
+#: includes/class-render.php:4001
 msgid "no aspects"
 msgstr ""
 
 #. translators: 1: tone word such as "Harmonious", 2: number of aspects
-#: includes/class-render.php:3565
+#: includes/class-render.php:4004
 #, php-format
 msgid "%1$s, aspects: %2$d"
 msgstr ""
 
-#: includes/class-render.php:3568
+#: includes/class-render.php:4007
 msgid "By sphere"
 msgstr ""
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:3581
+#: includes/class-render.php:4020
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr ""
 
-#: includes/class-render.php:3586
+#: includes/class-render.php:4025
 msgid "out of 100"
 msgstr ""
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:3639
+#: includes/class-render.php:4078
 #, php-format
 msgid "Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between them."
 msgstr ""
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3654
+#: includes/class-render.php:4093
 #, php-format
 msgid "Inner ring: %s"
 msgstr ""
 
-#: includes/class-render.php:3663
-#: includes/class-render.php:4016
+#: includes/class-render.php:4102
+#: includes/class-render.php:4461
 msgid "Harmony"
 msgstr ""
 
-#: includes/class-render.php:3667
-#: includes/class-render.php:4020
+#: includes/class-render.php:4106
+#: includes/class-render.php:4465
 msgid "Tension"
 msgstr ""
 
+#. translators: %d = how strong an aspect is, 0 to 100
+#: includes/class-render.php:4134
+#, php-format
+msgid "strength %d"
+msgstr ""
+
 #. translators: %d = number of conjunctions
-#: includes/class-render.php:3713
+#: includes/class-render.php:4158
 #, php-format
 msgid "Conjunctions %d"
 msgstr ""
 
-#: includes/class-render.php:3733
+#: includes/class-render.php:4178
 msgid "You let each other be who you are."
 msgstr ""
 
-#: includes/class-render.php:3734
+#: includes/class-render.php:4179
 msgid "You read each other's moods without words."
 msgstr ""
 
-#: includes/class-render.php:3735
+#: includes/class-render.php:4180
 msgid "Talking comes easily and settles things."
 msgstr ""
 
-#: includes/class-render.php:3736
+#: includes/class-render.php:4181
 msgid "Affection and taste are shared."
 msgstr ""
 
-#: includes/class-render.php:3737
+#: includes/class-render.php:4182
 msgid "Desire and drive meet in the middle."
 msgstr ""
 
-#: includes/class-render.php:3738
+#: includes/class-render.php:4183
 msgid "Promises hold and plans last."
 msgstr ""
 
-#: includes/class-render.php:3741
+#: includes/class-render.php:4186
 msgid "Leave each other room to be different."
 msgstr ""
 
-#: includes/class-render.php:3742
+#: includes/class-render.php:4187
 msgid "Say what you feel rather than expect it to be guessed."
 msgstr ""
 
-#: includes/class-render.php:3743
+#: includes/class-render.php:4188
 msgid "Check what was heard, not only what was said."
 msgstr ""
 
-#: includes/class-render.php:3744
+#: includes/class-render.php:4189
 msgid "Show care in the way the other one receives it."
 msgstr ""
 
-#: includes/class-render.php:3745
+#: includes/class-render.php:4190
 msgid "Agree on pace before friction turns into a fight."
 msgstr ""
 
-#: includes/class-render.php:3746
+#: includes/class-render.php:4191
 msgid "Make plans explicit and keep them small at first."
 msgstr ""
 
-#: includes/class-render.php:3769
-#: includes/class-render.php:4307
+#: includes/class-render.php:4214
+#: includes/class-render.php:4796
 msgid "Strengths"
 msgstr ""
 
-#: includes/class-render.php:3770
+#: includes/class-render.php:4215
 msgid "Growth areas"
 msgstr ""
 
 #. translators: 1: whose planets, 2: whose houses
-#: includes/class-render.php:3813
+#: includes/class-render.php:4258
 #, php-format
 msgid "Planets of %1$s in the houses of %2$s"
 msgstr ""
 
 #. translators: 1: planet, 2: person's name, or the word "natal" or "transit"
-#: includes/class-render.php:3828
+#: includes/class-render.php:4273
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr ""
 
-#: includes/class-render.php:3834
+#: includes/class-render.php:4279
 msgid "One force: felt strongly by both, for better or worse."
 msgstr ""
 
-#: includes/class-render.php:3835
+#: includes/class-render.php:4280
 msgid "Flows easily between you, without effort."
 msgstr ""
 
-#: includes/class-render.php:3836
+#: includes/class-render.php:4281
 msgid "Helps you both once one of you makes a move."
 msgstr ""
 
-#: includes/class-render.php:3837
+#: includes/class-render.php:4282
 msgid "Rubs, and pushes you both to change."
 msgstr ""
 
-#: includes/class-render.php:3838
+#: includes/class-render.php:4283
 msgid "Pulls you apart and draws you together."
 msgstr ""
 
-#: includes/class-render.php:3897
+#: includes/class-render.php:4342
 msgid "Aspect"
 msgstr ""
 
-#: includes/class-render.php:3899
+#: includes/class-render.php:4344
 msgid "Orb"
 msgstr ""
 
-#: includes/class-render.php:3900
+#: includes/class-render.php:4345
 msgid "Trend"
 msgstr ""
 
-#: includes/class-render.php:3919
+#: includes/class-render.php:4364
 msgid "Harmonious"
 msgstr ""
 
-#: includes/class-render.php:3920
+#: includes/class-render.php:4365
 msgid "Balanced"
 msgstr ""
 
-#: includes/class-render.php:3921
+#: includes/class-render.php:4366
 msgid "Mixed"
 msgstr ""
 
-#: includes/class-render.php:3922
+#: includes/class-render.php:4367
 msgid "Challenging"
 msgstr ""
 
-#: includes/class-render.php:3955
-#: includes/class-render.php:4010
+#: includes/class-render.php:4400
+#: includes/class-render.php:4455
 #: includes/class-widget-manifest.php:428
 msgid "Sign compatibility"
 msgstr ""
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3957
+#: includes/class-render.php:4402
 #, php-format
 msgid "%s and the other signs"
 msgstr ""
 
-#: includes/class-render.php:3961
+#: includes/class-render.php:4406
 msgid "How each pair of signs stands in the zodiac: the classical relation, harmonious, challenging or unrelated. It is a relation of signs, not a score; for two people, their charts say far more."
 msgstr ""
 
 #. translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g. "trine"
-#: includes/class-render.php:4003
+#: includes/class-render.php:4448
 #, php-format
 msgid "%1$s and %2$s: %3$s"
 msgstr ""
 
-#: includes/class-render.php:4024
+#: includes/class-render.php:4469
 msgid "Do not see each other"
 msgstr ""
 
-#: includes/class-render.php:4050
+#: includes/class-render.php:4495
 msgid "the same sign"
 msgstr ""
 
-#: includes/class-render.php:4055
+#: includes/class-render.php:4500
 msgid "aversion"
 msgstr ""
 
-#: includes/class-render.php:4063
+#: includes/class-render.php:4508
 msgid "Two signs apart: friendly elements that help each other."
 msgstr ""
 
-#: includes/class-render.php:4064
+#: includes/class-render.php:4509
 msgid "Three signs apart: the same drive in clashing elements."
 msgstr ""
 
-#: includes/class-render.php:4065
+#: includes/class-render.php:4510
 msgid "Four signs apart: the same element, easy understanding."
 msgstr ""
 
-#: includes/class-render.php:4066
+#: includes/class-render.php:4511
 msgid "Opposite signs: attraction and pull in one."
 msgstr ""
 
-#: includes/class-render.php:4067
+#: includes/class-render.php:4512
 msgid "One or five signs apart: classically they do not see each other."
 msgstr ""
 
 #. translators: 1: the year's element, such as Metal, 2: the animal, such as Horse, 3: the year
-#: includes/class-render.php:4200
+#: includes/class-render.php:4645
 #, php-format
 msgid "%1$s %2$s, %3$d"
 msgstr ""
 
-#: includes/class-render.php:4205
+#: includes/class-render.php:4650
 #: includes/class-widget-manifest.php:435
 msgid "Chinese zodiac"
 msgstr ""
 
-#: includes/class-render.php:4213
+#: includes/class-render.php:4660
 msgid "Heavenly stem"
 msgstr ""
 
-#: includes/class-render.php:4214
+#: includes/class-render.php:4661
 msgid "Earthly branch"
 msgstr ""
 
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:4247
+#: includes/class-render.php:4697
 #, php-format
 msgid "Year element: %s"
 msgstr ""
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 #, php-format
 msgid "Polarity: %s"
 msgstr ""
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 msgid "Yin"
 msgstr ""
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4251
+#: includes/class-render.php:4701
 msgid "Yang"
 msgstr ""
 
 #. translators: %s = the year's stem and branch, such as Geng-Wu
-#: includes/class-render.php:4255
+#: includes/class-render.php:4705
 #, php-format
 msgid "Pillar: %s"
 msgstr ""
 
 #. translators: 1: the year, 2: the moment it begins, 3: the moment it ends, both in Beijing time
-#: includes/class-render.php:4263
+#: includes/class-render.php:4713
 #, php-format
 msgid "The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at Lichun, the start of spring, not on 1 January."
 msgstr ""
 
 #. translators: %d = the year
-#: includes/class-render.php:4265
+#: includes/class-render.php:4715
 #, php-format
 msgid "The %d animal year begins at the start of spring (Lichun, about 4 February), not on 1 January."
 msgstr ""
 
-#: includes/class-render.php:4308
+#. translators: %s = the animal's double hour, such as 11:00-13:00
+#: includes/class-render.php:4733
+#, php-format
+msgid "Hours: %s"
+msgstr ""
+
+#. translators: %s = the three animals of the triad (san he), such as Tiger, Horse, Dog
+#: includes/class-render.php:4743
+#, php-format
+msgid "Triad: %s"
+msgstr ""
+
+#. translators: %s = an animal, the secret friend (liu he) of this one
+#: includes/class-render.php:4747
+#, php-format
+msgid "Secret friend: %s"
+msgstr ""
+
+#. translators: %s = an animal that clashes (liu chong) with this one
+#: includes/class-render.php:4749
+#, php-format
+msgid "Clash: %s"
+msgstr ""
+
+#. translators: %s = an animal that harms (liu hai) this one
+#: includes/class-render.php:4751
+#, php-format
+msgid "Harm: %s"
+msgstr ""
+
+#: includes/class-render.php:4797
 msgid "Watch for"
 msgstr ""
 
-#: includes/class-render.php:4318
+#: includes/class-render.php:4807
 msgid "Character"
 msgstr ""
 
 #. translators: %s = one of the five Chinese elements, such as Metal
-#: includes/class-render.php:4325
+#: includes/class-render.php:4814
 #, php-format
 msgid "The year element: %s"
 msgstr ""
 
-#: includes/class-render.php:4335
+#: includes/class-render.php:4824
 msgid "Rat"
 msgstr ""
 
-#: includes/class-render.php:4336
+#: includes/class-render.php:4825
 msgid "Ox"
 msgstr ""
 
-#: includes/class-render.php:4337
+#: includes/class-render.php:4826
 msgid "Tiger"
 msgstr ""
 
-#: includes/class-render.php:4338
+#: includes/class-render.php:4827
 msgid "Rabbit"
 msgstr ""
 
-#: includes/class-render.php:4339
+#: includes/class-render.php:4828
 msgid "Dragon"
 msgstr ""
 
-#: includes/class-render.php:4340
+#: includes/class-render.php:4829
 msgid "Snake"
 msgstr ""
 
-#: includes/class-render.php:4341
+#: includes/class-render.php:4830
 msgid "Horse"
 msgstr ""
 
-#: includes/class-render.php:4342
+#: includes/class-render.php:4831
 msgid "Goat"
 msgstr ""
 
-#: includes/class-render.php:4343
+#: includes/class-render.php:4832
 msgid "Monkey"
 msgstr ""
 
-#: includes/class-render.php:4344
+#: includes/class-render.php:4833
 msgid "Rooster"
 msgstr ""
 
-#: includes/class-render.php:4345
+#: includes/class-render.php:4834
 msgid "Dog"
 msgstr ""
 
-#: includes/class-render.php:4346
+#: includes/class-render.php:4835
 msgid "Pig"
 msgstr ""
 
-#: includes/class-render.php:4354
+#: includes/class-render.php:4843
 msgid "Wood"
 msgstr ""
 
-#: includes/class-render.php:4357
+#: includes/class-render.php:4846
 msgid "Metal"
 msgstr ""
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:4445
+#: includes/class-render.php:4934
 #, php-format
 msgid "%d min"
 msgstr ""
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:4451
+#: includes/class-render.php:4940
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr ""
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:4770
+#: includes/class-render.php:5259
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr ""
 
-#: includes/class-render.php:4821
+#: includes/class-render.php:5310
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr ""
 
-#: includes/class-render.php:4821
+#: includes/class-render.php:5310
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
+msgstr ""
+
+#: includes/class-render.php:5387
+msgid "Lagna"
+msgstr ""
+
+#: includes/class-render.php:5406
+msgid "Moon nakshatra"
+msgstr ""
+
+#. translators: %d = pada (quarter) of the nakshatra, 1 to 4
+#: includes/class-render.php:5409
+#, php-format
+msgid "Pada %d"
+msgstr ""
+
+#: includes/class-render.php:5418
+msgid "Dasha now"
+msgstr ""
+
+#. translators: %s = date
+#: includes/class-render.php:5421
+#, php-format
+msgid "until %s"
+msgstr ""
+
+#: includes/class-render.php:5427
+msgid "Vedic birth chart"
+msgstr ""
+
+#: includes/class-render.php:5434
+msgid "Grahas"
+msgstr ""
+
+#: includes/class-render.php:5434
+msgid "Graha"
+msgstr ""
+
+#. translators: %s = planet name
+#: includes/class-render.php:5440
+#, php-format
+msgid "Mahadasha of %s"
+msgstr ""
+
+#. translators: %s = planet name
+#: includes/class-render.php:5447
+#, php-format
+msgid "Antardasha of %s"
+msgstr ""
+
+#: includes/class-render.php:5451
+msgid "Vimshottari dasha"
+msgstr ""
+
+#: includes/class-render.php:5457
+msgid "Yogas"
+msgstr ""
+
+#: includes/class-render.php:5458
+#: includes/class-render.php:5462
+msgid "None found"
+msgstr ""
+
+#: includes/class-render.php:5461
+msgid "Doshas"
+msgstr ""
+
+#: includes/class-render.php:5465
+msgid "Yogas and doshas"
+msgstr ""
+
+#. translators: %s = the ayanamsa in degrees and minutes
+#: includes/class-render.php:5468
+#, php-format
+msgid "Sidereal zodiac, ayanamsa %s."
+msgstr ""
+
+#: includes/class-render.php:5523
+msgid "Raja yoga"
+msgstr ""
+
+#: includes/class-render.php:5524
+msgid "Dhana yoga"
+msgstr ""
+
+#: includes/class-render.php:5525
+msgid "Dharma Karmadhipati yoga"
+msgstr ""
+
+#: includes/class-render.php:5526
+msgid "Pancha Mahapurusha yoga"
+msgstr ""
+
+#: includes/class-render.php:5527
+msgid "Gajakesari yoga"
+msgstr ""
+
+#: includes/class-render.php:5528
+msgid "Adhi yoga"
+msgstr ""
+
+#: includes/class-render.php:5534
+msgid "Mangal dosha"
+msgstr ""
+
+#: includes/class-render.php:5535
+msgid "Kaal Sarp dosha"
+msgstr ""
+
+#: includes/class-render.php:5536
+msgid "Pitru dosha"
+msgstr ""
+
+#: includes/class-render.php:5537
+msgid "Shrapit dosha"
+msgstr ""
+
+#: includes/class-render.php:5538
+msgid "Grahan dosha"
+msgstr ""
+
+#: includes/class-render.php:5539
+msgid "Guru Chandal dosha"
+msgstr ""
+
+#: includes/class-render.php:5545
+msgid "Life Path"
+msgstr ""
+
+#: includes/class-render.php:5546
+msgid "Expression"
+msgstr ""
+
+#: includes/class-render.php:5547
+msgid "Soul Urge"
+msgstr ""
+
+#: includes/class-render.php:5549
+msgid "Birthday"
+msgstr ""
+
+#: includes/class-render.php:5550
+msgid "Personal Year"
+msgstr ""
+
+#: includes/class-render.php:5563
+msgid "Master number"
+msgstr ""
+
+#: includes/class-render.php:5584
+#: includes/class-tarot.php:285
+#: includes/class-widget-manifest.php:271
+#: includes/views/partials/shortcode-cards.php:235
+msgid "Numerology"
+msgstr ""
+
+#: includes/class-render.php:5590
+msgid "What the numbers say"
+msgstr ""
+
+#: includes/class-render.php:5622
+msgid "Challenges"
+msgstr ""
+
+#: includes/class-render.php:5623
+msgid "Work"
 msgstr ""
 
 #: includes/class-shortcodes.php:386
@@ -2738,25 +3107,25 @@ msgstr ""
 msgid "The %s widget is temporarily unavailable, so it renders nothing. Only administrators see this note."
 msgstr ""
 
-#: includes/class-shortcodes.php:912
-#: includes/class-shortcodes.php:1243
+#: includes/class-shortcodes.php:933
+#: includes/class-shortcodes.php:1279
 msgid "This date does not exist."
 msgstr ""
 
-#: includes/class-shortcodes.php:1082
+#: includes/class-shortcodes.php:1118
 msgid "A return chart needs the birth time and the latitude and longitude of the place of birth. Only administrators see this note."
 msgstr ""
 
-#: includes/class-shortcodes.php:1174
+#: includes/class-shortcodes.php:1210
 msgid "A Davison chart needs the date, the time and the latitude and longitude of both births. Only administrators see this note."
 msgstr ""
 
-#: includes/class-shortcodes.php:1182
+#: includes/class-shortcodes.php:1218
 msgid "This chart needs a site key or an API key: open AstroWay in the admin and connect the site. Only administrators see this note."
 msgstr ""
 
 #. translators: 1: shortcode tag, 2: attribute name, 3: the value written
-#: includes/class-shortcodes.php:1251
+#: includes/class-shortcodes.php:1287
 #, php-format
 msgid "[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form instead. Only administrators see this note."
 msgstr ""
@@ -2805,119 +3174,113 @@ msgstr ""
 msgid "api.astroway.info refused the request."
 msgstr ""
 
-#: includes/class-tarot-reading.php:224
+#: includes/class-tarot-reading.php:353
 msgid "Summary"
 msgstr ""
 
-#: includes/class-tarot-reading.php:228
-msgid "Advice"
-msgstr ""
-
 #. translators: %s = tarot card name
-#: includes/class-tarot-reading.php:239
-#: includes/class-tarot.php:326
+#: includes/class-tarot-reading.php:368
+#: includes/class-tarot.php:345
 #, php-format
 msgid "%s (reversed)"
 msgstr ""
 
-#: includes/class-tarot-reading.php:249
+#: includes/class-tarot-reading.php:378
 msgid "Card by card"
 msgstr ""
 
-#: includes/class-tarot-reading.php:269
+#: includes/class-tarot-reading.php:398
 msgid "The reading needs an API key: the site key does not cover readings. Paste yours in AstroWay, API Key. Only administrators see this note."
 msgstr ""
 
-#: includes/class-tarot-reading.php:270
+#: includes/class-tarot-reading.php:399
 msgid "Today's number of new tarot readings is reached; readings already given are still shown. Only administrators see this note."
 msgstr ""
 
-#: includes/class-tarot-reading.php:271
+#: includes/class-tarot-reading.php:400
 msgid "The api did not return the reading just now. Only administrators see this note."
 msgstr ""
 
-#: includes/class-tarot-reading.php:272
+#: includes/class-tarot-reading.php:401
 msgid "The api answered with a reading of other cards, so it was not shown; it is asked again in an hour. Only administrators see this note."
 msgstr ""
 
-#: includes/class-tarot.php:218
+#: includes/class-tarot.php:237
 msgid "Major arcana"
 msgstr ""
 
-#: includes/class-tarot.php:218
+#: includes/class-tarot.php:237
 msgid "Minor arcana"
 msgstr ""
 
-#: includes/class-tarot.php:223
+#: includes/class-tarot.php:242
 msgid "Wands"
 msgstr ""
 
-#: includes/class-tarot.php:224
+#: includes/class-tarot.php:243
 msgid "Cups"
 msgstr ""
 
-#: includes/class-tarot.php:225
+#: includes/class-tarot.php:244
 msgid "Swords"
 msgstr ""
 
-#: includes/class-tarot.php:226
+#: includes/class-tarot.php:245
 msgid "Pentacles"
 msgstr ""
 
-#: includes/class-tarot.php:230
+#: includes/class-tarot.php:249
 msgid "Upright"
 msgstr ""
 
-#: includes/class-tarot.php:230
+#: includes/class-tarot.php:249
 msgid "Reversed"
 msgstr ""
 
-#: includes/class-tarot.php:253
+#: includes/class-tarot.php:272
 msgid "Element"
 msgstr ""
 
-#: includes/class-tarot.php:260
+#: includes/class-tarot.php:279
 msgid "Astrology"
 msgstr ""
 
-#: includes/class-tarot.php:266
-#: includes/class-widget-manifest.php:271
-#: includes/views/partials/shortcode-cards.php:235
-msgid "Numerology"
-msgstr ""
-
-#: includes/class-tarot.php:271
+#: includes/class-tarot.php:290
 msgid "Yes"
 msgstr ""
 
-#: includes/class-tarot.php:272
+#: includes/class-tarot.php:291
 msgid "No"
 msgstr ""
 
-#: includes/class-tarot.php:273
+#: includes/class-tarot.php:292
 msgid "Maybe"
 msgstr ""
 
-#: includes/class-tarot.php:278
+#: includes/class-tarot.php:297
 msgid "Yes or no"
 msgstr ""
 
 #. translators: 1: planet, 2: zodiac sign, as in "Mercury in Virgo"
-#: includes/class-tarot.php:293
+#: includes/class-tarot.php:312
 #, php-format
 msgid "%1$s in %2$s"
 msgstr ""
 
-#: includes/class-tarot.php:316
+#: includes/class-tarot.php:335
 msgid "If it came out reversed"
 msgstr ""
 
-#: includes/class-tarot.php:316
+#: includes/class-tarot.php:335
 msgid "If it came out upright"
 msgstr ""
 
-#: includes/class-tarot.php:350
+#: includes/class-tarot.php:369
 msgid "Turn the card over"
+msgstr ""
+
+#: includes/class-tarot.php:485
+msgid "Spirit"
 msgstr ""
 
 #: includes/class-tier.php:203
@@ -3330,23 +3693,23 @@ msgstr ""
 msgid "Birth time (HH:MM, optional)"
 msgstr ""
 
-#: includes/class-widget-manifest.php:488
+#: includes/class-widget-manifest.php:491
 msgid "Hide sections (comma-separated keys)"
 msgstr ""
 
-#: includes/class-widget-manifest.php:493
+#: includes/class-widget-manifest.php:496
 msgid "Readings list"
 msgstr ""
 
-#: includes/class-widget-manifest.php:495
+#: includes/class-widget-manifest.php:498
 msgid "As the card has it"
 msgstr ""
 
-#: includes/class-widget-manifest.php:496
+#: includes/class-widget-manifest.php:499
 msgid "First row open"
 msgstr ""
 
-#: includes/class-widget-manifest.php:497
+#: includes/class-widget-manifest.php:500
 msgid "All rows closed"
 msgstr ""
 

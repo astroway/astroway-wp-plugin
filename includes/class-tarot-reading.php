@@ -190,6 +190,101 @@ final class TarotReading {
 	}
 
 	/**
+	 * The api's spread of the day with its reading, for a site without the
+	 * owner's key: the cards shaped like a public spread, the reading as HTML.
+	 * null when the answer is missing or not three cards.
+	 *
+	 * @return array{data: array, html: string}|null
+	 */
+	public static function daily( string $lang, string $art ): ?array {
+		$r         = PublicData::get(
+			'tarot_daily_reading',
+			[
+				'lang' => $lang,
+				'art'  => $art,
+			]
+		);
+		$positions = array_values( array_filter( (array) ( $r['positions'] ?? [] ), 'is_array' ) );
+		if ( 3 !== count( $positions ) ) {
+			return null;
+		}
+		// A reading the api could only give in another language is not this page's.
+		$answered = (string) ( $r['language'] ?? '' );
+		if ( '' !== $answered && Plugin::resolve_lang( $answered ) !== Plugin::resolve_lang( $lang ) ) {
+			return null;
+		}
+		$english = 'en' === Plugin::resolve_lang( $lang );
+		$drawn   = [];
+		$cards   = [];
+		$places  = [];
+		foreach ( $positions as $i => $p ) {
+			$card = (array) ( $p['card'] ?? [] );
+			$slug = (string) ( $card['slug'] ?? '' );
+			if ( '' === $slug ) {
+				return null;
+			}
+			// A major arcanum has no suit; a minor one is read off the slug in case it came without it.
+			if ( empty( $card['suit'] ) && preg_match( '/-of-(wands|cups|swords|pentacles)$/', $slug, $m ) ) {
+				$card['suit'] = $m[1];
+			}
+			$drawn[] = [
+				'position' => [
+					'index'   => $i,
+					'name'    => (string) ( $p['position'] ?? '' ),
+					'meaning' => (string) ( $p['positionMeaning'] ?? '' ),
+				],
+				'card'     => $card,
+				'reversed' => ! empty( $p['reversed'] ),
+			];
+			if ( ! $english ) {
+				$name = trim( (string) ( $card['nameLocalized'] ?? '' ) );
+				$loc  = '' !== $name ? [
+					'name'          => $name,
+					'nameLocalized' => true,
+				] : [];
+				// meaningLocalized is the side the card came out on (api 2.228.4).
+				$side = empty( $p['reversed'] ) ? 'upright' : 'reversed';
+				if ( ! empty( $card['textLocalized'] ) && is_array( $card['meaningLocalized'] ?? null ) ) {
+					$loc[ $side ]         = $card['meaningLocalized'];
+					$loc['textLocalized'] = true;
+				}
+				if ( $loc ) {
+					$cards[ $slug ] = $loc;
+				}
+				// An English gloss of the place is left out; a translated one is shown.
+				$places[] = [
+					'index'   => $i,
+					'name'    => trim( (string) ( $p['positionLocalized'] ?? '' ) ),
+					'meaning' => trim( (string) ( $p['positionMeaningLocalized'] ?? '' ) ),
+				];
+			}
+		}
+		$html = self::render( $r );
+		if ( '' === $html ) {
+			return null;
+		}
+		$data = [
+			'date'   => (string) ( $r['date'] ?? '' ),
+			'spread' => is_array( $r['spread'] ?? null ) ? $r['spread'] : [],
+			'drawn'  => $drawn,
+		];
+		if ( is_array( $r['back'] ?? null ) ) {
+			$data['back'] = $r['back'];
+		}
+		if ( ! $english ) {
+			$data['localized'] = [
+				'cards'         => $cards,
+				'positions'     => $places,
+				'textLocalized' => true,
+			];
+		}
+		return [
+			'data' => $data,
+			'html' => $html,
+		];
+	}
+
+	/**
 	 * Which cards came out and which way up: the same draw reads the same. Also
 	 * read off the answer's positions, since the api has answered one spread with
 	 * another's reading.

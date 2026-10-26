@@ -798,14 +798,35 @@ class Shortcodes {
 		);
 		$date = self::sanitize_date( $atts['date'] );
 		$time = self::sanitize_time( $atts['time'] );
+		$lat  = self::sanitize_coord( '' !== trim( (string) $atts['lat'] ) ? $atts['lat'] : $atts['latitude'], -90, 90 );
+		$lon  = self::sanitize_coord( '' !== trim( (string) $atts['lon'] ) ? $atts['lon'] : $atts['longitude'], -180, 180 );
+		$tz   = self::tz_offset_hours( $atts['tz'], $date, $time );
+		// In the page when the site has a key and the api has what it needs; the
+		// frame otherwise, and also when the call fails, so the spot is never empty.
+		if ( '' !== $date && '' !== $time && '' !== $lat && '' !== $lon && Birth::can_read( Birth::KUNDLI ) ) {
+			$card = Render::birth_card(
+				'kundli',
+				[
+					'date'   => $date,
+					'time'   => $time,
+					'lat'    => $lat,
+					'lon'    => $lon,
+					'offset' => '' === $tz ? 0.0 : (float) $tz,
+					'lang'   => $atts['lang'],
+				]
+			);
+			if ( '' !== $card ) {
+				return $card;
+			}
+		}
 		return PublicClient::embed_iframe(
 			'kundli',
 			[
 				'date'  => $date,
 				'time'  => $time,
-				'lat'   => self::sanitize_coord( $atts['lat'], -90, 90 ),
-				'lng'   => self::sanitize_coord( $atts['lon'], -180, 180 ),
-				'tz'    => self::tz_offset_hours( $atts['tz'], $date, $time ),
+				'lat'   => $lat,
+				'lng'   => $lon,
+				'tz'    => $tz,
 				'theme' => self::sanitize_theme( $atts['theme'] ),
 				'lang'  => self::resolve_lang( $atts['lang'] ),
 			]
@@ -911,6 +932,21 @@ class Shortcodes {
 				],
 				$bad ? [ 'aw_date' => __( 'This date does not exist.', 'astroway' ) ] : []
 			);
+		}
+		$system = self::sanitize_num_system( $atts['system'] );
+		if ( Birth::can_read( Birth::numerology_path( $system ) ) ) {
+			$card = Render::birth_card(
+				'numerology',
+				[
+					'name'   => $name,
+					'date'   => $date,
+					'system' => $system,
+					'lang'   => $atts['lang'],
+				]
+			);
+			if ( '' !== $card ) {
+				return $card;
+			}
 		}
 		return PublicClient::embed_iframe(
 			'numerology',
