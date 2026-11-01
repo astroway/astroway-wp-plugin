@@ -101,6 +101,7 @@
 	--astroway-accent: #2b4ea6;
 	--astroway-gilt: #86620f;
 	--astroway-tens: #b1261d;
+	--astroway-ok: #22663d;
 	--astroway-harm: var(--astroway-accent);
 	--astroway-accent-tint: color-mix(in oklab, var(--astroway-accent) 10%, transparent);
 	--astroway-on-accent: #fff;
@@ -118,6 +119,7 @@
 		--astroway-accent: oklch(from currentColor calc(0.45 + 0.355 * clamp(0, (l - 0.6) * 50, 1)) calc(0.148 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(264.7 + 7.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
 		--astroway-gilt: oklch(from currentColor calc(0.52 + 0.302 * clamp(0, (l - 0.6) * 50, 1)) calc(0.102 + 0.009 * clamp(0, (l - 0.6) * 50, 1)) calc(81.9 + 6.8 * clamp(0, (l - 0.6) * 50, 1)) / 1);
 		--astroway-tens: oklch(from currentColor calc(0.498 + 0.284 * clamp(0, (l - 0.6) * 50, 1)) calc(0.177 - 0.05 * clamp(0, (l - 0.6) * 50, 1)) calc(29 - 2.2 * clamp(0, (l - 0.6) * 50, 1)) / 1);
+		--astroway-ok: oklch(from currentColor calc(0.46 + 0.36 * clamp(0, (l - 0.6) * 50, 1)) calc(0.1 + 0.02 * clamp(0, (l - 0.6) * 50, 1)) 150 / 1);
 		/* Text on a filled accent: near white on a dark accent, near black on a light one. */
 		--astroway-on-accent: oklch(from var(--astroway-accent) calc(0.99 - 0.84 * clamp(0, (l - 0.62) * 50, 1)) 0.01 h);
 	}
@@ -129,6 +131,7 @@
 	--astroway-accent: #a9bcff;
 	--astroway-gilt: #e2c16c;
 	--astroway-tens: #ff978c;
+	--astroway-ok: #8fdcaa;
 	--astroway-on-accent: #10142e;
 }
 
@@ -138,6 +141,7 @@
 	--astroway-accent: currentColor;
 	--astroway-gilt: currentColor;
 	--astroway-tens: currentColor;
+	--astroway-ok: currentColor;
 	--astroway-harm: currentColor;
 	--astroway-accent-tint: color-mix(in oklab, currentColor 8%, transparent);
 }
@@ -154,6 +158,7 @@
 	--astroway-gilt: #e8c878;
 	--astroway-harm: #8fd4ff;
 	--astroway-tens: #ff9d8e;
+	--astroway-ok: #8fdcaa;
 	--astroway-accent-tint: rgba(232, 200, 120, 0.14);
 	/* Stars only in the margin: inside the text one reads as a full stop. */
 	--astroway-surface:
@@ -192,6 +197,9 @@
 	max-inline-size: min(var(--astroway-card-max-width, 44em), var(--wp--style--global--content-size, 100%), 100%);
 	margin: var(--astroway-card-margin, 1.5em 0);
 	padding: var(--astroway-card-padding, clamp(16px, 4%, 26px));
+	/* Its own size, not the theme's: a fluid 18-22px body made every chart read
+	   as a poster. rem keeps the visitor's own browser setting. */
+	font-size: var(--astroway-card-font-size, 0.9375rem);
 	background: var(--astroway-surface);
 	border: 1px solid var(--astroway-line);
 	border-radius: var(--astroway-radius);
@@ -429,7 +437,7 @@
 
 .astroway-card .astroway-facts dt {
 	margin: 0;
-	font-size: 0.78em;
+	font-size: 0.82em;
 	font-weight: 400;
 	color: var(--astroway-muted);
 }
@@ -665,6 +673,48 @@
 	padding-inline: 8px;
 }
 
+/* Tiles: label over value, as many to a row as fit, so a long value wraps in
+   its own box instead of breaking a row. Flex, not grid: the last tile of a
+   short row grows into the gap a grid would leave. */
+.astroway-card .astroway-facts--tiles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.astroway-facts--tiles .astroway-facts__item {
+	/* Two to a row at 320, never more than three. */
+	flex: 1 1 max(7em, calc((100% - 16px) / 3));
+	min-inline-size: 0;
+	padding: 8px 11px 9px;
+	border: 1px solid var(--astroway-line);
+	border-radius: var(--astroway-radius-inner);
+	background: var(--astroway-tint);
+}
+
+.astroway-card .astroway-facts--tiles dt {
+	font-size: 0.74em;
+	font-weight: 500;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	line-height: 1.4;
+}
+
+.astroway-card .astroway-facts--tiles dd {
+	margin-block-start: 2px;
+	font-weight: 500;
+}
+
+.astroway-facts--tiles .astroway-facts__item--accent dd {
+	color: var(--astroway-accent);
+	font-weight: 600;
+}
+
+.astroway-facts--tiles .astroway-facts__item--wide {
+	flex-basis: 100%;
+	border-inline-start: 3px solid var(--astroway-gilt);
+}
+
 /* ── Tags: static pills for keywords and a card's kind. ── */
 
 .astroway-card .astroway-tags {
@@ -684,6 +734,30 @@
 	background: var(--astroway-tint);
 	font-size: 0.82em;
 	line-height: 1.5;
+}
+
+/* A tag whose colour is the point: a signature, a not-self theme, a defined centre. */
+.astroway-card .astroway-tags > .astroway-tags__item--ok {
+	--astroway-tone: var(--astroway-ok);
+}
+
+.astroway-card .astroway-tags > .astroway-tags__item--harm {
+	--astroway-tone: var(--astroway-harm);
+}
+
+.astroway-card .astroway-tags > .astroway-tags__item--tens {
+	--astroway-tone: var(--astroway-tens);
+}
+
+.astroway-card .astroway-tags > .astroway-tags__item--gilt {
+	--astroway-tone: var(--astroway-gilt);
+}
+
+.astroway-card .astroway-tags > [class*="astroway-tags__item--"] {
+	border-color: color-mix(in oklab, var(--astroway-tone) 32%, transparent);
+	background: color-mix(in oklab, var(--astroway-tone) 10%, transparent);
+	color: var(--astroway-tone);
+	font-weight: 500;
 }
 
 /* The natal summary: the same pills, retrograde planets as glyphs in one of them. */
@@ -843,6 +917,15 @@
 	text-transform: none;
 }
 
+.astroway-card .astroway-card__section > .astroway-card__subtitle {
+	margin-block-end: 2px;
+	font-size: 0.74em;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--astroway-muted);
+}
+
 .astroway-card .astroway-card__intro {
 	margin: 0 0 10px;
 	font-size: 0.88em;
@@ -901,9 +984,11 @@
 }
 
 .astroway-acc__meta {
+	/* The answer on the right of a closed row wraps under itself rather than off the card. */
+	max-inline-size: 55%;
 	margin-inline-start: auto;
-	white-space: nowrap;
 	font-size: 0.84em;
+	text-align: end;
 	color: var(--astroway-muted);
 	font-variant-numeric: tabular-nums;
 }
@@ -2234,7 +2319,19 @@
 }
 
 .astroway-card .astroway-hd__tags {
-	margin-block: 4px 12px;
+	margin-block: 10px 14px;
+}
+
+/* A defined centre reads apart from an open one in the closed list. */
+.astroway-card .astroway-hd__defined {
+	color: var(--astroway-gilt);
+	font-weight: 600;
+}
+
+/* The reading's rows name the chart's answer, so it reads as text, not as a note. */
+.astroway-card .astroway-acc__meta:has(> .astroway-hd__answer) {
+	color: inherit;
+	font-weight: 500;
 }
 
 .astroway-card .astroway-hd__circuit {
@@ -2521,6 +2618,22 @@
 @container (max-width: 26em) {
 	.astroway-card .astroway-tarot .astroway-tarot__face {
 		inline-size: 64px;
+	}
+
+	/* A picture is worth its room: on a phone it stands over the text, not beside it. */
+	.astroway-card .astroway-tarot:has(> .astroway-tarot__face--image) {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.astroway-card .astroway-tarot > img.astroway-tarot__face--image {
+		inline-size: min(150px, 50%);
+	}
+}
+
+@container (min-width: 26em) {
+	.astroway-card .astroway-tarot > img.astroway-tarot__face--image {
+		inline-size: 130px;
 	}
 }
 
@@ -3352,6 +3465,8 @@
 	border: 1px solid var(--astroway-line-strong);
 	border-radius: var(--astroway-radius-inner);
 	background: transparent;
+	/* Under 16px iOS Safari zooms the page on focus; the card's own scale is 15px. */
+	font-size: max(1em, 16px);
 	line-height: 1.3;
 	cursor: text;
 }

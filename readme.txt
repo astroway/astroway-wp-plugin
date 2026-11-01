@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -196,6 +196,14 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.7.0 =
+* Cards: their own compact type size that follows the visitor's browser setting rather than the theme's, small capitals for section headings, and the key facts as tiles
+* Natal chart and synastry: harmonious and challenging aspects in their own colours in the summary
+* Human Design: type, strategy, authority, profile and definition as tiles, the incarnation cross across the card, signature and not-self in colour, and each answer on the right of its row in the reading
+* Tarot card of the day: the picture comes first, a reversed card is marked in red and the keywords are chips
+* Horoscopes: when the API sends an earlier text, or an English one, while the new text is still being written, the card says so and keeps it for half an hour instead of the whole day
+* Fix: form fields stay at 16px so phones do not zoom in when a visitor taps them
 
 = 2.6.0 =
 * Kundli and numerology are drawn into the page from the API on a site with a key, in the page language; a visitor's numerology name is not cached

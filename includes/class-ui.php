@@ -113,14 +113,16 @@ class UI {
 	 * Static pills: keywords, a card's arcana and suit. Not buttons; the
 	 * filtering kind is chips().
 	 *
-	 * @param string[] $labels Plain text.
+	 * @param array $labels Plain text, or `label` and `tone` each.
 	 */
 	public static function tags( array $labels ): string {
 		$html = '';
 		foreach ( $labels as $label ) {
-			$label = trim( (string) $label );
+			// Tone ok, harm, tens or gilt only where the colour itself says something.
+			$tone  = is_array( $label ) && in_array( $label['tone'] ?? '', [ 'ok', 'harm', 'tens', 'gilt' ], true ) ? $label['tone'] : '';
+			$label = trim( (string) ( is_array( $label ) ? ( $label['label'] ?? '' ) : $label ) );
 			if ( '' !== $label ) {
-				$html .= '<li>' . esc_html( $label ) . '</li>';
+				$html .= ( '' === $tone ? '<li>' : '<li class="astroway-tags__item--' . $tone . '">' ) . esc_html( $label ) . '</li>';
 			}
 		}
 		return '' === $html ? '' : '<ul class="astroway-tags">' . $html . '</ul>';
@@ -227,13 +229,15 @@ class UI {
 
 	/**
 	 * Label and value pairs. `trio` sets three side by side, the big three of
-	 * a chart; `list` is rows with the value at the end.
+	 * a chart; `list` is rows with the value at the end; `tiles` is small
+	 * boxes, label over value, as many to a row as fit.
 	 *
-	 * @param array  $items   Each `label`, `value`, optional `glyph`, `sub`.
-	 * @param string $variant `list` or `trio`.
+	 * @param array  $items   Each `label`, `value`, optional `glyph`, `sub`,
+	 *                        and for tiles `wide` (a whole row) and `tone` (accent).
+	 * @param string $variant `list`, `trio` or `tiles`.
 	 */
 	public static function facts( array $items, string $variant = 'list' ): string {
-		$variant = 'trio' === $variant ? 'trio' : 'list';
+		$variant = in_array( $variant, [ 'trio', 'tiles' ], true ) ? $variant : 'list';
 		$html    = '';
 		foreach ( $items as $item ) {
 			$value  = '' === (string) ( $item['glyph'] ?? '' ) ? '' : Glyphs::icon( (string) $item['glyph'] ) . ' ';
@@ -241,7 +245,10 @@ class UI {
 			if ( '' !== (string) ( $item['sub'] ?? '' ) ) {
 				$value .= '<span class="astroway-facts__sub">' . esc_html( (string) $item['sub'] ) . '</span>';
 			}
-			$html .= '<div class="astroway-facts__item"><dt>' . esc_html( (string) ( $item['label'] ?? '' ) ) . '</dt><dd>' . $value . '</dd></div>';
+			$class  = 'astroway-facts__item';
+			$class .= empty( $item['wide'] ) ? '' : ' astroway-facts__item--wide';
+			$class .= 'accent' === ( $item['tone'] ?? '' ) ? ' astroway-facts__item--accent' : '';
+			$html  .= '<div class="' . $class . '"><dt>' . esc_html( (string) ( $item['label'] ?? '' ) ) . '</dt><dd>' . $value . '</dd></div>';
 		}
 		return '' === $html ? '' : '<dl class="astroway-facts astroway-facts--' . $variant . '">' . $html . '</dl>';
 	}

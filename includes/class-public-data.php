@@ -31,6 +31,13 @@ class PublicData {
 	/** How long a failure is remembered. Short enough to recover, long enough to stop a stampede. */
 	public const NEGATIVE_TTL = MINUTE_IN_SECONDS;
 
+	/**
+	 * An answer the api marked `fallback` (yesterday's text, or the English one,
+	 * while today's is being written) is kept for half an hour, not until
+	 * midnight, so the real text replaces it the same day.
+	 */
+	public const STALE_TTL = 30 * MINUTE_IN_SECONDS;
+
 	private const TIMEOUT = 5;
 
 	/** Never cache for less than this, so a rollover at 23:59:50 cannot cause a burst. */
@@ -318,7 +325,7 @@ class PublicData {
 		$key    = self::cache_key( $config['path'], $query );
 		$cached = Cache::get( $key );
 		if ( is_array( $cached ) ) {
-			self::cap_page( $config, $params );
+			self::cap_page( $config, $params, $cached );
 			return $cached;
 		}
 
@@ -335,8 +342,8 @@ class PublicData {
 			return null;
 		}
 
-		Cache::set( $key, $payload, self::ttl_for( $config['freshness'] ) );
-		self::cap_page( $config, $params );
+		Cache::set( $key, $payload, self::ttl_of( $config, $payload ) );
+		self::cap_page( $config, $params, $payload );
 		return $payload;
 	}
 
@@ -406,15 +413,22 @@ class PublicData {
 		return $start;
 	}
 
+	/** What an answer is kept for: a fallback text half an hour, the rest to its boundary. */
+	private static function ttl_of( array $config, array $payload ): int {
+		$ttl = self::ttl_for( $config['freshness'] );
+		return is_array( $payload['fallback'] ?? null ) ? min( $ttl, self::STALE_TTL ) : $ttl;
+	}
+
 	/**
-	 * A card of today tells the page cache when it stops being true. One with a
-	 * date of its own is left alone: it is true for as long as the page is.
+	 * A card of today tells the page cache when it stops being true, a fallback
+	 * text within half an hour. One with a date of its own is left alone: it is
+	 * true for as long as the page is.
 	 */
-	private static function cap_page( array $config, array $params ): void {
+	private static function cap_page( array $config, array $params, array $payload ): void {
 		if ( 'static' === $config['freshness'] || '' !== self::sanitize_date( (string) ( $params['date'] ?? '' ) ) ) {
 			return;
 		}
-		PageCache::cap( self::ttl_for( $config['freshness'] ) );
+		PageCache::cap( self::ttl_of( $config, $payload ) );
 	}
 
 	/**
