@@ -1,0 +1,96 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/harmonics",
+	"title": "Harmonic Chart (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"harmonics",
+		"harmonic",
+		"h5",
+		"natal",
+		"astroway"
+	],
+	"description": "A harmonic chart (H2 to H180, H5 by default) on the natal wheel with its planets, drawn into the page. Needs an API key.",
+	"textdomain": "astroway",
+	"icon": "image-rotate",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"harmonic": {
+			"type": "string",
+			"default": "5"
+		},
+		"hide_sections": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"house_system": {
+			"type": "string",
+			"default": ""
+		},
+		"zodiac_type": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa_id": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

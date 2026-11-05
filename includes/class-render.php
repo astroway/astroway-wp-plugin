@@ -52,6 +52,11 @@ class Render {
 		'davison'              => [ 'astroway-natal-card', 'natal davison' ],
 		'kundli'               => [ 'astroway-kundli-card', 'kundli' ],
 		'numerology'           => [ 'astroway-numerology-card', 'numerology' ],
+		'dasha'                => [ 'astroway-kundli-card', 'kundli dasha' ],
+		'navamsa'              => [ 'astroway-kundli-card', 'kundli navamsa' ],
+		'progressions'         => [ 'astroway-natal-card', 'natal progressions' ],
+		'harmonics'            => [ 'astroway-natal-card', 'natal harmonics' ],
+		'fixed_stars'          => [ 'astroway-natal-card', 'natal fixed-stars' ],
 	];
 
 	/**
@@ -1477,6 +1482,8 @@ class Render {
 			'osc. apogee'       => 'lilith',
 			'apogee'            => 'lilith',
 			'black moon lilith' => 'lilith',
+			'mean lilith'       => 'lilith',
+			'true lilith'       => 'lilith',
 		];
 		if ( isset( $aliases[ $id ] ) ) {
 			return $aliases[ $id ];
@@ -2274,6 +2281,8 @@ class Render {
 			'mean Node'   => __( 'North Node', 'astroway' ),
 			'mean Apogee' => __( 'Lilith', 'astroway' ),
 			'osc. Apogee' => __( 'Lilith', 'astroway' ),
+			'Mean Lilith' => __( 'Lilith', 'astroway' ),
+			'True Lilith' => __( 'Lilith', 'astroway' ),
 		];
 		return $labels[ $raw ] ?? $raw;
 	}
@@ -5433,6 +5442,33 @@ class Render {
 			$data = Birth::numerology( $params, ! empty( $params['visitor'] ), $now );
 			return is_array( $data ) ? self::numerology_card( $data, $lang ) : '';
 		}
+		if ( 'dasha' === $widget ) {
+			$data = Birth::dasha( $params, $now );
+			if ( ! is_array( $data ) ) {
+				return '';
+			}
+			$timeline = empty( $params['timeline'] ) ? null : Birth::dasha_timeline( $params );
+			$note     = ! empty( $params['timeline'] ) && null === $timeline
+				? self::admin_note( __( 'The list of all nine mahadashas could not be loaded just now; the card shows the running one. Only administrators see this note.', 'astroway' ) )
+				: '';
+			return $note . self::dasha_card( $data, $timeline, $lang, $now );
+		}
+		if ( 'navamsa' === $widget ) {
+			$data = Birth::navamsa( $params );
+			return is_array( $data ) ? self::navamsa_card( $data, $lang, $params ) : '';
+		}
+		if ( 'progressions' === $widget ) {
+			$data = Birth::progressions( $params, $now );
+			return is_array( $data ) ? self::progressions_card( $data, $lang, $params, $now ) : '';
+		}
+		if ( 'harmonics' === $widget ) {
+			$data = Birth::harmonics( $params );
+			return is_array( $data ) ? self::harmonics_card( $data, $lang, $params ) : '';
+		}
+		if ( 'fixed_stars' === $widget ) {
+			$data = Birth::fixed_stars( $params );
+			return is_array( $data ) ? self::fixed_stars_card( $data, $lang, $params ) : '';
+		}
 		return '';
 	}
 
@@ -5441,12 +5477,13 @@ class Render {
 		return (int) floor( fmod( fmod( $longitude, 360 ) + 360, 360 ) / 30 ) % 12;
 	}
 
-	private static function kundli_card( array $data, string $lang, array $params ): string {
-		$lagna      = is_array( $data['lagna'] ?? null ) && is_numeric( $data['lagna']['longitude'] ?? null ) ? (float) $data['lagna']['longitude'] : null;
-		$lagna_sign = null === $lagna ? -1 : self::sign_index( $lagna );
-
+	/**
+	 * Grahas as table rows: glyph and name, position, whole-sign house from the
+	 * Lagna's sign as the tradition counts it, motion. Kundli and Navamsa alike.
+	 */
+	private static function graha_rows( array $grahas, int $lagna_sign ): array {
 		$rows = [];
-		foreach ( (array) ( $data['grahas'] ?? [] ) as $graha ) {
+		foreach ( $grahas as $graha ) {
 			if ( ! is_array( $graha ) || ! is_string( $graha['name'] ?? null ) || ! is_numeric( $graha['longitude'] ?? null ) ) {
 				continue;
 			}
@@ -5472,6 +5509,15 @@ class Render {
 			];
 		}
 
+		return $rows;
+	}
+
+	private static function kundli_card( array $data, string $lang, array $params ): string {
+		$lagna      = is_array( $data['lagna'] ?? null ) && is_numeric( $data['lagna']['longitude'] ?? null ) ? (float) $data['lagna']['longitude'] : null;
+		$lagna_sign = null === $lagna ? -1 : self::sign_index( $lagna );
+
+		$rows = self::graha_rows( (array) ( $data['grahas'] ?? [] ), $lagna_sign );
+
 		$facts = [];
 		if ( null !== $lagna ) {
 			$facts[] = [
@@ -5481,17 +5527,8 @@ class Render {
 				'sub'   => self::arc( fmod( fmod( $lagna, 360 ) + 360, 360 ) - 30 * $lagna_sign ),
 			];
 		}
-		$nak    = is_array( $data['nakshatra'] ?? null ) ? $data['nakshatra'] : [];
-		$fields = [
-			'uk' => 'nameUk',
-			'ru' => 'nameRu',
-		];
-		// nameLocalized since api 2.228.1; the per-language fields stay for answers cached before it.
-		$local = $nak['nameLocalized'] ?? null;
-		if ( ! is_string( $local ) || '' === trim( $local ) ) {
-			$local = $nak[ $fields[ $lang ] ?? 'name' ] ?? null;
-		}
-		$nak_name = is_string( $local ) && '' !== trim( $local ) ? trim( $local ) : ( is_string( $nak['name'] ?? null ) ? trim( $nak['name'] ) : '' );
+		$nak      = is_array( $data['nakshatra'] ?? null ) ? $data['nakshatra'] : [];
+		$nak_name = self::nakshatra_name( $nak, $lang );
 		if ( '' !== $nak_name ) {
 			$facts[] = [
 				'label' => __( 'Moon nakshatra', 'astroway' ),
@@ -5629,6 +5666,294 @@ class Render {
 			'grahan'      => __( 'Grahan dosha', 'astroway' ),
 			'guruChandal' => __( 'Guru Chandal dosha', 'astroway' ),
 		];
+	}
+
+	/** The nakshatra's name in the page language where the api gives one, its own name otherwise. */
+	private static function nakshatra_name( array $nak, string $lang ): string {
+		$fields = [
+			'uk' => 'nameUk',
+			'ru' => 'nameRu',
+		];
+		// nameLocalized since api 2.228.1; the per-language fields stay for answers cached before it.
+		$local = $nak['nameLocalized'] ?? null;
+		if ( ! is_string( $local ) || '' === trim( $local ) ) {
+			$local = $nak[ $fields[ $lang ] ?? 'name' ] ?? null;
+		}
+		return is_string( $local ) && '' !== trim( $local ) ? trim( $local ) : ( is_string( $nak['name'] ?? null ) ? trim( $nak['name'] ) : '' );
+	}
+
+	/**
+	 * The running mahadasha, the antardasha inside it today, and the nine
+	 * antardashas of the mahadasha; with `$timeline`, all nine mahadashas too.
+	 */
+	private static function dasha_card( array $data, ?array $timeline, string $lang, ?int $now ): string {
+		$today = PublicData::site_day( 'day', $now );
+		$maha  = self::dasha_period( $data['currentMaha'] ?? null );
+		$antar = null;
+		$rows  = [];
+		foreach ( (array) ( $data['periods'] ?? [] ) as $period ) {
+			$p = self::dasha_period( $period );
+			if ( null === $p ) {
+				continue;
+			}
+			$now_here = self::dasha_covers( $period, $today );
+			if ( $now_here ) {
+				$antar = $p;
+			}
+			$rows[] = [
+				'cells'   => [ $p['planet'], $p['range'] ],
+				'current' => $now_here,
+			];
+		}
+
+		// On the mahadasha's last day no antardasha holds the day by the half-open rule: the last one does.
+		if ( null === $antar && ! empty( $rows ) && null !== $maha && substr( (string) ( $data['currentMaha']['endDate'] ?? '' ), 0, 10 ) === $today ) {
+			$rows[ count( $rows ) - 1 ]['current'] = true;
+			$antar                                 = self::dasha_period( end( $data['periods'] ) );
+		}
+
+		$facts = [];
+		if ( null !== $maha ) {
+			// The end only: the full range does not fit a third of a phone, and the table below has it.
+			$facts[] = [
+				'label' => __( 'Mahadasha', 'astroway' ),
+				'value' => $maha['planet'],
+				/* translators: %s = date */
+				'sub'   => '' === $maha['end'] ? '' : sprintf( __( 'until %s', 'astroway' ), $maha['end'] ),
+			];
+		}
+		if ( null !== $antar ) {
+			$facts[] = [
+				'label' => __( 'Antardasha', 'astroway' ),
+				'value' => $antar['planet'],
+				/* translators: %s = date */
+				'sub'   => '' === $antar['end'] ? '' : sprintf( __( 'until %s', 'astroway' ), $antar['end'] ),
+			];
+		}
+		$nak_name = self::nakshatra_name( is_array( $data['nakshatra'] ?? null ) ? $data['nakshatra'] : [], $lang );
+		if ( '' !== $nak_name ) {
+			$facts[] = [
+				'label' => __( 'Moon nakshatra', 'astroway' ),
+				'value' => $nak_name,
+				/* translators: %d = pada (quarter) of the nakshatra, 1 to 4 */
+				'sub'   => is_numeric( $data['nakshatra']['pada'] ?? null ) ? sprintf( __( 'Pada %d', 'astroway' ), (int) $data['nakshatra']['pada'] ) : '',
+			];
+		}
+
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Vimshottari dasha', 'astroway' ),
+				'meta_html' => self::date_line( $today ),
+			]
+		);
+		$inner .= UI::shown( 'facts' ) ? UI::facts( $facts, 'trio' ) : '';
+		if ( ! empty( $rows ) && null !== $maha ) {
+			/* translators: %s = planet name */
+			$inner .= UI::section( sprintf( __( 'Antardashas of %s', 'astroway' ), $maha['planet'] ), self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Period', 'astroway' ) ], $rows ), '', 'antar' );
+		}
+		if ( is_array( $timeline ) ) {
+			$maha_rows = [];
+			foreach ( (array) ( $timeline['periods'] ?? [] ) as $period ) {
+				$p = self::dasha_period( $period );
+				if ( null !== $p ) {
+					$maha_rows[] = [
+						'cells'   => [ $p['planet'], $p['range'] ],
+						'current' => self::dasha_covers( $period, $today ),
+					];
+				}
+			}
+			$inner .= UI::section( __( 'Mahadashas', 'astroway' ), self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Period', 'astroway' ) ], $maha_rows ), '', 'maha' );
+		}
+
+		return self::shell( 'dasha', $lang, $inner );
+	}
+
+	/** Whether a period's days hold the given Y-m-d: from its first day, up to but not including its last. */
+	private static function dasha_covers( $period, string $day ): bool {
+		if ( ! is_array( $period ) ) {
+			return false;
+		}
+		$start = substr( (string) ( $period['startDate'] ?? '' ), 0, 10 );
+		$end   = substr( (string) ( $period['endDate'] ?? '' ), 0, 10 );
+		return '' !== $start && '' !== $end && $start <= $day && $day < $end;
+	}
+
+	/** The Navamsa (D9): the kundli's table, read from the ninth-part chart. */
+	private static function navamsa_card( array $data, string $lang, array $params ): string {
+		$lagna      = is_array( $data['lagna'] ?? null ) && is_numeric( $data['lagna']['longitude'] ?? null ) ? (float) $data['lagna']['longitude'] : null;
+		$lagna_sign = null === $lagna ? -1 : self::sign_index( $lagna );
+		$rows       = self::graha_rows( (array) ( $data['grahas'] ?? [] ), $lagna_sign );
+
+		$facts = [];
+		if ( null !== $lagna ) {
+			$facts[] = [
+				'label' => __( 'Navamsa Lagna', 'astroway' ),
+				'glyph' => self::sign_of( $lagna ),
+				'value' => self::sign_label( self::sign_of( $lagna ) ),
+				'sub'   => self::arc( fmod( fmod( $lagna, 360 ) + 360, 360 ) - 30 * $lagna_sign ),
+			];
+		}
+
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Navamsa (D9)', 'astroway' ),
+				'medal'     => null === $lagna ? '' : self::sign_of( $lagna ),
+				'meta_html' => self::date_line( (string) ( $params['date'] ?? '' ) ),
+			]
+		);
+		$inner .= UI::shown( 'facts' ) ? UI::facts( $facts, 'trio' ) : '';
+		if ( ! empty( $rows ) ) {
+			$inner .= UI::section( __( 'Grahas', 'astroway' ), self::sky_table( [ __( 'Graha', 'astroway' ), __( 'Position', 'astroway' ), __( 'House', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows ), '', 'grahas' );
+		}
+		if ( is_numeric( $data['ayanamsa'] ?? null ) ) {
+			/* translators: %s = the ayanamsa in degrees and minutes */
+			$inner .= self::note_line( sprintf( __( 'Sidereal zodiac, ayanamsa %s.', 'astroway' ), self::arc( (float) $data['ayanamsa'] ) ) );
+		}
+
+		return self::shell( 'navamsa', $lang, $inner );
+	}
+
+	/** Planets as rows of glyph and name, position, motion: the progressed and harmonic charts. */
+	private static function planet_rows( array $planets ): array {
+		$rows = [];
+		foreach ( $planets as $planet ) {
+			if ( ! is_array( $planet ) || ! is_string( $planet['name'] ?? null ) || ! is_numeric( $planet['longitude'] ?? null ) ) {
+				continue;
+			}
+			$name   = self::planet_label( $planet['name'] );
+			$motion = empty( $planet['isRetrograde'] )
+				? esc_html__( 'Direct', 'astroway' )
+				: '<span class="astroway-nowrap"><span aria-hidden="true">℞</span> ' . esc_html__( 'Retrograde', 'astroway' ) . '</span>';
+			$rows[] = [
+				'cells' => [
+					[ 'html' => Glyphs::icon( self::planet_id( $planet['name'] ), $name ) . ' ' . esc_html( $name ) ],
+					self::position_label( (float) $planet['longitude'] ),
+					[ 'html' => $motion ],
+				],
+			];
+		}
+		return $rows;
+	}
+
+	/** Secondary progressions for the site's day: the progressed Sun, Moon and Ascendant, then every planet and their aspects. */
+	private static function progressions_card( array $data, string $lang, array $params, ?int $now ): string {
+		$by_name = [];
+		foreach ( (array) ( $data['planets'] ?? [] ) as $planet ) {
+			if ( is_array( $planet ) && is_string( $planet['name'] ?? null ) && is_numeric( $planet['longitude'] ?? null ) ) {
+				$by_name[ $planet['name'] ] = (float) $planet['longitude'];
+			}
+		}
+		$asc   = is_numeric( $data['houses']['ascendant'] ?? null ) ? (float) $data['houses']['ascendant'] : null;
+		$facts = [];
+		foreach ( [
+			'Sun'  => __( 'Progressed Sun', 'astroway' ),
+			'Moon' => __( 'Progressed Moon', 'astroway' ),
+		] as $key => $label ) {
+			if ( isset( $by_name[ $key ] ) ) {
+				$facts[] = [
+					'label' => $label,
+					'glyph' => self::sign_of( $by_name[ $key ] ),
+					'value' => self::sign_label( self::sign_of( $by_name[ $key ] ) ),
+					'sub'   => self::arc( fmod( fmod( $by_name[ $key ], 360 ) + 360, 360 ) - 30 * self::sign_index( $by_name[ $key ] ) ),
+				];
+			}
+		}
+		if ( null !== $asc ) {
+			$facts[] = [
+				'label' => __( 'Progressed Ascendant', 'astroway' ),
+				'glyph' => self::sign_of( $asc ),
+				'value' => self::sign_label( self::sign_of( $asc ) ),
+				'sub'   => self::arc( fmod( fmod( $asc, 360 ) + 360, 360 ) - 30 * self::sign_index( $asc ) ),
+			];
+		}
+
+		$aspects = [];
+		foreach ( self::natal_aspects( $data['aspects'] ?? [] ) as $aspect ) {
+			$aspects[] = [ 'cells' => [ $aspect['text'], $aspect['orb'], $aspect['trend'] ] ];
+		}
+
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Progressed chart', 'astroway' ),
+				'meta_html' => self::date_line( '' !== (string) ( $params['target'] ?? '' ) ? (string) $params['target'] : PublicData::site_day( 'day', $now ) ),
+			]
+		);
+		$inner .= UI::shown( 'facts' ) ? UI::facts( $facts, 'trio' ) : '';
+		$rows   = self::planet_rows( (array) ( $data['planets'] ?? [] ) );
+		if ( ! empty( $rows ) ) {
+			$inner .= UI::section( __( 'Progressed planets', 'astroway' ), self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Position', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows ), '', 'planets' );
+		}
+		if ( ! empty( $aspects ) ) {
+			$inner .= UI::section( __( 'Aspects between progressed planets', 'astroway' ), self::sky_table( [ __( 'Aspect', 'astroway' ), __( 'Orb', 'astroway' ), __( 'Phase', 'astroway' ) ], $aspects ), '', 'aspects' );
+		}
+		$inner .= self::note_line( __( 'Secondary progressions: a day after birth for each year of life.', 'astroway' ) );
+
+		return self::shell( 'progressions', $lang, $inner );
+	}
+
+	/** The harmonic chart on the natal wheel, without houses: multiplying longitudes leaves no horizon to count them from. */
+	private static function harmonics_card( array $data, string $lang, array $params ): string {
+		$n       = (int) ( $data['harmonicNumber'] ?? ( $params['harmonic'] ?? 0 ) );
+		$planets = (array) ( $data['planets'] ?? [] );
+		/* translators: %d = harmonic number, e.g. 5 */
+		$title = sprintf( __( 'Harmonic %d chart', 'astroway' ), $n );
+
+		$inner  = UI::header(
+			[
+				'title'     => $title,
+				'meta_html' => self::date_line( (string) ( $params['date'] ?? '' ) ),
+			]
+		);
+		$wheel  = self::natal_wheel( $planets, [], [], self::natal_aspects( $data['aspects'] ?? [] ), $title, __( 'Harmonic chart: each planet\'s longitude multiplied by the harmonic number, and the aspects between them.', 'astroway' ) );
+		$inner .= '' === $wheel ? '' : UI::section( __( 'Wheel', 'astroway' ), $wheel, '', 'wheel' );
+		$rows   = self::planet_rows( $planets );
+		if ( ! empty( $rows ) ) {
+			$inner .= UI::section( __( 'Planets', 'astroway' ), self::sky_table( [ __( 'Planet', 'astroway' ), __( 'Position', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows ), '', 'planets' );
+		}
+
+		return self::shell( 'harmonics', $lang, $inner );
+	}
+
+	/** Natal planets in conjunction with a fixed star, closest first, as the api finds them. */
+	private static function fixed_stars_card( array $data, string $lang, array $params ): string {
+		$rows = [];
+		foreach ( (array) ( $data['conjunctions'] ?? [] ) as $hit ) {
+			if ( ! is_array( $hit ) || ! is_string( $hit['star'] ?? null ) || ! is_string( $hit['planet'] ?? null ) || ! is_numeric( $hit['orb'] ?? null ) ) {
+				continue;
+			}
+			$name   = self::planet_label( $hit['planet'] );
+			$rows[] = [
+				'cells' => [
+					[ 'html' => '★ ' . esc_html( $hit['star'] ) ],
+					[ 'html' => Glyphs::icon( self::planet_id( $hit['planet'] ), $name ) . ' ' . esc_html( $name ) ],
+					sprintf( '%s°', self::number( (float) $hit['orb'], 1 ) ),
+					is_numeric( $hit['magnitude'] ?? null ) ? self::number( (float) $hit['magnitude'], 2 ) : '',
+				],
+			];
+		}
+		$orb = is_numeric( $data['orb'] ?? null ) ? (float) $data['orb'] : 1.0;
+
+		$inner  = UI::header(
+			[
+				'title'     => __( 'Fixed stars', 'astroway' ),
+				'meta_html' => self::date_line( (string) ( $params['date'] ?? '' ) ),
+			]
+		);
+		$table  = empty( $rows )
+			? '<p class="astroway-card__intro">' . esc_html__( 'No planet of this chart stands in conjunction with the bright stars.', 'astroway' ) . '</p>'
+			: self::sky_table( [ __( 'Star', 'astroway' ), __( 'Conjunct', 'astroway' ), __( 'Orb', 'astroway' ), __( 'Magnitude', 'astroway' ) ], $rows );
+		$inner .= UI::section( __( 'Conjunctions', 'astroway' ), $table, '', 'stars' );
+		$stars  = count( (array) ( $data['stars'] ?? [] ) );
+		$within = self::number( $orb, floor( $orb ) === $orb ? 0 : 1 );
+		$inner .= self::note_line(
+			$stars > 0
+				/* translators: 1: orb in degrees, 2: number of stars checked */
+				? sprintf( __( 'Conjunctions within %1$s° of longitude with %2$d bright stars, tropical zodiac.', 'astroway' ), $within, $stars )
+				/* translators: %s: orb in degrees */
+				: sprintf( __( 'Conjunctions within %s° of longitude, tropical zodiac.', 'astroway' ), $within )
+		);
+
+		return self::shell( 'fixed_stars', $lang, $inner );
 	}
 
 	private static function numerology_card( array $data, string $lang ): string {

@@ -56,6 +56,14 @@ class Shortcodes {
 		add_shortcode( 'astroway_lunar_return', self::gated( 'lunar_return', [ __CLASS__, 'render_lunar_return' ] ) );
 		add_shortcode( 'astroway_davison', self::gated( 'davison', [ __CLASS__, 'render_davison' ] ) );
 
+		// 2.8.0. Progressions, harmonics and fixed stars were answered by the
+		// generated registry since 1.2.0; its attributes stay as aliases.
+		add_shortcode( 'astroway_dasha', self::gated( 'dasha', [ __CLASS__, 'render_dasha' ] ) );
+		add_shortcode( 'astroway_navamsa', self::gated( 'navamsa', [ __CLASS__, 'render_navamsa' ] ) );
+		add_shortcode( 'astroway_progressions', self::gated( 'progressions', [ __CLASS__, 'render_progressions' ] ) );
+		add_shortcode( 'astroway_harmonics', self::gated( 'harmonics', [ __CLASS__, 'render_harmonics' ] ) );
+		add_shortcode( 'astroway_fixed_stars', self::gated( 'fixed_stars', [ __CLASS__, 'render_fixed_stars' ] ) );
+
 		// Priority 10 lands after wpautop and shortcode_unautop, which core adds
 		// at 10 before this file ever runs, and before do_shortcode at 11. The
 		// shortcodes are still text at that point, which is the only moment the
@@ -1213,6 +1221,156 @@ class Shortcodes {
 		return Render::widget( 'davison', $params );
 	}
 
+	/** Birth attributes every 2.8 card takes, with the spellings the generated shortcodes used. */
+	private const BIRTH_ATTS = [
+		'date'            => '',
+		'time'            => '',
+		'lat'             => '',
+		'lon'             => '',
+		'latitude'        => '',
+		'longitude'       => '',
+		'tz'              => '',
+		'timezone_offset' => '',
+		'lang'            => '',
+	];
+
+	/** The chart options the generated shortcodes of 1.2.0 sent; the cards that took their names keep them. */
+	private const CHART_OPTION_ATTS = [
+		'house_system' => '',
+		'zodiac_type'  => '',
+		'ayanamsa'     => '',
+		'ayanamsa_id'  => '',
+	];
+
+	private const AYANAMSAS = [ 'fagan-bradley', 'lahiri', 'de-luce', 'raman', 'krishnamurti', 'kp', 'yukteshwar', 'jn-bhasin', 'true-citra', 'djwhal-khul' ];
+
+	/**
+	 * The options under the api's names, only those it would accept: a house
+	 * system is one Swiss Ephemeris letter, and "Placidus" is refused with a 400.
+	 */
+	private static function chart_options( array $atts ): array {
+		$out   = [];
+		$house = trim( (string) ( $atts['house_system'] ?? '' ) );
+		if ( 1 === preg_match( '/^[PKRCEWBMOATVDFGHIiLNQSUXY]$/', $house ) ) {
+			$out['houseSystem'] = $house;
+		}
+		$zodiac = strtolower( trim( (string) ( $atts['zodiac_type'] ?? '' ) ) );
+		if ( in_array( $zodiac, [ 'tropical', 'sidereal' ], true ) ) {
+			$out['zodiacType'] = $zodiac;
+		}
+		$ayanamsa = strtolower( trim( (string) ( $atts['ayanamsa'] ?? '' ) ) );
+		if ( in_array( $ayanamsa, self::AYANAMSAS, true ) ) {
+			$out['ayanamsa'] = $ayanamsa;
+		}
+		if ( ctype_digit( trim( (string) ( $atts['ayanamsa_id'] ?? '' ) ) ) ) {
+			$out['ayanamsaId'] = (int) $atts['ayanamsa_id'];
+		}
+		if ( isset( $atts['target_time'] ) && preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', trim( (string) $atts['target_time'] ) ) ) {
+			$out['targetTime'] = trim( (string) $atts['target_time'] );
+		}
+		if ( isset( $atts['target_tz_offset'] ) && is_numeric( $atts['target_tz_offset'] ) && abs( (float) $atts['target_tz_offset'] ) <= 14 ) {
+			$out['targetTzOffset'] = (float) $atts['target_tz_offset'];
+		}
+		if ( isset( $atts['converse'] ) && '1' === self::sanitize_bool_flag( $atts['converse'] ) ) {
+			$out['converse'] = true;
+		}
+		return $out;
+	}
+
+	/** The running dasha period; `timeline="1"` adds all nine mahadashas. */
+	public static function render_dasha( $atts ): string {
+		$atts = shortcode_atts( self::BIRTH_ATTS + [ 'timeline' => '' ], (array) $atts, 'astroway_dasha' );
+		return self::render_birth_card( 'dasha', Birth::DASHA, $atts, [ 'timeline' => '1' === self::sanitize_bool_flag( $atts['timeline'] ) ] );
+	}
+
+	public static function render_navamsa( $atts ): string {
+		$atts = shortcode_atts( self::BIRTH_ATTS, (array) $atts, 'astroway_navamsa' );
+		return self::render_birth_card( 'navamsa', Birth::NAVAMSA, $atts, [] );
+	}
+
+	/** Progressed to today, or to `target_date` when the author fixes one. */
+	public static function render_progressions( $atts ): string {
+		$atts = shortcode_atts(
+			self::BIRTH_ATTS + self::CHART_OPTION_ATTS + [
+				'target_date'      => '',
+				'target_time'      => '',
+				'target_tz_offset' => '',
+				'converse'         => '',
+			],
+			(array) $atts,
+			'astroway_progressions'
+		);
+		return self::render_birth_card(
+			'progressions',
+			Birth::PROGRESSIONS,
+			$atts,
+			[
+				'target'  => self::sanitize_date( $atts['target_date'] ),
+				'options' => self::chart_options( $atts ),
+			]
+		);
+	}
+
+	/** Harmonic 5 unless told otherwise: the one most read, for talent and style. */
+	public static function render_harmonics( $atts ): string {
+		$atts     = shortcode_atts( self::BIRTH_ATTS + self::CHART_OPTION_ATTS + [ 'harmonic' => '5' ], (array) $atts, 'astroway_harmonics' );
+		$harmonic = (int) $atts['harmonic'];
+		return self::render_birth_card(
+			'harmonics',
+			Birth::HARMONICS,
+			$atts,
+			[
+				'harmonic' => $harmonic >= 2 && $harmonic <= 180 ? $harmonic : 5,
+				'options'  => self::chart_options( $atts ),
+			]
+		);
+	}
+
+	public static function render_fixed_stars( $atts ): string {
+		$atts = shortcode_atts( self::BIRTH_ATTS + self::CHART_OPTION_ATTS, (array) $atts, 'astroway_fixed_stars' );
+		return self::render_birth_card( 'fixed_stars', Birth::FIXED_STARS, $atts, [ 'options' => self::chart_options( $atts ) ] );
+	}
+
+	/**
+	 * A card drawn from one birth on a keyed route. There is no frame behind
+	 * these routes, so what cannot be drawn tells the administrator why.
+	 */
+	private static function render_birth_card( string $widget, string $path, array $atts, array $extra ): string {
+		$date = self::sanitize_date( $atts['date'] );
+		$time = self::sanitize_time( $atts['time'] );
+		$lat  = self::sanitize_coord( '' !== trim( (string) $atts['lat'] ) ? $atts['lat'] : $atts['latitude'], -90, 90 );
+		$lon  = self::sanitize_coord( '' !== trim( (string) $atts['lon'] ) ? $atts['lon'] : $atts['longitude'], -180, 180 );
+		$tz   = self::tz_offset_hours( '' !== trim( (string) $atts['tz'] ) ? $atts['tz'] : $atts['timezone_offset'], $date, $time );
+		if ( '' === $date || '' === $time || '' === $lat || '' === $lon ) {
+			return Render::admin_note( __( 'This chart needs the birth date, time, latitude and longitude. Only administrators see this note.', 'astroway' ) );
+		}
+		if ( ! Birth::can_read( $path ) ) {
+			return in_array( $path, [ Birth::DASHA, Birth::NAVAMSA ], true ) ? self::needs_key() : self::needs_owner_key();
+		}
+		$card = Render::birth_card(
+			$widget,
+			[
+				'date'   => $date,
+				'time'   => $time,
+				'lat'    => $lat,
+				'lon'    => $lon,
+				'offset' => '' === $tz ? null : (float) $tz,
+				'lang'   => $atts['lang'],
+			] + $extra
+		);
+		if ( '' !== $card ) {
+			return $card;
+		}
+		return Render::admin_note(
+			/* translators: %s = shortcode name */
+			sprintf( __( 'The %s chart could not be loaded just now. Only administrators see this note.', 'astroway' ), '[astroway_' . $widget . ']' )
+		);
+	}
+
+	private static function needs_owner_key(): string {
+		return Render::admin_note( __( 'This chart needs an API key from api.astroway.info: open AstroWay in the admin and enter it. Only administrators see this note.', 'astroway' ) );
+	}
+
 	/** Returns and the Davison chart are not on the free anonymous allowance. */
 	private static function needs_key(): string {
 		return Render::admin_note( __( 'This chart needs a site key or an API key: open AstroWay in the admin and connect the site. Only administrators see this note.', 'astroway' ) );
@@ -1380,6 +1538,10 @@ class Shortcodes {
 		$raw = trim( (string) $raw );
 		if ( '' === $raw ) {
 			return '';
+		}
+		// Not a zone name with a slash, but what people write for it.
+		if ( in_array( strtoupper( $raw ), [ 'UTC', 'GMT', 'Z' ], true ) ) {
+			return '0';
 		}
 		if ( preg_match( '/^[+-]?\d{1,2}(\.\d+)?$/', $raw ) ) {
 			return (string) (float) $raw;

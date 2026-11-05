@@ -36,6 +36,19 @@ class PageCache {
 		'astroway_moon_voc',
 		'astroway_planetary_hours',
 		'astroway_panchang',
+		'astroway_dasha',
+		'astroway_progressions',
+	];
+
+	/**
+	 * The attribute that pins a card to a day of its own, where it is not `date`:
+	 * on the birth cards `date` is the birth. Empty: the card is always today's.
+	 */
+	private const PINNED_BY = [
+		'astroway_dasha'        => '',
+		'astroway_progressions' => 'target_date',
+		'dasha'                 => '',
+		'progressions'          => 'target_date',
 	];
 
 	private const DAILY_BLOCKS = [
@@ -48,6 +61,8 @@ class PageCache {
 		'moon-voc',
 		'planetary-hours',
 		'panchang',
+		'dasha',
+		'progressions',
 	];
 
 	/** @var int|null Seconds the page may live, the least reported so far. */
@@ -100,7 +115,8 @@ class PageCache {
 	public static function has_daily( string $content ): bool {
 		if ( preg_match_all( '/\[(astroway_[a-z_]+)(\s[^\]]*)?\]/', $content, $codes, PREG_SET_ORDER ) ) {
 			foreach ( $codes as $code ) {
-				if ( in_array( $code[1], self::DAILY_SHORTCODES, true ) && ! preg_match( '/\bdate\s*=\s*["\']?\d{4}-\d{2}-\d{2}/', $code[2] ?? '' ) ) {
+				$pin = self::PINNED_BY[ $code[1] ] ?? 'date';
+				if ( in_array( $code[1], self::DAILY_SHORTCODES, true ) && ( '' === $pin || ! preg_match( '/(?<![a-z_])' . $pin . '\s*=\s*["\']?\d{4}-\d{2}-\d{2}/', $code[2] ?? '' ) ) ) {
 					return true;
 				}
 			}
@@ -108,7 +124,8 @@ class PageCache {
 		if ( preg_match_all( '/<!--\s*wp:astroway\/([a-z0-9-]+)(\s+(\{.*?\}))?\s*\/?-->/s', $content, $blocks, PREG_SET_ORDER ) ) {
 			foreach ( $blocks as $block ) {
 				$attrs = isset( $block[3] ) ? json_decode( $block[3], true ) : null;
-				$date  = is_array( $attrs ) ? (string) ( $attrs['date'] ?? '' ) : '';
+				$pin   = self::PINNED_BY[ $block[1] ] ?? 'date';
+				$date  = is_array( $attrs ) && '' !== $pin ? (string) ( $attrs[ $pin ] ?? '' ) : '';
 				if ( in_array( $block[1], self::DAILY_BLOCKS, true ) && ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) {
 					return true;
 				}

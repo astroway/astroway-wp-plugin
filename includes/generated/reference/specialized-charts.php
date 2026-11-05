@@ -18,11 +18,6 @@ return [
 			'description' => 'Calculate the draconic chart by shifting all planet longitudes relative to the True Node (0° = True Node).',
 			'documented' => true,
 		],
-		'astroway_harmonics' => [
-			'title' => 'Harmonic Chart',
-			'description' => 'Calculate a harmonic chart by multiplying all planet longitudes by the given harmonic number (H2–H36).',
-			'documented' => true,
-		],
 		'astroway_heliocentric' => [
 			'title' => 'Heliocentric Chart',
 			'description' => 'Calculate heliocentric planetary positions (Sun-centered) for a given birth moment. Earth replaces Sun; Moon is excluded.',

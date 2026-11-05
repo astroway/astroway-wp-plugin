@@ -1,0 +1,76 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/navamsa",
+	"title": "Navamsa D9 (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"navamsa",
+		"d9",
+		"vedic",
+		"jyotish",
+		"astroway"
+	],
+	"description": "The Navamsa (D9) divisional chart: Lagna and grahas by sign and house, drawn into the page. Needs a site key or an API key.",
+	"textdomain": "astroway",
+	"icon": "grid-view",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"hide_sections": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone_offset": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

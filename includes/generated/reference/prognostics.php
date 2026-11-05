@@ -43,11 +43,6 @@ return [
 			'description' => 'Calculate annual profections: profected Ascendant, lord of the year, activated house, and monthly profection sub-rulers.',
 			'documented' => true,
 		],
-		'astroway_progressions' => [
-			'title' => 'Secondary Progressions',
-			'description' => 'Calculate secondary progressed chart (day-for-a-year) for a target date. Returns progressed planets, angles, and aspects to natal.',
-			'documented' => true,
-		],
 		'astroway_rectification' => [
 			'title' => 'Rectification',
 			'description' => 'Rectify an approximate birth time using a list of life events and transit/direction hits to narrow the birth time window.',

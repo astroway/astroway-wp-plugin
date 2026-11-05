@@ -158,6 +158,17 @@ final class WidgetManifest {
 		];
 	}
 
+	/** Birth moment and place, nothing else: the 2.8 cards are drawn in the page and take no palette. */
+	private static function birth_only(): array {
+		return [
+			self::text( 'date', __( 'Date (YYYY-MM-DD)', 'astroway' ) ),
+			self::text( 'time', __( 'Time (HH:MM)', 'astroway' ) ),
+			self::lat(),
+			self::lon(),
+			self::tz_wide(),
+		];
+	}
+
 	private static function kundli(): array {
 		return [
 			self::text( 'date', __( 'Date (YYYY-MM-DD)', 'astroway' ) ),
@@ -226,6 +237,39 @@ final class WidgetManifest {
 			'davison'              => [
 				'panel'  => __( 'Two births', 'astroway' ),
 				'fields' => array_merge( self::two_births( false ), [ self::lang() ] ),
+			],
+			'dasha'                => [
+				'panel'  => $birth,
+				'fields' => array_merge(
+					self::birth_only(),
+					[
+						self::select(
+							'timeline',
+							__( 'All nine mahadashas', 'astroway' ),
+							[
+								''  => __( 'Hide', 'astroway' ),
+								'1' => __( 'Show', 'astroway' ),
+							]
+						),
+						self::lang(),
+					]
+				),
+			],
+			'navamsa'              => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::lang() ] ),
+			],
+			'progressions'         => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::text( 'target_date', __( 'Progressed to (YYYY-MM-DD, blank for today)', 'astroway' ) ), self::lang() ] ),
+			],
+			'harmonics'            => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::text( 'harmonic', __( 'Harmonic (2 to 180, 5 by default)', 'astroway' ) ), self::lang() ] ),
+			],
+			'fixed-stars'          => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::lang() ] ),
 			],
 			'natal-chart'          => [
 				'panel'  => $birth,
@@ -475,6 +519,11 @@ final class WidgetManifest {
 		'tarot-spread'      => [ 'about' ],
 		'moon-phase'        => [ 'facts', 'meaning', 'phases', 'voc' ],
 		'kundli'            => [ 'facts', 'grahas', 'dasha', 'yogas' ],
+		'dasha'             => [ 'facts', 'antar', 'maha' ],
+		'navamsa'           => [ 'facts', 'grahas' ],
+		'progressions'      => [ 'facts', 'planets', 'aspects' ],
+		'harmonics'         => [ 'wheel', 'planets' ],
+		'fixed-stars'       => [ 'stars' ],
 		'numerology'        => [ 'numbers', 'meaning' ],
 		'daily-horoscope'   => [ 'signs', 'sky', 'spheres', 'energy', 'lucky', 'compatible' ],
 		'weekly-horoscope'  => [ 'signs', 'sky', 'spheres', 'energy', 'lucky', 'compatible' ],

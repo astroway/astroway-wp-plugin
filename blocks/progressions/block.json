@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/progressions",
+	"title": "Progressions (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"progressions",
+		"progressed",
+		"secondary",
+		"forecast",
+		"astroway"
+	],
+	"description": "The secondary progressed chart for today or a set date: progressed Sun, Moon and Ascendant, planets and aspects, drawn into the page. Needs an API key.",
+	"textdomain": "astroway",
+	"icon": "chart-line",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"target_date": {
+			"type": "string",
+			"default": ""
+		},
+		"hide_sections": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"house_system": {
+			"type": "string",
+			"default": ""
+		},
+		"zodiac_type": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa_id": {
+			"type": "string",
+			"default": ""
+		},
+		"target_time": {
+			"type": "string",
+			"default": ""
+		},
+		"target_tz_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"converse": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

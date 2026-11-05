@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-wave2\n"
-"POT-Creation-Date: 2026-10-09T13:35:39+00:00\n"
-"PO-Revision-Date: 2026-09-21 14:37+0300\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"POT-Creation-Date: 2026-10-21T22:19:26+00:00\n"
+"PO-Revision-Date: 2026-10-22 01:20+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: German <translations@astroway.info>\n"
 "Language: de_DE\n"
@@ -41,7 +41,7 @@ msgstr ""
 #: includes/builders/class-wpbakery.php:34 includes/class-admin-extras.php:71
 #: includes/class-admin-extras.php:129 includes/class-admin-extras.php:189
 #: includes/class-admin.php:37 includes/class-admin.php:38
-#: includes/class-blocks.php:195
+#: includes/class-blocks.php:201
 msgid "AstroWay"
 msgstr "AstroWay"
 
@@ -58,8 +58,9 @@ msgstr "Einstellungen"
 
 #: includes/builders/class-elementor.php:82
 msgid ""
-"AstroWay now has every widget in Elementor itself. The AstroWay for Elementor"
-" addon is no longer needed: deactivate it and your pages keep their widgets."
+"AstroWay now has every widget in Elementor itself. The AstroWay for "
+"Elementor addon is no longer needed: deactivate it and your pages keep their"
+" widgets."
 msgstr ""
 "AstroWay bringt jetzt jedes Widget selbst in Elementor mit. Das Add-on "
 "AstroWay for Elementor wird nicht mehr gebraucht: Deaktiviere es, und deine "
@@ -206,21 +207,21 @@ msgstr "Shortcodes"
 #: includes/class-admin.php:110
 msgid ""
 "This is a publishable key for browsers (pk_). The plugin calls the API from "
-"your server, so it needs a secret key that starts with \"aw_\". Both keys are"
-" on your dashboard at api.astroway.info/dashboard/keys."
+"your server, so it needs a secret key that starts with \"aw_\". Both keys "
+"are on your dashboard at api.astroway.info/dashboard/keys."
 msgstr ""
-"Dies ist ein veröffentlichbarer Schlüssel für Browser (pk_). Das Plugin ruft "
-"die API von deinem Server auf und braucht daher einen geheimen Schlüssel, der"
-" mit \"aw_\" beginnt. Beide Schlüssel findest du in deinem Dashboard unter "
-"api.astroway.info/dashboard/keys."
+"Dies ist ein veröffentlichbarer Schlüssel für Browser (pk_). Das Plugin ruft"
+" die API von deinem Server auf und braucht daher einen geheimen Schlüssel, "
+"der mit \"aw_\" beginnt. Beide Schlüssel findest du in deinem Dashboard "
+"unter api.astroway.info/dashboard/keys."
 
 #: includes/class-admin.php:151
 msgid ""
 "API key must start with \"aw_\" and contain only letters, digits, and "
 "underscores."
 msgstr ""
-"Der API-Schlüssel muss mit \"aw_\" beginnen und darf nur Buchstaben, Ziffern "
-"und Unterstriche enthalten."
+"Der API-Schlüssel muss mit \"aw_\" beginnen und darf nur Buchstaben, Ziffern"
+" und Unterstriche enthalten."
 
 #: includes/class-admin.php:234
 msgid "Get API Key"
@@ -287,7 +288,8 @@ msgstr "Wird dargestellt…"
 msgid "This shortcode could not be rendered here."
 msgstr "Dieser Shortcode konnte hier nicht angezeigt werden."
 
-#: includes/class-admin.php:335 includes/class-widget-manifest.php:334
+#: includes/class-admin.php:335 includes/class-widget-manifest.php:250
+#: includes/class-widget-manifest.php:378
 msgid "Hide"
 msgstr "Ausblenden"
 
@@ -315,8 +317,8 @@ msgstr "Gib mindestens 2 Zeichen ein."
 msgid "Pick a city to fill in lat / lon / tz"
 msgstr "Wähle eine Stadt aus, um lat / lon / tz auszufüllen"
 
-#. translators: 1: number of shortcodes matching the filter, 2: total number of
-#. shortcodes
+#. translators: 1: number of shortcodes matching the filter, 2: total number
+#. of shortcodes
 #: includes/class-admin.php:344
 #, php-format
 msgid "%1$d of %2$d"
@@ -372,7 +374,7 @@ msgstr ""
 msgid "City lookup is busy, try again in a moment."
 msgstr "Die Ortssuche ist gerade ausgelastet. Versuche es gleich noch einmal."
 
-#: includes/class-blocks.php:200
+#: includes/class-blocks.php:206
 msgid "AstroWay: full API"
 msgstr "AstroWay: vollständige API"
 
@@ -398,13 +400,13 @@ msgstr ""
 msgid ""
 "The connection took longer than five minutes. Start again from this page."
 msgstr ""
-"Die Verbindung hat länger als fünf Minuten gedauert. Beginne auf dieser Seite"
-" neu."
+"Die Verbindung hat länger als fünf Minuten gedauert. Beginne auf dieser "
+"Seite neu."
 
 #: includes/class-connect.php:175
 msgid ""
-"api.astroway.info issued this connection to another site, or this site has no"
-" key of its own yet. Start again from this page."
+"api.astroway.info issued this connection to another site, or this site has "
+"no key of its own yet. Start again from this page."
 msgstr ""
 "api.astroway.info hat diese Verbindung einer anderen Website ausgestellt, "
 "oder diese Website hat noch keinen eigenen Schlüssel. Beginne auf dieser "
@@ -420,8 +422,8 @@ msgstr ""
 
 #: includes/class-connect.php:179
 msgid ""
-"api.astroway.info did not accept the connection. Start again from this page, "
-"or paste a key instead."
+"api.astroway.info did not accept the connection. Start again from this page,"
+" or paste a key instead."
 msgstr ""
 "api.astroway.info hat die Verbindung nicht angenommen. Beginne auf dieser "
 "Seite neu oder füge stattdessen einen Schlüssel ein."
@@ -456,7 +458,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "Der Mond ist von %1$s bis %2$s im Leeren Gang."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:3666
+#: includes/class-digest.php:248 includes/class-render.php:3675
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "Gerade rückläufig: %s."
@@ -479,24 +481,24 @@ msgid ""
 "the answer, and the city name to app.astroway.info to find its coordinates. "
 "Names typed into the compatibility form are not sent anywhere. The AstroWay "
 "plugin does not store any of it on this site: the answer is not cached and "
-"the page is sent with no-store. Security or activity-log plugins on this site"
-" may record form submissions on their own."
+"the page is sent with no-store. Security or activity-log plugins on this "
+"site may record form submissions on their own."
 msgstr ""
-"Wenn Besucher ein Formular für Geburtshoroskop, Human Design, Kompatibilität,"
-" Mondzeichen, Aszendent, Solarhoroskop, Lunarhoroskop oder Davison-Horoskop "
-"ausfüllen, werden Datum, Uhrzeit und Ort zur Berechnung an api.astroway.info "
-"gesendet und der Ortsname an app.astroway.info, um seine Koordinaten zu "
-"finden. Namen im Kompatibilitätsformular werden nirgendwohin gesendet. Das "
-"AstroWay-Plugin speichert nichts davon auf dieser Website: Die Antwort wird "
-"nicht zwischengespeichert und die Seite mit no-store ausgeliefert. "
-"Sicherheits- oder Protokoll-Plugins auf dieser Website können "
+"Wenn Besucher ein Formular für Geburtshoroskop, Human Design, "
+"Kompatibilität, Mondzeichen, Aszendent, Solarhoroskop, Lunarhoroskop oder "
+"Davison-Horoskop ausfüllen, werden Datum, Uhrzeit und Ort zur Berechnung an "
+"api.astroway.info gesendet und der Ortsname an app.astroway.info, um seine "
+"Koordinaten zu finden. Namen im Kompatibilitätsformular werden nirgendwohin "
+"gesendet. Das AstroWay-Plugin speichert nichts davon auf dieser Website: Die"
+" Antwort wird nicht zwischengespeichert und die Seite mit no-store "
+"ausgeliefert. Sicherheits- oder Protokoll-Plugins auf dieser Website können "
 "Formularübermittlungen selbst aufzeichnen."
 
 #: includes/class-form.php:105
 msgid ""
 "When a visitor fills in the numerology form, the name and birth date they "
-"enter are sent from this site's server to api.astroway.info to calculate the "
-"numbers. The AstroWay plugin does not store them on this site."
+"enter are sent from this site's server to api.astroway.info to calculate the"
+" numbers. The AstroWay plugin does not store them on this site."
 msgstr ""
 "Wenn ein Besucher das Numerologie-Formular ausfüllt, werden der eingegebene "
 "Name und das Geburtsdatum vom Server dieser Website an api.astroway.info "
@@ -506,8 +508,8 @@ msgstr ""
 #: includes/class-form.php:106
 msgid ""
 "Tarot cards with pictures load those pictures in the visitor's browser from "
-"cdn.astroway.info, which therefore receives the visitor's IP address, as for "
-"any image from another site. When a spread asks for its reading, the drawn "
+"cdn.astroway.info, which therefore receives the visitor's IP address, as for"
+" any image from another site. When a spread asks for its reading, the drawn "
 "cards and the page's language are sent from this site's server to "
 "api.astroway.info; nothing about the visitor is sent with them, and the "
 "reading is kept on this site for a day so that the same spread is read once."
@@ -523,15 +525,15 @@ msgstr ""
 #: includes/class-form.php:119
 msgid ""
 "Visitors do not see this calculator: it runs on the site key, so that their "
-"charts never spend your credits, and a site connected to an AstroWay account "
-"has no site key. The shortcode with the birth data written in still works. "
+"charts never spend your credits, and a site connected to an AstroWay account"
+" has no site key. The shortcode with the birth data written in still works. "
 "Only administrators see this note."
 msgstr ""
 "Besucher sehen diesen Rechner nicht: Er läuft über den Website-Schlüssel, "
 "damit ihre Horoskope nie deine Credits verbrauchen, und eine mit einem "
-"AstroWay-Konto verbundene Website hat keinen Website-Schlüssel. Der Shortcode"
-" mit eingetragenen Geburtsdaten funktioniert weiterhin. Nur Administratoren "
-"sehen diesen Hinweis."
+"AstroWay-Konto verbundene Website hat keinen Website-Schlüssel. Der "
+"Shortcode mit eingetragenen Geburtsdaten funktioniert weiterhin. Nur "
+"Administratoren sehen diesen Hinweis."
 
 #: includes/class-form.php:184 includes/class-form.php:283
 #: includes/class-form.php:348
@@ -606,8 +608,8 @@ msgstr "Der Rechner ist gerade ausgelastet. Versuche es später erneut."
 
 #: includes/class-form.php:473
 msgid ""
-"This chart cannot be shown for this birth date yet. Try another year or come "
-"back later."
+"This chart cannot be shown for this birth date yet. Try another year or come"
+" back later."
 msgstr ""
 "Dieses Horoskop kann für dieses Geburtsdatum noch nicht angezeigt werden. "
 "Versuche ein anderes Jahr oder schau später wieder vorbei."
@@ -628,8 +630,8 @@ msgstr "Neu berechnen"
 
 #: includes/class-form.php:500
 msgid ""
-"The rising sign depends on the minute of birth; without the time it cannot be"
-" told."
+"The rising sign depends on the minute of birth; without the time it cannot "
+"be told."
 msgstr ""
 "Der Aszendent hängt von der Geburtsminute ab; ohne Uhrzeit lässt er sich "
 "nicht bestimmen."
@@ -803,8 +805,8 @@ msgstr ""
 #: includes/class-form.php:896
 #, php-format
 msgid ""
-"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides "
-"which one is yours."
+"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides"
+" which one is yours."
 msgstr ""
 "Der Mond wechselte an diesem Tag das Zeichen, von %1$s zu %2$s. Welches "
 "deines ist, entscheidet die Geburtszeit."
@@ -819,87 +821,89 @@ msgstr "%s (API)"
 #: includes/class-generated-registry.php:406
 #, php-format
 msgid ""
-"%s needs an API key: paste one in AstroWay, API Key. Only administrators see "
-"this note."
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
 msgstr ""
 "%s benötigt einen API-Schlüssel: Füge einen unter AstroWay, API-Schlüssel "
 "ein. Nur Administratoren sehen diesen Hinweis."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:426 includes/class-render.php:3402
+#: includes/class-generated-registry.php:426 includes/class-render.php:3411
 #, php-format
 msgid ""
-"%1$s is missing required attributes: %2$s. Only administrators see this note."
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
 msgstr ""
 "%1$s fehlen erforderliche Attribute: %2$s. Nur Administratoren sehen diesen "
 "Hinweis."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:440 includes/class-render.php:3453
+#: includes/class-generated-registry.php:440 includes/class-render.php:3462
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
 "%s konnte gerade nicht geladen werden. Nur Administratoren sehen diesen "
 "Hinweis."
 
-#: includes/class-plugin.php:523 includes/class-plugin.php:601
-#: includes/class-plugin.php:679
+#: includes/class-plugin.php:524 includes/class-plugin.php:602
+#: includes/class-plugin.php:680
 msgid "Hide for now"
 msgstr "Vorerst ausblenden"
 
-#: includes/class-plugin.php:542
+#: includes/class-plugin.php:543
 msgid "AstroWay is active"
 msgstr "AstroWay ist aktiv"
 
-#: includes/class-plugin.php:543
+#: includes/class-plugin.php:544
 msgid ""
-"Shortcodes work without an API key. Widgets your server renders into the page"
-" draw on your site's allowance of 300 requests an hour; widgets that fall "
-"back to a frame draw on each visitor's own 30. For higher limits and Pro "
-"features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the "
+"page draw on your site's allowance of 300 requests an hour; widgets that "
+"fall back to a frame draw on each visitor's own 30. For higher limits and "
+"Pro features, get a free API key."
 msgstr ""
-"Shortcodes funktionieren ohne API-Schlüssel. Widgets, die dein Server direkt "
-"in die Seite rendert, zählen gegen das Kontingent deiner Website von 300 "
+"Shortcodes funktionieren ohne API-Schlüssel. Widgets, die dein Server direkt"
+" in die Seite rendert, zählen gegen das Kontingent deiner Website von 300 "
 "Anfragen pro Stunde; Widgets im Frame zählen gegen die 30 Anfragen des "
 "jeweiligen Besuchers. Für höhere Limits und Pro-Funktionen hol dir einen "
 "kostenlosen API-Schlüssel."
 
-#: includes/class-plugin.php:547 includes/class-plugin.php:683
+#: includes/class-plugin.php:548 includes/class-plugin.php:684
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Kostenlosen API-Schlüssel anfordern"
 
-#: includes/class-plugin.php:550
+#: includes/class-plugin.php:551
 msgid "Open Settings"
 msgstr "Einstellungen öffnen"
 
-#: includes/class-plugin.php:619
+#: includes/class-plugin.php:620
 msgid "Enjoying AstroWay?"
 msgstr "Gefällt dir AstroWay?"
 
-#: includes/class-plugin.php:620
+#: includes/class-plugin.php:621
 msgid ""
-"A short review on wordpress.org helps other site owners discover the plugin, "
-"and tells us what to build next."
+"A short review on wordpress.org helps other site owners discover the plugin,"
+" and tells us what to build next."
 msgstr ""
-"Eine kurze Bewertung auf wordpress.org hilft anderen Website-Betreibern, das "
-"Plugin zu entdecken, und gibt uns Anregungen, was wir als Nächstes entwickeln"
-" sollten."
+"Eine kurze Bewertung auf wordpress.org hilft anderen Website-Betreibern, das"
+" Plugin zu entdecken, und gibt uns Anregungen, was wir als Nächstes "
+"entwickeln sollten."
 
-#: includes/class-plugin.php:624
+#: includes/class-plugin.php:625
 msgid "Leave a review"
 msgstr "Eine Bewertung hinterlassen"
 
-#: includes/class-plugin.php:627
+#: includes/class-plugin.php:628
 msgid "I already left one"
 msgstr "Bewertung schon abgegeben"
 
-#: includes/class-plugin.php:681
+#: includes/class-plugin.php:682
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr ""
-"Dieser Server hat sein Kontingent für anonyme AstroWay-Zugriffe aufgebraucht:"
+"Dieser Server hat sein Kontingent für anonyme AstroWay-Zugriffe "
+"aufgebraucht:"
 
-#: includes/class-plugin.php:682
+#: includes/class-plugin.php:683
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -907,23 +911,24 @@ msgid ""
 "server will fail. Add a free API key to lift the limit and get 10,000 "
 "credits/month plus 60 req/min."
 msgstr ""
-"Im kostenlosen Tarif darf diese Website 300 Anfragen pro Stunde stellen. Bis "
-"die Stunde vorbei ist, werden Widgets, die sonst in die Seite gerendert "
+"Im kostenlosen Tarif darf diese Website 300 Anfragen pro Stunde stellen. Bis"
+" die Stunde vorbei ist, werden Widgets, die sonst in die Seite gerendert "
 "würden, in einem vom Browser des Besuchers geladenen Frame angezeigt, und "
 "Vorschau- und Admin-Aufrufe von diesem Server schlagen fehl. Füge einen "
 "kostenlosen API-Schlüssel hinzu, um das Limit aufzuheben und 10.000 Credits "
 "pro Monat sowie 60 Anfragen pro Minute zu erhalten."
 
-#: includes/class-plugin.php:706
+#: includes/class-plugin.php:707
 msgid ""
 "AstroWay can no longer read the saved API key: the security keys in wp-"
 "config.php have changed since it was saved. Widgets keep working without it."
 msgstr ""
 "AstroWay kann den gespeicherten API-Schlüssel nicht mehr lesen: Die "
-"Sicherheitsschlüssel in der Datei wp-config.php haben sich seit dem Speichern"
-" geändert. Die Widgets funktionieren auch ohne diesen Schlüssel weiterhin."
+"Sicherheitsschlüssel in der Datei wp-config.php haben sich seit dem "
+"Speichern geändert. Die Widgets funktionieren auch ohne diesen Schlüssel "
+"weiterhin."
 
-#: includes/class-plugin.php:708
+#: includes/class-plugin.php:709
 msgid "Paste the key again"
 msgstr "Füge den Schlüssel erneut ein"
 
@@ -931,8 +936,8 @@ msgstr "Füge den Schlüssel erneut ein"
 #: includes/class-public-client.php:94
 #, php-format
 msgid ""
-"This widget reached the free limit for one visitor (%d requests an hour from "
-"one IP address), so visitors on that connection see nothing here until the "
+"This widget reached the free limit for one visitor (%d requests an hour from"
+" one IP address), so visitors on that connection see nothing here until the "
 "hour resets. Only administrators see this note."
 msgstr ""
 "Dieses Widget hat das kostenlose Limit für einen Besucher erreicht (%d "
@@ -945,9 +950,9 @@ msgid ""
 "This widget could not load: the frame reported an error. Check its "
 "attributes; visitors see nothing here. Only administrators see this note."
 msgstr ""
-"Dieses Widget konnte nicht laden: Der Frame meldete einen Fehler. Prüfe seine"
-" Attribute; Besucher sehen hier nichts. Nur Administratoren sehen diesen "
-"Hinweis."
+"Dieses Widget konnte nicht laden: Der Frame meldete einen Fehler. Prüfe "
+"seine Attribute; Besucher sehen hier nichts. Nur Administratoren sehen "
+"diesen Hinweis."
 
 #: includes/class-public-client.php:97
 msgid ""
@@ -963,11 +968,11 @@ msgstr ""
 msgid "Natal chart wheel"
 msgstr "Geburtshoroskop-Rad"
 
-#: includes/class-public-client.php:172 includes/class-widget-manifest.php:295
+#: includes/class-public-client.php:172 includes/class-widget-manifest.php:339
 msgid "Daily horoscope"
 msgstr "Tageshoroskop"
 
-#: includes/class-public-client.php:173 includes/class-widget-manifest.php:299
+#: includes/class-public-client.php:173 includes/class-widget-manifest.php:343
 msgid "Moon phase"
 msgstr "Mondphase"
 
@@ -1004,7 +1009,7 @@ msgstr "Synastrie-Kompatibilität"
 msgid "AstroWay widget"
 msgstr "AstroWay-Widget"
 
-#: includes/class-render.php:138
+#: includes/class-render.php:143
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
@@ -1013,7 +1018,7 @@ msgstr ""
 "kein Datum. Nur Administratoren sehen diesen Hinweis."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:145
+#: includes/class-render.php:150
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
@@ -1022,441 +1027,444 @@ msgstr ""
 "Das Widget %s konnte gerade nicht geladen werden. Nur Administratoren sehen "
 "diesen Hinweis."
 
-#: includes/class-render.php:221
+#: includes/class-render.php:226
 msgid "Rising sign"
 msgstr "Aszendent"
 
-#: includes/class-render.php:235
+#: includes/class-render.php:240
 msgid "Moon sign"
 msgstr "Mondzeichen"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
 #. translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine"
-#: includes/class-render.php:245 includes/class-render.php:4509
+#: includes/class-render.php:250 includes/class-render.php:4518
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:259 includes/class-render.php:2000
-#: includes/class-render.php:3585 includes/class-render.php:5525
+#: includes/class-render.php:264 includes/class-render.php:2007
+#: includes/class-render.php:3594 includes/class-render.php:5562
+#: includes/class-render.php:5806 includes/class-render.php:5884
+#: includes/class-render.php:5911
 msgid "Position"
 msgstr "Stellung"
 
 #. translators: %d = house number
-#: includes/class-render.php:262 includes/class-render.php:2000
-#: includes/class-render.php:4348 includes/class-render.php:5525
+#: includes/class-render.php:267 includes/class-render.php:2007
+#: includes/class-render.php:4357 includes/class-render.php:5562
+#: includes/class-render.php:5806
 msgid "House"
 msgstr "Haus"
 
 #. translators: %d = house number
-#: includes/class-render.php:262 includes/class-render.php:1515
-#: includes/class-render.php:1529 includes/class-render.php:1955
-#: includes/class-render.php:1968 includes/class-render.php:4340
+#: includes/class-render.php:267 includes/class-render.php:1522
+#: includes/class-render.php:1536 includes/class-render.php:1962
+#: includes/class-render.php:1975 includes/class-render.php:4349
 #, php-format
 msgid "House %d"
 msgstr "Haus %d"
 
-#: includes/class-render.php:270
+#: includes/class-render.php:275
 msgid "Chart ruler"
 msgstr "Aszendentenherrscher"
 
-#: includes/class-render.php:273
+#: includes/class-render.php:278
 msgid "Ruler position"
 msgstr "Herrscherposition"
 
-#: includes/class-render.php:279 includes/class-render.php:1976
+#: includes/class-render.php:284 includes/class-render.php:1983
 msgid "Midheaven"
 msgstr "Medium Coeli (MC)"
 
-#: includes/class-render.php:318 includes/class-render.php:402
+#: includes/class-render.php:323 includes/class-render.php:407
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:321
+#: includes/class-render.php:326
 #, php-format
 msgid "Human Design: %s"
 msgstr "Human Design: %s"
 
 #. translators: %s = date of the design moment
-#: includes/class-render.php:329
+#: includes/class-render.php:334
 #, php-format
 msgid "Design: %s"
 msgstr "Design: %s"
 
-#: includes/class-render.php:342 includes/class-render.php:647
+#: includes/class-render.php:347 includes/class-render.php:652
 #: includes/views/admin-shortcodes.php:117
 msgid "Type"
 msgstr "Typ"
 
-#: includes/class-render.php:349
+#: includes/class-render.php:354
 msgid "Strategy"
 msgstr "Strategie"
 
-#: includes/class-render.php:355 includes/class-render.php:657
+#: includes/class-render.php:360 includes/class-render.php:662
 msgid "Authority"
 msgstr "Autorität"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:364
+#: includes/class-render.php:369
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:370 includes/class-render.php:685
+#: includes/class-render.php:375 includes/class-render.php:690
 msgid "Profile"
 msgstr "Profil"
 
-#: includes/class-render.php:376 includes/class-render.php:667
+#: includes/class-render.php:381 includes/class-render.php:672
 msgid "Definition"
 msgstr "Definition"
 
-#: includes/class-render.php:389 includes/class-render.php:701
+#: includes/class-render.php:394 includes/class-render.php:706
 msgid "Incarnation cross"
 msgstr "Inkarnationskreuz"
 
-#: includes/class-render.php:405
+#: includes/class-render.php:410
 msgid "Bodygraph"
 msgstr "Bodygraph"
 
-#: includes/class-render.php:410
+#: includes/class-render.php:415
 msgid "Centres"
 msgstr "Zentren"
 
-#: includes/class-render.php:415 includes/class-render.php:831
+#: includes/class-render.php:420 includes/class-render.php:836
 msgid "Channels"
 msgstr "Kanäle"
 
-#. translators: abbreviated colour, tone and base of a Human Design activation,
-#. e.g. C5 T6 B4
-#: includes/class-render.php:490
+#. translators: abbreviated colour, tone and base of a Human Design
+#. activation, e.g. C5 T6 B4
+#: includes/class-render.php:495
 #, php-format
 msgid "C%1$d T%2$d B%3$d"
 msgstr "F%1$d T%2$d B%3$d"
 
 #. translators: colour, tone and base of a Human Design activation
-#: includes/class-render.php:493
+#: includes/class-render.php:498
 #, php-format
 msgid "colour %1$d, tone %2$d, base %3$d"
 msgstr "Farbe %1$d, Ton %2$d, Basis %3$d"
 
 #. translators: 1: Human Design gate number, 2: line number within the gate
-#: includes/class-render.php:499
+#: includes/class-render.php:504
 #, php-format
 msgid "gate %1$d, line %2$d"
 msgstr "Tor %1$d, Linie %2$d"
 
-#: includes/class-render.php:510
+#: includes/class-render.php:515
 msgid "No centre is defined."
 msgstr "Kein Zentrum ist definiert."
 
 #. translators: %s = list of centre names
-#: includes/class-render.php:512
+#: includes/class-render.php:517
 #, php-format
 msgid "Defined centres: %s."
 msgstr "Definierte Zentren: %s."
 
 #. translators: %s = list of channels such as 13-33
-#: includes/class-render.php:515
+#: includes/class-render.php:520
 #, php-format
 msgid "Channels: %s."
 msgstr "Kanäle: %s."
 
-#: includes/class-render.php:534 includes/class-render.php:792
+#: includes/class-render.php:539 includes/class-render.php:797
 msgid "Design"
 msgstr "Design"
 
-#: includes/class-render.php:534 includes/class-render.php:791
-#: includes/class-render.php:5639
+#: includes/class-render.php:539 includes/class-render.php:796
+#: includes/class-render.php:5964
 msgid "Personality"
 msgstr "Persönlichkeit"
 
-#: includes/class-render.php:540
+#: includes/class-render.php:545
 msgid "Design (unconscious)"
 msgstr "Design (unbewusst)"
 
-#: includes/class-render.php:544
+#: includes/class-render.php:549
 msgid "Personality (conscious)"
 msgstr "Persönlichkeit (bewusst)"
 
-#: includes/class-render.php:548
+#: includes/class-render.php:553
 msgid "Both"
 msgstr "Beide"
 
-#: includes/class-render.php:558
+#: includes/class-render.php:563
 msgctxt "planet"
 msgid "Earth"
 msgstr "Erde"
 
-#: includes/class-render.php:571 includes/class-render.php:572
+#: includes/class-render.php:576 includes/class-render.php:577
 msgid "Satisfaction"
 msgstr "Zufriedenheit"
 
-#: includes/class-render.php:573
+#: includes/class-render.php:578
 msgid "Success"
 msgstr "Erfolg"
 
-#: includes/class-render.php:574
+#: includes/class-render.php:579
 msgid "Peace"
 msgstr "Frieden"
 
-#: includes/class-render.php:575
+#: includes/class-render.php:580
 msgid "Surprise"
 msgstr "Überraschung"
 
 #. translators: %s = Human Design signature, e.g. Success
-#: includes/class-render.php:581
+#: includes/class-render.php:586
 #, php-format
 msgid "Signature: %s"
 msgstr "Signatur: %s"
 
 #. translators: %s = Human Design not-self theme, e.g. Bitterness
-#: includes/class-render.php:588
+#: includes/class-render.php:593
 #, php-format
 msgid "Not-self: %s"
 msgstr "Nicht-Selbst: %s"
 
 #. translators: %d = line number, 1 to 6
-#: includes/class-render.php:680
+#: includes/class-render.php:685
 #, php-format
 msgid "Line %d"
 msgstr "Linie %d"
 
 #. translators: %d = gate number, 1 to 64
-#: includes/class-render.php:696
+#: includes/class-render.php:701
 #, php-format
 msgid "Gate %d"
 msgstr "Tor %d"
 
-#: includes/class-render.php:710
+#: includes/class-render.php:715
 msgid "What the chart says"
 msgstr "Was das Chart sagt"
 
-#: includes/class-render.php:718
+#: includes/class-render.php:723
 msgid "Motor"
 msgstr "Motor"
 
-#: includes/class-render.php:719
+#: includes/class-render.php:724
 msgid "Awareness"
 msgstr "Bewusstsein"
 
-#: includes/class-render.php:720
+#: includes/class-render.php:725
 msgid "Pressure"
 msgstr "Druck"
 
-#: includes/class-render.php:736 includes/class-render.php:761
+#: includes/class-render.php:741 includes/class-render.php:766
 msgid "Defined"
 msgstr "Definiert"
 
-#: includes/class-render.php:739 includes/class-render.php:761
+#: includes/class-render.php:744 includes/class-render.php:766
 msgid "Open"
 msgstr "Offen"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:753
+#: includes/class-render.php:758
 #, php-format
 msgid "Gates: %s"
 msgstr "Tore: %s"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:757
+#: includes/class-render.php:762
 #, php-format
 msgid "Active gates: %s"
 msgstr "Aktive Tore: %s"
 
-#: includes/class-render.php:785
+#: includes/class-render.php:790
 msgid "Individual circuitry"
 msgstr "Individueller Schaltkreis"
 
-#: includes/class-render.php:786
+#: includes/class-render.php:791
 msgid "Tribal circuitry"
 msgstr "Stammes-Schaltkreis"
 
-#: includes/class-render.php:787
+#: includes/class-render.php:792
 msgid "Collective circuitry"
 msgstr "Kollektiver Schaltkreis"
 
-#: includes/class-render.php:788
+#: includes/class-render.php:793
 msgid "Integration channels"
 msgstr "Integrationskanäle"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:821
+#: includes/class-render.php:826
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d-%2$d, %3$s bis %4$s"
 
-#: includes/class-render.php:841
+#: includes/class-render.php:846
 msgid "Generator"
 msgstr "Generator"
 
-#: includes/class-render.php:842
+#: includes/class-render.php:847
 msgid "Manifesting Generator"
 msgstr "Manifestierender Generator"
 
-#: includes/class-render.php:843
+#: includes/class-render.php:848
 msgid "Manifestor"
 msgstr "Manifestor"
 
-#: includes/class-render.php:844
+#: includes/class-render.php:849
 msgid "Projector"
 msgstr "Projector"
 
-#: includes/class-render.php:845
+#: includes/class-render.php:850
 msgid "Reflector"
 msgstr "Reflektor"
 
-#: includes/class-render.php:852
+#: includes/class-render.php:857
 msgid "Wait to respond"
 msgstr "Warten, um zu reagieren"
 
-#: includes/class-render.php:853
+#: includes/class-render.php:858
 msgid "Wait for the invitation"
 msgstr "Auf die Einladung warten"
 
-#: includes/class-render.php:854 includes/class-render.php:855
+#: includes/class-render.php:859 includes/class-render.php:860
 msgid "Inform before acting"
 msgstr "Informieren, bevor man handelt"
 
-#: includes/class-render.php:856
+#: includes/class-render.php:861
 msgid "Wait a lunar cycle"
 msgstr "Einen Mondzyklus abwarten"
 
-#: includes/class-render.php:857
+#: includes/class-render.php:862
 msgid "Respond, then inform"
 msgstr "Reagieren, dann informieren"
 
-#: includes/class-render.php:864
+#: includes/class-render.php:869
 msgid "Emotional (Solar Plexus)"
 msgstr "Emotional (Solarplexus)"
 
-#: includes/class-render.php:865 includes/class-render.php:920
+#: includes/class-render.php:870 includes/class-render.php:925
 msgid "Sacral"
 msgstr "Sakral"
 
-#: includes/class-render.php:866
+#: includes/class-render.php:871
 msgid "Splenic"
 msgstr "Milz"
 
-#: includes/class-render.php:867
+#: includes/class-render.php:872
 msgid "Ego (Heart)"
 msgstr "Ego (Herz)"
 
-#: includes/class-render.php:868
+#: includes/class-render.php:873
 msgid "Ego manifested"
 msgstr "Ego manifestiert"
 
-#: includes/class-render.php:869
+#: includes/class-render.php:874
 msgid "Ego projected"
 msgstr "Ego projiziert"
 
-#: includes/class-render.php:870
+#: includes/class-render.php:875
 msgid "Self-projected"
 msgstr "Selbstprojiziert"
 
-#: includes/class-render.php:871 includes/class-render.php:872
+#: includes/class-render.php:876 includes/class-render.php:877
 msgid "Mental (environment)"
 msgstr "Mental (Umgebung)"
 
-#: includes/class-render.php:873 includes/class-render.php:874
-#: includes/class-render.php:875
+#: includes/class-render.php:878 includes/class-render.php:879
+#: includes/class-render.php:880
 msgid "Lunar cycle"
 msgstr "Mondzyklus"
 
-#: includes/class-render.php:882
+#: includes/class-render.php:887
 msgid "Single definition"
 msgstr "Einfache Definition"
 
-#: includes/class-render.php:883
+#: includes/class-render.php:888
 msgid "Split definition"
 msgstr "Gespaltene Definition"
 
-#: includes/class-render.php:884
+#: includes/class-render.php:889
 msgid "Triple split definition"
 msgstr "Dreifach gespaltene Definition"
 
-#: includes/class-render.php:885
+#: includes/class-render.php:890
 msgid "Quadruple split definition"
 msgstr "Vierfach gespaltene Definition"
 
-#: includes/class-render.php:886
+#: includes/class-render.php:891
 msgid "No definition"
 msgstr "Keine Definition"
 
-#: includes/class-render.php:893
+#: includes/class-render.php:898
 msgid "Frustration"
 msgstr "Frustration"
 
-#: includes/class-render.php:894
+#: includes/class-render.php:899
 msgid "Bitterness"
 msgstr "Bitterkeit"
 
-#: includes/class-render.php:895
+#: includes/class-render.php:900
 msgid "Anger"
 msgstr "Wut"
 
-#: includes/class-render.php:896
+#: includes/class-render.php:901
 msgid "Disappointment"
 msgstr "Enttäuschung"
 
-#: includes/class-render.php:903
+#: includes/class-render.php:908
 msgid "Right Angle"
 msgstr "Rechtswinklig"
 
-#: includes/class-render.php:904
+#: includes/class-render.php:909
 msgid "Left Angle"
 msgstr "Linkswinklig"
 
-#: includes/class-render.php:905
+#: includes/class-render.php:910
 msgid "Juxtaposition"
 msgstr "Juxtaposition"
 
-#: includes/class-render.php:913
+#: includes/class-render.php:918
 msgid "Head"
 msgstr "Kopf"
 
-#: includes/class-render.php:914
+#: includes/class-render.php:919
 msgid "Ajna"
 msgstr "Ajna"
 
-#: includes/class-render.php:915
+#: includes/class-render.php:920
 msgid "Throat"
 msgstr "Kehle"
 
-#: includes/class-render.php:916
+#: includes/class-render.php:921
 msgid "G (identity)"
 msgstr "G (Identität)"
 
-#: includes/class-render.php:917
+#: includes/class-render.php:922
 msgid "Heart (ego)"
 msgstr "Herz (Ego)"
 
-#: includes/class-render.php:918
+#: includes/class-render.php:923
 msgid "Solar Plexus"
 msgstr "Solarplexus"
 
-#: includes/class-render.php:919
+#: includes/class-render.php:924
 msgid "Spleen"
 msgstr "Milz"
 
-#: includes/class-render.php:921
+#: includes/class-render.php:926
 msgid "Root"
 msgstr "Wurzel"
 
-#: includes/class-render.php:968 includes/class-render.php:995
-#: includes/class-render.php:1026
+#: includes/class-render.php:973 includes/class-render.php:1000
+#: includes/class-render.php:1031
 msgid "Natal chart"
 msgstr "Geburtshoroskop"
 
 #. translators: %s = person's name
-#: includes/class-render.php:972 includes/class-render.php:998
+#: includes/class-render.php:977 includes/class-render.php:1003
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Geburtshoroskop: %s"
 
-#: includes/class-render.php:1023
+#: includes/class-render.php:1028
 msgid ""
 "Birth time unknown: the chart is drawn for noon, without houses, the "
 "Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from "
@@ -1465,271 +1473,272 @@ msgstr ""
 "Geburtszeit unbekannt: Das Horoskop ist für 12 Uhr berechnet, ohne Häuser, "
 "Aszendent und Mondaspekte, und der Mond kann bis zu 7 Grad abweichen."
 
-#: includes/class-render.php:1029 includes/class-render.php:1685
-#: includes/class-render.php:3992
+#: includes/class-render.php:1034 includes/class-render.php:1692
+#: includes/class-render.php:4001 includes/class-render.php:5908
 msgid "Wheel"
 msgstr "Rad"
 
-#: includes/class-render.php:1034 includes/class-render.php:1689
+#: includes/class-render.php:1039 includes/class-render.php:1696
 msgid "Grid"
 msgstr "Raster"
 
-#: includes/class-render.php:1036 includes/class-render.php:1690
+#: includes/class-render.php:1041 includes/class-render.php:1697
 msgid "Aspects between planets"
 msgstr "Aspekte zwischen den Planeten"
 
-#: includes/class-render.php:1039 includes/class-render.php:1693
-#: includes/class-render.php:1999
+#: includes/class-render.php:1044 includes/class-render.php:1700
+#: includes/class-render.php:2006
 msgid "Placements"
 msgstr "Stellungen"
 
-#: includes/class-render.php:1044 includes/class-render.php:1697
-#: includes/class-render.php:3997
+#: includes/class-render.php:1049 includes/class-render.php:1704
+#: includes/class-render.php:4006
 msgid "Aspects"
 msgstr "Aspekte"
 
-#: includes/class-render.php:1050 includes/class-widget-manifest.php:237
+#: includes/class-render.php:1055 includes/class-widget-manifest.php:281
 msgid "Transits"
 msgstr "Transite"
 
-#: includes/class-render.php:1058 includes/class-render.php:2105
+#: includes/class-render.php:1063 includes/class-render.php:2112
 msgid "Elements by mode"
 msgstr "Elemente nach Qualität"
 
-#: includes/class-render.php:1187
+#: includes/class-render.php:1192
 msgid "What it means"
 msgstr "Was es bedeutet"
 
-#: includes/class-render.php:1217
+#: includes/class-render.php:1222
 msgid "time unknown"
 msgstr "Uhrzeit unbekannt"
 
-#: includes/class-render.php:1232
+#: includes/class-render.php:1237
 msgid "Part of Fortune"
 msgstr "Glückspunkt"
 
-#: includes/class-render.php:1233
+#: includes/class-render.php:1238
 msgid "Vertex"
 msgstr "Vertex"
 
-#: includes/class-render.php:1234 includes/class-render.php:2268
+#: includes/class-render.php:1239 includes/class-render.php:2275
 msgid "South Node"
 msgstr "Südlicher Mondknoten"
 
-#: includes/class-render.php:1259 includes/class-render.php:2011
-#: includes/class-render.php:4935 includes/class-tarot.php:264
+#: includes/class-render.php:1264 includes/class-render.php:2018
+#: includes/class-render.php:4944 includes/class-tarot.php:264
 msgid "Fire"
 msgstr "Feuer"
 
-#: includes/class-render.php:1260 includes/class-render.php:2015
-#: includes/class-render.php:4936 includes/class-tarot.php:267
+#: includes/class-render.php:1265 includes/class-render.php:2022
+#: includes/class-render.php:4945 includes/class-tarot.php:267
 msgid "Earth"
 msgstr "Erde"
 
-#: includes/class-render.php:1261 includes/class-render.php:2019
+#: includes/class-render.php:1266 includes/class-render.php:2026
 #: includes/class-tarot.php:266
 msgid "Air"
 msgstr "Luft"
 
-#: includes/class-render.php:1262 includes/class-render.php:2023
-#: includes/class-render.php:4938 includes/class-tarot.php:265
+#: includes/class-render.php:1267 includes/class-render.php:2030
+#: includes/class-render.php:4947 includes/class-tarot.php:265
 msgid "Water"
 msgstr "Wasser"
 
-#: includes/class-render.php:1265 includes/class-render.php:2029
+#: includes/class-render.php:1270 includes/class-render.php:2036
 msgid "Cardinal"
 msgstr "Kardinal"
 
-#: includes/class-render.php:1266 includes/class-render.php:2033
+#: includes/class-render.php:1271 includes/class-render.php:2040
 msgid "Fixed"
 msgstr "Fix"
 
-#: includes/class-render.php:1267 includes/class-render.php:2037
+#: includes/class-render.php:1272 includes/class-render.php:2044
 msgid "Mutable"
 msgstr "Veränderlich"
 
 #. translators: %s = element or elements, e.g. "Earth" or "Earth, Water"
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:1273 includes/class-render.php:4782
+#: includes/class-render.php:1278 includes/class-render.php:4791
 #, php-format
 msgid "Element: %s"
 msgstr "Element: %s"
 
 #. translators: %s = mode or modes, e.g. "Fixed"
-#: includes/class-render.php:1277
+#: includes/class-render.php:1282
 #, php-format
 msgid "Mode: %s"
 msgstr "Qualität: %s"
 
-#: includes/class-render.php:1280
+#: includes/class-render.php:1285
 msgid "Day chart"
 msgstr "Taghoroskop"
 
-#: includes/class-render.php:1282
+#: includes/class-render.php:1287
 msgid "Night chart"
 msgstr "Nachthoroskop"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1289 includes/class-render.php:4243
+#: includes/class-render.php:1294 includes/class-render.php:4252
 #, php-format
 msgid "Harmonious %d"
 msgstr "Harmonisch: %d"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1291 includes/class-render.php:4245
+#: includes/class-render.php:1296 includes/class-render.php:4254
 #, php-format
 msgid "Challenging %d"
 msgstr "Spannungsvoll: %d"
 
-#: includes/class-render.php:1303 includes/class-render.php:3484
-#: includes/class-render.php:3562 includes/class-render.php:3636
-#: includes/class-render.php:5464
+#: includes/class-render.php:1308 includes/class-render.php:3493
+#: includes/class-render.php:3571 includes/class-render.php:3645
+#: includes/class-render.php:5501 includes/class-render.php:5826
 msgid "Retrograde"
 msgstr "Rückläufig"
 
-#: includes/class-render.php:1325
+#: includes/class-render.php:1330
 msgid "Grand cross"
 msgstr "Großes Kreuz"
 
-#: includes/class-render.php:1326
+#: includes/class-render.php:1331
 msgid "T-square"
 msgstr "T-Quadrat"
 
-#: includes/class-render.php:1327
+#: includes/class-render.php:1332
 msgid "Grand trine"
 msgstr "Großes Trigon"
 
-#: includes/class-render.php:1328
+#: includes/class-render.php:1333
 msgid "Yod"
 msgstr "Yod"
 
-#: includes/class-render.php:1329
+#: includes/class-render.php:1334
 msgid "Stellium"
 msgstr "Stellium"
 
-#: includes/class-render.php:1332
+#: includes/class-render.php:1337
 msgid "Four planets in two oppositions, each square to the next."
 msgstr "Vier Planeten in zwei Oppositionen, jeder im Quadrat zum nächsten."
 
-#: includes/class-render.php:1333
+#: includes/class-render.php:1338
 msgid "Two planets in opposition, both square to a third, the apex."
 msgstr ""
-"Zwei Planeten in Opposition, beide im Quadrat zu einem dritten, dem Scheitel."
+"Zwei Planeten in Opposition, beide im Quadrat zu einem dritten, dem "
+"Scheitel."
 
-#: includes/class-render.php:1334
+#: includes/class-render.php:1339
 msgid "Three planets a trine apart, closing a triangle."
 msgstr "Drei Planeten je ein Trigon voneinander, die ein Dreieck schließen."
 
-#: includes/class-render.php:1335
+#: includes/class-render.php:1340
 msgid "Two planets in sextile, both quincunx to a third, the apex."
 msgstr ""
 "Zwei Planeten im Sextil, beide im Quinkunx zu einem dritten, dem Scheitel."
 
 #. translators: %s = planet name, the apex of a chart pattern
-#: includes/class-render.php:1345
+#: includes/class-render.php:1350
 #, php-format
 msgid "%s (apex)"
 msgstr "%s (Scheitel)"
 
 #. translators: 1: number of planets, 2: sign name
-#: includes/class-render.php:1351
+#: includes/class-render.php:1356
 #, php-format
 msgid "%1$d planets in %2$s."
 msgstr "Planeten im Zeichen %2$s: %1$d."
 
 #. translators: 1: number of planets, 2: house number
-#: includes/class-render.php:1353
+#: includes/class-render.php:1358
 #, php-format
 msgid "%1$d planets in house %2$d."
 msgstr "Planeten im %2$d. Haus: %1$d."
 
-#: includes/class-render.php:1369
+#: includes/class-render.php:1374
 msgid "Chart patterns"
 msgstr "Aspektfiguren"
 
-#: includes/class-render.php:1386 includes/class-render.php:2255
+#: includes/class-render.php:1391 includes/class-render.php:2262
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr "Sonne"
 
-#: includes/class-render.php:1387 includes/class-render.php:2256
+#: includes/class-render.php:1392 includes/class-render.php:2263
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr "Mond"
 
-#: includes/class-render.php:1403 includes/class-render.php:1975
+#: includes/class-render.php:1408 includes/class-render.php:1982
 msgid "Ascendant"
 msgstr "Aszendent"
 
-#: includes/class-render.php:1435 includes/class-render.php:4405
+#: includes/class-render.php:1440 includes/class-render.php:4414
 msgid "Separating"
 msgstr "Ablaufend"
 
-#: includes/class-render.php:1435 includes/class-render.php:4405
+#: includes/class-render.php:1440 includes/class-render.php:4414
 msgid "Applying"
 msgstr "Zulaufend"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:1438 includes/class-render.php:1886
-#: includes/class-render.php:2126 includes/class-render.php:4213
+#: includes/class-render.php:1443 includes/class-render.php:1893
+#: includes/class-render.php:2133 includes/class-render.php:4222
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:1549
+#: includes/class-render.php:1556
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr ""
 "Geburtshoroskop: Zeichen, Häuser, Planeten und die Aspekte zwischen ihnen."
 
-#: includes/class-render.php:1551 includes/class-render.php:1917
-#: includes/class-render.php:4169
+#: includes/class-render.php:1558 includes/class-render.php:1924
+#: includes/class-render.php:4178
 msgid "ASC"
 msgstr "ASC"
 
-#: includes/class-render.php:1552 includes/class-render.php:1918
-#: includes/class-render.php:4170
+#: includes/class-render.php:1559 includes/class-render.php:1925
+#: includes/class-render.php:4179
 msgid "IC"
 msgstr "IC"
 
-#: includes/class-render.php:1553 includes/class-render.php:1919
-#: includes/class-render.php:4171
+#: includes/class-render.php:1560 includes/class-render.php:1926
+#: includes/class-render.php:4180
 msgid "DSC"
 msgstr "DSC"
 
-#: includes/class-render.php:1554 includes/class-render.php:1920
-#: includes/class-render.php:4172
+#: includes/class-render.php:1561 includes/class-render.php:1927
+#: includes/class-render.php:4181
 msgid "MC"
 msgstr "MC"
 
-#: includes/class-render.php:1581
+#: includes/class-render.php:1588
 msgid ""
 "The Solar Return found for this year falls in another year, so the card is "
 "left out. Only administrators see this note."
 msgstr ""
-"Das für dieses Jahr gefundene Solarhoroskop fällt in ein anderes Jahr, daher "
-"wird die Karte weggelassen. Nur Administratoren sehen diesen Hinweis."
+"Das für dieses Jahr gefundene Solarhoroskop fällt in ein anderes Jahr, daher"
+" wird die Karte weggelassen. Nur Administratoren sehen diesen Hinweis."
 
-#: includes/class-render.php:1586
+#: includes/class-render.php:1593
 msgid ""
 "The Lunar Return found falls before the date it was searched from, so the "
 "card is left out. Only administrators see this note."
 msgstr ""
-"Das gefundene Lunarhoroskop fällt vor das Datum, ab dem gesucht wurde, daher "
-"wird die Karte weggelassen. Nur Administratoren sehen diesen Hinweis."
+"Das gefundene Lunarhoroskop fällt vor das Datum, ab dem gesucht wurde, daher"
+" wird die Karte weggelassen. Nur Administratoren sehen diesen Hinweis."
 
 #. translators: %d = year
-#: includes/class-render.php:1597
+#: includes/class-render.php:1604
 #, php-format
 msgid "Solar Return %d"
 msgstr "Solarhoroskop %d"
 
 #. translators: 1: year, 2: person's name
-#: includes/class-render.php:1599
+#: includes/class-render.php:1606
 #, php-format
 msgid "Solar Return %1$d: %2$s"
 msgstr "Solarhoroskop %1$d: %2$s"
 
-#: includes/class-render.php:1600
+#: includes/class-render.php:1607
 msgid ""
 "Solar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Sun returns to its birth position."
@@ -1737,18 +1746,18 @@ msgstr ""
 "Solarhoroskop: Zeichen, Häuser, Planeten und die Aspekte zwischen ihnen im "
 "Moment, in dem die Sonne an ihre Geburtsposition zurückkehrt."
 
-#: includes/class-render.php:1602
+#: includes/class-render.php:1609
 #: includes/views/partials/shortcode-cards.php:300
 msgid "Lunar Return"
 msgstr "Lunarhoroskop"
 
 #. translators: %s = person's name
-#: includes/class-render.php:1604
+#: includes/class-render.php:1611
 #, php-format
 msgid "Lunar Return: %s"
 msgstr "Lunarhoroskop: %s"
 
-#: includes/class-render.php:1605
+#: includes/class-render.php:1612
 msgid ""
 "Lunar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Moon returns to its birth position."
@@ -1756,224 +1765,230 @@ msgstr ""
 "Lunarhoroskop: Zeichen, Häuser, Planeten und die Aspekte zwischen ihnen im "
 "Moment, in dem der Mond an seine Geburtsposition zurückkehrt."
 
-#: includes/class-render.php:1641
+#: includes/class-render.php:1648
 msgid ""
-"The Davison chart for these two places is not drawn yet: the midpoint the api"
-" returned is on the wrong side of the 180th meridian. Only administrators see"
-" this note."
+"The Davison chart for these two places is not drawn yet: the midpoint the "
+"api returned is on the wrong side of the 180th meridian. Only administrators"
+" see this note."
 msgstr ""
 "Das Davison-Horoskop für diese beiden Orte wird noch nicht gezeichnet: Der "
 "von der API gelieferte Mittelpunkt liegt auf der falschen Seite des 180. "
 "Meridians. Nur Administratoren sehen diesen Hinweis."
 
-#: includes/class-render.php:1650
+#: includes/class-render.php:1657
 msgid "Davison chart"
 msgstr "Davison-Horoskop"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:1653
+#: includes/class-render.php:1660
 #, php-format
 msgid "Davison chart: %1$s and %2$s"
 msgstr "Davison-Horoskop: %1$s und %2$s"
 
-#: includes/class-render.php:1665
+#: includes/class-render.php:1672
 msgid "Midpoint"
 msgstr "Mittelpunkt"
 
-#: includes/class-render.php:1674
+#: includes/class-render.php:1681
 msgid ""
-"Davison chart: one chart cast for the midpoint between two births in time and"
-" place."
+"Davison chart: one chart cast for the midpoint between two births in time "
+"and place."
 msgstr ""
-"Davison-Horoskop: ein Horoskop für den zeitlichen und räumlichen Mittelpunkt "
-"zwischen zwei Geburten."
+"Davison-Horoskop: ein Horoskop für den zeitlichen und räumlichen Mittelpunkt"
+" zwischen zwei Geburten."
 
-#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'"
-#: includes/class-render.php:1865 includes/class-render.php:4138
+#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo
+#. 24°22'"
+#: includes/class-render.php:1872 includes/class-render.php:4147
 #, php-format
 msgid "%1$s (%2$s), %3$s"
 msgstr "%1$s (%2$s), %3$s"
 
-#: includes/class-render.php:1887 includes/class-render.php:1911
+#: includes/class-render.php:1894 includes/class-render.php:1918
 msgid "transit"
 msgstr "Transit"
 
-#: includes/class-render.php:1889 includes/class-render.php:1910
+#: includes/class-render.php:1896 includes/class-render.php:1917
 msgid "natal"
 msgstr "Radix"
 
 #. translators: %s = a date
-#: includes/class-render.php:1895
+#: includes/class-render.php:1902
 #, php-format
 msgid "sky on %s"
 msgstr "Himmel am %s"
 
 #. translators: 1: a date, 2: an orb in degrees
-#: includes/class-render.php:1899
+#: includes/class-render.php:1906
 #, php-format
 msgid ""
 "The planets at noon UTC on %1$s against the birth chart, aspects within "
 "%2$s°. The transiting Moon moves too fast to list."
 msgstr ""
-"Die Planeten um 12 Uhr UTC am %1$s zum Geburtshoroskop, Aspekte mit Orbis bis"
-" %2$s°. Der Transit-Mond bewegt sich zu schnell für die Liste."
+"Die Planeten um 12 Uhr UTC am %1$s zum Geburtshoroskop, Aspekte mit Orbis "
+"bis %2$s°. Der Transit-Mond bewegt sich zu schnell für die Liste."
 
 #. translators: %s = a date
-#: includes/class-render.php:1915
+#: includes/class-render.php:1922
 #, php-format
-msgid "Transit wheel: the birth chart inside, the sky on %s on the outer ring."
+msgid ""
+"Transit wheel: the birth chart inside, the sky on %s on the outer ring."
 msgstr ""
 "Transit-Rad: das Geburtshoroskop innen, der Himmel am %s auf dem äußeren "
 "Ring."
 
-#: includes/class-render.php:1928
+#: includes/class-render.php:1935
 msgid "Inner ring: birth chart"
 msgstr "Innerer Ring: Geburtshoroskop"
 
 #. translators: %s = "sky on <date>"
 #. translators: %s = person's name, or "Second chart"
-#: includes/class-render.php:1933 includes/class-render.php:4187
+#: includes/class-render.php:1940 includes/class-render.php:4196
 #, php-format
 msgid "Outer ring: %s"
 msgstr "Äußerer Ring: %s"
 
-#: includes/class-render.php:1937
+#: includes/class-render.php:1944
 msgid "No close transits on this day."
 msgstr "An diesem Tag gibt es keine engen Transite."
 
 #. translators: %d = house number
-#: includes/class-render.php:1956
+#: includes/class-render.php:1963
 msgid "retrograde"
 msgstr "rückläufig"
 
-#: includes/class-render.php:2000
+#: includes/class-render.php:2007
 msgid "Body"
 msgstr "Himmelskörper"
 
-#: includes/class-render.php:2000 includes/class-render.php:3585
-#: includes/class-render.php:5525
+#: includes/class-render.php:2007 includes/class-render.php:3594
+#: includes/class-render.php:5562 includes/class-render.php:5806
+#: includes/class-render.php:5884 includes/class-render.php:5911
 msgid "Motion"
 msgstr "Bewegung"
 
-#: includes/class-render.php:2107
+#: includes/class-render.php:2114
 msgid "Total"
 msgstr "Summe"
 
-#: includes/class-render.php:2136
+#: includes/class-render.php:2143
 msgid "Major aspects"
 msgstr "Hauptaspekte"
 
-#: includes/class-render.php:2241 includes/class-render.php:2952
+#: includes/class-render.php:2248 includes/class-render.php:2961
 msgid "New Moon"
 msgstr "Neumond"
 
-#: includes/class-render.php:2242
+#: includes/class-render.php:2249
 msgid "Waxing Crescent"
 msgstr "Zunehmende Sichel"
 
-#: includes/class-render.php:2243 includes/class-render.php:2953
+#: includes/class-render.php:2250 includes/class-render.php:2962
 msgid "First Quarter"
 msgstr "Erstes Viertel"
 
-#: includes/class-render.php:2244
+#: includes/class-render.php:2251
 msgid "Waxing Gibbous"
 msgstr "Zunehmender Mond"
 
-#: includes/class-render.php:2245 includes/class-render.php:2954
+#: includes/class-render.php:2252 includes/class-render.php:2963
 msgid "Full Moon"
 msgstr "Vollmond"
 
-#: includes/class-render.php:2246
+#: includes/class-render.php:2253
 msgid "Waning Gibbous"
 msgstr "Abnehmender Mond"
 
-#: includes/class-render.php:2247 includes/class-render.php:2955
+#: includes/class-render.php:2254 includes/class-render.php:2964
 msgid "Last Quarter"
 msgstr "Letztes Viertel"
 
-#: includes/class-render.php:2248
+#: includes/class-render.php:2255
 msgid "Waning Crescent"
 msgstr "Abnehmende Sichel"
 
-#: includes/class-render.php:2257 includes/class-widget-manifest.php:388
+#: includes/class-render.php:2264 includes/class-widget-manifest.php:432
 msgid "Mercury"
 msgstr "Merkur"
 
-#: includes/class-render.php:2258 includes/class-widget-manifest.php:389
+#: includes/class-render.php:2265 includes/class-widget-manifest.php:433
 msgid "Venus"
 msgstr "Venus"
 
-#: includes/class-render.php:2259 includes/class-widget-manifest.php:390
+#: includes/class-render.php:2266 includes/class-widget-manifest.php:434
 msgid "Mars"
 msgstr "Mars"
 
-#: includes/class-render.php:2260 includes/class-widget-manifest.php:391
+#: includes/class-render.php:2267 includes/class-widget-manifest.php:435
 msgid "Jupiter"
 msgstr "Jupiter"
 
-#: includes/class-render.php:2261 includes/class-widget-manifest.php:392
+#: includes/class-render.php:2268 includes/class-widget-manifest.php:436
 msgid "Saturn"
 msgstr "Saturn"
 
-#: includes/class-render.php:2262 includes/class-widget-manifest.php:393
+#: includes/class-render.php:2269 includes/class-widget-manifest.php:437
 msgid "Uranus"
 msgstr "Uranus"
 
-#: includes/class-render.php:2263 includes/class-widget-manifest.php:394
+#: includes/class-render.php:2270 includes/class-widget-manifest.php:438
 msgid "Neptune"
 msgstr "Neptun"
 
-#: includes/class-render.php:2264 includes/class-widget-manifest.php:395
+#: includes/class-render.php:2271 includes/class-widget-manifest.php:439
 msgid "Pluto"
 msgstr "Pluto"
 
-#: includes/class-render.php:2265
+#: includes/class-render.php:2272
 msgid "Chiron"
 msgstr "Chiron"
 
-#: includes/class-render.php:2266 includes/class-render.php:2275
-#: includes/class-render.php:2276
+#: includes/class-render.php:2273 includes/class-render.php:2282
+#: includes/class-render.php:2283 includes/class-render.php:2284
+#: includes/class-render.php:2285
 msgid "Lilith"
 msgstr "Lilith"
 
-#: includes/class-render.php:2267 includes/class-render.php:2273
-#: includes/class-render.php:2274
+#: includes/class-render.php:2274 includes/class-render.php:2280
+#: includes/class-render.php:2281
 msgid "North Node"
 msgstr "Nördlicher Mondknoten"
 
-#: includes/class-render.php:2269
+#: includes/class-render.php:2276
 msgid "Rahu"
 msgstr "Rahu"
 
-#: includes/class-render.php:2270
+#: includes/class-render.php:2277
 msgid "Ketu"
 msgstr "Ketu"
 
-#: includes/class-render.php:2283
+#: includes/class-render.php:2292
 msgid "conjunct"
 msgstr "Konjunktion"
 
-#: includes/class-render.php:2284 includes/class-render.php:4588
+#: includes/class-render.php:2293 includes/class-render.php:4597
 msgid "opposite"
 msgstr "Opposition"
 
-#: includes/class-render.php:2285 includes/class-render.php:4587
+#: includes/class-render.php:2294 includes/class-render.php:4596
 msgid "trine"
 msgstr "Trigon"
 
-#: includes/class-render.php:2286 includes/class-render.php:4586
+#: includes/class-render.php:2295 includes/class-render.php:4595
 msgid "square"
 msgstr "Quadrat"
 
-#: includes/class-render.php:2287 includes/class-render.php:4585
+#: includes/class-render.php:2296 includes/class-render.php:4594
 msgid "sextile"
 msgstr "Sextil"
 
-#: includes/class-render.php:2320
+#. translators: %s = planet name
+#: includes/class-render.php:2329 includes/class-render.php:5752
+#: includes/class-render.php:5765
 msgid "Period"
 msgstr "Zeitraum"
 
-#: includes/class-render.php:2339
+#: includes/class-render.php:2348
 msgid ""
 "The reading in this language is not ready yet, so it is shown in English."
 msgstr ""
@@ -1981,853 +1996,862 @@ msgstr ""
 "Englisch da."
 
 #. translators: %s = date of the earlier reading
-#: includes/class-render.php:2350
+#: includes/class-render.php:2359
 #, php-format
 msgid "This reading is from %s; the new one is still being written."
 msgstr "Diese Deutung ist vom %s; die neue wird noch geschrieben."
 
-#: includes/class-render.php:2371
+#: includes/class-render.php:2380
 msgid "Horoscope"
 msgstr "Horoskop"
 
-#: includes/class-render.php:2375
+#: includes/class-render.php:2384
 msgid "Pick your sign"
 msgstr "Wähle dein Sternzeichen"
 
-#: includes/class-render.php:2378 includes/class-render.php:2757
+#: includes/class-render.php:2387 includes/class-render.php:2766
 #: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:64
 msgid "Zodiac sign"
 msgstr "Tierkreiszeichen"
 
 #. translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning
 #. Crescent"
-#: includes/class-render.php:2404
+#: includes/class-render.php:2413
 #, php-format
 msgid "Moon in %1$s · %2$s"
 msgstr "Mond in %1$s · %2$s"
 
-#: includes/class-render.php:2408
+#: includes/class-render.php:2417
 msgid "Sky today"
 msgstr "Himmel heute"
 
-#: includes/class-render.php:2502 includes/class-render.php:4073
-#: includes/class-render.php:4262 includes/class-render.php:5727
+#: includes/class-render.php:2511 includes/class-render.php:4082
+#: includes/class-render.php:4271 includes/class-render.php:6052
 #: includes/class-tarot.php:481
 msgid "Love"
 msgstr "Liebe"
 
-#: includes/class-render.php:2503 includes/class-tarot.php:482
+#: includes/class-render.php:2512 includes/class-tarot.php:482
 msgid "Career"
 msgstr "Beruf"
 
-#: includes/class-render.php:2504 includes/class-tarot.php:484
+#: includes/class-render.php:2513 includes/class-tarot.php:484
 msgid "Health"
 msgstr "Gesundheit"
 
-#: includes/class-render.php:2505 includes/class-tarot.php:483
+#: includes/class-render.php:2514 includes/class-tarot.php:483
 msgid "Money"
 msgstr "Geld"
 
-#: includes/class-render.php:2518 includes/class-tarot-reading.php:357
+#: includes/class-render.php:2527 includes/class-tarot-reading.php:357
 msgid "Advice"
 msgstr "Rat"
 
-#: includes/class-render.php:2595
+#: includes/class-render.php:2604
 msgid "out of 10"
 msgstr "von 10"
 
-#: includes/class-render.php:2597
+#: includes/class-render.php:2606
 msgid "Energy of the day"
 msgstr "Energie des Tages"
 
-#: includes/class-render.php:2605
+#: includes/class-render.php:2614
 msgid "Lucky planet"
 msgstr "Glücksplanet"
 
-#: includes/class-render.php:2612
+#: includes/class-render.php:2621
 msgid "Lucky day"
 msgstr "Glückstag"
 
-#: includes/class-render.php:2618
+#: includes/class-render.php:2627
 msgid "Lucky number"
 msgstr "Glückszahl"
 
-#: includes/class-render.php:2632
+#: includes/class-render.php:2641
 msgid "Compatible signs"
 msgstr "Passende Zeichen"
 
 #. translators: 1: planet, 2: aspect such as "opposite", 3: planet; one of the
 #. two rules the sign
-#: includes/class-render.php:2647 includes/class-render.php:2667
+#: includes/class-render.php:2656 includes/class-render.php:2676
 #, php-format
 msgid "%1$s %2$s %3$s (the sign’s ruler)"
 msgstr "%1$s %2$s %3$s (Herrscher des Zeichens)"
 
 #. translators: 1: planet, 2: house number counted from the sign
-#: includes/class-render.php:2655 includes/class-render.php:2675
+#: includes/class-render.php:2664 includes/class-render.php:2684
 #, php-format
 msgid "%1$s in solar house %2$d"
 msgstr "%1$s im %2$d. Solarhaus"
 
-#: includes/class-render.php:2658 includes/class-render.php:2678
+#: includes/class-render.php:2667 includes/class-render.php:2687
 msgid "Moon in a sign of the same element"
 msgstr "Mond in einem Zeichen desselben Elements"
 
-#: includes/class-render.php:2661 includes/class-render.php:2681
+#: includes/class-render.php:2670 includes/class-render.php:2690
 msgid "Moon square or opposite the sign"
 msgstr "Mond im Quadrat oder in Opposition zum Zeichen"
 
-#: includes/class-render.php:2704
+#: includes/class-render.php:2713
 msgid "Week"
 msgstr "Woche"
 
-#: includes/class-render.php:2706
+#: includes/class-render.php:2715
 msgid "Month"
 msgstr "Monat"
 
-#: includes/class-render.php:2708
+#: includes/class-render.php:2717
 msgid "Year"
 msgstr "Jahr"
 
-#: includes/class-render.php:2710
+#: includes/class-render.php:2719
 msgid "Today"
 msgstr "Heute"
 
-#: includes/class-render.php:2731
+#: includes/class-render.php:2740
 msgid "Horoscope for the week"
 msgstr "Horoskop für die Woche"
 
-#: includes/class-render.php:2733
+#: includes/class-render.php:2742
 msgid "Horoscope for the month"
 msgstr "Horoskop für den Monat"
 
-#: includes/class-render.php:2735
+#: includes/class-render.php:2744
 msgid "Horoscope for the year"
 msgstr "Horoskop für das Jahr"
 
-#: includes/class-render.php:2737 includes/views/admin-settings.php:328
+#: includes/class-render.php:2746 includes/views/admin-settings.php:328
 msgid "Horoscope for today"
 msgstr "Horoskop für heute"
 
-#: includes/class-render.php:2782
+#: includes/class-render.php:2791
 msgid "Weeks"
 msgstr "Wochen"
 
-#: includes/class-render.php:2783
+#: includes/class-render.php:2792
 msgid "Previous week"
 msgstr "Vorige Woche"
 
-#: includes/class-render.php:2784
+#: includes/class-render.php:2793
 msgid "Next week"
 msgstr "Nächste Woche"
 
-#: includes/class-render.php:2788
+#: includes/class-render.php:2797
 msgid "Months"
 msgstr "Monate"
 
-#: includes/class-render.php:2789
+#: includes/class-render.php:2798
 msgid "Previous month"
 msgstr "Voriger Monat"
 
-#: includes/class-render.php:2790
+#: includes/class-render.php:2799
 msgid "Next month"
 msgstr "Nächster Monat"
 
-#: includes/class-render.php:2794
+#: includes/class-render.php:2803
 msgid "Days"
 msgstr "Tage"
 
-#: includes/class-render.php:2795
+#: includes/class-render.php:2804
 msgid "Previous day"
 msgstr "Voriger Tag"
 
-#: includes/class-render.php:2796
+#: includes/class-render.php:2805
 msgid "Next day"
 msgstr "Nächster Tag"
 
-#: includes/class-render.php:2836
+#: includes/class-render.php:2845
 msgid "Moon in"
 msgstr "Mond in"
 
-#: includes/class-render.php:2844
+#: includes/class-render.php:2853
 msgid "Age"
 msgstr "Alter"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:2847
+#: includes/class-render.php:2856
 #, php-format
 msgid "%s days"
 msgstr "%s Tage"
 
-#: includes/class-render.php:2854
+#: includes/class-render.php:2863
 msgid "Sun in"
 msgstr "Sonne in"
 
-#: includes/class-render.php:2872
+#: includes/class-render.php:2881
 msgid "Waxing"
 msgstr "Zunehmend"
 
-#: includes/class-render.php:2872
+#: includes/class-render.php:2881
 msgid "Waning"
 msgstr "Abnehmend"
 
-#: includes/class-render.php:2874
+#: includes/class-render.php:2883
 msgid "Illuminated"
 msgstr "Beleuchtet"
 
-#. translators: PHP date format for a day within the coming month, such as "Oct
-#. 10"
-#: includes/class-render.php:2896 includes/class-render.php:2974
+#. translators: PHP date format for a day within the coming month, such as
+#. "Oct 10"
+#: includes/class-render.php:2905 includes/class-render.php:2983
 msgctxt "moon cycle date"
 msgid "M j"
 msgstr "j. M"
 
 #. translators: %s = zodiac sign the Moon enters when the window ends
-#: includes/class-render.php:2913
+#: includes/class-render.php:2922
 #, php-format
 msgid "Next sign: %s"
 msgstr "Nächstes Zeichen: %s"
 
-#: includes/class-render.php:2917
+#: includes/class-render.php:2926
 msgid "No void of course Moon today."
 msgstr "Heute kein Mond im Leerlauf."
 
-#: includes/class-render.php:2919 includes/class-render.php:3769
-#: includes/class-widget-manifest.php:406
+#: includes/class-render.php:2928 includes/class-render.php:3778
+#: includes/class-widget-manifest.php:450
 msgid "Void of course Moon"
 msgstr "Mond im Leeren Gang"
 
-#: includes/class-render.php:2985
+#: includes/class-render.php:2994
 msgid "Krishna, waning"
 msgstr "Krishna, abnehmend"
 
-#: includes/class-render.php:2986
+#: includes/class-render.php:2995
 msgid "Shukla, waxing"
 msgstr "Shukla, zunehmend"
 
 #. translators: %d = tithi number, 1 to 30
-#: includes/class-render.php:2989
+#: includes/class-render.php:2998
 #, php-format
 msgid "%d of 30"
 msgstr "%d von 30"
 
-#: includes/class-render.php:2992
+#: includes/class-render.php:3001
 msgid "Tithi"
 msgstr "Tithi"
 
-#: includes/class-render.php:2995
+#: includes/class-render.php:3004
 msgid "Paksha"
 msgstr "Paksha"
 
-#: includes/class-render.php:3000
+#: includes/class-render.php:3009
 msgid "Distance"
 msgstr "Entfernung"
 
 #. translators: %s = distance in kilometres
-#: includes/class-render.php:3004
+#: includes/class-render.php:3013
 #, php-format
 msgid "%s km"
 msgstr "%s km"
 
-#: includes/class-render.php:3012
+#: includes/class-render.php:3021
 msgid "Moon cycle"
 msgstr "Mondzyklus"
 
-#: includes/class-render.php:3027
+#: includes/class-render.php:3036
 msgid "Card of the day"
 msgstr "Tageskarte"
 
-#: includes/class-render.php:3028 includes/class-widget-manifest.php:309
+#: includes/class-render.php:3037 includes/class-widget-manifest.php:353
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "Rider-Waite-Smith"
 
-#: includes/class-render.php:3056 includes/class-tarot.php:403
+#: includes/class-render.php:3065 includes/class-tarot.php:403
 msgid "About the card"
 msgstr "Über die Karte"
 
-#: includes/class-render.php:3119 includes/class-widget-manifest.php:319
+#: includes/class-render.php:3128 includes/class-widget-manifest.php:363
 msgid "Tarot spread"
 msgstr "Tarot-Legung"
 
-#: includes/class-render.php:3120
+#: includes/class-render.php:3129
 msgid "New draw"
 msgstr "Neue Legung"
 
-#: includes/class-render.php:3120
+#: includes/class-render.php:3129
 msgid "Spread of the day"
 msgstr "Legung des Tages"
 
-#: includes/class-render.php:3126
+#: includes/class-render.php:3135
 msgid "Turn all the cards over"
 msgstr "Alle Karten aufdecken"
 
-#: includes/class-render.php:3156
+#: includes/class-render.php:3165
 msgid "Reading the spread…"
 msgstr "Die Legung wird gedeutet…"
 
-#: includes/class-render.php:3157
+#: includes/class-render.php:3166
 msgid "The reading could not be had just now."
 msgstr "Die Deutung ließ sich gerade nicht abrufen."
 
-#: includes/class-render.php:3175 includes/class-widget-manifest.php:366
+#: includes/class-render.php:3184 includes/class-widget-manifest.php:410
 msgid "Planet of the day"
 msgstr "Planet des Tages"
 
-#: includes/class-render.php:3185
+#: includes/class-render.php:3194
 msgid "Themes of the day"
 msgstr "Themen des Tages"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3200
+#: includes/class-render.php:3209
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: Wochenhoroskop"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3203
+#: includes/class-render.php:3212
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: Monatshoroskop"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3206
+#: includes/class-render.php:3215
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: Jahreshoroskop"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3209
+#: includes/class-render.php:3218
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: Tageshoroskop"
 
-#: includes/class-render.php:3216 includes/class-widget-manifest.php:43
+#: includes/class-render.php:3225 includes/class-widget-manifest.php:43
 #: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Widder"
 
-#: includes/class-render.php:3217 includes/class-widget-manifest.php:44
+#: includes/class-render.php:3226 includes/class-widget-manifest.php:44
 #: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Stier"
 
-#: includes/class-render.php:3218 includes/class-widget-manifest.php:45
+#: includes/class-render.php:3227 includes/class-widget-manifest.php:45
 #: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Zwillinge"
 
-#: includes/class-render.php:3219 includes/class-widget-manifest.php:46
+#: includes/class-render.php:3228 includes/class-widget-manifest.php:46
 #: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Krebs"
 
-#: includes/class-render.php:3220 includes/class-widget-manifest.php:47
-#: includes/views/admin-settings.php:326 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:3229 includes/class-widget-manifest.php:47
+#: includes/views/admin-settings.php:326
+#: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Löwe"
 
-#: includes/class-render.php:3221 includes/class-widget-manifest.php:48
-#: includes/views/admin-settings.php:335 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:3230 includes/class-widget-manifest.php:48
+#: includes/views/admin-settings.php:335
+#: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Jungfrau"
 
-#: includes/class-render.php:3222 includes/class-widget-manifest.php:49
+#: includes/class-render.php:3231 includes/class-widget-manifest.php:49
 #: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Waage"
 
-#: includes/class-render.php:3223 includes/class-widget-manifest.php:50
+#: includes/class-render.php:3232 includes/class-widget-manifest.php:50
 #: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Skorpion"
 
-#: includes/class-render.php:3224 includes/class-widget-manifest.php:51
+#: includes/class-render.php:3233 includes/class-widget-manifest.php:51
 #: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Schütze"
 
-#: includes/class-render.php:3225 includes/class-widget-manifest.php:52
-#: includes/views/admin-settings.php:340 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:3234 includes/class-widget-manifest.php:52
+#: includes/views/admin-settings.php:340
+#: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Steinbock"
 
-#: includes/class-render.php:3226 includes/class-widget-manifest.php:53
+#: includes/class-render.php:3235 includes/class-widget-manifest.php:53
 #: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Wassermann"
 
-#: includes/class-render.php:3227 includes/class-widget-manifest.php:54
+#: includes/class-render.php:3236 includes/class-widget-manifest.php:54
 #: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Fische"
 
 #. translators: %s = shortcode tag
-#: includes/class-render.php:3390
+#: includes/class-render.php:3399
 #, php-format
 msgid ""
-"%s needs an API key: this site asks for its own automatically, or paste yours"
-" in AstroWay, API Key. Only administrators see this note."
+"%s needs an API key: this site asks for its own automatically, or paste "
+"yours in AstroWay, API Key. Only administrators see this note."
 msgstr ""
-"%s braucht einen API-Schlüssel: Die Website fordert automatisch einen eigenen"
-" an, oder füge deinen unter AstroWay, API-Schlüssel ein. Nur Administratoren "
-"sehen diesen Hinweis."
+"%s braucht einen API-Schlüssel: Die Website fordert automatisch einen "
+"eigenen an, oder füge deinen unter AstroWay, API-Schlüssel ein. Nur "
+"Administratoren sehen diesen Hinweis."
 
-#: includes/class-render.php:3485 includes/class-render.php:3564
-#: includes/class-render.php:3618 includes/class-render.php:5463
+#: includes/class-render.php:3494 includes/class-render.php:3573
+#: includes/class-render.php:3627 includes/class-render.php:5500
+#: includes/class-render.php:5825
 msgid "Direct"
 msgstr "Direktläufig"
 
-#: includes/class-render.php:3490
+#: includes/class-render.php:3499
 msgid "Retrograde watch"
 msgstr "Rückläufigkeit im Blick"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3499
+#: includes/class-render.php:3508
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "Ja, %s ist gerade rückläufig."
 
-#: includes/class-render.php:3506
+#: includes/class-render.php:3515
 msgid "Retrograde since"
 msgstr "Rückläufig seit"
 
-#: includes/class-render.php:3507
+#: includes/class-render.php:3516
 msgid "Direct again on"
 msgstr "Wieder direktläufig am"
 
-#: includes/class-render.php:3508
+#: includes/class-render.php:3517
 msgid "Days left"
 msgstr "Verbleibende Tage"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3515
+#: includes/class-render.php:3524
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "Nein, %s ist gerade direktläufig."
 
-#: includes/class-render.php:3521 includes/class-render.php:3684
+#: includes/class-render.php:3530 includes/class-render.php:3693
 msgid "Next retrograde"
 msgstr "Nächste Rückläufigkeit"
 
-#: includes/class-render.php:3522 includes/class-render.php:3778
+#: includes/class-render.php:3531 includes/class-render.php:3787
 msgid "Ends"
 msgstr "Endet"
 
-#: includes/class-render.php:3523
+#: includes/class-render.php:3532
 msgid "Days until"
 msgstr "Tage bis"
 
-#: includes/class-render.php:3560
+#: includes/class-render.php:3569
 msgid "Stationary"
 msgstr "Stationär"
 
-#: includes/class-render.php:3580
+#: includes/class-render.php:3589
 msgid "Planets in the sky"
 msgstr "Planeten am Himmel"
 
-#: includes/class-render.php:3585 includes/class-render.php:3680
-#: includes/class-render.php:4348 includes/class-widget-manifest.php:386
+#. translators: %s = planet name
+#: includes/class-render.php:3594 includes/class-render.php:3689
+#: includes/class-render.php:4357 includes/class-render.php:5752
+#: includes/class-render.php:5765 includes/class-render.php:5884
+#: includes/class-render.php:5911 includes/class-widget-manifest.php:430
 msgid "Planet"
 msgstr "Planet"
 
 #. translators: %s = sign and degree, such as Aquarius 3°04'
-#: includes/class-render.php:3597
+#: includes/class-render.php:3606
 #, php-format
 msgid "Turns direct at %s"
 msgstr "Wird direktläufig bei %s"
 
 #. translators: %s = sign and degree, such as Scorpio 8°29'
-#: includes/class-render.php:3599
+#: includes/class-render.php:3608
 #, php-format
 msgid "Turns retrograde at %s"
 msgstr "Wird rückläufig bei %s"
 
 #. translators: %s = date
-#: includes/class-render.php:3625
+#: includes/class-render.php:3634
 #, php-format
 msgid "In the pre-retrograde shadow since %s"
 msgstr "Im Schatten vor der Rückläufigkeit seit %s"
 
 #. translators: %s = date
-#: includes/class-render.php:3627
+#: includes/class-render.php:3636
 #, php-format
 msgid "In the post-retrograde shadow until %s"
 msgstr "Im Schatten nach der Rückläufigkeit bis %s"
 
 #. translators: 1: day number, 2: days in the retrograde period
-#: includes/class-render.php:3639
+#: includes/class-render.php:3648
 #, php-format
 msgid "Day %1$d of %2$d"
 msgstr "Tag %1$d von %2$d"
 
 #. translators: %s = date
-#: includes/class-render.php:3643
+#: includes/class-render.php:3652
 #, php-format
 msgid "Leaves the shadow on %s"
 msgstr "Verlässt den Schatten am %s"
 
 #. translators: %s = date
-#: includes/class-render.php:3651
+#: includes/class-render.php:3660
 #, php-format
 msgid "Shadow from %s"
 msgstr "Schatten ab %s"
 
-#: includes/class-render.php:3663
+#: includes/class-render.php:3672
 msgid "Nothing is retrograde right now."
 msgstr "Gerade ist nichts rückläufig."
 
-#: includes/class-render.php:3672 includes/class-widget-manifest.php:402
+#: includes/class-render.php:3681 includes/class-widget-manifest.php:446
 msgid "Retrograde planets"
 msgstr "Rückläufige Planeten"
 
-#: includes/class-render.php:3683
+#: includes/class-render.php:3692
 msgid "Now"
 msgstr "Jetzt"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:3738
+#: includes/class-render.php:3747
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "Der Mond ist bis %s im Leeren Gang."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:3744
+#: includes/class-render.php:3753
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
-msgstr "Der Mond ist nicht im Leeren Gang. Das nächste Fenster öffnet sich %s."
+msgstr ""
+"Der Mond ist nicht im Leeren Gang. Das nächste Fenster öffnet sich %s."
 
-#: includes/class-render.php:3748
+#: includes/class-render.php:3757
 msgid "The Moon is not void of course."
 msgstr "Der Mond ist nicht im Leeren Gang."
 
-#: includes/class-render.php:3777
+#: includes/class-render.php:3786
 msgid "Starts"
 msgstr "Beginnt"
 
-#: includes/class-render.php:3779
+#: includes/class-render.php:3788
 msgid "Length"
 msgstr "Dauer"
 
-#: includes/class-render.php:3780
+#: includes/class-render.php:3789
 msgid "Last aspect"
 msgstr "Letzter Aspekt"
 
-#: includes/class-render.php:3781
+#: includes/class-render.php:3790
 msgid "Next sign"
 msgstr "Nächstes Zeichen"
 
-#: includes/class-render.php:3840
+#: includes/class-render.php:3849
 msgid "Night"
 msgstr "Nacht"
 
-#: includes/class-render.php:3840
+#: includes/class-render.php:3849
 msgid "Day"
 msgstr "Tag"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3855
+#: includes/class-render.php:3864
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "Der Tag wird von %s regiert."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:3862
+#: includes/class-render.php:3871
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "Die Stunde von %1$s dauert bis %2$s."
 
-#: includes/class-render.php:3870 includes/class-render.php:3908
-#: includes/class-widget-manifest.php:444
+#: includes/class-render.php:3879 includes/class-render.php:3917
+#: includes/class-widget-manifest.php:488
 msgid "Planetary hours"
 msgstr "Planetenstunden"
 
-#: includes/class-render.php:3881
+#: includes/class-render.php:3890
 msgid "Hour"
 msgstr "Stunde"
 
-#: includes/class-render.php:3882
+#: includes/class-render.php:3891
 msgid "Ruler"
 msgstr "Herrscher"
 
-#: includes/class-render.php:3883
+#: includes/class-render.php:3892
 msgid "From"
 msgstr "Von"
 
-#: includes/class-render.php:3884
+#: includes/class-render.php:3893
 msgid "To"
 msgstr "Bis"
 
-#: includes/class-render.php:3885
+#: includes/class-render.php:3894
 msgid "Part of day"
 msgstr "Tagesabschnitt"
 
-#: includes/class-render.php:3915
+#: includes/class-render.php:3924
 msgid ""
-"The Sun does not set at this latitude on this date, so there are no planetary"
-" hours to divide."
+"The Sun does not set at this latitude on this date, so there are no "
+"planetary hours to divide."
 msgstr ""
-"Die Sonne geht an diesem Breitengrad an diesem Datum nicht unter, daher gibt "
-"es keine Planetenstunden."
+"Die Sonne geht an diesem Breitengrad an diesem Datum nicht unter, daher gibt"
+" es keine Planetenstunden."
 
-#: includes/class-render.php:3916
+#: includes/class-render.php:3925
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
 msgstr ""
-"Die Sonne geht an diesem Breitengrad an diesem Datum nicht auf, daher gibt es"
-" keine Planetenstunden."
+"Die Sonne geht an diesem Breitengrad an diesem Datum nicht auf, daher gibt "
+"es keine Planetenstunden."
 
-#: includes/class-render.php:3947
+#: includes/class-render.php:3956
 msgid "First chart"
 msgstr "Erstes Horoskop"
 
-#: includes/class-render.php:3948
+#: includes/class-render.php:3957
 msgid "Second chart"
 msgstr "Zweites Horoskop"
 
 #. translators: 1: first person's name, 2: second person's name
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:3951 includes/class-render.php:4632
+#: includes/class-render.php:3960 includes/class-render.php:4641
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s und %2$s"
 
-#: includes/class-render.php:3952 includes/class-render.php:4017
+#: includes/class-render.php:3961 includes/class-render.php:4026
 msgid "Synastry"
 msgstr "Synastrie"
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3981
+#: includes/class-render.php:3990
 #, php-format
 msgid ""
 "%s: birth time unknown. No houses or Ascendant for this chart, and its Moon "
 "may be up to 7 degrees from where it was."
 msgstr ""
 "%s: Geburtszeit unbekannt. Für dieses Horoskop gibt es keine Häuser und "
-"keinen Aszendenten, und sein Mond kann bis zu 7 Grad von seiner tatsächlichen"
-" Stelle abweichen."
+"keinen Aszendenten, und sein Mond kann bis zu 7 Grad von seiner "
+"tatsächlichen Stelle abweichen."
 
-#: includes/class-render.php:4002
+#: includes/class-render.php:4011
 msgid "Houses"
 msgstr "Häuser"
 
-#: includes/class-render.php:4011
+#: includes/class-render.php:4020
 msgid "All aspects"
 msgstr "Alle Aspekte"
 
-#: includes/class-render.php:4070 includes/class-render.php:4259
+#: includes/class-render.php:4079 includes/class-render.php:4268
 msgid "Identity"
 msgstr "Identität"
 
-#: includes/class-render.php:4071 includes/class-render.php:4260
+#: includes/class-render.php:4080 includes/class-render.php:4269
 msgid "Emotions"
 msgstr "Gefühle"
 
-#: includes/class-render.php:4072 includes/class-render.php:4261
+#: includes/class-render.php:4081 includes/class-render.php:4270
 msgid "Communication"
 msgstr "Kommunikation"
 
-#: includes/class-render.php:4074 includes/class-render.php:4263
+#: includes/class-render.php:4083 includes/class-render.php:4272
 msgid "Passion"
 msgstr "Leidenschaft"
 
-#: includes/class-render.php:4075 includes/class-render.php:4264
+#: includes/class-render.php:4084 includes/class-render.php:4273
 msgid "Commitment"
 msgstr "Bindung"
 
-#: includes/class-render.php:4090
+#: includes/class-render.php:4099
 msgid "no aspects"
 msgstr "keine Aspekte"
 
 #. translators: 1: tone word such as "Harmonious", 2: number of aspects
-#: includes/class-render.php:4093
+#: includes/class-render.php:4102
 #, php-format
 msgid "%1$s, aspects: %2$d"
 msgstr "%1$s, Aspekte: %2$d"
 
-#: includes/class-render.php:4096
+#: includes/class-render.php:4105
 msgid "By sphere"
 msgstr "Nach Bereichen"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:4109
+#: includes/class-render.php:4118
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr "Aspekte zwischen den beiden Horoskopen: %d"
 
-#: includes/class-render.php:4114
+#: includes/class-render.php:4123
 msgid "out of 100"
 msgstr "von 100"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:4167
+#: includes/class-render.php:4176
 #, php-format
 msgid ""
-"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between "
-"them."
+"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between"
+" them."
 msgstr ""
 "Synastrie-Rad: %1$s innen, %2$s auf dem äußeren Ring, und die Aspekte "
 "dazwischen."
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:4182
+#: includes/class-render.php:4191
 #, php-format
 msgid "Inner ring: %s"
 msgstr "Innerer Ring: %s"
 
-#: includes/class-render.php:4191 includes/class-render.php:4550
+#: includes/class-render.php:4200 includes/class-render.php:4559
 msgid "Harmony"
 msgstr "Harmonie"
 
-#: includes/class-render.php:4195 includes/class-render.php:4554
+#: includes/class-render.php:4204 includes/class-render.php:4563
 msgid "Tension"
 msgstr "Spannung"
 
 #. translators: %d = how strong an aspect is, 0 to 100
-#: includes/class-render.php:4223
+#: includes/class-render.php:4232
 #, php-format
 msgid "strength %d"
 msgstr "Stärke %d"
 
 #. translators: %d = number of conjunctions
-#: includes/class-render.php:4247
+#: includes/class-render.php:4256
 #, php-format
 msgid "Conjunctions %d"
 msgstr "Konjunktionen: %d"
 
-#: includes/class-render.php:4267
+#: includes/class-render.php:4276
 msgid "You let each other be who you are."
 msgstr "Ihr lasst einander sein, wer ihr seid."
 
-#: includes/class-render.php:4268
+#: includes/class-render.php:4277
 msgid "You read each other's moods without words."
 msgstr "Ihr lest die Stimmung des anderen ohne Worte."
 
-#: includes/class-render.php:4269
+#: includes/class-render.php:4278
 msgid "Talking comes easily and settles things."
 msgstr "Reden fällt leicht und klärt die Dinge."
 
-#: includes/class-render.php:4270
+#: includes/class-render.php:4279
 msgid "Affection and taste are shared."
 msgstr "Zuneigung und Geschmack teilt ihr."
 
-#: includes/class-render.php:4271
+#: includes/class-render.php:4280
 msgid "Desire and drive meet in the middle."
 msgstr "Lust und Antrieb treffen sich in der Mitte."
 
-#: includes/class-render.php:4272
+#: includes/class-render.php:4281
 msgid "Promises hold and plans last."
 msgstr "Versprechen halten und Pläne bestehen."
 
-#: includes/class-render.php:4275
+#: includes/class-render.php:4284
 msgid "Leave each other room to be different."
 msgstr "Lasst einander Raum, verschieden zu sein."
 
-#: includes/class-render.php:4276
+#: includes/class-render.php:4285
 msgid "Say what you feel rather than expect it to be guessed."
 msgstr "Sagt, was ihr fühlt, statt es erraten zu lassen."
 
-#: includes/class-render.php:4277
+#: includes/class-render.php:4286
 msgid "Check what was heard, not only what was said."
 msgstr "Prüft, was gehört wurde, nicht nur, was gesagt wurde."
 
-#: includes/class-render.php:4278
+#: includes/class-render.php:4287
 msgid "Show care in the way the other one receives it."
 msgstr "Zeigt Fürsorge so, wie der andere sie annimmt."
 
-#: includes/class-render.php:4279
+#: includes/class-render.php:4288
 msgid "Agree on pace before friction turns into a fight."
 msgstr "Einigt euch auf das Tempo, bevor Reibung zum Streit wird."
 
-#: includes/class-render.php:4280
+#: includes/class-render.php:4289
 msgid "Make plans explicit and keep them small at first."
 msgstr "Macht Pläne ausdrücklich und fangt klein an."
 
-#: includes/class-render.php:4303 includes/class-render.php:4887
+#: includes/class-render.php:4312 includes/class-render.php:4896
 msgid "Strengths"
 msgstr "Stärken"
 
-#: includes/class-render.php:4304
+#: includes/class-render.php:4313
 msgid "Growth areas"
 msgstr "Wachstumsfelder"
 
 #. translators: 1: whose planets, 2: whose houses
-#: includes/class-render.php:4347
+#: includes/class-render.php:4356
 #, php-format
 msgid "Planets of %1$s in the houses of %2$s"
 msgstr "Planeten von %1$s in den Häusern von %2$s"
 
 #. translators: 1: planet, 2: person's name, or the word "natal" or "transit"
-#: includes/class-render.php:4362
+#: includes/class-render.php:4371
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: includes/class-render.php:4368
+#: includes/class-render.php:4377
 msgid "One force: felt strongly by both, for better or worse."
 msgstr "Eine Kraft: beide spüren sie stark, im Guten wie im Schlechten."
 
-#: includes/class-render.php:4369
+#: includes/class-render.php:4378
 msgid "Flows easily between you, without effort."
 msgstr "Fließt mühelos zwischen euch."
 
-#: includes/class-render.php:4370
+#: includes/class-render.php:4379
 msgid "Helps you both once one of you makes a move."
 msgstr "Hilft euch beiden, sobald einer den ersten Schritt macht."
 
-#: includes/class-render.php:4371
+#: includes/class-render.php:4380
 msgid "Rubs, and pushes you both to change."
 msgstr "Reibt sich und drängt euch beide zur Veränderung."
 
-#: includes/class-render.php:4372
+#: includes/class-render.php:4381
 msgid "Pulls you apart and draws you together."
 msgstr "Treibt euch auseinander und zieht euch zugleich an."
 
-#: includes/class-render.php:4431
+#: includes/class-render.php:4440 includes/class-render.php:5887
 msgid "Aspect"
 msgstr "Aspekt"
 
-#: includes/class-render.php:4433
+#: includes/class-render.php:4442 includes/class-render.php:5887
+#: includes/class-render.php:5944
 msgid "Orb"
 msgstr "Orbis"
 
-#: includes/class-render.php:4434
+#: includes/class-render.php:4443
 msgid "Trend"
 msgstr "Tendenz"
 
-#: includes/class-render.php:4453
+#: includes/class-render.php:4462
 msgid "Harmonious"
 msgstr "Harmonisch"
 
-#: includes/class-render.php:4454
+#: includes/class-render.php:4463
 msgid "Balanced"
 msgstr "Ausgeglichen"
 
-#: includes/class-render.php:4455
+#: includes/class-render.php:4464
 msgid "Mixed"
 msgstr "Gemischt"
 
-#: includes/class-render.php:4456
+#: includes/class-render.php:4465
 msgid "Challenging"
 msgstr "Herausfordernd"
 
-#: includes/class-render.php:4489 includes/class-render.php:4544
-#: includes/class-widget-manifest.php:428
+#: includes/class-render.php:4498 includes/class-render.php:4553
+#: includes/class-widget-manifest.php:472
 msgid "Sign compatibility"
 msgstr "Zeichen-Kompatibilität"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:4491
+#: includes/class-render.php:4500
 #, php-format
 msgid "%s and the other signs"
 msgstr "%s und die anderen Zeichen"
 
-#: includes/class-render.php:4495
+#: includes/class-render.php:4504
 msgid ""
 "How each pair of signs stands in the zodiac: the classical relation, "
-"harmonious, challenging or unrelated. It is a relation of signs, not a score;"
-" for two people, their charts say far more."
+"harmonious, challenging or unrelated. It is a relation of signs, not a "
+"score; for two people, their charts say far more."
 msgstr ""
 "Wie jedes Zeichenpaar im Tierkreis zueinander steht: die klassische "
 "Beziehung, harmonisch, spannungsvoll oder ohne Bezug. Es ist eine Beziehung "
@@ -2836,94 +2860,95 @@ msgstr ""
 
 #. translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g.
 #. "trine"
-#: includes/class-render.php:4537
+#: includes/class-render.php:4546
 #, php-format
 msgid "%1$s and %2$s: %3$s"
 msgstr "%1$s und %2$s: %3$s"
 
-#: includes/class-render.php:4558
+#: includes/class-render.php:4567
 msgid "Do not see each other"
 msgstr "Sehen einander nicht"
 
-#: includes/class-render.php:4584
+#: includes/class-render.php:4593
 msgid "the same sign"
 msgstr "dasselbe Zeichen"
 
-#: includes/class-render.php:4589
+#: includes/class-render.php:4598
 msgid "aversion"
 msgstr "Aversion"
 
-#: includes/class-render.php:4597
+#: includes/class-render.php:4606
 msgid "Two signs apart: friendly elements that help each other."
 msgstr "Zwei Zeichen auseinander: befreundete Elemente, die einander helfen."
 
-#: includes/class-render.php:4598
+#: includes/class-render.php:4607
 msgid "Three signs apart: the same drive in clashing elements."
 msgstr ""
 "Drei Zeichen auseinander: derselbe Antrieb in widerstreitenden Elementen."
 
-#: includes/class-render.php:4599
+#: includes/class-render.php:4608
 msgid "Four signs apart: the same element, easy understanding."
 msgstr "Vier Zeichen auseinander: dasselbe Element, leichtes Verstehen."
 
-#: includes/class-render.php:4600
+#: includes/class-render.php:4609
 msgid "Opposite signs: attraction and pull in one."
 msgstr "Gegenüberliegende Zeichen: Anziehung und Gegenzug zugleich."
 
-#: includes/class-render.php:4601
+#: includes/class-render.php:4610
 msgid "One or five signs apart: classically they do not see each other."
-msgstr "Ein oder fünf Zeichen auseinander: klassisch sehen sie einander nicht."
+msgstr ""
+"Ein oder fünf Zeichen auseinander: klassisch sehen sie einander nicht."
 
 #. translators: 1: the year's element, such as Metal, 2: the animal, such as
 #. Horse, 3: the year
-#: includes/class-render.php:4734
+#: includes/class-render.php:4743
 #, php-format
 msgid "%1$s %2$s, %3$d"
 msgstr "%1$s-%2$s, %3$d"
 
-#: includes/class-render.php:4739 includes/class-widget-manifest.php:435
+#: includes/class-render.php:4748 includes/class-widget-manifest.php:479
 msgid "Chinese zodiac"
 msgstr "Chinesisches Tierkreiszeichen"
 
-#: includes/class-render.php:4751
+#: includes/class-render.php:4760
 msgid "Heavenly stem"
 msgstr "Himmelsstamm"
 
-#: includes/class-render.php:4752
+#: includes/class-render.php:4761
 msgid "Earthly branch"
 msgstr "Irdischer Zweig"
 
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:4788
+#: includes/class-render.php:4797
 #, php-format
 msgid "Year element: %s"
 msgstr "Element des Jahres: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 #, php-format
 msgid "Polarity: %s"
 msgstr "Polarität: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 msgid "Yin"
 msgstr "Yin"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 msgid "Yang"
 msgstr "Yang"
 
 #. translators: %s = the year's stem and branch, such as Geng-Wu
-#: includes/class-render.php:4796
+#: includes/class-render.php:4805
 #, php-format
 msgid "Pillar: %s"
 msgstr "Säule: %s"
 
 #. translators: 1: the year, 2: the moment it begins, 3: the moment it ends,
 #. both in Beijing time
-#: includes/class-render.php:4804
+#: includes/class-render.php:4813
 #, php-format
 msgid ""
 "The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at "
@@ -2933,311 +2958,440 @@ msgstr ""
 "Lichun, dem Frühlingsanfang, nicht am 1. Januar."
 
 #. translators: %d = the year
-#: includes/class-render.php:4806
+#: includes/class-render.php:4815
 #, php-format
 msgid ""
-"The %d animal year begins at the start of spring (Lichun, about 4 February), "
-"not on 1 January."
+"The %d animal year begins at the start of spring (Lichun, about 4 February),"
+" not on 1 January."
 msgstr ""
-"Das Tierjahr %d beginnt mit dem Frühlingsanfang (Lichun, um den 4. Februar), "
-"nicht am 1. Januar."
+"Das Tierjahr %d beginnt mit dem Frühlingsanfang (Lichun, um den 4. Februar),"
+" nicht am 1. Januar."
 
 #. translators: %s = the animal's double hour, such as 11:00-13:00
-#: includes/class-render.php:4824
+#: includes/class-render.php:4833
 #, php-format
 msgid "Hours: %s"
 msgstr "Stunden des Tieres: %s"
 
 #. translators: %s = the three animals of the triad (san he), such as Tiger,
 #. Horse, Dog
-#: includes/class-render.php:4834
+#: includes/class-render.php:4843
 #, php-format
 msgid "Triad: %s"
 msgstr "Triade: %s"
 
 #. translators: %s = an animal, the secret friend (liu he) of this one
-#: includes/class-render.php:4838
+#: includes/class-render.php:4847
 #, php-format
 msgid "Secret friend: %s"
 msgstr "Geheimer Freund: %s"
 
 #. translators: %s = an animal that clashes (liu chong) with this one
-#: includes/class-render.php:4840
+#: includes/class-render.php:4849
 #, php-format
 msgid "Clash: %s"
 msgstr "Konflikt: %s"
 
 #. translators: %s = an animal that harms (liu hai) this one
-#: includes/class-render.php:4842
+#: includes/class-render.php:4851
 #, php-format
 msgid "Harm: %s"
 msgstr "Schaden: %s"
 
-#: includes/class-render.php:4888
+#: includes/class-render.php:4897
 msgid "Watch for"
 msgstr "Worauf achten"
 
-#: includes/class-render.php:4898
+#: includes/class-render.php:4907
 msgid "Character"
 msgstr "Charakter"
 
 #. translators: %s = one of the five Chinese elements, such as Metal
-#: includes/class-render.php:4905
+#: includes/class-render.php:4914
 #, php-format
 msgid "The year element: %s"
 msgstr "Element des Jahres: %s"
 
-#: includes/class-render.php:4915
+#: includes/class-render.php:4924
 msgid "Rat"
 msgstr "Ratte"
 
-#: includes/class-render.php:4916
+#: includes/class-render.php:4925
 msgid "Ox"
 msgstr "Ochse"
 
-#: includes/class-render.php:4917
+#: includes/class-render.php:4926
 msgid "Tiger"
 msgstr "Tiger"
 
-#: includes/class-render.php:4918
+#: includes/class-render.php:4927
 msgid "Rabbit"
 msgstr "Hase"
 
-#: includes/class-render.php:4919
+#: includes/class-render.php:4928
 msgid "Dragon"
 msgstr "Drache"
 
-#: includes/class-render.php:4920
+#: includes/class-render.php:4929
 msgid "Snake"
 msgstr "Schlange"
 
-#: includes/class-render.php:4921
+#: includes/class-render.php:4930
 msgid "Horse"
 msgstr "Pferd"
 
-#: includes/class-render.php:4922
+#: includes/class-render.php:4931
 msgid "Goat"
 msgstr "Ziege"
 
-#: includes/class-render.php:4923
+#: includes/class-render.php:4932
 msgid "Monkey"
 msgstr "Affe"
 
-#: includes/class-render.php:4924
+#: includes/class-render.php:4933
 msgid "Rooster"
 msgstr "Hahn"
 
-#: includes/class-render.php:4925
+#: includes/class-render.php:4934
 msgid "Dog"
 msgstr "Hund"
 
-#: includes/class-render.php:4926
+#: includes/class-render.php:4935
 msgid "Pig"
 msgstr "Schwein"
 
-#: includes/class-render.php:4934
+#: includes/class-render.php:4943
 msgid "Wood"
 msgstr "Holz"
 
-#: includes/class-render.php:4937
+#: includes/class-render.php:4946
 msgid "Metal"
 msgstr "Metall"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:5025
+#: includes/class-render.php:5034
 #, php-format
 msgid "%d min"
 msgstr "%d Min."
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:5031
+#: includes/class-render.php:5040
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d h %2$02d Min."
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:5350
+#: includes/class-render.php:5359
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d von %2$d angezeigt"
 
-#: includes/class-render.php:5401
+#: includes/class-render.php:5410
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "ja"
 
-#: includes/class-render.php:5401
+#: includes/class-render.php:5410
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "nein"
 
-#: includes/class-render.php:5478
+#: includes/class-render.php:5452
+msgid ""
+"The list of all nine mahadashas could not be loaded just now; the card shows"
+" the running one. Only administrators see this note."
+msgstr ""
+"Die Liste aller neun Mahadashas konnte gerade nicht geladen werden; die "
+"Karte zeigt die laufende Mahadasha. Nur Administratoren sehen diesen "
+"Hinweis."
+
+#: includes/class-render.php:5524
 msgid "Lagna"
 msgstr "Lagna"
 
-#: includes/class-render.php:5497
+#: includes/class-render.php:5534 includes/class-render.php:5736
 msgid "Moon nakshatra"
 msgstr "Mond-Nakshatra"
 
 #. translators: %d = pada (quarter) of the nakshatra, 1 to 4
-#: includes/class-render.php:5500
+#: includes/class-render.php:5537 includes/class-render.php:5739
 #, php-format
 msgid "Pada %d"
 msgstr "Pada %d"
 
-#: includes/class-render.php:5509
+#: includes/class-render.php:5546
 msgid "Dasha now"
 msgstr "Aktuelle Dasha"
 
 #. translators: %s = date
-#: includes/class-render.php:5512
+#: includes/class-render.php:5549 includes/class-render.php:5722
+#: includes/class-render.php:5730
 #, php-format
 msgid "until %s"
 msgstr "bis %s"
 
-#: includes/class-render.php:5518
+#: includes/class-render.php:5555
 msgid "Vedic birth chart"
 msgstr "Vedisches Geburtshoroskop"
 
-#: includes/class-render.php:5525
+#: includes/class-render.php:5562 includes/class-render.php:5806
 msgid "Grahas"
 msgstr "Grahas"
 
-#: includes/class-render.php:5525
+#: includes/class-render.php:5562 includes/class-render.php:5806
 msgid "Graha"
 msgstr "Graha"
 
 #. translators: %s = planet name
-#: includes/class-render.php:5531
+#: includes/class-render.php:5568
 #, php-format
 msgid "Mahadasha of %s"
 msgstr "Mahadasha von %s"
 
 #. translators: %s = planet name
-#: includes/class-render.php:5538
+#: includes/class-render.php:5575
 #, php-format
 msgid "Antardasha of %s"
 msgstr "Antardasha von %s"
 
-#: includes/class-render.php:5542
+#: includes/class-render.php:5579 includes/class-render.php:5745
 msgid "Vimshottari dasha"
 msgstr "Vimshottari-Dasha"
 
-#: includes/class-render.php:5548
+#: includes/class-render.php:5585
 msgid "Yogas"
 msgstr "Yogas"
 
-#: includes/class-render.php:5549 includes/class-render.php:5553
+#: includes/class-render.php:5586 includes/class-render.php:5590
 msgid "None found"
 msgstr "Keine gefunden"
 
-#: includes/class-render.php:5552
+#: includes/class-render.php:5589
 msgid "Doshas"
 msgstr "Doshas"
 
-#: includes/class-render.php:5556
+#: includes/class-render.php:5593
 msgid "Yogas and doshas"
 msgstr "Yogas und Doshas"
 
 #. translators: %s = the ayanamsa in degrees and minutes
-#: includes/class-render.php:5559
+#: includes/class-render.php:5596 includes/class-render.php:5810
 #, php-format
 msgid "Sidereal zodiac, ayanamsa %s."
 msgstr "Siderischer Tierkreis, Ayanamsa %s."
 
-#: includes/class-render.php:5614
+#: includes/class-render.php:5651
 msgid "Raja yoga"
 msgstr "Raja Yoga"
 
-#: includes/class-render.php:5615
+#: includes/class-render.php:5652
 msgid "Dhana yoga"
 msgstr "Dhana Yoga"
 
-#: includes/class-render.php:5616
+#: includes/class-render.php:5653
 msgid "Dharma Karmadhipati yoga"
 msgstr "Dharma Karmadhipati Yoga"
 
-#: includes/class-render.php:5617
+#: includes/class-render.php:5654
 msgid "Pancha Mahapurusha yoga"
 msgstr "Pancha Mahapurusha Yoga"
 
-#: includes/class-render.php:5618
+#: includes/class-render.php:5655
 msgid "Gajakesari yoga"
 msgstr "Gajakesari Yoga"
 
-#: includes/class-render.php:5619
+#: includes/class-render.php:5656
 msgid "Adhi yoga"
 msgstr "Adhi Yoga"
 
-#: includes/class-render.php:5625
+#: includes/class-render.php:5662
 msgid "Mangal dosha"
 msgstr "Mangal Dosha"
 
-#: includes/class-render.php:5626
+#: includes/class-render.php:5663
 msgid "Kaal Sarp dosha"
 msgstr "Kaal Sarp Dosha"
 
-#: includes/class-render.php:5627
+#: includes/class-render.php:5664
 msgid "Pitru dosha"
 msgstr "Pitru Dosha"
 
-#: includes/class-render.php:5628
+#: includes/class-render.php:5665
 msgid "Shrapit dosha"
 msgstr "Shrapit Dosha"
 
-#: includes/class-render.php:5629
+#: includes/class-render.php:5666
 msgid "Grahan dosha"
 msgstr "Grahan Dosha"
 
-#: includes/class-render.php:5630
+#: includes/class-render.php:5667
 msgid "Guru Chandal dosha"
 msgstr "Guru Chandal Dosha"
 
-#: includes/class-render.php:5636
+#: includes/class-render.php:5719
+msgid "Mahadasha"
+msgstr "Mahadasha"
+
+#: includes/class-render.php:5727
+msgid "Antardasha"
+msgstr "Antardasha"
+
+#. translators: %s = planet name
+#: includes/class-render.php:5752
+#, php-format
+msgid "Antardashas of %s"
+msgstr "Antardashas von %s"
+
+#: includes/class-render.php:5765
+msgid "Mahadashas"
+msgstr "Mahadashas"
+
+#: includes/class-render.php:5790
+msgid "Navamsa Lagna"
+msgstr "Navamsa Lagna"
+
+#: includes/class-render.php:5799
+#: includes/views/partials/shortcode-cards.php:355
+msgid "Navamsa (D9)"
+msgstr "Navamsa (D9)"
+
+#: includes/class-render.php:5849
+msgid "Progressed Sun"
+msgstr "Progressierte Sonne"
+
+#: includes/class-render.php:5850
+msgid "Progressed Moon"
+msgstr "Progressierter Mond"
+
+#: includes/class-render.php:5863
+msgid "Progressed Ascendant"
+msgstr "Progressierter Aszendent"
+
+#: includes/class-render.php:5877
+msgid "Progressed chart"
+msgstr "Progressiertes Horoskop"
+
+#: includes/class-render.php:5884
+msgid "Progressed planets"
+msgstr "Progressierte Planeten"
+
+#: includes/class-render.php:5887
+msgid "Aspects between progressed planets"
+msgstr "Aspekte zwischen progressiven Planeten"
+
+#: includes/class-render.php:5887
+msgid "Phase"
+msgstr "Phase"
+
+#: includes/class-render.php:5889
+msgid "Secondary progressions: a day after birth for each year of life."
+msgstr "Sekundärprogressionen: ein Tag nach der Geburt für jedes Lebensjahr."
+
+#. translators: %d = harmonic number, e.g. 5
+#: includes/class-render.php:5899
+#, php-format
+msgid "Harmonic %d chart"
+msgstr "Harmonisches %d-Chart"
+
+#: includes/class-render.php:5907
+msgid ""
+"Harmonic chart: each planet's longitude multiplied by the harmonic number, "
+"and the aspects between them."
+msgstr ""
+"Harmonisches Chart: Der Längengrad jedes Planeten wird mit der harmonischen "
+"Zahl multipliziert, und die Aspekte zwischen ihnen."
+
+#: includes/class-render.php:5911
+msgid "Planets"
+msgstr "Planeten"
+
+#: includes/class-render.php:5938
+msgid "Fixed stars"
+msgstr "Fixsterne"
+
+#: includes/class-render.php:5943
+msgid "No planet of this chart stands in conjunction with the bright stars."
+msgstr ""
+"Kein Planet dieser Geburtscharte steht in Konjunktion mit den hellen "
+"Sternen."
+
+#: includes/class-render.php:5944
+msgid "Star"
+msgstr "Stern"
+
+#: includes/class-render.php:5944
+msgid "Conjunct"
+msgstr "Konjunktion"
+
+#: includes/class-render.php:5944
+msgid "Magnitude"
+msgstr "Magnitude"
+
+#: includes/class-render.php:5945
+msgid "Conjunctions"
+msgstr "Konjunktionen"
+
+#. translators: 1: orb in degrees, 2: number of stars checked
+#: includes/class-render.php:5951
+#, php-format
+msgid ""
+"Conjunctions within %1$s° of longitude with %2$d bright stars, tropical "
+"zodiac."
+msgstr ""
+"Konjunktionen innerhalb von %1$s° Länge mit %2$d hellen Sternen, tropisches "
+"Tierkreiszeichen."
+
+#. translators: %s: orb in degrees
+#: includes/class-render.php:5953
+#, php-format
+msgid "Conjunctions within %s° of longitude, tropical zodiac."
+msgstr "Konjunktionen im Bereich von %s° Längengrad, tropischer Tierkreis."
+
+#: includes/class-render.php:5961
 msgid "Life Path"
 msgstr "Lebenszahl"
 
-#: includes/class-render.php:5637
+#: includes/class-render.php:5962
 msgid "Expression"
 msgstr "Ausdruckszahl"
 
-#: includes/class-render.php:5638
+#: includes/class-render.php:5963
 msgid "Soul Urge"
 msgstr "Seelenzahl"
 
-#: includes/class-render.php:5640
+#: includes/class-render.php:5965
 msgid "Birthday"
 msgstr "Geburtstagszahl"
 
-#: includes/class-render.php:5641
+#: includes/class-render.php:5966
 msgid "Personal Year"
 msgstr "Persönliches Jahr"
 
-#: includes/class-render.php:5654
+#: includes/class-render.php:5979
 msgid "Master number"
 msgstr "Meisterzahl"
 
-#: includes/class-render.php:5675 includes/class-tarot.php:285
-#: includes/class-widget-manifest.php:271
+#: includes/class-render.php:6000 includes/class-tarot.php:285
+#: includes/class-widget-manifest.php:315
 #: includes/views/partials/shortcode-cards.php:235
 msgid "Numerology"
 msgstr "Numerologie"
 
-#: includes/class-render.php:5681
+#: includes/class-render.php:6006
 msgid "What the numbers say"
 msgstr "Was die Zahlen sagen"
 
-#: includes/class-render.php:5713
+#: includes/class-render.php:6038
 msgid "Challenges"
 msgstr "Herausforderungen"
 
-#: includes/class-render.php:5714
+#: includes/class-render.php:6039
 msgid "Work"
 msgstr "Beruf"
 
-#: includes/class-shortcodes.php:386
+#: includes/class-shortcodes.php:394
 msgid ""
 "[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a "
 "zone name such as tz=\"Europe/Kyiv\", or hours from UTC such as tz=\"+3\". "
@@ -3249,7 +3403,7 @@ msgstr ""
 "Hinweis."
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:685
+#: includes/class-shortcodes.php:693
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -3258,11 +3412,11 @@ msgstr ""
 "Das %s-Widget ist vorübergehend nicht verfügbar und zeigt daher nichts an. "
 "Nur Administratoren sehen diesen Hinweis."
 
-#: includes/class-shortcodes.php:933 includes/class-shortcodes.php:1279
+#: includes/class-shortcodes.php:941 includes/class-shortcodes.php:1437
 msgid "This date does not exist."
 msgstr "Dieses Datum gibt es nicht."
 
-#: includes/class-shortcodes.php:1118
+#: includes/class-shortcodes.php:1126
 msgid ""
 "A return chart needs the birth time and the latitude and longitude of the "
 "place of birth. Only administrators see this note."
@@ -3270,7 +3424,7 @@ msgstr ""
 "Ein Solar- oder Lunarhoroskop braucht die Geburtszeit sowie Breiten- und "
 "Längengrad des Geburtsorts. Nur Administratoren sehen diesen Hinweis."
 
-#: includes/class-shortcodes.php:1210
+#: includes/class-shortcodes.php:1218
 msgid ""
 "A Davison chart needs the date, the time and the latitude and longitude of "
 "both births. Only administrators see this note."
@@ -3278,17 +3432,44 @@ msgstr ""
 "Ein Davison-Horoskop braucht Datum, Uhrzeit sowie Breiten- und Längengrad "
 "beider Geburten. Nur Administratoren sehen diesen Hinweis."
 
-#: includes/class-shortcodes.php:1218
+#: includes/class-shortcodes.php:1345
+msgid ""
+"This chart needs the birth date, time, latitude and longitude. Only "
+"administrators see this note."
+msgstr ""
+"Dieses Chart benötigt Geburtsdatum, -zeit, Breite und Länge. Nur "
+"Administratoren sehen diesen Hinweis."
+
+#. translators: %s = shortcode name
+#: includes/class-shortcodes.php:1366
+#, php-format
+msgid ""
+"The %s chart could not be loaded just now. Only administrators see this "
+"note."
+msgstr ""
+"Das %s-Chart konnte gerade nicht geladen werden. Nur Administratoren sehen "
+"diesen Hinweis."
+
+#: includes/class-shortcodes.php:1371
+msgid ""
+"This chart needs an API key from api.astroway.info: open AstroWay in the "
+"admin and enter it. Only administrators see this note."
+msgstr ""
+"Dieses Chart benötigt einen API‑Schlüssel von api.astroway.info: Öffnen Sie "
+"AstroWay im Admin‑Bereich und geben Sie ihn ein. Nur Administratoren sehen "
+"diesen Hinweis."
+
+#: includes/class-shortcodes.php:1376
 msgid ""
 "This chart needs a site key or an API key: open AstroWay in the admin and "
 "connect the site. Only administrators see this note."
 msgstr ""
 "Dieses Horoskop braucht einen Website-Schlüssel oder einen API-Schlüssel: "
-"Öffne AstroWay im Adminbereich und verbinde die Website. Nur Administratoren "
-"sehen diesen Hinweis."
+"Öffne AstroWay im Adminbereich und verbinde die Website. Nur Administratoren"
+" sehen diesen Hinweis."
 
 #. translators: 1: shortcode tag, 2: attribute name, 3: the value written
-#: includes/class-shortcodes.php:1287
+#: includes/class-shortcodes.php:1445
 #, php-format
 msgid ""
 "[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form "
@@ -3302,8 +3483,8 @@ msgid ""
 "this site could not reach api.astroway.info; the host may block outgoing "
 "requests."
 msgstr ""
-"diese Website erreichte api.astroway.info nicht; der Hoster sperrt womöglich "
-"ausgehende Anfragen."
+"diese Website erreichte api.astroway.info nicht; der Hoster sperrt womöglich"
+" ausgehende Anfragen."
 
 #: includes/class-site-key.php:109
 msgid "api.astroway.info could not reach this site."
@@ -3323,11 +3504,11 @@ msgstr ""
 
 #: includes/class-site-key.php:112
 msgid ""
-"the check came back with the wrong answer, often a page cache in front of the"
-" REST API."
+"the check came back with the wrong answer, often a page cache in front of "
+"the REST API."
 msgstr ""
-"die Prüfung bekam eine falsche Antwort, oft wegen eines Seiten-Caches vor der"
-" REST-API."
+"die Prüfung bekam eine falsche Antwort, oft wegen eines Seiten-Caches vor "
+"der REST-API."
 
 #: includes/class-site-key.php:113
 msgid "the check came back with a whole page instead of a short answer."
@@ -3399,8 +3580,8 @@ msgid ""
 "asked again in an hour. Only administrators see this note."
 msgstr ""
 "Die API hat mit einer Deutung anderer Karten geantwortet, daher wurde sie "
-"nicht gezeigt; in einer Stunde wird erneut gefragt. Nur Administratoren sehen"
-" diesen Hinweis."
+"nicht gezeigt; in einer Stunde wird erneut gefragt. Nur Administratoren "
+"sehen diesen Hinweis."
 
 #: includes/class-tarot.php:237
 msgid "Major arcana"
@@ -3480,39 +3661,43 @@ msgstr "Karte aufdecken"
 msgid "Spirit"
 msgstr "Geist"
 
-#: includes/class-tier.php:203
+#: includes/class-tier.php:209
 msgid "Locked feature"
 msgstr "Gesperrte Funktion"
 
-#: includes/class-tier.php:213
+#: includes/class-tier.php:219
 msgid "Pro feature"
 msgstr "Pro-Funktion"
 
-#: includes/class-tier.php:214
+#: includes/class-tier.php:220
 msgid "This widget is available on a paid AstroWay plan."
 msgstr ""
 "Dieses Widget ist im Rahmen eines kostenpflichtigen AstroWay-Tarifs "
 "verfügbar."
 
-#: includes/class-tier.php:217
+#: includes/class-tier.php:223
 msgid "Upgrade →"
 msgstr "Upgrade →"
 
-#: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:422
-#: includes/class-widget-manifest.php:423
+#: includes/class-widget-manifest.php:59
+#: includes/class-widget-manifest.php:466
+#: includes/class-widget-manifest.php:467
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
 msgstr "Standard (das heute vorgestellte Zeichen)"
 
-#: includes/class-widget-manifest.php:64 assets/js/astroway-blocks-editor.js:41
+#: includes/class-widget-manifest.php:64
+#: assets/js/astroway-blocks-editor.js:41
 msgid "Visitor picks the sign"
 msgstr "Besucher wählt das Sternzeichen"
 
-#: includes/class-widget-manifest.php:70 assets/js/astroway-blocks-editor.js:68
+#: includes/class-widget-manifest.php:70
+#: assets/js/astroway-blocks-editor.js:68
 msgid "Language"
 msgstr "Sprache"
 
-#: includes/class-widget-manifest.php:72 includes/class-widget-manifest.php:108
+#: includes/class-widget-manifest.php:72
+#: includes/class-widget-manifest.php:108
 #: assets/js/astroway-blocks-editor.js:44
 #: assets/js/astroway-blocks-editor.js:72
 msgid "Site default"
@@ -3531,17 +3716,20 @@ msgstr "Gezeichnete Kartenseite, keine Bilder"
 msgid "Style"
 msgstr "Stil"
 
-#: includes/class-widget-manifest.php:109 includes/views/admin-settings.php:307
+#: includes/class-widget-manifest.php:109
+#: includes/views/admin-settings.php:307
 #: assets/js/astroway-blocks-editor.js:73
 msgid "Instrument"
 msgstr "Instrument"
 
-#: includes/class-widget-manifest.php:110 includes/views/admin-settings.php:308
+#: includes/class-widget-manifest.php:110
+#: includes/views/admin-settings.php:308
 #: assets/js/astroway-blocks-editor.js:74
 msgid "Night sky"
 msgstr "Nachthimmel"
 
-#: includes/class-widget-manifest.php:111 includes/views/admin-settings.php:309
+#: includes/class-widget-manifest.php:111
+#: includes/views/admin-settings.php:309
 #: assets/js/astroway-blocks-editor.js:75
 msgid "Theme colours"
 msgstr "Theme-Farben"
@@ -3575,7 +3763,7 @@ msgid "Longitude (-180 to 180)"
 msgstr "Längengrad (-180 bis 180)"
 
 #: includes/class-widget-manifest.php:138
-#: includes/class-widget-manifest.php:403
+#: includes/class-widget-manifest.php:447
 msgid "Date (leave blank for today)"
 msgstr "Datum (für heute leer lassen)"
 
@@ -3588,12 +3776,14 @@ msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
 msgstr "Zeitzone (Europe/Kyiv, +05:30 oder 5.5)"
 
 #: includes/class-widget-manifest.php:151
-#: includes/class-widget-manifest.php:163
+#: includes/class-widget-manifest.php:164
+#: includes/class-widget-manifest.php:174
 msgid "Date (YYYY-MM-DD)"
 msgstr "Datum (JJJJ-MM-TT)"
 
 #: includes/class-widget-manifest.php:152
-#: includes/class-widget-manifest.php:164
+#: includes/class-widget-manifest.php:165
+#: includes/class-widget-manifest.php:175
 msgid "Time (HH:MM)"
 msgstr "Uhrzeit (HH:MM)"
 
@@ -3605,303 +3795,317 @@ msgstr "Name der Person (optional)"
 msgid "Timezone (Europe/Kyiv or +03:00)"
 msgstr "Zeitzone (Europe/Kyiv oder +03:00)"
 
-#: includes/class-widget-manifest.php:175
+#: includes/class-widget-manifest.php:186
 msgid "Return place: latitude (blank for the place of birth)"
 msgstr "Ort der Wiederkehr: Breitengrad (leer für den Geburtsort)"
 
-#: includes/class-widget-manifest.php:176
+#: includes/class-widget-manifest.php:187
 msgid "Return place: longitude"
 msgstr "Ort der Wiederkehr: Längengrad"
 
-#: includes/class-widget-manifest.php:177
+#: includes/class-widget-manifest.php:188
 msgid "Return place: timezone for the time shown (blank for UTC)"
 msgstr "Ort der Wiederkehr: Zeitzone für die angezeigte Zeit (leer für UTC)"
 
-#: includes/class-widget-manifest.php:186
+#: includes/class-widget-manifest.php:197
 msgid "Person A: name (for the table heading)"
 msgstr "Person A: Name (für die Tabellenüberschrift)"
 
-#: includes/class-widget-manifest.php:186
+#: includes/class-widget-manifest.php:197
 msgid "Person A: name"
 msgstr "Person A: Name"
 
-#: includes/class-widget-manifest.php:187
+#: includes/class-widget-manifest.php:198
 msgid "Person A: date (YYYY-MM-DD)"
 msgstr "Person A: Datum (JJJJ-MM-TT)"
 
-#: includes/class-widget-manifest.php:188
+#: includes/class-widget-manifest.php:199
 msgid "Person A: time (HH:MM, blank if unknown)"
 msgstr "Person A: Uhrzeit (HH:MM, leer, wenn unbekannt)"
 
-#: includes/class-widget-manifest.php:188
+#: includes/class-widget-manifest.php:199
 msgid "Person A: time (HH:MM)"
 msgstr "Person A: Uhrzeit (HH:MM)"
 
-#: includes/class-widget-manifest.php:189
+#: includes/class-widget-manifest.php:200
 msgid "Person A: latitude"
 msgstr "Person A: Breitengrad"
 
-#: includes/class-widget-manifest.php:190
+#: includes/class-widget-manifest.php:201
 msgid "Person A: longitude"
 msgstr "Person A: Längengrad"
 
-#: includes/class-widget-manifest.php:191
+#: includes/class-widget-manifest.php:202
 msgid "Person A: timezone"
 msgstr "Person A: Zeitzone"
 
-#: includes/class-widget-manifest.php:193
+#: includes/class-widget-manifest.php:204
 msgid "Person B: name (for the table heading)"
 msgstr "Person B: Name (für die Tabellenüberschrift)"
 
-#: includes/class-widget-manifest.php:193
+#: includes/class-widget-manifest.php:204
 msgid "Person B: name"
 msgstr "Person B: Name"
 
-#: includes/class-widget-manifest.php:194
+#: includes/class-widget-manifest.php:205
 msgid "Person B: date (YYYY-MM-DD)"
 msgstr "Person B: Datum (JJJJ-MM-TT)"
 
-#: includes/class-widget-manifest.php:195
+#: includes/class-widget-manifest.php:206
 msgid "Person B: time (HH:MM, blank if unknown)"
 msgstr "Person B: Uhrzeit (HH:MM, leer, wenn unbekannt)"
 
-#: includes/class-widget-manifest.php:195
+#: includes/class-widget-manifest.php:206
 msgid "Person B: time (HH:MM)"
 msgstr "Person B: Uhrzeit (HH:MM)"
 
-#: includes/class-widget-manifest.php:196
+#: includes/class-widget-manifest.php:207
 msgid "Person B: latitude"
 msgstr "Person B: Breitengrad"
 
-#: includes/class-widget-manifest.php:197
+#: includes/class-widget-manifest.php:208
 msgid "Person B: longitude"
 msgstr "Person B: Längengrad"
 
-#: includes/class-widget-manifest.php:198
+#: includes/class-widget-manifest.php:209
 msgid "Person B: timezone"
 msgstr "Person B: Zeitzone"
 
-#: includes/class-widget-manifest.php:215
+#: includes/class-widget-manifest.php:226
 msgid "Birth data"
 msgstr "Geburtsdaten"
 
-#: includes/class-widget-manifest.php:216
+#: includes/class-widget-manifest.php:227
 msgid "Any date inside the month (blank for this month)"
 msgstr ""
 "Ein beliebiges Datum innerhalb des Monats (für diesen Monat leer lassen)"
 
-#: includes/class-widget-manifest.php:220
+#: includes/class-widget-manifest.php:231
 msgid "Year (blank for the one in force now)"
 msgstr "Jahr (leer für das aktuell gültige)"
 
-#: includes/class-widget-manifest.php:224
+#: includes/class-widget-manifest.php:235
 msgid "First return after (YYYY-MM-DD, blank for the 1st of this month)"
 msgstr "Erste Wiederkehr nach (JJJJ-MM-TT, leer für den 1. dieses Monats)"
 
-#: includes/class-widget-manifest.php:227
+#: includes/class-widget-manifest.php:238
 msgid "Two births"
 msgstr "Zwei Geburten"
 
-#: includes/class-widget-manifest.php:239
+#: includes/class-widget-manifest.php:248
+msgid "All nine mahadashas"
+msgstr "Alle neun Mahadashas"
+
+#: includes/class-widget-manifest.php:251
+#: includes/class-widget-manifest.php:377
+msgid "Show"
+msgstr "Anzeigen"
+
+#: includes/class-widget-manifest.php:264
+msgid "Progressed to (YYYY-MM-DD, blank for today)"
+msgstr "Progressiert bis (JJJJ-MM-TT, leer für heute)"
+
+#: includes/class-widget-manifest.php:268
+msgid "Harmonic (2 to 180, 5 by default)"
+msgstr "Harmonisch (2 bis 180, standardmäßig 5)"
+
+#: includes/class-widget-manifest.php:283
 msgid "None"
 msgstr "Keine"
 
-#: includes/class-widget-manifest.php:240
+#: includes/class-widget-manifest.php:284
 msgid "Today's sky over the chart"
 msgstr "Der heutige Himmel über dem Horoskop"
 
-#: includes/class-widget-manifest.php:263
+#: includes/class-widget-manifest.php:307
 msgid "Transit date"
 msgstr "Transitdatum"
 
-#: includes/class-widget-manifest.php:267
+#: includes/class-widget-manifest.php:311
 msgid "Panchang"
 msgstr "Panchang"
 
-#: includes/class-widget-manifest.php:273
+#: includes/class-widget-manifest.php:317
 msgid "Full name"
 msgstr "Vollständiger Name"
 
-#: includes/class-widget-manifest.php:274
+#: includes/class-widget-manifest.php:318
 msgid "Date of birth (YYYY-MM-DD)"
 msgstr "Geburtsdatum (JJJJ-MM-TT)"
 
-#: includes/class-widget-manifest.php:277 includes/views/admin-settings.php:123
+#: includes/class-widget-manifest.php:321
+#: includes/views/admin-settings.php:123
 #: includes/views/partials/admin-sidebar.php:42
 msgid "System"
 msgstr "System"
 
-#: includes/class-widget-manifest.php:279
+#: includes/class-widget-manifest.php:323
 msgid "Pythagorean"
 msgstr "Pythagoreisch"
 
-#: includes/class-widget-manifest.php:280
+#: includes/class-widget-manifest.php:324
 msgid "Chaldean"
 msgstr "Chaldäisch"
 
-#: includes/class-widget-manifest.php:288
+#: includes/class-widget-manifest.php:332
 msgid "Two subjects"
 msgstr "Zwei Personen"
 
-#: includes/class-widget-manifest.php:291
+#: includes/class-widget-manifest.php:335
 msgid "How many aspects to show (6 by default)"
 msgstr "Wie viele Aspekte angezeigt werden (standardmäßig 6)"
 
-#: includes/class-widget-manifest.php:303
+#: includes/class-widget-manifest.php:347
 msgid "Daily Tarot"
 msgstr "Tägliches Tarot"
 
-#: includes/class-widget-manifest.php:307
+#: includes/class-widget-manifest.php:351
 msgid "Deck"
 msgstr "Kartendeck"
 
-#: includes/class-widget-manifest.php:310
+#: includes/class-widget-manifest.php:354
 #: assets/js/astroway-blocks-editor.js:34
 msgid "Marseille"
 msgstr "Marseille"
 
-#: includes/class-widget-manifest.php:311
+#: includes/class-widget-manifest.php:355
 #: assets/js/astroway-blocks-editor.js:35
 msgid "Lenormand"
 msgstr "Lenormand"
 
-#: includes/class-widget-manifest.php:323
+#: includes/class-widget-manifest.php:367
 msgid "Spread"
 msgstr "Legung"
 
-#: includes/class-widget-manifest.php:325
+#: includes/class-widget-manifest.php:369
 msgid "Past, present, future"
 msgstr "Vergangenheit, Gegenwart, Zukunft"
 
-#: includes/class-widget-manifest.php:326
+#: includes/class-widget-manifest.php:370
 msgid "Celtic Cross"
 msgstr "Keltisches Kreuz"
 
-#: includes/class-widget-manifest.php:331
+#: includes/class-widget-manifest.php:375
 msgid "Draw again button"
 msgstr "Schaltfläche \"Neu ziehen\""
 
-#: includes/class-widget-manifest.php:333
-msgid "Show"
-msgstr "Anzeigen"
-
-#: includes/class-widget-manifest.php:340
+#: includes/class-widget-manifest.php:384
 msgid "Cards"
 msgstr "Karten"
 
-#: includes/class-widget-manifest.php:342
+#: includes/class-widget-manifest.php:386
 msgid "Face up"
 msgstr "Aufgedeckt"
 
-#: includes/class-widget-manifest.php:343
+#: includes/class-widget-manifest.php:387
 msgid "Face down, turned by the visitor"
 msgstr "Verdeckt, der Besucher deckt auf"
 
-#: includes/class-widget-manifest.php:348
+#: includes/class-widget-manifest.php:392
 msgid "Reading of the spread"
 msgstr "Deutung der Legung"
 
-#: includes/class-widget-manifest.php:350
+#: includes/class-widget-manifest.php:394
 msgid "Off"
 msgstr "Aus"
 
-#: includes/class-widget-manifest.php:351
+#: includes/class-widget-manifest.php:395
 msgid "After the last card is turned"
 msgstr "Nachdem die letzte Karte aufgedeckt ist"
 
-#: includes/class-widget-manifest.php:358
+#: includes/class-widget-manifest.php:402
 msgid "Weekly horoscope"
 msgstr "Wochenhoroskop"
 
-#: includes/class-widget-manifest.php:359
+#: includes/class-widget-manifest.php:403
 msgid "Any date inside the week (blank for this week)"
 msgstr "Ein beliebiges Datum innerhalb der Woche (leer für diese Woche)"
 
-#: includes/class-widget-manifest.php:362
+#: includes/class-widget-manifest.php:406
 msgid "Monthly horoscope"
 msgstr "Monatshoroskop"
 
-#: includes/class-widget-manifest.php:374
+#: includes/class-widget-manifest.php:418
 msgid "Monthly forecast"
 msgstr "Monatsprognose"
 
-#: includes/class-widget-manifest.php:378
+#: includes/class-widget-manifest.php:422
 msgid "Moon transit timeline"
 msgstr "Zeitleiste der Mondtransite"
 
-#: includes/class-widget-manifest.php:379
+#: includes/class-widget-manifest.php:423
 msgid "Day the seven start from (blank for today)"
 msgstr "Tag, ab dem die sieben Tage zählen (leer für heute)"
 
-#: includes/class-widget-manifest.php:382
+#: includes/class-widget-manifest.php:426
 msgid "Retrograde status"
 msgstr "Rückläufigkeitsstatus"
 
-#: includes/class-widget-manifest.php:408
+#: includes/class-widget-manifest.php:452
 msgid "Day to start from (blank for today)"
 msgstr "Starttag (leer für heute)"
 
-#: includes/class-widget-manifest.php:409
+#: includes/class-widget-manifest.php:453
 msgid "Time to start from (HH:MM, blank for midnight)"
 msgstr "Startzeit (HH:MM, leer für Mitternacht)"
 
-#: includes/class-widget-manifest.php:411
+#: includes/class-widget-manifest.php:455
 msgid "Days to look ahead (1 to 30, default 7)"
 msgstr "Tage im Voraus (1 bis 30, Standard 7)"
 
-#: includes/class-widget-manifest.php:416
+#: includes/class-widget-manifest.php:460
 msgid "Yearly horoscope"
 msgstr "Jahreshoroskop"
 
-#: includes/class-widget-manifest.php:417
+#: includes/class-widget-manifest.php:461
 msgid "Any date inside the year (blank for this year)"
 msgstr "Beliebiges Datum innerhalb des Jahres (leer für dieses Jahr)"
 
-#: includes/class-widget-manifest.php:420
+#: includes/class-widget-manifest.php:464
 msgid "Two signs"
 msgstr "Zwei Zeichen"
 
-#: includes/class-widget-manifest.php:422
+#: includes/class-widget-manifest.php:466
 msgid "First sign"
 msgstr "Erstes Zeichen"
 
-#: includes/class-widget-manifest.php:423
+#: includes/class-widget-manifest.php:467
 msgid "Second sign"
 msgstr "Zweites Zeichen"
 
-#: includes/class-widget-manifest.php:430
+#: includes/class-widget-manifest.php:474
 msgid "One sign against the others (blank for all pairs)"
 msgstr "Ein Zeichen gegen die anderen (leer für alle Paare)"
 
-#: includes/class-widget-manifest.php:430
+#: includes/class-widget-manifest.php:474
 msgid "All pairs"
 msgstr "Alle Paare"
 
-#: includes/class-widget-manifest.php:437
+#: includes/class-widget-manifest.php:481
 msgid "Birth date (YYYY-MM-DD)"
 msgstr "Geburtsdatum (JJJJ-MM-TT)"
 
-#: includes/class-widget-manifest.php:438
+#: includes/class-widget-manifest.php:482
 msgid "Birth time (HH:MM, optional)"
 msgstr "Geburtszeit (HH:MM, optional)"
 
-#: includes/class-widget-manifest.php:491
+#: includes/class-widget-manifest.php:540
 msgid "Hide sections (comma-separated keys)"
 msgstr "Abschnitte ausblenden (Schlüssel durch Kommas getrennt)"
 
-#: includes/class-widget-manifest.php:496
+#: includes/class-widget-manifest.php:545
 msgid "Readings list"
 msgstr "Deutungsliste"
 
-#: includes/class-widget-manifest.php:498
+#: includes/class-widget-manifest.php:547
 msgid "As the card has it"
 msgstr "Wie in der Karte vorgesehen"
 
-#: includes/class-widget-manifest.php:499
+#: includes/class-widget-manifest.php:548
 msgid "First row open"
 msgstr "Erste Zeile geöffnet"
 
-#: includes/class-widget-manifest.php:500
+#: includes/class-widget-manifest.php:549
 msgid "All rows closed"
 msgstr "Alle Zeilen geschlossen"
 
@@ -3980,8 +4184,8 @@ msgid ""
 "Every shortcode with its parameters, plus a city search that fills in "
 "coordinates and timezone: %s."
 msgstr ""
-"Jeder Shortcode mit seinen Parametern sowie eine Stadtsuche, die Koordinaten "
-"und Zeitzone ausfüllt: %s."
+"Jeder Shortcode mit seinen Parametern sowie eine Stadtsuche, die Koordinaten"
+" und Zeitzone ausfüllt: %s."
 
 #: includes/views/admin-api-key.php:145
 msgid ""
@@ -3993,8 +4197,8 @@ msgstr ""
 
 #: includes/views/admin-api-key.php:147
 msgid ""
-"This site is asking api.astroway.info for its own key for the widgets above. "
-"Until then they use the shared allowance."
+"This site is asking api.astroway.info for its own key for the widgets above."
+" Until then they use the shared allowance."
 msgstr ""
 "Diese Website fordert bei api.astroway.info einen eigenen Schlüssel für die "
 "Widgets oben an. Bis dahin nutzen sie das gemeinsame Kontingent."
@@ -4024,8 +4228,8 @@ msgstr "AstroWay-Konto verbinden"
 
 #: includes/views/admin-api-key.php:178
 msgid ""
-"Sign in on api.astroway.info, pick a key or create one for this site, and you"
-" are back here. Nothing to copy."
+"Sign in on api.astroway.info, pick a key or create one for this site, and "
+"you are back here. Nothing to copy."
 msgstr ""
 "Melde dich bei api.astroway.info an, wähle einen Schlüssel oder erstelle "
 "einen für diese Website, und du bist wieder hier. Nichts zu kopieren."
@@ -4059,14 +4263,14 @@ msgstr "vom Konto %s"
 
 #: includes/views/admin-api-key.php:212
 msgid ""
-"The saved key can no longer be read: the security keys in wp-config.php have "
-"changed since it was saved. Widgets keep working without it. Paste the key "
+"The saved key can no longer be read: the security keys in wp-config.php have"
+" changed since it was saved. Widgets keep working without it. Paste the key "
 "again to restore it."
 msgstr ""
 "Der gespeicherte Schlüssel kann nicht mehr gelesen werden: Die "
-"Sicherheitsschlüssel in wp-config.php haben sich seit dem Speichern geändert."
-" Die Widgets funktionieren auch ohne ihn. Füge den Schlüssel erneut ein, um "
-"ihn wiederherzustellen."
+"Sicherheitsschlüssel in wp-config.php haben sich seit dem Speichern "
+"geändert. Die Widgets funktionieren auch ohne ihn. Füge den Schlüssel erneut"
+" ein, um ihn wiederherzustellen."
 
 #: includes/views/admin-api-key.php:215
 msgid "Replace it with a new key"
@@ -4090,10 +4294,10 @@ msgstr "Gespeicherten Schlüssel entfernen"
 
 #: includes/views/admin-api-key.php:240
 msgid ""
-"Paste a key from api.astroway.info/dashboard, or leave the field empty. Every"
-" widget renders without one. If you do save a key, your server offers it on "
-"the calls behind the page-rendered widgets, so a paid plan counts them "
-"against its own allowance rather than the one this site shares with every "
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
+"Every widget renders without one. If you do save a key, your server offers "
+"it on the calls behind the page-rendered widgets, so a paid plan counts them"
+" against its own allowance rather than the one this site shares with every "
 "other anonymous caller. Saving a key also adds the status panel below, and "
 "the key itself is what you use when you call the API from your own code."
 msgstr ""
@@ -4178,26 +4382,26 @@ msgid ""
 "Limited data: the connected api does not yet expose /v1/auth/keys/me. Plan "
 "and credits shown via legacy fallback."
 msgstr ""
-"Eingeschränkte Daten: Die verbundene API stellt den Endpunkt /v1/auth/keys/me"
-" noch nicht zur Verfügung. Plan und Guthaben werden über den Legacy-Fallback "
-"angezeigt."
+"Eingeschränkte Daten: Die verbundene API stellt den Endpunkt "
+"/v1/auth/keys/me noch nicht zur Verfügung. Plan und Guthaben werden über den"
+" Legacy-Fallback angezeigt."
 
 #: includes/views/admin-api-key.php:399
 msgid ""
-"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid "
-"key above, or clear the field to revert to anonymous mode."
+"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
+" key above, or clear the field to revert to anonymous mode."
 msgstr ""
-"Der gespeicherte Schlüssel wurde von api.astroway.info abgelehnt (HTTP 401). "
-"Füge oben einen gültigen Schlüssel ein oder leere das Feld, um in den "
+"Der gespeicherte Schlüssel wurde von api.astroway.info abgelehnt (HTTP 401)."
+" Füge oben einen gültigen Schlüssel ein oder leere das Feld, um in den "
 "anonymen Modus zurückzukehren."
 
 #: includes/views/admin-api-key.php:401
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue, try again in a "
-"moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a"
+" moment."
 msgstr ""
-"api.astroway.info konnte nicht erreicht werden. Netzwerk- oder Serverproblem,"
-" versuche es gleich noch einmal."
+"api.astroway.info konnte nicht erreicht werden. Netzwerk- oder "
+"Serverproblem, versuche es gleich noch einmal."
 
 #: includes/views/admin-api-key.php:410
 msgid "What a key adds"
@@ -4301,13 +4505,14 @@ msgstr "Priorität"
 msgid "Spend cap"
 msgstr "Ausgabenlimit"
 
-#. translators: %s is a link to the canonical pricing page on api.astroway.info
+#. translators: %s is a link to the canonical pricing page on
+#. api.astroway.info
 #: includes/views/admin-api-key.php:481
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
-"own code. The widgets on your pages are not affected by any of it. Canonical "
-"pricing → %s"
+"own code. The widgets on your pages are not affected by any of it. Canonical"
+" pricing → %s"
 msgstr ""
 "Jede Zeile unterhalb der ersten betrifft Aufrufe von api.astroway.info aus "
 "deinem eigenen Code. Die Widgets auf deinen Seiten sind davon nicht "
@@ -4326,15 +4531,15 @@ msgid ""
 "Your server renders most widgets into the page, counted against this site's "
 "allowance of 300 requests an hour, or against your own plan when a paid key "
 "is saved above. The rest load in a frame against each visitor's own 30, and "
-"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the "
-"visitor's browser, which is no place for your key."
+"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the"
+" visitor's browser, which is no place for your key."
 msgstr ""
 "Dein Server rendert die meisten Widgets in die Seite; das zählt gegen das "
 "Kontingent dieser Website von 300 Anfragen pro Stunde oder gegen deinen "
-"eigenen Tarif, wenn oben ein kostenpflichtiger Schlüssel gespeichert ist. Der"
-" Rest lädt in einem Frame gegen die 30 Anfragen jedes Besuchers und trägt das"
-" Wasserzeichen \"Powered by AstroWay\": Einen Frame ruft der Browser des "
-"Besuchers ab, und dort hat dein Schlüssel nichts zu suchen."
+"eigenen Tarif, wenn oben ein kostenpflichtiger Schlüssel gespeichert ist. "
+"Der Rest lädt in einem Frame gegen die 30 Anfragen jedes Besuchers und trägt"
+" das Wasserzeichen \"Powered by AstroWay\": Einen Frame ruft der Browser des"
+" Besuchers ab, und dort hat dein Schlüssel nichts zu suchen."
 
 #: includes/views/admin-api-key.php:500
 msgid "Free key."
@@ -4342,10 +4547,10 @@ msgstr "Kostenloser Schlüssel."
 
 #: includes/views/admin-api-key.php:501
 msgid ""
-"A personal bucket of 10,000 calls a month for code you write yourself, plus a"
-" dashboard with activity history. It does not change what the shortcodes "
-"render, and the watermark on framed widgets stays: the key is not part of the"
-" frame's address."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus "
+"a dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of "
+"the frame's address."
 msgstr ""
 "Ein persönliches Kontingent von 10.000 Aufrufen pro Monat für selbst "
 "geschriebenen Code sowie ein Dashboard mit dem Aktivitätsverlauf. Die "
@@ -4362,16 +4567,16 @@ msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
 "page-rendered widgets on this site draw on that plan too, instead of the "
-"shared anonymous allowance. Widgets that need a paid endpoint will say so on "
-"the shortcode; none of the current ones do."
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
+" the shortcode; none of the current ones do."
 msgstr ""
 "Höhere Limits und mehr Aufrufe auf api.astroway.info, von KI verfasste "
-"Auswertungen, Support mit Priorität sowie eine Ausgabenobergrenze zum Schutz "
-"vor unerwarteten Kostenanstiegen. Auch die auf dieser Seite gerenderten "
+"Auswertungen, Support mit Priorität sowie eine Ausgabenobergrenze zum Schutz"
+" vor unerwarteten Kostenanstiegen. Auch die auf dieser Seite gerenderten "
 "Widgets greifen auf diesen Tarif zurück, anstatt auf das gemeinsame anonyme "
-"Kontingent. Bei Widgets, die einen kostenpflichtigen Endpunkt benötigen, wird"
-" dies im Shortcode angegeben; bei keinem der derzeitigen Widgets ist dies der"
-" Fall."
+"Kontingent. Bei Widgets, die einen kostenpflichtigen Endpunkt benötigen, "
+"wird dies im Shortcode angegeben; bei keinem der derzeitigen Widgets ist "
+"dies der Fall."
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -4389,8 +4594,8 @@ msgstr ""
 #: includes/views/admin-settings.php:38
 msgid "WordPress could not send the mail. Check your site's mail setup."
 msgstr ""
-"WordPress konnte die E-Mail nicht senden. Prüfe die E-Mail-Einrichtung deiner"
-" Website."
+"WordPress konnte die E-Mail nicht senden. Prüfe die E-Mail-Einrichtung "
+"deiner Website."
 
 #: includes/views/admin-settings.php:39
 msgid "Transit alerts are not available on this site."
@@ -4517,8 +4722,8 @@ msgid ""
 "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"Die Matrix lässt sich über den Filter `astroway_tier_matrix` filtern, sodass "
-"Add-ons ihre eigenen Funktionen hinzufügen können."
+"Die Matrix lässt sich über den Filter `astroway_tier_matrix` filtern, sodass"
+" Add-ons ihre eigenen Funktionen hinzufügen können."
 
 #: includes/views/admin-settings.php:204
 msgid "Domain binding"
@@ -4542,11 +4747,11 @@ msgstr "Schlüssel neu binden"
 #: includes/views/admin-settings.php:232
 #, php-format
 msgid ""
-"Applies immediately. Limited to a few changes per month; the account owner is"
-" emailed. Manage keys at %s."
+"Applies immediately. Limited to a few changes per month; the account owner "
+"is emailed. Manage keys at %s."
 msgstr ""
-"Gilt ab sofort. Beschränkt auf wenige Änderungen pro Monat; der Kontoinhaber "
-"wird per E-Mail benachrichtigt. Schlüssel verwalten unter %s."
+"Gilt ab sofort. Beschränkt auf wenige Änderungen pro Monat; der Kontoinhaber"
+" wird per E-Mail benachrichtigt. Schlüssel verwalten unter %s."
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
@@ -4582,14 +4787,15 @@ msgstr "In eingebetteten Widgets einen Haftungsausschluss anzeigen"
 
 #: includes/views/admin-settings.php:287
 msgid ""
-"Appends a short \"informational, not professional advice\" line to the widget"
-" footer. Off by default, enable it if your jurisdiction or compliance policy "
-"requires it. The wording is rendered and localized by api.astroway.info."
+"Appends a short \"informational, not professional advice\" line to the "
+"widget footer. Off by default, enable it if your jurisdiction or compliance "
+"policy requires it. The wording is rendered and localized by "
+"api.astroway.info."
 msgstr ""
 "Fügt der Fußzeile des Widgets eine kurze Zeile \"Information, keine "
-"professionelle Beratung\" hinzu. Standardmäßig aus; aktiviere sie, wenn deine"
-" Rechtsordnung oder Compliance-Richtlinie es verlangt. Den Wortlaut stellt "
-"api.astroway.info bereit und übersetzt ihn."
+"professionelle Beratung\" hinzu. Standardmäßig aus; aktiviere sie, wenn "
+"deine Rechtsordnung oder Compliance-Richtlinie es verlangt. Den Wortlaut "
+"stellt api.astroway.info bereit und übersetzt ihn."
 
 #: includes/views/admin-settings.php:290
 msgid "Save disclaimer setting"
@@ -4653,15 +4859,15 @@ msgstr "Auf dieser Seite (empfohlen)"
 
 #: includes/views/admin-settings.php:376
 msgid ""
-"Your server fetches the text and prints it into the page. Search engines can "
-"read it, your theme styles it, and it works without JavaScript. Answers are "
-"cached until they change, so a daily horoscope is fetched once a day per "
+"Your server fetches the text and prints it into the page. Search engines can"
+" read it, your theme styles it, and it works without JavaScript. Answers are"
+" cached until they change, so a daily horoscope is fetched once a day per "
 "sign."
 msgstr ""
 "Dein Server ruft den Text ab und schreibt ihn in die Seite. Suchmaschinen "
 "können ihn lesen, dein Theme gestaltet ihn, und es funktioniert ohne "
-"JavaScript. Antworten werden zwischengespeichert, bis sie sich ändern, sodass"
-" ein Tageshoroskop einmal täglich pro Zeichen abgerufen wird."
+"JavaScript. Antworten werden zwischengespeichert, bis sie sich ändern, "
+"sodass ein Tageshoroskop einmal täglich pro Zeichen abgerufen wird."
 
 #: includes/views/admin-settings.php:381
 msgid "In an iframe"
@@ -4670,14 +4876,14 @@ msgstr "In einem iframe"
 #: includes/views/admin-settings.php:382
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
-"reaches your page source, so the content is not indexed and your theme cannot"
-" style it. Choose this if your host blocks outgoing requests, or to compare "
-"the two."
+"reaches your page source, so the content is not indexed and your theme "
+"cannot style it. Choose this if your host blocks outgoing requests, or to "
+"compare the two."
 msgstr ""
 "Der Browser jedes Besuchers lädt das Widget von api.astroway.info. Nichts "
 "landet in deinem Seitenquelltext, daher wird der Inhalt nicht indexiert und "
-"dein Theme kann ihn nicht gestalten. Wähle dies, wenn dein Hoster ausgehende "
-"Anfragen blockiert, oder um beides zu vergleichen."
+"dein Theme kann ihn nicht gestalten. Wähle dies, wenn dein Hoster ausgehende"
+" Anfragen blockiert, oder um beides zu vergleichen."
 
 #: includes/views/admin-settings.php:386
 msgid ""
@@ -4722,8 +4928,8 @@ msgstr ""
 
 #: includes/views/admin-settings.php:415
 msgid ""
-"Nothing is sent on the quiet days. The mail that does go out carries the moon"
-" phase and the current retrogrades as context."
+"Nothing is sent on the quiet days. The mail that does go out carries the "
+"moon phase and the current retrogrades as context."
 msgstr ""
 "An den ruhigen Tagen wird nichts gesendet. Die E-Mail, die versendet wird, "
 "enthält die Mondphase und die aktuellen Rückläufigkeiten als Kontext."
@@ -4737,8 +4943,8 @@ msgid ""
 "WordPress runs scheduled jobs when someone visits the site, so the mail can "
 "be late on a quiet blog."
 msgstr ""
-"WordPress führt geplante Aufgaben aus, wenn jemand die Website besucht, daher"
-" kann die E-Mail auf einem ruhigen Blog verspätet ankommen."
+"WordPress führt geplante Aufgaben aus, wenn jemand die Website besucht, "
+"daher kann die E-Mail auf einem ruhigen Blog verspätet ankommen."
 
 #: includes/views/admin-settings.php:429
 msgid "Send to"
@@ -4774,8 +4980,8 @@ msgstr "Besucher vor dem Absenden eines Formulars um Zustimmung bitten"
 
 #: includes/views/admin-settings.php:464
 msgid ""
-"Adds a required checkbox to the birth chart, compatibility, moon sign, rising"
-" sign, Human Design and numerology forms. Off by default."
+"Adds a required checkbox to the birth chart, compatibility, moon sign, "
+"rising sign, Human Design and numerology forms. Off by default."
 msgstr ""
 "Fügt den Formularen für Geburtshoroskop, Kompatibilität, Mondzeichen, "
 "Aszendent, Human Design und Numerologie ein Pflicht-Kontrollkästchen hinzu. "
@@ -4889,17 +5095,17 @@ msgid ""
 "Updates are delivered directly from astroway.info using your API key. Paid-"
 "tier features and early releases reach you first."
 msgstr ""
-"Updates kommen mit deinem API-Schlüssel direkt von astroway.info. Funktionen "
-"des kostenpflichtigen Tarifs und Vorabversionen erhältst du zuerst."
+"Updates kommen mit deinem API-Schlüssel direkt von astroway.info. Funktionen"
+" des kostenpflichtigen Tarifs und Vorabversionen erhältst du zuerst."
 
 #: includes/views/partials/admin-channel-b-status.php:37
 msgid ""
-"Updates are delivered through the WordPress.org plugin directory. To activate"
-" Channel B for paid-tier delivery, add a paid API key above."
+"Updates are delivered through the WordPress.org plugin directory. To "
+"activate Channel B for paid-tier delivery, add a paid API key above."
 msgstr ""
-"Updates kommen über das Plugin-Verzeichnis von WordPress.org. Um Kanal B für "
-"den kostenpflichtigen Tarif zu aktivieren, füge oben einen kostenpflichtigen "
-"API-Schlüssel hinzu."
+"Updates kommen über das Plugin-Verzeichnis von WordPress.org. Um Kanal B für"
+" den kostenpflichtigen Tarif zu aktivieren, füge oben einen "
+"kostenpflichtigen API-Schlüssel hinzu."
 
 #: includes/views/partials/admin-channel-b-status.php:42
 msgid "Update endpoint"
@@ -4949,9 +5155,10 @@ msgid ""
 "specification. Each one needs an API key. The widgets above are hand-built "
 "and read better; these cover everything else the api can calculate."
 msgstr ""
-"%1$d weitere Shortcodes in %2$d Gruppen, generiert aus der API-Spezifikation."
-" Jeder braucht einen API-Schlüssel. Die Widgets oben sind von Hand gebaut und"
-" lesen sich besser; diese decken alles andere ab, was die API berechnen kann."
+"%1$d weitere Shortcodes in %2$d Gruppen, generiert aus der API-"
+"Spezifikation. Jeder braucht einen API-Schlüssel. Die Widgets oben sind von "
+"Hand gebaut und lesen sich besser; diese decken alles andere ab, was die API"
+" berechnen kann."
 
 #: includes/views/partials/admin-generated-coverage.php:47
 msgid "Families"
@@ -5019,7 +5226,12 @@ msgstr ""
 #: includes/views/partials/shortcode-cards.php:162
 #: includes/views/partials/shortcode-cards.php:200
 #: includes/views/partials/shortcode-cards.php:241
-#: includes/views/partials/shortcode-cards.php:423
+#: includes/views/partials/shortcode-cards.php:345
+#: includes/views/partials/shortcode-cards.php:360
+#: includes/views/partials/shortcode-cards.php:374
+#: includes/views/partials/shortcode-cards.php:389
+#: includes/views/partials/shortcode-cards.php:404
+#: includes/views/partials/shortcode-cards.php:496
 msgid "Birth date in YYYY-MM-DD."
 msgstr "Geburtsdatum im Format JJJJ-MM-TT."
 
@@ -5029,6 +5241,11 @@ msgstr "Geburtsdatum im Format JJJJ-MM-TT."
 #: includes/views/partials/shortcode-cards.php:127
 #: includes/views/partials/shortcode-cards.php:163
 #: includes/views/partials/shortcode-cards.php:201
+#: includes/views/partials/shortcode-cards.php:346
+#: includes/views/partials/shortcode-cards.php:361
+#: includes/views/partials/shortcode-cards.php:375
+#: includes/views/partials/shortcode-cards.php:390
+#: includes/views/partials/shortcode-cards.php:405
 msgid "Birth time in HH:MM (24-hour)."
 msgstr "Geburtszeit im Format HH:MM (24-Stunden-Format)."
 
@@ -5053,12 +5270,12 @@ msgstr "Anzeigename im Chart."
 #: includes/views/partials/shortcode-cards.php:28
 msgid ""
 "Palette of the wheel drawing: light (default), dark or console. The text "
-"beside it follows your theme on its own; the wheel is an image and cannot, so"
-" set this to match."
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
 msgstr ""
 "Farbpalette des Rads: light (Standard), dark oder console. Der Text daneben "
-"folgt deinem Theme von selbst; das Rad ist ein Bild und kann das nicht, stell"
-" es also passend ein."
+"folgt deinem Theme von selbst; das Rad ist ein Bild und kann das nicht, "
+"stell es also passend ein."
 
 #: includes/views/partials/shortcode-cards.php:33
 msgid "Daily Horoscope"
@@ -5089,19 +5306,19 @@ msgid ""
 "All three by default; periods=\"day\" gives a single card."
 msgstr ""
 "Welche Zeitraum-Tabs die Karte zeigt: beliebige aus day, week, month, durch "
-"Komma getrennt. Standardmäßig alle drei; periods=\"day\" ergibt eine einzelne"
-" Karte."
+"Komma getrennt. Standardmäßig alle drei; periods=\"day\" ergibt eine "
+"einzelne Karte."
 
 #: includes/views/partials/shortcode-cards.php:40
 #: includes/views/partials/shortcode-cards.php:52
 #: includes/views/partials/shortcode-cards.php:65
 msgid ""
 "switch=\"no\" pins the card to these attributes. By default the visitor can "
-"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the"
-" page URL."
+"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to "
+"the page URL."
 msgstr ""
-"switch=\"no\" legt die Karte auf diese Attribute fest. Standardmäßig kann der"
-" Besucher ein anderes Zeichen wählen oder das Datum weiterschalten, was "
+"switch=\"no\" legt die Karte auf diese Attribute fest. Standardmäßig kann "
+"der Besucher ein anderes Zeichen wählen oder das Datum weiterschalten, was "
 "?aw_sign= und ?aw_date= an die Seitenadresse anhängt."
 
 #: includes/views/partials/shortcode-cards.php:45
@@ -5113,8 +5330,8 @@ msgid ""
 "Horoscope for the current week, anchored to Monday. Rendered into the page, "
 "not an iframe."
 msgstr ""
-"Horoskop für die aktuelle Woche, verankert am Montag. In die Seite gerendert,"
-" nicht in einem iframe."
+"Horoskop für die aktuelle Woche, verankert am Montag. In die Seite "
+"gerendert, nicht in einem iframe."
 
 #: includes/views/partials/shortcode-cards.php:53
 msgid "Any date inside the week you want. Defaults to today."
@@ -5127,8 +5344,8 @@ msgstr "Monatshoroskop"
 
 #: includes/views/partials/shortcode-cards.php:59
 msgid ""
-"Horoscope for the current month, anchored to the 1st. Rendered into the page,"
-" not an iframe."
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
 msgstr ""
 "Horoskop für den aktuellen Monat, verankert am 1. In die Seite gerendert, "
 "nicht in einem iframe."
@@ -5155,7 +5372,7 @@ msgstr ""
 #: includes/views/partials/shortcode-cards.php:86
 #: includes/views/partials/shortcode-cards.php:215
 #: includes/views/partials/shortcode-cards.php:226
-#: includes/views/partials/shortcode-cards.php:390
+#: includes/views/partials/shortcode-cards.php:463
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "Datum im Format JJJJ-MM-TT überschreiben. Standardmäßig heute."
 
@@ -5183,6 +5400,11 @@ msgstr ""
 #: includes/views/partials/shortcode-cards.php:164
 #: includes/views/partials/shortcode-cards.php:202
 #: includes/views/partials/shortcode-cards.php:227
+#: includes/views/partials/shortcode-cards.php:347
+#: includes/views/partials/shortcode-cards.php:362
+#: includes/views/partials/shortcode-cards.php:376
+#: includes/views/partials/shortcode-cards.php:391
+#: includes/views/partials/shortcode-cards.php:406
 msgid "WGS-84 latitude."
 msgstr "WGS-84-Breitengrad."
 
@@ -5192,7 +5414,12 @@ msgstr "WGS-84-Breitengrad."
 #: includes/views/partials/shortcode-cards.php:165
 #: includes/views/partials/shortcode-cards.php:203
 #: includes/views/partials/shortcode-cards.php:228
-#: includes/views/partials/shortcode-cards.php:389
+#: includes/views/partials/shortcode-cards.php:348
+#: includes/views/partials/shortcode-cards.php:363
+#: includes/views/partials/shortcode-cards.php:377
+#: includes/views/partials/shortcode-cards.php:392
+#: includes/views/partials/shortcode-cards.php:407
+#: includes/views/partials/shortcode-cards.php:462
 msgid "WGS-84 longitude."
 msgstr "WGS-84-Längengrad."
 
@@ -5222,7 +5449,8 @@ msgstr ""
 
 #: includes/views/partials/shortcode-cards.php:113
 msgid ""
-"WGS-84 latitude. Only affects the house shown; the sign is the same anywhere."
+"WGS-84 latitude. Only affects the house shown; the sign is the same "
+"anywhere."
 msgstr ""
 "WGS-84 Breitengrad. Beeinflusst nur das angezeigte Haus; das Zeichen ist "
 "überall gleich."
@@ -5241,8 +5469,8 @@ msgid ""
 "The rising sign with its chart ruler and the Midheaven. Coordinates are "
 "required: the ascendant is the horizon at a place."
 msgstr ""
-"Der Aszendent mit seinem Horoskopherrscher und dem Medium Coeli. Koordinaten "
-"sind erforderlich: Der Aszendent ist der Horizont an einem Ort."
+"Der Aszendent mit seinem Horoskopherrscher und dem Medium Coeli. Koordinaten"
+" sind erforderlich: Der Aszendent ist der Horizont an einem Ort."
 
 #: includes/views/partials/shortcode-cards.php:128
 msgid ""
@@ -5265,8 +5493,8 @@ msgid ""
 "Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
 "renders into the page; the other two load in a frame."
 msgstr ""
-"Kartendeck: rider-waite (Standard), marseille oder lenormand. Nur rider-waite"
-" wird in die Seite gerendert; die anderen beiden laden in einem Frame."
+"Kartendeck: rider-waite (Standard), marseille oder lenormand. Nur rider-"
+"waite wird in die Seite gerendert; die anderen beiden laden in einem Frame."
 
 #: includes/views/partials/shortcode-cards.php:146
 msgid "Tarot Spread of the Day"
@@ -5277,9 +5505,9 @@ msgid ""
 "Past, present and future, or the Celtic Cross, drawn once a day for this "
 "site, each card read in its position. Rendered into the page; no key needed."
 msgstr ""
-"Vergangenheit, Gegenwart und Zukunft oder das Keltische Kreuz, einmal am Tag "
-"für diese Website gezogen, jede Karte in ihrer Position gedeutet. Wird in die"
-" Seite gerendert; kein Schlüssel nötig."
+"Vergangenheit, Gegenwart und Zukunft oder das Keltische Kreuz, einmal am Tag"
+" für diese Website gezogen, jede Karte in ihrer Position gedeutet. Wird in "
+"die Seite gerendert; kein Schlüssel nötig."
 
 #: includes/views/partials/shortcode-cards.php:151
 msgid ""
@@ -5291,12 +5519,12 @@ msgstr ""
 
 #: includes/views/partials/shortcode-cards.php:152
 msgid ""
-"yes (default) shows a Draw again button that deals the visitor a new spread, "
-"not kept or cached; no hides it."
+"yes (default) shows a Draw again button that deals the visitor a new spread,"
+" not kept or cached; no hides it."
 msgstr ""
 "yes (Standard) zeigt eine Schaltfläche \"Neu ziehen\", die Besuchern eine "
-"neue Legung gibt, weder gespeichert noch zwischengespeichert; no blendet sie "
-"aus."
+"neue Legung gibt, weder gespeichert noch zwischengespeichert; no blendet sie"
+" aus."
 
 #: includes/views/partials/shortcode-cards.php:157
 msgid "Mini Birth Chart"
@@ -5326,8 +5554,8 @@ msgstr "Monatsprognose"
 msgid ""
 "Four weeks ahead for one sign, each with its own theme. Loads in a frame."
 msgstr ""
-"Vier Wochen im Voraus für ein Zeichen, jede mit eigenem Thema. Lädt in einem "
-"Frame."
+"Vier Wochen im Voraus für ein Zeichen, jede mit eigenem Thema. Lädt in einem"
+" Frame."
 
 #: includes/views/partials/shortcode-cards.php:184
 msgid "Moon Transit Timeline"
@@ -5380,8 +5608,8 @@ msgstr ""
 msgid ""
 "Life Path, Expression, Soul Urge and Personality numbers. Loads in a frame."
 msgstr ""
-"Lebenszahl, Ausdruckszahl, Seelenzahl und Persönlichkeitszahl. Lädt in einem "
-"Frame."
+"Lebenszahl, Ausdruckszahl, Seelenzahl und Persönlichkeitszahl. Lädt in einem"
+" Frame."
 
 #: includes/views/partials/shortcode-cards.php:240
 msgid "Full birth name. The letters are what the numbers are built from."
@@ -5399,8 +5627,8 @@ msgstr "Zeichen-Kompatibilitätsmatrix"
 
 #: includes/views/partials/shortcode-cards.php:249
 msgid ""
-"Every pair of signs by its classical relation, or one sign against the other "
-"eleven. Rendered into the page; no key needed."
+"Every pair of signs by its classical relation, or one sign against the other"
+" eleven. Rendered into the page; no key needed."
 msgstr ""
 "Jedes Zeichenpaar nach seiner klassischen Beziehung, oder ein Zeichen gegen "
 "die übrigen elf. Wird in die Seite gerendert; kein Schlüssel nötig."
@@ -5477,11 +5705,11 @@ msgstr "Zweite Person: Name für die Tabellenüberschrift."
 
 #: includes/views/partials/shortcode-cards.php:275
 msgid ""
-"How many aspects the table holds, 1 to 20. Six by default, which is what the "
-"frame version showed."
+"How many aspects the table holds, 1 to 20. Six by default, which is what the"
+" frame version showed."
 msgstr ""
-"Wie viele Aspekte die Tabelle enthält, 1 bis 20. Standardmäßig sechs, wie in "
-"der Frame-Version."
+"Wie viele Aspekte die Tabelle enthält, 1 bis 20. Standardmäßig sechs, wie in"
+" der Frame-Version."
 
 #: includes/views/partials/shortcode-cards.php:281
 msgid "Solar Return"
@@ -5489,9 +5717,9 @@ msgstr "Solarhoroskop"
 
 #: includes/views/partials/shortcode-cards.php:282
 msgid ""
-"The chart of the moment the Sun returns to its birth position in a year, with"
-" houses and aspects. Without a date it asks the visitor. Needs a site key or "
-"an API key; on an API key each new chart costs 50 credits."
+"The chart of the moment the Sun returns to its birth position in a year, "
+"with houses and aspects. Without a date it asks the visitor. Needs a site "
+"key or an API key; on an API key each new chart costs 50 credits."
 msgstr ""
 "Das Horoskop des Moments, in dem die Sonne in einem Jahr an ihre "
 "Geburtsposition zurückkehrt, mit Häusern und Aspekten. Ohne Datum fragt es "
@@ -5506,7 +5734,8 @@ msgstr ""
 "Formular."
 
 #: includes/views/partials/shortcode-cards.php:287
-msgid "Birth time in HH:MM. Required with a date: houses turn with the minute."
+msgid ""
+"Birth time in HH:MM. Required with a date: houses turn with the minute."
 msgstr ""
 "Geburtszeit im Format HH:MM. Mit Datum erforderlich: Die Häuser ändern sich "
 "mit jeder Minute."
@@ -5559,14 +5788,14 @@ msgstr "Name für die Überschrift."
 
 #: includes/views/partials/shortcode-cards.php:301
 msgid ""
-"The chart of the next moment the Moon returns to its birth position. Without "
-"a date it asks the visitor. Needs a site key or an API key; on an API key "
+"The chart of the next moment the Moon returns to its birth position. Without"
+" a date it asks the visitor. Needs a site key or an API key; on an API key "
 "each new chart costs 50 credits."
 msgstr ""
 "Das Horoskop des nächsten Moments, in dem der Mond an seine Geburtsposition "
 "zurückkehrt. Ohne Datum fragt es Besucher danach. Benötigt einen Website-"
-"Schlüssel oder einen API-Schlüssel; mit einem API-Schlüssel kostet jedes neue"
-" Horoskop 50 Credits."
+"Schlüssel oder einen API-Schlüssel; mit einem API-Schlüssel kostet jedes "
+"neue Horoskop 50 Credits."
 
 #: includes/views/partials/shortcode-cards.php:306
 msgid "Birth time in HH:MM. Required with a date."
@@ -5586,19 +5815,19 @@ msgstr "Davison-Horoskop"
 
 #: includes/views/partials/shortcode-cards.php:320
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and "
-"place. Without dates it asks the visitor for both. Needs a site key or an API"
-" key; on an API key each new chart costs 50 credits."
+"One chart for a couple, cast for the midpoint between two births in time and"
+" place. Without dates it asks the visitor for both. Needs a site key or an "
+"API key; on an API key each new chart costs 50 credits."
 msgstr ""
 "Ein Horoskop für ein Paar, berechnet für den zeitlichen und räumlichen "
-"Mittelpunkt zwischen zwei Geburten. Ohne Daten fragt es Besucher nach beiden."
-" Benötigt einen Website-Schlüssel oder einen API-Schlüssel; mit einem API-"
-"Schlüssel kostet jedes neue Horoskop 50 Credits."
+"Mittelpunkt zwischen zwei Geburten. Ohne Daten fragt es Besucher nach "
+"beiden. Benötigt einen Website-Schlüssel oder einen API-Schlüssel; mit einem"
+" API-Schlüssel kostet jedes neue Horoskop 50 Credits."
 
 #: includes/views/partials/shortcode-cards.php:324
 msgid ""
-"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor "
-"gets a form."
+"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor"
+" gets a form."
 msgstr ""
 "Erste Person: Geburtsdatum im Format JJJJ-MM-TT. Ohne beide Daten erhalten "
 "Besucher ein Formular."
@@ -5617,7 +5846,8 @@ msgstr "Erste Person: Längengrad. Erforderlich."
 
 #: includes/views/partials/shortcode-cards.php:328
 msgid "First person: IANA timezone; blank looks it up from the place."
-msgstr "Erste Person: IANA-Zeitzone; leer wird sie anhand des Ortes ermittelt."
+msgstr ""
+"Erste Person: IANA-Zeitzone; leer wird sie anhand des Ortes ermittelt."
 
 #: includes/views/partials/shortcode-cards.php:329
 msgid "First person: name for the heading."
@@ -5645,43 +5875,125 @@ msgid "Second person: name for the heading."
 msgstr "Zweite Person: Name für die Überschrift."
 
 #: includes/views/partials/shortcode-cards.php:340
+msgid "Vimshottari Dasha"
+msgstr "Vimshottari Dasha"
+
+#: includes/views/partials/shortcode-cards.php:341
+msgid ""
+"The running mahadasha and antardasha, with the nine antardashas of the "
+"mahadasha; timeline=\"1\" adds all nine mahadashas. Drawn into the page. "
+"Needs a site key or an API key."
+msgstr ""
+"Die laufende Mahadasha und Antardasha mit den neun Antardashas der "
+"Mahadasha; timeline=\"1\" fügt alle neun Mahadashas hinzu. In die Seite "
+"eingebettet. Benötigt einen Site‑Key oder einen API‑Key."
+
+#: includes/views/partials/shortcode-cards.php:349
+#: includes/views/partials/shortcode-cards.php:364
+#: includes/views/partials/shortcode-cards.php:378
+#: includes/views/partials/shortcode-cards.php:393
+#: includes/views/partials/shortcode-cards.php:408
+msgid "IANA timezone; blank looks it up from the place."
+msgstr "IANA‑Zeitzone; leer wird sie vom Ort ermittelt."
+
+#: includes/views/partials/shortcode-cards.php:350
+msgid "1 to list all nine mahadashas from birth."
+msgstr "1, um alle neun Mahadashas von der Geburt aufzulisten."
+
+#: includes/views/partials/shortcode-cards.php:356
+msgid ""
+"The ninth-part chart: its Lagna and the grahas by sign and house. Drawn into"
+" the page. Needs a site key or an API key."
+msgstr ""
+"Das Neunte-Teil‑Chart: sein Lagna und die Grahas nach Zeichen und Haus. In "
+"die Seite eingebettet. Benötigt einen Site‑Key oder einen API‑Key."
+
+#: includes/views/partials/shortcode-cards.php:369
+msgid "Secondary Progressions"
+msgstr "Sekundärprogressionen"
+
+#: includes/views/partials/shortcode-cards.php:370
+msgid ""
+"The progressed Sun, Moon and Ascendant, every progressed planet and their "
+"aspects, for today. Drawn into the page. Needs an API key; each new chart "
+"costs 50 credits."
+msgstr ""
+"Die progressiven Sonne, Mond und Aszendent, jeder progressive Planet und "
+"ihre Aspekte für heute. In die Seite eingebettet. Benötigt einen API‑Key; "
+"jedes neue Chart kostet 50 Credits."
+
+#: includes/views/partials/shortcode-cards.php:379
+msgid "Progress to this date in YYYY-MM-DD instead of today."
+msgstr "Progressiere zu diesem Datum im JJJJ-MM-TT statt heute."
+
+#: includes/views/partials/shortcode-cards.php:384
+msgid "Harmonic Chart"
+msgstr "Harmonisches Chart"
+
+#: includes/views/partials/shortcode-cards.php:385
+msgid ""
+"The natal wheel with every longitude multiplied by the harmonic, and its "
+"planets. Drawn into the page. Needs an API key."
+msgstr ""
+"Das Geburtshoroskop mit jedem Längengrad multipliziert mit der harmonischen "
+"Zahl und seinen Planeten. In die Seite eingebettet. Benötigt einen API‑Key."
+
+#: includes/views/partials/shortcode-cards.php:394
+msgid "Harmonic from 2 to 180; 5 by default."
+msgstr "Harmonisch von 2 bis 180; standardmäßig 5."
+
+#: includes/views/partials/shortcode-cards.php:399
+msgid "Fixed Stars"
+msgstr "Fixsterne"
+
+#: includes/views/partials/shortcode-cards.php:400
+msgid ""
+"Natal planets in conjunction with 36 bright fixed stars, within a degree, "
+"closest first. Drawn into the page. Needs an API key."
+msgstr ""
+"Geburtsplaneten in Konjunktion mit 36 hellen Fixsternen, innerhalb eines "
+"Grades, nächste zuerst. In die Seite eingezeichnet. Benötigt einen API-"
+"Schlüssel."
+
+#: includes/views/partials/shortcode-cards.php:413
 msgid "Mercury Retrograde"
 msgstr "Merkur rückläufig"
 
-#: includes/views/partials/shortcode-cards.php:341
+#: includes/views/partials/shortcode-cards.php:414
 msgid ""
 "Whether Mercury is retrograde right now, since when, and until when. Use "
 "[astroway_retrograde planet=\"venus\"] for any of the other seven that "
 "station."
 msgstr ""
 "Ob Merkur gerade rückläufig ist, seit wann und bis wann. Verwende "
-"[astroway_retrograde planet=\"venus\"] für jeden der anderen sieben Planeten "
-"mit Stationen."
+"[astroway_retrograde planet=\"venus\"] für jeden der anderen sieben Planeten"
+" mit Stationen."
 
-#: includes/views/partials/shortcode-cards.php:345
-#: includes/views/partials/shortcode-cards.php:365
+#: includes/views/partials/shortcode-cards.php:418
+#: includes/views/partials/shortcode-cards.php:438
 msgid "Language code. Defaults to the site locale."
 msgstr "Sprachcode. Standardmäßig das Gebietsschema der Website."
 
-#: includes/views/partials/shortcode-cards.php:350
+#: includes/views/partials/shortcode-cards.php:423
 msgid "Retrograde Status"
 msgstr "Rückläufigkeitsstatus"
 
-#: includes/views/partials/shortcode-cards.php:351
+#: includes/views/partials/shortcode-cards.php:424
 msgid "The same card for any planet that stations."
 msgstr "Dieselbe Karte für jeden Planeten, der stationär wird."
 
-#: includes/views/partials/shortcode-cards.php:355
+#: includes/views/partials/shortcode-cards.php:428
 msgid ""
 "mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
 msgstr ""
-"mercury (Standard), venus, mars, jupiter, saturn, uranus, neptune oder pluto."
+"mercury (Standard), venus, mars, jupiter, saturn, uranus, neptune oder "
+"pluto."
 
-#: includes/views/partials/shortcode-cards.php:360
+#: includes/views/partials/shortcode-cards.php:433
 msgid "Retrograde Planets"
 msgstr "Rückläufige Planeten"
 
-#: includes/views/partials/shortcode-cards.php:361
+#: includes/views/partials/shortcode-cards.php:434
 msgid ""
 "All eight planets that station, each with its status today and the dates of "
 "the retrograde it is in or heading for."
@@ -5690,44 +6002,45 @@ msgstr ""
 "und den Daten der Rückläufigkeit, in der er sich befindet oder auf die er "
 "zusteuert."
 
-#: includes/views/partials/shortcode-cards.php:370
+#: includes/views/partials/shortcode-cards.php:443
 msgid "Void of Course Moon"
 msgstr "Mond im Leeren Gang"
 
-#: includes/views/partials/shortcode-cards.php:371
+#: includes/views/partials/shortcode-cards.php:444
 msgid ""
-"Whether the Moon is void of course now, and the windows around it with their "
-"last aspect and next sign."
+"Whether the Moon is void of course now, and the windows around it with their"
+" last aspect and next sign."
 msgstr ""
 "Ob der Mond jetzt im Leeren Gang ist, und die Zeitfenster darum herum mit "
 "ihrem letzten Aspekt und dem nächsten Zeichen."
 
-#: includes/views/partials/shortcode-cards.php:375
+#: includes/views/partials/shortcode-cards.php:448
 msgid "Day to start from in YYYY-MM-DD. Defaults to today."
 msgstr ""
-"Tag, ab dem gestartet werden soll, im Format JJJJ-MM-TT. Standardmäßig heute."
+"Tag, ab dem gestartet werden soll, im Format JJJJ-MM-TT. Standardmäßig "
+"heute."
 
-#: includes/views/partials/shortcode-cards.php:376
+#: includes/views/partials/shortcode-cards.php:449
 msgid "Time to start from in HH:MM. Defaults to midnight."
 msgstr ""
 "Uhrzeit, ab der gestartet werden soll, im Format HH:MM. Standardmäßig "
 "Mitternacht."
 
-#: includes/views/partials/shortcode-cards.php:377
-#: includes/views/partials/shortcode-cards.php:391
-#: includes/views/partials/shortcode-cards.php:425
+#: includes/views/partials/shortcode-cards.php:450
+#: includes/views/partials/shortcode-cards.php:464
+#: includes/views/partials/shortcode-cards.php:498
 msgid "Hours from UTC. Defaults to the site timezone."
 msgstr "Stunden zu UTC. Standardmäßig die Zeitzone der Website."
 
-#: includes/views/partials/shortcode-cards.php:378
+#: includes/views/partials/shortcode-cards.php:451
 msgid "How far ahead to look, 1 to 30. Defaults to 7."
 msgstr "Wie weit im Voraus geschaut werden soll, 1 bis 30. Standardmäßig 7."
 
-#: includes/views/partials/shortcode-cards.php:383
+#: includes/views/partials/shortcode-cards.php:456
 msgid "Planetary Hours"
 msgstr "Planetenstunden"
 
-#: includes/views/partials/shortcode-cards.php:384
+#: includes/views/partials/shortcode-cards.php:457
 msgid ""
 "The twenty-four planetary hours of a day at one place, with the hour the "
 "reader is in marked."
@@ -5735,65 +6048,66 @@ msgstr ""
 "Die vierundzwanzig Planetenstunden eines Tages an einem Ort, mit markierter "
 "aktueller Stunde."
 
-#: includes/views/partials/shortcode-cards.php:388
+#: includes/views/partials/shortcode-cards.php:461
 msgid "WGS-84 latitude. The hours are the day divided by this horizon."
 msgstr ""
 "WGS-84-Breitengrad. Die Stunden teilen den Tag nach dem Horizont dieses "
 "Ortes."
 
-#: includes/views/partials/shortcode-cards.php:396
+#: includes/views/partials/shortcode-cards.php:469
 msgid "Yearly Horoscope"
 msgstr "Jahreshoroskop"
 
-#: includes/views/partials/shortcode-cards.php:397
+#: includes/views/partials/shortcode-cards.php:470
 msgid ""
-"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], the"
-" name it had as a generated shortcode."
+"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
+"the name it had as a generated shortcode."
 msgstr ""
 "Das kommende Jahr für ein Zeichen. Reagiert auch auf "
-"[astroway_horoscope_yearly], seinen früheren Namen als generierter Shortcode."
+"[astroway_horoscope_yearly], seinen früheren Namen als generierter "
+"Shortcode."
 
-#: includes/views/partials/shortcode-cards.php:401
+#: includes/views/partials/shortcode-cards.php:474
 msgid "Zodiac sign in English, lowercase."
 msgstr "Tierkreiszeichen auf Englisch, Kleinbuchstaben."
 
-#: includes/views/partials/shortcode-cards.php:402
+#: includes/views/partials/shortcode-cards.php:475
 msgid "Any date inside the year. Defaults to this year."
 msgstr "Beliebiges Datum innerhalb des Jahres. Standardmäßig dieses Jahr."
 
-#: includes/views/partials/shortcode-cards.php:407
+#: includes/views/partials/shortcode-cards.php:480
 msgid "Zodiac Compatibility"
 msgstr "Tierkreis-Kompatibilität"
 
-#: includes/views/partials/shortcode-cards.php:408
+#: includes/views/partials/shortcode-cards.php:481
 msgid ""
-"How two signs read together. Prose, not a percentage: the endpoint returns no"
-" score and inventing one would be a number with no calculation behind it."
+"How two signs read together. Prose, not a percentage: the endpoint returns "
+"no score and inventing one would be a number with no calculation behind it."
 msgstr ""
-"Wie zwei Zeichen zusammenpassen. Text, kein Prozentsatz: Der Endpunkt liefert"
-" keinen Wert, und ein erfundener wäre eine Zahl ohne Berechnung."
+"Wie zwei Zeichen zusammenpassen. Text, kein Prozentsatz: Der Endpunkt "
+"liefert keinen Wert, und ein erfundener wäre eine Zahl ohne Berechnung."
 
-#: includes/views/partials/shortcode-cards.php:412
+#: includes/views/partials/shortcode-cards.php:485
 msgid "First sign in English, lowercase."
 msgstr "Erstes Zeichen auf Englisch, Kleinbuchstaben."
 
-#: includes/views/partials/shortcode-cards.php:413
+#: includes/views/partials/shortcode-cards.php:486
 msgid "Second sign in English, lowercase."
 msgstr "Zweites Zeichen auf Englisch, Kleinbuchstaben."
 
-#: includes/views/partials/shortcode-cards.php:418
+#: includes/views/partials/shortcode-cards.php:491
 msgid "Chinese Zodiac"
 msgstr "Chinesisches Tierkreiszeichen"
 
-#: includes/views/partials/shortcode-cards.php:419
+#: includes/views/partials/shortcode-cards.php:492
 msgid ""
 "The animal of a birth year with its element, polarity and pillar. A birth "
 "time sharpens the answer at the turn of the year."
 msgstr ""
-"Das Tier eines Geburtsjahres mit seinem Element, seiner Polarität und Säule. "
-"Eine Geburtszeit präzisiert die Antwort zum Jahreswechsel."
+"Das Tier eines Geburtsjahres mit seinem Element, seiner Polarität und Säule."
+" Eine Geburtszeit präzisiert die Antwort zum Jahreswechsel."
 
-#: includes/views/partials/shortcode-cards.php:424
+#: includes/views/partials/shortcode-cards.php:497
 msgid "Birth time in HH:MM."
 msgstr "Geburtszeit in HH:MM."
 
@@ -5865,19 +6179,21 @@ msgstr "horoskop"
 #: blocks/astrology-section/block.json blocks/bodygraph/block.json
 #: blocks/chinese-zodiac/block.json blocks/compatibility-matrix/block.json
 #: blocks/daily-horoscope/block.json blocks/daily-tarot/block.json
-#: blocks/davison/block.json blocks/kundli/block.json
-#: blocks/lunar-return/block.json blocks/mini-chart/block.json
-#: blocks/monthly-forecast/block.json blocks/monthly-horoscope/block.json
-#: blocks/moon-phase/block.json blocks/moon-sign/block.json
-#: blocks/moon-voc/block.json blocks/natal-chart/block.json
+#: blocks/dasha/block.json blocks/davison/block.json
+#: blocks/fixed-stars/block.json blocks/harmonics/block.json
+#: blocks/kundli/block.json blocks/lunar-return/block.json
+#: blocks/mini-chart/block.json blocks/monthly-forecast/block.json
+#: blocks/monthly-horoscope/block.json blocks/moon-phase/block.json
+#: blocks/moon-sign/block.json blocks/moon-voc/block.json
+#: blocks/natal-chart/block.json blocks/navamsa/block.json
 #: blocks/numerology/block.json blocks/panchang/block.json
 #: blocks/planet-of-day/block.json blocks/planetary-hours/block.json
-#: blocks/retrograde/block.json blocks/retrogrades/block.json
-#: blocks/rising-sign/block.json blocks/solar-return/block.json
-#: blocks/synastry/block.json blocks/tarot-spread/block.json
-#: blocks/transit-timeline/block.json blocks/transit/block.json
-#: blocks/weekly-horoscope/block.json blocks/yearly-horoscope/block.json
-#: blocks/zodiac-compatibility/block.json
+#: blocks/progressions/block.json blocks/retrograde/block.json
+#: blocks/retrogrades/block.json blocks/rising-sign/block.json
+#: blocks/solar-return/block.json blocks/synastry/block.json
+#: blocks/tarot-spread/block.json blocks/transit-timeline/block.json
+#: blocks/transit/block.json blocks/weekly-horoscope/block.json
+#: blocks/yearly-horoscope/block.json blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "astroway"
 msgstr "astroway"
@@ -5903,10 +6219,10 @@ msgctxt "block keyword"
 msgid "bodygraph"
 msgstr "bodygraph"
 
-#: blocks/bodygraph/block.json blocks/kundli/block.json
-#: blocks/mini-chart/block.json blocks/moon-sign/block.json
-#: blocks/natal-chart/block.json blocks/rising-sign/block.json
-#: blocks/synastry/block.json
+#: blocks/bodygraph/block.json blocks/harmonics/block.json
+#: blocks/kundli/block.json blocks/mini-chart/block.json
+#: blocks/moon-sign/block.json blocks/natal-chart/block.json
+#: blocks/rising-sign/block.json blocks/synastry/block.json
 msgctxt "block keyword"
 msgid "natal"
 msgstr "geburt"
@@ -5964,8 +6280,8 @@ msgid ""
 "How each pair of zodiac signs stands to each other, or one sign against the "
 "rest."
 msgstr ""
-"Wie jedes Paar von Tierkreiszeichen zueinander steht, oder ein Zeichen gegen "
-"die übrigen."
+"Wie jedes Paar von Tierkreiszeichen zueinander steht, oder ein Zeichen gegen"
+" die übrigen."
 
 #: blocks/daily-horoscope/block.json
 msgctxt "block title"
@@ -6008,6 +6324,43 @@ msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Tagesziehung einer Tarotkarte mit Interpretation."
 
+#: blocks/dasha/block.json
+msgctxt "block title"
+msgid "Vimshottari Dasha (AstroWay)"
+msgstr "Vimshottari Dasha (AstroWay)"
+
+#: blocks/dasha/block.json
+msgctxt "block keyword"
+msgid "dasha"
+msgstr "dasha"
+
+#: blocks/dasha/block.json
+msgctxt "block keyword"
+msgid "vimshottari"
+msgstr "vimshottari"
+
+#: blocks/dasha/block.json blocks/kundli/block.json blocks/navamsa/block.json
+#: blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "vedic"
+msgstr "vedisch"
+
+#: blocks/dasha/block.json blocks/kundli/block.json blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "jyotish"
+msgstr "jyotish"
+
+#: blocks/dasha/block.json
+msgctxt "block description"
+msgid ""
+"The running Vimshottari mahadasha and antardasha with the nine sub-periods, "
+"drawn into the page; timeline adds all nine mahadashas. Needs a site key or "
+"an API key."
+msgstr ""
+"Die laufende Vimshottari-Mahadasha und Antardasha mit den neun "
+"Unterperioden, in die Seite eingebettet; timeline fügt alle neun Mahadashas "
+"hinzu. Benötigt einen Site‑Key oder einen API‑Key."
+
 #: blocks/davison/block.json
 msgctxt "block title"
 msgid "Davison Chart (AstroWay)"
@@ -6031,13 +6384,77 @@ msgstr "composit"
 #: blocks/davison/block.json
 msgctxt "block description"
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and "
-"place. Without dates it asks the visitor for both. Needs a site key or an API"
-" key."
+"One chart for a couple, cast for the midpoint between two births in time and"
+" place. Without dates it asks the visitor for both. Needs a site key or an "
+"API key."
 msgstr ""
 "Ein Horoskop für ein Paar, berechnet für den zeitlichen und räumlichen "
-"Mittelpunkt zwischen zwei Geburten. Ohne Daten fragt es Besucher nach beiden."
-" Benötigt einen Website-Schlüssel oder einen API-Schlüssel."
+"Mittelpunkt zwischen zwei Geburten. Ohne Daten fragt es Besucher nach "
+"beiden. Benötigt einen Website-Schlüssel oder einen API-Schlüssel."
+
+#: blocks/fixed-stars/block.json
+msgctxt "block title"
+msgid "Fixed Stars (AstroWay)"
+msgstr "Fixsterne (AstroWay)"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "fixed stars"
+msgstr "Fixsterne"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "stars"
+msgstr "Sterne"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "regulus"
+msgstr "Regulus"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "algol"
+msgstr "Algol"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block description"
+msgid ""
+"Natal planets in conjunction with 36 bright fixed stars, within a degree, "
+"drawn into the page. Needs an API key."
+msgstr ""
+"Geburtsplaneten in Konjunktion mit 36 hellen Fixsternen, innerhalb eines "
+"Grades, in die Seite eingezeichnet. Benötigt einen API-Schlüssel."
+
+#: blocks/harmonics/block.json
+msgctxt "block title"
+msgid "Harmonic Chart (AstroWay)"
+msgstr "Harmonisches Horoskop (AstroWay)"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "harmonics"
+msgstr "Harmonische"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "harmonic"
+msgstr "harmonisch"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "h5"
+msgstr "h5"
+
+#: blocks/harmonics/block.json
+msgctxt "block description"
+msgid ""
+"A harmonic chart (H2 to H180, H5 by default) on the natal wheel with its "
+"planets, drawn into the page. Needs an API key."
+msgstr ""
+"Ein harmonisches Horoskop (H2 bis H180, standardmäßig H5) auf dem "
+"Geburtshoroskop mit seinen Planeten, in die Seite eingebettet. Benötigt "
+"einen API-Schlüssel."
 
 #: blocks/kundli/block.json
 msgctxt "block title"
@@ -6048,16 +6465,6 @@ msgstr "Vedisches Kundli (AstroWay)"
 msgctxt "block keyword"
 msgid "kundli"
 msgstr "kundli"
-
-#: blocks/kundli/block.json blocks/panchang/block.json
-msgctxt "block keyword"
-msgid "vedic"
-msgstr "vedisch"
-
-#: blocks/kundli/block.json
-msgctxt "block keyword"
-msgid "jyotish"
-msgstr "jyotish"
 
 #: blocks/kundli/block.json
 msgctxt "block description"
@@ -6100,8 +6507,8 @@ msgstr "astrologie"
 msgctxt "block description"
 msgid ""
 "The chart of the next moment the Moon returns to its birth position, drawn "
-"into the page. Without a birth date it asks the visitor. Needs a site key or "
-"an API key."
+"into the page. Without a birth date it asks the visitor. Needs a site key or"
+" an API key."
 msgstr ""
 "Das Horoskop des nächsten Moments, in dem der Mond an seine Geburtsposition "
 "zurückkehrt, direkt in die Seite gezeichnet. Ohne Geburtsdatum fragt es "
@@ -6130,8 +6537,8 @@ msgstr "seitenleiste"
 #: blocks/mini-chart/block.json
 msgctxt "block description"
 msgid ""
-"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a "
-"responsive iframe."
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
+" responsive iframe."
 msgstr ""
 "Das Geburtshoroskop-Rad, klein für eine Seitenleiste, von api.astroway.info "
 "als responsiver iframe."
@@ -6141,7 +6548,7 @@ msgctxt "block title"
 msgid "Monthly Forecast (AstroWay)"
 msgstr "Monatsprognose (AstroWay)"
 
-#: blocks/monthly-forecast/block.json
+#: blocks/monthly-forecast/block.json blocks/progressions/block.json
 msgctxt "block keyword"
 msgid "forecast"
 msgstr "prognose"
@@ -6173,11 +6580,11 @@ msgstr "monatlich"
 #: blocks/monthly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current month, anchored to the 1st, rendered into the page "
-"as text."
+"Horoscope for the current month, anchored to the 1st, rendered into the page"
+" as text."
 msgstr ""
-"Horoskop für den laufenden Monat, bezogen auf den 1., als Text auf der Seite "
-"angezeigt."
+"Horoskop für den laufenden Monat, bezogen auf den 1., als Text auf der Seite"
+" angezeigt."
 
 #: blocks/moon-phase/block.json
 msgctxt "block title"
@@ -6245,6 +6652,31 @@ msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr "Geburtshoroskop-Rad von api.astroway.info als responsiver iframe."
 
+#: blocks/navamsa/block.json
+msgctxt "block title"
+msgid "Navamsa D9 (AstroWay)"
+msgstr "Navamsa D9 (AstroWay)"
+
+#: blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "navamsa"
+msgstr "Navamsa"
+
+#: blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "d9"
+msgstr "d9"
+
+#: blocks/navamsa/block.json
+msgctxt "block description"
+msgid ""
+"The Navamsa (D9) divisional chart: Lagna and grahas by sign and house, drawn"
+" into the page. Needs a site key or an API key."
+msgstr ""
+"Das Navamsa (D9) Teilhoroskop: Lagna und Grahas nach Zeichen und Haus, in "
+"die Seite eingebettet. Benötigt einen Site-Schlüssel oder einen API-"
+"Schlüssel."
+
 #: blocks/numerology/block.json
 msgctxt "block title"
 msgid "Numerology (AstroWay)"
@@ -6271,8 +6703,8 @@ msgid ""
 "Numerology core numbers (Life Path, Expression, Soul Urge, Personality) "
 "served by api.astroway.info as a responsive iframe."
 msgstr ""
-"Numerologische Kernzahlen (Lebenszahl, Ausdruck, Seelenzahl, Persönlichkeit) "
-"von api.astroway.info als responsiver iframe."
+"Numerologische Kernzahlen (Lebenszahl, Ausdruck, Seelenzahl, Persönlichkeit)"
+" von api.astroway.info als responsiver iframe."
 
 #: blocks/panchang/block.json
 msgctxt "block title"
@@ -6300,8 +6732,8 @@ msgid ""
 "Daily Panchang (tithi, nakshatra, yoga, karana, vara, rahu-kaal) for a date "
 "and location, served by api.astroway.info as a responsive iframe."
 msgstr ""
-"Tägliches Panchang (Tithi, Nakshatra, Yoga, Karana, Vara, Rahu Kaal) für ein "
-"Datum und einen Ort, von api.astroway.info als responsiver iframe."
+"Tägliches Panchang (Tithi, Nakshatra, Yoga, Karana, Vara, Rahu Kaal) für ein"
+" Datum und einen Ort, von api.astroway.info als responsiver iframe."
 
 #: blocks/planet-of-day/block.json
 msgctxt "block title"
@@ -6346,6 +6778,36 @@ msgid ""
 msgstr ""
 "Die vierundzwanzig Planetenstunden eines Tages an einem Ort, wobei die "
 "aktuelle markiert ist."
+
+#: blocks/progressions/block.json
+msgctxt "block title"
+msgid "Progressions (AstroWay)"
+msgstr "Progressionen (AstroWay)"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "progressions"
+msgstr "Progressionen"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "progressed"
+msgstr "progressiert"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "secondary"
+msgstr "sekundär"
+
+#: blocks/progressions/block.json
+msgctxt "block description"
+msgid ""
+"The secondary progressed chart for today or a set date: progressed Sun, Moon"
+" and Ascendant, planets and aspects, drawn into the page. Needs an API key."
+msgstr ""
+"Das sekundär progressierte Horoskop für heute oder ein festgelegtes Datum: "
+"progressierte Sonne, Mond und Ascendens, Planeten und Aspekte, in die Seite "
+"eingebettet. Benötigt einen API-Schlüssel."
 
 #: blocks/retrograde/block.json
 msgctxt "block title"
@@ -6400,8 +6862,8 @@ msgstr "aszendent"
 #: blocks/rising-sign/block.json
 msgctxt "block description"
 msgid ""
-"The rising sign with its chart ruler. Needs coordinates: the ascendant is the"
-" horizon at a place."
+"The rising sign with its chart ruler. Needs coordinates: the ascendant is "
+"the horizon at a place."
 msgstr ""
 "Der Aszendent mit seinem Horoskopherrscher. Benötigt Koordinaten: Der "
 "Aszendent ist der Horizont an einem Ort."
@@ -6430,13 +6892,13 @@ msgstr "jahresvorschau"
 msgctxt "block description"
 msgid ""
 "The chart of the moment the Sun returns to its birth position in a given "
-"year, drawn into the page. Without a birth date it asks the visitor. Needs a "
-"site key or an API key."
+"year, drawn into the page. Without a birth date it asks the visitor. Needs a"
+" site key or an API key."
 msgstr ""
 "Das Horoskop des Moments, in dem die Sonne in einem bestimmten Jahr an ihre "
 "Geburtsposition zurückkehrt, direkt in die Seite gezeichnet. Ohne "
-"Geburtsdatum fragt es Besucher danach. Benötigt einen Website-Schlüssel oder "
-"einen API-Schlüssel."
+"Geburtsdatum fragt es Besucher danach. Benötigt einen Website-Schlüssel oder"
+" einen API-Schlüssel."
 
 #: blocks/synastry/block.json
 msgctxt "block title"
@@ -6459,8 +6921,8 @@ msgid ""
 "Compatibility score and the cross-aspects behind it for two birth charts, "
 "rendered into the page by api.astroway.info. No key needed."
 msgstr ""
-"Kompatibilitätswert und die Aspekte zwischen beiden Horoskopen dahinter, von "
-"api.astroway.info in die Seite gerendert. Kein Schlüssel nötig."
+"Kompatibilitätswert und die Aspekte zwischen beiden Horoskopen dahinter, von"
+" api.astroway.info in die Seite gerendert. Kein Schlüssel nötig."
 
 #: blocks/tarot-spread/block.json
 msgctxt "block title"
@@ -6542,11 +7004,11 @@ msgstr "wöchentlich"
 #: blocks/weekly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current week, anchored to Monday, rendered into the page as"
-" text."
+"Horoscope for the current week, anchored to Monday, rendered into the page "
+"as text."
 msgstr ""
-"Horoskop für die aktuelle Woche, ausgehend vom Montag, als Text auf der Seite"
-" dargestellt."
+"Horoskop für die aktuelle Woche, ausgehend vom Montag, als Text auf der "
+"Seite dargestellt."
 
 #: blocks/yearly-horoscope/block.json
 msgctxt "block title"
@@ -6572,165 +7034,3 @@ msgstr "Sternzeichen-Kompatibilität (AstroWay)"
 msgctxt "block description"
 msgid "How two zodiac signs read together."
 msgstr "Wie zwei Sternzeichen zusammenpassen."
-
-#, php-format
-#~ msgid "This is the reading of %s; today's is still being written."
-#~ msgstr "Das ist die Deutung vom %s; die heutige wird noch geschrieben."
-
-#, php-format
-#~ msgid "Authority: %s"
-#~ msgstr "Autorität: %s"
-
-#, php-format
-#~ msgid "Profile %s"
-#~ msgstr "Profil %s"
-
-#, php-format
-#~ msgid "then into %s"
-#~ msgstr "dann in %s"
-
-#~ msgid "Krishna paksha, waning"
-#~ msgstr "Krishna Paksha, abnehmend"
-
-#~ msgid "Shukla paksha, waxing"
-#~ msgstr "Shukla Paksha, zunehmend"
-
-#~ msgid ""
-#~ "The reading needs a site key or an API key: open AstroWay in the admin and "
-#~ "connect the site. Only administrators see this note."
-#~ msgstr ""
-#~ "Die Deutung braucht einen Website-Schlüssel oder einen API-Schlüssel: Öffnen "
-#~ "Sie AstroWay im Admin-Bereich und verbinden Sie die Website. Nur "
-#~ "Administratoren sehen diesen Hinweis."
-
-#~ msgid "Retrograde period"
-#~ msgstr "Rückläufigkeitsperiode"
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, compatibility, moon sign, rising sign,"
-#~ " Solar Return, Lunar Return or Davison chart form, the date, time and place "
-#~ "they enter are sent to api.astroway.info to calculate the answer, and the "
-#~ "city name to app.astroway.info to find its coordinates. Names typed into the "
-#~ "compatibility form are not sent anywhere. The AstroWay plugin does not store "
-#~ "any of it on this site: the answer is not cached and the page is sent with "
-#~ "no-store. Security or activity-log plugins on this site may record form "
-#~ "submissions on their own."
-#~ msgstr ""
-#~ "Wenn Besucher ein Formular für Geburtshoroskop, Kompatibilität, Mondzeichen, "
-#~ "Aszendent, Solarhoroskop, Lunarhoroskop oder Davison-Horoskop ausfüllen, "
-#~ "werden Datum, Uhrzeit und Ort zur Berechnung an api.astroway.info gesendet "
-#~ "und der Ortsname an app.astroway.info, um seine Koordinaten zu finden. Namen "
-#~ "im Kompatibilitätsformular werden nirgendwohin gesendet. Das AstroWay-Plugin "
-#~ "speichert nichts davon auf dieser Website: Die Antwort wird nicht "
-#~ "zwischengespeichert und die Seite mit no-store ausgeliefert. Sicherheits- "
-#~ "oder Protokoll-Plugins auf dieser Website können Formularübermittlungen "
-#~ "selbst aufzeichnen."
-
-#~ msgid "Not-self theme"
-#~ msgstr "Nicht-Selbst-Thema"
-
-#~ msgid "Centres and channels"
-#~ msgstr "Zentren und Kanäle"
-
-#~ msgid "Defined centres"
-#~ msgstr "definierte Zentren"
-
-#~ msgid "Open centres"
-#~ msgstr "offene Zentren"
-
-#~ msgid ""
-#~ "This widget reached the free limit for one visitor (30 requests an hour from "
-#~ "one IP address), so visitors on that connection see nothing here until the "
-#~ "hour resets. Only administrators see this note."
-#~ msgstr ""
-#~ "Dieses Widget hat das kostenlose Limit für einen Besucher erreicht (30 "
-#~ "Anfragen pro Stunde von einer IP-Adresse), sodass Besucher über diese "
-#~ "Verbindung hier nichts sehen, bis die Stunde zurückgesetzt wird. Nur "
-#~ "Administratoren sehen diesen Hinweis."
-
-#~ msgid "The first return after this date, YYYY-MM-DD. Blank for today."
-#~ msgstr "Die erste Wiederkehr nach diesem Datum, YYYY-MM-DD. Leer für heute."
-
-#~ msgid "First return after (YYYY-MM-DD, blank for today)"
-#~ msgstr "Erste Wiederkehr nach (YYYY-MM-DD, leer für heute)"
-
-#~ msgid ""
-#~ "This calculator needs a site key: open AstroWay in the admin and let the site"
-#~ " get one. Visitors do not see the form until then; only administrators see "
-#~ "this note."
-#~ msgstr ""
-#~ "Dieser Rechner braucht einen Website-Schlüssel: Öffnen Sie AstroWay im "
-#~ "Adminbereich und lassen Sie die Website einen anfordern. Bis dahin sehen "
-#~ "Besucher das Formular nicht; nur Administratoren sehen diesen Hinweis."
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, compatibility, moon sign or rising "
-#~ "sign form, the date, time and place they enter are sent to api.astroway.info "
-#~ "to calculate the answer, and the city name to app.astroway.info to find its "
-#~ "coordinates. Names typed into the compatibility form are not sent anywhere. "
-#~ "The AstroWay plugin does not store any of it on this site: the answer is not "
-#~ "cached and the page is sent with no-store. Security or activity-log plugins "
-#~ "on this site may record form submissions on their own."
-#~ msgstr ""
-#~ "Wenn Besucher ein Formular für Geburtshoroskop, Kompatibilität, Mondzeichen "
-#~ "oder Aszendent ausfüllen, werden Datum, Uhrzeit und Ort zur Berechnung an "
-#~ "api.astroway.info gesendet und der Ortsname an app.astroway.info, um seine "
-#~ "Koordinaten zu finden. Namen im Kompatibilitätsformular werden nirgendwohin "
-#~ "gesendet. Das AstroWay-Plugin speichert nichts davon auf dieser Website: Die "
-#~ "Antwort wird nicht zwischengespeichert und die Seite mit no-store "
-#~ "ausgeliefert. Sicherheits- oder Protokoll-Plugins auf dieser Website können "
-#~ "Formularübermittlungen selbst aufzeichnen."
-
-#~ msgctxt "block description"
-#~ msgid ""
-#~ "Three cards or the Celtic Cross, drawn once a day for this site, each card "
-#~ "read in its position."
-#~ msgstr ""
-#~ "Drei Karten oder das Keltische Kreuz, einmal am Tag für diese Website "
-#~ "gezogen, jede Karte in ihrer Position gedeutet."
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, moon sign or rising sign form, the "
-#~ "date, time and place they enter are sent to api.astroway.info to calculate "
-#~ "the answer, and the city name to app.astroway.info to find its coordinates. "
-#~ "The AstroWay plugin does not store them on this site: the answer is not "
-#~ "cached and the page is sent with no-store. Security or activity-log plugins "
-#~ "on this site may record form submissions on their own."
-#~ msgstr ""
-#~ "Wenn Besucher ein Formular für Geburtshoroskop, Mondzeichen oder Aszendent "
-#~ "ausfüllen, werden Datum, Uhrzeit und Ort zur Berechnung an api.astroway.info "
-#~ "gesendet und der Ortsname an app.astroway.info, um seine Koordinaten zu "
-#~ "finden. Das AstroWay-Plugin speichert sie auf dieser Website nicht: Die "
-#~ "Antwort wird nicht zwischengespeichert und die Seite mit no-store "
-#~ "ausgeliefert. Sicherheits- oder Protokoll-Plugins auf dieser Website können "
-#~ "Formularübermittlungen selbst aufzeichnen."
-
-#~ msgid "Compatibility"
-#~ msgstr "Kompatibilität"
-
-#~ msgid "Closest aspects"
-#~ msgstr "Engste Aspekte"
-
-#, php-format
-#~ msgid "Show all aspects (%d)"
-#~ msgstr "Zeige alle Aspekte (%d)"
-
-#~ msgid "optional · paste · verify · save"
-#~ msgstr "optional · einfügen · überprüfen · speichern"
-
-#~ msgid ""
-#~ "Birth time unknown: the chart is drawn for noon, without houses or the "
-#~ "Ascendant, and the Moon may be up to 7 degrees from where it was."
-#~ msgstr ""
-#~ "Geburtszeit unbekannt: Das Horoskop ist für 12 Uhr berechnet, ohne Häuser und"
-#~ " Aszendent, und der Mond kann bis zu 7 Grad abweichen."
-
-#~ msgid "Latitude runs from -90 to 90, longitude from -180 to 180."
-#~ msgstr "Breite von -90 bis 90, Länge von -180 bis 180."
-
-#~ msgid "Illumination"
-#~ msgstr "Beleuchtung"
-
-#, php-format
-#~ msgid "Is %s retrograde?"
-#~ msgstr "Ist %s rückläufig?"

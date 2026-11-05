@@ -141,8 +141,14 @@ class Tier {
 			// upsell where the page asked for a chart.
 			'solar_return'           => $all_tiers,
 			'lunar_return'           => $all_tiers,
+			// 2.8.0: dasha and Navamsa open on the site key too; progressions,
+			// harmonics and fixed stars on the owner's key, whatever its plan.
+			'dasha'                  => $all_tiers,
+			'navamsa'                => $all_tiers,
+			'progressions'           => $all_tiers,
+			'harmonics'              => $all_tiers,
+			'fixed_stars'            => $all_tiers,
 			// Paid-only (v0.8+ features).
-			'progressions'           => $paid_plus,
 			'native_render'          => $paid_plus,
 			// Pro+ only.
 			'ai_chat'                => $pro_plus,

@@ -19,6 +19,18 @@ final class Birth {
 
 	public const KUNDLI = '/vedic/kundli';
 
+	public const DASHA = '/vedic/dashas/vimshottari/antar';
+
+	public const DASHA_MAHA = '/vedic/dashas/vimshottari/maha';
+
+	public const NAVAMSA = '/vedic/varga/D9';
+
+	public const PROGRESSIONS = '/progressions';
+
+	public const HARMONICS = '/harmonics';
+
+	public const FIXED_STARS = '/fixed-stars';
+
 	public const NUMEROLOGY_SYSTEMS = [ 'pythagorean', 'chaldean', 'kabbalistic', 'kabbalistic-strict', 'vedic' ];
 
 	public static function numerology_path( string $system ): string {
@@ -85,5 +97,102 @@ final class Birth {
 			$data = $client->cached_call( 'POST', $path, $body, PublicData::ttl_for( 'static' ), 'num_', $lang );
 		}
 		return is_array( $data ) && is_array( $data['lifePath'] ?? null ) ? $data : null;
+	}
+
+	/**
+	 * The birth moment in the body every chart route reads, or null when a
+	 * field is missing. These routes take no `lang`: names are the plugin's.
+	 */
+	private static function body( array $params ): ?array {
+		$date = (string) ( $params['date'] ?? '' );
+		$time = (string) ( $params['time'] ?? '' );
+		// HH:mm as the cards are written, HH:mm:ss as pages of 1.2.0 were; the api gets one form.
+		if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) || ! preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', $time ) || ! is_numeric( $params['lat'] ?? null ) || ! is_numeric( $params['lon'] ?? null ) ) {
+			return null;
+		}
+		$body = [
+			'date'      => $date,
+			'time'      => strlen( $time ) === 5 ? $time . ':00' : $time,
+			'latitude'  => (float) $params['lat'],
+			'longitude' => (float) $params['lon'],
+		];
+		// No zone given: the api finds it from the place, summer time included.
+		if ( is_numeric( $params['offset'] ?? null ) ) {
+			$body['timezoneOffset'] = (float) $params['offset'];
+		} else {
+			$body['timezone'] = 'auto';
+		}
+		// Chart options a page of 1.2.0 may carry, already checked by the shortcode.
+		return $body + ( is_array( $params['options'] ?? null ) ? $params['options'] : [] );
+	}
+
+	/**
+	 * The running mahadasha and its nine antardashas, asked for the site's day.
+	 * Kept until the antardasha ends, never past the site's midnight, so "now"
+	 * on the card moves with the calendar.
+	 */
+	public static function dasha( array $params, ?int $now = null ): ?array {
+		$now  = null === $now ? time() : $now;
+		$body = self::body( $params );
+		if ( null === $body ) {
+			return null;
+		}
+		$body['targetDate'] = PublicData::site_day( 'day', $now );
+		$data               = ( new ApiClient() )->cached_call( 'POST', self::DASHA, $body, PublicData::ttl_for( 'day', $now ), 'das_' );
+		return is_array( $data ) && is_array( $data['currentMaha'] ?? null ) && is_array( $data['periods'] ?? null ) ? $data : null;
+	}
+
+	/** All nine mahadashas from birth: the same for a birth forever. */
+	public static function dasha_timeline( array $params ): ?array {
+		$body = self::body( $params );
+		if ( null === $body ) {
+			return null;
+		}
+		$data = ( new ApiClient() )->cached_call( 'POST', self::DASHA_MAHA, $body, PublicData::ttl_for( 'static' ), 'das_' );
+		return is_array( $data ) && is_array( $data['periods'] ?? null ) ? $data : null;
+	}
+
+	public static function navamsa( array $params ): ?array {
+		$body = self::body( $params );
+		if ( null === $body ) {
+			return null;
+		}
+		$data = ( new ApiClient() )->cached_call( 'POST', self::NAVAMSA, $body, PublicData::ttl_for( 'static' ), 'ved_' );
+		return is_array( $data ) && is_array( $data['grahas'] ?? null ) ? $data : null;
+	}
+
+	/** The progressed chart for the site's day: the progressed Moon moves about a degree a month. */
+	public static function progressions( array $params, ?int $now = null ): ?array {
+		$now  = null === $now ? time() : $now;
+		$body = self::body( $params );
+		if ( null === $body ) {
+			return null;
+		}
+		// A date the author fixed never changes; today's moves at the site's midnight.
+		$fixed              = preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $params['target'] ?? '' ) );
+		$body['targetDate'] = $fixed ? (string) $params['target'] : PublicData::site_day( 'day', $now );
+		$data               = ( new ApiClient() )->cached_call( 'POST', self::PROGRESSIONS, $body, PublicData::ttl_for( $fixed ? 'static' : 'day', $now ), 'prg_' );
+		return is_array( $data ) && is_array( $data['planets'] ?? null ) ? $data : null;
+	}
+
+	public static function harmonics( array $params ): ?array {
+		$body     = self::body( $params );
+		$harmonic = (int) ( $params['harmonic'] ?? 0 );
+		if ( null === $body || $harmonic < 2 || $harmonic > 180 ) {
+			return null;
+		}
+		$body['harmonic'] = $harmonic;
+		$data             = ( new ApiClient() )->cached_call( 'POST', self::HARMONICS, $body, PublicData::ttl_for( 'static' ), 'hrm_' );
+		return is_array( $data ) && is_array( $data['planets'] ?? null ) ? $data : null;
+	}
+
+	/** The bright stars at the birth moment and the natal planets in conjunction with them, within a degree. */
+	public static function fixed_stars( array $params ): ?array {
+		$body = self::body( $params );
+		if ( null === $body ) {
+			return null;
+		}
+		$data = ( new ApiClient() )->cached_call( 'POST', self::FIXED_STARS, $body, PublicData::ttl_for( 'static' ), 'fxs_' );
+		return is_array( $data ) && is_array( $data['conjunctions'] ?? null ) ? $data : null;
 	}
 }

@@ -33,11 +33,6 @@ return [
 			'description' => 'Calculate a timeline of when two specific planets form an exact aspect within a date range, including enter/exact/leave dates.',
 			'documented' => true,
 		],
-		'astroway_fixed_stars' => [
-			'title' => 'Fixed Stars',
-			'description' => 'Calculate conjunctions between natal planets and fixed stars within a specified orb. Returns star details and aspect type.',
-			'documented' => true,
-		],
 		'astroway_fixed_stars_catalog' => [
 			'title' => 'Fixed star catalogue',
 			'description' => 'The star names this API accepts, from Swiss Ephemeris `fixstars.cat`: traditional name, Bayer nomenclature, constellation and magnitude, with the 36-star astrological default set flagged. Optional `?maxMagnitude=` trims to the bright end. Static lookup, no chart needed.',

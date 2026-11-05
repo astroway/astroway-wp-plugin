@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway-wp-plugin-wave2\n"
-"POT-Creation-Date: 2026-10-09T13:35:39+00:00\n"
-"PO-Revision-Date: 2026-09-21 14:37+0300\n"
+"Project-Id-Version: AstroWay – Astrology, Birth Chart & Horoscope Widgets 1.5.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astroway\n"
+"POT-Creation-Date: 2026-10-21T22:19:26+00:00\n"
+"PO-Revision-Date: 2026-10-22 01:25+0300\n"
 "Last-Translator: AstroWay automated translation pipeline <translations@astroway.info>\n"
 "Language-Team: Hungarian <translations@astroway.info>\n"
 "Language: hu_HU\n"
@@ -41,7 +41,7 @@ msgstr ""
 #: includes/builders/class-wpbakery.php:34 includes/class-admin-extras.php:71
 #: includes/class-admin-extras.php:129 includes/class-admin-extras.php:189
 #: includes/class-admin.php:37 includes/class-admin.php:38
-#: includes/class-blocks.php:195
+#: includes/class-blocks.php:201
 msgid "AstroWay"
 msgstr "AstroWay"
 
@@ -58,8 +58,9 @@ msgstr "Beállítások"
 
 #: includes/builders/class-elementor.php:82
 msgid ""
-"AstroWay now has every widget in Elementor itself. The AstroWay for Elementor"
-" addon is no longer needed: deactivate it and your pages keep their widgets."
+"AstroWay now has every widget in Elementor itself. The AstroWay for "
+"Elementor addon is no longer needed: deactivate it and your pages keep their"
+" widgets."
 msgstr ""
 "Az AstroWay mostantól minden widgetet maga ad az Elementorban. Az AstroWay "
 "for Elementor kiegészítőre már nincs szükség: kapcsolja ki, és az oldalai "
@@ -122,8 +123,8 @@ msgid ""
 "The hourly limit was reached at %s (UTC); widgets fell back to frames until "
 "it reset."
 msgstr ""
-"Az óránkénti korlát %s-kor (UTC) betelt; a visszaállásig a widgetek keretben "
-"jelentek meg."
+"Az óránkénti korlát %s-kor (UTC) betelt; a visszaállásig a widgetek keretben"
+" jelentek meg."
 
 #: includes/class-admin-extras.php:119
 msgid ""
@@ -206,12 +207,12 @@ msgstr "Shortcode-ok"
 #: includes/class-admin.php:110
 msgid ""
 "This is a publishable key for browsers (pk_). The plugin calls the API from "
-"your server, so it needs a secret key that starts with \"aw_\". Both keys are"
-" on your dashboard at api.astroway.info/dashboard/keys."
+"your server, so it needs a secret key that starts with \"aw_\". Both keys "
+"are on your dashboard at api.astroway.info/dashboard/keys."
 msgstr ""
 "Ez egy böngészők számára közzétehető kulcs (pk_). A bővítmény az Ön "
-"szerveréről hívja meg az API-t, ezért egy \"aw_\" kezdetű titkos kulcsra van "
-"szüksége. Mindkét kulcs megtalálható az api.astroway.info/dashboard/keys "
+"szerveréről hívja meg az API-t, ezért egy \"aw_\" kezdetű titkos kulcsra van"
+" szüksége. Mindkét kulcs megtalálható az api.astroway.info/dashboard/keys "
 "oldalon, a vezérlőpulton."
 
 #: includes/class-admin.php:151
@@ -287,7 +288,8 @@ msgstr "Megjelenítés…"
 msgid "This shortcode could not be rendered here."
 msgstr "Ezt a shortcode-ot itt nem sikerült megjeleníteni."
 
-#: includes/class-admin.php:335 includes/class-widget-manifest.php:334
+#: includes/class-admin.php:335 includes/class-widget-manifest.php:250
+#: includes/class-widget-manifest.php:378
 msgid "Hide"
 msgstr "Elrejtés"
 
@@ -316,8 +318,8 @@ msgid "Pick a city to fill in lat / lon / tz"
 msgstr ""
 "Válasszon egy várost a szélesség, a hosszúság és az időzóna kitöltéséhez"
 
-#. translators: 1: number of shortcodes matching the filter, 2: total number of
-#. shortcodes
+#. translators: 1: number of shortcodes matching the filter, 2: total number
+#. of shortcodes
 #: includes/class-admin.php:344
 #, php-format
 msgid "%1$d of %2$d"
@@ -367,13 +369,14 @@ msgstr "Írjon be egy érvényes domaint (pl. example.com)."
 #: includes/class-admin.php:491
 msgid "Domain change failed. Use the dashboard link below."
 msgstr ""
-"A domainváltás nem sikerült. Kérjük, használja az alábbi irányítópult-linket."
+"A domainváltás nem sikerült. Kérjük, használja az alábbi irányítópult-"
+"linket."
 
 #: includes/class-atlas.php:64
 msgid "City lookup is busy, try again in a moment."
 msgstr "A városkeresés jelenleg foglalt, próbálja újra egy pillanat múlva."
 
-#: includes/class-blocks.php:200
+#: includes/class-blocks.php:206
 msgid "AstroWay: full API"
 msgstr "AstroWay: teljes API"
 
@@ -392,8 +395,8 @@ msgid ""
 "This connection link has expired or was opened in another browser. Start "
 "again from this page."
 msgstr ""
-"Ez a csatlakoztatási hivatkozás lejárt, vagy egy másik böngészőben nyitották "
-"meg. Kezdje újra erről az oldalról."
+"Ez a csatlakoztatási hivatkozás lejárt, vagy egy másik böngészőben nyitották"
+" meg. Kezdje újra erről az oldalról."
 
 #: includes/class-connect.php:173
 msgid ""
@@ -403,11 +406,12 @@ msgstr ""
 
 #: includes/class-connect.php:175
 msgid ""
-"api.astroway.info issued this connection to another site, or this site has no"
-" key of its own yet. Start again from this page."
+"api.astroway.info issued this connection to another site, or this site has "
+"no key of its own yet. Start again from this page."
 msgstr ""
-"Az api.astroway.info ezt a csatlakoztatást egy másik webhelynek adta ki, vagy"
-" ennek a webhelynek még nincs saját kulcsa. Kezdje újra erről az oldalról."
+"Az api.astroway.info ezt a csatlakoztatást egy másik webhelynek adta ki, "
+"vagy ennek a webhelynek még nincs saját kulcsa. Kezdje újra erről az "
+"oldalról."
 
 #: includes/class-connect.php:177
 msgid ""
@@ -419,8 +423,8 @@ msgstr ""
 
 #: includes/class-connect.php:179
 msgid ""
-"api.astroway.info did not accept the connection. Start again from this page, "
-"or paste a key instead."
+"api.astroway.info did not accept the connection. Start again from this page,"
+" or paste a key instead."
 msgstr ""
 "Az api.astroway.info nem fogadta el a csatlakoztatást. Kezdje újra erről az "
 "oldalról, vagy illesszen be egy kulcsot."
@@ -455,7 +459,7 @@ msgid "The Moon is void of course from %1$s to %2$s."
 msgstr "A Hold %1$s és %2$s között üres járású."
 
 #. translators: %s = comma-separated list of planet names
-#: includes/class-digest.php:248 includes/class-render.php:3666
+#: includes/class-digest.php:248 includes/class-render.php:3675
 #, php-format
 msgid "Retrograde right now: %s."
 msgstr "Jelenleg retrográd: %s."
@@ -478,8 +482,8 @@ msgid ""
 "the answer, and the city name to app.astroway.info to find its coordinates. "
 "Names typed into the compatibility form are not sent anywhere. The AstroWay "
 "plugin does not store any of it on this site: the answer is not cached and "
-"the page is sent with no-store. Security or activity-log plugins on this site"
-" may record form submissions on their own."
+"the page is sent with no-store. Security or activity-log plugins on this "
+"site may record form submissions on their own."
 msgstr ""
 "Amikor egy látogató kitölti a születési képlet, a Human Design, az "
 "összeillés, a Hold-jegy, az aszcendens, a szolárhoroszkóp, a lunárhoroszkóp "
@@ -487,15 +491,15 @@ msgstr ""
 "api.astroway.info-ra kerül számításra, a város neve pedig az "
 "app.astroway.info-ra a koordinátái miatt. Az összeillés űrlapjába írt nevek "
 "sehová nem kerülnek. Az AstroWay bővítmény ebből semmit nem tárol ezen a "
-"webhelyen: a válasz nem kerül gyorsítótárba, az oldal no-store fejléccel megy"
-" ki. A webhely biztonsági vagy naplózó bővítményei maguk is rögzíthetik a "
-"beküldött űrlapokat."
+"webhelyen: a válasz nem kerül gyorsítótárba, az oldal no-store fejléccel "
+"megy ki. A webhely biztonsági vagy naplózó bővítményei maguk is rögzíthetik "
+"a beküldött űrlapokat."
 
 #: includes/class-form.php:105
 msgid ""
 "When a visitor fills in the numerology form, the name and birth date they "
-"enter are sent from this site's server to api.astroway.info to calculate the "
-"numbers. The AstroWay plugin does not store them on this site."
+"enter are sent from this site's server to api.astroway.info to calculate the"
+" numbers. The AstroWay plugin does not store them on this site."
 msgstr ""
 "Amikor egy látogató kitölti a számmisztikai űrlapot, a megadott név és "
 "születési dátum a webhely szerveréről az api.astroway.info címre kerül a "
@@ -505,8 +509,8 @@ msgstr ""
 #: includes/class-form.php:106
 msgid ""
 "Tarot cards with pictures load those pictures in the visitor's browser from "
-"cdn.astroway.info, which therefore receives the visitor's IP address, as for "
-"any image from another site. When a spread asks for its reading, the drawn "
+"cdn.astroway.info, which therefore receives the visitor's IP address, as for"
+" any image from another site. When a spread asks for its reading, the drawn "
 "cards and the page's language are sent from this site's server to "
 "api.astroway.info; nothing about the visitor is sent with them, and the "
 "reading is kept on this site for a day so that the same spread is read once."
@@ -522,8 +526,8 @@ msgstr ""
 #: includes/class-form.php:119
 msgid ""
 "Visitors do not see this calculator: it runs on the site key, so that their "
-"charts never spend your credits, and a site connected to an AstroWay account "
-"has no site key. The shortcode with the birth data written in still works. "
+"charts never spend your credits, and a site connected to an AstroWay account"
+" has no site key. The shortcode with the birth data written in still works. "
 "Only administrators see this note."
 msgstr ""
 "A látogatók nem látják ezt a kalkulátort: a webhelykulcson fut, hogy a "
@@ -603,17 +607,17 @@ msgstr "A kalkulátor most foglalt. Próbálja újra később."
 
 #: includes/class-form.php:473
 msgid ""
-"This chart cannot be shown for this birth date yet. Try another year or come "
-"back later."
+"This chart cannot be shown for this birth date yet. Try another year or come"
+" back later."
 msgstr ""
-"Ez a horoszkóp ehhez a születési dátumhoz még nem jeleníthető meg. Próbáljon "
-"másik évet, vagy térjen vissza később."
+"Ez a horoszkóp ehhez a születési dátumhoz még nem jeleníthető meg. Próbáljon"
+" másik évet, vagy térjen vissza később."
 
 #: includes/class-form.php:474
 msgid "This chart cannot be shown for this birth data yet. Come back later."
 msgstr ""
-"Ez a horoszkóp ezekhez a születési adatokhoz még nem jeleníthető meg. Térjen "
-"vissza később."
+"Ez a horoszkóp ezekhez a születési adatokhoz még nem jeleníthető meg. Térjen"
+" vissza később."
 
 #: includes/class-form.php:477
 msgid "The calculation did not come back. Try again in a moment."
@@ -625,8 +629,8 @@ msgstr "Új számítás"
 
 #: includes/class-form.php:500
 msgid ""
-"The rising sign depends on the minute of birth; without the time it cannot be"
-" told."
+"The rising sign depends on the minute of birth; without the time it cannot "
+"be told."
 msgstr ""
 "Az aszcendens a születés percétől függ; idő nélkül nem határozható meg."
 
@@ -634,7 +638,8 @@ msgstr ""
 msgid ""
 "This chart depends on the minute of birth; without the time it cannot be "
 "cast."
-msgstr "Ez a horoszkóp a születés percétől függ; idő nélkül nem állítható fel."
+msgstr ""
+"Ez a horoszkóp a születés percétől függ; idő nélkül nem állítható fel."
 
 #: includes/class-form.php:505
 msgid "Enter the time of birth, or tick that it is unknown."
@@ -781,8 +786,8 @@ msgid ""
 "twice or not at all. Check the birth time was read from a local clock."
 msgstr ""
 "Aznap ezen a helyen átállították az órát, így egy óra kétszer volt vagy "
-"egyszer sem. Ellenőrizze, hogy a születési időt helyi óra szerint jegyezték-e"
-" fel."
+"egyszer sem. Ellenőrizze, hogy a születési időt helyi óra szerint "
+"jegyezték-e fel."
 
 #: includes/class-form.php:890
 msgid ""
@@ -794,11 +799,11 @@ msgstr "Születési idő nélkül a Hold foka közelítő; jegye aznapra biztos.
 #: includes/class-form.php:896
 #, php-format
 msgid ""
-"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides "
-"which one is yours."
+"The Moon changed sign that day, from %1$s to %2$s. The time of birth decides"
+" which one is yours."
 msgstr ""
-"Aznap a Hold jegyet váltott: előbb %1$s, aztán %2$s. Hogy melyik az Öné, azt "
-"a születési idő dönti el."
+"Aznap a Hold jegyet váltott: előbb %1$s, aztán %2$s. Hogy melyik az Öné, azt"
+" a születési idő dönti el."
 
 #. translators: %s = title of a generated block, e.g. "Natal Chart"
 #: includes/class-generated-registry.php:171
@@ -810,85 +815,86 @@ msgstr "%s (API)"
 #: includes/class-generated-registry.php:406
 #, php-format
 msgid ""
-"%s needs an API key: paste one in AstroWay, API Key. Only administrators see "
-"this note."
+"%s needs an API key: paste one in AstroWay, API Key. Only administrators see"
+" this note."
 msgstr ""
-"%s API-kulcsot igényel: illesszen be egyet az AstroWay, API Key oldalon. Ezt "
-"a megjegyzést csak a rendszergazdák látják."
+"%s API-kulcsot igényel: illesszen be egyet az AstroWay, API Key oldalon. Ezt"
+" a megjegyzést csak a rendszergazdák látják."
 
 #. translators: 1: shortcode tag, 2: comma-separated attribute names
-#: includes/class-generated-registry.php:426 includes/class-render.php:3402
+#: includes/class-generated-registry.php:426 includes/class-render.php:3411
 #, php-format
 msgid ""
-"%1$s is missing required attributes: %2$s. Only administrators see this note."
+"%1$s is missing required attributes: %2$s. Only administrators see this "
+"note."
 msgstr ""
 "%1$s hiányzó kötelező attribútumokkal rendelkezik: %2$s. Ezt a megjegyzést "
 "csak a rendszergazdák látják."
 
 #. translators: %s = shortcode tag
-#: includes/class-generated-registry.php:440 includes/class-render.php:3453
+#: includes/class-generated-registry.php:440 includes/class-render.php:3462
 #, php-format
 msgid "%s could not be loaded just now. Only administrators see this note."
 msgstr ""
 "%s most nem tölthető be. Ezt a megjegyzést csak a rendszergazdák látják."
 
-#: includes/class-plugin.php:523 includes/class-plugin.php:601
-#: includes/class-plugin.php:679
+#: includes/class-plugin.php:524 includes/class-plugin.php:602
+#: includes/class-plugin.php:680
 msgid "Hide for now"
 msgstr "Egyelőre elrejt"
 
-#: includes/class-plugin.php:542
+#: includes/class-plugin.php:543
 msgid "AstroWay is active"
 msgstr "Az AstroWay aktív"
 
-#: includes/class-plugin.php:543
+#: includes/class-plugin.php:544
 msgid ""
-"Shortcodes work without an API key. Widgets your server renders into the page"
-" draw on your site's allowance of 300 requests an hour; widgets that fall "
-"back to a frame draw on each visitor's own 30. For higher limits and Pro "
-"features, get a free API key."
+"Shortcodes work without an API key. Widgets your server renders into the "
+"page draw on your site's allowance of 300 requests an hour; widgets that "
+"fall back to a frame draw on each visitor's own 30. For higher limits and "
+"Pro features, get a free API key."
 msgstr ""
 "A shortcode-ok API-kulcs nélkül is működnek. Azok a widgetek, amelyeket a "
-"szervere közvetlenül az oldalba jelenít meg, a webhely óránkénti 300 kéréses "
-"keretét használják; a keretre váltó widgetek az egyes látogatók saját, "
+"szervere közvetlenül az oldalba jelenít meg, a webhely óránkénti 300 kéréses"
+" keretét használják; a keretre váltó widgetek az egyes látogatók saját, "
 "óránkénti 30 kérését. Magasabb korlátokért és a Pro funkciókért igényeljen "
 "ingyenes API-kulcsot."
 
-#: includes/class-plugin.php:547 includes/class-plugin.php:683
+#: includes/class-plugin.php:548 includes/class-plugin.php:684
 #: includes/views/partials/admin-hero.php:55
 msgid "Get free API key"
 msgstr "Ingyenes API-kulcs"
 
-#: includes/class-plugin.php:550
+#: includes/class-plugin.php:551
 msgid "Open Settings"
 msgstr "Beállítások megnyitása"
 
-#: includes/class-plugin.php:619
+#: includes/class-plugin.php:620
 msgid "Enjoying AstroWay?"
 msgstr "Tetszik az AstroWay?"
 
-#: includes/class-plugin.php:620
+#: includes/class-plugin.php:621
 msgid ""
-"A short review on wordpress.org helps other site owners discover the plugin, "
-"and tells us what to build next."
+"A short review on wordpress.org helps other site owners discover the plugin,"
+" and tells us what to build next."
 msgstr ""
-"Egy rövid értékelés a wordpress.org oldalon segít más webhelytulajdonosoknak "
-"felfedezni a bővítményt, és útmutatást ad nekünk, hogy mit fejlesszünk ki "
+"Egy rövid értékelés a wordpress.org oldalon segít más webhelytulajdonosoknak"
+" felfedezni a bővítményt, és útmutatást ad nekünk, hogy mit fejlesszünk ki "
 "legközelebb."
 
-#: includes/class-plugin.php:624
+#: includes/class-plugin.php:625
 msgid "Leave a review"
 msgstr "Értékelés írása"
 
-#: includes/class-plugin.php:627
+#: includes/class-plugin.php:628
 msgid "I already left one"
 msgstr "Már írtam értékelést"
 
-#: includes/class-plugin.php:681
+#: includes/class-plugin.php:682
 msgid "This server has used up its anonymous AstroWay quota:"
 msgstr "Ez a szerver kimerítette az AstroWay névtelen kvótáját:"
 
-#: includes/class-plugin.php:682
+#: includes/class-plugin.php:683
 msgid ""
 "the free tier allows this site 300 requests an hour. Until the hour resets, "
 "widgets that would have been rendered into the page fall back to a frame "
@@ -896,14 +902,15 @@ msgid ""
 "server will fail. Add a free API key to lift the limit and get 10,000 "
 "credits/month plus 60 req/min."
 msgstr ""
-"Az ingyenes csomag keretében ez az oldal óránként 300 lekérdezést bonyolíthat"
-" le. Amíg az óra vissza nem áll, az oldalra megjelenítendő widgetek a "
-"látogató saját böngészője által betöltött keretben jelennek meg, és a "
-"szerverről érkező előnézeti és adminisztrációs lekérdezések sikertelenek "
-"lesznek. Adjon hozzá egy ingyenes API-kulcsot a korlát feloldásához, és így "
-"havi 10 000 kreditet, valamint percenként 60 lekérdezést kap."
+"Az ingyenes csomag keretében ez az oldal óránként 300 lekérdezést "
+"bonyolíthat le. Amíg az óra vissza nem áll, az oldalra megjelenítendő "
+"widgetek a látogató saját böngészője által betöltött keretben jelennek meg, "
+"és a szerverről érkező előnézeti és adminisztrációs lekérdezések "
+"sikertelenek lesznek. Adjon hozzá egy ingyenes API-kulcsot a korlát "
+"feloldásához, és így havi 10 000 kreditet, valamint percenként 60 "
+"lekérdezést kap."
 
-#: includes/class-plugin.php:706
+#: includes/class-plugin.php:707
 msgid ""
 "AstroWay can no longer read the saved API key: the security keys in wp-"
 "config.php have changed since it was saved. Widgets keep working without it."
@@ -912,7 +919,7 @@ msgstr ""
 "fájlban található biztonsági kulcsok a mentés óta megváltoztak. A widgetek "
 "ennek hiányában is továbbra is működnek."
 
-#: includes/class-plugin.php:708
+#: includes/class-plugin.php:709
 msgid "Paste the key again"
 msgstr "Illessze be újra a kulcsot"
 
@@ -920,14 +927,14 @@ msgstr "Illessze be újra a kulcsot"
 #: includes/class-public-client.php:94
 #, php-format
 msgid ""
-"This widget reached the free limit for one visitor (%d requests an hour from "
-"one IP address), so visitors on that connection see nothing here until the "
+"This widget reached the free limit for one visitor (%d requests an hour from"
+" one IP address), so visitors on that connection see nothing here until the "
 "hour resets. Only administrators see this note."
 msgstr ""
 "Ez a widget elérte az egy látogatóra vonatkozó ingyenes korlátot (%d kérés "
-"óránként egy IP-címről), így az adott kapcsolaton keresztül érkező látogatók "
-"nem látnak itt semmit, amíg az óra vissza nem áll. Ezt a megjegyzést csak a "
-"rendszergazdák látják."
+"óránként egy IP-címről), így az adott kapcsolaton keresztül érkező látogatók"
+" nem látnak itt semmit, amíg az óra vissza nem áll. Ezt a megjegyzést csak a"
+" rendszergazdák látják."
 
 #: includes/class-public-client.php:96
 msgid ""
@@ -952,11 +959,11 @@ msgstr ""
 msgid "Natal chart wheel"
 msgstr "Natal chart kerék"
 
-#: includes/class-public-client.php:172 includes/class-widget-manifest.php:295
+#: includes/class-public-client.php:172 includes/class-widget-manifest.php:339
 msgid "Daily horoscope"
 msgstr "Napi horoszkóp"
 
-#: includes/class-public-client.php:173 includes/class-widget-manifest.php:299
+#: includes/class-public-client.php:173 includes/class-widget-manifest.php:343
 msgid "Moon phase"
 msgstr "Holdfázis"
 
@@ -993,459 +1000,462 @@ msgstr "Szinasztriai összeillés"
 msgid "AstroWay widget"
 msgstr "AstroWay widget"
 
-#: includes/class-render.php:138
+#: includes/class-render.php:143
 msgid ""
 "The rising sign needs a latitude and a longitude: it is the horizon at a "
 "place, not a date. Only administrators see this note."
 msgstr ""
-"Az aszcendenshez szélesség és hosszúság kell: egy adott hely horizontja, nem "
-"dátum. Ezt a megjegyzést csak a rendszergazdák látják."
+"Az aszcendenshez szélesség és hosszúság kell: egy adott hely horizontja, nem"
+" dátum. Ezt a megjegyzést csak a rendszergazdák látják."
 
 #. translators: %s = widget name, e.g. "moon sign"
-#: includes/class-render.php:145
+#: includes/class-render.php:150
 #, php-format
 msgid ""
 "The %s widget could not be loaded just now. Only administrators see this "
 "note."
 msgstr ""
-"A(z) %s widget most nem tölthető be. Ezt a megjegyzést csak a rendszergazdák "
-"látják."
+"A(z) %s widget most nem tölthető be. Ezt a megjegyzést csak a rendszergazdák"
+" látják."
 
-#: includes/class-render.php:221
+#: includes/class-render.php:226
 msgid "Rising sign"
 msgstr "Aszcendens"
 
-#: includes/class-render.php:235
+#: includes/class-render.php:240
 msgid "Moon sign"
 msgstr "Hold-jegy"
 
 #. translators: 1: heading such as "Moon sign", 2: person's name
 #. translators: 1: zodiac sign, 2: how the two signs relate, e.g. "trine"
-#: includes/class-render.php:245 includes/class-render.php:4509
+#: includes/class-render.php:250 includes/class-render.php:4518
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: includes/class-render.php:259 includes/class-render.php:2000
-#: includes/class-render.php:3585 includes/class-render.php:5525
+#: includes/class-render.php:264 includes/class-render.php:2007
+#: includes/class-render.php:3594 includes/class-render.php:5562
+#: includes/class-render.php:5806 includes/class-render.php:5884
+#: includes/class-render.php:5911
 msgid "Position"
 msgstr "Helyzet"
 
 #. translators: %d = house number
-#: includes/class-render.php:262 includes/class-render.php:2000
-#: includes/class-render.php:4348 includes/class-render.php:5525
+#: includes/class-render.php:267 includes/class-render.php:2007
+#: includes/class-render.php:4357 includes/class-render.php:5562
+#: includes/class-render.php:5806
 msgid "House"
 msgstr "Ház"
 
 #. translators: %d = house number
-#: includes/class-render.php:262 includes/class-render.php:1515
-#: includes/class-render.php:1529 includes/class-render.php:1955
-#: includes/class-render.php:1968 includes/class-render.php:4340
+#: includes/class-render.php:267 includes/class-render.php:1522
+#: includes/class-render.php:1536 includes/class-render.php:1962
+#: includes/class-render.php:1975 includes/class-render.php:4349
 #, php-format
 msgid "House %d"
 msgstr "%d. ház"
 
-#: includes/class-render.php:270
+#: includes/class-render.php:275
 msgid "Chart ruler"
 msgstr "A képlet uralkodója"
 
-#: includes/class-render.php:273
+#: includes/class-render.php:278
 msgid "Ruler position"
 msgstr "Az uralkodó helyzete"
 
-#: includes/class-render.php:279 includes/class-render.php:1976
+#: includes/class-render.php:284 includes/class-render.php:1983
 msgid "Midheaven"
 msgstr "Medium Coeli"
 
-#: includes/class-render.php:318 includes/class-render.php:402
+#: includes/class-render.php:323 includes/class-render.php:407
 msgid "Human Design"
 msgstr "Human Design"
 
 #. translators: %s = person's name
-#: includes/class-render.php:321
+#: includes/class-render.php:326
 #, php-format
 msgid "Human Design: %s"
 msgstr "Human Design: %s"
 
 #. translators: %s = date of the design moment
-#: includes/class-render.php:329
+#: includes/class-render.php:334
 #, php-format
 msgid "Design: %s"
 msgstr "Design: %s"
 
-#: includes/class-render.php:342 includes/class-render.php:647
+#: includes/class-render.php:347 includes/class-render.php:652
 #: includes/views/admin-shortcodes.php:117
 msgid "Type"
 msgstr "Típus"
 
-#: includes/class-render.php:349
+#: includes/class-render.php:354
 msgid "Strategy"
 msgstr "Stratégia"
 
-#: includes/class-render.php:355 includes/class-render.php:657
+#: includes/class-render.php:360 includes/class-render.php:662
 msgid "Authority"
 msgstr "Autoritás"
 
 #. translators: 1: profile such as 6/2, 2: incarnation geometry such as Left
 #. Angle
-#: includes/class-render.php:364
+#: includes/class-render.php:369
 #, php-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: includes/class-render.php:370 includes/class-render.php:685
+#: includes/class-render.php:375 includes/class-render.php:690
 msgid "Profile"
 msgstr "Profil"
 
-#: includes/class-render.php:376 includes/class-render.php:667
+#: includes/class-render.php:381 includes/class-render.php:672
 msgid "Definition"
 msgstr "Definíció"
 
-#: includes/class-render.php:389 includes/class-render.php:701
+#: includes/class-render.php:394 includes/class-render.php:706
 msgid "Incarnation cross"
 msgstr "Inkarnációs kereszt"
 
-#: includes/class-render.php:405
+#: includes/class-render.php:410
 msgid "Bodygraph"
 msgstr "Testgrafikon"
 
-#: includes/class-render.php:410
+#: includes/class-render.php:415
 msgid "Centres"
 msgstr "Centrumok"
 
-#: includes/class-render.php:415 includes/class-render.php:831
+#: includes/class-render.php:420 includes/class-render.php:836
 msgid "Channels"
 msgstr "Csatornák"
 
-#. translators: abbreviated colour, tone and base of a Human Design activation,
-#. e.g. C5 T6 B4
-#: includes/class-render.php:490
+#. translators: abbreviated colour, tone and base of a Human Design
+#. activation, e.g. C5 T6 B4
+#: includes/class-render.php:495
 #, php-format
 msgid "C%1$d T%2$d B%3$d"
 msgstr "Sz%1$d H%2$d A%3$d"
 
 #. translators: colour, tone and base of a Human Design activation
-#: includes/class-render.php:493
+#: includes/class-render.php:498
 #, php-format
 msgid "colour %1$d, tone %2$d, base %3$d"
 msgstr "szín %1$d, hang %2$d, alap %3$d"
 
 #. translators: 1: Human Design gate number, 2: line number within the gate
-#: includes/class-render.php:499
+#: includes/class-render.php:504
 #, php-format
 msgid "gate %1$d, line %2$d"
 msgstr "%1$d. kapu, %2$d. vonal"
 
-#: includes/class-render.php:510
+#: includes/class-render.php:515
 msgid "No centre is defined."
 msgstr "Egyik centrum sem definiált."
 
 #. translators: %s = list of centre names
-#: includes/class-render.php:512
+#: includes/class-render.php:517
 #, php-format
 msgid "Defined centres: %s."
 msgstr "Definiált centrumok: %s."
 
 #. translators: %s = list of channels such as 13-33
-#: includes/class-render.php:515
+#: includes/class-render.php:520
 #, php-format
 msgid "Channels: %s."
 msgstr "Csatornák: %s."
 
-#: includes/class-render.php:534 includes/class-render.php:792
+#: includes/class-render.php:539 includes/class-render.php:797
 msgid "Design"
 msgstr "Design"
 
-#: includes/class-render.php:534 includes/class-render.php:791
-#: includes/class-render.php:5639
+#: includes/class-render.php:539 includes/class-render.php:796
+#: includes/class-render.php:5964
 msgid "Personality"
 msgstr "Személyiség"
 
-#: includes/class-render.php:540
+#: includes/class-render.php:545
 msgid "Design (unconscious)"
 msgstr "Design (tudattalan)"
 
-#: includes/class-render.php:544
+#: includes/class-render.php:549
 msgid "Personality (conscious)"
 msgstr "Személyiség (tudatos)"
 
-#: includes/class-render.php:548
+#: includes/class-render.php:553
 msgid "Both"
 msgstr "Mindkettő"
 
-#: includes/class-render.php:558
+#: includes/class-render.php:563
 msgctxt "planet"
 msgid "Earth"
 msgstr "Föld"
 
-#: includes/class-render.php:571 includes/class-render.php:572
+#: includes/class-render.php:576 includes/class-render.php:577
 msgid "Satisfaction"
 msgstr "Elégedettség"
 
-#: includes/class-render.php:573
+#: includes/class-render.php:578
 msgid "Success"
 msgstr "Siker"
 
-#: includes/class-render.php:574
+#: includes/class-render.php:579
 msgid "Peace"
 msgstr "Béke"
 
-#: includes/class-render.php:575
+#: includes/class-render.php:580
 msgid "Surprise"
 msgstr "Meglepetés"
 
 #. translators: %s = Human Design signature, e.g. Success
-#: includes/class-render.php:581
+#: includes/class-render.php:586
 #, php-format
 msgid "Signature: %s"
 msgstr "Szignatúra: %s"
 
 #. translators: %s = Human Design not-self theme, e.g. Bitterness
-#: includes/class-render.php:588
+#: includes/class-render.php:593
 #, php-format
 msgid "Not-self: %s"
 msgstr "Nem-én: %s"
 
 #. translators: %d = line number, 1 to 6
-#: includes/class-render.php:680
+#: includes/class-render.php:685
 #, php-format
 msgid "Line %d"
 msgstr "%d. vonal"
 
 #. translators: %d = gate number, 1 to 64
-#: includes/class-render.php:696
+#: includes/class-render.php:701
 #, php-format
 msgid "Gate %d"
 msgstr "%d. kapu"
 
-#: includes/class-render.php:710
+#: includes/class-render.php:715
 msgid "What the chart says"
 msgstr "Mit mond a képlet"
 
-#: includes/class-render.php:718
+#: includes/class-render.php:723
 msgid "Motor"
 msgstr "Motor"
 
-#: includes/class-render.php:719
+#: includes/class-render.php:724
 msgid "Awareness"
 msgstr "Tudatosság"
 
-#: includes/class-render.php:720
+#: includes/class-render.php:725
 msgid "Pressure"
 msgstr "Nyomás"
 
-#: includes/class-render.php:736 includes/class-render.php:761
+#: includes/class-render.php:741 includes/class-render.php:766
 msgid "Defined"
 msgstr "Definiált"
 
-#: includes/class-render.php:739 includes/class-render.php:761
+#: includes/class-render.php:744 includes/class-render.php:766
 msgid "Open"
 msgstr "Nyitott"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:753
+#: includes/class-render.php:758
 #, php-format
 msgid "Gates: %s"
 msgstr "Kapuk: %s"
 
 #. translators: %s = list of gate numbers
-#: includes/class-render.php:757
+#: includes/class-render.php:762
 #, php-format
 msgid "Active gates: %s"
 msgstr "Aktív kapuk: %s"
 
-#: includes/class-render.php:785
+#: includes/class-render.php:790
 msgid "Individual circuitry"
 msgstr "Egyéni áramkör"
 
-#: includes/class-render.php:786
+#: includes/class-render.php:791
 msgid "Tribal circuitry"
 msgstr "Törzsi áramkör"
 
-#: includes/class-render.php:787
+#: includes/class-render.php:792
 msgid "Collective circuitry"
 msgstr "Kollektív áramkör"
 
-#: includes/class-render.php:788
+#: includes/class-render.php:793
 msgid "Integration channels"
 msgstr "Integrációs csatornák"
 
 #. translators: 1: first gate number, 2: second gate number, 3: first centre,
 #. 4: second centre
-#: includes/class-render.php:821
+#: includes/class-render.php:826
 #, php-format
 msgid "%1$d-%2$d, %3$s to %4$s"
 msgstr "%1$d–%2$d, %3$s – %4$s"
 
-#: includes/class-render.php:841
+#: includes/class-render.php:846
 msgid "Generator"
 msgstr "Generátor"
 
-#: includes/class-render.php:842
+#: includes/class-render.php:847
 msgid "Manifesting Generator"
 msgstr "Manifesztáló Generátor"
 
-#: includes/class-render.php:843
+#: includes/class-render.php:848
 msgid "Manifestor"
 msgstr "Manifesztor"
 
-#: includes/class-render.php:844
+#: includes/class-render.php:849
 msgid "Projector"
 msgstr "Projektor"
 
-#: includes/class-render.php:845
+#: includes/class-render.php:850
 msgid "Reflector"
 msgstr "Reflektor"
 
-#: includes/class-render.php:852
+#: includes/class-render.php:857
 msgid "Wait to respond"
 msgstr "Várni a válaszra"
 
-#: includes/class-render.php:853
+#: includes/class-render.php:858
 msgid "Wait for the invitation"
 msgstr "Várni a meghívásra"
 
-#: includes/class-render.php:854 includes/class-render.php:855
+#: includes/class-render.php:859 includes/class-render.php:860
 msgid "Inform before acting"
 msgstr "Tájékoztatni cselekvés előtt"
 
-#: includes/class-render.php:856
+#: includes/class-render.php:861
 msgid "Wait a lunar cycle"
 msgstr "Kivárni egy holdciklust"
 
-#: includes/class-render.php:857
+#: includes/class-render.php:862
 msgid "Respond, then inform"
 msgstr "Válaszolni, majd tájékoztatni"
 
-#: includes/class-render.php:864
+#: includes/class-render.php:869
 msgid "Emotional (Solar Plexus)"
 msgstr "Érzelmi (Napfonat)"
 
-#: includes/class-render.php:865 includes/class-render.php:920
+#: includes/class-render.php:870 includes/class-render.php:925
 msgid "Sacral"
 msgstr "Szakrális"
 
-#: includes/class-render.php:866
+#: includes/class-render.php:871
 msgid "Splenic"
 msgstr "Lép"
 
-#: includes/class-render.php:867
+#: includes/class-render.php:872
 msgid "Ego (Heart)"
 msgstr "Ego (Szív)"
 
-#: includes/class-render.php:868
+#: includes/class-render.php:873
 msgid "Ego manifested"
 msgstr "Ego manifesztált"
 
-#: includes/class-render.php:869
+#: includes/class-render.php:874
 msgid "Ego projected"
 msgstr "Ego projektált"
 
-#: includes/class-render.php:870
+#: includes/class-render.php:875
 msgid "Self-projected"
 msgstr "Önkivetítő"
 
-#: includes/class-render.php:871 includes/class-render.php:872
+#: includes/class-render.php:876 includes/class-render.php:877
 msgid "Mental (environment)"
 msgstr "Mentális (környezet)"
 
-#: includes/class-render.php:873 includes/class-render.php:874
-#: includes/class-render.php:875
+#: includes/class-render.php:878 includes/class-render.php:879
+#: includes/class-render.php:880
 msgid "Lunar cycle"
 msgstr "Holdciklus"
 
-#: includes/class-render.php:882
+#: includes/class-render.php:887
 msgid "Single definition"
 msgstr "Egyszeres definíció"
 
-#: includes/class-render.php:883
+#: includes/class-render.php:888
 msgid "Split definition"
 msgstr "Osztott definíció"
 
-#: includes/class-render.php:884
+#: includes/class-render.php:889
 msgid "Triple split definition"
 msgstr "Hármas osztott definíció"
 
-#: includes/class-render.php:885
+#: includes/class-render.php:890
 msgid "Quadruple split definition"
 msgstr "Négyes osztott definíció"
 
-#: includes/class-render.php:886
+#: includes/class-render.php:891
 msgid "No definition"
 msgstr "Definíció nélküli"
 
-#: includes/class-render.php:893
+#: includes/class-render.php:898
 msgid "Frustration"
 msgstr "Frusztráció"
 
-#: includes/class-render.php:894
+#: includes/class-render.php:899
 msgid "Bitterness"
 msgstr "Keserűség"
 
-#: includes/class-render.php:895
+#: includes/class-render.php:900
 msgid "Anger"
 msgstr "Düh"
 
-#: includes/class-render.php:896
+#: includes/class-render.php:901
 msgid "Disappointment"
 msgstr "Csalódás"
 
-#: includes/class-render.php:903
+#: includes/class-render.php:908
 msgid "Right Angle"
 msgstr "Jobb szög"
 
-#: includes/class-render.php:904
+#: includes/class-render.php:909
 msgid "Left Angle"
 msgstr "Bal szög"
 
-#: includes/class-render.php:905
+#: includes/class-render.php:910
 msgid "Juxtaposition"
 msgstr "Juxtapozíció"
 
-#: includes/class-render.php:913
+#: includes/class-render.php:918
 msgid "Head"
 msgstr "Fej"
 
-#: includes/class-render.php:914
+#: includes/class-render.php:919
 msgid "Ajna"
 msgstr "Ajna"
 
-#: includes/class-render.php:915
+#: includes/class-render.php:920
 msgid "Throat"
 msgstr "Torok"
 
-#: includes/class-render.php:916
+#: includes/class-render.php:921
 msgid "G (identity)"
 msgstr "G (identitás)"
 
-#: includes/class-render.php:917
+#: includes/class-render.php:922
 msgid "Heart (ego)"
 msgstr "Szív (ego)"
 
-#: includes/class-render.php:918
+#: includes/class-render.php:923
 msgid "Solar Plexus"
 msgstr "Napfonat"
 
-#: includes/class-render.php:919
+#: includes/class-render.php:924
 msgid "Spleen"
 msgstr "Lép"
 
-#: includes/class-render.php:921
+#: includes/class-render.php:926
 msgid "Root"
 msgstr "Gyökér"
 
-#: includes/class-render.php:968 includes/class-render.php:995
-#: includes/class-render.php:1026
+#: includes/class-render.php:973 includes/class-render.php:1000
+#: includes/class-render.php:1031
 msgid "Natal chart"
 msgstr "Születési horoszkóp"
 
 #. translators: %s = person's name
-#: includes/class-render.php:972 includes/class-render.php:998
+#: includes/class-render.php:977 includes/class-render.php:1003
 #, php-format
 msgid "Natal chart: %s"
 msgstr "Születési horoszkóp: %s"
 
-#: includes/class-render.php:1023
+#: includes/class-render.php:1028
 msgid ""
 "Birth time unknown: the chart is drawn for noon, without houses, the "
 "Ascendant or the Moon's aspects, and the Moon may be up to 7 degrees from "
@@ -1454,242 +1464,242 @@ msgstr ""
 "A születési idő ismeretlen: a képlet délre készült, házak, aszcendens és a "
 "Hold fényszögei nélkül, a Hold pedig akár 7 fokkal eltérhet."
 
-#: includes/class-render.php:1029 includes/class-render.php:1685
-#: includes/class-render.php:3992
+#: includes/class-render.php:1034 includes/class-render.php:1692
+#: includes/class-render.php:4001 includes/class-render.php:5908
 msgid "Wheel"
 msgstr "Kör"
 
-#: includes/class-render.php:1034 includes/class-render.php:1689
+#: includes/class-render.php:1039 includes/class-render.php:1696
 msgid "Grid"
 msgstr "Rács"
 
-#: includes/class-render.php:1036 includes/class-render.php:1690
+#: includes/class-render.php:1041 includes/class-render.php:1697
 msgid "Aspects between planets"
 msgstr "Fényszögek a bolygók között"
 
-#: includes/class-render.php:1039 includes/class-render.php:1693
-#: includes/class-render.php:1999
+#: includes/class-render.php:1044 includes/class-render.php:1700
+#: includes/class-render.php:2006
 msgid "Placements"
 msgstr "Elhelyezkedések"
 
-#: includes/class-render.php:1044 includes/class-render.php:1697
-#: includes/class-render.php:3997
+#: includes/class-render.php:1049 includes/class-render.php:1704
+#: includes/class-render.php:4006
 msgid "Aspects"
 msgstr "Fényszögek"
 
-#: includes/class-render.php:1050 includes/class-widget-manifest.php:237
+#: includes/class-render.php:1055 includes/class-widget-manifest.php:281
 msgid "Transits"
 msgstr "Tranzitok"
 
-#: includes/class-render.php:1058 includes/class-render.php:2105
+#: includes/class-render.php:1063 includes/class-render.php:2112
 msgid "Elements by mode"
 msgstr "Elemek minőség szerint"
 
-#: includes/class-render.php:1187
+#: includes/class-render.php:1192
 msgid "What it means"
 msgstr "Mit jelent"
 
-#: includes/class-render.php:1217
+#: includes/class-render.php:1222
 msgid "time unknown"
 msgstr "ismeretlen idő"
 
-#: includes/class-render.php:1232
+#: includes/class-render.php:1237
 msgid "Part of Fortune"
 msgstr "Szerencsepont"
 
-#: includes/class-render.php:1233
+#: includes/class-render.php:1238
 msgid "Vertex"
 msgstr "Vertex"
 
-#: includes/class-render.php:1234 includes/class-render.php:2268
+#: includes/class-render.php:1239 includes/class-render.php:2275
 msgid "South Node"
 msgstr "Déli Holdcsomópont"
 
-#: includes/class-render.php:1259 includes/class-render.php:2011
-#: includes/class-render.php:4935 includes/class-tarot.php:264
+#: includes/class-render.php:1264 includes/class-render.php:2018
+#: includes/class-render.php:4944 includes/class-tarot.php:264
 msgid "Fire"
 msgstr "Tűz"
 
-#: includes/class-render.php:1260 includes/class-render.php:2015
-#: includes/class-render.php:4936 includes/class-tarot.php:267
+#: includes/class-render.php:1265 includes/class-render.php:2022
+#: includes/class-render.php:4945 includes/class-tarot.php:267
 msgid "Earth"
 msgstr "Föld"
 
-#: includes/class-render.php:1261 includes/class-render.php:2019
+#: includes/class-render.php:1266 includes/class-render.php:2026
 #: includes/class-tarot.php:266
 msgid "Air"
 msgstr "Levegő"
 
-#: includes/class-render.php:1262 includes/class-render.php:2023
-#: includes/class-render.php:4938 includes/class-tarot.php:265
+#: includes/class-render.php:1267 includes/class-render.php:2030
+#: includes/class-render.php:4947 includes/class-tarot.php:265
 msgid "Water"
 msgstr "Víz"
 
-#: includes/class-render.php:1265 includes/class-render.php:2029
+#: includes/class-render.php:1270 includes/class-render.php:2036
 msgid "Cardinal"
 msgstr "Kardinális"
 
-#: includes/class-render.php:1266 includes/class-render.php:2033
+#: includes/class-render.php:1271 includes/class-render.php:2040
 msgid "Fixed"
 msgstr "Fix"
 
-#: includes/class-render.php:1267 includes/class-render.php:2037
+#: includes/class-render.php:1272 includes/class-render.php:2044
 msgid "Mutable"
 msgstr "Változó"
 
 #. translators: %s = element or elements, e.g. "Earth" or "Earth, Water"
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:1273 includes/class-render.php:4782
+#: includes/class-render.php:1278 includes/class-render.php:4791
 #, php-format
 msgid "Element: %s"
 msgstr "Elem: %s"
 
 #. translators: %s = mode or modes, e.g. "Fixed"
-#: includes/class-render.php:1277
+#: includes/class-render.php:1282
 #, php-format
 msgid "Mode: %s"
 msgstr "Minőség: %s"
 
-#: includes/class-render.php:1280
+#: includes/class-render.php:1285
 msgid "Day chart"
 msgstr "Nappali képlet"
 
-#: includes/class-render.php:1282
+#: includes/class-render.php:1287
 msgid "Night chart"
 msgstr "Éjszakai képlet"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1289 includes/class-render.php:4243
+#: includes/class-render.php:1294 includes/class-render.php:4252
 #, php-format
 msgid "Harmonious %d"
 msgstr "Harmonikus: %d"
 
 #. translators: %d = number of aspects
-#: includes/class-render.php:1291 includes/class-render.php:4245
+#: includes/class-render.php:1296 includes/class-render.php:4254
 #, php-format
 msgid "Challenging %d"
 msgstr "Feszült: %d"
 
-#: includes/class-render.php:1303 includes/class-render.php:3484
-#: includes/class-render.php:3562 includes/class-render.php:3636
-#: includes/class-render.php:5464
+#: includes/class-render.php:1308 includes/class-render.php:3493
+#: includes/class-render.php:3571 includes/class-render.php:3645
+#: includes/class-render.php:5501 includes/class-render.php:5826
 msgid "Retrograde"
 msgstr "Retrográd"
 
-#: includes/class-render.php:1325
+#: includes/class-render.php:1330
 msgid "Grand cross"
 msgstr "Nagy kereszt"
 
-#: includes/class-render.php:1326
+#: includes/class-render.php:1331
 msgid "T-square"
 msgstr "T-kvadrát"
 
-#: includes/class-render.php:1327
+#: includes/class-render.php:1332
 msgid "Grand trine"
 msgstr "Nagy trigon"
 
-#: includes/class-render.php:1328
+#: includes/class-render.php:1333
 msgid "Yod"
 msgstr "Jod"
 
-#: includes/class-render.php:1329
+#: includes/class-render.php:1334
 msgid "Stellium"
 msgstr "Stellium"
 
-#: includes/class-render.php:1332
+#: includes/class-render.php:1337
 msgid "Four planets in two oppositions, each square to the next."
 msgstr "Négy bolygó két oppozícióban, mindegyik kvadrátban a következővel."
 
-#: includes/class-render.php:1333
+#: includes/class-render.php:1338
 msgid "Two planets in opposition, both square to a third, the apex."
 msgstr ""
 "Két bolygó oppozícióban, mindkettő kvadrátban egy harmadikkal, a csúccsal."
 
-#: includes/class-render.php:1334
+#: includes/class-render.php:1339
 msgid "Three planets a trine apart, closing a triangle."
 msgstr "Három bolygó egymástól trigon távolságra, háromszöget zárva."
 
-#: includes/class-render.php:1335
+#: includes/class-render.php:1340
 msgid "Two planets in sextile, both quincunx to a third, the apex."
 msgstr ""
 "Két bolygó szextilben, mindkettő kvinkunxban egy harmadikkal, a csúccsal."
 
 #. translators: %s = planet name, the apex of a chart pattern
-#: includes/class-render.php:1345
+#: includes/class-render.php:1350
 #, php-format
 msgid "%s (apex)"
 msgstr "%s (csúcs)"
 
 #. translators: 1: number of planets, 2: sign name
-#: includes/class-render.php:1351
+#: includes/class-render.php:1356
 #, php-format
 msgid "%1$d planets in %2$s."
 msgstr "Bolygók a(z) %2$s jegyben: %1$d."
 
 #. translators: 1: number of planets, 2: house number
-#: includes/class-render.php:1353
+#: includes/class-render.php:1358
 #, php-format
 msgid "%1$d planets in house %2$d."
 msgstr "Bolygók a(z) %2$d. házban: %1$d."
 
-#: includes/class-render.php:1369
+#: includes/class-render.php:1374
 msgid "Chart patterns"
 msgstr "Képletalakzatok"
 
-#: includes/class-render.php:1386 includes/class-render.php:2255
+#: includes/class-render.php:1391 includes/class-render.php:2262
 #: includes/views/admin-settings.php:333
 msgid "Sun"
 msgstr "Nap"
 
-#: includes/class-render.php:1387 includes/class-render.php:2256
+#: includes/class-render.php:1392 includes/class-render.php:2263
 #: includes/views/admin-settings.php:338
 msgid "Moon"
 msgstr "Hold"
 
-#: includes/class-render.php:1403 includes/class-render.php:1975
+#: includes/class-render.php:1408 includes/class-render.php:1982
 msgid "Ascendant"
 msgstr "Aszcendens"
 
-#: includes/class-render.php:1435 includes/class-render.php:4405
+#: includes/class-render.php:1440 includes/class-render.php:4414
 msgid "Separating"
 msgstr "Távolodó"
 
-#: includes/class-render.php:1435 includes/class-render.php:4405
+#: includes/class-render.php:1440 includes/class-render.php:4414
 msgid "Applying"
 msgstr "Közelítő"
 
 #. translators: 1: first planet, 2: aspect name, 3: second planet
-#: includes/class-render.php:1438 includes/class-render.php:1886
-#: includes/class-render.php:2126 includes/class-render.php:4213
+#: includes/class-render.php:1443 includes/class-render.php:1893
+#: includes/class-render.php:2133 includes/class-render.php:4222
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: includes/class-render.php:1549
+#: includes/class-render.php:1556
 msgid "Natal chart: signs, houses, planets and the aspects between them."
 msgstr "Születési képlet: jegyek, házak, bolygók és a köztük lévő fényszögek."
 
-#: includes/class-render.php:1551 includes/class-render.php:1917
-#: includes/class-render.php:4169
+#: includes/class-render.php:1558 includes/class-render.php:1924
+#: includes/class-render.php:4178
 msgid "ASC"
 msgstr "ASC"
 
-#: includes/class-render.php:1552 includes/class-render.php:1918
-#: includes/class-render.php:4170
+#: includes/class-render.php:1559 includes/class-render.php:1925
+#: includes/class-render.php:4179
 msgid "IC"
 msgstr "IC"
 
-#: includes/class-render.php:1553 includes/class-render.php:1919
-#: includes/class-render.php:4171
+#: includes/class-render.php:1560 includes/class-render.php:1926
+#: includes/class-render.php:4180
 msgid "DSC"
 msgstr "DSC"
 
-#: includes/class-render.php:1554 includes/class-render.php:1920
-#: includes/class-render.php:4172
+#: includes/class-render.php:1561 includes/class-render.php:1927
+#: includes/class-render.php:4181
 msgid "MC"
 msgstr "MC"
 
-#: includes/class-render.php:1581
+#: includes/class-render.php:1588
 msgid ""
 "The Solar Return found for this year falls in another year, so the card is "
 "left out. Only administrators see this note."
@@ -1697,7 +1707,7 @@ msgstr ""
 "Az erre az évre talált szolárhoroszkóp másik évre esik, ezért a kártya "
 "kimarad. Ezt a megjegyzést csak adminisztrátorok látják."
 
-#: includes/class-render.php:1586
+#: includes/class-render.php:1593
 msgid ""
 "The Lunar Return found falls before the date it was searched from, so the "
 "card is left out. Only administrators see this note."
@@ -1706,18 +1716,18 @@ msgstr ""
 "kimarad. Ezt a megjegyzést csak adminisztrátorok látják."
 
 #. translators: %d = year
-#: includes/class-render.php:1597
+#: includes/class-render.php:1604
 #, php-format
 msgid "Solar Return %d"
 msgstr "Szolárhoroszkóp %d"
 
 #. translators: 1: year, 2: person's name
-#: includes/class-render.php:1599
+#: includes/class-render.php:1606
 #, php-format
 msgid "Solar Return %1$d: %2$s"
 msgstr "Szolárhoroszkóp %1$d: %2$s"
 
-#: includes/class-render.php:1600
+#: includes/class-render.php:1607
 msgid ""
 "Solar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Sun returns to its birth position."
@@ -1725,18 +1735,18 @@ msgstr ""
 "Szolárhoroszkóp: jegyek, házak, bolygók és a köztük lévő fényszögek abban a "
 "pillanatban, amikor a Nap visszatér születési helyzetébe."
 
-#: includes/class-render.php:1602
+#: includes/class-render.php:1609
 #: includes/views/partials/shortcode-cards.php:300
 msgid "Lunar Return"
 msgstr "Lunárhoroszkóp"
 
 #. translators: %s = person's name
-#: includes/class-render.php:1604
+#: includes/class-render.php:1611
 #, php-format
 msgid "Lunar Return: %s"
 msgstr "Lunárhoroszkóp: %s"
 
-#: includes/class-render.php:1605
+#: includes/class-render.php:1612
 msgid ""
 "Lunar Return chart: signs, houses, planets and the aspects between them at "
 "the moment the Moon returns to its birth position."
@@ -1744,60 +1754,61 @@ msgstr ""
 "Lunárhoroszkóp: jegyek, házak, bolygók és a köztük lévő fényszögek abban a "
 "pillanatban, amikor a Hold visszatér születési helyzetébe."
 
-#: includes/class-render.php:1641
+#: includes/class-render.php:1648
 msgid ""
-"The Davison chart for these two places is not drawn yet: the midpoint the api"
-" returned is on the wrong side of the 180th meridian. Only administrators see"
-" this note."
+"The Davison chart for these two places is not drawn yet: the midpoint the "
+"api returned is on the wrong side of the 180th meridian. Only administrators"
+" see this note."
 msgstr ""
 "E két hely Davison-horoszkópja még nem rajzolható ki: az api által "
 "visszaadott felezőpont a 180. délkör rossz oldalára esik. Ezt a megjegyzést "
 "csak adminisztrátorok látják."
 
-#: includes/class-render.php:1650
+#: includes/class-render.php:1657
 msgid "Davison chart"
 msgstr "Davison-horoszkóp"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:1653
+#: includes/class-render.php:1660
 #, php-format
 msgid "Davison chart: %1$s and %2$s"
 msgstr "Davison-horoszkóp: %1$s és %2$s"
 
-#: includes/class-render.php:1665
+#: includes/class-render.php:1672
 msgid "Midpoint"
 msgstr "Felezőpont"
 
-#: includes/class-render.php:1674
+#: includes/class-render.php:1681
 msgid ""
-"Davison chart: one chart cast for the midpoint between two births in time and"
-" place."
+"Davison chart: one chart cast for the midpoint between two births in time "
+"and place."
 msgstr ""
 "Davison-horoszkóp: egyetlen horoszkóp két születés időbeli és térbeli "
 "felezőpontjára felállítva."
 
-#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo 24°22'"
-#: includes/class-render.php:1865 includes/class-render.php:4138
+#. translators: 1: planet, 2: person's name, 3: its position, e.g. "Leo
+#. 24°22'"
+#: includes/class-render.php:1872 includes/class-render.php:4147
 #, php-format
 msgid "%1$s (%2$s), %3$s"
 msgstr "%1$s (%2$s), %3$s"
 
-#: includes/class-render.php:1887 includes/class-render.php:1911
+#: includes/class-render.php:1894 includes/class-render.php:1918
 msgid "transit"
 msgstr "tranzit"
 
-#: includes/class-render.php:1889 includes/class-render.php:1910
+#: includes/class-render.php:1896 includes/class-render.php:1917
 msgid "natal"
 msgstr "születési"
 
 #. translators: %s = a date
-#: includes/class-render.php:1895
+#: includes/class-render.php:1902
 #, php-format
 msgid "sky on %s"
 msgstr "Égbolt: %s"
 
 #. translators: 1: a date, 2: an orb in degrees
-#: includes/class-render.php:1899
+#: includes/class-render.php:1906
 #, php-format
 msgid ""
 "The planets at noon UTC on %1$s against the birth chart, aspects within "
@@ -1808,756 +1819,768 @@ msgstr ""
 "kerüljön."
 
 #. translators: %s = a date
-#: includes/class-render.php:1915
+#: includes/class-render.php:1922
 #, php-format
-msgid "Transit wheel: the birth chart inside, the sky on %s on the outer ring."
+msgid ""
+"Transit wheel: the birth chart inside, the sky on %s on the outer ring."
 msgstr ""
 "Tranzitkör: belül a születési képlet, a külső körön az égbolt ekkor: %s."
 
-#: includes/class-render.php:1928
+#: includes/class-render.php:1935
 msgid "Inner ring: birth chart"
 msgstr "Belső kör: születési képlet"
 
 #. translators: %s = "sky on <date>"
 #. translators: %s = person's name, or "Second chart"
-#: includes/class-render.php:1933 includes/class-render.php:4187
+#: includes/class-render.php:1940 includes/class-render.php:4196
 #, php-format
 msgid "Outer ring: %s"
 msgstr "Külső kör: %s"
 
-#: includes/class-render.php:1937
+#: includes/class-render.php:1944
 msgid "No close transits on this day."
 msgstr "Ezen a napon nincs szoros tranzit."
 
 #. translators: %d = house number
-#: includes/class-render.php:1956
+#: includes/class-render.php:1963
 msgid "retrograde"
 msgstr "retrográd"
 
-#: includes/class-render.php:2000
+#: includes/class-render.php:2007
 msgid "Body"
 msgstr "Égitest"
 
-#: includes/class-render.php:2000 includes/class-render.php:3585
-#: includes/class-render.php:5525
+#: includes/class-render.php:2007 includes/class-render.php:3594
+#: includes/class-render.php:5562 includes/class-render.php:5806
+#: includes/class-render.php:5884 includes/class-render.php:5911
 msgid "Motion"
 msgstr "Mozgás"
 
-#: includes/class-render.php:2107
+#: includes/class-render.php:2114
 msgid "Total"
 msgstr "Összesen"
 
-#: includes/class-render.php:2136
+#: includes/class-render.php:2143
 msgid "Major aspects"
 msgstr "Fő fényszögek"
 
-#: includes/class-render.php:2241 includes/class-render.php:2952
+#: includes/class-render.php:2248 includes/class-render.php:2961
 msgid "New Moon"
 msgstr "Újhold"
 
-#: includes/class-render.php:2242
+#: includes/class-render.php:2249
 msgid "Waxing Crescent"
 msgstr "Növő holdsarló"
 
-#: includes/class-render.php:2243 includes/class-render.php:2953
+#: includes/class-render.php:2250 includes/class-render.php:2962
 msgid "First Quarter"
 msgstr "Első negyed"
 
-#: includes/class-render.php:2244
+#: includes/class-render.php:2251
 msgid "Waxing Gibbous"
 msgstr "Növekvő hold"
 
-#: includes/class-render.php:2245 includes/class-render.php:2954
+#: includes/class-render.php:2252 includes/class-render.php:2963
 msgid "Full Moon"
 msgstr "Telihold"
 
-#: includes/class-render.php:2246
+#: includes/class-render.php:2253
 msgid "Waning Gibbous"
 msgstr "Fogyó hold"
 
-#: includes/class-render.php:2247 includes/class-render.php:2955
+#: includes/class-render.php:2254 includes/class-render.php:2964
 msgid "Last Quarter"
 msgstr "Utolsó negyed"
 
-#: includes/class-render.php:2248
+#: includes/class-render.php:2255
 msgid "Waning Crescent"
 msgstr "Fogyó holdsarló"
 
-#: includes/class-render.php:2257 includes/class-widget-manifest.php:388
+#: includes/class-render.php:2264 includes/class-widget-manifest.php:432
 msgid "Mercury"
 msgstr "Merkúr"
 
-#: includes/class-render.php:2258 includes/class-widget-manifest.php:389
+#: includes/class-render.php:2265 includes/class-widget-manifest.php:433
 msgid "Venus"
 msgstr "Vénusz"
 
-#: includes/class-render.php:2259 includes/class-widget-manifest.php:390
+#: includes/class-render.php:2266 includes/class-widget-manifest.php:434
 msgid "Mars"
 msgstr "Mars"
 
-#: includes/class-render.php:2260 includes/class-widget-manifest.php:391
+#: includes/class-render.php:2267 includes/class-widget-manifest.php:435
 msgid "Jupiter"
 msgstr "Jupiter"
 
-#: includes/class-render.php:2261 includes/class-widget-manifest.php:392
+#: includes/class-render.php:2268 includes/class-widget-manifest.php:436
 msgid "Saturn"
 msgstr "Szaturnusz"
 
-#: includes/class-render.php:2262 includes/class-widget-manifest.php:393
+#: includes/class-render.php:2269 includes/class-widget-manifest.php:437
 msgid "Uranus"
 msgstr "Uránusz"
 
-#: includes/class-render.php:2263 includes/class-widget-manifest.php:394
+#: includes/class-render.php:2270 includes/class-widget-manifest.php:438
 msgid "Neptune"
 msgstr "Neptunusz"
 
-#: includes/class-render.php:2264 includes/class-widget-manifest.php:395
+#: includes/class-render.php:2271 includes/class-widget-manifest.php:439
 msgid "Pluto"
 msgstr "Plútó"
 
-#: includes/class-render.php:2265
+#: includes/class-render.php:2272
 msgid "Chiron"
 msgstr "Chiron"
 
-#: includes/class-render.php:2266 includes/class-render.php:2275
-#: includes/class-render.php:2276
+#: includes/class-render.php:2273 includes/class-render.php:2282
+#: includes/class-render.php:2283 includes/class-render.php:2284
+#: includes/class-render.php:2285
 msgid "Lilith"
 msgstr "Lilith"
 
-#: includes/class-render.php:2267 includes/class-render.php:2273
-#: includes/class-render.php:2274
+#: includes/class-render.php:2274 includes/class-render.php:2280
+#: includes/class-render.php:2281
 msgid "North Node"
 msgstr "Északi Holdcsomópont"
 
-#: includes/class-render.php:2269
+#: includes/class-render.php:2276
 msgid "Rahu"
 msgstr "Ráhu"
 
-#: includes/class-render.php:2270
+#: includes/class-render.php:2277
 msgid "Ketu"
 msgstr "Kétu"
 
-#: includes/class-render.php:2283
+#: includes/class-render.php:2292
 msgid "conjunct"
 msgstr "együttállás"
 
-#: includes/class-render.php:2284 includes/class-render.php:4588
+#: includes/class-render.php:2293 includes/class-render.php:4597
 msgid "opposite"
 msgstr "szembenállás"
 
-#: includes/class-render.php:2285 includes/class-render.php:4587
+#: includes/class-render.php:2294 includes/class-render.php:4596
 msgid "trine"
 msgstr "trigon"
 
-#: includes/class-render.php:2286 includes/class-render.php:4586
+#: includes/class-render.php:2295 includes/class-render.php:4595
 msgid "square"
 msgstr "kvadrát"
 
-#: includes/class-render.php:2287 includes/class-render.php:4585
+#: includes/class-render.php:2296 includes/class-render.php:4594
 msgid "sextile"
 msgstr "szextil"
 
-#: includes/class-render.php:2320
+#. translators: %s = planet name
+#: includes/class-render.php:2329 includes/class-render.php:5752
+#: includes/class-render.php:5765
 msgid "Period"
 msgstr "Időszak"
 
-#: includes/class-render.php:2339
+#: includes/class-render.php:2348
 msgid ""
 "The reading in this language is not ready yet, so it is shown in English."
 msgstr ""
 "Az olvasat ezen a nyelven még nem készült el, ezért angolul jelenik meg."
 
 #. translators: %s = date of the earlier reading
-#: includes/class-render.php:2350
+#: includes/class-render.php:2359
 #, php-format
 msgid "This reading is from %s; the new one is still being written."
 msgstr "Ez az olvasat %s napi; az új még készül."
 
-#: includes/class-render.php:2371
+#: includes/class-render.php:2380
 msgid "Horoscope"
 msgstr "Horoszkóp"
 
-#: includes/class-render.php:2375
+#: includes/class-render.php:2384
 msgid "Pick your sign"
 msgstr "Válassza ki a csillagjegyét"
 
-#: includes/class-render.php:2378 includes/class-render.php:2757
+#: includes/class-render.php:2387 includes/class-render.php:2766
 #: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:64
 msgid "Zodiac sign"
 msgstr "Zodiákus jegy"
 
 #. translators: 1: zodiac sign, 2: moon phase, as in "Moon in Leo · Waning
 #. Crescent"
-#: includes/class-render.php:2404
+#: includes/class-render.php:2413
 #, php-format
 msgid "Moon in %1$s · %2$s"
 msgstr "Hold a(z) %1$s jegyében · %2$s"
 
-#: includes/class-render.php:2408
+#: includes/class-render.php:2417
 msgid "Sky today"
 msgstr "Ma az égen"
 
-#: includes/class-render.php:2502 includes/class-render.php:4073
-#: includes/class-render.php:4262 includes/class-render.php:5727
+#: includes/class-render.php:2511 includes/class-render.php:4082
+#: includes/class-render.php:4271 includes/class-render.php:6052
 #: includes/class-tarot.php:481
 msgid "Love"
 msgstr "Szerelem"
 
-#: includes/class-render.php:2503 includes/class-tarot.php:482
+#: includes/class-render.php:2512 includes/class-tarot.php:482
 msgid "Career"
 msgstr "Munka"
 
-#: includes/class-render.php:2504 includes/class-tarot.php:484
+#: includes/class-render.php:2513 includes/class-tarot.php:484
 msgid "Health"
 msgstr "Egészség"
 
-#: includes/class-render.php:2505 includes/class-tarot.php:483
+#: includes/class-render.php:2514 includes/class-tarot.php:483
 msgid "Money"
 msgstr "Pénz"
 
-#: includes/class-render.php:2518 includes/class-tarot-reading.php:357
+#: includes/class-render.php:2527 includes/class-tarot-reading.php:357
 msgid "Advice"
 msgstr "Tanács"
 
-#: includes/class-render.php:2595
+#: includes/class-render.php:2604
 msgid "out of 10"
 msgstr "10-ből"
 
-#: includes/class-render.php:2597
+#: includes/class-render.php:2606
 msgid "Energy of the day"
 msgstr "A nap energiája"
 
-#: includes/class-render.php:2605
+#: includes/class-render.php:2614
 msgid "Lucky planet"
 msgstr "Szerencsebolygó"
 
-#: includes/class-render.php:2612
+#: includes/class-render.php:2621
 msgid "Lucky day"
 msgstr "Szerencsenap"
 
-#: includes/class-render.php:2618
+#: includes/class-render.php:2627
 msgid "Lucky number"
 msgstr "Szerencseszám"
 
-#: includes/class-render.php:2632
+#: includes/class-render.php:2641
 msgid "Compatible signs"
 msgstr "Összeillő jegyek"
 
 #. translators: 1: planet, 2: aspect such as "opposite", 3: planet; one of the
 #. two rules the sign
-#: includes/class-render.php:2647 includes/class-render.php:2667
+#: includes/class-render.php:2656 includes/class-render.php:2676
 #, php-format
 msgid "%1$s %2$s %3$s (the sign’s ruler)"
 msgstr "%1$s %2$s %3$s (a jegy uralkodója)"
 
 #. translators: 1: planet, 2: house number counted from the sign
-#: includes/class-render.php:2655 includes/class-render.php:2675
+#: includes/class-render.php:2664 includes/class-render.php:2684
 #, php-format
 msgid "%1$s in solar house %2$d"
 msgstr "%1$s a %2$d. szoláris házban"
 
-#: includes/class-render.php:2658 includes/class-render.php:2678
+#: includes/class-render.php:2667 includes/class-render.php:2687
 msgid "Moon in a sign of the same element"
 msgstr "Hold azonos elemű jegyben"
 
-#: includes/class-render.php:2661 includes/class-render.php:2681
+#: includes/class-render.php:2670 includes/class-render.php:2690
 msgid "Moon square or opposite the sign"
 msgstr "Hold kvadrátban vagy oppozícióban a jeggyel"
 
-#: includes/class-render.php:2704
+#: includes/class-render.php:2713
 msgid "Week"
 msgstr "Hét"
 
-#: includes/class-render.php:2706
+#: includes/class-render.php:2715
 msgid "Month"
 msgstr "Hónap"
 
-#: includes/class-render.php:2708
+#: includes/class-render.php:2717
 msgid "Year"
 msgstr "Év"
 
-#: includes/class-render.php:2710
+#: includes/class-render.php:2719
 msgid "Today"
 msgstr "Ma"
 
-#: includes/class-render.php:2731
+#: includes/class-render.php:2740
 msgid "Horoscope for the week"
 msgstr "Heti horoszkóp"
 
-#: includes/class-render.php:2733
+#: includes/class-render.php:2742
 msgid "Horoscope for the month"
 msgstr "Havi horoszkóp"
 
-#: includes/class-render.php:2735
+#: includes/class-render.php:2744
 msgid "Horoscope for the year"
 msgstr "Éves horoszkóp"
 
-#: includes/class-render.php:2737 includes/views/admin-settings.php:328
+#: includes/class-render.php:2746 includes/views/admin-settings.php:328
 msgid "Horoscope for today"
 msgstr "Mai horoszkóp"
 
-#: includes/class-render.php:2782
+#: includes/class-render.php:2791
 msgid "Weeks"
 msgstr "Hetek"
 
-#: includes/class-render.php:2783
+#: includes/class-render.php:2792
 msgid "Previous week"
 msgstr "Előző hét"
 
-#: includes/class-render.php:2784
+#: includes/class-render.php:2793
 msgid "Next week"
 msgstr "Következő hét"
 
-#: includes/class-render.php:2788
+#: includes/class-render.php:2797
 msgid "Months"
 msgstr "Hónapok"
 
-#: includes/class-render.php:2789
+#: includes/class-render.php:2798
 msgid "Previous month"
 msgstr "Előző hónap"
 
-#: includes/class-render.php:2790
+#: includes/class-render.php:2799
 msgid "Next month"
 msgstr "Következő hónap"
 
-#: includes/class-render.php:2794
+#: includes/class-render.php:2803
 msgid "Days"
 msgstr "Napok"
 
-#: includes/class-render.php:2795
+#: includes/class-render.php:2804
 msgid "Previous day"
 msgstr "Előző nap"
 
-#: includes/class-render.php:2796
+#: includes/class-render.php:2805
 msgid "Next day"
 msgstr "Következő nap"
 
-#: includes/class-render.php:2836
+#: includes/class-render.php:2845
 msgid "Moon in"
 msgstr "Hold jegye"
 
-#: includes/class-render.php:2844
+#: includes/class-render.php:2853
 msgid "Age"
 msgstr "Kor"
 
 #. translators: %s = number of days, may be fractional
-#: includes/class-render.php:2847
+#: includes/class-render.php:2856
 #, php-format
 msgid "%s days"
 msgstr "%s nap"
 
-#: includes/class-render.php:2854
+#: includes/class-render.php:2863
 msgid "Sun in"
 msgstr "Nap jegye"
 
-#: includes/class-render.php:2872
+#: includes/class-render.php:2881
 msgid "Waxing"
 msgstr "Növő"
 
-#: includes/class-render.php:2872
+#: includes/class-render.php:2881
 msgid "Waning"
 msgstr "Fogyó"
 
-#: includes/class-render.php:2874
+#: includes/class-render.php:2883
 msgid "Illuminated"
 msgstr "Megvilágított"
 
-#. translators: PHP date format for a day within the coming month, such as "Oct
-#. 10"
-#: includes/class-render.php:2896 includes/class-render.php:2974
+#. translators: PHP date format for a day within the coming month, such as
+#. "Oct 10"
+#: includes/class-render.php:2905 includes/class-render.php:2983
 msgctxt "moon cycle date"
 msgid "M j"
 msgstr "M j."
 
 #. translators: %s = zodiac sign the Moon enters when the window ends
-#: includes/class-render.php:2913
+#: includes/class-render.php:2922
 #, php-format
 msgid "Next sign: %s"
 msgstr "Következő jegy: %s"
 
-#: includes/class-render.php:2917
+#: includes/class-render.php:2926
 msgid "No void of course Moon today."
 msgstr "Ma nincs üres járású Hold."
 
-#: includes/class-render.php:2919 includes/class-render.php:3769
-#: includes/class-widget-manifest.php:406
+#: includes/class-render.php:2928 includes/class-render.php:3778
+#: includes/class-widget-manifest.php:450
 msgid "Void of course Moon"
 msgstr "Üres járású Hold"
 
-#: includes/class-render.php:2985
+#: includes/class-render.php:2994
 msgid "Krishna, waning"
 msgstr "Krisna, fogyó"
 
-#: includes/class-render.php:2986
+#: includes/class-render.php:2995
 msgid "Shukla, waxing"
 msgstr "Sukla, növő"
 
 #. translators: %d = tithi number, 1 to 30
-#: includes/class-render.php:2989
+#: includes/class-render.php:2998
 #, php-format
 msgid "%d of 30"
 msgstr "%d / 30"
 
-#: includes/class-render.php:2992
+#: includes/class-render.php:3001
 msgid "Tithi"
 msgstr "Tithi"
 
-#: includes/class-render.php:2995
+#: includes/class-render.php:3004
 msgid "Paksha"
 msgstr "Paksa"
 
-#: includes/class-render.php:3000
+#: includes/class-render.php:3009
 msgid "Distance"
 msgstr "Távolság"
 
 #. translators: %s = distance in kilometres
-#: includes/class-render.php:3004
+#: includes/class-render.php:3013
 #, php-format
 msgid "%s km"
 msgstr "%s km"
 
-#: includes/class-render.php:3012
+#: includes/class-render.php:3021
 msgid "Moon cycle"
 msgstr "Holdciklus"
 
-#: includes/class-render.php:3027
+#: includes/class-render.php:3036
 msgid "Card of the day"
 msgstr "A nap kártyája"
 
-#: includes/class-render.php:3028 includes/class-widget-manifest.php:309
+#: includes/class-render.php:3037 includes/class-widget-manifest.php:353
 #: assets/js/astroway-blocks-editor.js:33
 msgid "Rider-Waite-Smith"
 msgstr "Rider-Waite-Smith"
 
-#: includes/class-render.php:3056 includes/class-tarot.php:403
+#: includes/class-render.php:3065 includes/class-tarot.php:403
 msgid "About the card"
 msgstr "A kártyáról"
 
-#: includes/class-render.php:3119 includes/class-widget-manifest.php:319
+#: includes/class-render.php:3128 includes/class-widget-manifest.php:363
 msgid "Tarot spread"
 msgstr "Tarot-kirakás"
 
-#: includes/class-render.php:3120
+#: includes/class-render.php:3129
 msgid "New draw"
 msgstr "Új kirakás"
 
-#: includes/class-render.php:3120
+#: includes/class-render.php:3129
 msgid "Spread of the day"
 msgstr "A nap kirakása"
 
-#: includes/class-render.php:3126
+#: includes/class-render.php:3135
 msgid "Turn all the cards over"
 msgstr "Az összes kártya felfordítása"
 
-#: includes/class-render.php:3156
+#: includes/class-render.php:3165
 msgid "Reading the spread…"
 msgstr "A kirakás értelmezése folyamatban…"
 
-#: includes/class-render.php:3157
+#: includes/class-render.php:3166
 msgid "The reading could not be had just now."
 msgstr "Az értelmezést most nem sikerült megkapni."
 
-#: includes/class-render.php:3175 includes/class-widget-manifest.php:366
+#: includes/class-render.php:3184 includes/class-widget-manifest.php:410
 msgid "Planet of the day"
 msgstr "A nap bolygója"
 
-#: includes/class-render.php:3185
+#: includes/class-render.php:3194
 msgid "Themes of the day"
 msgstr "A nap témái"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3200
+#: includes/class-render.php:3209
 #, php-format
 msgid "%s: horoscope for the week"
 msgstr "%s: heti horoszkóp"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3203
+#: includes/class-render.php:3212
 #, php-format
 msgid "%s: horoscope for the month"
 msgstr "%s: havi horoszkóp"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3206
+#: includes/class-render.php:3215
 #, php-format
 msgid "%s: horoscope for the year"
 msgstr "%s: éves horoszkóp"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:3209
+#: includes/class-render.php:3218
 #, php-format
 msgid "%s: horoscope for today"
 msgstr "%s: mai horoszkóp"
 
-#: includes/class-render.php:3216 includes/class-widget-manifest.php:43
+#: includes/class-render.php:3225 includes/class-widget-manifest.php:43
 #: assets/js/astroway-blocks-editor.js:18
 msgid "Aries"
 msgstr "Kos"
 
-#: includes/class-render.php:3217 includes/class-widget-manifest.php:44
+#: includes/class-render.php:3226 includes/class-widget-manifest.php:44
 #: assets/js/astroway-blocks-editor.js:19
 msgid "Taurus"
 msgstr "Bika"
 
-#: includes/class-render.php:3218 includes/class-widget-manifest.php:45
+#: includes/class-render.php:3227 includes/class-widget-manifest.php:45
 #: assets/js/astroway-blocks-editor.js:20
 msgid "Gemini"
 msgstr "Ikrek"
 
-#: includes/class-render.php:3219 includes/class-widget-manifest.php:46
+#: includes/class-render.php:3228 includes/class-widget-manifest.php:46
 #: assets/js/astroway-blocks-editor.js:21
 msgid "Cancer"
 msgstr "Rák"
 
-#: includes/class-render.php:3220 includes/class-widget-manifest.php:47
-#: includes/views/admin-settings.php:326 assets/js/astroway-blocks-editor.js:22
+#: includes/class-render.php:3229 includes/class-widget-manifest.php:47
+#: includes/views/admin-settings.php:326
+#: assets/js/astroway-blocks-editor.js:22
 msgid "Leo"
 msgstr "Oroszlán"
 
-#: includes/class-render.php:3221 includes/class-widget-manifest.php:48
-#: includes/views/admin-settings.php:335 assets/js/astroway-blocks-editor.js:23
+#: includes/class-render.php:3230 includes/class-widget-manifest.php:48
+#: includes/views/admin-settings.php:335
+#: assets/js/astroway-blocks-editor.js:23
 msgid "Virgo"
 msgstr "Szűz"
 
-#: includes/class-render.php:3222 includes/class-widget-manifest.php:49
+#: includes/class-render.php:3231 includes/class-widget-manifest.php:49
 #: assets/js/astroway-blocks-editor.js:24
 msgid "Libra"
 msgstr "Mérleg"
 
-#: includes/class-render.php:3223 includes/class-widget-manifest.php:50
+#: includes/class-render.php:3232 includes/class-widget-manifest.php:50
 #: assets/js/astroway-blocks-editor.js:25
 msgid "Scorpio"
 msgstr "Skorpió"
 
-#: includes/class-render.php:3224 includes/class-widget-manifest.php:51
+#: includes/class-render.php:3233 includes/class-widget-manifest.php:51
 #: assets/js/astroway-blocks-editor.js:26
 msgid "Sagittarius"
 msgstr "Nyilas"
 
-#: includes/class-render.php:3225 includes/class-widget-manifest.php:52
-#: includes/views/admin-settings.php:340 assets/js/astroway-blocks-editor.js:27
+#: includes/class-render.php:3234 includes/class-widget-manifest.php:52
+#: includes/views/admin-settings.php:340
+#: assets/js/astroway-blocks-editor.js:27
 msgid "Capricorn"
 msgstr "Bak"
 
-#: includes/class-render.php:3226 includes/class-widget-manifest.php:53
+#: includes/class-render.php:3235 includes/class-widget-manifest.php:53
 #: assets/js/astroway-blocks-editor.js:28
 msgid "Aquarius"
 msgstr "Vízöntő"
 
-#: includes/class-render.php:3227 includes/class-widget-manifest.php:54
+#: includes/class-render.php:3236 includes/class-widget-manifest.php:54
 #: assets/js/astroway-blocks-editor.js:29
 msgid "Pisces"
 msgstr "Halak"
 
 #. translators: %s = shortcode tag
-#: includes/class-render.php:3390
+#: includes/class-render.php:3399
 #, php-format
 msgid ""
-"%s needs an API key: this site asks for its own automatically, or paste yours"
-" in AstroWay, API Key. Only administrators see this note."
+"%s needs an API key: this site asks for its own automatically, or paste "
+"yours in AstroWay, API Key. Only administrators see this note."
 msgstr ""
 "A(z) %s API-kulcsot igényel: a webhely automatikusan kér sajátot, vagy "
 "illessze be a sajátját az AstroWay, API Key alatt. Ezt a megjegyzést csak "
 "adminisztrátorok látják."
 
-#: includes/class-render.php:3485 includes/class-render.php:3564
-#: includes/class-render.php:3618 includes/class-render.php:5463
+#: includes/class-render.php:3494 includes/class-render.php:3573
+#: includes/class-render.php:3627 includes/class-render.php:5500
+#: includes/class-render.php:5825
 msgid "Direct"
 msgstr "Direkt"
 
-#: includes/class-render.php:3490
+#: includes/class-render.php:3499
 msgid "Retrograde watch"
 msgstr "Retrográdfigyelő"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3499
+#: includes/class-render.php:3508
 #, php-format
 msgid "Yes, %s is retrograde right now."
 msgstr "Igen, %s éppen most retrográd."
 
-#: includes/class-render.php:3506
+#: includes/class-render.php:3515
 msgid "Retrograde since"
 msgstr "Retrográd kezdete"
 
-#: includes/class-render.php:3507
+#: includes/class-render.php:3516
 msgid "Direct again on"
 msgstr "Ismét direkt"
 
-#: includes/class-render.php:3508
+#: includes/class-render.php:3517
 msgid "Days left"
 msgstr "Hátralévő napok"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3515
+#: includes/class-render.php:3524
 #, php-format
 msgid "No, %s is direct right now."
 msgstr "Nem, %s éppen most direkt."
 
-#: includes/class-render.php:3521 includes/class-render.php:3684
+#: includes/class-render.php:3530 includes/class-render.php:3693
 msgid "Next retrograde"
 msgstr "Következő retrográd"
 
-#: includes/class-render.php:3522 includes/class-render.php:3778
+#: includes/class-render.php:3531 includes/class-render.php:3787
 msgid "Ends"
 msgstr "Vége"
 
-#: includes/class-render.php:3523
+#: includes/class-render.php:3532
 msgid "Days until"
 msgstr "Napok addig"
 
-#: includes/class-render.php:3560
+#: includes/class-render.php:3569
 msgid "Stationary"
 msgstr "Álló"
 
-#: includes/class-render.php:3580
+#: includes/class-render.php:3589
 msgid "Planets in the sky"
 msgstr "Bolygók az égen"
 
-#: includes/class-render.php:3585 includes/class-render.php:3680
-#: includes/class-render.php:4348 includes/class-widget-manifest.php:386
+#. translators: %s = planet name
+#: includes/class-render.php:3594 includes/class-render.php:3689
+#: includes/class-render.php:4357 includes/class-render.php:5752
+#: includes/class-render.php:5765 includes/class-render.php:5884
+#: includes/class-render.php:5911 includes/class-widget-manifest.php:430
 msgid "Planet"
 msgstr "Bolygó"
 
 #. translators: %s = sign and degree, such as Aquarius 3°04'
-#: includes/class-render.php:3597
+#: includes/class-render.php:3606
 #, php-format
 msgid "Turns direct at %s"
 msgstr "Direktté válik itt: %s"
 
 #. translators: %s = sign and degree, such as Scorpio 8°29'
-#: includes/class-render.php:3599
+#: includes/class-render.php:3608
 #, php-format
 msgid "Turns retrograde at %s"
 msgstr "Retrográddá válik itt: %s"
 
 #. translators: %s = date
-#: includes/class-render.php:3625
+#: includes/class-render.php:3634
 #, php-format
 msgid "In the pre-retrograde shadow since %s"
 msgstr "Retrográd előtti árnyékban %s óta"
 
 #. translators: %s = date
-#: includes/class-render.php:3627
+#: includes/class-render.php:3636
 #, php-format
 msgid "In the post-retrograde shadow until %s"
 msgstr "Retrográd utáni árnyékban %s-ig"
 
 #. translators: 1: day number, 2: days in the retrograde period
-#: includes/class-render.php:3639
+#: includes/class-render.php:3648
 #, php-format
 msgid "Day %1$d of %2$d"
 msgstr "%2$d nap közül a(z) %1$d."
 
 #. translators: %s = date
-#: includes/class-render.php:3643
+#: includes/class-render.php:3652
 #, php-format
 msgid "Leaves the shadow on %s"
 msgstr "Kilép az árnyékból: %s"
 
 #. translators: %s = date
-#: includes/class-render.php:3651
+#: includes/class-render.php:3660
 #, php-format
 msgid "Shadow from %s"
 msgstr "Árnyék kezdete: %s"
 
-#: includes/class-render.php:3663
+#: includes/class-render.php:3672
 msgid "Nothing is retrograde right now."
 msgstr "Jelenleg egy bolygó sem retrográd."
 
-#: includes/class-render.php:3672 includes/class-widget-manifest.php:402
+#: includes/class-render.php:3681 includes/class-widget-manifest.php:446
 msgid "Retrograde planets"
 msgstr "Retrográd bolygók"
 
-#: includes/class-render.php:3683
+#: includes/class-render.php:3692
 msgid "Now"
 msgstr "Most"
 
 #. translators: %s = a time of day
-#: includes/class-render.php:3738
+#: includes/class-render.php:3747
 #, php-format
 msgid "The Moon is void of course until %s."
 msgstr "A Hold %s-ig üres járású."
 
 #. translators: %s = a date and time
-#: includes/class-render.php:3744
+#: includes/class-render.php:3753
 #, php-format
 msgid "The Moon is not void of course. The next window opens %s."
 msgstr "A Hold most nem üres járású. A következő időszak kezdete: %s."
 
-#: includes/class-render.php:3748
+#: includes/class-render.php:3757
 msgid "The Moon is not void of course."
 msgstr "A Hold most nem üres járású."
 
-#: includes/class-render.php:3777
+#: includes/class-render.php:3786
 msgid "Starts"
 msgstr "Kezdet"
 
-#: includes/class-render.php:3779
+#: includes/class-render.php:3788
 msgid "Length"
 msgstr "Időtartam"
 
-#: includes/class-render.php:3780
+#: includes/class-render.php:3789
 msgid "Last aspect"
 msgstr "Utolsó fényszög"
 
-#: includes/class-render.php:3781
+#: includes/class-render.php:3790
 msgid "Next sign"
 msgstr "Következő jegy"
 
-#: includes/class-render.php:3840
+#: includes/class-render.php:3849
 msgid "Night"
 msgstr "Éjszaka"
 
-#: includes/class-render.php:3840
+#: includes/class-render.php:3849
 msgid "Day"
 msgstr "Nappal"
 
 #. translators: %s = planet name
-#: includes/class-render.php:3855
+#: includes/class-render.php:3864
 #, php-format
 msgid "The day is ruled by %s."
 msgstr "A nap %s uralma alatt áll."
 
 #. translators: 1: planet name, 2: a time of day
-#: includes/class-render.php:3862
+#: includes/class-render.php:3871
 #, php-format
 msgid "The hour of %1$s runs until %2$s."
 msgstr "A(z) %1$s órája %2$s-ig tart."
 
-#: includes/class-render.php:3870 includes/class-render.php:3908
-#: includes/class-widget-manifest.php:444
+#: includes/class-render.php:3879 includes/class-render.php:3917
+#: includes/class-widget-manifest.php:488
 msgid "Planetary hours"
 msgstr "Bolygóórák"
 
-#: includes/class-render.php:3881
+#: includes/class-render.php:3890
 msgid "Hour"
 msgstr "Óra"
 
-#: includes/class-render.php:3882
+#: includes/class-render.php:3891
 msgid "Ruler"
 msgstr "Uralkodó"
 
-#: includes/class-render.php:3883
+#: includes/class-render.php:3892
 msgid "From"
 msgstr "Kezdet"
 
-#: includes/class-render.php:3884
+#: includes/class-render.php:3893
 msgid "To"
 msgstr "Vége"
 
-#: includes/class-render.php:3885
+#: includes/class-render.php:3894
 msgid "Part of day"
 msgstr "Napszak"
 
-#: includes/class-render.php:3915
+#: includes/class-render.php:3924
 msgid ""
-"The Sun does not set at this latitude on this date, so there are no planetary"
-" hours to divide."
+"The Sun does not set at this latitude on this date, so there are no "
+"planetary hours to divide."
 msgstr ""
 "A Nap ezen a szélességen és dátumon nem nyugszik le, így nincsenek "
 "felosztható bolygóórák."
 
-#: includes/class-render.php:3916
+#: includes/class-render.php:3925
 msgid ""
 "The Sun does not rise at this latitude on this date, so there are no "
 "planetary hours to divide."
@@ -2565,27 +2588,27 @@ msgstr ""
 "A Nap ezen a szélességen és dátumon nem kel fel, így nincsenek felosztható "
 "bolygóórák."
 
-#: includes/class-render.php:3947
+#: includes/class-render.php:3956
 msgid "First chart"
 msgstr "Első képlet"
 
-#: includes/class-render.php:3948
+#: includes/class-render.php:3957
 msgid "Second chart"
 msgstr "Második képlet"
 
 #. translators: 1: first person's name, 2: second person's name
 #. translators: 1: zodiac sign name, 2: zodiac sign name
-#: includes/class-render.php:3951 includes/class-render.php:4632
+#: includes/class-render.php:3960 includes/class-render.php:4641
 #, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s és %2$s"
 
-#: includes/class-render.php:3952 includes/class-render.php:4017
+#: includes/class-render.php:3961 includes/class-render.php:4026
 msgid "Synastry"
 msgstr "Szinasztria"
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:3981
+#: includes/class-render.php:3990
 #, php-format
 msgid ""
 "%s: birth time unknown. No houses or Ascendant for this chart, and its Moon "
@@ -2594,225 +2617,227 @@ msgstr ""
 "%s: a születési idő ismeretlen. Ennek a képletnek nincsenek házai és "
 "aszcendense, a Holdja pedig akár 7 fokkal is eltérhet a valódi helyétől."
 
-#: includes/class-render.php:4002
+#: includes/class-render.php:4011
 msgid "Houses"
 msgstr "Házak"
 
-#: includes/class-render.php:4011
+#: includes/class-render.php:4020
 msgid "All aspects"
 msgstr "Összes fényszög"
 
-#: includes/class-render.php:4070 includes/class-render.php:4259
+#: includes/class-render.php:4079 includes/class-render.php:4268
 msgid "Identity"
 msgstr "Identitás"
 
-#: includes/class-render.php:4071 includes/class-render.php:4260
+#: includes/class-render.php:4080 includes/class-render.php:4269
 msgid "Emotions"
 msgstr "Érzelmek"
 
-#: includes/class-render.php:4072 includes/class-render.php:4261
+#: includes/class-render.php:4081 includes/class-render.php:4270
 msgid "Communication"
 msgstr "Kommunikáció"
 
-#: includes/class-render.php:4074 includes/class-render.php:4263
+#: includes/class-render.php:4083 includes/class-render.php:4272
 msgid "Passion"
 msgstr "Szenvedély"
 
-#: includes/class-render.php:4075 includes/class-render.php:4264
+#: includes/class-render.php:4084 includes/class-render.php:4273
 msgid "Commitment"
 msgstr "Elköteleződés"
 
-#: includes/class-render.php:4090
+#: includes/class-render.php:4099
 msgid "no aspects"
 msgstr "nincs fényszög"
 
 #. translators: 1: tone word such as "Harmonious", 2: number of aspects
-#: includes/class-render.php:4093
+#: includes/class-render.php:4102
 #, php-format
 msgid "%1$s, aspects: %2$d"
 msgstr "%1$s, fényszögek: %2$d"
 
-#: includes/class-render.php:4096
+#: includes/class-render.php:4105
 msgid "By sphere"
 msgstr "Területenként"
 
 #. translators: %d = how many aspects the two charts make between them
-#: includes/class-render.php:4109
+#: includes/class-render.php:4118
 #, php-format
 msgid "Aspects between the two charts: %d"
 msgstr "Fényszögek a két képlet között: %d"
 
-#: includes/class-render.php:4114
+#: includes/class-render.php:4123
 msgid "out of 100"
 msgstr "100-ból"
 
 #. translators: 1: first person's name, 2: second person's name
-#: includes/class-render.php:4167
+#: includes/class-render.php:4176
 #, php-format
 msgid ""
-"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between "
-"them."
+"Synastry wheel: %1$s inside, %2$s on the outer ring, and the aspects between"
+" them."
 msgstr ""
-"Szinasztria-kör: belül %1$s, a külső körön %2$s, és a köztük lévő fényszögek."
+"Szinasztria-kör: belül %1$s, a külső körön %2$s, és a köztük lévő "
+"fényszögek."
 
 #. translators: %s = person's name, or "First chart"
-#: includes/class-render.php:4182
+#: includes/class-render.php:4191
 #, php-format
 msgid "Inner ring: %s"
 msgstr "Belső kör: %s"
 
-#: includes/class-render.php:4191 includes/class-render.php:4550
+#: includes/class-render.php:4200 includes/class-render.php:4559
 msgid "Harmony"
 msgstr "Harmónia"
 
-#: includes/class-render.php:4195 includes/class-render.php:4554
+#: includes/class-render.php:4204 includes/class-render.php:4563
 msgid "Tension"
 msgstr "Feszültség"
 
 #. translators: %d = how strong an aspect is, 0 to 100
-#: includes/class-render.php:4223
+#: includes/class-render.php:4232
 #, php-format
 msgid "strength %d"
 msgstr "erősség %d"
 
 #. translators: %d = number of conjunctions
-#: includes/class-render.php:4247
+#: includes/class-render.php:4256
 #, php-format
 msgid "Conjunctions %d"
 msgstr "Együttállások: %d"
 
-#: includes/class-render.php:4267
+#: includes/class-render.php:4276
 msgid "You let each other be who you are."
 msgstr "Hagyják egymást önmaguknak lenni."
 
-#: includes/class-render.php:4268
+#: includes/class-render.php:4277
 msgid "You read each other's moods without words."
 msgstr "Szavak nélkül is olvassák egymás hangulatát."
 
-#: includes/class-render.php:4269
+#: includes/class-render.php:4278
 msgid "Talking comes easily and settles things."
 msgstr "Könnyen megy a beszélgetés, és rendezi a dolgokat."
 
-#: includes/class-render.php:4270
+#: includes/class-render.php:4279
 msgid "Affection and taste are shared."
 msgstr "A gyengédség és az ízlés közös."
 
-#: includes/class-render.php:4271
+#: includes/class-render.php:4280
 msgid "Desire and drive meet in the middle."
 msgstr "A vágy és a lendület középen találkozik."
 
-#: includes/class-render.php:4272
+#: includes/class-render.php:4281
 msgid "Promises hold and plans last."
 msgstr "Az ígéretek megmaradnak, a tervek tartanak."
 
-#: includes/class-render.php:4275
+#: includes/class-render.php:4284
 msgid "Leave each other room to be different."
 msgstr "Hagyjanak egymásnak teret a különbözőségre."
 
-#: includes/class-render.php:4276
+#: includes/class-render.php:4285
 msgid "Say what you feel rather than expect it to be guessed."
 msgstr "Mondják ki, amit éreznek, ne várják, hogy a másik kitalálja."
 
-#: includes/class-render.php:4277
+#: includes/class-render.php:4286
 msgid "Check what was heard, not only what was said."
 msgstr "Ellenőrizzék, mit hallott a másik, ne csak azt, mit mondtak."
 
-#: includes/class-render.php:4278
+#: includes/class-render.php:4287
 msgid "Show care in the way the other one receives it."
 msgstr "Úgy mutassák a törődést, ahogy a másik be tudja fogadni."
 
-#: includes/class-render.php:4279
+#: includes/class-render.php:4288
 msgid "Agree on pace before friction turns into a fight."
 msgstr "Egyezzenek meg a tempóban, mielőtt a súrlódásból veszekedés lesz."
 
-#: includes/class-render.php:4280
+#: includes/class-render.php:4289
 msgid "Make plans explicit and keep them small at first."
 msgstr "Mondják ki a terveket, és eleinte tartsák őket kicsinek."
 
-#: includes/class-render.php:4303 includes/class-render.php:4887
+#: includes/class-render.php:4312 includes/class-render.php:4896
 msgid "Strengths"
 msgstr "Erősségek"
 
-#: includes/class-render.php:4304
+#: includes/class-render.php:4313
 msgid "Growth areas"
 msgstr "Fejlődési területek"
 
 #. translators: 1: whose planets, 2: whose houses
-#: includes/class-render.php:4347
+#: includes/class-render.php:4356
 #, php-format
 msgid "Planets of %1$s in the houses of %2$s"
 msgstr "%1$s bolygói %2$s házaiban"
 
 #. translators: 1: planet, 2: person's name, or the word "natal" or "transit"
-#: includes/class-render.php:4362
+#: includes/class-render.php:4371
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: includes/class-render.php:4368
+#: includes/class-render.php:4377
 msgid "One force: felt strongly by both, for better or worse."
 msgstr "Egyetlen erő: mindketten erősen érzik, jóban-rosszban."
 
-#: includes/class-render.php:4369
+#: includes/class-render.php:4378
 msgid "Flows easily between you, without effort."
 msgstr "Könnyen áramlik Önök között, erőfeszítés nélkül."
 
-#: includes/class-render.php:4370
+#: includes/class-render.php:4379
 msgid "Helps you both once one of you makes a move."
 msgstr "Mindkettőjüket segíti, amint egyikük lép."
 
-#: includes/class-render.php:4371
+#: includes/class-render.php:4380
 msgid "Rubs, and pushes you both to change."
 msgstr "Súrlódást okoz, és mindkettőjüket változásra készteti."
 
-#: includes/class-render.php:4372
+#: includes/class-render.php:4381
 msgid "Pulls you apart and draws you together."
 msgstr "Eltávolítja és közben egymáshoz vonzza Önöket."
 
-#: includes/class-render.php:4431
+#: includes/class-render.php:4440 includes/class-render.php:5887
 msgid "Aspect"
 msgstr "Fényszög"
 
-#: includes/class-render.php:4433
+#: includes/class-render.php:4442 includes/class-render.php:5887
+#: includes/class-render.php:5944
 msgid "Orb"
 msgstr "Orb"
 
-#: includes/class-render.php:4434
+#: includes/class-render.php:4443
 msgid "Trend"
 msgstr "Trend"
 
-#: includes/class-render.php:4453
+#: includes/class-render.php:4462
 msgid "Harmonious"
 msgstr "Harmonikus"
 
-#: includes/class-render.php:4454
+#: includes/class-render.php:4463
 msgid "Balanced"
 msgstr "Kiegyensúlyozott"
 
-#: includes/class-render.php:4455
+#: includes/class-render.php:4464
 msgid "Mixed"
 msgstr "Vegyes"
 
-#: includes/class-render.php:4456
+#: includes/class-render.php:4465
 msgid "Challenging"
 msgstr "Kihívásokkal teli"
 
-#: includes/class-render.php:4489 includes/class-render.php:4544
-#: includes/class-widget-manifest.php:428
+#: includes/class-render.php:4498 includes/class-render.php:4553
+#: includes/class-widget-manifest.php:472
 msgid "Sign compatibility"
 msgstr "Jegyek összeillése"
 
 #. translators: %s = zodiac sign name
-#: includes/class-render.php:4491
+#: includes/class-render.php:4500
 #, php-format
 msgid "%s and the other signs"
 msgstr "%s és a többi jegy"
 
-#: includes/class-render.php:4495
+#: includes/class-render.php:4504
 msgid ""
 "How each pair of signs stands in the zodiac: the classical relation, "
-"harmonious, challenging or unrelated. It is a relation of signs, not a score;"
-" for two people, their charts say far more."
+"harmonious, challenging or unrelated. It is a relation of signs, not a "
+"score; for two people, their charts say far more."
 msgstr ""
 "Hogyan áll egymáshoz a zodiákusban minden jegypár: a klasszikus viszony, "
 "harmonikus, feszült vagy semmilyen. Ez jegyek viszonya, nem pontszám; két "
@@ -2820,419 +2845,549 @@ msgstr ""
 
 #. translators: 1: zodiac sign, 2: zodiac sign, 3: how they relate, e.g.
 #. "trine"
-#: includes/class-render.php:4537
+#: includes/class-render.php:4546
 #, php-format
 msgid "%1$s and %2$s: %3$s"
 msgstr "%1$s és %2$s: %3$s"
 
-#: includes/class-render.php:4558
+#: includes/class-render.php:4567
 msgid "Do not see each other"
 msgstr "Nem látják egymást"
 
-#: includes/class-render.php:4584
+#: includes/class-render.php:4593
 msgid "the same sign"
 msgstr "ugyanaz a jegy"
 
-#: includes/class-render.php:4589
+#: includes/class-render.php:4598
 msgid "aversion"
 msgstr "averzió"
 
-#: includes/class-render.php:4597
+#: includes/class-render.php:4606
 msgid "Two signs apart: friendly elements that help each other."
 msgstr "Két jegy távolság: baráti elemek, amelyek segítik egymást."
 
-#: includes/class-render.php:4598
+#: includes/class-render.php:4607
 msgid "Three signs apart: the same drive in clashing elements."
 msgstr "Három jegy távolság: ugyanaz a lendület ütköző elemekben."
 
-#: includes/class-render.php:4599
+#: includes/class-render.php:4608
 msgid "Four signs apart: the same element, easy understanding."
 msgstr "Négy jegy távolság: ugyanaz az elem, könnyű megértés."
 
-#: includes/class-render.php:4600
+#: includes/class-render.php:4609
 msgid "Opposite signs: attraction and pull in one."
 msgstr "Szemközti jegyek: vonzás és feszültség egyszerre."
 
-#: includes/class-render.php:4601
+#: includes/class-render.php:4610
 msgid "One or five signs apart: classically they do not see each other."
 msgstr "Egy vagy öt jegy távolság: klasszikusan nem látják egymást."
 
 #. translators: 1: the year's element, such as Metal, 2: the animal, such as
 #. Horse, 3: the year
-#: includes/class-render.php:4734
+#: includes/class-render.php:4743
 #, php-format
 msgid "%1$s %2$s, %3$d"
 msgstr "%2$s (%1$s), %3$d"
 
-#: includes/class-render.php:4739 includes/class-widget-manifest.php:435
+#: includes/class-render.php:4748 includes/class-widget-manifest.php:479
 msgid "Chinese zodiac"
 msgstr "Kínai zodiákus"
 
-#: includes/class-render.php:4751
+#: includes/class-render.php:4760
 msgid "Heavenly stem"
 msgstr "Égi törzs"
 
-#: includes/class-render.php:4752
+#: includes/class-render.php:4761
 msgid "Earthly branch"
 msgstr "Földi ág"
 
 #. translators: %s = one of the five Chinese elements
-#: includes/class-render.php:4788
+#: includes/class-render.php:4797
 #, php-format
 msgid "Year element: %s"
 msgstr "Az év eleme: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 #, php-format
 msgid "Polarity: %s"
 msgstr "Polaritás: %s"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 msgid "Yin"
 msgstr "Jin"
 
 #. translators: %s = Yin or Yang
-#: includes/class-render.php:4792
+#: includes/class-render.php:4801
 msgid "Yang"
 msgstr "Jang"
 
 #. translators: %s = the year's stem and branch, such as Geng-Wu
-#: includes/class-render.php:4796
+#: includes/class-render.php:4805
 #, php-format
 msgid "Pillar: %s"
 msgstr "Oszlop: %s"
 
 #. translators: 1: the year, 2: the moment it begins, 3: the moment it ends,
 #. both in Beijing time
-#: includes/class-render.php:4804
+#: includes/class-render.php:4813
 #, php-format
 msgid ""
 "The %1$d animal year runs from %2$s to %3$s, Beijing time: it begins at "
 "Lichun, the start of spring, not on 1 January."
 msgstr ""
-"A(z) %1$d. állatév pekingi idő szerint %2$s és %3$s között tart: Licsunkor, a"
-" tavasz kezdetén indul, nem január 1-jén."
+"A(z) %1$d. állatév pekingi idő szerint %2$s és %3$s között tart: Licsunkor, "
+"a tavasz kezdetén indul, nem január 1-jén."
 
 #. translators: %d = the year
-#: includes/class-render.php:4806
+#: includes/class-render.php:4815
 #, php-format
 msgid ""
-"The %d animal year begins at the start of spring (Lichun, about 4 February), "
-"not on 1 January."
+"The %d animal year begins at the start of spring (Lichun, about 4 February),"
+" not on 1 January."
 msgstr ""
 "A(z) %d. állatév a tavasz kezdetén (Licsun, február 4. körül) kezdődik, nem "
 "január 1-jén."
 
 #. translators: %s = the animal's double hour, such as 11:00-13:00
-#: includes/class-render.php:4824
+#: includes/class-render.php:4833
 #, php-format
 msgid "Hours: %s"
 msgstr "Az állat órái: %s"
 
 #. translators: %s = the three animals of the triad (san he), such as Tiger,
 #. Horse, Dog
-#: includes/class-render.php:4834
+#: includes/class-render.php:4843
 #, php-format
 msgid "Triad: %s"
 msgstr "Hármas: %s"
 
 #. translators: %s = an animal, the secret friend (liu he) of this one
-#: includes/class-render.php:4838
+#: includes/class-render.php:4847
 #, php-format
 msgid "Secret friend: %s"
 msgstr "Titkos barát: %s"
 
 #. translators: %s = an animal that clashes (liu chong) with this one
-#: includes/class-render.php:4840
+#: includes/class-render.php:4849
 #, php-format
 msgid "Clash: %s"
 msgstr "Ütközés: %s"
 
 #. translators: %s = an animal that harms (liu hai) this one
-#: includes/class-render.php:4842
+#: includes/class-render.php:4851
 #, php-format
 msgid "Harm: %s"
 msgstr "Ártalom: %s"
 
-#: includes/class-render.php:4888
+#: includes/class-render.php:4897
 msgid "Watch for"
 msgstr "Mire figyeljen"
 
-#: includes/class-render.php:4898
+#: includes/class-render.php:4907
 msgid "Character"
 msgstr "Jellem"
 
 #. translators: %s = one of the five Chinese elements, such as Metal
-#: includes/class-render.php:4905
+#: includes/class-render.php:4914
 #, php-format
 msgid "The year element: %s"
 msgstr "Az év eleme: %s"
 
-#: includes/class-render.php:4915
+#: includes/class-render.php:4924
 msgid "Rat"
 msgstr "Patkány"
 
-#: includes/class-render.php:4916
+#: includes/class-render.php:4925
 msgid "Ox"
 msgstr "Bivaly"
 
-#: includes/class-render.php:4917
+#: includes/class-render.php:4926
 msgid "Tiger"
 msgstr "Tigris"
 
-#: includes/class-render.php:4918
+#: includes/class-render.php:4927
 msgid "Rabbit"
 msgstr "Nyúl"
 
-#: includes/class-render.php:4919
+#: includes/class-render.php:4928
 msgid "Dragon"
 msgstr "Sárkány"
 
-#: includes/class-render.php:4920
+#: includes/class-render.php:4929
 msgid "Snake"
 msgstr "Kígyó"
 
-#: includes/class-render.php:4921
+#: includes/class-render.php:4930
 msgid "Horse"
 msgstr "Ló"
 
-#: includes/class-render.php:4922
+#: includes/class-render.php:4931
 msgid "Goat"
 msgstr "Kecske"
 
-#: includes/class-render.php:4923
+#: includes/class-render.php:4932
 msgid "Monkey"
 msgstr "Majom"
 
-#: includes/class-render.php:4924
+#: includes/class-render.php:4933
 msgid "Rooster"
 msgstr "Kakas"
 
-#: includes/class-render.php:4925
+#: includes/class-render.php:4934
 msgid "Dog"
 msgstr "Kutya"
 
-#: includes/class-render.php:4926
+#: includes/class-render.php:4935
 msgid "Pig"
 msgstr "Disznó"
 
-#: includes/class-render.php:4934
+#: includes/class-render.php:4943
 msgid "Wood"
 msgstr "Fa"
 
-#: includes/class-render.php:4937
+#: includes/class-render.php:4946
 msgid "Metal"
 msgstr "Fém"
 
 #. translators: %d = number of minutes
-#: includes/class-render.php:5025
+#: includes/class-render.php:5034
 #, php-format
 msgid "%d min"
 msgstr "%d perc"
 
 #. translators: 1: whole hours, 2: minutes within the hour
-#: includes/class-render.php:5031
+#: includes/class-render.php:5040
 #, php-format
 msgid "%1$d h %2$02d min"
 msgstr "%1$d óra %2$02d perc"
 
 #. translators: 1: rows shown, 2: rows in total
-#: includes/class-render.php:5350
+#: includes/class-render.php:5359
 #, php-format
 msgid "Showing %1$d of %2$d"
 msgstr "%1$d / %2$d megjelenítve"
 
-#: includes/class-render.php:5401
+#: includes/class-render.php:5410
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "yes"
 msgstr "igen"
 
-#: includes/class-render.php:5401
+#: includes/class-render.php:5410
 #: includes/views/partials/admin-channel-b-status.php:47
 #: includes/views/partials/admin-channel-b-status.php:51
 msgid "no"
 msgstr "nem"
 
-#: includes/class-render.php:5478
+#: includes/class-render.php:5452
+msgid ""
+"The list of all nine mahadashas could not be loaded just now; the card shows"
+" the running one. Only administrators see this note."
+msgstr ""
+"A kilenc mahadasha listáját most nem sikerült betölteni; a kártya az "
+"aktuálisan futót mutatja. Ezt a megjegyzést csak a rendszergazdák látják."
+
+#: includes/class-render.php:5524
 msgid "Lagna"
 msgstr "Lagna"
 
-#: includes/class-render.php:5497
+#: includes/class-render.php:5534 includes/class-render.php:5736
 msgid "Moon nakshatra"
 msgstr "Hold naksatrája"
 
 #. translators: %d = pada (quarter) of the nakshatra, 1 to 4
-#: includes/class-render.php:5500
+#: includes/class-render.php:5537 includes/class-render.php:5739
 #, php-format
 msgid "Pada %d"
 msgstr "Páda %d"
 
-#: includes/class-render.php:5509
+#: includes/class-render.php:5546
 msgid "Dasha now"
 msgstr "Jelenlegi dasa"
 
 #. translators: %s = date
-#: includes/class-render.php:5512
+#: includes/class-render.php:5549 includes/class-render.php:5722
+#: includes/class-render.php:5730
 #, php-format
 msgid "until %s"
 msgstr "%s-ig"
 
-#: includes/class-render.php:5518
+#: includes/class-render.php:5555
 msgid "Vedic birth chart"
 msgstr "Védikus születési horoszkóp"
 
-#: includes/class-render.php:5525
+#: includes/class-render.php:5562 includes/class-render.php:5806
 msgid "Grahas"
 msgstr "Grahák"
 
-#: includes/class-render.php:5525
+#: includes/class-render.php:5562 includes/class-render.php:5806
 msgid "Graha"
 msgstr "Graha"
 
 #. translators: %s = planet name
-#: includes/class-render.php:5531
+#: includes/class-render.php:5568
 #, php-format
 msgid "Mahadasha of %s"
 msgstr "%s mahadasája"
 
 #. translators: %s = planet name
-#: includes/class-render.php:5538
+#: includes/class-render.php:5575
 #, php-format
 msgid "Antardasha of %s"
 msgstr "%s antardasája"
 
-#: includes/class-render.php:5542
+#: includes/class-render.php:5579 includes/class-render.php:5745
 msgid "Vimshottari dasha"
 msgstr "Vimsottari dasa"
 
-#: includes/class-render.php:5548
+#: includes/class-render.php:5585
 msgid "Yogas"
 msgstr "Jógák"
 
-#: includes/class-render.php:5549 includes/class-render.php:5553
+#: includes/class-render.php:5586 includes/class-render.php:5590
 msgid "None found"
 msgstr "Nincs találat"
 
-#: includes/class-render.php:5552
+#: includes/class-render.php:5589
 msgid "Doshas"
 msgstr "Dósák"
 
-#: includes/class-render.php:5556
+#: includes/class-render.php:5593
 msgid "Yogas and doshas"
 msgstr "Jógák és dósák"
 
 #. translators: %s = the ayanamsa in degrees and minutes
-#: includes/class-render.php:5559
+#: includes/class-render.php:5596 includes/class-render.php:5810
 #, php-format
 msgid "Sidereal zodiac, ayanamsa %s."
 msgstr "Sziderikus zodiákus, ajanamsa %s."
 
-#: includes/class-render.php:5614
+#: includes/class-render.php:5651
 msgid "Raja yoga"
 msgstr "Raja jóga"
 
-#: includes/class-render.php:5615
+#: includes/class-render.php:5652
 msgid "Dhana yoga"
 msgstr "Dhana jóga"
 
-#: includes/class-render.php:5616
+#: includes/class-render.php:5653
 msgid "Dharma Karmadhipati yoga"
 msgstr "Dharma Karmadhipati jóga"
 
-#: includes/class-render.php:5617
+#: includes/class-render.php:5654
 msgid "Pancha Mahapurusha yoga"
 msgstr "Pancha Mahapurusha jóga"
 
-#: includes/class-render.php:5618
+#: includes/class-render.php:5655
 msgid "Gajakesari yoga"
 msgstr "Gajakesari jóga"
 
-#: includes/class-render.php:5619
+#: includes/class-render.php:5656
 msgid "Adhi yoga"
 msgstr "Adhi jóga"
 
-#: includes/class-render.php:5625
+#: includes/class-render.php:5662
 msgid "Mangal dosha"
 msgstr "Mangal dósa"
 
-#: includes/class-render.php:5626
+#: includes/class-render.php:5663
 msgid "Kaal Sarp dosha"
 msgstr "Kaal Sarp dósa"
 
-#: includes/class-render.php:5627
+#: includes/class-render.php:5664
 msgid "Pitru dosha"
 msgstr "Pitru dósa"
 
-#: includes/class-render.php:5628
+#: includes/class-render.php:5665
 msgid "Shrapit dosha"
 msgstr "Shrapit dósa"
 
-#: includes/class-render.php:5629
+#: includes/class-render.php:5666
 msgid "Grahan dosha"
 msgstr "Grahan dósa"
 
-#: includes/class-render.php:5630
+#: includes/class-render.php:5667
 msgid "Guru Chandal dosha"
 msgstr "Guru Chandal dósa"
 
-#: includes/class-render.php:5636
+#: includes/class-render.php:5719
+msgid "Mahadasha"
+msgstr "Mahadasha"
+
+#: includes/class-render.php:5727
+msgid "Antardasha"
+msgstr "Antardasha"
+
+#. translators: %s = planet name
+#: includes/class-render.php:5752
+#, php-format
+msgid "Antardashas of %s"
+msgstr "%s antardashái"
+
+#: includes/class-render.php:5765
+msgid "Mahadashas"
+msgstr "Mahadasák"
+
+#: includes/class-render.php:5790
+msgid "Navamsa Lagna"
+msgstr "Navamsa Lagna"
+
+#: includes/class-render.php:5799
+#: includes/views/partials/shortcode-cards.php:355
+msgid "Navamsa (D9)"
+msgstr "Navamsa (D9)"
+
+#: includes/class-render.php:5849
+msgid "Progressed Sun"
+msgstr "Előrehaladott Nap"
+
+#: includes/class-render.php:5850
+msgid "Progressed Moon"
+msgstr "A Hold előrehaladása"
+
+#: includes/class-render.php:5863
+msgid "Progressed Ascendant"
+msgstr "Előrehaladott Aszcendens"
+
+#: includes/class-render.php:5877
+msgid "Progressed chart"
+msgstr "Progresszív horoszkóp"
+
+#: includes/class-render.php:5884
+msgid "Progressed planets"
+msgstr "Progresszív bolygók"
+
+#: includes/class-render.php:5887
+msgid "Aspects between progressed planets"
+msgstr "A haladó bolygók közötti aspektusok"
+
+#: includes/class-render.php:5887
+msgid "Phase"
+msgstr "Fázis"
+
+#: includes/class-render.php:5889
+msgid "Secondary progressions: a day after birth for each year of life."
+msgstr ""
+"Másodlagos progressziók: az élet minden egyes évére a születés utáni egy "
+"nap."
+
+#. translators: %d = harmonic number, e.g. 5
+#: includes/class-render.php:5899
+#, php-format
+msgid "Harmonic %d chart"
+msgstr "%d-es harmonikus diagram"
+
+#: includes/class-render.php:5907
+msgid ""
+"Harmonic chart: each planet's longitude multiplied by the harmonic number, "
+"and the aspects between them."
+msgstr ""
+"Harmonikus táblázat: az egyes bolygók hosszfokának szorzata a harmonikus "
+"számmal, valamint a bolygók közötti aspektusok."
+
+#: includes/class-render.php:5911
+msgid "Planets"
+msgstr "Bolygók"
+
+#: includes/class-render.php:5938
+msgid "Fixed stars"
+msgstr "Állandó csillagok"
+
+#: includes/class-render.php:5943
+msgid "No planet of this chart stands in conjunction with the bright stars."
+msgstr ""
+"Ebben a születési horoszkópban egyetlen bolygó sem áll konjunkcióban a "
+"fényes csillagokkal."
+
+#: includes/class-render.php:5944
+msgid "Star"
+msgstr "Csillag"
+
+#: includes/class-render.php:5944
+msgid "Conjunct"
+msgstr "Konjunktív"
+
+#: includes/class-render.php:5944
+msgid "Magnitude"
+msgstr "Mérték"
+
+#: includes/class-render.php:5945
+msgid "Conjunctions"
+msgstr "Kötőszavak"
+
+#. translators: 1: orb in degrees, 2: number of stars checked
+#: includes/class-render.php:5951
+#, php-format
+msgid ""
+"Conjunctions within %1$s° of longitude with %2$d bright stars, tropical "
+"zodiac."
+msgstr ""
+"Konjunkciók %1$s° hosszúságon belül %2$d fényes csillaggal, trópusi "
+"zodiákus."
+
+#. translators: %s: orb in degrees
+#: includes/class-render.php:5953
+#, php-format
+msgid "Conjunctions within %s° of longitude, tropical zodiac."
+msgstr "Együttállások %s°-on belül, trópusi zodiákus."
+
+#: includes/class-render.php:5961
 msgid "Life Path"
 msgstr "Életút"
 
-#: includes/class-render.php:5637
+#: includes/class-render.php:5962
 msgid "Expression"
 msgstr "Kifejezésszám"
 
-#: includes/class-render.php:5638
+#: includes/class-render.php:5963
 msgid "Soul Urge"
 msgstr "Lélekszám"
 
-#: includes/class-render.php:5640
+#: includes/class-render.php:5965
 msgid "Birthday"
 msgstr "Születésnap száma"
 
-#: includes/class-render.php:5641
+#: includes/class-render.php:5966
 msgid "Personal Year"
 msgstr "Személyes év"
 
-#: includes/class-render.php:5654
+#: includes/class-render.php:5979
 msgid "Master number"
 msgstr "Mesterszám"
 
-#: includes/class-render.php:5675 includes/class-tarot.php:285
-#: includes/class-widget-manifest.php:271
+#: includes/class-render.php:6000 includes/class-tarot.php:285
+#: includes/class-widget-manifest.php:315
 #: includes/views/partials/shortcode-cards.php:235
 msgid "Numerology"
 msgstr "Számmisztika"
 
-#: includes/class-render.php:5681
+#: includes/class-render.php:6006
 msgid "What the numbers say"
 msgstr "Amit a számok mondanak"
 
-#: includes/class-render.php:5713
+#: includes/class-render.php:6038
 msgid "Challenges"
 msgstr "Kihívások"
 
-#: includes/class-render.php:5714
+#: includes/class-render.php:6039
 msgid "Work"
 msgstr "Munka"
 
-#: includes/class-shortcodes.php:386
+#: includes/class-shortcodes.php:394
 msgid ""
 "[astroway_natal] has no usable tz, so the birth time is read as UTC. Add a "
 "zone name such as tz=\"Europe/Kyiv\", or hours from UTC such as tz=\"+3\". "
 "Only administrators see this note."
 msgstr ""
 "Az [astroway_natal] nem tartalmaz használható tz értéket, ezért a születési "
-"időt UTC-ként értelmezi. Adjon meg egy időzónát, például tz=\"Europe/Kyiv\", "
-"vagy az UTC-től eltérő óraszámot, például tz=\"+3\". Ezt a megjegyzést csak a"
-" rendszergazdák láthatják."
+"időt UTC-ként értelmezi. Adjon meg egy időzónát, például tz=\"Europe/Kyiv\","
+" vagy az UTC-től eltérő óraszámot, például tz=\"+3\". Ezt a megjegyzést csak"
+" a rendszergazdák láthatják."
 
 #. translators: %s = shortcode name
-#: includes/class-shortcodes.php:685
+#: includes/class-shortcodes.php:693
 #, php-format
 msgid ""
 "The %s widget is temporarily unavailable, so it renders nothing. Only "
@@ -3241,11 +3396,11 @@ msgstr ""
 "A %s widget jelenleg nem elérhető, ezért nem jelenít meg semmit. Ezt a "
 "megjegyzést csak a rendszergazdák láthatják."
 
-#: includes/class-shortcodes.php:933 includes/class-shortcodes.php:1279
+#: includes/class-shortcodes.php:941 includes/class-shortcodes.php:1437
 msgid "This date does not exist."
 msgstr "Ilyen dátum nem létezik."
 
-#: includes/class-shortcodes.php:1118
+#: includes/class-shortcodes.php:1126
 msgid ""
 "A return chart needs the birth time and the latitude and longitude of the "
 "place of birth. Only administrators see this note."
@@ -3254,7 +3409,7 @@ msgstr ""
 "szélessége és hosszúsága kell. Ezt a megjegyzést csak adminisztrátorok "
 "látják."
 
-#: includes/class-shortcodes.php:1210
+#: includes/class-shortcodes.php:1218
 msgid ""
 "A Davison chart needs the date, the time and the latitude and longitude of "
 "both births. Only administrators see this note."
@@ -3262,17 +3417,45 @@ msgstr ""
 "A Davison-horoszkóphoz mindkét születés dátuma, ideje, szélessége és "
 "hosszúsága kell. Ezt a megjegyzést csak adminisztrátorok látják."
 
-#: includes/class-shortcodes.php:1218
+#: includes/class-shortcodes.php:1345
+msgid ""
+"This chart needs the birth date, time, latitude and longitude. Only "
+"administrators see this note."
+msgstr ""
+"Ehhez a táblázathoz szükség van a születési dátumra, időpontra, szélességi "
+"és hosszúsági koordinátákra. Ezt a megjegyzést csak a rendszergazdák "
+"láthatják."
+
+#. translators: %s = shortcode name
+#: includes/class-shortcodes.php:1366
+#, php-format
+msgid ""
+"The %s chart could not be loaded just now. Only administrators see this "
+"note."
+msgstr ""
+"A %s diagramot jelenleg nem sikerült betölteni. Ezt a megjegyzést csak a "
+"rendszergazdák láthatják."
+
+#: includes/class-shortcodes.php:1371
+msgid ""
+"This chart needs an API key from api.astroway.info: open AstroWay in the "
+"admin and enter it. Only administrators see this note."
+msgstr ""
+"Ehhez a diagramhoz szükség van egy API-kulcsra az api.astroway.info "
+"webhelyről: nyisd meg az AstroWay-t az admin felületen, és írd be a kulcsot."
+" Ezt a megjegyzést csak a rendszergazdák láthatják."
+
+#: includes/class-shortcodes.php:1376
 msgid ""
 "This chart needs a site key or an API key: open AstroWay in the admin and "
 "connect the site. Only administrators see this note."
 msgstr ""
 "Ehhez a horoszkóphoz webhelykulcs vagy API-kulcs kell: nyissa meg az "
-"AstroWay-t az adminban, és csatlakoztassa a webhelyet. Ezt a megjegyzést csak"
-" adminisztrátorok látják."
+"AstroWay-t az adminban, és csatlakoztassa a webhelyet. Ezt a megjegyzést "
+"csak adminisztrátorok látják."
 
 #. translators: 1: shortcode tag, 2: attribute name, 3: the value written
-#: includes/class-shortcodes.php:1287
+#: includes/class-shortcodes.php:1445
 #, php-format
 msgid ""
 "[%1$s] has a date that does not exist: %2$s = %3$s. Visitors see the form "
@@ -3307,8 +3490,8 @@ msgstr ""
 
 #: includes/class-site-key.php:112
 msgid ""
-"the check came back with the wrong answer, often a page cache in front of the"
-" REST API."
+"the check came back with the wrong answer, often a page cache in front of "
+"the REST API."
 msgstr ""
 "az ellenőrzés rossz választ kapott, gyakran a REST API előtti "
 "oldalgyorsítótár miatt."
@@ -3368,8 +3551,8 @@ msgid ""
 "still shown. Only administrators see this note."
 msgstr ""
 "Az új tarotértelmezések mai száma elérte a korlátot; a már megadott "
-"értelmezések továbbra is láthatók. Ezt a megjegyzést csak az adminisztrátorok"
-" látják."
+"értelmezések továbbra is láthatók. Ezt a megjegyzést csak az "
+"adminisztrátorok látják."
 
 #: includes/class-tarot-reading.php:400
 msgid ""
@@ -3465,37 +3648,41 @@ msgstr "Kártya felfordítása"
 msgid "Spirit"
 msgstr "Szellem"
 
-#: includes/class-tier.php:203
+#: includes/class-tier.php:209
 msgid "Locked feature"
 msgstr "Zárt funkció"
 
-#: includes/class-tier.php:213
+#: includes/class-tier.php:219
 msgid "Pro feature"
 msgstr "Pro funkció"
 
-#: includes/class-tier.php:214
+#: includes/class-tier.php:220
 msgid "This widget is available on a paid AstroWay plan."
 msgstr "Ez a widget az AstroWay fizetős csomagjaiban érhető el."
 
-#: includes/class-tier.php:217
+#: includes/class-tier.php:223
 msgid "Upgrade →"
 msgstr "Frissítés →"
 
-#: includes/class-widget-manifest.php:59 includes/class-widget-manifest.php:422
-#: includes/class-widget-manifest.php:423
+#: includes/class-widget-manifest.php:59
+#: includes/class-widget-manifest.php:466
+#: includes/class-widget-manifest.php:467
 #: assets/js/astroway-blocks-editor.js:17
 msgid "Default (today's featured sign)"
 msgstr "Alapértelmezett (a mai nap kiemelt jegye)"
 
-#: includes/class-widget-manifest.php:64 assets/js/astroway-blocks-editor.js:41
+#: includes/class-widget-manifest.php:64
+#: assets/js/astroway-blocks-editor.js:41
 msgid "Visitor picks the sign"
 msgstr "A látogató választja a jegyet"
 
-#: includes/class-widget-manifest.php:70 assets/js/astroway-blocks-editor.js:68
+#: includes/class-widget-manifest.php:70
+#: assets/js/astroway-blocks-editor.js:68
 msgid "Language"
 msgstr "Nyelv"
 
-#: includes/class-widget-manifest.php:72 includes/class-widget-manifest.php:108
+#: includes/class-widget-manifest.php:72
+#: includes/class-widget-manifest.php:108
 #: assets/js/astroway-blocks-editor.js:44
 #: assets/js/astroway-blocks-editor.js:72
 msgid "Site default"
@@ -3514,17 +3701,20 @@ msgstr "Rajzolt előlap, képek nélkül"
 msgid "Style"
 msgstr "Stílus"
 
-#: includes/class-widget-manifest.php:109 includes/views/admin-settings.php:307
+#: includes/class-widget-manifest.php:109
+#: includes/views/admin-settings.php:307
 #: assets/js/astroway-blocks-editor.js:73
 msgid "Instrument"
 msgstr "Műszer"
 
-#: includes/class-widget-manifest.php:110 includes/views/admin-settings.php:308
+#: includes/class-widget-manifest.php:110
+#: includes/views/admin-settings.php:308
 #: assets/js/astroway-blocks-editor.js:74
 msgid "Night sky"
 msgstr "Éjszakai égbolt"
 
-#: includes/class-widget-manifest.php:111 includes/views/admin-settings.php:309
+#: includes/class-widget-manifest.php:111
+#: includes/views/admin-settings.php:309
 #: assets/js/astroway-blocks-editor.js:75
 msgid "Theme colours"
 msgstr "A téma színei"
@@ -3558,7 +3748,7 @@ msgid "Longitude (-180 to 180)"
 msgstr "Hosszúság (-180-180)"
 
 #: includes/class-widget-manifest.php:138
-#: includes/class-widget-manifest.php:403
+#: includes/class-widget-manifest.php:447
 msgid "Date (leave blank for today)"
 msgstr "Dátum (hagyja üresen a mai napot)"
 
@@ -3571,12 +3761,14 @@ msgid "Timezone (Europe/Kyiv, +05:30, or 5.5)"
 msgstr "Időzóna (Europe/Kyiv, +05:30 vagy 5.5)"
 
 #: includes/class-widget-manifest.php:151
-#: includes/class-widget-manifest.php:163
+#: includes/class-widget-manifest.php:164
+#: includes/class-widget-manifest.php:174
 msgid "Date (YYYY-MM-DD)"
 msgstr "Dátum (ÉÉÉÉ-HH-NN)"
 
 #: includes/class-widget-manifest.php:152
-#: includes/class-widget-manifest.php:164
+#: includes/class-widget-manifest.php:165
+#: includes/class-widget-manifest.php:175
 msgid "Time (HH:MM)"
 msgstr "Idő (HH:MM)"
 
@@ -3588,302 +3780,316 @@ msgstr "Személy neve (nem kötelező)"
 msgid "Timezone (Europe/Kyiv or +03:00)"
 msgstr "Időzóna (Europe/Kyiv vagy +03:00)"
 
-#: includes/class-widget-manifest.php:175
+#: includes/class-widget-manifest.php:186
 msgid "Return place: latitude (blank for the place of birth)"
 msgstr "Visszatérés helye: szélesség (üresen a születési hely)"
 
-#: includes/class-widget-manifest.php:176
+#: includes/class-widget-manifest.php:187
 msgid "Return place: longitude"
 msgstr "Visszatérés helye: hosszúság"
 
-#: includes/class-widget-manifest.php:177
+#: includes/class-widget-manifest.php:188
 msgid "Return place: timezone for the time shown (blank for UTC)"
 msgstr "Visszatérés helye: időzóna a megjelenített időhöz (üresen UTC)"
 
-#: includes/class-widget-manifest.php:186
+#: includes/class-widget-manifest.php:197
 msgid "Person A: name (for the table heading)"
 msgstr "A személy: név (a táblázat fejlécéhez)"
 
-#: includes/class-widget-manifest.php:186
+#: includes/class-widget-manifest.php:197
 msgid "Person A: name"
 msgstr "A személy: név"
 
-#: includes/class-widget-manifest.php:187
+#: includes/class-widget-manifest.php:198
 msgid "Person A: date (YYYY-MM-DD)"
 msgstr "A személy: dátum (ÉÉÉÉ-HH-NN)"
 
-#: includes/class-widget-manifest.php:188
+#: includes/class-widget-manifest.php:199
 msgid "Person A: time (HH:MM, blank if unknown)"
 msgstr "A személy: idő (HH:MM, üresen, ha ismeretlen)"
 
-#: includes/class-widget-manifest.php:188
+#: includes/class-widget-manifest.php:199
 msgid "Person A: time (HH:MM)"
 msgstr "A személy: idő (HH:MM)"
 
-#: includes/class-widget-manifest.php:189
+#: includes/class-widget-manifest.php:200
 msgid "Person A: latitude"
 msgstr "A személy: szélesség"
 
-#: includes/class-widget-manifest.php:190
+#: includes/class-widget-manifest.php:201
 msgid "Person A: longitude"
 msgstr "A személy: hosszúság"
 
-#: includes/class-widget-manifest.php:191
+#: includes/class-widget-manifest.php:202
 msgid "Person A: timezone"
 msgstr "A személy: időzóna"
 
-#: includes/class-widget-manifest.php:193
+#: includes/class-widget-manifest.php:204
 msgid "Person B: name (for the table heading)"
 msgstr "B személy: név (a táblázat fejlécéhez)"
 
-#: includes/class-widget-manifest.php:193
+#: includes/class-widget-manifest.php:204
 msgid "Person B: name"
 msgstr "B személy: név"
 
-#: includes/class-widget-manifest.php:194
+#: includes/class-widget-manifest.php:205
 msgid "Person B: date (YYYY-MM-DD)"
 msgstr "B személy: dátum (ÉÉÉÉ-HH-NN)"
 
-#: includes/class-widget-manifest.php:195
+#: includes/class-widget-manifest.php:206
 msgid "Person B: time (HH:MM, blank if unknown)"
 msgstr "B személy: idő (HH:MM, üresen, ha ismeretlen)"
 
-#: includes/class-widget-manifest.php:195
+#: includes/class-widget-manifest.php:206
 msgid "Person B: time (HH:MM)"
 msgstr "B személy: idő (HH:MM)"
 
-#: includes/class-widget-manifest.php:196
+#: includes/class-widget-manifest.php:207
 msgid "Person B: latitude"
 msgstr "B személy: szélesség"
 
-#: includes/class-widget-manifest.php:197
+#: includes/class-widget-manifest.php:208
 msgid "Person B: longitude"
 msgstr "B személy: hosszúság"
 
-#: includes/class-widget-manifest.php:198
+#: includes/class-widget-manifest.php:209
 msgid "Person B: timezone"
 msgstr "B személy: időzóna"
 
-#: includes/class-widget-manifest.php:215
+#: includes/class-widget-manifest.php:226
 msgid "Birth data"
 msgstr "Születési adatok"
 
-#: includes/class-widget-manifest.php:216
+#: includes/class-widget-manifest.php:227
 msgid "Any date inside the month (blank for this month)"
 msgstr "Bármely dátum a hónapban (üresen: ez a hónap)"
 
-#: includes/class-widget-manifest.php:220
+#: includes/class-widget-manifest.php:231
 msgid "Year (blank for the one in force now)"
 msgstr "Év (üresen: a most érvényes)"
 
-#: includes/class-widget-manifest.php:224
+#: includes/class-widget-manifest.php:235
 msgid "First return after (YYYY-MM-DD, blank for the 1st of this month)"
 msgstr "Első visszatérés ezután (ÉÉÉÉ-HH-NN, üresen: a hónap 1. napja)"
 
-#: includes/class-widget-manifest.php:227
+#: includes/class-widget-manifest.php:238
 msgid "Two births"
 msgstr "Két születés"
 
-#: includes/class-widget-manifest.php:239
+#: includes/class-widget-manifest.php:248
+msgid "All nine mahadashas"
+msgstr "Mind a kilenc mahadasha"
+
+#: includes/class-widget-manifest.php:251
+#: includes/class-widget-manifest.php:377
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: includes/class-widget-manifest.php:264
+msgid "Progressed to (YYYY-MM-DD, blank for today)"
+msgstr "Átkerült a (ÉÉÉÉ-HH-NN, ma üres) dátumra"
+
+#: includes/class-widget-manifest.php:268
+msgid "Harmonic (2 to 180, 5 by default)"
+msgstr "Harmonikus (2–180, alapértelmezés szerint 5)"
+
+#: includes/class-widget-manifest.php:283
 msgid "None"
 msgstr "Nincs"
 
-#: includes/class-widget-manifest.php:240
+#: includes/class-widget-manifest.php:284
 msgid "Today's sky over the chart"
 msgstr "A mai égbolt a képlet fölött"
 
-#: includes/class-widget-manifest.php:263
+#: includes/class-widget-manifest.php:307
 msgid "Transit date"
 msgstr "Tranzit dátuma"
 
-#: includes/class-widget-manifest.php:267
+#: includes/class-widget-manifest.php:311
 msgid "Panchang"
 msgstr "Panchang"
 
-#: includes/class-widget-manifest.php:273
+#: includes/class-widget-manifest.php:317
 msgid "Full name"
 msgstr "Teljes név"
 
-#: includes/class-widget-manifest.php:274
+#: includes/class-widget-manifest.php:318
 msgid "Date of birth (YYYY-MM-DD)"
 msgstr "Születési dátum (ÉÉÉÉ-HH-NN)"
 
-#: includes/class-widget-manifest.php:277 includes/views/admin-settings.php:123
+#: includes/class-widget-manifest.php:321
+#: includes/views/admin-settings.php:123
 #: includes/views/partials/admin-sidebar.php:42
 msgid "System"
 msgstr "Rendszer"
 
-#: includes/class-widget-manifest.php:279
+#: includes/class-widget-manifest.php:323
 msgid "Pythagorean"
 msgstr "Püthagoraszi"
 
-#: includes/class-widget-manifest.php:280
+#: includes/class-widget-manifest.php:324
 msgid "Chaldean"
 msgstr "Káldeai"
 
-#: includes/class-widget-manifest.php:288
+#: includes/class-widget-manifest.php:332
 msgid "Two subjects"
 msgstr "Két személy"
 
-#: includes/class-widget-manifest.php:291
+#: includes/class-widget-manifest.php:335
 msgid "How many aspects to show (6 by default)"
 msgstr "Hány fényszöget mutasson (alapértelmezés: 6)"
 
-#: includes/class-widget-manifest.php:303
+#: includes/class-widget-manifest.php:347
 msgid "Daily Tarot"
 msgstr "Napi Tarot"
 
-#: includes/class-widget-manifest.php:307
+#: includes/class-widget-manifest.php:351
 msgid "Deck"
 msgstr "Pakli"
 
-#: includes/class-widget-manifest.php:310
+#: includes/class-widget-manifest.php:354
 #: assets/js/astroway-blocks-editor.js:34
 msgid "Marseille"
 msgstr "Marseille"
 
-#: includes/class-widget-manifest.php:311
+#: includes/class-widget-manifest.php:355
 #: assets/js/astroway-blocks-editor.js:35
 msgid "Lenormand"
 msgstr "Lenormand"
 
-#: includes/class-widget-manifest.php:323
+#: includes/class-widget-manifest.php:367
 msgid "Spread"
 msgstr "Kirakás"
 
-#: includes/class-widget-manifest.php:325
+#: includes/class-widget-manifest.php:369
 msgid "Past, present, future"
 msgstr "Múlt, jelen, jövő"
 
-#: includes/class-widget-manifest.php:326
+#: includes/class-widget-manifest.php:370
 msgid "Celtic Cross"
 msgstr "Kelta kereszt"
 
-#: includes/class-widget-manifest.php:331
+#: includes/class-widget-manifest.php:375
 msgid "Draw again button"
 msgstr "\"Újrahúzás\" gomb"
 
-#: includes/class-widget-manifest.php:333
-msgid "Show"
-msgstr "Megjelenítés"
-
-#: includes/class-widget-manifest.php:340
+#: includes/class-widget-manifest.php:384
 msgid "Cards"
 msgstr "Kártyák"
 
-#: includes/class-widget-manifest.php:342
+#: includes/class-widget-manifest.php:386
 msgid "Face up"
 msgstr "Felfordítva"
 
-#: includes/class-widget-manifest.php:343
+#: includes/class-widget-manifest.php:387
 msgid "Face down, turned by the visitor"
 msgstr "Lefordítva, a látogató fordítja fel"
 
-#: includes/class-widget-manifest.php:348
+#: includes/class-widget-manifest.php:392
 msgid "Reading of the spread"
 msgstr "A kirakás értelmezése"
 
-#: includes/class-widget-manifest.php:350
+#: includes/class-widget-manifest.php:394
 msgid "Off"
 msgstr "Kikapcsolva"
 
-#: includes/class-widget-manifest.php:351
+#: includes/class-widget-manifest.php:395
 msgid "After the last card is turned"
 msgstr "Az utolsó kártya felfordítása után"
 
-#: includes/class-widget-manifest.php:358
+#: includes/class-widget-manifest.php:402
 msgid "Weekly horoscope"
 msgstr "Heti horoszkóp"
 
-#: includes/class-widget-manifest.php:359
+#: includes/class-widget-manifest.php:403
 msgid "Any date inside the week (blank for this week)"
 msgstr "Bármely nap a héten (üresen: ez a hét)"
 
-#: includes/class-widget-manifest.php:362
+#: includes/class-widget-manifest.php:406
 msgid "Monthly horoscope"
 msgstr "Havi horoszkóp"
 
-#: includes/class-widget-manifest.php:374
+#: includes/class-widget-manifest.php:418
 msgid "Monthly forecast"
 msgstr "Havi előrejelzés"
 
-#: includes/class-widget-manifest.php:378
+#: includes/class-widget-manifest.php:422
 msgid "Moon transit timeline"
 msgstr "A Hold tranzit-idővonala"
 
-#: includes/class-widget-manifest.php:379
+#: includes/class-widget-manifest.php:423
 msgid "Day the seven start from (blank for today)"
 msgstr "A hét nap kezdőnapja (üresen: ma)"
 
-#: includes/class-widget-manifest.php:382
+#: includes/class-widget-manifest.php:426
 msgid "Retrograde status"
 msgstr "Retrográd állapot"
 
-#: includes/class-widget-manifest.php:408
+#: includes/class-widget-manifest.php:452
 msgid "Day to start from (blank for today)"
 msgstr "Kezdőnap (üresen: ma)"
 
-#: includes/class-widget-manifest.php:409
+#: includes/class-widget-manifest.php:453
 msgid "Time to start from (HH:MM, blank for midnight)"
 msgstr "Kezdő időpont (HH:MM, üresen: éjfél)"
 
-#: includes/class-widget-manifest.php:411
+#: includes/class-widget-manifest.php:455
 msgid "Days to look ahead (1 to 30, default 7)"
 msgstr "Előretekintett napok száma (1‑30, alapértelmezett 7)"
 
-#: includes/class-widget-manifest.php:416
+#: includes/class-widget-manifest.php:460
 msgid "Yearly horoscope"
 msgstr "Éves horoszkóp"
 
-#: includes/class-widget-manifest.php:417
+#: includes/class-widget-manifest.php:461
 msgid "Any date inside the year (blank for this year)"
 msgstr "Bármely dátum az évben (üresen: az idei év)"
 
-#: includes/class-widget-manifest.php:420
+#: includes/class-widget-manifest.php:464
 msgid "Two signs"
 msgstr "Két jegy"
 
-#: includes/class-widget-manifest.php:422
+#: includes/class-widget-manifest.php:466
 msgid "First sign"
 msgstr "Első jegy"
 
-#: includes/class-widget-manifest.php:423
+#: includes/class-widget-manifest.php:467
 msgid "Second sign"
 msgstr "Második jegy"
 
-#: includes/class-widget-manifest.php:430
+#: includes/class-widget-manifest.php:474
 msgid "One sign against the others (blank for all pairs)"
 msgstr "Egy jegy a többivel szemben (üresen minden pár)"
 
-#: includes/class-widget-manifest.php:430
+#: includes/class-widget-manifest.php:474
 msgid "All pairs"
 msgstr "Minden pár"
 
-#: includes/class-widget-manifest.php:437
+#: includes/class-widget-manifest.php:481
 msgid "Birth date (YYYY-MM-DD)"
 msgstr "Születési dátum (ÉÉÉÉ-HH-NN)"
 
-#: includes/class-widget-manifest.php:438
+#: includes/class-widget-manifest.php:482
 msgid "Birth time (HH:MM, optional)"
 msgstr "Születési idő (HH:MM, nem kötelező)"
 
-#: includes/class-widget-manifest.php:491
+#: includes/class-widget-manifest.php:540
 msgid "Hide sections (comma-separated keys)"
 msgstr "Szakaszok elrejtése (kulcsok vesszővel elválasztva)"
 
-#: includes/class-widget-manifest.php:496
+#: includes/class-widget-manifest.php:545
 msgid "Readings list"
 msgstr "Értelmezések listája"
 
-#: includes/class-widget-manifest.php:498
+#: includes/class-widget-manifest.php:547
 msgid "As the card has it"
 msgstr "Ahogy a kártya meghatározza"
 
-#: includes/class-widget-manifest.php:499
+#: includes/class-widget-manifest.php:548
 msgid "First row open"
 msgstr "Első sor kinyitva"
 
-#: includes/class-widget-manifest.php:500
+#: includes/class-widget-manifest.php:549
 msgid "All rows closed"
 msgstr "Minden sor becsukva"
 
@@ -3891,8 +4097,8 @@ msgstr "Minden sor becsukva"
 msgid ""
 "Paste a shortcode into a page. No account, no key, nothing to configure."
 msgstr ""
-"Illesszen be egy shortcode-ot egy oldalba. Nincs szükség fiókra, kulcsra vagy"
-" beállításra."
+"Illesszen be egy shortcode-ot egy oldalba. Nincs szükség fiókra, kulcsra "
+"vagy beállításra."
 
 #: includes/views/admin-api-key.php:24
 msgid "Tonight's Moon phase. Takes no parameters at all."
@@ -3960,8 +4166,8 @@ msgid ""
 "Every shortcode with its parameters, plus a city search that fills in "
 "coordinates and timezone: %s."
 msgstr ""
-"Minden shortcode a paramétereivel, valamint egy városkereső, amely kitölti a "
-"koordinátákat és az időzónát: %s."
+"Minden shortcode a paramétereivel, valamint egy városkereső, amely kitölti a"
+" koordinátákat és az időzónát: %s."
 
 #: includes/views/admin-api-key.php:145
 msgid ""
@@ -3973,8 +4179,8 @@ msgstr ""
 
 #: includes/views/admin-api-key.php:147
 msgid ""
-"This site is asking api.astroway.info for its own key for the widgets above. "
-"Until then they use the shared allowance."
+"This site is asking api.astroway.info for its own key for the widgets above."
+" Until then they use the shared allowance."
 msgstr ""
 "A webhely saját kulcsot kér az api.astroway.info-tól a fenti widgetekhez. "
 "Addig a közös keretet használják."
@@ -4004,8 +4210,8 @@ msgstr "AstroWay-fiók csatlakoztatása"
 
 #: includes/views/admin-api-key.php:178
 msgid ""
-"Sign in on api.astroway.info, pick a key or create one for this site, and you"
-" are back here. Nothing to copy."
+"Sign in on api.astroway.info, pick a key or create one for this site, and "
+"you are back here. Nothing to copy."
 msgstr ""
 "Jelentkezzen be az api.astroway.info oldalon, válasszon kulcsot vagy hozzon "
 "létre egyet ehhez a webhelyhez, és visszatér ide. Nincs mit másolni."
@@ -4039,8 +4245,8 @@ msgstr "a(z) %s fiókból"
 
 #: includes/views/admin-api-key.php:212
 msgid ""
-"The saved key can no longer be read: the security keys in wp-config.php have "
-"changed since it was saved. Widgets keep working without it. Paste the key "
+"The saved key can no longer be read: the security keys in wp-config.php have"
+" changed since it was saved. Widgets keep working without it. Paste the key "
 "again to restore it."
 msgstr ""
 "A mentett kulcs már nem olvasható: a wp-config.php fájlban található "
@@ -4069,20 +4275,20 @@ msgstr "Mentett kulcs eltávolítása"
 
 #: includes/views/admin-api-key.php:240
 msgid ""
-"Paste a key from api.astroway.info/dashboard, or leave the field empty. Every"
-" widget renders without one. If you do save a key, your server offers it on "
-"the calls behind the page-rendered widgets, so a paid plan counts them "
-"against its own allowance rather than the one this site shares with every "
+"Paste a key from api.astroway.info/dashboard, or leave the field empty. "
+"Every widget renders without one. If you do save a key, your server offers "
+"it on the calls behind the page-rendered widgets, so a paid plan counts them"
+" against its own allowance rather than the one this site shares with every "
 "other anonymous caller. Saving a key also adds the status panel below, and "
 "the key itself is what you use when you call the API from your own code."
 msgstr ""
-"Illesszen be egy kulcsot az api.astroway.info/dashboard oldalról, vagy hagyja"
-" üresen a mezőt. Minden widget kulcs nélkül is megjelenik. Ha kulcsot ment, a"
-" szerver az oldalon megjelenített widgetek mögötti hívások során ezt "
+"Illesszen be egy kulcsot az api.astroway.info/dashboard oldalról, vagy "
+"hagyja üresen a mezőt. Minden widget kulcs nélkül is megjelenik. Ha kulcsot "
+"ment, a szerver az oldalon megjelenített widgetek mögötti hívások során ezt "
 "használja, így a fizetős csomag keretéből kerülnek levonásra a hívások, nem "
-"pedig abból, amelyet ez az oldal oszt meg minden más névtelen felhasználóval."
-" A kulcs mentésével az alábbi állapotpanel is megjelenik, és magát a kulcsot "
-"kell használnia, amikor saját kódjából hívja meg az API-t."
+"pedig abból, amelyet ez az oldal oszt meg minden más névtelen "
+"felhasználóval. A kulcs mentésével az alábbi állapotpanel is megjelenik, és "
+"magát a kulcsot kell használnia, amikor saját kódjából hívja meg az API-t."
 
 #. translators: %s = the constant name, ASTROWAY_API_KEY
 #: includes/views/admin-api-key.php:246
@@ -4157,21 +4363,21 @@ msgid ""
 "and credits shown via legacy fallback."
 msgstr ""
 "Korlátozott adatok: a csatlakoztatott API még nem teszi elérhetővé a "
-"/v1/auth/keys/me végpontot. A csomag és a kreditek a régi módszerrel jelennek"
-" meg."
+"/v1/auth/keys/me végpontot. A csomag és a kreditek a régi módszerrel "
+"jelennek meg."
 
 #: includes/views/admin-api-key.php:399
 msgid ""
-"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid "
-"key above, or clear the field to revert to anonymous mode."
+"The saved key was rejected by api.astroway.info (HTTP 401). Re-paste a valid"
+" key above, or clear the field to revert to anonymous mode."
 msgstr ""
-"Az api.astroway.info elutasította a mentett kulcsot (HTTP 401). Illesszen be "
-"fent egy érvényes kulcsot, vagy ürítse ki a mezőt a névtelen módhoz."
+"Az api.astroway.info elutasította a mentett kulcsot (HTTP 401). Illesszen be"
+" fent egy érvényes kulcsot, vagy ürítse ki a mezőt a névtelen módhoz."
 
 #: includes/views/admin-api-key.php:401
 msgid ""
-"Could not reach api.astroway.info. Network or upstream issue, try again in a "
-"moment."
+"Could not reach api.astroway.info. Network or upstream issue, try again in a"
+" moment."
 msgstr ""
 "Nem sikerült elérni az api.astroway.info címet. Hálózati vagy szolgáltatói "
 "hiba, próbálja újra egy pillanat múlva."
@@ -4278,17 +4484,18 @@ msgstr "prioritás"
 msgid "Spend cap"
 msgstr "Költségkorlát"
 
-#. translators: %s is a link to the canonical pricing page on api.astroway.info
+#. translators: %s is a link to the canonical pricing page on
+#. api.astroway.info
 #: includes/views/admin-api-key.php:481
 #, php-format
 msgid ""
 "Every row below the first one is about calling api.astroway.info from your "
-"own code. The widgets on your pages are not affected by any of it. Canonical "
-"pricing → %s"
+"own code. The widgets on your pages are not affected by any of it. Canonical"
+" pricing → %s"
 msgstr ""
 "Az első sor alatti összes sor arról szól, hogyan hívhatja az "
-"api.astroway.info szolgáltatást a saját kódjából. Az oldalain lévő widgeteket"
-" ez egyáltalán nem érinti. Hivatalos árak → %s"
+"api.astroway.info szolgáltatást a saját kódjából. Az oldalain lévő "
+"widgeteket ez egyáltalán nem érinti. Hivatalos árak → %s"
 
 #: includes/views/admin-api-key.php:492
 msgid "How it works"
@@ -4303,14 +4510,14 @@ msgid ""
 "Your server renders most widgets into the page, counted against this site's "
 "allowance of 300 requests an hour, or against your own plan when a paid key "
 "is saved above. The rest load in a frame against each visitor's own 30, and "
-"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the "
-"visitor's browser, which is no place for your key."
+"those carry the \"Powered by AstroWay\" watermark: a frame is fetched by the"
+" visitor's browser, which is no place for your key."
 msgstr ""
-"A szervere a legtöbb widgetet az oldalba jeleníti meg, ez a webhely óránkénti"
-" 300 kéréses keretébe számít, vagy a saját csomagjába, ha fent fizetős "
-"kulcsot mentett. A többi keretben töltődik be, a látogatók saját 30 kérésének"
-" terhére, és ezeken a \"Powered by AstroWay\" vízjel látható: a keretet a "
-"látogató böngészője tölti be, ahol nincs helye az Ön kulcsának."
+"A szervere a legtöbb widgetet az oldalba jeleníti meg, ez a webhely "
+"óránkénti 300 kéréses keretébe számít, vagy a saját csomagjába, ha fent "
+"fizetős kulcsot mentett. A többi keretben töltődik be, a látogatók saját 30 "
+"kérésének terhére, és ezeken a \"Powered by AstroWay\" vízjel látható: a "
+"keretet a látogató böngészője tölti be, ahol nincs helye az Ön kulcsának."
 
 #: includes/views/admin-api-key.php:500
 msgid "Free key."
@@ -4318,10 +4525,10 @@ msgstr "Ingyenes kulcs."
 
 #: includes/views/admin-api-key.php:501
 msgid ""
-"A personal bucket of 10,000 calls a month for code you write yourself, plus a"
-" dashboard with activity history. It does not change what the shortcodes "
-"render, and the watermark on framed widgets stays: the key is not part of the"
-" frame's address."
+"A personal bucket of 10,000 calls a month for code you write yourself, plus "
+"a dashboard with activity history. It does not change what the shortcodes "
+"render, and the watermark on framed widgets stays: the key is not part of "
+"the frame's address."
 msgstr ""
 "Havi 10 000 hívásos személyes keret a saját maga által írt kódhoz, valamint "
 "vezérlőpult a tevékenységi előzményekkel. Nem változtat azon, amit a "
@@ -4337,15 +4544,15 @@ msgid ""
 "Higher limits and more calls on api.astroway.info, AI-written "
 "interpretations, priority support, and a spend cap against bill spikes. The "
 "page-rendered widgets on this site draw on that plan too, instead of the "
-"shared anonymous allowance. Widgets that need a paid endpoint will say so on "
-"the shortcode; none of the current ones do."
+"shared anonymous allowance. Widgets that need a paid endpoint will say so on"
+" the shortcode; none of the current ones do."
 msgstr ""
 "Magasabb korlátok és több hívás az api.astroway.info szolgáltatásban, "
 "mesterséges intelligenciával írt értelmezések, kiemelt támogatás és "
 "költségkorlát a számlák megugrása ellen. A webhely oldalba megjelenített "
-"widgetjei is ezt a csomagot használják a közös névtelen keret helyett. Ha egy"
-" widgethez fizetős végpont kell, azt a shortcode jelzi; a jelenlegiek közül "
-"egyikhez sem kell."
+"widgetjei is ezt a csomagot használják a közös névtelen keret helyett. Ha "
+"egy widgethez fizetős végpont kell, azt a shortcode jelzi; a jelenlegiek "
+"közül egyikhez sem kell."
 
 #: includes/views/admin-settings.php:17
 msgid "Connection, cache, diagnostics."
@@ -4491,8 +4698,8 @@ msgid ""
 "Matrix is filterable via the `astroway_tier_matrix` filter, so addons can "
 "append their own features."
 msgstr ""
-"A mátrix az `astroway_tier_matrix` szűrővel szűrhető, így a kiegészítők saját"
-" funkciókat is hozzáadhatnak."
+"A mátrix az `astroway_tier_matrix` szűrővel szűrhető, így a kiegészítők "
+"saját funkciókat is hozzáadhatnak."
 
 #: includes/views/admin-settings.php:204
 msgid "Domain binding"
@@ -4516,11 +4723,11 @@ msgstr "Kulcs átkötése"
 #: includes/views/admin-settings.php:232
 #, php-format
 msgid ""
-"Applies immediately. Limited to a few changes per month; the account owner is"
-" emailed. Manage keys at %s."
+"Applies immediately. Limited to a few changes per month; the account owner "
+"is emailed. Manage keys at %s."
 msgstr ""
-"Azonnal érvényesül. Havi néhány módosításra korlátozott; a fiók tulajdonosát "
-"e-mailben értesítik. A kulcsok kezelése itt: %s."
+"Azonnal érvényesül. Havi néhány módosításra korlátozott; a fiók tulajdonosát"
+" e-mailben értesítik. A kulcsok kezelése itt: %s."
 
 #: includes/views/admin-settings.php:245
 msgid "Enter a domain first."
@@ -4556,9 +4763,10 @@ msgstr "Jogi nyilatkozat megjelenítése a beágyazott widgetekben"
 
 #: includes/views/admin-settings.php:287
 msgid ""
-"Appends a short \"informational, not professional advice\" line to the widget"
-" footer. Off by default, enable it if your jurisdiction or compliance policy "
-"requires it. The wording is rendered and localized by api.astroway.info."
+"Appends a short \"informational, not professional advice\" line to the "
+"widget footer. Off by default, enable it if your jurisdiction or compliance "
+"policy requires it. The wording is rendered and localized by "
+"api.astroway.info."
 msgstr ""
 "Egy rövid, „tájékoztató jellegű, nem szakmai tanács” szöveget fűz a widget "
 "láblécéhez. Alapértelmezés szerint ki van kapcsolva; kapcsolja be, ha a "
@@ -4626,9 +4834,9 @@ msgstr "Ezen az oldalon (ajánlott)"
 
 #: includes/views/admin-settings.php:376
 msgid ""
-"Your server fetches the text and prints it into the page. Search engines can "
-"read it, your theme styles it, and it works without JavaScript. Answers are "
-"cached until they change, so a daily horoscope is fetched once a day per "
+"Your server fetches the text and prints it into the page. Search engines can"
+" read it, your theme styles it, and it works without JavaScript. Answers are"
+" cached until they change, so a daily horoscope is fetched once a day per "
 "sign."
 msgstr ""
 "A szervere lekéri a szöveget, és beírja az oldalba. A keresőmotorok "
@@ -4643,15 +4851,15 @@ msgstr "Iframe-ben"
 #: includes/views/admin-settings.php:382
 msgid ""
 "Each visitor's browser loads the widget from api.astroway.info. Nothing "
-"reaches your page source, so the content is not indexed and your theme cannot"
-" style it. Choose this if your host blocks outgoing requests, or to compare "
-"the two."
+"reaches your page source, so the content is not indexed and your theme "
+"cannot style it. Choose this if your host blocks outgoing requests, or to "
+"compare the two."
 msgstr ""
 "Minden látogató böngészője betölti a widgetet az api.astroway.info címről. "
 "Semmi sem jut el az oldal forráskódjába, így a tartalom nem kerül "
 "indexelésre, és a témája sem tudja stílusozni. Válassza ezt, ha a "
-"tárhelyszolgáltatója blokkolja a kimenő kéréseket, vagy ha összehasonlítaná a"
-" kettőt."
+"tárhelyszolgáltatója blokkolja a kimenő kéréseket, vagy ha összehasonlítaná "
+"a kettőt."
 
 #: includes/views/admin-settings.php:386
 msgid ""
@@ -4691,16 +4899,16 @@ msgstr ""
 msgid ""
 "Send a daily email when a planet stations or the Moon goes void of course"
 msgstr ""
-"Napi e-mail küldése, amikor egy bolygó stációba ér vagy a Hold üres járásúvá "
-"válik"
+"Napi e-mail küldése, amikor egy bolygó stációba ér vagy a Hold üres járásúvá"
+" válik"
 
 #: includes/views/admin-settings.php:415
 msgid ""
-"Nothing is sent on the quiet days. The mail that does go out carries the moon"
-" phase and the current retrogrades as context."
+"Nothing is sent on the quiet days. The mail that does go out carries the "
+"moon phase and the current retrogrades as context."
 msgstr ""
-"A csendes napokon nem megy ki semmi. A kiküldött levél háttérként tartalmazza"
-" a holdfázist és az aktuális retrográd bolygókat."
+"A csendes napokon nem megy ki semmi. A kiküldött levél háttérként "
+"tartalmazza a holdfázist és az aktuális retrográd bolygókat."
 
 #: includes/views/admin-settings.php:420
 msgid "Hour to send, on your site clock"
@@ -4749,8 +4957,8 @@ msgstr "Látogatók hozzájárulásának kérése az űrlap elküldése előtt"
 
 #: includes/views/admin-settings.php:464
 msgid ""
-"Adds a required checkbox to the birth chart, compatibility, moon sign, rising"
-" sign, Human Design and numerology forms. Off by default."
+"Adds a required checkbox to the birth chart, compatibility, moon sign, "
+"rising sign, Human Design and numerology forms. Off by default."
 msgstr ""
 "Kötelező jelölőnégyzetet ad a születési képlet, az összeillés, a Hold-jegy, "
 "az aszcendens, a Human Design és a számmisztika űrlapjához. Alapértelmezés "
@@ -4870,8 +5078,8 @@ msgstr ""
 
 #: includes/views/partials/admin-channel-b-status.php:37
 msgid ""
-"Updates are delivered through the WordPress.org plugin directory. To activate"
-" Channel B for paid-tier delivery, add a paid API key above."
+"Updates are delivered through the WordPress.org plugin directory. To "
+"activate Channel B for paid-tier delivery, add a paid API key above."
 msgstr ""
 "A frissítések a WordPress.org bővítménytárán keresztül érhetők el. A B "
 "csatorna fizetős szolgáltatásként való aktiválásához adjon meg fent egy "
@@ -4995,7 +5203,12 @@ msgstr ""
 #: includes/views/partials/shortcode-cards.php:162
 #: includes/views/partials/shortcode-cards.php:200
 #: includes/views/partials/shortcode-cards.php:241
-#: includes/views/partials/shortcode-cards.php:423
+#: includes/views/partials/shortcode-cards.php:345
+#: includes/views/partials/shortcode-cards.php:360
+#: includes/views/partials/shortcode-cards.php:374
+#: includes/views/partials/shortcode-cards.php:389
+#: includes/views/partials/shortcode-cards.php:404
+#: includes/views/partials/shortcode-cards.php:496
 msgid "Birth date in YYYY-MM-DD."
 msgstr "Születési dátum ÉÉÉÉ-HH-NN formátumban."
 
@@ -5005,6 +5218,11 @@ msgstr "Születési dátum ÉÉÉÉ-HH-NN formátumban."
 #: includes/views/partials/shortcode-cards.php:127
 #: includes/views/partials/shortcode-cards.php:163
 #: includes/views/partials/shortcode-cards.php:201
+#: includes/views/partials/shortcode-cards.php:346
+#: includes/views/partials/shortcode-cards.php:361
+#: includes/views/partials/shortcode-cards.php:375
+#: includes/views/partials/shortcode-cards.php:390
+#: includes/views/partials/shortcode-cards.php:405
 msgid "Birth time in HH:MM (24-hour)."
 msgstr "Születési idő HH:MM (24 órás)."
 
@@ -5029,12 +5247,12 @@ msgstr "Név megjelenítése a charton."
 #: includes/views/partials/shortcode-cards.php:28
 msgid ""
 "Palette of the wheel drawing: light (default), dark or console. The text "
-"beside it follows your theme on its own; the wheel is an image and cannot, so"
-" set this to match."
+"beside it follows your theme on its own; the wheel is an image and cannot, "
+"so set this to match."
 msgstr ""
-"A kerékrajz palettája: light (alapértelmezett), dark vagy console. A mellette"
-" lévő szöveg magától követi a témát; a kerék kép, ezért nem, így ezt állítsa "
-"be hozzá illően."
+"A kerékrajz palettája: light (alapértelmezett), dark vagy console. A "
+"mellette lévő szöveg magától követi a témát; a kerék kép, ezért nem, így ezt"
+" állítsa be hozzá illően."
 
 #: includes/views/partials/shortcode-cards.php:33
 msgid "Daily Horoscope"
@@ -5063,20 +5281,21 @@ msgid ""
 "Which period tabs the card shows: any of day, week, month, comma separated. "
 "All three by default; periods=\"day\" gives a single card."
 msgstr ""
-"Mely időszak-füleket mutassa a kártya: day, week, month bármelyike, vesszővel"
-" elválasztva. Alapból mindhárom; periods=\"day\" egyetlen kártyát ad."
+"Mely időszak-füleket mutassa a kártya: day, week, month bármelyike, "
+"vesszővel elválasztva. Alapból mindhárom; periods=\"day\" egyetlen kártyát "
+"ad."
 
 #: includes/views/partials/shortcode-cards.php:40
 #: includes/views/partials/shortcode-cards.php:52
 #: includes/views/partials/shortcode-cards.php:65
 msgid ""
 "switch=\"no\" pins the card to these attributes. By default the visitor can "
-"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to the"
-" page URL."
+"pick another sign or step the date, which adds ?aw_sign= and ?aw_date= to "
+"the page URL."
 msgstr ""
 "switch=\"no\" ezekhez az attribútumokhoz rögzíti a kártyát. Alapból a "
-"látogató másik jegyet választhat vagy léptetheti a dátumot, ami ?aw_sign= és "
-"?aw_date= paramétert tesz az oldal címébe."
+"látogató másik jegyet választhat vagy léptetheti a dátumot, ami ?aw_sign= és"
+" ?aw_date= paramétert tesz az oldal címébe."
 
 #: includes/views/partials/shortcode-cards.php:45
 msgid "Weekly Horoscope"
@@ -5100,8 +5319,8 @@ msgstr "Havi horoszkóp"
 
 #: includes/views/partials/shortcode-cards.php:59
 msgid ""
-"Horoscope for the current month, anchored to the 1st. Rendered into the page,"
-" not an iframe."
+"Horoscope for the current month, anchored to the 1st. Rendered into the "
+"page, not an iframe."
 msgstr ""
 "Horoszkóp az aktuális hónapra, a hónap 1. napjához rögzítve. Az oldalba "
 "renderelve, nem iframe-be."
@@ -5120,14 +5339,14 @@ msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes. "
 "Rendered into the page, not an iframe."
 msgstr ""
-"A hét napjának hagyományos bolygóuralkodója, jelével és témáival. Az oldalba "
-"megjelenítve, nem iframe-ben."
+"A hét napjának hagyományos bolygóuralkodója, jelével és témáival. Az oldalba"
+" megjelenítve, nem iframe-ben."
 
 #: includes/views/partials/shortcode-cards.php:76
 #: includes/views/partials/shortcode-cards.php:86
 #: includes/views/partials/shortcode-cards.php:215
 #: includes/views/partials/shortcode-cards.php:226
-#: includes/views/partials/shortcode-cards.php:390
+#: includes/views/partials/shortcode-cards.php:463
 msgid "Override date in YYYY-MM-DD. Defaults to today."
 msgstr "Dátum felülírása ÉÉÉÉ-HH-NN formátumban. Alapértelmezés szerint ma."
 
@@ -5148,13 +5367,18 @@ msgid ""
 "The bodygraph drawing, with type, strategy, authority, profile and the "
 "defined centres as text beside it."
 msgstr ""
-"A testgrafikon rajza, mellette szövegként a típus, a stratégia, az autoritás,"
-" a profil és a definiált centrumok."
+"A testgrafikon rajza, mellette szövegként a típus, a stratégia, az "
+"autoritás, a profil és a definiált centrumok."
 
 #: includes/views/partials/shortcode-cards.php:98
 #: includes/views/partials/shortcode-cards.php:164
 #: includes/views/partials/shortcode-cards.php:202
 #: includes/views/partials/shortcode-cards.php:227
+#: includes/views/partials/shortcode-cards.php:347
+#: includes/views/partials/shortcode-cards.php:362
+#: includes/views/partials/shortcode-cards.php:376
+#: includes/views/partials/shortcode-cards.php:391
+#: includes/views/partials/shortcode-cards.php:406
 msgid "WGS-84 latitude."
 msgstr "WGS-84 szélesség."
 
@@ -5164,7 +5388,12 @@ msgstr "WGS-84 szélesség."
 #: includes/views/partials/shortcode-cards.php:165
 #: includes/views/partials/shortcode-cards.php:203
 #: includes/views/partials/shortcode-cards.php:228
-#: includes/views/partials/shortcode-cards.php:389
+#: includes/views/partials/shortcode-cards.php:348
+#: includes/views/partials/shortcode-cards.php:363
+#: includes/views/partials/shortcode-cards.php:377
+#: includes/views/partials/shortcode-cards.php:392
+#: includes/views/partials/shortcode-cards.php:407
+#: includes/views/partials/shortcode-cards.php:462
 msgid "WGS-84 longitude."
 msgstr "WGS-84 hosszúság."
 
@@ -5193,7 +5422,8 @@ msgstr ""
 
 #: includes/views/partials/shortcode-cards.php:113
 msgid ""
-"WGS-84 latitude. Only affects the house shown; the sign is the same anywhere."
+"WGS-84 latitude. Only affects the house shown; the sign is the same "
+"anywhere."
 msgstr ""
 "WGS-84 szélesség. Csak a megjelenített házat befolyásolja; a jegy mindenhol "
 "ugyanaz."
@@ -5220,8 +5450,8 @@ msgid ""
 "WGS-84 latitude. Without it the card renders nothing rather than the wrong "
 "horizon."
 msgstr ""
-"WGS-84 szélesség. Nélküle a kártya inkább semmit sem jelenít meg, mint rossz "
-"horizontot."
+"WGS-84 szélesség. Nélküle a kártya inkább semmit sem jelenít meg, mint rossz"
+" horizontot."
 
 #: includes/views/partials/shortcode-cards.php:136
 msgid "Daily Tarot Card"
@@ -5236,9 +5466,9 @@ msgid ""
 "Deck slug: rider-waite (default), marseille, or lenormand. Only rider-waite "
 "renders into the page; the other two load in a frame."
 msgstr ""
-"A pakli azonosítója: rider-waite (alapértelmezett), marseille vagy lenormand."
-" Csak a rider-waite jelenik meg az oldalban; a másik kettő keretben töltődik "
-"be."
+"A pakli azonosítója: rider-waite (alapértelmezett), marseille vagy "
+"lenormand. Csak a rider-waite jelenik meg az oldalban; a másik kettő "
+"keretben töltődik be."
 
 #: includes/views/partials/shortcode-cards.php:146
 msgid "Tarot Spread of the Day"
@@ -5250,8 +5480,8 @@ msgid ""
 "site, each card read in its position. Rendered into the page; no key needed."
 msgstr ""
 "Múlt, jelen és jövő, vagy a Kelta kereszt, naponta egyszer húzva ennek az "
-"oldalnak; minden kártya a saját helyén értelmezve. Az oldalba renderelve; nem"
-" kell kulcs."
+"oldalnak; minden kártya a saját helyén értelmezve. Az oldalba renderelve; "
+"nem kell kulcs."
 
 #: includes/views/partials/shortcode-cards.php:151
 msgid ""
@@ -5263,8 +5493,8 @@ msgstr ""
 
 #: includes/views/partials/shortcode-cards.php:152
 msgid ""
-"yes (default) shows a Draw again button that deals the visitor a new spread, "
-"not kept or cached; no hides it."
+"yes (default) shows a Draw again button that deals the visitor a new spread,"
+" not kept or cached; no hides it."
 msgstr ""
 "A yes (alapértelmezett) \"Újrahúzás\" gombot mutat, amely új kirakást ad a "
 "látogatónak, ezt nem menti és nem gyorsítótárazza; a no elrejti."
@@ -5296,8 +5526,8 @@ msgstr "Havi előrejelzés"
 msgid ""
 "Four weeks ahead for one sign, each with its own theme. Loads in a frame."
 msgstr ""
-"Négy hét előre egy jegyhez, mindegyik héten saját témával. Keretben töltődik "
-"be."
+"Négy hét előre egy jegyhez, mindegyik héten saját témával. Keretben töltődik"
+" be."
 
 #: includes/views/partials/shortcode-cards.php:184
 msgid "Moon Transit Timeline"
@@ -5307,8 +5537,8 @@ msgstr "A Hold tranzit-idővonala"
 msgid ""
 "The next seven days of Moon ingresses. Not sign-specific. Loads in a frame."
 msgstr ""
-"A Hold jegyváltásai a következő hét napban. Nem jegyfüggő. Keretben töltődik "
-"be."
+"A Hold jegyváltásai a következő hét napban. Nem jegyfüggő. Keretben töltődik"
+" be."
 
 #: includes/views/partials/shortcode-cards.php:189
 msgid "Day the seven start from. Defaults to today."
@@ -5365,8 +5595,8 @@ msgstr "Jegyek összeillési mátrixa"
 
 #: includes/views/partials/shortcode-cards.php:249
 msgid ""
-"Every pair of signs by its classical relation, or one sign against the other "
-"eleven. Rendered into the page; no key needed."
+"Every pair of signs by its classical relation, or one sign against the other"
+" eleven. Rendered into the page; no key needed."
 msgstr ""
 "Minden jegypár a klasszikus viszonya szerint, vagy egy jegy a másik "
 "tizeneggyel szemben. Az oldalba renderelve; nem kell kulcs."
@@ -5443,8 +5673,8 @@ msgstr "Második személy: név a táblázat fejlécéhez."
 
 #: includes/views/partials/shortcode-cards.php:275
 msgid ""
-"How many aspects the table holds, 1 to 20. Six by default, which is what the "
-"frame version showed."
+"How many aspects the table holds, 1 to 20. Six by default, which is what the"
+" frame version showed."
 msgstr ""
 "Hány fényszöget tartalmaz a táblázat, 1-től 20-ig. Alapértelmezés szerint "
 "hatot, ahogy a keretes változat is."
@@ -5455,9 +5685,9 @@ msgstr "Szolárhoroszkóp"
 
 #: includes/views/partials/shortcode-cards.php:282
 msgid ""
-"The chart of the moment the Sun returns to its birth position in a year, with"
-" houses and aspects. Without a date it asks the visitor. Needs a site key or "
-"an API key; on an API key each new chart costs 50 credits."
+"The chart of the moment the Sun returns to its birth position in a year, "
+"with houses and aspects. Without a date it asks the visitor. Needs a site "
+"key or an API key; on an API key each new chart costs 50 credits."
 msgstr ""
 "Annak a pillanatnak a horoszkópja, amikor a Nap egy adott évben visszatér "
 "születési helyzetébe, házakkal és fényszögekkel. Dátum nélkül megkérdezi a "
@@ -5471,7 +5701,8 @@ msgstr ""
 "Születési dátum ÉÉÉÉ-HH-NN formátumban. Ha kimarad, a látogató űrlapot kap."
 
 #: includes/views/partials/shortcode-cards.php:287
-msgid "Birth time in HH:MM. Required with a date: houses turn with the minute."
+msgid ""
+"Birth time in HH:MM. Required with a date: houses turn with the minute."
 msgstr ""
 "Születési idő HH:MM formátumban. Dátummal együtt kötelező: a házak percről "
 "percre változnak."
@@ -5491,7 +5722,8 @@ msgstr "A születési hely hosszúsága."
 msgid ""
 "IANA timezone or UTC offset of the birth; blank looks it up from the place."
 msgstr ""
-"A születés IANA időzónája vagy UTC-eltolása; üresen a hely alapján keresi ki."
+"A születés IANA időzónája vagy UTC-eltolása; üresen a hely alapján keresi "
+"ki."
 
 #: includes/views/partials/shortcode-cards.php:291
 msgid "Year of the return. Blank for the one in force now."
@@ -5524,8 +5756,8 @@ msgstr "Név a fejléchez."
 
 #: includes/views/partials/shortcode-cards.php:301
 msgid ""
-"The chart of the next moment the Moon returns to its birth position. Without "
-"a date it asks the visitor. Needs a site key or an API key; on an API key "
+"The chart of the next moment the Moon returns to its birth position. Without"
+" a date it asks the visitor. Needs a site key or an API key; on an API key "
 "each new chart costs 50 credits."
 msgstr ""
 "A következő pillanat horoszkópja, amikor a Hold visszatér születési "
@@ -5541,8 +5773,8 @@ msgid ""
 "The first return after this date, YYYY-MM-DD. Blank for the 1st of this "
 "month, so the card holds for the month."
 msgstr ""
-"Az első visszatérés e dátum után, ÉÉÉÉ-HH-NN. Üresen a hónap 1. napja, így a "
-"kártya az egész hónapra érvényes."
+"Az első visszatérés e dátum után, ÉÉÉÉ-HH-NN. Üresen a hónap 1. napja, így a"
+" kártya az egész hónapra érvényes."
 
 #: includes/views/partials/shortcode-cards.php:319
 msgid "Davison Chart"
@@ -5550,19 +5782,19 @@ msgstr "Davison-horoszkóp"
 
 #: includes/views/partials/shortcode-cards.php:320
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and "
-"place. Without dates it asks the visitor for both. Needs a site key or an API"
-" key; on an API key each new chart costs 50 credits."
+"One chart for a couple, cast for the midpoint between two births in time and"
+" place. Without dates it asks the visitor for both. Needs a site key or an "
+"API key; on an API key each new chart costs 50 credits."
 msgstr ""
-"Egyetlen horoszkóp egy párnak, két születés időbeli és térbeli felezőpontjára"
-" felállítva. Dátumok nélkül mindkettőt megkérdezi a látogatótól. Webhelykulcs"
-" vagy API-kulcs kell hozzá; API-kulccsal minden új horoszkóp 50 kreditbe "
-"kerül."
+"Egyetlen horoszkóp egy párnak, két születés időbeli és térbeli "
+"felezőpontjára felállítva. Dátumok nélkül mindkettőt megkérdezi a "
+"látogatótól. Webhelykulcs vagy API-kulcs kell hozzá; API-kulccsal minden új "
+"horoszkóp 50 kreditbe kerül."
 
 #: includes/views/partials/shortcode-cards.php:324
 msgid ""
-"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor "
-"gets a form."
+"First person: birth date in YYYY-MM-DD. Leave both dates out and the visitor"
+" gets a form."
 msgstr ""
 "Első személy: születési dátum ÉÉÉÉ-HH-NN formátumban. Ha mindkét dátum "
 "kimarad, a látogató űrlapot kap."
@@ -5608,10 +5840,93 @@ msgid "Second person: name for the heading."
 msgstr "Második személy: név a fejléchez."
 
 #: includes/views/partials/shortcode-cards.php:340
+msgid "Vimshottari Dasha"
+msgstr "Vimshottari Dasha"
+
+#: includes/views/partials/shortcode-cards.php:341
+msgid ""
+"The running mahadasha and antardasha, with the nine antardashas of the "
+"mahadasha; timeline=\"1\" adds all nine mahadashas. Drawn into the page. "
+"Needs a site key or an API key."
+msgstr ""
+"A jelenlegi mahadasha és antardasha, valamint a mahadasha kilenc "
+"antardashája; a „timeline=1” beállítás mind a kilenc mahadashát hozzáadja. "
+"Az oldalra rajzolva. Webhelykulcsra vagy API-kulcsra van szükség."
+
+#: includes/views/partials/shortcode-cards.php:349
+#: includes/views/partials/shortcode-cards.php:364
+#: includes/views/partials/shortcode-cards.php:378
+#: includes/views/partials/shortcode-cards.php:393
+#: includes/views/partials/shortcode-cards.php:408
+msgid "IANA timezone; blank looks it up from the place."
+msgstr ""
+"IANA időzóna; ha üres, akkor a rendszer a helyszín alapján határozza meg."
+
+#: includes/views/partials/shortcode-cards.php:350
+msgid "1 to list all nine mahadashas from birth."
+msgstr "1. A születéskor kezdődő mind a kilenc mahadasha felsorolása."
+
+#: includes/views/partials/shortcode-cards.php:356
+msgid ""
+"The ninth-part chart: its Lagna and the grahas by sign and house. Drawn into"
+" the page. Needs a site key or an API key."
+msgstr ""
+"A kilencedik rész diagramja: a Lagna, valamint a grahák jelek és házak "
+"szerinti elrendezése. Az oldalra rajzolva. Ehhez webhelykulcsra vagy API-"
+"kulcsra van szükség."
+
+#: includes/views/partials/shortcode-cards.php:369
+msgid "Secondary Progressions"
+msgstr "Másodlagos progressziók"
+
+#: includes/views/partials/shortcode-cards.php:370
+msgid ""
+"The progressed Sun, Moon and Ascendant, every progressed planet and their "
+"aspects, for today. Drawn into the page. Needs an API key; each new chart "
+"costs 50 credits."
+msgstr ""
+"A Nap, a Hold és az Aszcendens progressziói, valamint minden progressziós "
+"bolygó és azok aspektusai a mai napra vonatkozóan. Az oldalra rajzolva. API-"
+"kulcs szükséges; minden új horoszkóp 50 kreditbe kerül."
+
+#: includes/views/partials/shortcode-cards.php:379
+msgid "Progress to this date in YYYY-MM-DD instead of today."
+msgstr "A mai nap helyett az YYYY-MM-DD-ig elért előrehaladás."
+
+#: includes/views/partials/shortcode-cards.php:384
+msgid "Harmonic Chart"
+msgstr "Harmonikus diagram"
+
+#: includes/views/partials/shortcode-cards.php:385
+msgid ""
+"The natal wheel with every longitude multiplied by the harmonic, and its "
+"planets. Drawn into the page. Needs an API key."
+msgstr ""
+"A születési horoszkóp, amelyben minden hosszfokot megszoroztak a harmonikus "
+"értékkel, valamint a benne szereplő bolygók. Az oldalra rajzolva. API-"
+"kulcsra van szükség."
+
+#: includes/views/partials/shortcode-cards.php:394
+msgid "Harmonic from 2 to 180; 5 by default."
+msgstr "Harmonikus: 2–180; alapértelmezés szerint 5."
+
+#: includes/views/partials/shortcode-cards.php:399
+msgid "Fixed Stars"
+msgstr "Állandó csillagok"
+
+#: includes/views/partials/shortcode-cards.php:400
+msgid ""
+"Natal planets in conjunction with 36 bright fixed stars, within a degree, "
+"closest first. Drawn into the page. Needs an API key."
+msgstr ""
+"Születési bolygók konjunkcióban 36 fényes fix csillaggal, egy fokon belül, "
+"legközelebbi először. Az oldalba rajzolva. API-kulcs szükséges."
+
+#: includes/views/partials/shortcode-cards.php:413
 msgid "Mercury Retrograde"
 msgstr "Merkúr retrográd"
 
-#: includes/views/partials/shortcode-cards.php:341
+#: includes/views/partials/shortcode-cards.php:414
 msgid ""
 "Whether Mercury is retrograde right now, since when, and until when. Use "
 "[astroway_retrograde planet=\"venus\"] for any of the other seven that "
@@ -5620,31 +5935,31 @@ msgstr ""
 "Retrográd-e most a Merkúr, mióta és meddig. A többi hét stációba érő "
 "bolygóhoz használja az [astroway_retrograde planet=\"venus\"] shortcode-ot."
 
-#: includes/views/partials/shortcode-cards.php:345
-#: includes/views/partials/shortcode-cards.php:365
+#: includes/views/partials/shortcode-cards.php:418
+#: includes/views/partials/shortcode-cards.php:438
 msgid "Language code. Defaults to the site locale."
 msgstr "Nyelvkód. Alapértelmezés szerint a webhely nyelve."
 
-#: includes/views/partials/shortcode-cards.php:350
+#: includes/views/partials/shortcode-cards.php:423
 msgid "Retrograde Status"
 msgstr "Retrográd állapot"
 
-#: includes/views/partials/shortcode-cards.php:351
+#: includes/views/partials/shortcode-cards.php:424
 msgid "The same card for any planet that stations."
 msgstr "Ugyanez a kártya bármely stációba érő bolygóhoz."
 
-#: includes/views/partials/shortcode-cards.php:355
+#: includes/views/partials/shortcode-cards.php:428
 msgid ""
 "mercury (default), venus, mars, jupiter, saturn, uranus, neptune or pluto."
 msgstr ""
-"mercury (alapértelmezett), venus, mars, jupiter, saturn, uranus, neptune vagy"
-" pluto."
+"mercury (alapértelmezett), venus, mars, jupiter, saturn, uranus, neptune "
+"vagy pluto."
 
-#: includes/views/partials/shortcode-cards.php:360
+#: includes/views/partials/shortcode-cards.php:433
 msgid "Retrograde Planets"
 msgstr "Retrográd bolygók"
 
-#: includes/views/partials/shortcode-cards.php:361
+#: includes/views/partials/shortcode-cards.php:434
 msgid ""
 "All eight planets that station, each with its status today and the dates of "
 "the retrograde it is in or heading for."
@@ -5652,41 +5967,42 @@ msgstr ""
 "Mind a nyolc stációba érő bolygó, mindegyik a mai állapotával és annak a "
 "retrográd szakasznak a dátumaival, amelyben van vagy amely felé tart."
 
-#: includes/views/partials/shortcode-cards.php:370
+#: includes/views/partials/shortcode-cards.php:443
 msgid "Void of Course Moon"
 msgstr "Üres járású Hold"
 
-#: includes/views/partials/shortcode-cards.php:371
+#: includes/views/partials/shortcode-cards.php:444
 msgid ""
-"Whether the Moon is void of course now, and the windows around it with their "
-"last aspect and next sign."
+"Whether the Moon is void of course now, and the windows around it with their"
+" last aspect and next sign."
 msgstr ""
 "Üres járású-e most a Hold, és a körülötte lévő időszakok az utolsó "
 "fényszöggel és a következő jeggyel."
 
-#: includes/views/partials/shortcode-cards.php:375
+#: includes/views/partials/shortcode-cards.php:448
 msgid "Day to start from in YYYY-MM-DD. Defaults to today."
 msgstr "Kezdőnap ÉÉÉÉ-HH-NN formátumban. Alapértelmezés szerint ma."
 
-#: includes/views/partials/shortcode-cards.php:376
+#: includes/views/partials/shortcode-cards.php:449
 msgid "Time to start from in HH:MM. Defaults to midnight."
 msgstr "Kezdő időpont HH:MM formátumban. Alapértelmezés szerint éjfél."
 
-#: includes/views/partials/shortcode-cards.php:377
-#: includes/views/partials/shortcode-cards.php:391
-#: includes/views/partials/shortcode-cards.php:425
+#: includes/views/partials/shortcode-cards.php:450
+#: includes/views/partials/shortcode-cards.php:464
+#: includes/views/partials/shortcode-cards.php:498
 msgid "Hours from UTC. Defaults to the site timezone."
-msgstr "Eltérés az UTC-től órában. Alapértelmezés szerint a webhely időzónája."
+msgstr ""
+"Eltérés az UTC-től órában. Alapértelmezés szerint a webhely időzónája."
 
-#: includes/views/partials/shortcode-cards.php:378
+#: includes/views/partials/shortcode-cards.php:451
 msgid "How far ahead to look, 1 to 30. Defaults to 7."
 msgstr "Hány napra előre, 1 és 30 között. Alapértelmezés szerint 7."
 
-#: includes/views/partials/shortcode-cards.php:383
+#: includes/views/partials/shortcode-cards.php:456
 msgid "Planetary Hours"
 msgstr "Bolygóórák"
 
-#: includes/views/partials/shortcode-cards.php:384
+#: includes/views/partials/shortcode-cards.php:457
 msgid ""
 "The twenty-four planetary hours of a day at one place, with the hour the "
 "reader is in marked."
@@ -5694,63 +6010,63 @@ msgstr ""
 "Egy nap huszonnégy bolygóórája egy helyen, az éppen aktuális óra "
 "kiemelésével."
 
-#: includes/views/partials/shortcode-cards.php:388
+#: includes/views/partials/shortcode-cards.php:461
 msgid "WGS-84 latitude. The hours are the day divided by this horizon."
 msgstr "WGS-84 szélesség. Az órák a napot e horizont szerint osztják fel."
 
-#: includes/views/partials/shortcode-cards.php:396
+#: includes/views/partials/shortcode-cards.php:469
 msgid "Yearly Horoscope"
 msgstr "Éves horoszkóp"
 
-#: includes/views/partials/shortcode-cards.php:397
+#: includes/views/partials/shortcode-cards.php:470
 msgid ""
-"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], the"
-" name it had as a generated shortcode."
+"The year ahead for one sign. Also answers to [astroway_horoscope_yearly], "
+"the name it had as a generated shortcode."
 msgstr ""
-"Az előttünk álló év egy jegy számára. Az [astroway_horoscope_yearly] néven is"
-" működik, amely generált shortcode-ként a régi neve volt."
+"Az előttünk álló év egy jegy számára. Az [astroway_horoscope_yearly] néven "
+"is működik, amely generált shortcode-ként a régi neve volt."
 
-#: includes/views/partials/shortcode-cards.php:401
+#: includes/views/partials/shortcode-cards.php:474
 msgid "Zodiac sign in English, lowercase."
 msgstr "Csillagjegy angolul, kisbetűvel."
 
-#: includes/views/partials/shortcode-cards.php:402
+#: includes/views/partials/shortcode-cards.php:475
 msgid "Any date inside the year. Defaults to this year."
 msgstr "Bármely dátum az évben. Alapértelmezés szerint a jelenlegi év."
 
-#: includes/views/partials/shortcode-cards.php:407
+#: includes/views/partials/shortcode-cards.php:480
 msgid "Zodiac Compatibility"
 msgstr "Zodiákus kompatibilitás"
 
-#: includes/views/partials/shortcode-cards.php:408
+#: includes/views/partials/shortcode-cards.php:481
 msgid ""
-"How two signs read together. Prose, not a percentage: the endpoint returns no"
-" score and inventing one would be a number with no calculation behind it."
+"How two signs read together. Prose, not a percentage: the endpoint returns "
+"no score and inventing one would be a number with no calculation behind it."
 msgstr ""
 "Hogyan olvasható két jegy együtt. Szöveg, nem százalék: a végpont nem ad "
 "pontszámot, és egy kitalált szám mögött nem lenne számítás."
 
-#: includes/views/partials/shortcode-cards.php:412
+#: includes/views/partials/shortcode-cards.php:485
 msgid "First sign in English, lowercase."
 msgstr "Első jegy angolul, kisbetűvel."
 
-#: includes/views/partials/shortcode-cards.php:413
+#: includes/views/partials/shortcode-cards.php:486
 msgid "Second sign in English, lowercase."
 msgstr "Második jegy angolul, kisbetűvel."
 
-#: includes/views/partials/shortcode-cards.php:418
+#: includes/views/partials/shortcode-cards.php:491
 msgid "Chinese Zodiac"
 msgstr "Kínai zodiákus"
 
-#: includes/views/partials/shortcode-cards.php:419
+#: includes/views/partials/shortcode-cards.php:492
 msgid ""
 "The animal of a birth year with its element, polarity and pillar. A birth "
 "time sharpens the answer at the turn of the year."
 msgstr ""
-"Egy születési év állata az elemével, polaritásával és oszlopával. A születési"
-" idő pontosítja a választ az évfordulón."
+"Egy születési év állata az elemével, polaritásával és oszlopával. A "
+"születési idő pontosítja a választ az évfordulón."
 
-#: includes/views/partials/shortcode-cards.php:424
+#: includes/views/partials/shortcode-cards.php:497
 msgid "Birth time in HH:MM."
 msgstr "Születési idő HH:MM formátumban."
 
@@ -5822,19 +6138,21 @@ msgstr "horoszkóp"
 #: blocks/astrology-section/block.json blocks/bodygraph/block.json
 #: blocks/chinese-zodiac/block.json blocks/compatibility-matrix/block.json
 #: blocks/daily-horoscope/block.json blocks/daily-tarot/block.json
-#: blocks/davison/block.json blocks/kundli/block.json
-#: blocks/lunar-return/block.json blocks/mini-chart/block.json
-#: blocks/monthly-forecast/block.json blocks/monthly-horoscope/block.json
-#: blocks/moon-phase/block.json blocks/moon-sign/block.json
-#: blocks/moon-voc/block.json blocks/natal-chart/block.json
+#: blocks/dasha/block.json blocks/davison/block.json
+#: blocks/fixed-stars/block.json blocks/harmonics/block.json
+#: blocks/kundli/block.json blocks/lunar-return/block.json
+#: blocks/mini-chart/block.json blocks/monthly-forecast/block.json
+#: blocks/monthly-horoscope/block.json blocks/moon-phase/block.json
+#: blocks/moon-sign/block.json blocks/moon-voc/block.json
+#: blocks/natal-chart/block.json blocks/navamsa/block.json
 #: blocks/numerology/block.json blocks/panchang/block.json
 #: blocks/planet-of-day/block.json blocks/planetary-hours/block.json
-#: blocks/retrograde/block.json blocks/retrogrades/block.json
-#: blocks/rising-sign/block.json blocks/solar-return/block.json
-#: blocks/synastry/block.json blocks/tarot-spread/block.json
-#: blocks/transit-timeline/block.json blocks/transit/block.json
-#: blocks/weekly-horoscope/block.json blocks/yearly-horoscope/block.json
-#: blocks/zodiac-compatibility/block.json
+#: blocks/progressions/block.json blocks/retrograde/block.json
+#: blocks/retrogrades/block.json blocks/rising-sign/block.json
+#: blocks/solar-return/block.json blocks/synastry/block.json
+#: blocks/tarot-spread/block.json blocks/transit-timeline/block.json
+#: blocks/transit/block.json blocks/weekly-horoscope/block.json
+#: blocks/yearly-horoscope/block.json blocks/zodiac-compatibility/block.json
 msgctxt "block keyword"
 msgid "astroway"
 msgstr "astroway"
@@ -5860,10 +6178,10 @@ msgctxt "block keyword"
 msgid "bodygraph"
 msgstr "testgrafikon"
 
-#: blocks/bodygraph/block.json blocks/kundli/block.json
-#: blocks/mini-chart/block.json blocks/moon-sign/block.json
-#: blocks/natal-chart/block.json blocks/rising-sign/block.json
-#: blocks/synastry/block.json
+#: blocks/bodygraph/block.json blocks/harmonics/block.json
+#: blocks/kundli/block.json blocks/mini-chart/block.json
+#: blocks/moon-sign/block.json blocks/natal-chart/block.json
+#: blocks/rising-sign/block.json blocks/synastry/block.json
 msgctxt "block keyword"
 msgid "natal"
 msgstr "születési"
@@ -5964,6 +6282,43 @@ msgctxt "block description"
 msgid "Single-card daily Tarot draw with interpretation."
 msgstr "Napi egykártyás tarothúzás értelmezéssel."
 
+#: blocks/dasha/block.json
+msgctxt "block title"
+msgid "Vimshottari Dasha (AstroWay)"
+msgstr "Vimshottari Dasha (AstroWay)"
+
+#: blocks/dasha/block.json
+msgctxt "block keyword"
+msgid "dasha"
+msgstr "dasha"
+
+#: blocks/dasha/block.json
+msgctxt "block keyword"
+msgid "vimshottari"
+msgstr "vimshottari"
+
+#: blocks/dasha/block.json blocks/kundli/block.json blocks/navamsa/block.json
+#: blocks/panchang/block.json
+msgctxt "block keyword"
+msgid "vedic"
+msgstr "védikus"
+
+#: blocks/dasha/block.json blocks/kundli/block.json blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "jyotish"
+msgstr "jyotish"
+
+#: blocks/dasha/block.json
+msgctxt "block description"
+msgid ""
+"The running Vimshottari mahadasha and antardasha with the nine sub-periods, "
+"drawn into the page; timeline adds all nine mahadashas. Needs a site key or "
+"an API key."
+msgstr ""
+"Az aktuális Vimshottari mahadasha és antardasha a kilenc alperiódussal, az "
+"oldalra ábrázolva; az idővonal mind a kilenc mahadashát tartalmazza. Ehhez "
+"webhelykulcsra vagy API-kulcsra van szükség."
+
 #: blocks/davison/block.json
 msgctxt "block title"
 msgid "Davison Chart (AstroWay)"
@@ -5987,13 +6342,77 @@ msgstr "kompozit"
 #: blocks/davison/block.json
 msgctxt "block description"
 msgid ""
-"One chart for a couple, cast for the midpoint between two births in time and "
-"place. Without dates it asks the visitor for both. Needs a site key or an API"
-" key."
+"One chart for a couple, cast for the midpoint between two births in time and"
+" place. Without dates it asks the visitor for both. Needs a site key or an "
+"API key."
 msgstr ""
-"Egyetlen horoszkóp egy párnak, két születés időbeli és térbeli felezőpontjára"
-" felállítva. Dátumok nélkül mindkettőt megkérdezi a látogatótól. Webhelykulcs"
-" vagy API-kulcs kell hozzá."
+"Egyetlen horoszkóp egy párnak, két születés időbeli és térbeli "
+"felezőpontjára felállítva. Dátumok nélkül mindkettőt megkérdezi a "
+"látogatótól. Webhelykulcs vagy API-kulcs kell hozzá."
+
+#: blocks/fixed-stars/block.json
+msgctxt "block title"
+msgid "Fixed Stars (AstroWay)"
+msgstr "Rögzített csillagok (AstroWay)"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "fixed stars"
+msgstr "állandó csillagok"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "stars"
+msgstr "csillagok"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "regulus"
+msgstr "regulus"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block keyword"
+msgid "algol"
+msgstr "algol"
+
+#: blocks/fixed-stars/block.json
+msgctxt "block description"
+msgid ""
+"Natal planets in conjunction with 36 bright fixed stars, within a degree, "
+"drawn into the page. Needs an API key."
+msgstr ""
+"Születési bolygók konjunkcióban 36 fényes fix csillaggal, legközelebbi "
+"először. Az oldalba rajzolva. API-kulcs szükséges."
+
+#: blocks/harmonics/block.json
+msgctxt "block title"
+msgid "Harmonic Chart (AstroWay)"
+msgstr "Harmonikus diagram (AstroWay)"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "harmonics"
+msgstr "harmonikusok"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "harmonic"
+msgstr "harmonikus"
+
+#: blocks/harmonics/block.json
+msgctxt "block keyword"
+msgid "h5"
+msgstr "h5"
+
+#: blocks/harmonics/block.json
+msgctxt "block description"
+msgid ""
+"A harmonic chart (H2 to H180, H5 by default) on the natal wheel with its "
+"planets, drawn into the page. Needs an API key."
+msgstr ""
+"A születési horoszkópra rajzolt harmonikus diagram (H2–H180, alapértelmezés "
+"szerint H5) a bolygókkal együtt, közvetlenül az oldalra rajzolva. API-kulcs "
+"szükséges."
 
 #: blocks/kundli/block.json
 msgctxt "block title"
@@ -6004,16 +6423,6 @@ msgstr "Védikus kundli (AstroWay)"
 msgctxt "block keyword"
 msgid "kundli"
 msgstr "kundli"
-
-#: blocks/kundli/block.json blocks/panchang/block.json
-msgctxt "block keyword"
-msgid "vedic"
-msgstr "védikus"
-
-#: blocks/kundli/block.json
-msgctxt "block keyword"
-msgid "jyotish"
-msgstr "jyotish"
 
 #: blocks/kundli/block.json
 msgctxt "block description"
@@ -6056,8 +6465,8 @@ msgstr "asztrológia"
 msgctxt "block description"
 msgid ""
 "The chart of the next moment the Moon returns to its birth position, drawn "
-"into the page. Without a birth date it asks the visitor. Needs a site key or "
-"an API key."
+"into the page. Without a birth date it asks the visitor. Needs a site key or"
+" an API key."
 msgstr ""
 "A következő pillanat horoszkópja, amikor a Hold visszatér születési "
 "helyzetébe, az oldalba rajzolva. Születési dátum nélkül megkérdezi a "
@@ -6086,8 +6495,8 @@ msgstr "oldalsáv"
 #: blocks/mini-chart/block.json
 msgctxt "block description"
 msgid ""
-"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a "
-"responsive iframe."
+"The natal wheel drawn small, for a sidebar, served by api.astroway.info as a"
+" responsive iframe."
 msgstr ""
 "A születési képlet kereke kicsiben, oldalsávba, az api.astroway.info "
 "reszponzív iframe-jében."
@@ -6097,7 +6506,7 @@ msgctxt "block title"
 msgid "Monthly Forecast (AstroWay)"
 msgstr "Havi előrejelzés (AstroWay)"
 
-#: blocks/monthly-forecast/block.json
+#: blocks/monthly-forecast/block.json blocks/progressions/block.json
 msgctxt "block keyword"
 msgid "forecast"
 msgstr "előrejelzés"
@@ -6113,8 +6522,8 @@ msgid ""
 "Four weeks ahead for one sign, each week with its own theme, served as a "
 "responsive iframe."
 msgstr ""
-"Négy hét előre egy jegyhez, mindegyik héten saját témával, reszponzív iframe-"
-"ben."
+"Négy hét előre egy jegyhez, mindegyik héten saját témával, reszponzív "
+"iframe-ben."
 
 #: blocks/monthly-horoscope/block.json
 msgctxt "block title"
@@ -6129,8 +6538,8 @@ msgstr "havi"
 #: blocks/monthly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current month, anchored to the 1st, rendered into the page "
-"as text."
+"Horoscope for the current month, anchored to the 1st, rendered into the page"
+" as text."
 msgstr ""
 "Az aktuális hónap horoszkópja a hónap 1. napjától, szövegként az oldalba "
 "megjelenítve."
@@ -6199,6 +6608,31 @@ msgstr "Születési képlet (AstroWay)"
 msgctxt "block description"
 msgid "Natal chart wheel served by api.astroway.info as a responsive iframe."
 msgstr "Születési képlet kereke az api.astroway.info reszponzív iframe-jében."
+
+#: blocks/navamsa/block.json
+msgctxt "block title"
+msgid "Navamsa D9 (AstroWay)"
+msgstr "Navamsa D9 (AstroWay)"
+
+#: blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "navamsa"
+msgstr "navamsa"
+
+#: blocks/navamsa/block.json
+msgctxt "block keyword"
+msgid "d9"
+msgstr "d9"
+
+#: blocks/navamsa/block.json
+msgctxt "block description"
+msgid ""
+"The Navamsa (D9) divisional chart: Lagna and grahas by sign and house, drawn"
+" into the page. Needs a site key or an API key."
+msgstr ""
+"A Navamsa (D9) osztott horoszkóp: a Lagna és a grahák csillagjegy és ház "
+"szerinti elrendezése, az oldalra rajzolva. Ehhez webhelykulcsra vagy API-"
+"kulcsra van szükség."
 
 #: blocks/numerology/block.json
 msgctxt "block title"
@@ -6275,8 +6709,8 @@ msgid ""
 "Traditional planetary ruler of the weekday, with its glyph and themes, "
 "rendered into the page."
 msgstr ""
-"A hét napjának hagyományos bolygóuralkodója, jelével és témáival, az oldalba "
-"megjelenítve."
+"A hét napjának hagyományos bolygóuralkodója, jelével és témáival, az oldalba"
+" megjelenítve."
 
 #: blocks/planetary-hours/block.json
 msgctxt "block title"
@@ -6299,6 +6733,36 @@ msgid ""
 "The twenty-four planetary hours of a day at one place, with the current one "
 "marked."
 msgstr "Egy nap 24 bolygóórája egy helyen, a jelenlegi órával kiemelve."
+
+#: blocks/progressions/block.json
+msgctxt "block title"
+msgid "Progressions (AstroWay)"
+msgstr "Progressziók (AstroWay)"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "progressions"
+msgstr "sorozatok"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "progressed"
+msgstr "előrehaladt"
+
+#: blocks/progressions/block.json
+msgctxt "block keyword"
+msgid "secondary"
+msgstr "másodlagos"
+
+#: blocks/progressions/block.json
+msgctxt "block description"
+msgid ""
+"The secondary progressed chart for today or a set date: progressed Sun, Moon"
+" and Ascendant, planets and aspects, drawn into the page. Needs an API key."
+msgstr ""
+"A mai napra vagy egy megadott dátumra vonatkozó másodlagos progressziós "
+"horoszkóp: a progressziós Nap, Hold és Aszcendens, valamint a bolygók és "
+"aspektusok, közvetlenül az oldalra rajzolva. API-kulcs szükséges."
 
 #: blocks/retrograde/block.json
 msgctxt "block title"
@@ -6355,11 +6819,11 @@ msgstr "aszcendens"
 #: blocks/rising-sign/block.json
 msgctxt "block description"
 msgid ""
-"The rising sign with its chart ruler. Needs coordinates: the ascendant is the"
-" horizon at a place."
+"The rising sign with its chart ruler. Needs coordinates: the ascendant is "
+"the horizon at a place."
 msgstr ""
-"Az aszcendens a képlet uralkodójával. Koordináták kellenek: az aszcendens egy"
-" adott hely horizontja."
+"Az aszcendens a képlet uralkodójával. Koordináták kellenek: az aszcendens "
+"egy adott hely horizontja."
 
 #: blocks/solar-return/block.json
 msgctxt "block title"
@@ -6385,12 +6849,12 @@ msgstr "következő év"
 msgctxt "block description"
 msgid ""
 "The chart of the moment the Sun returns to its birth position in a given "
-"year, drawn into the page. Without a birth date it asks the visitor. Needs a "
-"site key or an API key."
+"year, drawn into the page. Without a birth date it asks the visitor. Needs a"
+" site key or an API key."
 msgstr ""
-"Annak a pillanatnak a horoszkópja, amikor a Nap egy megadott évben visszatér "
-"születési helyzetébe, az oldalba rajzolva. Születési dátum nélkül megkérdezi "
-"a látogatótól. Webhelykulcs vagy API-kulcs kell hozzá."
+"Annak a pillanatnak a horoszkópja, amikor a Nap egy megadott évben visszatér"
+" születési helyzetébe, az oldalba rajzolva. Születési dátum nélkül "
+"megkérdezi a látogatótól. Webhelykulcs vagy API-kulcs kell hozzá."
 
 #: blocks/synastry/block.json
 msgctxt "block title"
@@ -6481,8 +6945,8 @@ msgid ""
 "Snapshot of the transiting planets' signs and degrees for a date, served by "
 "api.astroway.info as a responsive iframe."
 msgstr ""
-"A tranzitbolygók jegyei és fokai egy dátumra, az api.astroway.info reszponzív"
-" iframe-jében."
+"A tranzitbolygók jegyei és fokai egy dátumra, az api.astroway.info "
+"reszponzív iframe-jében."
 
 #: blocks/weekly-horoscope/block.json
 msgctxt "block title"
@@ -6497,8 +6961,8 @@ msgstr "heti"
 #: blocks/weekly-horoscope/block.json
 msgctxt "block description"
 msgid ""
-"Horoscope for the current week, anchored to Monday, rendered into the page as"
-" text."
+"Horoscope for the current week, anchored to Monday, rendered into the page "
+"as text."
 msgstr ""
 "Az aktuális hét horoszkópja hétfőtől, szövegként az oldalba megjelenítve."
 
@@ -6526,154 +6990,3 @@ msgstr "Jegyek összeillése (AstroWay)"
 msgctxt "block description"
 msgid "How two zodiac signs read together."
 msgstr "Hogyan olvasható két állatövi jegy együtt."
-
-#, php-format
-#~ msgid "This is the reading of %s; today's is still being written."
-#~ msgstr "Ez a(z) %s napi olvasat; a mai még készül."
-
-#, php-format
-#~ msgid "Authority: %s"
-#~ msgstr "Autoritás: %s"
-
-#, php-format
-#~ msgid "Profile %s"
-#~ msgstr "%s profil"
-
-#~ msgid ""
-#~ "The reading needs a site key or an API key: open AstroWay in the admin and "
-#~ "connect the site. Only administrators see this note."
-#~ msgstr ""
-#~ "Az értelmezéshez webhelykulcs vagy API-kulcs szükséges: nyissa meg az "
-#~ "AstroWay beállításait az adminisztrációban, és kapcsolja össze a webhelyet. "
-#~ "Ezt a megjegyzést csak az adminisztrátorok látják."
-
-#~ msgid "Retrograde period"
-#~ msgstr "Retrográd időszak"
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, compatibility, moon sign, rising sign,"
-#~ " Solar Return, Lunar Return or Davison chart form, the date, time and place "
-#~ "they enter are sent to api.astroway.info to calculate the answer, and the "
-#~ "city name to app.astroway.info to find its coordinates. Names typed into the "
-#~ "compatibility form are not sent anywhere. The AstroWay plugin does not store "
-#~ "any of it on this site: the answer is not cached and the page is sent with "
-#~ "no-store. Security or activity-log plugins on this site may record form "
-#~ "submissions on their own."
-#~ msgstr ""
-#~ "Amikor egy látogató kitölti a születési képlet, az összeillés, a Hold-jegy, "
-#~ "az aszcendens, a szolárhoroszkóp, a lunárhoroszkóp vagy a Davison-horoszkóp "
-#~ "űrlapját, a megadott dátum, idő és hely az api.astroway.info-ra kerül "
-#~ "számításra, a város neve pedig az app.astroway.info-ra a koordinátái miatt. "
-#~ "Az összeillés űrlapjába írt nevek sehová nem kerülnek. Az AstroWay bővítmény "
-#~ "ebből semmit nem tárol ezen a webhelyen: a válasz nem kerül gyorsítótárba, az"
-#~ " oldal no-store fejléccel megy ki. A webhely biztonsági vagy naplózó "
-#~ "bővítményei maguk is rögzíthetik a beküldött űrlapokat."
-
-#~ msgid "Not-self theme"
-#~ msgstr "nem-önmagad téma"
-
-#~ msgid "Centres and channels"
-#~ msgstr "Centrumok és csatornák"
-
-#~ msgid "Defined centres"
-#~ msgstr "definiált centrumok"
-
-#~ msgid "Open centres"
-#~ msgstr "nyitott centrumok"
-
-#~ msgid ""
-#~ "This widget reached the free limit for one visitor (30 requests an hour from "
-#~ "one IP address), so visitors on that connection see nothing here until the "
-#~ "hour resets. Only administrators see this note."
-#~ msgstr ""
-#~ "Ez a widget elérte az egy látogatóra vonatkozó ingyenes korlátot (30 kérés "
-#~ "óránként egy IP-címről), így az adott kapcsolaton keresztül érkező látogatók "
-#~ "nem látnak itt semmit, amíg az óra vissza nem áll. Ezt a megjegyzést csak a "
-#~ "rendszergazdák látják."
-
-#~ msgid "The first return after this date, YYYY-MM-DD. Blank for today."
-#~ msgstr "Az első visszatérés e dátum után, YYYY-MM-DD. Üresen a mai nap."
-
-#~ msgid "First return after (YYYY-MM-DD, blank for today)"
-#~ msgstr "Első visszatérés ez után (YYYY-MM-DD, üresen a mai nap)"
-
-#~ msgid ""
-#~ "This calculator needs a site key: open AstroWay in the admin and let the site"
-#~ " get one. Visitors do not see the form until then; only administrators see "
-#~ "this note."
-#~ msgstr ""
-#~ "Ehhez a kalkulátorhoz webhelykulcs kell: nyissa meg az AstroWay-t az "
-#~ "adminban, és hagyja, hogy a webhely kérjen egyet. Addig a látogatók nem "
-#~ "látják az űrlapot; ezt a megjegyzést csak adminisztrátorok látják."
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, compatibility, moon sign or rising "
-#~ "sign form, the date, time and place they enter are sent to api.astroway.info "
-#~ "to calculate the answer, and the city name to app.astroway.info to find its "
-#~ "coordinates. Names typed into the compatibility form are not sent anywhere. "
-#~ "The AstroWay plugin does not store any of it on this site: the answer is not "
-#~ "cached and the page is sent with no-store. Security or activity-log plugins "
-#~ "on this site may record form submissions on their own."
-#~ msgstr ""
-#~ "Amikor egy látogató kitölti a születési képlet, az összeillés, a Hold-jegy "
-#~ "vagy az aszcendens űrlapját, a megadott dátum, idő és hely az "
-#~ "api.astroway.info-ra kerül számításra, a város neve pedig az "
-#~ "app.astroway.info-ra a koordinátái miatt. Az összeillés űrlapjába írt nevek "
-#~ "sehová nem kerülnek. Az AstroWay bővítmény ebből semmit nem tárol ezen a "
-#~ "webhelyen: a válasz nem kerül gyorsítótárba, az oldal no-store fejléccel megy"
-#~ " ki. A webhely biztonsági vagy naplózó bővítményei maguk is rögzíthetik a "
-#~ "beküldött űrlapokat."
-
-#~ msgctxt "block description"
-#~ msgid ""
-#~ "Three cards or the Celtic Cross, drawn once a day for this site, each card "
-#~ "read in its position."
-#~ msgstr ""
-#~ "Három kártya vagy a Kelta kereszt, naponta egyszer húzva ennek az oldalnak; "
-#~ "minden kártya a saját helyén értelmezve."
-
-#~ msgid ""
-#~ "When a visitor fills in a birth chart, moon sign or rising sign form, the "
-#~ "date, time and place they enter are sent to api.astroway.info to calculate "
-#~ "the answer, and the city name to app.astroway.info to find its coordinates. "
-#~ "The AstroWay plugin does not store them on this site: the answer is not "
-#~ "cached and the page is sent with no-store. Security or activity-log plugins "
-#~ "on this site may record form submissions on their own."
-#~ msgstr ""
-#~ "Amikor egy látogató kitölti a születési képlet, a Hold-jegy vagy az "
-#~ "aszcendens űrlapját, a megadott dátum, idő és hely az api.astroway.info-ra "
-#~ "kerül számításra, a város neve pedig az app.astroway.info-ra a koordinátái "
-#~ "miatt. Az AstroWay bővítmény ezeket nem tárolja ezen a webhelyen: a válasz "
-#~ "nem kerül gyorsítótárba, az oldal no-store fejléccel megy ki. A webhely "
-#~ "biztonsági vagy naplózó bővítményei maguk is rögzíthetik a beküldött "
-#~ "űrlapokat."
-
-#~ msgid "Compatibility"
-#~ msgstr "Kompatibilitás"
-
-#~ msgid "Closest aspects"
-#~ msgstr "Legszorosabb aspektusok"
-
-#, php-format
-#~ msgid "Show all aspects (%d)"
-#~ msgstr "Összes aspekt megjelenítése (%d)"
-
-#~ msgid "optional · paste · verify · save"
-#~ msgstr "opcionális · beillesztés · ellenőrzés · mentés"
-
-#~ msgid ""
-#~ "Birth time unknown: the chart is drawn for noon, without houses or the "
-#~ "Ascendant, and the Moon may be up to 7 degrees from where it was."
-#~ msgstr ""
-#~ "A születési idő ismeretlen: a képlet délre készült, házak és aszcendens "
-#~ "nélkül, a Hold pedig akár 7 fokkal eltérhet."
-
-#~ msgid "Latitude runs from -90 to 90, longitude from -180 to 180."
-#~ msgstr "A szélesség -90 és 90, a hosszúság -180 és 180 között van."
-
-#~ msgid "Illumination"
-#~ msgstr "Megvilágítás"
-
-#, php-format
-#~ msgid "Is %s retrograde?"
-#~ msgstr "%s retrográd?"

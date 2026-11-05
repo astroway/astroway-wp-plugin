@@ -1,0 +1,92 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/fixed-stars",
+	"title": "Fixed Stars (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"fixed stars",
+		"stars",
+		"regulus",
+		"algol",
+		"astroway"
+	],
+	"description": "Natal planets in conjunction with 36 bright fixed stars, within a degree, drawn into the page. Needs an API key.",
+	"textdomain": "astroway",
+	"icon": "star-empty",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"hide_sections": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		},
+		"latitude": {
+			"type": "string",
+			"default": ""
+		},
+		"longitude": {
+			"type": "string",
+			"default": ""
+		},
+		"timezone_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"house_system": {
+			"type": "string",
+			"default": ""
+		},
+		"zodiac_type": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa": {
+			"type": "string",
+			"default": ""
+		},
+		"ayanamsa_id": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

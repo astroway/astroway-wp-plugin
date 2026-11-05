@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -196,6 +196,15 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.8.0 =
+* New: Vimshottari dasha card. The running mahadasha and antardasha with the nine antardashas of the mahadasha, the one in force marked; `timeline="1"` lists all nine mahadashas. Works on the free site key. `[astroway_dasha]`
+* New: Navamsa (D9) card. Its Lagna and every graha by sign, house and motion. Works on the free site key. `[astroway_navamsa]`
+* New: secondary progressions card for today or a set date: progressed Sun, Moon and Ascendant, every progressed planet and their aspects. Needs an API key. `[astroway_progressions]`
+* New: harmonic chart card on the natal wheel, H5 by default, any harmonic from 2 to 180. Needs an API key. `[astroway_harmonics harmonic="7"]`
+* New: fixed stars card. Natal planets in conjunction with 36 bright stars, within a degree, closest first. Needs an API key. `[astroway_fixed_stars]`
+* All five are blocks, Elementor, Beaver Builder and WPBakery widgets too. The progressions, harmonics and fixed stars shortcodes keep the attributes they had since 1.2.0, a birth time with seconds included
+* A page with the dasha or with progressions to today expires in page caches at the site's midnight
 
 = 2.7.0 =
 * Cards: their own compact type size that follows the visitor's browser setting rather than the theme's, small capitals for section headings, and the key facts as tiles
