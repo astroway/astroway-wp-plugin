@@ -165,6 +165,7 @@ class ApiClient {
 			return $cached;
 		}
 		if ( false !== Cache::get( $key . '_neg' ) ) {
+			PageCache::cap( PublicData::NEGATIVE_TTL );
 			return null;
 		}
 
@@ -172,6 +173,8 @@ class ApiClient {
 		$payload  = $response['data']['data'] ?? null;
 		if ( 200 !== (int) ( $response['status'] ?? 0 ) || ! is_array( $payload ) ) {
 			Cache::set( $key . '_neg', 'fail', PublicData::NEGATIVE_TTL );
+			// A page cache must not keep the empty card longer than we wait to ask again.
+			PageCache::cap( PublicData::NEGATIVE_TTL );
 			return null;
 		}
 
@@ -183,7 +186,7 @@ class ApiClient {
 	private function get( string $path, array $params = [], string $lang = '', string $site_key = '' ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {
-			$url = add_query_arg( $params, $url );
+			$url = add_query_arg( rawurlencode_deep( $params ), $url ); // add_query_arg() leaves values raw: an & or # in a city would split the query.
 		}
 		$response = wp_remote_get(
 			$url,

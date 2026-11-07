@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -110,7 +110,7 @@ Drop a shortcode into any page or post, for example `[astroway_natal date="1990-
 
 = Does it work with Elementor, Beaver Builder or Divi? =
 
-Yes, through the shortcodes. In Elementor put one into the Shortcode widget, or use the separate AstroWay for Elementor addon for drag-and-drop widgets. In Beaver Builder put it into the HTML or Text module. Both were checked with block and classic themes: the card renders, and its stylesheet loads in the page head. Divi, WPBakery, Bricks and Oxygen render shortcodes the same way, through their own text or shortcode module; we have not tested them, so tell us on the support forum if something looks off.
+Yes. Every AstroWay widget is also an Elementor widget, a Beaver Builder module and a WPBakery element, with the same fields as its block; you no longer need the separate AstroWay for Elementor addon. Shortcodes in Elementor and Beaver Builder were checked with block and classic themes: the card renders, and its stylesheet loads in the page head. WPBakery was not, and neither were Divi, Bricks and Oxygen, which render the shortcodes through their own text or shortcode module; tell us on the support forum if something looks off.
 
 = Can I see a chart without installing the plugin? =
 
@@ -196,6 +196,13 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.8.1 =
+* Fix: a page with a card of the day no longer sends browsers and CDNs a public Cache-Control the site did not ask for. nginx is told to expire the page at midnight through X-Accel-Expires, and a Cache-Control the site already sends is only shortened
+* Fix: when a card could not be loaded, a page cache keeps that page for a minute at most, so the card appears once the API answers
+* Fix: a new tarot reading that takes the API longer than 25 seconds is waited for instead of showing an error
+* Fix: a city name with & or # in it reaches the city search whole
+* Fix: a rate-limit notice dismissed in 1.x stays dismissed, and uninstall removes the plugin's notice state
 
 = 2.8.0 =
 * New: Vimshottari dasha card. The running mahadasha and antardasha with the nine antardashas of the mahadasha, the one in force marked; `timeline="1"` lists all nine mahadashas. Works on the free site key. `[astroway_dasha]`

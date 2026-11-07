@@ -36,10 +36,16 @@ final class TarotReading {
 
 	private const TIMEOUT = 25;
 
+	/** A reading the api is still writing after our wait: the page keeps asking, no new call meanwhile. */
+	private const PENDING_TTL = 30;
+
 	private const LOCK = 'astroway_tarot_reading_lock';
 
 	/** The value of the lock this request holds, '' when it holds none. */
 	private static string $token = '';
+
+	/** The last interpret() call ran out of time rather than failing. */
+	private static bool $timed_out = false;
 
 	public static function register(): void {
 		add_action( 'rest_api_init', [ __CLASS__, 'routes' ] );
@@ -103,6 +109,9 @@ final class TarotReading {
 		if ( Cache::get( $cache . '_x' ) ) {
 			return self::refuse( 'mismatch' );
 		}
+		if ( Cache::get( $cache . '_p' ) ) {
+			return self::refuse( 'wait' );
+		}
 
 		// The owner's key only: /interpret/tarot is not in the site key's set.
 		$key = ( new ApiClient() )->key();
@@ -126,6 +135,11 @@ final class TarotReading {
 			if ( null === $reading ) {
 				// Nothing came back, so nothing was charged.
 				self::count_one( -1 );
+				if ( self::$timed_out ) {
+					// A new spread takes the api longer than we wait; it finishes and keeps it, so the page asks again shortly.
+					Cache::set( $cache . '_p', 1, self::PENDING_TTL );
+					return self::refuse( 'wait' );
+				}
 				return self::refuse( 'failed' );
 			}
 			// A reading of other cards was still charged: the unit stays spent, and
@@ -338,6 +352,8 @@ final class TarotReading {
 				),
 			]
 		);
+
+		self::$timed_out = is_wp_error( $response ) && false !== stripos( $response->get_error_message(), 'timed out' );
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			return null;
 		}

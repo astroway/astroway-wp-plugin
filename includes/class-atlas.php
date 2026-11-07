@@ -36,7 +36,7 @@ class Atlas {
 		$resp = wp_remote_get(
 			add_query_arg(
 				[
-					'q'     => $q,
+					'q'     => rawurlencode( $q ),
 					'limit' => $limit,
 				],
 				self::URL

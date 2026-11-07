@@ -65,6 +65,6 @@ global $wpdb;
 $astroway_key_table = is_multisite() ? $wpdb->sitemeta : $wpdb->options;
 $astroway_key_col   = is_multisite() ? 'meta_key' : 'option_name';
 $wpdb->query( $wpdb->prepare( "DELETE FROM {$astroway_key_table} WHERE {$astroway_key_col} LIKE %s", $wpdb->esc_like( 'astroway_site_key_' ) . '%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table and column are core names picked above.
-foreach ( [ 'astroway_notice_dismissed', 'astroway_review_prompt_dismissed', 'astroway_rl_notice_dismissed' ] as $astroway_meta_key ) {
+foreach ( [ 'astroway_notice_state', 'astroway_notice_dismissed', 'astroway_review_prompt_dismissed', 'astroway_rl_notice_dismissed' ] as $astroway_meta_key ) {
 	delete_metadata( 'user', 0, $astroway_meta_key, '', true );
 }

@@ -1,8 +1,12 @@
-# AstroWay WordPress Plugin — astrology API for natal charts, Tarot & Human Design
+# AstroWay WordPress Plugin
 
-> Official WordPress plugin for the [AstroWay API](https://api.astroway.info) — natal charts, synastry, transits, Vedic dashas, Tarot (Rider-Waite / Marseille / Lenormand), Numerology, Human Design, AI horoscopes. Shortcodes + Gutenberg blocks.
+> Official WordPress plugin for the [AstroWay API](https://api.astroway.info): natal charts, synastry, transits, Vedic dashas, Tarot (Rider-Waite / Marseille / Lenormand), Numerology, Human Design, AI horoscopes. Shortcodes + Gutenberg blocks.
 
-[![license: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![license: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![wordpress.org](https://img.shields.io/wordpress/plugin/v/astroway?label=wordpress.org)](https://wordpress.org/plugins/astroway/)
+
+<p align="center"><img src="https://ps.w.org/astroway/assets/screenshot-1.png" alt="AstroWay natal chart widget on a page: Sun, Moon and Ascendant, the chart wheel with houses and aspects, and the balance of elements" width="640"></p>
+
+Install from the plugin directory: <https://wordpress.org/plugins/astroway/>
 
 700+ endpoints exposed as WordPress shortcodes and Gutenberg blocks. Hybrid rendering: heavy widgets (natal wheel, HD bodygraph, Vedic kundli) via iframe from `/v1/embed/*`, light widgets (daily horoscope, moon phase, daily tarot, reference data) via client-side JSON fetch from `/v1/public/*` and `/v1/*` with API key.
 
@@ -43,13 +47,13 @@ After activation:
 
 Open any post in the block editor → click `+` → search "AstroWay" → choose:
 
-- **AstroWay Natal Chart** — interactive wheel
-- **AstroWay Daily Horoscope** — sign selector
-- **AstroWay Moon Phase** — current phase widget
-- **AstroWay HD Bodygraph** — Human Design bodygraph
-- **AstroWay Tarot Daily Card** — deterministic per-date draw
+- **AstroWay Natal Chart**: interactive wheel
+- **AstroWay Daily Horoscope**: sign selector
+- **AstroWay Moon Phase**: current phase widget
+- **AstroWay HD Bodygraph**: Human Design bodygraph
+- **AstroWay Tarot Daily Card**: deterministic per-date draw
 
-More blocks ship with v1.1 (Tarot full decks, Numerology, Destiny Matrix) and v1.2 (Synastry, Transits, AI Chat — Pro tier).
+Every widget is also a block, an Elementor widget, a Beaver Builder module and a WPBakery element. The full list with parameters is under `AstroWay → Shortcodes` in wp-admin.
 
 ---
 
@@ -61,9 +65,9 @@ More blocks ship with v1.1 (Tarot full decks, Numerology, Destiny Matrix) and v1
 | Per-visitor rate limit | shared 30/hr per IP | per-key | per-key (higher) |
 | Watermark "Powered by AstroWay" | shown | shown (plan=free) | removed |
 | Heavy widgets (HD, kundli, advanced) | iframe only | iframe + native option | full native |
-| Synastry / Transits | — | — | ✓ |
-| AI Chat (streaming) | — | — | ✓ |
-| PDF chart export | — | — | ✓ |
+| Synastry / Transits | no | no | ✓ |
+| AI Chat (streaming) | no | no | ✓ |
+| PDF chart export | no | no | ✓ |
 
 Get a paid key at [astroway.info/shop](https://astroway.info/shop/) starting from Indie ($5 / 50k credits/month).
 
@@ -98,4 +102,4 @@ The plugin shows an activation consent dialog and exposes a privacy policy link 
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

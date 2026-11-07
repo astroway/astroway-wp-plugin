@@ -14,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * and the page is told to expire no later than the earliest of them.
  *
  * Only ever shortens. A page cache that would not have kept the page is not
- * asked to, and a configured lifetime shorter than ours is left alone.
+ * asked to, and a configured lifetime shorter than ours is left alone. Browsers
+ * and CDNs get a Cache-Control only to shorten one the site already sends.
  */
 class PageCache {
 
@@ -95,7 +96,17 @@ class PageCache {
 			do_action( 'litespeed_control_set_ttl', $seconds ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- LiteSpeed's own action.
 		}
 
-		if ( $seconds <= self::HEADER_MAX && ! headers_sent() && ! is_user_logged_in() && ! self::header_forbids_cache() ) {
+		if ( $seconds > self::HEADER_MAX || headers_sent() || is_user_logged_in() ) {
+			return;
+		}
+		$sent = self::sent_lifetime();
+		if ( null !== $sent && $sent <= $seconds ) {
+			return;
+		}
+		// nginx reads this and strips it, so a server cache expires at midnight while browsers and CDNs see nothing new.
+		header( 'X-Accel-Expires: ' . $seconds );
+		// A Cache-Control is only ever shortened: a page sent without one keeps none.
+		if ( null !== $sent ) {
 			header( sprintf( 'Cache-Control: public, max-age=%1$d, s-maxage=%1$d', $seconds ) );
 		}
 	}
@@ -155,13 +166,23 @@ class PageCache {
 		return true;
 	}
 
-	/** A no-cache already sent (the forms send one) is stricter than ours and stands. */
-	private static function header_forbids_cache(): bool {
+	/**
+	 * Seconds a Cache-Control already sent lets a shared cache keep the page: 0 when it
+	 * forbids caching (the forms send no-store), null when none was sent.
+	 */
+	private static function sent_lifetime(): ?int {
+		$life = null;
 		foreach ( headers_list() as $line ) {
-			if ( 0 === stripos( $line, 'cache-control:' ) && preg_match( '/no-cache|no-store|private/i', $line ) ) {
-				return true;
+			if ( 0 !== stripos( $line, 'cache-control:' ) ) {
+				continue;
+			}
+			if ( preg_match( '/no-cache|no-store|private/i', $line ) ) {
+				return 0;
+			}
+			if ( preg_match( '/s-maxage\s*=\s*(\d+)/i', $line, $m ) || preg_match( '/max-age\s*=\s*(\d+)/i', $line, $m ) ) {
+				$life = (int) $m[1];
 			}
 		}
-		return false;
+		return $life;
 	}
 }

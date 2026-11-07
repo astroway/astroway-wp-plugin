@@ -427,7 +427,7 @@ class Plugin {
 	private const LEGACY_NOTICE_FLAGS = [
 		'activation' => 'astroway_notice_dismissed',
 		'review'     => 'astroway_review_prompt_dismissed',
-		'rate_limit' => 'astroway_rate_limit_notice_dismissed',
+		'rate_limit' => 'astroway_rl_notice_dismissed', // The name 1.x wrote.
 	];
 
 	private static function notice_state( string $key ): array {

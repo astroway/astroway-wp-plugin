@@ -36,7 +36,7 @@ class PublicClient {
 		}
 
 		$base = ASTROWAY_API_BASE . '/embed/' . $config['embed_path'];
-		return empty( $filtered ) ? $base : add_query_arg( $filtered, $base );
+		return empty( $filtered ) ? $base : add_query_arg( rawurlencode_deep( $filtered ), $base );
 	}
 
 	public static function embed_iframe( string $widget, array $params = [], array $overrides = [] ): string {

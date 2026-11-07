@@ -333,12 +333,15 @@ class PublicData {
 		// whole point: the api said no a moment ago and asking again on every
 		// render is what keeps it saying no.
 		if ( false !== Cache::get( $key . '_neg' ) ) {
+			PageCache::cap( self::NEGATIVE_TTL );
 			return null;
 		}
 
 		$payload = self::request( $config['path'], $query, $config['method'] ?? 'GET' );
 		if ( null === $payload ) {
 			Cache::set( $key . '_neg', 'fail', self::NEGATIVE_TTL );
+			// A page cache must not keep the empty card longer than we wait to ask again.
+			PageCache::cap( self::NEGATIVE_TTL );
 			return null;
 		}
 
@@ -751,7 +754,7 @@ class PublicData {
 			$args['body']                    = (string) wp_json_encode( $payload );
 			$response                        = wp_remote_post( $base, $args );
 		} else {
-			$response = wp_remote_get( add_query_arg( $payload, $base ), $args );
+			$response = wp_remote_get( add_query_arg( rawurlencode_deep( $payload ), $base ), $args );
 		}
 
 		if ( is_wp_error( $response ) ) {
