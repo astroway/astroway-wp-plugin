@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.8.1
+Stable tag: 2.8.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -196,6 +196,16 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.8.2 =
+* Fix: the horoscope's day, week and month arrows stop where the API still writes readings (7 days around today for a day, 14 for a week, 35 for a month, counted from the first day of that week or month, as the API counts), so crawlers no longer walk them into months of dates
+* Fix: a date the API answers with a reading from another day now says there is no reading for that date and which day the one shown is from, instead of saying a new one is being written
+* Fix: a page on which another plugin calls nocache_headers() after ours no longer stays in nginx's cache until midnight
+* Fix: on classic themes a page with a card of the day in its content now stays in nginx's cache for only a minute when that card could not be loaded, as on block themes
+* Fix: a site that sends max-age=0 for browsers keeps it; only the CDN lifetime is shortened
+* Fix: a tarot reading the API was still writing when we stopped waiting counts once against the day's limit, and the page keeps asking for up to two and a half minutes instead of calling again
+* Fix: a null or false value is left out of the API request again, as before 2.8.1, instead of going out as a bare key
+* New: the filter astroway_page_cache_server_expires turns off the X-Accel-Expires header for nginx
 
 = 2.8.1 =
 * Fix: a page with a card of the day no longer sends browsers and CDNs a public Cache-Control the site did not ask for. nginx is told to expire the page at midnight through X-Accel-Expires, and a Cache-Control the site already sends is only shortened

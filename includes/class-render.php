@@ -2342,14 +2342,30 @@ class Render {
 		if ( ! is_array( $fallback ) ) {
 			return '';
 		}
+		$date       = (string) ( $fallback['textDate'] ?? '' );
+		$time       = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ? strtotime( $date . ' 12:00:00 UTC' ) : false;
+		$asked      = (string) ( $data['date'] ?? '' );
+		$format     = (string) get_option( 'date_format', 'Y-m-d' );
+		$utc        = new \DateTimeZone( 'UTC' );
+		$asked_time = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $asked ) ? strtotime( $asked . ' 12:00:00 UTC' ) : false;
+		if ( 'out_of_window' === ( $fallback['reason'] ?? '' ) && false !== $time && false !== $asked_time && $asked !== $date ) {
+			return UI::callout(
+				esc_html(
+					sprintf(
+						/* translators: 1: date the visitor asked for, 2: date of the reading shown instead */
+						__( 'There is no reading for %1$s. This one is from %2$s.', 'astroway' ),
+						wp_date( $format, $asked_time, $utc ),
+						wp_date( $format, $time, $utc )
+					)
+				)
+			);
+		}
 		$text_lang = strtolower( substr( (string) ( $fallback['textLanguage'] ?? '' ), 0, 2 ) );
 		$page_lang = strtolower( substr( (string) Plugin::resolve_lang( $lang ), 0, 2 ) );
 		if ( '' !== $text_lang && $text_lang !== $page_lang ) {
 			return UI::callout( esc_html__( 'The reading in this language is not ready yet, so it is shown in English.', 'astroway' ) );
 		}
-		$date = (string) ( $fallback['textDate'] ?? '' );
-		$time = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ? strtotime( $date . ' 12:00:00 UTC' ) : false;
-		if ( false === $time || (string) ( $data['date'] ?? '' ) === $date ) {
+		if ( false === $time || $asked === $date ) {
 			return '';
 		}
 		return UI::callout(
@@ -2772,8 +2788,19 @@ class Render {
 	}
 
 	/**
-	 * Step back and forth by the period the card is showing. The api answers any
-	 * date, so the arrows are links: the visitor can read yesterday, and the URL
+	 * How far from today the api writes a new text (api 2.327.0). Past it the
+	 * answer is an older text, so an arrow there leads crawlers into dates
+	 * that never get a reading of their own.
+	 */
+	private const HOROSCOPE_WINDOW_DAYS = [
+		'daily_horoscope'   => 7,
+		'weekly_horoscope'  => 14,
+		'monthly_horoscope' => 35,
+	];
+
+	/**
+	 * Step back and forth by the period the card is showing, within the api's
+	 * window. The arrows are links: the visitor can read yesterday, and the URL
 	 * they land on is the one they can share.
 	 */
 	private static function horoscope_datenav( string $widget, array $data, array $params ): string {
@@ -2812,16 +2839,22 @@ class Render {
 		if ( false === $stamp ) {
 			return '';
 		}
-		$prev = gmdate( 'Y-m-d', (int) strtotime( '-' . $step, $stamp ) );
-		$next = gmdate( 'Y-m-d', (int) strtotime( '+' . $step, $stamp ) );
+		$prev     = (int) strtotime( '-' . $step, $stamp );
+		$next     = (int) strtotime( '+' . $step, $stamp );
+		$link     = static function ( int $target ) use ( $widget ): string {
+			// The api measures its window from the first day of the week or month, so do the arrows.
+			$today = (int) strtotime( gmdate( 'Y-m-d' ) . ' 00:00:00 UTC' );
+			return abs( $target - $today ) > self::HOROSCOPE_WINDOW_DAYS[ $widget ] * DAY_IN_SECONDS
+				? ''
+				: add_query_arg( 'aw_date', gmdate( 'Y-m-d', $target ) );
+		};
+		$prev_url = $link( $prev );
+		$next_url = $link( $next );
+		if ( '' === $prev_url && '' === $next_url ) {
+			return '';
+		}
 
-		return UI::datenav(
-			$label,
-			add_query_arg( 'aw_date', $prev ),
-			$back,
-			add_query_arg( 'aw_date', $next ),
-			$fwd
-		);
+		return UI::datenav( $label, $prev_url, $back, $next_url, $fwd );
 	}
 
 	private static function sign_slugs(): array {

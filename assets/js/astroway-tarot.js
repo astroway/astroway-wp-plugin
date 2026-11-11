@@ -69,7 +69,7 @@
 		}
 
 		// "wait" means another visitor's request is reading these cards right now,
-		// or the api is still writing a new reading: a minute of asking covers both.
+		// or the api is still writing a new reading: two and a half minutes of asking cover both.
 		function send( tries ) {
 			var headers = { 'Content-Type': 'application/json' };
 			var nonce   = reading.getAttribute( 'data-astroway-nonce' );
@@ -89,7 +89,7 @@
 			} ).then( function ( r ) {
 				return r.json();
 			} ).then( function ( out ) {
-				if ( out && 'wait' === out.code && tries < 15 ) {
+				if ( out && 'wait' === out.code && tries < 36 ) {
 					window.setTimeout( function () { send( tries + 1 ); }, 4000 );
 					return;
 				}

@@ -186,7 +186,8 @@ class ApiClient {
 	private function get( string $path, array $params = [], string $lang = '', string $site_key = '' ): array {
 		$url = $this->base . $path;
 		if ( ! empty( $params ) ) {
-			$url = add_query_arg( rawurlencode_deep( $params ), $url ); // add_query_arg() leaves values raw: an & or # in a city would split the query.
+			// add_query_arg() leaves values raw: an & or # in a city would split the query. null and false were dropped before encoding and stay dropped.
+			$url = add_query_arg( rawurlencode_deep( array_filter( $params, static fn( $v ) => null !== $v && false !== $v ) ), $url );
 		}
 		$response = wp_remote_get(
 			$url,

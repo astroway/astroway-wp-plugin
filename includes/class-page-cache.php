@@ -13,9 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Every read that is true only until a boundary reports how long it has left,
  * and the page is told to expire no later than the earliest of them.
  *
- * Only ever shortens. A page cache that would not have kept the page is not
- * asked to, and a configured lifetime shorter than ours is left alone. Browsers
- * and CDNs get a Cache-Control only to shorten one the site already sends.
+ * LiteSpeed is only ever shortened. nginx gets X-Accel-Expires, which outranks
+ * its own *_cache_valid, so a server cache configured for less than the time to
+ * midnight keeps such a page longer than it would have: the filter
+ * `astroway_page_cache_server_expires` turns the header off. Browsers and CDNs
+ * get a Cache-Control only to shorten one the site already sends, and a
+ * browser max-age shorter than ours stays.
  */
 class PageCache {
 
@@ -99,19 +102,25 @@ class PageCache {
 		if ( $seconds > self::HEADER_MAX || headers_sent() || is_user_logged_in() ) {
 			return;
 		}
-		$sent = self::sent_lifetime();
+		$lines = headers_list();
+		$sent  = self::sent_lifetime( $lines );
 		if ( null !== $sent && $sent <= $seconds ) {
 			return;
 		}
-		// nginx reads this and strips it, so a server cache expires at midnight while browsers and CDNs see nothing new.
-		header( 'X-Accel-Expires: ' . $seconds );
-		// A Cache-Control is only ever shortened: a page sent without one keeps none.
-		if ( null !== $sent ) {
-			header( sprintf( 'Cache-Control: public, max-age=%1$d, s-maxage=%1$d', $seconds ) );
+		if ( apply_filters( 'astroway_page_cache_server_expires', true ) ) {
+			// nginx reads this and strips it, so a server cache expires at midnight while browsers and CDNs see nothing new.
+			header( 'X-Accel-Expires: ' . $seconds );
+		}
+		$control = self::cache_control( $lines, $seconds );
+		if ( null !== $control ) {
+			header( 'Cache-Control: ' . $control );
 		}
 	}
 
-	/** Before any output: a page whose content carries a card of the day expires at the site's midnight. */
+	/**
+	 * Before any output: a page whose content carries a card of the day expires at the site's midnight.
+	 * The page is buffered so a card that fails later in the content can still shorten that to a minute.
+	 */
 	public static function early(): void {
 		if ( ! is_singular() ) {
 			return;
@@ -119,7 +128,56 @@ class PageCache {
 		$post = get_post();
 		if ( $post && self::has_daily( (string) $post->post_content ) ) {
 			self::cap( PublicData::ttl_for( 'day' ) );
+			if ( null !== self::$ttl ) {
+				self::buffer();
+			}
 		}
+	}
+
+	/**
+	 * The Cache-Control to send for a page that may live $seconds, given the headers
+	 * already set, or null to leave it: a page sent without one keeps none, and a
+	 * shorter browser max-age than ours stays.
+	 *
+	 * @param string[] $lines Headers set so far.
+	 */
+	public static function cache_control( array $lines, int $seconds ): ?string {
+		$sent = self::sent_lifetime( $lines );
+		if ( null === $sent || $sent <= $seconds ) {
+			return null;
+		}
+		$browser = self::browser_age( $lines );
+		return sprintf( 'public, max-age=%d, s-maxage=%d', null === $browser ? $seconds : min( $browser, $seconds ), $seconds );
+	}
+
+	/**
+	 * Holds the page until the end, so a card that fails later can still cap it, and
+	 * nocache_headers() at a later hook also takes back our nginx lifetime. Opened only
+	 * before the template: one opened mid-render would be swallowed by a builder's own
+	 * capture. A buffer's handler, not header_register_callback(), which keeps only one
+	 * callback per request and would replace another plugin's.
+	 */
+	private static function buffer(): void {
+		static $started = false;
+		// The command line sends no headers (wp-cli, tests).
+		if ( $started || headers_sent() || 'cli' === PHP_SAPI ) {
+			return;
+		}
+		$started = true;
+		ob_start( [ __CLASS__, 'on_flush' ] );
+	}
+
+	/** @internal Output handler: the headers are still open when the buffer first flushes. */
+	public static function on_flush( string $buffer ): string {
+		if ( ! headers_sent() && self::forbids( headers_list() ) ) {
+			header_remove( 'X-Accel-Expires' );
+		}
+		return $buffer;
+	}
+
+	/** @param string[] $lines Headers set so far. */
+	public static function forbids( array $lines ): bool {
+		return 0 === self::sent_lifetime( $lines );
 	}
 
 	/** Whether the text holds a card of the day without a date of its own. */
@@ -170,9 +228,9 @@ class PageCache {
 	 * Seconds a Cache-Control already sent lets a shared cache keep the page: 0 when it
 	 * forbids caching (the forms send no-store), null when none was sent.
 	 */
-	private static function sent_lifetime(): ?int {
+	private static function sent_lifetime( array $lines ): ?int {
 		$life = null;
-		foreach ( headers_list() as $line ) {
+		foreach ( $lines as $line ) {
 			if ( 0 !== stripos( $line, 'cache-control:' ) ) {
 				continue;
 			}
@@ -184,5 +242,15 @@ class PageCache {
 			}
 		}
 		return $life;
+	}
+
+	/** The browser's max-age in the Cache-Control already set, or null. */
+	private static function browser_age( array $lines ): ?int {
+		foreach ( $lines as $line ) {
+			if ( 0 === stripos( $line, 'cache-control:' ) && preg_match( '/(?<![-a-z])max-age\s*=\s*(\d+)/i', $line, $m ) ) {
+				return (int) $m[1];
+			}
+		}
+		return null;
 	}
 }

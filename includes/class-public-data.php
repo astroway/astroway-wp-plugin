@@ -419,7 +419,9 @@ class PublicData {
 	/** What an answer is kept for: a fallback text half an hour, the rest to its boundary. */
 	private static function ttl_of( array $config, array $payload ): int {
 		$ttl = self::ttl_for( $config['freshness'] );
-		return is_array( $payload['fallback'] ?? null ) ? min( $ttl, self::STALE_TTL ) : $ttl;
+		// A text for a date outside the api's window will not be replaced, so it keeps the full life.
+		$stale = is_array( $payload['fallback'] ?? null ) && 'out_of_window' !== ( $payload['fallback']['reason'] ?? '' );
+		return $stale ? min( $ttl, self::STALE_TTL ) : $ttl;
 	}
 
 	/**
@@ -754,7 +756,7 @@ class PublicData {
 			$args['body']                    = (string) wp_json_encode( $payload );
 			$response                        = wp_remote_post( $base, $args );
 		} else {
-			$response = wp_remote_get( add_query_arg( rawurlencode_deep( $payload ), $base ), $args );
+			$response = wp_remote_get( add_query_arg( rawurlencode_deep( array_filter( $payload, static fn( $v ) => null !== $v && false !== $v ) ), $base ), $args );
 		}
 
 		if ( is_wp_error( $response ) ) {

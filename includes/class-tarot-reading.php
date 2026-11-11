@@ -36,8 +36,8 @@ final class TarotReading {
 
 	private const TIMEOUT = 25;
 
-	/** A reading the api is still writing after our wait: the page keeps asking, no new call meanwhile. */
-	private const PENDING_TTL = 30;
+	/** A reading the api is still writing after our wait: the page keeps asking, no new call meanwhile. Texts took the api up to 100 s. */
+	private const PENDING_TTL = 120;
 
 	private const LOCK = 'astroway_tarot_reading_lock';
 
@@ -128,17 +128,27 @@ final class TarotReading {
 			if ( is_string( $html ) && '' !== $html ) {
 				return self::answer( $html );
 			}
-			if ( ! self::count_one( 1 ) ) {
+			// A spread the api was still writing when we stopped waiting was counted then: one ask after it is free.
+			$counted = (bool) Cache::get( $cache . '_c' );
+			if ( $counted ) {
+				Cache::delete( $cache . '_c' );
+			}
+			if ( ! $counted && ! self::count_one( 1 ) ) {
 				return self::refuse( 'cap' );
 			}
 			$reading = self::interpret( $key, self::SPREADS[ $widget ], $drawn, $lang );
 			if ( null === $reading ) {
-				// Nothing came back, so nothing was charged.
-				self::count_one( -1 );
 				if ( self::$timed_out ) {
-					// A new spread takes the api longer than we wait; it finishes and keeps it, so the page asks again shortly.
+					// A new spread takes the api longer than we wait; it finishes and keeps it, so the unit stays spent and the page asks again shortly.
 					Cache::set( $cache . '_p', 1, self::PENDING_TTL );
+					if ( ! $counted ) {
+						Cache::set( $cache . '_c', 1, DAY_IN_SECONDS );
+					}
 					return self::refuse( 'wait' );
+				}
+				// Nothing came back, so nothing was charged.
+				if ( ! $counted ) {
+					self::count_one( -1 );
 				}
 				return self::refuse( 'failed' );
 			}
@@ -353,7 +363,9 @@ final class TarotReading {
 			]
 		);
 
-		self::$timed_out = is_wp_error( $response ) && false !== stripos( $response->get_error_message(), 'timed out' );
+		// A read timeout means the api took the call; a connect or DNS timeout reached nobody.
+		$error           = is_wp_error( $response ) ? $response->get_error_message() : '';
+		self::$timed_out = false !== stripos( $error, 'timed out' ) && false === stripos( $error, 'Connection timed out' ) && false === stripos( $error, 'Resolving timed out' );
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			return null;
 		}
