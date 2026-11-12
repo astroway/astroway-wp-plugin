@@ -1,0 +1,65 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/doshas",
+	"title": "Mangal and Kaal Sarp Dosha (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"dosha",
+		"manglik",
+		"mangal",
+		"kaal sarp",
+		"vedic",
+		"astroway"
+	],
+	"description": "Mangal dosha with the houses Mars falls in, and Kaal Sarp, full or partial. Without a date it asks the visitor for the birth. Needs a site key or an API key.",
+	"textdomain": "astroway",
+	"icon": "warning",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"time": {
+			"type": "string",
+			"default": ""
+		},
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

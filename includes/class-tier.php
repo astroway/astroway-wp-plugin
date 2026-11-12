@@ -148,6 +148,12 @@ class Tier {
 			'progressions'           => $all_tiers,
 			'harmonics'              => $all_tiers,
 			'fixed_stars'            => $all_tiers,
+			// 2.9.0: Vedic III, an answer to VedicAstroAPI's plugin.
+			'ashtakoot'              => $all_tiers,
+			'sade_sati'              => $all_tiers,
+			'doshas'                 => $all_tiers,
+			'gemstones'              => $all_tiers,
+			'choghadiya'             => $all_tiers,
 			// Paid-only (v0.8+ features).
 			'native_render'          => $paid_plus,
 			// Pro+ only.

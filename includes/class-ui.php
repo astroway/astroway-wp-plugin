@@ -612,11 +612,12 @@ class UI {
 	}
 
 	/** One figure, what it means, and the same figure as a bar. */
-	public static function score( int $value, string $label, string $unit = '%', int $max = 100 ): string {
+	public static function score( float $value, string $label, string $unit = '%', int $max = 100 ): string {
 		$max   = max( 1, $max );
 		$value = max( 0, min( $max, $value ) );
 		$unit  = '' === $unit ? '' : '<span>' . esc_html( $unit ) . '</span>';
-		return '<div class="astroway-score"><p class="astroway-score__value">' . esc_html( (string) $value ) . $unit . '</p>'
+		// Ashtakoot counts half points: 26.5 of 36 is shown as it is.
+		return '<div class="astroway-score"><p class="astroway-score__value">' . esc_html( self::n( $value ) ) . $unit . '</p>'
 			. '<p class="astroway-score__label">' . esc_html( $label ) . '</p>'
 			. self::meter( $value / $max ) . '</div>';
 	}

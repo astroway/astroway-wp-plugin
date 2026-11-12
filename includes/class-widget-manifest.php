@@ -238,6 +238,26 @@ final class WidgetManifest {
 				'panel'  => __( 'Two births', 'astroway' ),
 				'fields' => array_merge( self::two_births( false ), [ self::lang() ] ),
 			],
+			'ashtakoot'            => [
+				'panel'  => __( 'Two births', 'astroway' ),
+				'fields' => array_merge( self::two_births( false ), [ self::lang() ] ),
+			],
+			'sade-sati'            => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::text( 'name', __( 'Name', 'astroway' ) ), self::lang() ] ),
+			],
+			'doshas'               => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::text( 'name', __( 'Name', 'astroway' ) ), self::lang() ] ),
+			],
+			'gemstones'            => [
+				'panel'  => $birth,
+				'fields' => array_merge( self::birth_only(), [ self::text( 'name', __( 'Name', 'astroway' ) ), self::lang() ] ),
+			],
+			'choghadiya'           => [
+				'panel'  => __( 'Place', 'astroway' ),
+				'fields' => [ self::lat(), self::lon(), self::tz_wide(), self::text( 'city', __( 'Place name for the heading', 'astroway' ) ), self::text( 'date', __( 'Date (YYYY-MM-DD, blank for today)', 'astroway' ) ), self::lang() ],
+			],
 			'dasha'                => [
 				'panel'  => $birth,
 				'fields' => array_merge(

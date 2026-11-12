@@ -42,6 +42,8 @@ class PageCache {
 		'astroway_panchang',
 		'astroway_dasha',
 		'astroway_progressions',
+		'astroway_sade_sati',
+		'astroway_choghadiya',
 	];
 
 	/**
@@ -52,6 +54,8 @@ class PageCache {
 		'astroway_dasha'        => '',
 		'astroway_progressions' => 'target_date',
 		'dasha'                 => '',
+		'astroway_sade_sati'    => '',
+		'sade-sati'             => '',
 		'progressions'          => 'target_date',
 	];
 
@@ -67,6 +71,8 @@ class PageCache {
 		'panchang',
 		'dasha',
 		'progressions',
+		'sade-sati',
+		'choghadiya',
 	];
 
 	/** @var int|null Seconds the page may live, the least reported so far. */

@@ -1,0 +1,98 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/ashtakoot",
+	"title": "Kundli Matching (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"ashtakoot",
+		"kundli matching",
+		"guna milan",
+		"vedic",
+		"marriage",
+		"compatibility",
+		"astroway"
+	],
+	"description": "Vedic kundli matching out of 36 points: the eight kootas with each person's value, and the Nadi and Bhakoot doshas. Without dates it asks the visitor for both births. Needs a site key or an API key.",
+	"textdomain": "astroway",
+	"icon": "heart",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"date_a": {
+			"type": "string",
+			"default": ""
+		},
+		"time_a": {
+			"type": "string",
+			"default": ""
+		},
+		"lat_a": {
+			"type": "string",
+			"default": ""
+		},
+		"lon_a": {
+			"type": "string",
+			"default": ""
+		},
+		"tz_a": {
+			"type": "string",
+			"default": ""
+		},
+		"name_a": {
+			"type": "string",
+			"default": ""
+		},
+		"date_b": {
+			"type": "string",
+			"default": ""
+		},
+		"time_b": {
+			"type": "string",
+			"default": ""
+		},
+		"lat_b": {
+			"type": "string",
+			"default": ""
+		},
+		"lon_b": {
+			"type": "string",
+			"default": ""
+		},
+		"tz_b": {
+			"type": "string",
+			"default": ""
+		},
+		"name_b": {
+			"type": "string",
+			"default": ""
+		},
+		"chart1": {
+			"type": "string",
+			"default": ""
+		},
+		"chart2": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

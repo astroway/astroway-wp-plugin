@@ -1,0 +1,61 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/choghadiya",
+	"title": "Choghadiya (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"choghadiya",
+		"muhurat",
+		"auspicious time",
+		"panchang",
+		"vedic",
+		"astroway"
+	],
+	"description": "The eight periods of the day and the night at a place, each good, neutral or to avoid for new beginnings. Today unless a date is set. Needs a site key or an API key.",
+	"textdomain": "astroway",
+	"icon": "clock",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full",
+			"center"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"lat": {
+			"type": "string",
+			"default": ""
+		},
+		"lon": {
+			"type": "string",
+			"default": ""
+		},
+		"tz": {
+			"type": "string",
+			"default": ""
+		},
+		"city": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

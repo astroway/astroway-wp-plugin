@@ -55,6 +55,11 @@ class Shortcodes {
 		add_shortcode( 'astroway_solar_return', self::gated( 'solar_return', [ __CLASS__, 'render_solar_return' ] ) );
 		add_shortcode( 'astroway_lunar_return', self::gated( 'lunar_return', [ __CLASS__, 'render_lunar_return' ] ) );
 		add_shortcode( 'astroway_davison', self::gated( 'davison', [ __CLASS__, 'render_davison' ] ) );
+		add_shortcode( 'astroway_ashtakoot', self::gated( 'ashtakoot', [ __CLASS__, 'render_ashtakoot' ] ) );
+		add_shortcode( 'astroway_sade_sati', self::gated( 'sade_sati', [ __CLASS__, 'render_sade_sati' ] ) );
+		add_shortcode( 'astroway_doshas', self::gated( 'doshas', [ __CLASS__, 'render_doshas' ] ) );
+		add_shortcode( 'astroway_gemstones', self::gated( 'gemstones', [ __CLASS__, 'render_gemstones' ] ) );
+		add_shortcode( 'astroway_choghadiya', self::gated( 'choghadiya', [ __CLASS__, 'render_choghadiya' ] ) );
 
 		// 2.8.0. Progressions, harmonics and fixed stars were answered by the
 		// generated registry since 1.2.0; its attributes stay as aliases.
@@ -1144,6 +1149,147 @@ class Shortcodes {
 			--$year;
 		}
 		return $year;
+	}
+
+	/**
+	 * Kundli matching by the eight kootas, out of 36. Without dates the visitor
+	 * gives both births; the first is read as the man's, as the method does.
+	 */
+	public static function render_ashtakoot( $atts ): string {
+		$atts   = shortcode_atts(
+			[
+				'date_a' => '',
+				'time_a' => '',
+				'lat_a'  => '',
+				'lon_a'  => '',
+				'tz_a'   => '',
+				'name_a' => '',
+				'date_b' => '',
+				'time_b' => '',
+				'lat_b'  => '',
+				'lon_b'  => '',
+				'tz_b'   => '',
+				'name_b' => '',
+				'lang'   => '',
+			],
+			(array) $atts,
+			'astroway_ashtakoot'
+		);
+		$params = [ 'lang' => self::resolve_lang( $atts['lang'] ) ];
+		foreach ( [ 'a', 'b' ] as $side ) {
+			$date                      = self::sanitize_date( $atts[ 'date_' . $side ] );
+			$time                      = self::sanitize_time( $atts[ 'time_' . $side ] );
+			$params[ 'date_' . $side ] = $date;
+			$params[ 'time_' . $side ] = $time;
+			$params[ 'lat_' . $side ]  = self::sanitize_coord( $atts[ 'lat_' . $side ], -90, 90 );
+			$params[ 'lng_' . $side ]  = self::sanitize_coord( $atts[ 'lon_' . $side ], -180, 180 );
+			$params[ 'tz_' . $side ]   = self::tz_offset_hours( $atts[ 'tz_' . $side ], $date, $time );
+			$params[ 'name_' . $side ] = sanitize_text_field( $atts[ 'name_' . $side ] );
+		}
+		if ( '' === $params['date_a'] && '' === $params['date_b'] ) {
+			return Form::render( 'ashtakoot', [ 'lang' => $params['lang'] ] );
+		}
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		foreach ( [ 'a', 'b' ] as $side ) {
+			if ( '' === $params[ 'date_' . $side ] || '' === $params[ 'time_' . $side ] || '' === $params[ 'lat_' . $side ] || '' === $params[ 'lng_' . $side ] ) {
+				return Render::admin_note( __( 'Kundli matching needs the date, the time and the latitude and longitude of both births. Only administrators see this note.', 'astroway' ) );
+			}
+		}
+		return Render::widget( 'ashtakoot', $params );
+	}
+
+	public static function render_sade_sati( $atts ): string {
+		return self::render_vedic_chart( 'sade_sati', 'astroway_sade_sati', $atts );
+	}
+
+	public static function render_doshas( $atts ): string {
+		return self::render_vedic_chart( 'doshas', 'astroway_doshas', $atts );
+	}
+
+	public static function render_gemstones( $atts ): string {
+		return self::render_vedic_chart( 'gemstones', 'astroway_gemstones', $atts );
+	}
+
+	/**
+	 * One birth read by a Vedic route (2.9.0). Without a date the visitor gets
+	 * the form, which needs the minute: the lagna moves every two hours.
+	 */
+	private static function render_vedic_chart( string $widget, string $tag, $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date' => '',
+				'time' => '',
+				'lat'  => '',
+				'lon'  => '',
+				'tz'   => '',
+				'name' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			$tag
+		);
+		$date = self::sanitize_date( $atts['date'] );
+		$time = self::sanitize_time( $atts['time'] );
+		$lang = self::resolve_lang( $atts['lang'] );
+		if ( '' === trim( (string) $atts['date'] ) ) {
+			return Form::render( $widget, [ 'lang' => $lang ] );
+		}
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		$params = [
+			'date' => $date,
+			'time' => $time,
+			'lat'  => self::sanitize_coord( $atts['lat'], -90, 90 ),
+			'lng'  => self::sanitize_coord( $atts['lon'], -180, 180 ),
+			'tz'   => self::tz_offset_hours( $atts['tz'], $date, $time ),
+			'name' => sanitize_text_field( $atts['name'] ),
+			'lang' => $lang,
+		];
+		if ( '' === $date || '' === $time || '' === $params['lat'] || '' === $params['lng'] ) {
+			return Render::admin_note( __( 'This card needs the birth date, the birth time and the latitude and longitude of the place. Only administrators see this note.', 'astroway' ) );
+		}
+		return Render::widget( $widget, $params );
+	}
+
+	/** The periods of the site's day at the place the author names. */
+	public static function render_choghadiya( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'date' => '',
+				'lat'  => '',
+				'lon'  => '',
+				'tz'   => '',
+				'city' => '',
+				'lang' => '',
+			],
+			(array) $atts,
+			'astroway_choghadiya'
+		);
+		$lat  = self::sanitize_coord( $atts['lat'], -90, 90 );
+		$lon  = self::sanitize_coord( $atts['lon'], -180, 180 );
+		if ( '' === $lat || '' === $lon ) {
+			return Render::admin_note( __( 'Choghadiya needs the latitude and longitude of the place it is for, for example lat="28.61" lon="77.21" for Delhi. Only administrators see this note.', 'astroway' ) );
+		}
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		$date = self::sanitize_date( $atts['date'] );
+		$date = '' === $date ? PublicData::site_day( 'day' ) : $date;
+		return Render::widget(
+			'choghadiya',
+			[
+				'date' => $date,
+				'time' => '12:00',
+				'lat'  => $lat,
+				'lng'  => $lon,
+				'tz'   => self::tz_offset_hours( $atts['tz'], $date, '12:00' ),
+				'city' => sanitize_text_field( $atts['city'] ),
+				'lang' => self::resolve_lang( $atts['lang'] ),
+			]
+		);
 	}
 
 	/**

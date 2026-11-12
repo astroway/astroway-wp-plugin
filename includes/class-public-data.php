@@ -225,6 +225,60 @@ class PublicData {
 			// The midpoint in time and space needs both minutes and both places.
 			'strict'    => true,
 		],
+		// 2.9.0: the 36-point kundli match. The Moon's nakshatra decides it, so
+		// both birth minutes are needed (the route answers 400 without one);
+		// the first chart is read as the man's, as the method does.
+		'ashtakoot'          => [
+			'path'      => '/vedic/compatibility/ashtakoot',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'charts' ],
+			'required'  => [ 'date_a', 'date_b' ],
+			'lang'      => false,
+			'paid'      => true,
+			'strict'    => true,
+		],
+		// Saturn's transit over the signs around the natal Moon: true for today,
+		// so kept to the site's midnight. Houses and the KP chain need the minute.
+		'sade_sati'          => [
+			'path'       => '/vedic/doshas/kp/sade-sati',
+			'method'     => 'POST',
+			'freshness'  => 'day',
+			'birth_date' => true,
+			'params'     => [ 'chart' ],
+			'required'   => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'       => false,
+			'paid'       => true,
+		],
+		// Mangal here, Kaal Sarp read alongside it (READS): one card, two routes.
+		'doshas'             => [
+			'path'      => '/vedic/doshas/parashara/mangal',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
+		'gemstones'          => [
+			'path'      => '/vedic/gemstones',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
+		// The eight periods of the day and the night at a place, for the site's day.
+		'choghadiya'         => [
+			'path'      => '/vedic/panchang/choghadia',
+			'method'    => 'POST',
+			'freshness' => 'day',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
 	];
 
 	/**
@@ -233,6 +287,17 @@ class PublicData {
 	 * month, so a card on "today" does not pile up a month of skies.
 	 */
 	private const READS = [
+		// The second half of the doshas card, asked with the same birth.
+		'kaal_sarp'           => [
+			'path'      => '/vedic/doshas/parashara/kaal-sarp',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			// A visitor's second read goes on the site key too, never the owner's credits.
+			'paid'      => true,
+		],
 		// Texts on the twelve animals and five elements for the Chinese sign
 		// card, which reads the sign itself on the keyed route.
 		'chinese_texts'       => [
@@ -430,7 +495,9 @@ class PublicData {
 	 * true for as long as the page is.
 	 */
 	private static function cap_page( array $config, array $params, array $payload ): void {
-		if ( 'static' === $config['freshness'] || '' !== self::sanitize_date( (string) ( $params['date'] ?? '' ) ) ) {
+		$date = self::sanitize_date( (string) ( $params['date'] ?? '' ) );
+		// `date` is the birth on a card like Sade Sati (`birth_date`), and today's date is still today.
+		if ( 'static' === $config['freshness'] || ( empty( $config['birth_date'] ) && '' !== $date && self::site_day( 'day' ) !== $date ) ) {
 			return;
 		}
 		PageCache::cap( self::ttl_of( $config, $payload ) );
@@ -463,6 +530,10 @@ class PublicData {
 			$payload = self::chart_payload( $params, $config['required'] );
 			if ( null !== $payload && in_array( 'return', $config['params'], true ) ) {
 				$payload = self::with_return( $widget, $payload, $params );
+			}
+			// Saturn's transit for the site's day, not the api's UTC one.
+			if ( null !== $payload && ! empty( $config['birth_date'] ) ) {
+				$payload['targetDate'] = self::site_day( 'day' );
 			}
 			return $payload;
 		}

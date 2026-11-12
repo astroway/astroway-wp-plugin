@@ -29,10 +29,10 @@ class Form {
 	private const NAME_MAX = 60;
 
 	/** Charts that are the minute of birth or nothing: no "time unknown" box. */
-	private const TIMED = [ 'rising_sign', 'solar_return', 'lunar_return', 'davison', 'bodygraph' ];
+	private const TIMED = [ 'rising_sign', 'solar_return', 'lunar_return', 'davison', 'bodygraph', 'ashtakoot', 'sade_sati', 'doshas', 'gemstones' ];
 
 	/** Forms for two people. */
-	private const PAIRS = [ 'synastry', 'davison' ];
+	private const PAIRS = [ 'synastry', 'davison', 'ashtakoot' ];
 
 	/** The Moon's greatest drift from its noon longitude within a day, per the api. */
 	private const MOON_DRIFT = 7.7;
@@ -101,7 +101,7 @@ class Form {
 		}
 		wp_add_privacy_policy_content(
 			'AstroWay',
-			'<p>' . esc_html__( 'When a visitor fills in a birth chart, Human Design, compatibility, moon sign, rising sign, Solar Return, Lunar Return or Davison chart form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
+			'<p>' . esc_html__( 'When a visitor fills in a birth chart, Human Design, compatibility, moon sign, rising sign, Solar Return, Lunar Return, Davison chart, kundli matching, Sade Sati, dosha or gemstone form, the date, time and place they enter are sent to api.astroway.info to calculate the answer, and the city name to app.astroway.info to find its coordinates. Names typed into the compatibility form are not sent anywhere. The AstroWay plugin does not store any of it on this site: the answer is not cached and the page is sent with no-store. Security or activity-log plugins on this site may record form submissions on their own.', 'astroway' ) . '</p>'
 			. '<p>' . esc_html__( 'When a visitor fills in the numerology form, the name and birth date they enter are sent from this site\'s server to api.astroway.info to calculate the numbers. The AstroWay plugin does not store them on this site.', 'astroway' ) . '</p>'
 			. '<p>' . esc_html__( 'Tarot cards with pictures load those pictures in the visitor\'s browser from cdn.astroway.info, which therefore receives the visitor\'s IP address, as for any image from another site. When a spread asks for its reading, the drawn cards and the page\'s language are sent from this site\'s server to api.astroway.info; nothing about the visitor is sent with them, and the reading is kept on this site for a day so that the same spread is read once.', 'astroway' ) . '</p>'
 		);
@@ -384,7 +384,7 @@ class Form {
 			return self::card( $widget, $id, $lang, $in, $errors, $choices );
 		}
 
-		if ( 'davison' === $widget ) {
+		if ( 'davison' === $widget || 'ashtakoot' === $widget ) {
 			$params = [
 				'lang'    => $lang,
 				'nocache' => true,
@@ -458,6 +458,10 @@ class Form {
 				'time_unknown' => $in['']['unknown'],
 				'transits'     => (string) ( $given['transits'] ?? '' ),
 			];
+			// The Vedic cards head with the visitor's name, as with the author's.
+			if ( in_array( $widget, [ 'sade_sati', 'doshas', 'gemstones' ], true ) ) {
+				$params['name'] = $in['']['name'];
+			}
 		}
 		// Asked directly, not through Render::widget: a frame cannot answer a
 		// POST, so the "in an iframe" setting does not apply to a visitor's chart.
@@ -586,6 +590,10 @@ class Form {
 			'solar_return' => __( 'Your Solar Return', 'astroway' ),
 			'lunar_return' => __( 'Your next Lunar Return', 'astroway' ),
 			'davison'      => __( 'Davison chart of two people', 'astroway' ),
+			'ashtakoot'    => __( 'Kundli matching of two people', 'astroway' ),
+			'sade_sati'    => __( 'Sade Sati', 'astroway' ),
+			'doshas'       => __( 'Mangal and Kaal Sarp dosha', 'astroway' ),
+			'gemstones'    => __( 'Gemstones for your chart', 'astroway' ),
 			'bodygraph'    => __( 'Your Human Design', 'astroway' ),
 		];
 		$inner  = UI::header( [ 'title' => $titles[ $widget ] ?? $titles['natal'] ] );

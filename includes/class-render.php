@@ -50,6 +50,11 @@ class Render {
 		'solar_return'         => [ 'astroway-natal-card', 'natal solar-return' ],
 		'lunar_return'         => [ 'astroway-natal-card', 'natal lunar-return' ],
 		'davison'              => [ 'astroway-natal-card', 'natal davison' ],
+		'ashtakoot'            => [ 'astroway-compat-card', 'ashtakoot' ],
+		'sade_sati'            => [ 'astroway-natal-card', 'sade-sati' ],
+		'doshas'               => [ 'astroway-natal-card', 'doshas' ],
+		'gemstones'            => [ 'astroway-natal-card', 'gemstones' ],
+		'choghadiya'           => [ 'astroway-natal-card', 'choghadiya' ],
 		'kundli'               => [ 'astroway-kundli-card', 'kundli' ],
 		'numerology'           => [ 'astroway-numerology-card', 'numerology' ],
 		'dasha'                => [ 'astroway-kundli-card', 'kundli dasha' ],
@@ -202,6 +207,16 @@ class Render {
 				return self::return_card( $widget, $data, $lang, $params );
 			case 'davison':
 				return self::davison_card( $data, $lang, $params );
+			case 'ashtakoot':
+				return self::ashtakoot_card( $data, $lang, $params );
+			case 'sade_sati':
+				return self::sade_sati_card( $data, $lang, $params );
+			case 'doshas':
+				return self::doshas_card( $data, $lang, $params );
+			case 'gemstones':
+				return self::gemstones_card( $data, $lang, $params );
+			case 'choghadiya':
+				return self::choghadiya_card( $data, $lang, $params );
 		}
 		return '';
 	}
@@ -1635,6 +1650,521 @@ class Render {
 	 * checks the midpoint against the shorter arc itself and stays out until the
 	 * two agree, so it starts drawing on its own once the fix is live.
 	 */
+	/**
+	 * Kundli matching out of 36: the verdict by the classical bands, then the
+	 * eight kootas with each person's value, then the doshas the route flags.
+	 * The route names nothing in the page's language, so every value is ours.
+	 */
+	private static function ashtakoot_card( array $data, string $lang, array $params ): string {
+		$points = is_array( $data['points'] ?? null ) ? $data['points'] : [];
+		if ( ! is_numeric( $data['total'] ?? null ) || ! $points ) {
+			return '';
+		}
+		$total   = (float) $data['total'];
+		$max     = is_numeric( $data['max'] ?? null ) ? (int) $data['max'] : 36;
+		$named_a = trim( (string) ( $params['name_a'] ?? '' ) );
+		$named_b = trim( (string) ( $params['name_b'] ?? '' ) );
+		$title   = '' !== $named_a && '' !== $named_b
+			/* translators: 1: first person's name, 2: second person's name */
+			? sprintf( __( '%1$s and %2$s', 'astroway' ), $named_a, $named_b )
+			: __( 'Kundli matching', 'astroway' );
+
+		$inner  = UI::header(
+			[
+				'title'     => $title,
+				'meta_html' => esc_html__( 'Ashtakoot, 36 gunas', 'astroway' ),
+			]
+		);
+		$inner .= UI::score( $total, self::ashtakoot_verdict( $total ), ' / ' . $max, $max );
+
+		$kootas = [
+			'varna'       => [ __( 'Varna', 'astroway' ), 'boy', 'girl' ],
+			'vashya'      => [ __( 'Vashya', 'astroway' ), 'boyGroup', 'girlGroup' ],
+			'tara'        => [ __( 'Tara', 'astroway' ), '', '' ],
+			'yoni'        => [ __( 'Yoni', 'astroway' ), 'boyYoni', 'girlYoni' ],
+			'grahaMaitri' => [ __( 'Graha Maitri', 'astroway' ), 'boyRuler', 'girlRuler' ],
+			'gana'        => [ __( 'Gana', 'astroway' ), 'boyGana', 'girlGana' ],
+			'bhakoot'     => [ __( 'Bhakoot', 'astroway' ), '', '' ],
+			'nadi'        => [ __( 'Nadi', 'astroway' ), 'boyNadi', 'girlNadi' ],
+		];
+		$rows   = [];
+		foreach ( $kootas as $key => list( $label, $one, $two ) ) {
+			$koota = is_array( $points[ $key ] ?? null ) ? $points[ $key ] : null;
+			if ( null === $koota || ! is_numeric( $koota['score'] ?? null ) ) {
+				continue;
+			}
+			$of     = is_numeric( $koota['max'] ?? null ) ? (float) $koota['max'] : 0.0;
+			$pair   = '' === $one ? '' : self::ashtakoot_value( (string) ( $koota[ $one ] ?? '' ) ) . ' / ' . self::ashtakoot_value( (string) ( $koota[ $two ] ?? '' ) );
+			$rows[] = [
+				'label' => $label,
+				'value' => (float) $koota['score'],
+				'max'   => max( 1, $of ),
+				'text'  => rtrim( rtrim( sprintf( '%.1F', (float) $koota['score'] ), '0' ), '.' ) . ' / ' . rtrim( rtrim( sprintf( '%.1F', $of ), '0' ), '.' ),
+				'note'  => ' / ' === $pair ? '' : $pair,
+			];
+		}
+		$inner .= UI::section( __( 'The eight kootas', 'astroway' ), UI::bars( $rows ) );
+
+		$nadi    = is_array( $points['nadi'] ?? null ) ? $points['nadi'] : [];
+		$bhakoot = is_array( $points['bhakoot'] ?? null ) ? $points['bhakoot'] : [];
+		// A cancelled dosha comes back as `dosha: null` with `cancelled` set, never both.
+		if ( '' !== (string) ( $nadi['dosha'] ?? '' ) || ! empty( $nadi['cancelled'] ) ) {
+			$text   = ! empty( $nadi['cancelled'] )
+				? __( 'Nadi dosha: both Moons are in the same nadi, but a classical exception cancels it here.', 'astroway' )
+				: __( 'Nadi dosha: both Moons are in the same nadi, so this koota gives no points. Tradition reads it as the heaviest of the doshas.', 'astroway' );
+			$inner .= UI::callout( esc_html( $text ), empty( $nadi['cancelled'] ) ? 'tens' : '' );
+		}
+		if ( preg_match( '/^(\d{1,2})-(\d{1,2})$/', (string) ( $bhakoot['dosha'] ?? '' ), $m ) ) {
+			$inner .= UI::callout(
+				esc_html(
+					sprintf(
+						/* translators: 1, 2: house counts between the two Moon signs, e.g. 6 and 8 */
+						__( 'Bhakoot dosha: the Moon signs stand %1$d and %2$d from each other, so this koota gives no points.', 'astroway' ),
+						(int) $m[1],
+						(int) $m[2]
+					)
+				),
+				'tens'
+			);
+		}
+		$inner .= UI::note( __( 'The method reads the first chart as the man\'s and the second as the woman\'s. 18 points is the traditional minimum, 24 and above is good, 32 and above excellent.', 'astroway' ) );
+
+		return self::shell( 'ashtakoot', $lang, $inner );
+	}
+
+	/** A sign by the routes' 0-based index (0 is Aries), in the page's language. */
+	private static function vedic_sign( $index ): string {
+		$names = [ 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ];
+		return is_numeric( $index ) && isset( $names[ (int) $index ] ) ? self::sign_label( $names[ (int) $index ] ) : '';
+	}
+
+	/** The heading of a one-birth Vedic card: the name when given, the card's own title otherwise. */
+	private static function vedic_header( string $title, array $params ): string {
+		$name = trim( (string) ( $params['name'] ?? '' ) );
+		return UI::header(
+			[
+				'title'     => '' === $name ? $title : $name,
+				'meta_html' => '' === $name ? '' : esc_html( $title ),
+			]
+		);
+	}
+
+	/**
+	 * Sade Sati as of today: whether Saturn crosses the sign before, on or after
+	 * the natal Moon, and in which of the three phases. The route counts signs
+	 * from Aries as 0 and names the phase "1st phase (12th from Moon)" and so on.
+	 */
+	private static function sade_sati_card( array $data, string $lang, array $params ): string {
+		if ( ! array_key_exists( 'present', $data ) || ! is_numeric( $data['moonSign'] ?? null ) ) {
+			return '';
+		}
+		$on    = ! empty( $data['present'] );
+		$phase = preg_match( '/^([123])/', (string) ( $data['phase'] ?? '' ), $m ) ? (int) $m[1] : 0;
+		$names = [
+			1 => [ __( 'First phase', 'astroway' ), __( 'Saturn in the sign before your Moon sign', 'astroway' ) ],
+			2 => [ __( 'Second phase', 'astroway' ), __( 'Saturn in your Moon sign', 'astroway' ) ],
+			3 => [ __( 'Third phase', 'astroway' ), __( 'Saturn in the sign after your Moon sign', 'astroway' ) ],
+		];
+		$items = [
+			[
+				'label' => __( 'Sade Sati now', 'astroway' ),
+				'value' => $on ? __( 'Yes', 'astroway' ) : __( 'No', 'astroway' ),
+				'tone'  => $on ? 'accent' : '',
+			],
+		];
+		if ( $on && isset( $names[ $phase ] ) ) {
+			// The phase's meaning goes into the callout below: a tile's subline does not wrap on a phone.
+			$items[] = [
+				'label' => __( 'Phase', 'astroway' ),
+				'value' => $names[ $phase ][0],
+			];
+		}
+		$items[] = [
+			'label' => __( 'Moon sign', 'astroway' ),
+			'value' => self::vedic_sign( $data['moonSign'] ),
+		];
+		$items[] = [
+			'label' => __( 'Saturn now in', 'astroway' ),
+			'value' => self::vedic_sign( $data['transitSaturnSign'] ?? null ),
+		];
+
+		$inner  = self::vedic_header( __( 'Sade Sati', 'astroway' ), $params );
+		$inner .= UI::facts( $items, 'tiles' );
+		$lead   = $on && isset( $names[ $phase ] ) ? $names[ $phase ][1] . '. ' : '';
+		$inner .= UI::callout(
+			esc_html(
+				$on
+					? $lead . __( 'Saturn is crossing the three signs around your Moon sign, about two and a half years each, seven and a half in all. Tradition reads it as a time of pressure that rewards patience and steady work.', 'astroway' )
+					: __( 'Saturn is not in the sign before, on or after your Moon sign, so there is no Sade Sati now.', 'astroway' )
+			)
+		);
+		$inner .= UI::note( __( 'Counted in the sidereal zodiac from the Moon sign at birth, for today.', 'astroway' ) );
+		return self::shell( 'sade_sati', $lang, $inner );
+	}
+
+	/** Mangal dosha from the route the card is on, Kaal Sarp from a second read with the same birth. */
+	private static function doshas_card( array $data, string $lang, array $params ): string {
+		if ( ! array_key_exists( 'present', $data ) ) {
+			return '';
+		}
+		$kaal = PublicData::get( 'kaal_sarp', $params, empty( $params['nocache'] ) );
+
+		$weights = [
+			'strong'   => __( 'strong', 'astroway' ),
+			'moderate' => __( 'moderate', 'astroway' ),
+			'mild'     => __( 'mild', 'astroway' ),
+			'weak'     => __( 'mild', 'astroway' ),
+		];
+		$inner   = self::vedic_header( __( 'Mangal and Kaal Sarp dosha', 'astroway' ), $params );
+
+		// Which reference point put Mars in a counted house, read off the route's own lines.
+		$from    = [];
+		$points  = [
+			/* translators: %d = house number counted from the ascendant */
+			'lagna' => __( '%d from the Lagna', 'astroway' ),
+			/* translators: %d = house number counted from the Moon */
+			'moon'  => __( '%d from the Moon', 'astroway' ),
+			/* translators: %d = house number counted from Venus */
+			'venus' => __( '%d from Venus', 'astroway' ),
+		];
+		$details = implode( "\n", array_map( 'strval', (array) ( $data['details'] ?? [] ) ) );
+		if ( preg_match_all( '/Mars in house (\d{1,2}) from (Lagna|Moon|Venus)/i', $details, $hits, PREG_SET_ORDER ) ) {
+			foreach ( $hits as $hit ) {
+				/* translators: %d = house number */
+				$from[] = sprintf( $points[ strtolower( $hit[2] ) ], (int) $hit[1] );
+			}
+		}
+		$cancelled = (bool) preg_match( '/cancel/i', $details );
+		if ( ! empty( $data['present'] ) ) {
+			$weight = $weights[ strtolower( (string) ( $data['severity'] ?? '' ) ) ] ?? '';
+			$text   = '' === $weight
+				? __( 'Mangal dosha is present: Mars stands in one of the houses the rule counts.', 'astroway' )
+				/* translators: %s = strong, moderate or mild */
+				: sprintf( __( 'Mangal dosha is present (%s): Mars stands in one of the houses the rule counts.', 'astroway' ), $weight );
+			$body = '<p>' . esc_html( $text ) . '</p>';
+			if ( $from ) {
+				/* translators: %s = list like "house 7 from the Lagna, 2 from the Moon" */
+				$body .= '<p>' . esc_html( sprintf( __( 'Mars stands in house %s.', 'astroway' ), implode( ', ', $from ) ) ) . '</p>';
+			}
+			$inner .= UI::section( __( 'Mangal dosha', 'astroway' ), UI::callout( $body, 'tens' ) );
+		} elseif ( $cancelled ) {
+			$inner .= UI::section( __( 'Mangal dosha', 'astroway' ), '<p>' . esc_html__( 'No Mangal dosha: Mars stands in a counted house, but in its own sign or in exaltation, which cancels the dosha.', 'astroway' ) . '</p>' );
+		} else {
+			$inner .= UI::section( __( 'Mangal dosha', 'astroway' ), '<p>' . esc_html__( 'No Mangal dosha: Mars is outside the houses the rule counts from the Lagna, the Moon and Venus.', 'astroway' ) . '</p>' );
+		}
+
+		if ( is_array( $kaal ) && array_key_exists( 'present', $kaal ) ) {
+			if ( ! empty( $kaal['present'] ) ) {
+				$type = trim( (string) ( $kaal['subType'] ?? '' ) );
+				$text = '' === $type
+					? __( 'Kaal Sarp dosha is formed: all seven grahas sit on one side of the Rahu and Ketu axis.', 'astroway' )
+					/* translators: %s = the Kaal Sarp sub-type, e.g. Vishdhar */
+					: sprintf( __( 'Kaal Sarp dosha is formed, the %s type: all seven grahas sit on one side of the Rahu and Ketu axis.', 'astroway' ), $type );
+				$html = UI::callout( esc_html( $text ), 'tens' );
+			} elseif ( ! empty( $kaal['partial'] ) ) {
+				$html = UI::callout( esc_html__( 'Partial Kaal Sarp: six of the seven grahas sit on one side of the Rahu and Ketu axis. Tradition reads it as much milder than the full dosha.', 'astroway' ) );
+			} else {
+				$html = '<p>' . esc_html__( 'No Kaal Sarp dosha: the grahas sit on both sides of the Rahu and Ketu axis.', 'astroway' ) . '</p>';
+			}
+			$inner .= UI::section( __( 'Kaal Sarp dosha', 'astroway' ), $html );
+		}
+		$inner .= UI::note( __( 'Classical rules of the Parashara school, read in the sidereal zodiac. A dosha is one factor of a chart, never a verdict on its own.', 'astroway' ) );
+		return self::shell( 'doshas', $lang, $inner );
+	}
+
+	/**
+	 * Gemstones by the lagna-lord school: the stones of the 1st, 9th and 5th
+	 * lords, how they are worn, and the stones the chart advises against.
+	 */
+	private static function gemstones_card( array $data, string $lang, array $params ): string {
+		$recommended = is_array( $data['recommended'] ?? null ) ? $data['recommended'] : [];
+		if ( ! $recommended ) {
+			return '';
+		}
+		$roles = [
+			'jeevan' => __( 'Life stone', 'astroway' ),
+			'bhagya' => __( 'Lucky stone', 'astroway' ),
+			'karaka' => __( 'Benefic stone', 'astroway' ),
+		];
+		$inner = self::vedic_header( __( 'Gemstones for your chart', 'astroway' ), $params );
+		$lagna = is_array( $data['lagna'] ?? null ) ? $data['lagna'] : [];
+		if ( is_numeric( $lagna['sign'] ?? null ) ) {
+			/* translators: %s = sign name */
+			$inner .= '<p class="astroway-card__intro">' . esc_html( sprintf( __( 'Lagna in %s. The stones belong to the lords of the 1st, 9th and 5th houses.', 'astroway' ), self::vedic_sign( $lagna['sign'] ) ) ) . '</p>';
+		}
+		foreach ( $recommended as $gem ) {
+			if ( ! is_array( $gem ) || '' === (string) ( $gem['gem'] ?? '' ) ) {
+				continue;
+			}
+			$role = '';
+			foreach ( $roles as $word => $label ) {
+				if ( false !== stripos( (string) ( $gem['role'] ?? '' ), $word ) ) {
+					$role = $label;
+				}
+			}
+			$wear    = is_array( $gem['wearing'] ?? null ) ? $gem['wearing'] : [];
+			$items   = [];
+			$items[] = [
+				'label' => __( 'Planet', 'astroway' ),
+				'value' => self::planet_label( (string) ( $gem['grahaName'] ?? '' ) ),
+			];
+			if ( '' !== (string) ( $wear['day'] ?? '' ) ) {
+				$items[] = [
+					'label' => __( 'Day to put it on', 'astroway' ),
+					'value' => self::weekday_label( (string) $wear['day'] ),
+				];
+			}
+			if ( '' !== (string) ( $wear['finger'] ?? '' ) ) {
+				$items[] = [
+					'label' => __( 'Finger', 'astroway' ),
+					'value' => self::finger_label( (string) $wear['finger'] ),
+				];
+			}
+			$metals = array_filter( array_map( [ __CLASS__, 'metal_label' ], (array) ( $wear['metals'] ?? [] ) ) );
+			if ( $metals ) {
+				$items[] = [
+					'label' => __( 'Metal', 'astroway' ),
+					'value' => implode( ', ', $metals ),
+				];
+			}
+			$ratti = (array) ( $wear['minWeight']['ratti'] ?? [] );
+			if ( 2 === count( $ratti ) && is_numeric( $ratti[0] ) && is_numeric( $ratti[1] ) ) {
+				$items[] = [
+					'label' => __( 'Weight', 'astroway' ),
+					/* translators: 1, 2: weight range in ratti, the traditional unit */
+					'value' => sprintf( __( '%1$s to %2$s ratti', 'astroway' ), $ratti[0], $ratti[1] ),
+				];
+			}
+			$title  = self::gem_label( (string) $gem['gem'] ) . ( '' === $role ? '' : ' · ' . $role );
+			$inner .= UI::section( $title, UI::facts( $items ) );
+		}
+		$avoid = [];
+		foreach ( (array) ( $data['avoid'] ?? [] ) as $gem ) {
+			if ( is_array( $gem ) && '' !== (string) ( $gem['gem'] ?? '' ) ) {
+				$avoid[] = self::gem_label( (string) $gem['gem'] ) . ' (' . self::planet_label( (string) ( $gem['grahaName'] ?? '' ) ) . ')';
+			}
+		}
+		if ( $avoid ) {
+			$inner .= UI::callout(
+				esc_html(
+					1 === count( $avoid )
+						/* translators: %s = a gemstone with its planet */
+						? sprintf( __( 'Not advised for this chart: %s. Its planet rules only difficult houses here.', 'astroway' ), $avoid[0] )
+						/* translators: %s = list of gemstones with their planets */
+						: sprintf( __( 'Not advised for this chart: %s. Their planets rule only difficult houses here.', 'astroway' ), implode( ', ', $avoid ) )
+				),
+				'tens'
+			);
+		}
+		$inner .= UI::note( __( 'Traditional guidance of the lagna-lord school. Wear a stone only after checking it with an astrologer you trust.', 'astroway' ) );
+		return self::shell( 'gemstones', $lang, $inner );
+	}
+
+	/** The eight daytime and eight night periods, each good, neutral or bad for starting things. */
+	private static function choghadiya_card( array $data, string $lang, array $params ): string {
+		$day   = is_array( $data['daytime'] ?? null ) ? $data['daytime'] : [];
+		$night = is_array( $data['nighttime'] ?? null ) ? $data['nighttime'] : [];
+		if ( ! $day ) {
+			return '';
+		}
+		$quality = [
+			'good'    => [ __( 'Good', 'astroway' ), '' ],
+			'neutral' => [ __( 'Neutral', 'astroway' ), 'muted' ],
+			'bad'     => [ __( 'Avoid', 'astroway' ), 'tens' ],
+		];
+		$rows    = static function ( array $periods ) use ( $quality ): array {
+			$out = [];
+			foreach ( $periods as $p ) {
+				if ( ! is_array( $p ) ) {
+					continue;
+				}
+				$q     = $quality[ (string) ( $p['quality'] ?? '' ) ] ?? null;
+				$out[] = [
+					self::choghadiya_name( (string) ( $p['name'] ?? '' ) ),
+					[ 'html' => null === $q ? '' : UI::badge( $q[0], $q[1] ) ],
+					substr( (string) ( $p['startTime'] ?? '' ), 0, 5 ) . '–' . substr( (string) ( $p['endTime'] ?? '' ), 0, 5 ),
+				];
+			}
+			return $out;
+		};
+		$head    = [ __( 'Period', 'astroway' ), __( 'For new beginnings', 'astroway' ), __( 'Time', 'astroway' ) ];
+		$city    = trim( (string) ( $params['city'] ?? '' ) );
+		$date    = (string) ( $data['date'] ?? $params['date'] ?? '' );
+		$date    = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ? wp_date( (string) get_option( 'date_format', 'Y-m-d' ), (int) strtotime( $date . ' 12:00:00 UTC' ), new \DateTimeZone( 'UTC' ) ) : $date;
+		$inner   = UI::header(
+			[
+				'title'     => __( 'Choghadiya', 'astroway' ),
+				'meta_html' => esc_html( trim( $city . ( '' !== $city && '' !== $date ? ', ' : '' ) . $date ) ),
+			]
+		);
+		// Beyond the polar circles the route answers 00:00 for both and splits nothing.
+		if ( '00:00:00' === (string) ( $data['sunrise'] ?? '' ) && '00:00:00' === (string) ( $data['sunset'] ?? '' ) ) {
+			$inner .= UI::callout( esc_html__( 'The Sun does not rise or set here on this day, so there is no choghadiya to divide.', 'astroway' ) );
+			return self::shell( 'choghadiya', $lang, $inner );
+		}
+		if ( '' !== (string) ( $data['sunrise'] ?? '' ) ) {
+			$inner .= UI::facts(
+				[
+					[
+						'label' => __( 'Sunrise', 'astroway' ),
+						'value' => substr( (string) $data['sunrise'], 0, 5 ),
+					],
+					[
+						'label' => __( 'Sunset', 'astroway' ),
+						'value' => substr( (string) ( $data['sunset'] ?? '' ), 0, 5 ),
+					],
+				],
+				'tiles'
+			);
+		}
+		$inner .= UI::section(
+			__( 'Day', 'astroway' ),
+			UI::table(
+				[
+					'head' => $head,
+					'rows' => $rows( $day ),
+				]
+			)
+		);
+		if ( $night ) {
+			$inner .= UI::section(
+				__( 'Night', 'astroway' ),
+				UI::table(
+					[
+						'head' => $head,
+						'rows' => $rows( $night ),
+					]
+				)
+			);
+		}
+		$inner .= UI::note( __( 'Local time at the place, from sunrise to sunset and from sunset to the next sunrise, each split into eight parts.', 'astroway' ) );
+		return self::shell( 'choghadiya', $lang, $inner );
+	}
+
+	private static function choghadiya_name( string $raw ): string {
+		$names = [
+			'amrit' => __( 'Amrit', 'astroway' ),
+			'shubh' => __( 'Shubh', 'astroway' ),
+			'labh'  => __( 'Labh', 'astroway' ),
+			'char'  => __( 'Char', 'astroway' ),
+			'rog'   => __( 'Rog', 'astroway' ),
+			'kaal'  => __( 'Kaal', 'astroway' ),
+			'udveg' => __( 'Udveg', 'astroway' ),
+		];
+		return $names[ strtolower( trim( $raw ) ) ] ?? $raw;
+	}
+
+	private static function gem_label( string $raw ): string {
+		$names = [
+			'ruby'            => __( 'Ruby', 'astroway' ),
+			'pearl'           => __( 'Pearl', 'astroway' ),
+			'red coral'       => __( 'Red coral', 'astroway' ),
+			'emerald'         => __( 'Emerald', 'astroway' ),
+			'yellow sapphire' => __( 'Yellow sapphire', 'astroway' ),
+			'diamond'         => __( 'Diamond', 'astroway' ),
+			'blue sapphire'   => __( 'Blue sapphire', 'astroway' ),
+			'hessonite'       => __( 'Hessonite', 'astroway' ),
+			"cat's eye"       => __( 'Cat\'s eye', 'astroway' ),
+		];
+		return $names[ strtolower( trim( $raw ) ) ] ?? $raw;
+	}
+
+	private static function weekday_label( string $raw ): string {
+		$names = [
+			'monday'    => __( 'Monday', 'astroway' ),
+			'tuesday'   => __( 'Tuesday', 'astroway' ),
+			'wednesday' => __( 'Wednesday', 'astroway' ),
+			'thursday'  => __( 'Thursday', 'astroway' ),
+			'friday'    => __( 'Friday', 'astroway' ),
+			'saturday'  => __( 'Saturday', 'astroway' ),
+			'sunday'    => __( 'Sunday', 'astroway' ),
+		];
+		return $names[ strtolower( trim( $raw ) ) ] ?? $raw;
+	}
+
+	private static function finger_label( string $raw ): string {
+		$names = [
+			'thumb'         => __( 'Thumb', 'astroway' ),
+			'index finger'  => __( 'Index finger', 'astroway' ),
+			'middle finger' => __( 'Middle finger', 'astroway' ),
+			'ring finger'   => __( 'Ring finger', 'astroway' ),
+			'little finger' => __( 'Little finger', 'astroway' ),
+		];
+		return $names[ strtolower( trim( $raw ) ) ] ?? $raw;
+	}
+
+	private static function metal_label( $raw ): string {
+		$names = [
+			'gold'        => __( 'Gold', 'astroway' ),
+			'silver'      => __( 'Silver', 'astroway' ),
+			'copper'      => __( 'Copper', 'astroway' ),
+			'platinum'    => __( 'Platinum', 'astroway' ),
+			'iron'        => __( 'Iron', 'astroway' ),
+			'panchadhatu' => __( 'Panchadhatu', 'astroway' ),
+			'panchdhatu'  => __( 'Panchadhatu', 'astroway' ),
+		];
+		$raw   = (string) $raw;
+		return $names[ strtolower( trim( $raw ) ) ] ?? $raw;
+	}
+
+	/** The verdict by the classical bands the route itself names. */
+	private static function ashtakoot_verdict( float $total ): string {
+		if ( $total >= 32 ) {
+			return __( 'Excellent match', 'astroway' );
+		}
+		if ( $total >= 24 ) {
+			return __( 'Good match', 'astroway' );
+		}
+		if ( $total >= 18 ) {
+			return __( 'Acceptable match', 'astroway' );
+		}
+		return __( 'Below the traditional minimum of 18', 'astroway' );
+	}
+
+	/** Varna, vashya group, yoni, gana, nadi or a ruling planet, in the page's language. */
+	private static function ashtakoot_value( string $raw ): string {
+		$raw = strtolower( trim( $raw ) );
+		if ( '' === $raw ) {
+			return '';
+		}
+		$names = [
+			'brahmin'     => __( 'Brahmin', 'astroway' ),
+			'kshatriya'   => __( 'Kshatriya', 'astroway' ),
+			'vaishya'     => __( 'Vaishya', 'astroway' ),
+			'shudra'      => __( 'Shudra', 'astroway' ),
+			'chatushpada' => __( 'Quadruped', 'astroway' ),
+			'manava'      => __( 'Human', 'astroway' ),
+			'nara'        => __( 'Human', 'astroway' ),
+			'jalachara'   => __( 'Water', 'astroway' ),
+			'vanachara'   => __( 'Wild', 'astroway' ),
+			'keeta'       => __( 'Insect', 'astroway' ),
+			'horse'       => __( 'Horse', 'astroway' ),
+			'elephant'    => __( 'Elephant', 'astroway' ),
+			'sheep'       => __( 'Sheep', 'astroway' ),
+			'serpent'     => __( 'Serpent', 'astroway' ),
+			'dog'         => __( 'Dog', 'astroway' ),
+			'cat'         => __( 'Cat', 'astroway' ),
+			'rat'         => __( 'Rat', 'astroway' ),
+			'cow'         => __( 'Cow', 'astroway' ),
+			'bull'        => __( 'Bull', 'astroway' ),
+			'buffalo'     => __( 'Buffalo', 'astroway' ),
+			'tiger'       => __( 'Tiger', 'astroway' ),
+			'tigress'     => __( 'Tiger', 'astroway' ),
+			'hare'        => __( 'Hare', 'astroway' ),
+			'deer'        => __( 'Deer', 'astroway' ),
+			'monkey'      => __( 'Monkey', 'astroway' ),
+			'mongoose'    => __( 'Mongoose', 'astroway' ),
+			'lion'        => __( 'Lion', 'astroway' ),
+			'deva'        => __( 'Deva', 'astroway' ),
+			'manushya'    => __( 'Manushya', 'astroway' ),
+			'rakshasa'    => __( 'Rakshasa', 'astroway' ),
+			'adi'         => __( 'Adi', 'astroway' ),
+			'madhya'      => __( 'Madhya', 'astroway' ),
+			'antya'       => __( 'Antya', 'astroway' ),
+		];
+		return $names[ $raw ] ?? self::planet_label( ucfirst( $raw ) );
+	}
+
 	private static function davison_card( array $data, string $lang, array $params ): string {
 		$planets  = isset( $data['planets'] ) && is_array( $data['planets'] ) ? $data['planets'] : [];
 		$midpoint = is_array( $data['midpoint'] ?? null ) ? $data['midpoint'] : [];
