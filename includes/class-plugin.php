@@ -123,6 +123,23 @@ class Plugin {
 		return $langs;
 	}
 
+	/**
+	 * Our own translations, under a wp.org language pack when the site has one.
+	 * WordPress loads only the pack, which lags behind each release, so strings
+	 * newer than its last import came out in English among translated ones. The
+	 * pack keeps its strings; ours fills what it lacks.
+	 *
+	 * @param string $locale The locale switched to, on change_locale.
+	 */
+	public static function load_translations( $locale = '' ): void {
+		$locale = is_string( $locale ) && '' !== $locale ? $locale : determine_locale();
+		load_plugin_textdomain( 'astroway', false, dirname( plugin_basename( ASTROWAY_WP_PLUGIN_FILE ) ) . '/languages' );
+		$mofile = ASTROWAY_WP_PLUGIN_DIR . 'languages/astroway-' . $locale . '.mo';
+		if ( is_readable( $mofile ) ) {
+			load_textdomain( 'astroway', $mofile, $locale );
+		}
+	}
+
 	public static function boot(): void {
 		// WP 4.6+ auto-loads textdomain from /languages when slug matches; no manual call needed for wp.org-hosted plugins.
 

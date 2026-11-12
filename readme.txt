@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -196,6 +196,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 2.9.1 =
+* Fix: on a site with a translation from translate.wordpress.org (Ukrainian, Czech, Greek, Dutch), strings newer than that translation came out in English among translated ones, the five 2.9 cards among them. The plugin's own translations now fill what the language pack lacks; the pack keeps its strings
 
 = 2.9.0 =
 * New: kundli matching card. The ashtakoot score out of 36 with all eight kootas, each person's value and points, and the nadi and bhakoot doshas, with the classical exceptions that cancel them. A form for both births. `[astroway_ashtakoot]`
