@@ -193,7 +193,7 @@ return [
 	[
 		'tag'         => 'astroway_kundli',
 		'title'       => __( 'Vedic Kundli', 'astroway' ),
-		'description' => __( 'North-Indian D1 chart. Loads in a frame: there is no page-side template for it yet.', 'astroway' ),
+		'description' => __( 'The D1 chart drawn North or South Indian, with the grahas, the dasha running now and the yogas. Needs a site key or an API key; without one it loads in a frame.', 'astroway' ),
 		'example'     => '[astroway_kundli date="1990-05-15" time="14:30" lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
 		'block'       => 'astroway/kundli',
 		'params'      => [
@@ -203,6 +203,7 @@ return [
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
 			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
+			[ 'chart', 'string', false, __( 'north (default), south, or none to leave the drawing out.', 'astroway' ) ],
 		],
 	],
 	[
@@ -219,7 +220,7 @@ return [
 	[
 		'tag'         => 'astroway_panchang',
 		'title'       => __( 'Daily Panchang', 'astroway' ),
-		'description' => __( 'Tithi, nakshatra, yoga, karana, vara and rahu-kaal for a date and place. Loads in a frame.', 'astroway' ),
+		'description' => __( 'The five limbs of the day with the times they end, sunrise and sunset, and Rahu kaal with the other windows, for a date and place. Needs a site key or an API key; without one it loads in a frame.', 'astroway' ),
 		'example'     => '[astroway_panchang lat="50.45" lon="30.52" tz="Europe/Kyiv"]',
 		'block'       => 'astroway/panchang',
 		'params'      => [
@@ -228,6 +229,18 @@ return [
 			[ 'lon', 'float', true, __( 'WGS-84 longitude.', 'astroway' ) ],
 			[ 'tz', 'string', true, __( 'IANA timezone.', 'astroway' ) ],
 			[ 'theme', 'string', false, __( 'light (default), dark or console.', 'astroway' ) ],
+			[ 'city', 'string', false, __( 'Place name for the heading.', 'astroway' ) ],
+		],
+	],
+	[
+		'tag'         => 'astroway_moon_calendar',
+		'title'       => __( 'Moon calendar', 'astroway' ),
+		'description' => __( 'A month of the Moon: the sign it is in each day, the phases, and the times of the phases and of every void-of-course period on the site\'s clock. Needs a site key or an API key.', 'astroway' ),
+		'example'     => '[astroway_moon_calendar]',
+		'block'       => 'astroway/moon-calendar',
+		'params'      => [
+			[ 'month', 'string', false, __( 'Month (YYYY-MM, blank for this month)', 'astroway' ) ],
+			[ 'lang', 'string', false, __( 'Language of the card, e.g. hi or en. Blank follows the site.', 'astroway' ) ],
 		],
 	],
 	[

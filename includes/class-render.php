@@ -55,6 +55,8 @@ class Render {
 		'doshas'               => [ 'astroway-natal-card', 'doshas' ],
 		'gemstones'            => [ 'astroway-natal-card', 'gemstones' ],
 		'choghadiya'           => [ 'astroway-natal-card', 'choghadiya' ],
+		'panchang'             => [ 'astroway-natal-card', 'panchang' ],
+		'moon_calendar'        => [ 'astroway-moon-card', 'moon-calendar' ],
 		'kundli'               => [ 'astroway-kundli-card', 'kundli' ],
 		'numerology'           => [ 'astroway-numerology-card', 'numerology' ],
 		'dasha'                => [ 'astroway-kundli-card', 'kundli dasha' ],
@@ -217,6 +219,10 @@ class Render {
 				return self::gemstones_card( $data, $lang, $params );
 			case 'choghadiya':
 				return self::choghadiya_card( $data, $lang, $params );
+			case 'panchang':
+				return self::panchang_card( $data, $lang, $params );
+			case 'moon_calendar':
+				return self::moon_calendar_card( $data, $lang );
 		}
 		return '';
 	}
@@ -414,9 +420,9 @@ class Render {
 		$inner .= UI::shown( 'facts' ) ? UI::facts( $rows, 'tiles' ) : '<p class="astroway-card__lead">' . esc_html( self::hd_type_label( $type ) ) . '</p>';
 		$inner .= UI::shown( 'tags' ) ? self::hd_tags( $type, (string) ( $data['notSelfTheme'] ?? '' ) ) : '';
 
-		$texts  = self::hd_texts( $lang );
-		$inner .= UI::shown( 'reading' ) ? self::hd_reading( $data, $texts ) : '';
+		$texts = self::hd_texts( $lang );
 
+		// The drawing comes right after the facts: on a phone the readings pushed it to the second screen.
 		$channels = is_array( $data['channels'] ?? null ) ? $data['channels'] : [];
 		$inner   .= UI::tabs(
 			__( 'Human Design', 'astroway' ),
@@ -438,6 +444,8 @@ class Render {
 				],
 			]
 		);
+
+		$inner .= UI::shown( 'reading' ) ? self::hd_reading( $data, $texts ) : '';
 
 		return self::shell( 'bodygraph', $lang, $inner );
 	}
@@ -1377,8 +1385,10 @@ class Render {
 			$own = $texts[ 'pattern.' . $figure['kind'] ] ?? null;
 			if ( is_array( $own ) && '' !== trim( (string) ( $own['body'] ?? '' ) ) && ! isset( $read[ $figure['kind'] ] ) ) {
 				// Under the tiles, once per kind: a text inside a tile would stretch its row.
+				// Named for what it holds, so it does not read as the tile above repeated.
 				$read[ $figure['kind'] ] = [
-					'title'     => '' !== trim( (string) ( $own['title'] ?? '' ) ) ? (string) $own['title'] : $names[ $figure['kind'] ],
+					/* translators: %s: chart pattern name, such as T-square */
+					'title'     => sprintf( __( 'Read more: %s', 'astroway' ), '' !== trim( (string) ( $own['title'] ?? '' ) ) ? (string) $own['title'] : $names[ $figure['kind'] ] ),
 					'body_html' => '<div class="astroway-prose">' . self::paragraphs( (string) $own['body'] ) . '</div>',
 				];
 			}
@@ -1958,6 +1968,240 @@ class Render {
 		}
 		$inner .= UI::note( __( 'Traditional guidance of the lagna-lord school. Wear a stone only after checking it with an astrologer you trust.', 'astroway' ) );
 		return self::shell( 'gemstones', $lang, $inner );
+	}
+
+	/** A month of the Moon: a calendar grid with the sign of each day and the phases, then the phases and void periods by time. */
+	private static function moon_calendar_card( array $data, string $lang ): string {
+		$days = is_array( $data['dailyInfo'] ?? null ) ? $data['dailyInfo'] : [];
+		$year = (int) ( $data['year'] ?? 0 );
+		$mon  = (int) ( $data['month'] ?? 0 );
+		if ( ! $days || $year < 1 || $mon < 1 ) {
+			return '';
+		}
+		$zone   = PublicData::moon_zone();
+		$local  = static function ( $iso ) use ( $zone ): ?\DateTimeImmutable {
+			try {
+				return ( new \DateTimeImmutable( (string) $iso ) )->setTimezone( $zone );
+			} catch ( \Exception $e ) {
+				return null;
+			}
+		};
+		$signs  = self::sign_slugs();
+		$phases = [
+			'new_moon'      => [ __( 'New Moon', 'astroway' ), 0.0, true ],
+			'first_quarter' => [ __( 'First Quarter', 'astroway' ), 0.5, true ],
+			'full_moon'     => [ __( 'Full Moon', 'astroway' ), 1.0, true ],
+			'last_quarter'  => [ __( 'Last Quarter', 'astroway' ), 0.5, false ],
+		];
+
+		// Each day of the month by its local date, with the Moon's sign and the phase that falls on it.
+		$by_day = [];
+		foreach ( $days as $d ) {
+			$t = is_array( $d ) ? $local( $d['date'] ?? '' ) : null;
+			if ( ! $t ) {
+				continue;
+			}
+			$by_day[ (int) $t->format( 'j' ) ] = $d;
+		}
+		$phase_on = [];
+		foreach ( (array) ( $data['phases'] ?? [] ) as $p ) {
+			$t = is_array( $p ) ? $local( $p['date'] ?? '' ) : null;
+			if ( $t && (int) $t->format( 'n' ) === $mon && isset( $phases[ (string) ( $p['type'] ?? '' ) ] ) ) {
+				$phase_on[ (int) $t->format( 'j' ) ] = [ (string) $p['type'], $t ];
+			}
+		}
+
+		$first = new \DateTimeImmutable( sprintf( '%04d-%02d-01 12:00:00', $year, $mon ), $zone );
+		$title = wp_date( 'F Y', $first->getTimestamp(), $zone );
+		$inner = UI::header(
+			[
+				'title'     => __( 'Moon calendar', 'astroway' ),
+				'meta_html' => esc_html( (string) $title ),
+			]
+		);
+
+		// The grid starts on the site's first day of the week.
+		$start = (int) get_option( 'start_of_week', 1 );
+		$head  = '';
+		for ( $i = 0; $i < 7; $i++ ) {
+			global $wp_locale;
+			$wd    = ( $start + $i ) % 7;
+			$name  = isset( $wp_locale ) ? $wp_locale->get_weekday_abbrev( $wp_locale->get_weekday( $wd ) ) : (string) $wd;
+			$head .= '<th scope="col">' . esc_html( $name ) . '</th>';
+		}
+		$cells = str_repeat( '<td></td>', ( (int) $first->format( 'w' ) - $start + 7 ) % 7 );
+		$count = (int) $first->format( 't' );
+		$rows  = '';
+		$col   = ( (int) $first->format( 'w' ) - $start + 7 ) % 7;
+		for ( $day = 1; $day <= $count; $day++ ) {
+			$info  = $by_day[ $day ] ?? [];
+			$sign  = $signs[ (int) ( $info['moonSignIndex'] ?? -1 ) ] ?? '';
+			$cell  = '<span class="astroway-moonmonth__day">' . $day . '</span>';
+			$cell .= '' !== $sign ? Glyphs::icon( $sign, self::sign_label( $sign ) ) : '';
+			$class = '';
+			if ( isset( $phase_on[ $day ] ) ) {
+				[ $type, $at ] = $phase_on[ $day ];
+				$ph            = $phases[ $type ];
+				$cell         .= '<span class="astroway-moonmonth__phase" title="' . esc_attr( $ph[0] . ' ' . $at->format( 'H:i' ) ) . '">' . UI::moon( $ph[1], $ph[2] ) . '<span class="astroway-sr">' . esc_html( $ph[0] ) . '</span></span>';
+				$class         = ' class="astroway-moonmonth__mark"';
+			}
+			$cells .= '<td' . $class . '>' . $cell . '</td>';
+			if ( 6 === $col ) {
+				$rows .= '<tr>' . $cells . '</tr>';
+				$cells = '';
+			}
+			$col = ( 1 + $col ) % 7;
+		}
+		if ( '' !== $cells ) {
+			$rows .= '<tr>' . $cells . str_repeat( '<td></td>', ( 7 - $col ) % 7 ) . '</tr>';
+		}
+		$inner .= '<div class="astroway-scroll"><table class="astroway-moonmonth"><thead><tr>' . $head . '</tr></thead><tbody>' . $rows . '</tbody></table></div>';
+
+		$list = [];
+		foreach ( $phase_on as $day => [ $type, $at ] ) {
+			$list[] = [ $phases[ $type ][0], wp_date( 'j F, H:i', $at->getTimestamp(), $zone ) ];
+		}
+		if ( $list ) {
+			$inner .= UI::section(
+				__( 'Phases', 'astroway' ),
+				UI::table(
+					[
+						'head' => [ __( 'Phase', 'astroway' ), __( 'Time', 'astroway' ) ],
+						'rows' => $list,
+					]
+				)
+			);
+		}
+
+		$voids = [];
+		foreach ( (array) ( $data['voidPeriods'] ?? [] ) as $v ) {
+			$a = is_array( $v ) ? $local( $v['startDate'] ?? '' ) : null;
+			$b = is_array( $v ) ? $local( $v['endDate'] ?? '' ) : null;
+			if ( ! $a || ! $b || ( (int) $a->format( 'n' ) !== $mon && (int) $b->format( 'n' ) !== $mon ) ) {
+				continue;
+			}
+			$next    = $signs[ (int) ( $v['nextSignIndex'] ?? -1 ) ] ?? '';
+			$voids[] = [
+				wp_date( 'j M, H:i', $a->getTimestamp(), $zone ) . "\u{2060}–\u{2060}" . ( $a->format( 'Y-m-d' ) === $b->format( 'Y-m-d' ) ? $b->format( 'H:i' ) : wp_date( 'j M, H:i', $b->getTimestamp(), $zone ) ),
+				'' !== $next ? self::sign_label( $next ) : '',
+			];
+		}
+		if ( $voids ) {
+			$inner .= UI::section(
+				__( 'Moon void of course', 'astroway' ),
+				UI::table(
+					[
+						'head' => [ __( 'From and until', 'astroway' ), __( 'Then enters', 'astroway' ) ],
+						'rows' => $voids,
+					]
+				)
+			);
+		}
+		/* translators: %s: the site's time zone, such as Europe/Kyiv */
+		$inner .= UI::note( sprintf( __( 'Times in %s. Each day shows the sign the Moon is in at midday.', 'astroway' ), (string) $zone->getName() ) );
+		return self::shell( 'moon_calendar', $lang, $inner );
+	}
+
+	/** The five limbs of the day (tithi, vara, nakshatra, yoga, karana) and the timed windows, in the page. */
+	private static function panchang_card( array $data, string $lang, array $params ): string {
+		if ( ! is_array( $data['tithi'] ?? null ) || ! is_array( $data['nakshatra'] ?? null ) ) {
+			return '';
+		}
+		$day = (string) ( $params['date'] ?? '' );
+		// "07:06", or "07:06, next day" when the limb runs past midnight; the api gives local ISO times.
+		$until  = static function ( $iso ) use ( $day ): string {
+			try {
+				$t = new \DateTimeImmutable( (string) $iso );
+			} catch ( \Exception $e ) {
+				return '';
+			}
+			/* translators: %s: a clock time such as 07:06 */
+			return $t->format( 'Y-m-d' ) !== $day && '' !== $day ? sprintf( __( '%s, next day', 'astroway' ), $t->format( 'H:i' ) ) : $t->format( 'H:i' );
+		};
+		$hm     = static fn( $v ): string => substr( (string) $v, 0, 5 );
+		$ends   = static function ( array $limb ) use ( $until ): string {
+			return empty( $limb['endsAt'] ) ? '' : $until( $limb['endsAt'] );
+		};
+		$tithi  = $data['tithi'];
+		$naks   = $data['nakshatra'];
+		$vara   = is_array( $data['vara'] ?? null ) ? $data['vara'] : [];
+		$yoga   = is_array( $data['yoga'] ?? null ) ? $data['yoga'] : [];
+		$kar    = is_array( $data['karana'] ?? null ) ? $data['karana'] : [];
+		$paksha = 'krishna' === (string) ( $tithi['paksha'] ?? '' ) ? __( 'Krishna paksha, waning', 'astroway' ) : __( 'Shukla paksha, waxing', 'astroway' );
+
+		$city  = trim( (string) ( $params['city'] ?? '' ) );
+		$shown = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $day ) ? wp_date( (string) get_option( 'date_format', 'Y-m-d' ), (int) strtotime( $day . ' 12:00:00 UTC' ), new \DateTimeZone( 'UTC' ) ) : $day;
+		$inner = UI::header(
+			[
+				'title'     => __( 'Panchang', 'astroway' ),
+				'meta_html' => esc_html( trim( $city . ( '' !== $city && '' !== $shown ? ', ' : '' ) . $shown ) ),
+			]
+		);
+		$tiles = [];
+		$sky   = [
+			'sunrise'  => __( 'Sunrise', 'astroway' ),
+			'sunset'   => __( 'Sunset', 'astroway' ),
+			'moonrise' => __( 'Moonrise', 'astroway' ),
+			'moonset'  => __( 'Moonset', 'astroway' ),
+		];
+		foreach ( $sky as $k => $label ) {
+			if ( '' !== (string) ( $data[ $k ] ?? '' ) ) {
+				// Sun times come as clock times, Moon times as ISO moments that may fall on the next day.
+				$tiles[] = [
+					'label' => $label,
+					'value' => 0 === strpos( $k, 'sun' ) ? $hm( $data[ $k ] ) : $until( $data[ $k ] ),
+				];
+			}
+		}
+		if ( $tiles ) {
+			$inner .= UI::facts( $tiles, 'tiles' );
+		}
+
+		$rows = [
+			[ __( 'Tithi', 'astroway' ), (string) ( $tithi['name'] ?? '' ) . ' · ' . $paksha, $ends( $tithi ) ],
+			[ __( 'Vara', 'astroway' ), (string) ( $vara['name'] ?? '' ) . ( empty( $vara['ruler'] ) ? '' : ' · ' . self::planet_label( (string) $vara['ruler'] ) ), '' ],
+			/* translators: 1: nakshatra name, 2: pada (quarter) number 1-4 */
+			[ __( 'Nakshatra', 'astroway' ), sprintf( __( '%1$s, pada %2$d', 'astroway' ), self::nakshatra_name( $naks, $lang ), (int) ( $naks['pada'] ?? 0 ) ), $ends( $naks ) ],
+			[ __( 'Yoga', 'astroway' ), (string) ( $yoga['name'] ?? '' ), $ends( $yoga ) ],
+			[ __( 'Karana', 'astroway' ), (string) ( $kar['name'] ?? '' ), $ends( $kar ) ],
+		];
+		$inner .= UI::section(
+			__( 'Five limbs of the day', 'astroway' ),
+			UI::table(
+				[
+					'head' => [ __( 'Limb', 'astroway' ), __( 'Today', 'astroway' ), __( 'Ends', 'astroway' ) ],
+					'rows' => $rows,
+				]
+			)
+		);
+
+		$windows = [];
+		foreach (
+			[
+				'abhijitMuhurat' => [ __( 'Abhijit muhurta', 'astroway' ), __( 'Good', 'astroway' ), '' ],
+				'rahuKaal'       => [ __( 'Rahu kaal', 'astroway' ), __( 'Avoid', 'astroway' ), 'tens' ],
+				'yamaganda'      => [ __( 'Yamaganda', 'astroway' ), __( 'Avoid', 'astroway' ), 'tens' ],
+				'gulika'         => [ __( 'Gulika kaal', 'astroway' ), __( 'Avoid', 'astroway' ), 'tens' ],
+			] as $k => [ $label, $word, $tone ]
+		) {
+			$w = $data[ $k ] ?? null;
+			if ( is_array( $w ) && ! empty( $w['startTime'] ) ) {
+				$windows[] = [ $label, [ 'html' => UI::badge( $word, $tone ) ], $hm( $w['startTime'] ) . "\u{2060}–\u{2060}" . $hm( $w['endTime'] ?? '' ) ]; // word joiners keep the range on one line
+			}
+		}
+		if ( $windows ) {
+			$inner .= UI::section(
+				__( 'Timed windows', 'astroway' ),
+				UI::table(
+					[
+						'head' => [ __( 'Window', 'astroway' ), __( 'For new beginnings', 'astroway' ), __( 'Time', 'astroway' ) ],
+						'rows' => $windows,
+					]
+				)
+			);
+		}
+		$inner .= UI::note( __( 'Local time at the place. A limb that changes during the day is named as it stands at noon, with the time it ends.', 'astroway' ) );
+		return self::shell( 'panchang', $lang, $inner );
 	}
 
 	/** The eight daytime and eight night periods, each good, neutral or bad for starting things. */
@@ -2687,6 +2931,11 @@ class Render {
 	}
 
 	/** Sign key an ecliptic longitude falls in, e.g. 296.39 → aquarius. */
+	/** The sign id of an index, 0 = Aries; '' out of range. */
+	public static function sign_slug( int $index ): string {
+		return self::sign_slugs()[ $index ] ?? '';
+	}
+
 	public static function sign_of( float $longitude ): string {
 		$lon   = fmod( fmod( $longitude, 360 ) + 360, 360 );
 		$names = [ 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces' ];
@@ -2917,9 +3166,11 @@ class Render {
 	private static function sign_prompt( string $widget, array $params ): string {
 		$links = [];
 		$names = [];
+		$dates = [];
 		foreach ( self::sign_slugs() as $slug ) {
 			$links[ $slug ] = add_query_arg( 'aw_sign', $slug );
 			$names[ $slug ] = self::sign_label( $slug );
+			$dates[ $slug ] = self::sign_dates( $slug );
 		}
 		$inner  = UI::header(
 			[
@@ -2934,6 +3185,7 @@ class Render {
 				'current' => '',
 				'links'   => $links,
 				'names'   => $names,
+				'dates'   => $dates,
 			]
 		);
 		return self::shell( $widget, Plugin::resolve_lang( $params['lang'] ?? '' ), $inner );
@@ -3783,6 +4035,33 @@ class Render {
 	}
 
 	/** Translated sign name; falls back to whatever the api sent when unrecognised. */
+	/** The tropical dates of a sign in the site's language, such as "Mar 21 – Apr 19". */
+	public static function sign_dates( string $sign ): string {
+		$bounds = [
+			'aries'       => [ 3, 21, 4, 19 ],
+			'taurus'      => [ 4, 20, 5, 20 ],
+			'gemini'      => [ 5, 21, 6, 20 ],
+			'cancer'      => [ 6, 21, 7, 22 ],
+			'leo'         => [ 7, 23, 8, 22 ],
+			'virgo'       => [ 8, 23, 9, 22 ],
+			'libra'       => [ 9, 23, 10, 22 ],
+			'scorpio'     => [ 10, 23, 11, 21 ],
+			'sagittarius' => [ 11, 22, 12, 21 ],
+			'capricorn'   => [ 12, 22, 1, 19 ],
+			'aquarius'    => [ 1, 20, 2, 18 ],
+			'pisces'      => [ 2, 19, 3, 20 ],
+		];
+		if ( ! isset( $bounds[ $sign ] ) ) {
+			return '';
+		}
+		[ $m1, $d1, $m2, $d2 ] = $bounds[ $sign ];
+
+		$utc = new \DateTimeZone( 'UTC' );
+		// A date never splits between month and day; the line may break only at the dash.
+		$day = static fn( int $m, int $d ): string => str_replace( ' ', "\u{00A0}", (string) wp_date( 'M j', (int) gmmktime( 12, 0, 0, $m, $d, 2001 ), $utc ) );
+		return $day( $m1, $d1 ) . "\u{2009}–\u{2009}" . $day( $m2, $d2 );
+	}
+
 	public static function sign_label( string $raw ): string {
 		$labels = [
 			'aries'       => __( 'Aries', 'astroway' ),
@@ -6058,10 +6337,11 @@ class Render {
 			];
 			$glyph = $nodes[ $graha['name'] ] ?? self::planet_id( $graha['name'] );
 			// Whole-sign houses, counted from the sign of the Lagna, as the tradition counts them.
-			$house  = $lagna_sign < 0 ? '' : (string) ( ( self::sign_index( $lon ) - $lagna_sign + 12 ) % 12 + 1 );
-			$motion = empty( $graha['isRetrograde'] )
+			$house = $lagna_sign < 0 ? '' : (string) ( ( self::sign_index( $lon ) - $lagna_sign + 12 ) % 12 + 1 );
+			// The nodes always move back, so "Retrograde" next to them reads as news it is not.
+			$motion = isset( $nodes[ $graha['name'] ] ) ? '' : ( empty( $graha['isRetrograde'] )
 				? esc_html__( 'Direct', 'astroway' )
-				: '<span class="astroway-nowrap"><span aria-hidden="true">℞</span> ' . esc_html__( 'Retrograde', 'astroway' ) . '</span>';
+				: '<span class="astroway-nowrap"><span aria-hidden="true">℞</span> ' . esc_html__( 'Retrograde', 'astroway' ) . '</span>' );
 			$rows[] = [
 				'cells' => [
 					[ 'html' => Glyphs::icon( $glyph, $name ) . ' ' . esc_html( $name ) ],
@@ -6073,6 +6353,49 @@ class Render {
 		}
 
 		return $rows;
+	}
+
+	/** The North or South Indian chart drawing, as the first thing after the facts. */
+	private static function kundli_diagram( array $grahas, int $lagna_sign, string $style ): string {
+		if ( 'none' === $style || $lagna_sign < 0 || ! UI::shown( 'chart' ) ) {
+			return '';
+		}
+		$nodes  = [
+			'Rahu' => 'north-node',
+			'Ketu' => 'south-node',
+		];
+		$bodies = [];
+		$names  = [];
+		foreach ( $grahas as $g ) {
+			if ( ! is_array( $g ) || ! is_string( $g['name'] ?? null ) || ! is_numeric( $g['longitude'] ?? null ) ) {
+				continue;
+			}
+			$node     = $nodes[ $g['name'] ] ?? '';
+			$label    = self::planet_label( $g['name'] );
+			$sign     = self::sign_index( (float) $g['longitude'] );
+			$bodies[] = [
+				'glyph' => '' !== $node ? $node : self::planet_id( $g['name'] ),
+				'name'  => $label,
+				'sign'  => $sign,
+				// The nodes always move back; marking them says nothing.
+				'retro' => '' === $node && ! empty( $g['isRetrograde'] ),
+			];
+			$names[]  = $label . ' ' . self::sign_label( self::sign_slug( $sign ) );
+		}
+		$style = 'south' === $style ? 'south' : 'north';
+		$svg   = KundliChart::draw(
+			$style,
+			$lagna_sign,
+			$bodies,
+			[
+				'title'      => 'south' === $style ? __( 'South Indian chart', 'astroway' ) : __( 'North Indian chart', 'astroway' ),
+				/* translators: 1: lagna sign, 2: list of planets with their signs */
+				'desc'       => sprintf( __( 'Lagna in %1$s. %2$s.', 'astroway' ), self::sign_label( self::sign_slug( $lagna_sign ) ), implode( ', ', $names ) ),
+				/* translators: short mark for the lagna (ascendant) in a chart cell, 2-3 letters */
+				'lagna_mark' => _x( 'Asc', 'lagna mark', 'astroway' ),
+			]
+		);
+		return '' === $svg ? '' : '<figure class="astroway-kundli">' . $svg . '</figure>';
 	}
 
 	private static function kundli_card( array $data, string $lang, array $params ): string {
@@ -6121,6 +6444,7 @@ class Render {
 			]
 		);
 		$inner .= UI::shown( 'facts' ) ? UI::facts( $facts, 'trio' ) : '';
+		$inner .= self::kundli_diagram( (array) ( $data['grahas'] ?? [] ), $lagna_sign, (string) ( $params['chart'] ?? 'north' ) );
 		if ( ! empty( $rows ) ) {
 			$inner .= UI::section( __( 'Grahas', 'astroway' ), self::sky_table( [ __( 'Graha', 'astroway' ), __( 'Position', 'astroway' ), __( 'House', 'astroway' ), __( 'Motion', 'astroway' ) ], $rows ), '', 'grahas' );
 		}

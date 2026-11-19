@@ -634,7 +634,9 @@ class UI {
 		$value = max( 0, min( $max, $value ) );
 		$pct   = self::n( $value / $max * 100 );
 		$name  = '' === $label ? '' : '<span class="astroway-sr">' . esc_html( $label ) . '</span>';
-		return '<div class="astroway-ring"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">'
+		// The colour says where the figure sits, so a low score does not wear the accent of a high one.
+		$tone = $pct < 40 ? ' astroway-ring--low' : ( $pct < 65 ? ' astroway-ring--mid' : '' );
+		return '<div class="astroway-ring' . $tone . '"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">'
 			. '<circle class="astroway-ring__track" cx="50" cy="50" r="45"/>'
 			. '<circle class="astroway-ring__bar" cx="50" cy="50" r="45" pathLength="100" stroke-dasharray="' . $pct . ' 100"/></svg>'
 			. '<p class="astroway-ring__value">' . esc_html( (string) $value ) . $name . '</p></div>';
@@ -727,22 +729,28 @@ class UI {
 	 * The twelve signs as links, so choosing one works without JavaScript.
 	 *
 	 * @param array $a `label` (nav name), `current` (sign id), `links` (sign
-	 *                 id => URL), `names` (sign id => name).
+	 *                 id => URL), `names` (sign id => name), `dates` (sign id =>
+	 *                 date range; when given, each sign is a tile with its name).
 	 */
 	public static function signs( array $a ): string {
-		$html = '';
+		$html     = '';
+		$labelled = ! empty( $a['dates'] );
 		foreach ( (array) ( $a['links'] ?? [] ) as $sign => $url ) {
 			$name    = (string) ( $a['names'][ $sign ] ?? $sign );
 			$current = ( $a['current'] ?? '' ) === $sign ? ' aria-current="page"' : '';
+			$body    = $labelled
+				? Glyphs::icon( (string) $sign, '' ) . '<span class="astroway-signs__name">' . esc_html( $name ) . '</span><span class="astroway-signs__dates">' . esc_html( (string) ( $a['dates'][ $sign ] ?? '' ) ) . '</span>'
+				: Glyphs::icon( (string) $sign, $name );
 			$html   .= sprintf(
-				'<a class="astroway-signs__sign" href="%1$s" title="%2$s"%3$s>%4$s</a>',
+				'<a class="astroway-signs__sign" href="%1$s"%2$s%3$s>%4$s</a>',
 				esc_url( (string) $url ),
-				esc_attr( $name ),
+				$labelled ? '' : ' title="' . esc_attr( $name ) . '"',
 				$current,
-				Glyphs::icon( (string) $sign, $name )
+				$body
 			);
 		}
-		return '' === $html ? '' : '<nav class="astroway-signs" aria-label="' . esc_attr( (string) ( $a['label'] ?? '' ) ) . '">' . $html . '</nav>';
+		$class = 'astroway-signs' . ( $labelled ? ' astroway-signs--labelled' : '' );
+		return '' === $html ? '' : '<nav class="' . $class . '" aria-label="' . esc_attr( (string) ( $a['label'] ?? '' ) ) . '">' . $html . '</nav>';
 	}
 
 	/**

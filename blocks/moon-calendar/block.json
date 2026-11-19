@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astroway/moon-calendar",
+	"title": "Moon Calendar (AstroWay)",
+	"category": "astroway",
+	"keywords": [
+		"moon",
+		"lunar",
+		"calendar",
+		"month",
+		"astroway"
+	],
+	"description": "A month of the Moon: the sign of each day, the phases and the void-of-course periods.",
+	"textdomain": "astroway",
+	"icon": "calendar-alt",
+	"supports": {
+		"html": false,
+		"align": [
+			"wide"
+		],
+		"customClassName": true
+	},
+	"attributes": {
+		"month": {
+			"type": "string",
+			"default": ""
+		},
+		"lang": {
+			"type": "string",
+			"default": ""
+		},
+		"look": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"usesContext": [
+		"astroway/look"
+	],
+	"editorScript": "astroway-blocks-editor"
+}

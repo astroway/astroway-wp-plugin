@@ -22,6 +22,85 @@ class Atlas {
 	 * names cannot fill the options table.
 	 */
 	/** @param bool $remember False for what a visitor typed: asked fresh and not kept. */
+	public const SCRIPT = 'astroway-places';
+
+	/** Suggestions one visitor may ask in five minutes, and the site in an hour. */
+	private const PER_VISITOR = 20;
+	private const PER_SITE    = 100;
+
+	public static function register(): void {
+		add_action( 'rest_api_init', [ __CLASS__, 'routes' ] );
+		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'script' ] );
+	}
+
+	public static function script(): void {
+		wp_register_script(
+			self::SCRIPT,
+			ASTROWAY_WP_PLUGIN_URL . 'assets/js/astroway-places.js',
+			[],
+			ASTROWAY_WP_PLUGIN_VERSION,
+			[
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			]
+		);
+	}
+
+	/** The city field's attributes, and its script asked for: suggestions are an extra, never the way in. */
+	public static function field_attrs(): array {
+		wp_enqueue_script( self::SCRIPT );
+		return [
+			'autocomplete'         => 'off',
+			'data-astroway-places' => add_query_arg( 'lang', Plugin::resolve_lang( '' ), rest_url( 'astroway/v1/places' ) ),
+		];
+	}
+
+	public static function routes(): void {
+		register_rest_route(
+			'astroway/v1',
+			'/places',
+			[
+				'methods'             => 'GET',
+				'permission_callback' => '__return_true',
+				'callback'            => [ __CLASS__, 'suggest' ],
+				'args'                => [
+					'q'    => [
+						'type'     => 'string',
+						'required' => true,
+					],
+					'lang' => [ 'type' => 'string' ],
+				],
+			]
+		);
+	}
+
+	/**
+	 * Up to six place names for what the visitor typed. A lookup spends the
+	 * site's atlas allowance, which the forms themselves need, so suggestions
+	 * get a share of it and each visitor a small one; an answer is cached a day.
+	 */
+	public static function suggest( \WP_REST_Request $r ): \WP_REST_Response {
+		$q    = trim( sanitize_text_field( (string) $r->get_param( 'q' ) ) );
+		$lang = sanitize_key( (string) $r->get_param( 'lang' ) );
+		$out  = static fn( array $places ) => new \WP_REST_Response( [ 'places' => $places ], 200, [ 'Cache-Control' => 'no-store' ] );
+		if ( mb_strlen( $q ) < 3 || mb_strlen( $q ) > 80 ) {
+			return $out( [] );
+		}
+		$cached = Cache::get( 'atlas_' . md5( strtolower( $q ) . '|6' ) );
+		if ( ! is_array( $cached ) ) {
+			$who = 'astroway_places_' . substr( wp_hash( Form::client() ), 0, 16 );
+			if ( ! self::take( $who, self::PER_VISITOR, 5 * MINUTE_IN_SECONDS ) || ! self::take( 'astroway_places_site', self::PER_SITE, HOUR_IN_SECONDS ) ) {
+				return $out( [] );
+			}
+		}
+		$found  = self::search( $q, 6, true );
+		$places = [];
+		foreach ( (array) ( $found['results'] ?? [] ) as $place ) {
+			$places[] = self::label( $place, '' !== $lang ? $lang : 'en' );
+		}
+		return $out( array_values( array_unique( $places ) ) );
+	}
+
 	public static function search( string $q, int $limit = 6, bool $remember = true ): array {
 		$q = trim( $q );
 		if ( mb_strlen( $q ) < 2 ) {
@@ -87,6 +166,38 @@ class Atlas {
 		$want  = mb_strtolower( trim( $q ) );
 		$exact = array_values( array_filter( $results, static fn( $r ) => in_array( $want, self::names( $r ), true ) ) );
 		return 1 === count( $exact ) ? $exact[0] : null;
+	}
+
+	/**
+	 * One more within a fixed window that started with the first one: the
+	 * expiry is what is left of the window, so a steady trickle does not keep
+	 * pushing the reset away.
+	 */
+	private static function take( string $key, int $max, int $window ): bool {
+		$now  = time();
+		$slot = get_transient( $key );
+		$slot = is_array( $slot ) && (int) ( $slot[1] ?? 0 ) > $now - $window ? $slot : [ 0, $now ];
+		if ( (int) $slot[0] >= $max ) {
+			return false;
+		}
+		set_transient( $key, [ (int) $slot[0] + 1, (int) $slot[1] ], max( 1, (int) $slot[1] + $window - $now ) );
+		return true;
+	}
+
+	/** The name part of what was typed: "Kyiv, UA" asks the atlas for "Kyiv". */
+	public static function name_of( string $typed ): string {
+		$name = trim( explode( ',', $typed, 2 )[0] );
+		return '' !== $name ? $name : trim( $typed );
+	}
+
+	/** The one place whose suggestion label is exactly what was typed, if any. */
+	public static function pick_label( string $typed, array $results, string $lang ): ?array {
+		if ( false === strpos( $typed, ',' ) ) {
+			return null;
+		}
+		$want  = mb_strtolower( trim( $typed ) );
+		$match = array_values( array_filter( $results, static fn( $r ) => mb_strtolower( self::label( $r, $lang ) ) === $want || mb_strtolower( self::label( $r, 'en' ) ) === $want ) );
+		return 1 === count( $match ) ? $match[0] : null;
 	}
 
 	/** The place's name in the site's language, the English one otherwise. */

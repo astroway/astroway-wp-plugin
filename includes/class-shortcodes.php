@@ -14,6 +14,7 @@ class Shortcodes {
 		add_shortcode( 'astroway_monthly_horoscope', self::gated( 'monthly_horoscope', [ __CLASS__, 'render_monthly_horoscope' ] ) );
 		add_shortcode( 'astroway_planet_of_day', self::gated( 'planet_of_day', [ __CLASS__, 'render_planet_of_day' ] ) );
 		add_shortcode( 'astroway_moon_phase', self::gated( 'moon_phase', [ __CLASS__, 'render_moon_phase' ] ) );
+		add_shortcode( 'astroway_moon_calendar', self::gated( 'moon_calendar', [ __CLASS__, 'render_moon_calendar' ] ) );
 		add_shortcode( 'astroway_bodygraph', self::gated( 'bodygraph', [ __CLASS__, 'render_bodygraph' ] ) );
 		add_shortcode( 'astroway_moon_sign', self::gated( 'moon_sign', [ __CLASS__, 'render_moon_sign' ] ) );
 		add_shortcode( 'astroway_rising_sign', self::gated( 'rising_sign', [ __CLASS__, 'render_rising_sign' ] ) );
@@ -512,6 +513,37 @@ class Shortcodes {
 		);
 	}
 
+	/** A month of the Moon. `month` is YYYY-MM, blank for this month; the place is optional. */
+	public static function render_moon_calendar( $atts ): string {
+		$atts = shortcode_atts(
+			[
+				'month' => '',
+				'lat'   => '',
+				'lon'   => '',
+				'lang'  => '',
+			],
+			(array) $atts,
+			'astroway_moon_calendar'
+		);
+		if ( '' === ( new ApiClient() )->key() && '' === SiteKey::key() ) {
+			return self::needs_key();
+		}
+		$month = preg_match( '/^\d{4}-\d{2}$/', trim( (string) $atts['month'] ) ) ? trim( (string) $atts['month'] ) : '';
+		if ( '' === $month ) {
+			// "This month" turns into next month at midnight on the 1st; a page cache must not keep the old one.
+			PageCache::cap( PublicData::ttl_for( 'month' ) );
+		}
+		return Render::widget(
+			'moon_calendar',
+			[
+				'month' => $month,
+				'lat'   => self::sanitize_coord( $atts['lat'], -90, 90 ),
+				'lng'   => self::sanitize_coord( $atts['lon'], -180, 180 ),
+				'lang'  => self::resolve_lang( $atts['lang'] ),
+			]
+		);
+	}
+
 	public static function render_moon_phase( $atts ): string {
 		$atts = shortcode_atts(
 			[
@@ -805,6 +837,7 @@ class Shortcodes {
 				'tz'        => '',
 				'theme'     => '',
 				'lang'      => '',
+				'chart'     => '',
 			],
 			(array) $atts,
 			'astroway_kundli'
@@ -826,6 +859,7 @@ class Shortcodes {
 					'lon'    => $lon,
 					'offset' => '' === $tz ? 0.0 : (float) $tz,
 					'lang'   => $atts['lang'],
+					'chart'  => in_array( $atts['chart'], [ 'south', 'none' ], true ) ? $atts['chart'] : 'north',
 				]
 			);
 			if ( '' !== $card ) {
@@ -896,11 +930,30 @@ class Shortcodes {
 				'tz'        => '',
 				'theme'     => '',
 				'lang'      => '',
+				'city'      => '',
 			],
 			(array) $atts,
 			'astroway_panchang'
 		);
 		$date = self::sanitize_date( $atts['date'] );
+		$lat  = self::sanitize_coord( '' !== $atts['lat'] ? $atts['lat'] : $atts['latitude'], -90, 90 );
+		$lon  = self::sanitize_coord( '' !== $atts['lon'] ? $atts['lon'] : $atts['longitude'], -180, 180 );
+		// On a key the panchang is text in the page; without one it stays the frame it has always been.
+		if ( '' !== $lat && '' !== $lon && ( '' !== ( new ApiClient() )->key() || '' !== SiteKey::key() ) ) {
+			$day = '' === $date ? PublicData::site_day( 'day' ) : $date;
+			return Render::widget(
+				'panchang',
+				[
+					'date' => $day,
+					'time' => '12:00',
+					'lat'  => $lat,
+					'lng'  => $lon,
+					'tz'   => self::tz_offset_hours( $atts['tz'], $day, '12:00' ),
+					'city' => sanitize_text_field( $atts['city'] ),
+					'lang' => self::resolve_lang( $atts['lang'] ),
+				]
+			);
+		}
 		return PublicClient::embed_iframe(
 			'panchang',
 			[

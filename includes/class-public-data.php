@@ -269,6 +269,27 @@ class PublicData {
 			'lang'      => false,
 			'paid'      => true,
 		],
+		// A month of the Moon: phases, sign changes, void-of-course periods and each day's sign.
+		// Nothing in a past or future month changes, so it is kept like a chart.
+		'moon_calendar'      => [
+			'path'      => '/lunar-calendar',
+			'method'    => 'POST',
+			'freshness' => 'static',
+			'params'    => [ 'month' ],
+			'required'  => [ 'year', 'month' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
+		// The five limbs of the day at a place, with sunrise, moonrise and the timed windows, for the site's day.
+		'panchang'           => [
+			'path'      => '/vedic/panchang/full',
+			'method'    => 'POST',
+			'freshness' => 'day',
+			'params'    => [ 'chart' ],
+			'required'  => [ 'date', 'time', 'latitude', 'longitude' ],
+			'lang'      => false,
+			'paid'      => true,
+		],
 		// The eight periods of the day and the night at a place, for the site's day.
 		'choghadiya'         => [
 			'path'      => '/vedic/panchang/choghadia',
@@ -522,6 +543,24 @@ class PublicData {
 	 * A malformed date is dropped rather than refused: the api then answers for
 	 * today, which beats blanking the widget over a typo in one attribute.
 	 */
+	/**
+	 * The zone the moon calendar is asked and drawn in: the site's own when it
+	 * is a named zone, a whole-hour manual offset as its Etc/GMT twin (the sign
+	 * flips by that convention), UTC otherwise. Asking in one zone and laying
+	 * the days out in another shifted every day by the offset.
+	 */
+	public static function moon_zone(): \DateTimeZone {
+		$name = function_exists( 'wp_timezone_string' ) ? wp_timezone_string() : 'UTC';
+		if ( preg_match( '#^[A-Za-z_]+/[A-Za-z_/+-]+$|^UTC$#', $name ) ) {
+			return new \DateTimeZone( $name );
+		}
+		if ( preg_match( '/^([+-])(\d{2}):00$/', $name, $m ) && (int) $m[2] <= 14 ) {
+			$hours = (int) $m[2];
+			return new \DateTimeZone( 0 === $hours ? 'UTC' : 'Etc/GMT' . ( '+' === $m[1] ? '-' : '+' ) . $hours );
+		}
+		return new \DateTimeZone( 'UTC' );
+	}
+
 	private static function query_for( string $widget, array $params ): ?array {
 		$config = self::ENDPOINTS[ $widget ] ?? self::READS[ $widget ];
 		$query  = [];
@@ -536,6 +575,22 @@ class PublicData {
 				$payload['targetDate'] = self::site_day( 'day' );
 			}
 			return $payload;
+		}
+
+		if ( in_array( 'month', $config['params'], true ) ) {
+			// "YYYY-MM", blank for the site's current month. Phases, ingresses and void periods
+			// do not depend on the place, so the coordinates are optional.
+			$month = (string) ( $params['month'] ?? '' );
+			if ( ! preg_match( '/^(\d{4})-(\d{2})$/', $month, $m ) || (int) $m[2] < 1 || (int) $m[2] > 12 ) {
+				$m = [ '', substr( self::site_day( 'month' ), 0, 4 ), substr( self::site_day( 'month' ), 5, 2 ) ];
+			}
+			return [
+				'year'      => (int) $m[1],
+				'month'     => (int) $m[2],
+				'timezone'  => self::moon_zone()->getName(),
+				'latitude'  => (float) ( $params['lat'] ?? 0 ),
+				'longitude' => (float) ( $params['lng'] ?? 0 ),
+			];
 		}
 
 		if ( in_array( 'charts', $config['params'], true ) ) {

@@ -199,6 +199,7 @@
 	padding: var(--astroway-card-padding, clamp(16px, 4%, 26px));
 	/* Its own size, not the theme's: a fluid 18-22px body made every chart read
 	   as a poster. rem keeps the visitor's own browser setting. */
+	/* Captions and labels below scale with it but stop at 0.8125rem (13px): max(Xem, 0.8125rem). */
 	font-size: var(--astroway-card-font-size, 0.9375rem);
 	background: var(--astroway-surface);
 	border: 1px solid var(--astroway-line);
@@ -319,7 +320,7 @@
 	align-items: baseline;
 	gap: 2px 1.1em;
 	margin: 1px 0 0;
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 	color: var(--astroway-muted);
 	overflow-x: clip;
 }
@@ -437,7 +438,7 @@
 
 .astroway-card .astroway-facts dt {
 	margin: 0;
-	font-size: 0.82em;
+	font-size: max(0.82em, 0.8125rem);
 	font-weight: 400;
 	color: var(--astroway-muted);
 }
@@ -453,7 +454,7 @@
 }
 
 .astroway-facts__sub {
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	font-weight: 400;
 	color: var(--astroway-muted);
 	font-variant-numeric: tabular-nums;
@@ -693,7 +694,7 @@
 }
 
 .astroway-card .astroway-facts--tiles dt {
-	font-size: 0.74em;
+	font-size: max(0.74em, 0.8125rem);
 	font-weight: 500;
 	letter-spacing: 0.07em;
 	text-transform: uppercase;
@@ -732,7 +733,7 @@
 	border: 1px solid var(--astroway-line);
 	border-radius: 999px;
 	background: var(--astroway-tint);
-	font-size: 0.82em;
+	font-size: max(0.82em, 0.8125rem);
 	line-height: 1.5;
 }
 
@@ -919,7 +920,7 @@
 
 .astroway-card .astroway-card__section > .astroway-card__subtitle {
 	margin-block-end: 2px;
-	font-size: 0.74em;
+	font-size: max(0.74em, 0.8125rem);
 	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
@@ -948,6 +949,11 @@
 	padding: 0;
 	border: 0;
 	border-block-end: 1px solid var(--astroway-line);
+}
+
+/* An accordion closing a section leaves the rule to the next section: two lines 18px apart read as a gap. */
+.astroway-card .astroway-card__section:not(:last-child) .astroway-acc:last-child > .astroway-acc__item:last-child {
+	border-block-end: 0;
 }
 
 .astroway-card .astroway-acc__summary {
@@ -987,7 +993,7 @@
 	/* The answer on the right of a closed row wraps under itself rather than off the card. */
 	max-inline-size: 55%;
 	margin-inline-start: auto;
-	font-size: 0.84em;
+	font-size: max(0.84em, 0.8125rem);
 	text-align: end;
 	color: var(--astroway-muted);
 	font-variant-numeric: tabular-nums;
@@ -1068,7 +1074,7 @@
 /* Applying or separating, under the orb, smaller: a detail for those who look for it. */
 .astroway-card .astroway-aspects__trend {
 	display: block;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	white-space: nowrap;
 }
 
@@ -1127,7 +1133,7 @@
 	padding: 5px 12px;
 	border: 1px solid var(--astroway-line);
 	border-radius: 999px;
-	font-size: 0.82em;
+	font-size: max(0.82em, 0.8125rem);
 	line-height: 1.2;
 }
 
@@ -1158,7 +1164,7 @@
 	margin: 8px 0 0;
 	padding: 0;
 	list-style: none;
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 
@@ -1202,7 +1208,7 @@
 .astroway-badge {
 	display: inline;
 	margin-inline-start: 6px;
-	font-size: 0.78em;
+	font-size: max(0.78em, 0.8125rem);
 	font-weight: 600;
 	line-height: 1.2;
 	color: var(--astroway-accent);
@@ -1263,7 +1269,7 @@
 .astroway-card .astroway-table caption {
 	margin: 0;
 	padding: 0 0 6px;
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 	font-weight: 400;
 	text-align: start;
 	color: var(--astroway-muted);
@@ -1337,7 +1343,7 @@
 .astroway-card .astroway-rx {
 	margin-inline-start: 0.2em;
 	color: var(--astroway-tens);
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 }
 
 /* A stacking table turns each row into a small card on a narrow column. The
@@ -1452,7 +1458,7 @@
 	margin: 0;
 	border-collapse: collapse;
 	table-layout: fixed;
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 	font-family: inherit;
 	color: inherit;
 	background: none;
@@ -1485,7 +1491,7 @@
 
 @container (max-width: 360px) {
 	.astroway-card .astroway-matrix th {
-		font-size: 0.78em;
+		font-size: max(0.78em, 0.8125rem);
 	}
 }
 
@@ -1523,7 +1529,7 @@
 
 .astroway-card .astroway-matrix__corner {
 	display: none;
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 
@@ -1666,7 +1672,7 @@
 /* A quieter note beside a subtitle: whose birth moment a block is about. */
 .astroway-card .astroway-card__aside {
 	margin-inline-start: 0.4em;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	font-weight: 400;
 	color: var(--astroway-muted);
 }
@@ -1722,6 +1728,22 @@
 	stroke-linecap: round;
 }
 
+.astroway-ring--low .astroway-ring__bar {
+	stroke: var(--astroway-tens);
+}
+
+.astroway-ring--mid .astroway-ring__bar {
+	stroke: var(--astroway-muted);
+}
+
+.astroway-card .astroway-ring--low .astroway-ring__value {
+	color: var(--astroway-tens);
+}
+
+.astroway-card .astroway-ring--mid .astroway-ring__value {
+	color: inherit;
+}
+
 .astroway-card .astroway-ring__value {
 	position: absolute;
 	inset: 0;
@@ -1760,7 +1782,7 @@
 .astroway-card .astroway-bars__note {
 	display: block;
 	color: var(--astroway-muted);
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	line-height: 1.3;
 }
 
@@ -1821,7 +1843,7 @@
 }
 
 .astroway-card .astroway-timeline__date {
-	font-size: 0.84em;
+	font-size: max(0.84em, 0.8125rem);
 	color: var(--astroway-muted);
 	font-variant-numeric: tabular-nums;
 	text-align: end;
@@ -1889,7 +1911,8 @@
 
 .astroway-card .astroway-wheel {
 	position: relative;
-	max-inline-size: 520px;
+	/* As wide as a card column allows: at 520 the circle sat at 400px in a 590px card. */
+	max-inline-size: 600px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -2053,7 +2076,7 @@
 	padding: 6px 10px;
 	border-radius: 9px;
 	background: #15171c;
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	line-height: 1.35;
 	white-space: nowrap;
 	pointer-events: none;
@@ -2268,7 +2291,7 @@
 
 .astroway-card .astroway-bodygraph__head {
 	margin: 0 0 4px;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	font-weight: 600;
 	color: var(--astroway-muted);
 	/* "Persönlichkeit" in a column of 5.5em: broken at a syllable, not a letter. */
@@ -2314,7 +2337,7 @@
 .astroway-card .astroway-bodygraph__ctb {
 	margin-inline-start: auto;
 	color: var(--astroway-muted);
-	font-size: 0.78em;
+	font-size: max(0.78em, 0.8125rem);
 	white-space: nowrap;
 }
 
@@ -2336,7 +2359,7 @@
 
 .astroway-card .astroway-hd__circuit {
 	margin: 14px 0 4px;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	font-weight: 600;
 	color: var(--astroway-muted);
 }
@@ -2422,7 +2445,7 @@
 
 .astroway-card .astroway-chinese__boundary {
 	margin: 0 0 14px;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 
@@ -2434,7 +2457,7 @@
 
 .astroway-card .astroway-chinese__pillar dt {
 	margin: 0;
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 
@@ -2454,7 +2477,7 @@
 
 .astroway-card .astroway-chinese__reading dt {
 	margin: 12px 0 2px;
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	font-weight: 600;
 	color: var(--astroway-muted);
 	/* "Persönlichkeit" in a column of 5.5em: broken at a syllable, not a letter. */
@@ -2560,7 +2583,7 @@
 
 .astroway-card .astroway-spread__pos {
 	margin: 0 0 2px;
-	font-size: 0.8em;
+	font-size: max(0.8em, 0.8125rem);
 	font-weight: 600;
 }
 
@@ -2597,7 +2620,7 @@
 }
 
 .astroway-card .astroway-spread__where {
-	font-size: 0.85em;
+	font-size: max(0.85em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 
@@ -2975,7 +2998,7 @@
 
 .astroway-card .astroway-card__phase {
 	margin: 6px 0 0;
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 	font-weight: 600;
 	color: var(--astroway-muted);
 }
@@ -3059,6 +3082,160 @@
 	border-color: var(--astroway-accent);
 	background: var(--astroway-accent-tint);
 	color: var(--astroway-accent);
+}
+
+/* The picker that asks for a sign: tiles with the name and dates, not bare glyphs. */
+.astroway-card .astroway-signs--labelled {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+}
+
+@container (min-width: 420px) {
+	.astroway-card .astroway-signs--labelled {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+@container (min-width: 620px) {
+	.astroway-card .astroway-signs--labelled {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+
+.astroway-card .astroway-signs--labelled .astroway-signs__sign {
+	gap: 2px;
+	padding: 10px 6px;
+	font-size: 1em;
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+}
+
+.astroway-card .astroway-signs--labelled .astroway-signs__sign > svg {
+	font-size: 1.5em;
+}
+
+.astroway-card .astroway-signs__name {
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.astroway-card .astroway-signs__dates {
+	font-size: 0.8125rem;
+	line-height: 1.2;
+	color: var(--astroway-muted);
+}
+
+/* ── Moon calendar: a month grid with the Moon's sign each day and the phase days marked ── */
+.astroway-card .astroway-moonmonth {
+	inline-size: 100%;
+	min-inline-size: 280px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	text-align: center;
+	margin: 12px 0 4px;
+}
+
+.astroway-card .astroway-moonmonth th {
+	padding: 4px 0;
+	font-size: max(0.8em, 0.8125rem);
+	font-weight: 500;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-moonmonth td {
+	padding: 6px 2px;
+	border-block-start: 1px solid var(--astroway-line);
+	vertical-align: top;
+	line-height: 1.2;
+}
+
+.astroway-card .astroway-moonmonth td > * {
+	display: block;
+	margin-inline: auto;
+}
+
+.astroway-card .astroway-moonmonth__day {
+	font-weight: 600;
+}
+
+.astroway-card .astroway-moonmonth .astroway-glyph {
+	inline-size: 1.05em;
+	block-size: 1.05em;
+	margin-block-start: 2px;
+	color: var(--astroway-muted);
+}
+
+.astroway-card .astroway-moonmonth__mark {
+	background: var(--astroway-tint);
+}
+
+.astroway-card .astroway-moonmonth__phase .astroway-moon {
+	inline-size: 1.15em;
+	block-size: 1.15em;
+	margin: 3px auto 0;
+}
+
+/* ── Kundli drawing: North or South Indian, in the card's own ink ── */
+.astroway-card .astroway-kundli {
+	margin: 16px auto 4px;
+	max-inline-size: 420px;
+}
+
+.astroway-card .astroway-kundli__svg {
+	display: block;
+	inline-size: 100%;
+	block-size: auto;
+	overflow: visible;
+}
+
+.astroway-kundli__lines :is(rect, path) {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.2;
+	opacity: 0.55;
+}
+
+.astroway-card .astroway-kundli__num {
+	font-size: 16px;
+	font-weight: 600;
+	text-anchor: middle;
+	dominant-baseline: central;
+	fill: currentColor;
+	opacity: 0.55;
+}
+
+.astroway-card .astroway-kundli__num.is-lagna,
+.astroway-card .astroway-kundli__lagna {
+	fill: var(--astroway-accent);
+	opacity: 1;
+}
+
+.astroway-card .astroway-kundli__lagna {
+	font-size: 11px;
+	font-weight: 700;
+	text-anchor: end;
+}
+
+.astroway-kundli__lagna-line {
+	stroke: var(--astroway-accent);
+	stroke-width: 1.5;
+}
+
+.astroway-kundli__body use {
+	color: currentColor;
+	fill: currentColor;
+}
+
+.astroway-card .astroway-kundli__retro {
+	font-size: 8px;
+	font-weight: 700;
+	fill: var(--astroway-tens);
+}
+
+.astroway-kundli__sign use {
+	fill: currentColor;
+	opacity: 0.4;
 }
 
 /* ── Prose ── */
@@ -3234,7 +3411,7 @@
 	margin: 16px 0 0;
 	padding: 0;
 	border: 0;
-	font-size: 0.78em;
+	font-size: max(0.78em, 0.8125rem);
 	line-height: 1.45;
 	color: var(--astroway-muted);
 }
@@ -3349,7 +3526,7 @@
 .astroway-card .astroway-card__placements caption {
 	margin: 0;
 	padding: 0 0 6px;
-	font-size: 0.86em;
+	font-size: max(0.86em, 0.8125rem);
 	font-weight: 400;
 	text-align: start;
 	color: var(--astroway-muted);
@@ -3471,10 +3648,19 @@
 	cursor: text;
 }
 
-/* The browser's calendar and clock marks, in the card's muted ink rather than pure black. */
+/* The browser's calendar and clock marks, redrawn in the text colour: the native
+   picture stays black on a dark host theme, where it all but disappears. */
 .astroway-card .astroway-field__input::-webkit-calendar-picker-indicator {
-	opacity: 0.55;
+	opacity: 0.7;
 	cursor: pointer;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") center / 18px 18px no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") center / 18px 18px no-repeat;
+}
+
+.astroway-card .astroway-field__input[type="time"]::-webkit-calendar-picker-indicator {
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
 }
 
 .astroway-card .astroway-field.is-invalid .astroway-field__input {
@@ -3483,7 +3669,7 @@
 
 .astroway-card :is(.astroway-field__hint, .astroway-field__error) {
 	margin: 0;
-	font-size: 0.84em;
+	font-size: max(0.84em, 0.8125rem);
 	text-wrap: pretty;
 }
 
@@ -3502,6 +3688,61 @@
 	align-items: center;
 	gap: 10px;
 	min-block-size: 44px;
+}
+
+/* Drawn by the card so its edge shows on a dark host as well as a light one. */
+.astroway-card .astroway-field--check input[type="checkbox"] {
+	-webkit-appearance: none;
+	appearance: none;
+	flex: none;
+	display: grid;
+	place-content: center;
+	inline-size: 20px;
+	block-size: 20px;
+	margin: 0;
+	/* Form controls do not inherit the text colour, and the edge is drawn from it. */
+	color: inherit;
+	border: 1.5px solid currentColor;
+	border: 1.5px solid color-mix(in oklab, currentColor 55%, transparent);
+	border-radius: 5px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.astroway-card .astroway-field--check input[type="checkbox"]:checked {
+	border-color: var(--astroway-accent);
+	background: var(--astroway-accent);
+}
+
+.astroway-card .astroway-field--check input[type="checkbox"]:checked::after {
+	content: "";
+	inline-size: 11px;
+	block-size: 11px;
+	background: var(--astroway-on-accent);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 6.5 5 9.5 10 3'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 6.5 5 9.5 10 3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.astroway-card .astroway-field--check input[type="checkbox"]:focus-visible {
+	outline: 2px solid var(--astroway-accent);
+	outline-offset: 2px;
+}
+
+/* Forced colours drop backgrounds, so the tick and the box take system colours instead. */
+@media (forced-colors: active) {
+	.astroway-card .astroway-field--check input[type="checkbox"] {
+		border-color: CanvasText;
+	}
+
+	.astroway-card .astroway-field--check input[type="checkbox"]:checked {
+		forced-color-adjust: none;
+		border-color: Highlight;
+		background: Highlight;
+	}
+
+	.astroway-card .astroway-field--check input[type="checkbox"]:checked::after {
+		background: HighlightText;
+	}
 }
 
 .astroway-card :is(.astroway-form, .astroway-form__person) > .astroway-field--check {
@@ -3583,7 +3824,7 @@
 
 .astroway-card .astroway-choices__asked {
 	margin: 0 0 8px;
-	font-size: 0.84em;
+	font-size: max(0.84em, 0.8125rem);
 	color: var(--astroway-muted);
 }
 

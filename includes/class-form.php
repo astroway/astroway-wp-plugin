@@ -548,7 +548,8 @@ class Form {
 		}
 
 		// Not kept: the plugin promises to store nothing a visitor types.
-		$found = Atlas::search( $in['city'], 6, false );
+		// A picked suggestion reads "Kyiv, UA": the atlas is asked for the name, the label picks the place.
+		$found = Atlas::search( Atlas::name_of( $in['city'] ), 6, false );
 		if ( isset( $found['error'] ) ) {
 			return [ 'error' => __( 'The city search is not answering. Enter the coordinates below instead.', 'astroway' ) ];
 		}
@@ -556,7 +557,7 @@ class Form {
 		if ( ! $results ) {
 			return [ 'error' => __( 'No place by that name. Check the spelling, or enter the coordinates below.', 'astroway' ) ];
 		}
-		$one = Atlas::pick( $in['city'], $results );
+		$one = Atlas::pick_label( $in['city'], $results, $lang ) ?? Atlas::pick( Atlas::name_of( $in['city'] ), $results );
 		if ( null === $one ) {
 			$choices = [];
 			foreach ( $results as $r ) {
@@ -701,7 +702,7 @@ class Form {
 				'label' => __( 'City of birth', 'astroway' ),
 				'value' => $in['city'] ?? '',
 				'error' => $errors[ 'aw_city' . $sfx ] ?? '',
-				'attrs' => [ 'autocomplete' => 'off' ],
+				'attrs' => Atlas::field_attrs(),
 			]
 		);
 		// Coordinates by hand, for a place the search does not know or a
@@ -806,7 +807,7 @@ class Form {
 	}
 
 	/** The visitor's address: Cloudflare's header only when Cloudflare sent it; IPv6 by its /64. */
-	private static function client(): string {
+	public static function client(): string {
 		$remote = (string) ( $_SERVER['REMOTE_ADDR'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- validated as an IP below.
 		$real   = (string) ( $_SERVER['HTTP_CF_CONNECTING_IP'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- validated as an IP below.
 		$ip     = ( '' !== $real && filter_var( $real, FILTER_VALIDATE_IP ) && self::in_ranges( $remote, self::CLOUDFLARE ) ) ? $real : $remote;

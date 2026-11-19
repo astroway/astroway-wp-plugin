@@ -157,6 +157,7 @@ class Plugin {
 		GeneratedRegistry::register();
 		Blocks::register();
 		Admin::register();
+		PageBuilder::register();
 		if ( class_exists( __NAMESPACE__ . '\\AdminExtras' ) ) {
 			AdminExtras::register();
 		}
@@ -172,6 +173,7 @@ class Plugin {
 		SiteKey::register();
 		Connect::register();
 		Form::register();
+		Atlas::register();
 		PageCache::register();
 		TarotReading::register();
 		// Each adapter only hooks its builder's actions; its builder classes load from there.

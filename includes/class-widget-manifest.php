@@ -321,7 +321,20 @@ final class WidgetManifest {
 			],
 			'kundli'               => [
 				'panel'  => $birth,
-				'fields' => self::kundli(),
+				'fields' => array_merge(
+					self::kundli(),
+					[
+						self::select(
+							'chart',
+							__( 'Chart drawing', 'astroway' ),
+							[
+								''      => __( 'North Indian', 'astroway' ),
+								'south' => __( 'South Indian', 'astroway' ),
+								'none'  => __( 'None', 'astroway' ),
+							]
+						),
+					]
+				),
 			],
 			'transit'              => [
 				'panel'  => __( 'Transit date', 'astroway' ),
@@ -329,7 +342,7 @@ final class WidgetManifest {
 			],
 			'panchang'             => [
 				'panel'  => __( 'Panchang', 'astroway' ),
-				'fields' => [ self::today(), self::lat(), self::lon(), self::tz_wide(), self::theme(), self::lang() ],
+				'fields' => [ self::today(), self::lat(), self::lon(), self::tz_wide(), self::text( 'city', __( 'Place name for the heading', 'astroway' ) ), self::theme(), self::lang() ],
 			],
 			'numerology'           => [
 				'panel'  => __( 'Numerology', 'astroway' ),
@@ -362,6 +375,10 @@ final class WidgetManifest {
 			'moon-phase'           => [
 				'panel'  => __( 'Moon phase', 'astroway' ),
 				'fields' => [ self::today(), self::lang() ],
+			],
+			'moon-calendar'        => [
+				'panel'  => __( 'Moon calendar', 'astroway' ),
+				'fields' => [ self::text( 'month', __( 'Month (YYYY-MM, blank for this month)', 'astroway' ) ), self::lang() ],
 			],
 			'daily-tarot'          => [
 				'panel'  => __( 'Daily Tarot', 'astroway' ),
@@ -538,7 +555,7 @@ final class WidgetManifest {
 		'daily-tarot'       => [ 'tags', 'keywords', 'facts', 'about', 'other-side' ],
 		'tarot-spread'      => [ 'about' ],
 		'moon-phase'        => [ 'facts', 'meaning', 'phases', 'voc' ],
-		'kundli'            => [ 'facts', 'grahas', 'dasha', 'yogas' ],
+		'kundli'            => [ 'facts', 'chart', 'grahas', 'dasha', 'yogas' ],
 		'dasha'             => [ 'facts', 'antar', 'maha' ],
 		'navamsa'           => [ 'facts', 'grahas' ],
 		'progressions'      => [ 'facts', 'planets', 'aspects' ],
