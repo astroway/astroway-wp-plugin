@@ -4,7 +4,7 @@ Tags: astrology, horoscope, human design, natal chart, tarot
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -208,6 +208,9 @@ This plugin stores the following on the WordPress site:
 **This plugin does not set any cookies on visitor browsers, does not use third-party tracking, and does not transmit visitor data to anyone other than api.astroway.info and, for the city search, app.astroway.info (see External services above). Tarot card pictures are loaded by the visitor's browser from cdn.astroway.info.**
 
 == Changelog ==
+
+= 3.0.1 =
+* Fix: on sites west of Greenwich (the Americas) the sky card, the natal chart header and the transit date showed the day before; far east of Greenwich the transit date showed the day after. Dates now match the positions
 
 = 3.0.0 =
 * New: AstroWay → Horoscope pages. One click makes a horoscope hub and a page for each of the twelve signs from the plugin's blocks, as drafts or published. Running it again only adds the pages that are missing

@@ -142,7 +142,7 @@ class Digest {
 			: sprintf(
 				/* translators: %s = a date */
 				__( 'sky notes for %s', 'astroway' ),
-				(string) wp_date( (string) get_option( 'date_format', 'Y-m-d' ), (int) strtotime( $today . 'T12:00:00Z' ) )
+				(string) wp_date( (string) get_option( 'date_format', 'Y-m-d' ), (int) strtotime( $today . 'T12:00:00Z' ), new \DateTimeZone( 'UTC' ) )
 			);
 
 		$lines = $events;

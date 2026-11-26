@@ -1234,7 +1234,8 @@ class Render {
 		$time  = empty( $params['time_unknown'] ) ? (string) ( $params['time'] ?? '' ) : '';
 		$time  = preg_match( '/^\d{2}:\d{2}$/', $time ) ? $time : '';
 		$stamp = strtotime( $date . ' 00:00:00 UTC' );
-		$shown = false === $stamp ? $date : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp );
+		// A calendar day, not an instant: in the site's zone a UTC midnight west of Greenwich is the day before.
+		$shown = false === $stamp ? $date : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp, new \DateTimeZone( 'UTC' ) );
 		$shown = '' === $time ? (string) $shown : $shown . ', ' . $time;
 
 		$html = sprintf(
@@ -2630,7 +2631,7 @@ class Render {
 		usort( $found, static fn( $a, $b ) => $a[3] <=> $b[3] );
 
 		$stamp = strtotime( $day . ' 12:00:00 UTC' );
-		$shown = false === $stamp ? $day : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp );
+		$shown = false === $stamp ? $day : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp, new \DateTimeZone( 'UTC' ) );
 		$ring  = static function ( array $bodies, string $whose ): array {
 			$out = [];
 			foreach ( $bodies as $p ) {
@@ -4087,7 +4088,8 @@ class Render {
 			return '';
 		}
 		$stamp = strtotime( $date . ' 00:00:00 UTC' );
-		$shown = false === $stamp ? $date : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp );
+		// Read back in UTC: the site's zone showed Nov 23 for Nov 24 on a Central Time site (25.11.2026).
+		$shown = false === $stamp ? $date : wp_date( (string) get_option( 'date_format', 'Y-m-d' ), $stamp, new \DateTimeZone( 'UTC' ) );
 		return sprintf(
 			'<time class="astroway-card__meta" datetime="%s">%s</time>',
 			esc_attr( $date ),
